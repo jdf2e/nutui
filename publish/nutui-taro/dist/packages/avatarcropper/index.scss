@@ -1,0 +1,98 @@
+.nut-avatar-cropper {
+  position: relative;
+  &::after,
+  &__edit-text {
+    content: attr(data-edit-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    z-index: 1;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &.taro {
+    &::after {
+      content: none;
+    }
+  }
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; // 隐藏原生上传按钮
+    cursor: pointer;
+    z-index: 2;
+  }
+}
+
+.nut-cropper-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--nut-overlay-bg-color, rgba(0, 0, 0, 0.7));
+  z-index: 1000;
+  &__canvas,
+  &__cut-canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  &__cut-canvas {
+    z-index: 0;
+  }
+  &__toolbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    &.top {
+      top: 0;
+      bottom: inherit;
+    }
+    .flex-sb {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    &-item {
+      color: #fff;
+      padding: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__highlight {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: transparent;
+    .highlight {
+      position: absolute;
+      width: 365px;
+      height: 365px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      background-color: transparent;
+      box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.6);
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import '../avatar/index.scss';
+
+.nut-skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  .nut-skeleton-content {
+    display: flex;
+    .avatarClass {
+      margin-right: 20px;
+      background-color: $skeleton-content-avatar-background-color;
+    }
+
+    .nut-skeleton-content__line {
+      display: flex;
+      flex-direction: column;
+      .nut-skeleton-blockTitle,
+      .nut-skeleton-blockLine {
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: $skeleton-content-line-background-color;
+      }
+      .nut-skeleton-blockTitle {
+        width: 30%;
+      }
+      .blockLine ~ .blockLine:last-of-type {
+        width: 70%;
+      }
+      .nut-skeleton-blockTitle:last-of-type,
+      .nut-skeleton-blockLine:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .nut-skeleton-blockTitle--round,
+      .nut-skeleton-blockLine--round {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .nut-skeleton-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: $skeleton-animation-background-color;
+    background-repeat: no-repeat;
+    animation: backpos 2s ease-in-out 0s infinite;
+  }
+  @keyframes backpos {
+    0% {
+      background-position-x: -500px;
+    }
+    to {
+      background-position-x: calc(500px + 100%);
+    }
+  }
+}

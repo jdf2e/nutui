@@ -1,0 +1,6816 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+  "framework": "vue",
+  "name": "NutUI",
+  "version": "4.2.3",
+  "contributions": {
+    "html": {
+      "tags": [
+        {
+          "name": "nut-action-sheet",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否展示动作面板",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "menu-items",
+              "default": "`[ ] `",
+              "description": "列表项",
+              "value": {
+                "type": "menuitems[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "option-tag",
+              "default": "`'name'`",
+              "description": "设置列表项标题展示使用参数",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "option-sub-tag",
+              "default": "`'subname'`",
+              "description": "设置列表项二级标题展示使用参数",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "choose-tag-value",
+              "default": "''",
+              "description": "设置选中项的值，和 `'option-tag'` 的值对应",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`'#ee0a24'`",
+              "description": "选中项颜色，当 `choose-tag-value == option-tag` 的值 生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`''`",
+              "description": "设置列表项标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "description",
+              "default": "`''`",
+              "description": "设置列表项副标题/描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-txt",
+              "default": "`'取消'`",
+              "description": "取消文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-abled",
+              "default": "`true`",
+              "description": "遮罩层是否可关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-address",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否打开地址选择",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model:value",
+              "default": "`[]`",
+              "description": "设置默认选中值",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`custom`",
+              "description": "地址选择类型 `exist/custom/custom2`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "province",
+              "default": "`[]`",
+              "description": "省，每个省的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "city",
+              "default": "`[]`",
+              "description": "市，每个市的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "country",
+              "default": "`[]`",
+              "description": "县，每个县的对象中，必须有 `name` 字段，如果类型选择 `custom2`，必须指定 `title` 字段为首字母",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "town",
+              "default": "`[]`",
+              "description": "乡/镇，每个乡/镇的对象中,必须有 `name` 字段,如果类型选择 `custom2`，必须指定 `title` 字段为首字母",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "height",
+              "default": "`200px`",
+              "description": "弹层中内容容器的高度，仅在 `type=\"custom2\"` 时有效",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "exist-address",
+              "default": "`[]`",
+              "description": "已存在地址列表，每个地址对象中，必传值 `provinceName`、`cityName`、`countyName`、`townName`、`addressDetail`、`selectedAddress`（字段解释见下）",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-show-custom-address",
+              "default": "`true`",
+              "description": "是否可以切换自定义地址选择，`type=‘exist’` 时生效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-address-title",
+              "default": "`请选择所在地区`",
+              "description": "自定义地址选择文案，`type='custom'` 时生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "exist-address-title",
+              "default": "`配送至`",
+              "description": "已有地址文案 ，`type=‘exist’` 时生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-and-exist-title",
+              "default": "`选择其他地址`",
+              "description": "自定义地址与已有地址切换按钮文案 ，`type=‘exist’` 时生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "columns-placeholder",
+              "default": "`请选择`",
+              "description": "列提示文字",
+              "value": {
+                "type": "string | array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-address-list",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "data",
+              "default": "-",
+              "description": "地址数组",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "long-press",
+              "default": "`false`",
+              "description": "长按功能",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "swipe-edition",
+              "default": "`false`",
+              "description": "右滑功能",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-bottom-button",
+              "default": "`true`",
+              "description": "是否展示底部按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "data-options",
+              "default": "-",
+              "description": "自定义 `key` 值时，设置映射关系",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-animate",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "show",
+              "default": "`false`",
+              "description": "控制动画，当值从 false 变为 true 时会触发一次动画",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`-`",
+              "description": "动画类型，见下方 `type` 值说明",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loop",
+              "default": "`false`",
+              "description": "是否循环执行。`true`-循环执行; `false`-执行一次",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "-",
+              "description": "动画时长，单位 ms",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "action",
+              "default": "-",
+              "description": "（不能与 show 同时使用）触发方式，`initial`-初始化执行; `click`-点击执行",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-audio",
+          "slots": [],
+          "events": [],
+          "attributes": []
+        },
+        {
+          "name": "nut-avatar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "size",
+              "default": "`normal`",
+              "description": "头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shape",
+              "default": "`round`",
+              "description": "头像的形状，可选值为：`square`、`round `",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`#666`",
+              "description": "字体颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bg-color",
+              "default": "`#eee`",
+              "description": "背景色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-avatar-cropper",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "max-zoom",
+              "default": "3",
+              "description": "最大缩放倍数",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "space",
+              "default": "10",
+              "description": "裁剪区域两边预留的间隙",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "toolbar-position",
+              "default": "bottom",
+              "description": "裁剪区域工具栏位置,可选值为：`top` `bottom`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "edit-text",
+              "default": "编辑",
+              "description": "中间的文字内容",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-text",
+              "default": "取消",
+              "description": "取消按钮的文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-confirm",
+              "default": "确认",
+              "description": "确认按钮的文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size-type",
+              "default": "['original', 'compressed']",
+              "description": "所选的图片的尺寸： 可选值：`original` `compressed`",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "source-type",
+              "default": "['album', 'camera']",
+              "description": "选择图片的来源： 可选值：`album` `camera`",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-backtop",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "height",
+              "default": "`100vh`",
+              "description": "滚动区域的高度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bottom",
+              "default": "`20`",
+              "description": "距离页面底部距离",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "right",
+              "default": "`10`",
+              "description": "距离页面右侧距离",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "distance",
+              "default": "`200`",
+              "description": "页面垂直滚动多高后出现",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`10`",
+              "description": "设置组件页面层级",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-badge",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "value",
+              "default": "`-`",
+              "description": "显示的内容",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max",
+              "default": "`10000`",
+              "description": "`value` 为数值时，最大值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`10`",
+              "description": "徽标的 `z-index` 值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "dot",
+              "default": "`false`",
+              "description": "是否为小点",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bubble()",
+              "default": "`false`",
+              "description": "是否为气泡形状",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "hidden",
+              "default": "`false`",
+              "description": "是否隐藏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "top",
+              "default": "`0`",
+              "description": "上下偏移量，支持单位设置，可设置为：`5px` 等",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "right",
+              "default": "`0`",
+              "description": "左右偏移量，支持单位设置，可设置为：`5px` 等",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`#fa2c19`",
+              "description": "徽标背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-barrage",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "danmu",
+              "default": "`[]`",
+              "description": "弹幕列表数据",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "frequency",
+              "default": "`500`",
+              "description": "可视区域内每个弹幕出现的时间间隔",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "speeds",
+              "default": "`5000`",
+              "description": "每个弹幕的滚动时间",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rows",
+              "default": "`3`",
+              "description": "弹幕行数，分几行展示",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "top",
+              "default": "`10`",
+              "description": "弹幕垂直距离",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loop",
+              "default": "`true`",
+              "description": "是否循环播放",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-button",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`default`",
+              "description": "类型，可选值为 `primary` `info` `warning` `danger` `success` `default`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "form-type",
+              "default": "`button`",
+              "description": "表单类型，可选值 `button` `submit` `reset`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`normal`",
+              "description": "尺寸，可选值为 `large` `small` `mini` `normal`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shape",
+              "default": "`round`",
+              "description": "形状，可选值为 `square` `round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "-",
+              "description": "按钮颜色，支持传入 `linear-gradient` 渐变色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "plain",
+              "default": "`false`",
+              "description": "是否为朴素按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "block",
+              "default": "`false`",
+              "description": "是否为块级元素",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loading",
+              "default": "`false`",
+              "description": "按钮 `loading` 状态",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-calendar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否可见",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "'`one`'",
+              "description": "类型，日期单择`one`，区间选择`range`,日期多选`multiple`,周选择`week`(`v4.0.1`)",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "poppable",
+              "default": "`true`",
+              "description": "是否弹窗状态展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-auto-back-fill",
+              "default": "`false`",
+              "description": "自动回填",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`日期选择`",
+              "description": "显示标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "default-value",
+              "default": "`null`",
+              "description": "默认值，单个日期选择 `string`，其他为 `string[]`",
+              "value": {
+                "type": "string | string[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "start-date",
+              "default": "`今天`",
+              "description": "开始日期",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "end-date",
+              "default": "`距离今天 365 天`",
+              "description": "结束日期",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-today",
+              "default": "`true`",
+              "description": "是否展示今天标记",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "start-text",
+              "default": "`开始`",
+              "description": "范围选择，开始信息文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "end-text",
+              "default": "`结束`",
+              "description": "范围选择，结束信息文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "confirm-text",
+              "default": "`确认`",
+              "description": "底部确认按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-title",
+              "default": "`true`",
+              "description": "是否在展示日历标题",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-sub-title",
+              "default": "`true`",
+              "description": "是否展示日期标题",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "to-date-animation",
+              "default": "`true`",
+              "description": "是否启动滚动动画",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "first-day-of-week",
+              "default": "`0`",
+              "description": "设置周起始日",
+              "value": {
+                "type": "0-6",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled-date",
+              "default": "`-`",
+              "description": "一个用来判断该日期是否被禁用的函数，接受一个`年-月-日`作为参数。 应该返回一个 Boolean 值。",
+              "value": {
+                "type": "function",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-card",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "img-url",
+              "default": "-",
+              "description": "左侧图片 `URL`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "-",
+              "description": "标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "price",
+              "default": "-",
+              "description": "商品价格",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "vip-price",
+              "default": "-",
+              "description": "会员价格",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shop-desc",
+              "default": "-",
+              "description": "店铺介绍",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "delivery",
+              "default": "-",
+              "description": "配送方式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shop-name",
+              "default": "-",
+              "description": "店铺名称",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-need-price",
+              "default": "`true`",
+              "description": "是否需要价格展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-cascader",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "选中值，双向绑定",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "显示选择层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "options",
+              "default": "-",
+              "description": "级联数据",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lazy",
+              "default": "-",
+              "description": "是否开启动态加载",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lazy-load",
+              "default": "-",
+              "description": "动态加载回调，开启动态加载时生效",
+              "value": {
+                "type": "function",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "value-key",
+              "default": "-",
+              "description": "自定义 `options` 结构中 `value` 的字段",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-key",
+              "default": "-",
+              "description": "自定义 `options` 结构中 `text` 的字段",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "children-key",
+              "default": "-",
+              "description": "自定义 `options` 结构中 `children` 的字段",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "convert-config",
+              "default": "-",
+              "description": "当 `options` 为可转换为树形结构的扁平结构时，配置转换规则",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`''`",
+              "description": "标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-icon-position",
+              "default": "`\"top-right\"`",
+              "description": "取消按钮位置，继承 `Popup` 组件",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "closeable",
+              "default": "`false`",
+              "description": "是否显示关闭按钮，继承 `Popup` 组件",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "poppable",
+              "default": "`true`",
+              "description": "是否需要弹层展示（设置为 `false` 后，`title` 失效）",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-category",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`classify`",
+              "description": "分类模式：`classify`，`text`，`custom`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "category",
+              "default": "`[]`",
+              "description": "左侧导航栏数据列表",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-cell",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "title",
+              "default": "-",
+              "description": "分组标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "desc",
+              "default": "-",
+              "description": "分组描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-checkbox",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`false`",
+              "description": "是否处于选中状态",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用选择",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-position",
+              "default": "`right`",
+              "description": "文本所在的位置，可选值：`left`,`right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "icon-size",
+              "default": "`18`",
+              "description": "[图标尺寸](#/zh-CN/component/icon)",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "label",
+              "default": "-",
+              "description": "复选框的文本内容",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "indeterminate",
+              "default": "`false`",
+              "description": "当前是否支持半选状态，一般用在全选操作中",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shape",
+              "default": "`round`",
+              "description": "形状，可选值：`button`、`round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-circle-progress",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "progress",
+              "default": "`0`",
+              "description": "百分比",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stroke-width",
+              "default": "`5`",
+              "description": "圆弧的宽度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "radius",
+              "default": "`50`",
+              "description": "半径",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`#fa2c19`",
+              "description": "圆环进度条颜色",
+              "value": {
+                "type": "object | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "path-color",
+              "default": "`#d9d9d9`",
+              "description": "圆环轨道颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stroke-linecap",
+              "default": "`round`",
+              "description": "圆环进度条端点形状可选值为 `square` `butt`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clockwise",
+              "default": "`true`",
+              "description": "是否顺时针展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-collapse",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`-`",
+              "description": "当前展开面板的 `name`",
+              "value": {
+                "type": "手风琴模式：string | number<br>非手风琴模式：(string | number)[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "accordion",
+              "default": "`false`",
+              "description": "是否开启手风琴模式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-comment",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "header-type",
+              "default": "`default`",
+              "description": "头部样式展示类型，可选： `default`，`complex`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "images-rows",
+              "default": "`one`",
+              "description": "评论图片展示行数，可选： `one`，`multi`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ellipsis",
+              "default": "`2`",
+              "description": "设置评论内容省略行数",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "videos",
+              "default": "`[]`",
+              "description": "视频信息",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "images",
+              "default": "`[]`",
+              "description": "图片信息",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "info",
+              "default": "`{}`",
+              "description": "评论详情",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "follow",
+              "default": "`{}`",
+              "description": "追评内容",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "operation",
+              "default": "`[\"replay\", \"like\", \"more\"]`",
+              "description": "配置底部按钮",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-config-provider",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "theme",
+              "default": "-",
+              "description": "主题风格，设置为 `dark` 来开启深色模式，全局生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "theme-vars",
+              "default": "-",
+              "description": "自定义主题变量",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "tag",
+              "default": "`view`",
+              "description": "根节点对应的小程序标签名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-countdown",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`{}`",
+              "description": "当前时间，自定义展示内容时生效",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "start-time",
+              "default": "`Date.now()`",
+              "description": "开始时间",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "end-time",
+              "default": "`Date.now()`",
+              "description": "结束时间",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "format",
+              "default": "`HH:mm:ss`",
+              "description": "时间格式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "millisecond",
+              "default": "`false`",
+              "description": "是否开启毫秒级渲染",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "auto-start",
+              "default": "`true`",
+              "description": "是否自动开始倒计时",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "time",
+              "default": "`0`",
+              "description": "倒计时显示时间，单位是毫秒。`auto-start` 为 `false` 时生效",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "paused",
+              "default": "`false`",
+              "description": "是否暂停",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-countup",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "init-num",
+              "default": "`0`",
+              "description": "初始数字",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "end-num",
+              "default": "`0`",
+              "description": "结束数字",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "speed",
+              "default": "`1`",
+              "description": "间隔数字，目前仅支持基础用法",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "to-fixed",
+              "default": "`0`",
+              "description": "保留小数点后几位",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "start-flag",
+              "default": "`true`",
+              "description": "触发数字滚动的标识",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "during",
+              "default": "`1000`",
+              "description": "滚动一次运行时间",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "num-width",
+              "default": "`20`",
+              "description": "数字宽度，常用于自定义无缝滚动",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "num-height",
+              "default": "`20`",
+              "description": "数字高度，常用于自定义无缝滚动（抽奖功能必传）",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-change-num",
+              "default": "`1`",
+              "description": "要变化的数字（用于自定义图片，`initNum`、`endNum` 在此无效）",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-bg-img",
+              "default": "-",
+              "description": "自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图）",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-spac-num",
+              "default": "`0`",
+              "description": "图片中数字之间可能会存在间距",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`''`",
+              "description": "抽奖功能传 machine，可选值为 `machine` `' '`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "machine-prize-num",
+              "default": "`0`",
+              "description": "奖品个数，一共多少个奖品，必传",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "machine-num",
+              "default": "`3`",
+              "description": "抽奖位，即滚动几个，必传",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "machine-prize-level",
+              "default": "`0`",
+              "description": "中奖图标，图标在雪碧图中的位置",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "machine-turn-more",
+              "default": "`0`",
+              "description": "滚动圈数",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-date-picker",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`null`",
+              "description": "初始值",
+              "value": {
+                "type": "date",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`date`",
+              "description": "时间类型，可选值 `date`(年月日) `time`(时分秒) `year-month`(年月) `month-day`(月日) `datehour`(年月日时) `hour-minute`(时分`v4.0.5`)",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "minute-step",
+              "default": "`1`",
+              "description": "分钟步进值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-show-chinese",
+              "default": "`false`",
+              "description": "每列是否展示中文",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "min-date",
+              "default": "`十年前`",
+              "description": "开始日期",
+              "value": {
+                "type": "date",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max-date",
+              "default": "`十年后`",
+              "description": "结束日期",
+              "value": {
+                "type": "date",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "formatter",
+              "default": "",
+              "description": "选项格式化函数",
+              "value": {
+                "type": "(type: string, option: pickeroption) => pickeroption",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "filter",
+              "default": "",
+              "description": "选项过滤函数",
+              "value": {
+                "type": "(type: string, option: pickeroption) => pickeroption[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`null`",
+              "description": "设置标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ok-text",
+              "default": "`确定`",
+              "description": "确定按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-text",
+              "default": "`取消`",
+              "description": "取消按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "swipe-duration",
+              "default": "`1000`",
+              "description": "惯性滚动时长",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "visible-option-num",
+              "default": "`7`",
+              "description": "可见的选项个数",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "option-height",
+              "default": "`36`",
+              "description": "选项高度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-toolbar",
+              "default": "`true`",
+              "description": "是否显示顶部导航",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-dialog",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "title",
+              "default": "-",
+              "description": "标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "content",
+              "default": "-",
+              "description": "内容，支持 `HTML` 和组件",
+              "value": {
+                "type": "string | vnode",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "teleport",
+              "default": "`\"body\"`",
+              "description": "指定挂载节点",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "点击蒙层是否关闭对话框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "no-footer",
+              "default": "`false`",
+              "description": "是否隐藏底部按钮栏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "no-ok-btn",
+              "default": "`false`",
+              "description": "是否隐藏确定按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "no-cancel-btn",
+              "default": "`false`",
+              "description": "是否隐藏取消按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-text",
+              "default": "`”取消“`",
+              "description": "取消按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ok-text",
+              "default": "`”确 定“`",
+              "description": "确定按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-auto-close",
+              "default": "`true`",
+              "description": "取消按钮是否默认关闭弹窗",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ok-auto-close",
+              "default": "`true`",
+              "description": "确认按钮是否默认关闭弹窗",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-align",
+              "default": "`\"center\"`",
+              "description": "文字对齐方向，可选值同 `css` 的 `text-align `",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-popstate",
+              "default": "`false`",
+              "description": "是否在页面回退时自动关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "footer-direction",
+              "default": "`horizontal`",
+              "description": "使用横纵方向 可选值 `horizontal`、`vertical`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-class",
+              "default": "-",
+              "description": "自定义遮罩类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-style",
+              "default": "-",
+              "description": "自定义遮罩样式",
+              "value": {
+                "type": "cssproperties",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pop-class",
+              "default": "-",
+              "description": "自定义 `popup` 弹框类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pop-style",
+              "default": "-",
+              "description": "自定义 `popup` 弹框样式",
+              "value": {
+                "type": "cssproperties",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-class",
+              "default": "-",
+              "description": "自定义 `class`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "before-close",
+              "default": "-",
+              "description": "关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise`",
+              "value": {
+                "type": "function(action: string)",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-divider",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "dashed",
+              "default": "`false`",
+              "description": "是否使用虚线",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "hairline",
+              "default": "`true`",
+              "description": "是否使用 `0.5px` 线",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "content-position",
+              "default": "`center`",
+              "description": "内容位置，可选值为 `left`、`right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "direction",
+              "default": "`horizontal`",
+              "description": "水平还是垂直类型，可选值 `vertical`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-drag",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "direction",
+              "default": "`all`",
+              "description": "拖拽元素的拖拽方向限制，**x**/**y**/**all** 三选一",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-ecard",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`0`",
+              "description": "购买电子卡所需价钱",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "choose-text",
+              "default": "`请选择电子卡面值`",
+              "description": "选择面值文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "other-value-text",
+              "default": "`其他面值`",
+              "description": "其他面值文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "data-list",
+              "default": "`DataList[]`",
+              "description": "电子卡面值列表",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "card-amount-min",
+              "default": "`1`",
+              "description": "其它面值最小值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "card-amount-max",
+              "default": "`9999`",
+              "description": "其他面值最大值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "card-buy-min",
+              "default": "`1`",
+              "description": "购买数量最小值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "card-buy-max",
+              "default": "`9999`",
+              "description": "购买数量最大值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "`请输入1-5000整数`",
+              "description": "其他面值默认提示语",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "suffix",
+              "default": "`¥`",
+              "description": "符号标示",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-elevator",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "height",
+              "default": "`200px`",
+              "description": "电梯区域的高度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "accept-key",
+              "default": "`title`",
+              "description": "索引 key 值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "index-list",
+              "default": "`[{id: 0, name: ''}]`",
+              "description": "索引列表",
+              "value": {
+                "type": "array（`item` 需包含 `id`、`name` 属性, `name` 支持传入 `html` 结构）",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-sticky",
+              "default": "`false`",
+              "description": "索引是否吸顶",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "space-height",
+              "default": "`23`",
+              "description": "右侧锚点的上下间距",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title-height",
+              "default": "`35`",
+              "description": "左侧索引的高度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-ellipsis",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "content",
+              "default": "-",
+              "description": "文本内容",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "direction",
+              "default": "`end`",
+              "description": "省略位置，可选值 `start` | `end` | `middle`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rows",
+              "default": "`1`",
+              "description": "展示几行",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "expand-text",
+              "default": "`''`",
+              "description": "展开操作的文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "collapse-text",
+              "default": "`''`",
+              "description": "收起操作的文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "symbol",
+              "default": "`...`",
+              "description": "省略的符号",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "line-height",
+              "default": "`20`",
+              "description": "容器的行高",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-empty",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "image",
+              "default": "`empty`",
+              "description": "图片类型，可选值为 `empty`、`error`、`network`，支持传入图片 `URL`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "image-size",
+              "default": "`-`",
+              "description": "图片大小，单位为 `px`",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "description",
+              "default": "`-`",
+              "description": "图片下方的描述文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-fixed-nav",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "visible",
+              "default": "`false`",
+              "description": "是否打开",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "nav-list",
+              "default": "`[]`",
+              "description": "悬浮列表内容数据",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`#fa2c19 默认集成主题色`",
+              "description": "选中按钮文案颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-text",
+              "default": "`收起导航`",
+              "description": "收起列表按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "un-active-text",
+              "default": "`快速导航`",
+              "description": "展开列表按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`right`",
+              "description": "导航方向,可选值 `left` `right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay",
+              "default": "`true`",
+              "description": "展开时是否显示遮罩",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "position",
+              "default": "`{top: 'auto',bottom: 'auto'}`",
+              "description": "fixed 垂直位置",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-form",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "model-value",
+              "default": "",
+              "description": "表单数据对象(使用表单校验时，_必填_)",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rules",
+              "default": "`{}`",
+              "description": "统一配置每个 `FormItem` 的 `rules`",
+              "value": {
+                "type": "{ prop: formitemrule[] }",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "label-position",
+              "default": "`left`",
+              "description": "表单项 label 的位置",
+              "value": {
+                "type": "`top` | `left` | `right`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "star-position",
+              "default": "`left`",
+              "description": "必填表单项 label 的红色星标位置",
+              "value": {
+                "type": "`left` | `right`",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-grid",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "column-num",
+              "default": "`4`",
+              "description": "列数",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "border",
+              "default": "`true`",
+              "description": "是否显示边框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "gutter",
+              "default": "`0`",
+              "description": "格子之间的间距，默认单位为 `px`",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "center",
+              "default": "`true`",
+              "description": "是否将格子内容居中显示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "square",
+              "default": "`false`",
+              "description": "是否将格子固定为正方形",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "reverse",
+              "default": "`false`",
+              "description": "内容翻转",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "direction",
+              "default": "`vertical`",
+              "description": "格子内容排列的方向，可选值为 `horizontal`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clickable",
+              "default": "`false`",
+              "description": "是否开启格子点击反馈",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-icon",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "name",
+              "default": "-",
+              "description": "图标名称或图片链接",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "-",
+              "description": "图标颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "-",
+              "description": "图标大小，如 `20px` `2em` `2rem`",
+              "value": {
+                "type": "string | object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "font-class-name",
+              "default": "`nutui-iconfont`",
+              "description": "自定义 `icon` 字体基础类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "class-prefix",
+              "default": "`nut-icon`",
+              "description": "自定义 `icon` 类名前缀，用于使用自定义图标",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "tag",
+              "default": "`view`",
+              "description": "小程序标签",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-image",
+          "slots": [],
+          "events": [],
+          "attributes": []
+        },
+        {
+          "name": "nut-image-preview",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "show",
+              "default": "`false`",
+              "description": "是否展示预览图片",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "images",
+              "default": "`[]`",
+              "description": "预览图片数组",
+              "value": {
+                "type": "imagearray[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "autoplay",
+              "default": "`3000`",
+              "description": "自动轮播时长，0 表示不会自动轮播",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "init-no",
+              "default": "`0`",
+              "description": "初始页码",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pagination-visible",
+              "default": "`false`",
+              "description": "分页指示器是否展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pagination-color",
+              "default": "`#fff`",
+              "description": "分页指示器选中的颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "content-close",
+              "default": "`true`",
+              "description": "点击图片可以退出预览",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-index",
+              "default": "`true`",
+              "description": "是否显示页码",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "closeable",
+              "default": "`false`",
+              "description": "是否显示关闭图标",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-icon-position",
+              "default": "`top-right`",
+              "description": "关闭图标位置，可选值：`top-left`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "before-close",
+              "default": "-",
+              "description": "关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise`",
+              "value": {
+                "type": "(active: number) => boolean | promise<`boolean`>",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-Loop",
+              "default": "`true`",
+              "description": "是否循环播放",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-indicator",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "current",
+              "default": "`1`",
+              "description": "当前步骤",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`3`",
+              "description": "步骤长度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "block",
+              "default": "`false`",
+              "description": "是否启用块级布局",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "align",
+              "default": "`left`",
+              "description": "对齐方式，仅在 `block` 为 `true` 时生效, 可选值 `left`, `right`, `center`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "fill-zero",
+              "default": "`true`",
+              "description": "单数前面是否补 0",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-infinite-loading",
+          "slots": [],
+          "events": [],
+          "attributes": []
+        },
+        {
+          "name": "nut-input",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "输入值，双向绑定",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`text`",
+              "description": "输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "-",
+              "description": "输入框为空时占位符",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "input-align",
+              "default": "`left`",
+              "description": "输入框内容对齐方式，可选值 `left`、`center`、`right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "border",
+              "default": "`true`",
+              "description": "是否显示下边框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "readonly",
+              "default": "`false`",
+              "description": "是否只读",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "autofocus",
+              "default": "`false`",
+              "description": "是否自动获得焦点，`iOS` 系统不支持该属性",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max-length",
+              "default": "-",
+              "description": "限制最长输入字符",
+              "value": {
+                "type": "string ｜ number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clearable",
+              "default": "`false`",
+              "description": "展示清除 `Icon`",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "showClearIcon ",
+              "default": "`false`",
+              "description": "是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clear-size",
+              "default": "`14`",
+              "description": "清除图标的 `font-size` 大小",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-word-limit",
+              "default": "`false`",
+              "description": "是否显示限制最长输入字符，需要设置 `max-length` 属性",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "error",
+              "default": "`false`",
+              "description": "是否标红",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "formatter",
+              "default": "-",
+              "description": "输入内容格式化函数",
+              "value": {
+                "type": "`(val: string) => string`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "format-trigger",
+              "default": "`onChange`",
+              "description": "格式化函数触发的时机，可选值为 `onChange`、`onBlur`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "confirm-type",
+              "default": "`done`",
+              "description": "键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "adjust-position",
+              "default": "`true`",
+              "description": "键盘弹起时，是否自动上推页面",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "always-system",
+              "default": "`false`",
+              "description": "是否强制使用系统键盘和 `Web-view` 创建的 `input` 元素。为 `true` 时，`confirm-type`、`confirm-hold` 可能失效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-input-number",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "初始值",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "input-width",
+              "default": "``",
+              "description": "输入框宽度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "button-size",
+              "default": "``",
+              "description": "操作符+、-尺寸",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "min",
+              "default": "`1`",
+              "description": "最小值限制",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max",
+              "default": "`9999`",
+              "description": "最大值限制",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "step",
+              "default": "`1`",
+              "description": "步长",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "decimal-places",
+              "default": "`0`",
+              "description": "设置保留的小数位",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "禁用所有功能",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "readonly",
+              "default": "`false`",
+              "description": "只读状态禁用输入框操作行为",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-invoice",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "data",
+              "default": "-",
+              "description": "发票数据",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "form-value",
+              "default": "-",
+              "description": "表单数据对象(使用表单校验时，_必填_)",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "submit",
+              "default": "`true`",
+              "description": "是否显示提交按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-layout",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`-`",
+              "description": "布局方式，可选值为 `flex`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "gutter",
+              "default": "`-`",
+              "description": "列元素之间的间距（单位为 `px`）",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "justify",
+              "default": "`start`",
+              "description": "`Flex` 主轴对齐方式，可选值为 `start` `end` `center` `space-around` `space-between` `space-evenly`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "align",
+              "default": "`flex-start`",
+              "description": "`Flex` 交叉轴对齐方式，可选值为 `flex-start` `center` `flex-end`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "flex-wrap",
+              "default": "`nowrap`",
+              "description": "`Flex` 是否换行，可选值为 `nowrap` `wrap` `reverse`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-list",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "height",
+              "default": "`80`",
+              "description": "列表项的高度/预估高度，支持不固定高度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "list-data",
+              "default": "`[]`",
+              "description": "列表数据",
+              "value": {
+                "type": "any[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "container-height",
+              "default": "`可视区高度`",
+              "description": "容器高度(最大值不能超过可视区)",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "buffer-size",
+              "default": "`5`",
+              "description": "数据缓冲区长度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "margin",
+              "default": "`10`",
+              "description": "列表之间的间隙，和自定义样式保持一致",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-menu",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "direction",
+              "default": "`down`",
+              "description": "菜单展开方向，可选值为 `up`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`0.3`",
+              "description": "动画时长，单位 s",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`#F2270C`",
+              "description": "选项的选中态图标颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "是否在点击遮罩层后关闭菜单",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "scroll-fixed",
+              "default": "`false`",
+              "description": "滚动后是否固定，可设置固定位置",
+              "value": {
+                "type": "boolean | string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title-class",
+              "default": "-",
+              "description": "自定义标题样式类",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay",
+              "default": "`true`",
+              "description": "是否开启背景遮罩",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-navbar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "title",
+              "default": "-",
+              "description": "标题名称",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "left-text",
+              "default": "-",
+              "description": "左侧文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "desc",
+              "default": "-",
+              "description": "右侧描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "left-show",
+              "default": "`false`",
+              "description": "是否展示左侧箭头",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title-icon",
+              "default": "`false`",
+              "description": "标题中是否展示 `icon`",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "border",
+              "default": "`false`",
+              "description": "是否显示下边框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "fixed",
+              "default": "`false`",
+              "description": "是否固定到顶部",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "`false`",
+              "description": "固定在顶部时，是否在标签位置生成一个等高的占位元素",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "safe-area-inset-top",
+              "default": "`false`",
+              "description": "是否开启顶部安全区适配",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "-",
+              "description": "导航栏 `z-index`",
+              "value": {
+                "type": "number ｜ string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-noticebar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "direction",
+              "default": "`across`",
+              "description": "滚动的方向，可选 `across`、`vertical `",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text",
+              "default": "-",
+              "description": "提示的信息",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-mode",
+              "default": "`false`",
+              "description": "是否启用关闭模式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "left-icon",
+              "default": "`true`",
+              "description": "是否展示左侧图标, 滚动方向为 `across` 生效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "-",
+              "description": "导航栏的文字颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "background",
+              "default": "-",
+              "description": "导航栏的背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "delay",
+              "default": "`1`",
+              "description": "延时多少秒",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "scrollable",
+              "default": "`true`",
+              "description": "是否可以滚动",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "speed",
+              "default": "`50`",
+              "description": "滚动速率 (px/s)",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "wrapable",
+              "default": "`false`",
+              "description": "是否开启文本换行,`scrollable` 会设置为 `false`",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-notify",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`danger`",
+              "description": "提示的信息类型，可选值为`primary` `success` `danger` `warning`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "visible",
+              "default": "`false`",
+              "description": "显示与否",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "msg",
+              "default": "`''`",
+              "description": "展示文案，支持通过`\\n`换行",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`3000`",
+              "description": "展示时长(ms)，值为 0 时，notify 不会消失",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`''`",
+              "description": "字体颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "background",
+              "default": "`''`",
+              "description": "背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "class-name",
+              "default": "`1`",
+              "description": "自定义类名",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "position",
+              "default": "`top`",
+              "description": "自定义位置，可选值为 `top` `bottom` `left` `right` `center`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-number-keyboard",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否显示键盘",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "当前输入值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "-",
+              "description": "键盘标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`default`：默认样式<br>`rightColumn`：带右侧栏",
+              "description": "键盘模式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "random-keys",
+              "default": "`false`",
+              "description": "随机数",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-key",
+              "default": "`数组形式最多支持添加2个,超出默认取前2项`",
+              "description": "自定义键盘额外的键",
+              "value": {
+                "type": "string []",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay",
+              "default": "false",
+              "description": "是否显示遮罩",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "maxlength",
+              "default": "`6`",
+              "description": "输入值最大长度，结合 v-model 使用",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "confirm-text",
+              "default": "`完成`",
+              "description": "自定义完成按钮文字，如\"支付\"，\"下一步\"，\"提交\"等",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pop-class",
+              "default": "-",
+              "description": "自定义弹框类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-overlay",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "控制遮罩的显示/隐藏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`2000`",
+              "description": "自定义遮罩层级",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`0.3`",
+              "description": "显示/隐藏的动画时长，单位秒",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-class",
+              "default": "-",
+              "description": "自定义遮罩类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-style",
+              "default": "-",
+              "description": "自定义遮罩样式",
+              "value": {
+                "type": "cssproperties",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "遮罩显示时的背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "点击遮罩时是否关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-pagination",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`1`",
+              "description": "当前页码",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mode",
+              "default": "`multi`",
+              "description": "显示模式,可选值为 `simple`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "prev-text",
+              "default": "`上一页`",
+              "description": "上一页按钮文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "next-text",
+              "default": "`下一页`",
+              "description": "下一页按钮文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "page-count",
+              "default": "`传入/根据页数计算`",
+              "description": "总页数",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "total-items",
+              "default": "`0`",
+              "description": "总记录数",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "items-per-page",
+              "default": "`10`",
+              "description": "每页记录数",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-page-size",
+              "default": "`5`",
+              "description": "显示的页码个数",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "force-ellipses",
+              "default": "`false`",
+              "description": "是否显示省略号",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-picker",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:value",
+              "default": "`[]`",
+              "description": "默认选中项",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "columns",
+              "default": "-",
+              "description": "对象数组，配置每一列显示的数据",
+              "value": {
+                "type": "pickeroption[] | pickeroption[][]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "field-names",
+              "default": "`{ text: 'text', value: 'value', children: 'children' }`",
+              "description": "自定义 columns 中的字段",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "-",
+              "description": "设置标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cancel-text",
+              "default": "`取消`",
+              "description": "取消按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ok-text",
+              "default": "`确定`",
+              "description": "确定按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "three-dimensional",
+              "default": "`false`",
+              "description": "是否开启 3D 效果",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "swipe-duration",
+              "default": "`1000`",
+              "description": "惯性滚动时长",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "visible-option-num",
+              "default": "`7`",
+              "description": "可见的选项个数",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "option-height",
+              "default": "`36`",
+              "description": "选项高度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-toolbar",
+              "default": "`true`",
+              "description": "是否显示顶部导航",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-popover",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "list",
+              "default": "`[]`",
+              "description": "选项列表",
+              "value": {
+                "type": "list[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "visible",
+              "default": "`false`",
+              "description": "是否展示气泡弹出层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "theme",
+              "default": "`light`",
+              "description": "主题风格，可选值为 `dark`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "location",
+              "default": "`bottom`",
+              "description": "弹出位置",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "offset",
+              "default": "`[0, 12]`",
+              "description": "出现位置的偏移量",
+              "value": {
+                "type": "[number,number]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-arrow",
+              "default": "`true`",
+              "description": "是否显示小箭头",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-class",
+              "default": "`''`",
+              "description": "自定义 class 值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`0.3`",
+              "description": "动画时长，单位秒",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay",
+              "default": "`false`",
+              "description": "是否显示遮罩层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-class",
+              "default": "`''`",
+              "description": "自定义遮罩层类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-style",
+              "default": "`''`",
+              "description": "自定义遮罩层样式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "是否在点击遮罩层后关闭菜单",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-action",
+              "default": "`true`",
+              "description": "是否在点击选项后关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-outside",
+              "default": "`true`",
+              "description": "是否在点击外部元素后关闭菜单",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bg-color",
+              "default": "`-`",
+              "description": "自定义背景色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "target-id",
+              "default": "`-`",
+              "description": "自定义目标元素 id",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "arrow-offset",
+              "default": "`0`",
+              "description": "小箭头的偏移量",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-popup",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "控制当前组件显示/隐藏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`2000`",
+              "description": "遮罩层级",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`0.3`",
+              "description": "组件显示/隐藏的动画时长，单位秒",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay",
+              "default": "`true`",
+              "description": "是否显示遮罩",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "是否点击遮罩关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "position",
+              "default": "`\"center\"`",
+              "description": "弹出位置（top,bottom,left,right,center）",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "transition",
+              "default": "-",
+              "description": "动画名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "style",
+              "default": "-",
+              "description": "自定义弹框样式",
+              "value": {
+                "type": "cssproperties",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pop-class",
+              "default": "-",
+              "description": "自定义弹框类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "closeable",
+              "default": "`false`",
+              "description": "是否显示关闭按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-icon-position",
+              "default": "`\"top-right\"`",
+              "description": "关闭按钮位置（top-left,top-right,bottom-left,bottom-right）",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "destroy-on-close",
+              "default": "`true`",
+              "description": "弹层关闭后 `slot`内容会不会清空",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "round",
+              "default": "`false`",
+              "description": "是否显示圆角",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-class",
+              "default": "''",
+              "description": "自定义遮罩层类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "overlay-style",
+              "default": "''",
+              "description": "自定义遮罩层样式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "safe-area-inset-bottom",
+              "default": "`false`",
+              "description": "是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-price",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "price",
+              "default": "`0`",
+              "description": "价格数量",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "need-symbol",
+              "default": "`true`",
+              "description": "是否需要加上 `symbol` 符号",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "symbol",
+              "default": "`&yen;`",
+              "description": "符号类型",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "decimal-digits",
+              "default": "`2`",
+              "description": "小数位位数",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "thousands",
+              "default": "`false`",
+              "description": "是否按照千分号形式显示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "position",
+              "default": "`before`",
+              "description": "符号显示在价格前或者后，`before`、`after`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`normal`",
+              "description": "价格尺寸，`small`、`normal`、`large`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "strike-through",
+              "default": "false",
+              "description": "是否展示划线价",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-progress",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "percentage",
+              "default": "`0`",
+              "description": "百分比",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-show-percentage",
+              "default": "`true`",
+              "description": "是否需要展示百分号",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stroke-color",
+              "default": "`#f30`",
+              "description": "进度条背景色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stroke-width",
+              "default": "-",
+              "description": "进度条宽度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`base`",
+              "description": "进度条及文字尺寸，可选值 `small` `base` `large`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-text",
+              "default": "`true`",
+              "description": "是否显示进度条文字内容",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-inside",
+              "default": "`false`",
+              "description": "进度条文字显示位置(false:外显，true:内显)",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-color",
+              "default": "`#333`",
+              "description": "进度条文字颜色设置",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-background",
+              "default": "-",
+              "description": "进度条文字背景颜色设置",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "status",
+              "default": "`text`",
+              "description": "进度条当前状态，可选值`active(展示动画效果)` `icon(展示icon标签)`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-pull-refresh",
+          "slots": [],
+          "events": [],
+          "attributes": []
+        },
+        {
+          "name": "nut-radio",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用选择",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "icon-size",
+              "default": "`18`",
+              "description": "[图标尺寸](#/zh-CN/component/icon)",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "label",
+              "default": "-",
+              "description": "单选框标识",
+              "value": {
+                "type": "string | number | boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shape",
+              "default": "`round`",
+              "description": "形状，可选值为 `button`、`round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-range",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`0`",
+              "description": "当前进度百分比",
+              "value": {
+                "type": "number | number[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "range",
+              "default": "`false`",
+              "description": "是否开启双滑块模式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max",
+              "default": "`100`",
+              "description": "最大值",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "min",
+              "default": "`0`",
+              "description": "最小值",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "step",
+              "default": "`1`",
+              "description": "步长",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用滑块",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "vertical",
+              "default": "`false`",
+              "description": "是否竖向展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "hidden-range",
+              "default": "`false`",
+              "description": "是否隐藏范围值",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "hidden-tag",
+              "default": "`false`",
+              "description": "是否隐藏标签",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`rgba(250, 44, 25, 1)`",
+              "description": "进度条激活态颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "inactive-color",
+              "default": "`rgba(255, 163, 154, 1)`",
+              "description": "进度条非激活态颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "button-color",
+              "default": "`rgba(250, 44, 25, 1)`",
+              "description": "按钮颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "marks",
+              "default": "`{}`",
+              "description": "刻度标示",
+              "value": {
+                "type": "object{key:number}",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-rate",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "当前 `star` 数，可使用 `v-model` 双向绑定数据",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "count",
+              "default": "`5`",
+              "description": "`star` 总数",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`#fa200c`",
+              "description": "图标选中颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "void-color",
+              "default": "`#ccc`",
+              "description": "图标未选中颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "allow-half",
+              "default": "`false`",
+              "description": "是否半星",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "readonly",
+              "default": "`false`",
+              "description": "是否只读",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "spacing",
+              "default": "`20`",
+              "description": "间距",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "-",
+              "description": "`Icon` 尺寸大小，如 `20px` `2em` `2rem`",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-icon",
+              "default": "`StarFillN`",
+              "description": "自定义 `Icon`, 传入 [VNode](https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes)",
+              "value": {
+                "type": "vnode",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-searchbar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`''`",
+              "description": "当前输入的值",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "label",
+              "default": "`''`",
+              "description": "搜索框左侧文本",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "shape",
+              "default": "`round`",
+              "description": "搜索框形状，可选值为 `square` `round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max-length",
+              "default": "`9999`",
+              "description": "最大输入长度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "input-type",
+              "default": "`text`",
+              "description": "输入框类型",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "`请输入`",
+              "description": "输入框默认暗纹",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clearable",
+              "default": "`true`",
+              "description": "是否展示清除按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "clear-icon",
+              "default": "`CircleClose`",
+              "description": "自定义清除按钮图标（默认使用 `@nutui/nutui-icons`）",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "background",
+              "default": "`#fff`",
+              "description": "输入框外部背景",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "input-background",
+              "default": "`#f7f7f7`",
+              "description": "输入框内部背景",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "confirm-type",
+              "default": "`done`",
+              "description": "键盘右下角按钮的文字，仅在`type='text'`时生效，可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "autofocus",
+              "default": "`false`",
+              "description": "是否自动聚焦",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "focus-style",
+              "default": "`-`",
+              "description": "聚焦时搜索框样式",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用输入框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "readonly",
+              "default": "`false`",
+              "description": "输入框只读",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "input-align",
+              "default": "`left`",
+              "description": "对齐方式，可选 `left` `center` `right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "safe-area-inset-bottom",
+              "default": "`false`",
+              "description": "是否开启 iphone 系列全面屏底部安全区适配",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cursor-spacing",
+              "default": "0",
+              "description": "指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-short-password",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "",
+              "description": "密码初始值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否展示短密码框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`请输入密码`",
+              "description": "标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "desc",
+              "default": "`您使用了虚拟资产，请进行验证`",
+              "description": "密码框描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "tips",
+              "default": "`忘记密码`",
+              "description": "提示语",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "是否点击遮罩关闭",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "length",
+              "default": "`6`",
+              "description": "密码长度，取值为 4~6",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "error-msg",
+              "default": "`''`",
+              "description": "错误信息提示",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-side-navbar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "offset",
+              "default": "`15`",
+              "description": "导航缩进宽度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-signature",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "custom-class",
+              "default": "`-`",
+              "description": "自定义 `class`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "line-width",
+              "default": "`3`",
+              "description": "线条的宽度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stroke-style",
+              "default": "`#000`",
+              "description": "绘图笔触颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`png`",
+              "description": "图片格式",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "un-support-tpl",
+              "default": "`对不起，当前浏览器不支持Canvas，无法使用本控件！`",
+              "description": "不支持 Canvas 情况下的展示文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-skeleton",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "loading",
+              "default": "`true`",
+              "description": "是否显示骨架屏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "width",
+              "default": "`default`",
+              "description": "每行宽度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "height",
+              "default": "`15px`",
+              "description": "每行高度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "animated",
+              "default": "`false`",
+              "description": "是否开启骨架屏动画",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "avatar",
+              "default": "`false`",
+              "description": "是否显示头像",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "avatar-shape",
+              "default": "`round`",
+              "description": "头像形状：正方形/圆形",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "avatar-size",
+              "default": "`50px`",
+              "description": "头像大小",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "round",
+              "default": "`false`",
+              "description": "标题/段落是否采用圆角风格",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "row",
+              "default": "`1`",
+              "description": "设置段落行数",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`true`",
+              "description": "是否显示段落标题",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-sku",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model:visible",
+              "default": "`false`",
+              "description": "是否显示商品规格弹框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "sku",
+              "default": "`[]`",
+              "description": "商品 sku 数据",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "goods",
+              "default": "-",
+              "description": "商品信息",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stepper-max",
+              "default": "`99999`",
+              "description": "设置 inputNumber 最大值",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stepper-min",
+              "default": "`1`",
+              "description": "设置 inputNumber 最小值",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "btn-options",
+              "default": "`[confirm]`",
+              "description": "底部按钮设置。[`confirm`, `buy`, `cart`] 分别对应确定、立即购买、加入购物车",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "btn-extra-text",
+              "default": "-",
+              "description": "按钮上部添加文案，默认为空，有值时显示",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stepper-title",
+              "default": "`购买数量`",
+              "description": "数量选择组件左侧文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "stepper-extra-text",
+              "default": "`false`",
+              "description": "InputNumber 与标题之间的文案",
+              "value": {
+                "type": "function | boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "buy-text",
+              "default": "`立即购买`",
+              "description": "立即购买按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "add-cart-text",
+              "default": "`加入购物车 `",
+              "description": "加入购物车按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "confirm-text",
+              "default": "`确定`",
+              "description": "确定按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-space",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "direction",
+              "default": "`horizontal`",
+              "description": "间距方向，可选值 `vertical` `horizontal`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "align",
+              "default": "`-`",
+              "description": "交叉轴对齐方式，可选值 `start` `end` `center` `baseline`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "justify",
+              "default": "`-`",
+              "description": "主轴对齐方式，可选值 `start` `end` `center` `between` `around` `evenly` `stretch`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "wrap",
+              "default": "`false`",
+              "description": "是否自动换行，仅在 horizontal 时有效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "fill",
+              "default": "`false`",
+              "description": "是否让 Space 变为一个块级元素，填充整个父元素",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "gutter",
+              "default": "`-`",
+              "description": "间距大小，如 20px 2em，默认单位为 px，支持数组形式来分别设置横向和纵向间距",
+              "value": {
+                "type": "number | string | number[] | string[]",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-steps",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "direction",
+              "default": "`horizontal`",
+              "description": "显示方向，`horizontal`,`vertical`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "current",
+              "default": "`0`",
+              "description": "当前所在的步骤",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "progress-dot",
+              "default": "`false`",
+              "description": "点状步骤条",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-sticky",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "top",
+              "default": "`0`",
+              "description": "吸顶距离",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`99`",
+              "description": "吸附时的层级",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-swipe",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "name",
+              "default": "-",
+              "description": "唯一标识",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用滑动",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "touch-move-prevent-default",
+              "default": "`false`",
+              "description": "是否阻止滑动事件行为",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "touch-move-stop-propagation",
+              "default": "`false`",
+              "description": "是否阻止滑动事件冒泡",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-swiper",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "width",
+              "default": "-",
+              "description": "轮播卡片的宽度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "height",
+              "default": "-",
+              "description": "轮播卡片的高度",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "direction",
+              "default": "`'horizontal'`",
+              "description": "轮播方向,可选值`horizontal`,`vertical`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pagination-visible",
+              "default": "`false`",
+              "description": "分页指示器是否展示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "pagination-color",
+              "default": "`'#fff'`",
+              "description": "分页指示器选中的颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loop",
+              "default": "`true`",
+              "description": "是否循环轮播",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`500`",
+              "description": "动画时长（单位是 ms）",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "auto-play",
+              "default": "`0`",
+              "description": "自动轮播时长，0 表示不会自动轮播",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "init-page",
+              "default": "`0`",
+              "description": "初始化索引值",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "touchable",
+              "default": "`true`",
+              "description": "是否可触摸滑动",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-prevent-default",
+              "default": "`true`",
+              "description": "滑动过程中是否禁用默认事件",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-stop-propagation",
+              "default": "`true`",
+              "description": "滑动过程中是否禁止冒泡",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-switch",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`false`",
+              "description": "开关状态",
+              "value": {
+                "type": "boolean | string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disable",
+              "default": "`false`",
+              "description": "禁用状态",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loading",
+              "default": "`false`",
+              "description": "加载状态",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`#fa2c19`",
+              "description": "打开时的背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "inactive-color",
+              "default": "`#ebebeb`",
+              "description": "关闭时的背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-text",
+              "default": "-",
+              "description": "打开时文字描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "inactive-text",
+              "default": "-",
+              "description": "关闭时文字描述",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-value",
+              "default": "`true`",
+              "description": "打开时组件的值",
+              "value": {
+                "type": "boolean ｜ string ｜ number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "inactive-value",
+              "default": "`false`",
+              "description": "关闭组件的值",
+              "value": {
+                "type": "boolean ｜ string ｜ number",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-tabbar",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`0`",
+              "description": "选中标签的索引值或者名称",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bottom",
+              "default": "`false`",
+              "description": "是否固定在页面底部",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "unactive-color",
+              "default": "`#7d7e80`",
+              "description": "icon 未激活的颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "active-color",
+              "default": "`#1989fa`",
+              "description": "icon 激活的颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "safe-area-inset-bottom",
+              "default": "`false`",
+              "description": "是否开启 iphone 系列全面屏底部安全区适配",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "`false`",
+              "description": "固定在底部时，是否在标签位置生成一个等高的占位元素",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-table",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "bordered",
+              "default": "`true`",
+              "description": "是否显示边框",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "columns",
+              "default": "`[]`",
+              "description": "表头数据",
+              "value": {
+                "type": "tablecolumnprops[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "data",
+              "default": "`[]`",
+              "description": "表格数据",
+              "value": {
+                "type": "object[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "summary",
+              "default": "-",
+              "description": "是否显示简介",
+              "value": {
+                "type": "function",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "striped",
+              "default": "`false`",
+              "description": "条纹是否明暗交替",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-tabs",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`0`",
+              "description": "绑定当前选中标签的标识符",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "`#1a1a1a `",
+              "description": "标签选中色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "background",
+              "default": "`#f5f5f5`",
+              "description": "标签栏背景颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "direction",
+              "default": "`horizontal`",
+              "description": "使用横纵方向 可选值 horizontal、vertical",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`line`",
+              "description": "选中底部展示样式 可选值 line、smile",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "swipeable",
+              "default": "`false`",
+              "description": "是否开启手势左右滑动切换",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title-scroll",
+              "default": "`false`",
+              "description": "标签栏是否可以滚动",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "ellipsis",
+              "default": "`true`",
+              "description": "是否省略过长的标题文字",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "animated-time",
+              "default": "`300`",
+              "description": "切换动画时长，单位 ms。0 代表无动画，此时必须设置 `pane-key`(_小程序场景数据过大建议设置 0，解决切换卡顿问题_)",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title-gutter",
+              "default": "`0`",
+              "description": "标签间隙",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`normal`",
+              "description": "标签栏字体尺寸大小 可选值 large normal small",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "auto-height",
+              "default": "`false`",
+              "description": "自动高度。设置为 true 时，nut-tabs 和 nut-tabs\\_\\_content 会随着当前 nut-tab-pane 的高度而发生变化。",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "name",
+              "default": "''",
+              "description": "在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-tag",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`default`",
+              "description": "标签类型，可选值为 `primary`、`success`、`danger`、`warning`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "color",
+              "default": "-",
+              "description": "标签颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-color",
+              "default": "`white`",
+              "description": "文本颜色，优先级高于 `color` 属性",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "plain",
+              "default": "`false`",
+              "description": "是否为空心样式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "round",
+              "default": "`false`",
+              "description": "是否为圆角样式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mark",
+              "default": "`false`",
+              "description": "是否为标记样式",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "closeable",
+              "default": "`false`",
+              "description": "是否为可关闭标签",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-textarea",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "-",
+              "description": "输入值，支持双向绑定",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "placeholder",
+              "default": "`请输入`",
+              "description": "设置占位提示文字",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max-length",
+              "default": "-",
+              "description": "限制最长输入字符",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rows",
+              "default": "`2`",
+              "description": "textarea 的高度，优先级高于 autosize 属性 `仅支持 H5`",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "limit-show",
+              "default": "`false`",
+              "description": "textarea 是否展示输入字符。须配合`max-length`使用",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "autosize",
+              "default": "`false`",
+              "description": "是否自适应内容高度，也可传入对象, <br/> 如 `{ maxHeight: 200, minHeight: 100 }`，单位为`px`",
+              "value": {
+                "type": "boolean | {maxheight?: number; minheight?: number}",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-align",
+              "default": "-",
+              "description": "文本位置,可选值`left`,`center`,`right`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "readonly",
+              "default": "`false`",
+              "description": "只读属性",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "禁用属性",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "autofocus",
+              "default": "`false`",
+              "description": "自动获取焦点",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-time-select",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "visible",
+              "default": "`false`",
+              "description": "是否显示弹层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "height",
+              "default": "`20%`",
+              "description": "弹层的高度",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`取件时间`",
+              "description": "弹层标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "current-key",
+              "default": "`0`",
+              "description": "唯一标识",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "current-time",
+              "default": "`[]`",
+              "description": "当前选择的时间，数组元素包含:key: string; list: string[]",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "lock-scroll",
+              "default": "`true`",
+              "description": "背景是否锁定",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-toast",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "msg",
+              "default": "`\"\"`",
+              "description": "消息文本内容,支持传入 HTML",
+              "value": {
+                "type": "string | vnode",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "duration",
+              "default": "`2000`",
+              "description": "展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading 类型默认为 0）",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "title",
+              "default": "`''`",
+              "description": "标题",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "center",
+              "default": "`true`",
+              "description": "是否展示在页面中部（为 false 时展示在底部）",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bottom",
+              "default": "`\"30px\" `",
+              "description": "距页面底部的距离（像素或者百分比），option.center 为 false 时生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-align-center",
+              "default": "`true`",
+              "description": "多行文案是否居中",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bg-color",
+              "default": "\"rgba(0, 0, 0, 0.8)\"",
+              "description": "背景颜色（透明度）",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-class",
+              "default": "\"\"",
+              "description": "自定义类名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "icon",
+              "default": "-",
+              "description": "自定义图标，**直接传入 Component 或者 h 函数**",
+              "value": {
+                "type": "component",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size",
+              "default": "`\"base\"`",
+              "description": "文案尺寸，**small**/**base**/**large**三选一",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cover",
+              "default": "loading 类型 true/`其他类型false`",
+              "description": "是否显示遮罩层，loading 类型默认显示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "cover-color",
+              "default": "\"rgba(0,0,0,0)\"",
+              "description": "遮罩层颜色，默认透明",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "loading-rotate",
+              "default": "`true`",
+              "description": "loading 图标是否旋转，仅对 loading 类型生效",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "on-close",
+              "default": "`null`",
+              "description": "关闭时触发的事件",
+              "value": {
+                "type": "function",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`false`",
+              "description": "是否在点击遮罩层后关闭提示",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "toast-style",
+              "default": "`{}`",
+              "description": "提示框 style",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "toast-class",
+              "default": "\"\"",
+              "description": "提示框 class",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "\"\"",
+              "description": "弹框类型 可选值（text、success、fail、warn、loading）",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-tour",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "v-model",
+              "default": "`false`",
+              "description": "是否展示引导弹出层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "type",
+              "default": "`step`",
+              "description": "引导类型",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "steps",
+              "default": "`[]`",
+              "description": "引导步骤内容",
+              "value": {
+                "type": "stepoptions[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "offset",
+              "default": "`[8, 10]`",
+              "description": "镂空遮罩相对于目标元素的偏移量",
+              "value": {
+                "type": "[number, number]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "current",
+              "default": "`0`",
+              "description": "类型为 `step` 时，默认展示第几步",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "custom-class",
+              "default": "''",
+              "description": "自定义 class 值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "location",
+              "default": "`'bottom'`",
+              "description": "弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "next-step-Txt",
+              "default": "`'下一步'`",
+              "description": "下一步按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "prev-step-Txt",
+              "default": "`'上一步'`",
+              "description": "上一步按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "complete-txt",
+              "default": "`'完成'`",
+              "description": "完成按钮文案",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mask",
+              "default": "`true`",
+              "description": "是否显示镂空遮罩",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "bg-color",
+              "default": "''",
+              "description": "自定义背景色",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "theme",
+              "default": "`'light'`",
+              "description": "气泡遮罩层主题,同 Popopver 的[theme 属性](https://nutui.jd.com/#/zh-CN/component/popover)",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mask-width",
+              "default": "''",
+              "description": "镂空遮罩层宽度",
+              "value": {
+                "type": "number |string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mask-height",
+              "default": "''",
+              "description": "镂空遮罩层高度",
+              "value": {
+                "type": "number |string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "close-on-click-overlay",
+              "default": "`true`",
+              "description": "是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/#/zh-CN/component/popover)",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-prev-step",
+              "default": "`true`",
+              "description": "是否展示上一步按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-title-bar",
+              "default": "`false`",
+              "description": "是否展示标题栏",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-trend-arrow",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "rate",
+              "default": "-",
+              "description": "数值，大于 0 时箭头向上，小于 0 时箭头向下",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "digits",
+              "default": "`2`",
+              "description": "小数位精度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-sign",
+              "default": "`false`",
+              "description": "是否显示加减号",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "show-zero",
+              "default": "`false`",
+              "description": "是否显示 0",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "arrow-left",
+              "default": "`false`",
+              "description": "是否在数字左侧显示箭头",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "sync-text-color",
+              "default": "`true`",
+              "description": "文字颜色是否与箭头同步",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "text-color",
+              "default": "`#333333`",
+              "description": "文字颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rise-color",
+              "default": "`#fa2c19`",
+              "description": "向上箭头颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "drop-color",
+              "default": "`#64b578`",
+              "description": "向下箭头颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-uploader",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "auto-upload",
+              "default": "`true`",
+              "description": "是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "name",
+              "default": "`file`",
+              "description": "发到后台的文件参数名",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "url",
+              "default": "`-`",
+              "description": "上传服务器的接口地址",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model:file-list",
+              "default": "`[]`",
+              "description": "默认已经上传的文件列表",
+              "value": {
+                "type": "fileitem[]",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-preview",
+              "default": "`true`",
+              "description": "是否上传成功后展示预览图",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "is-deletable",
+              "default": "`true`",
+              "description": "是否展示删除按钮",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "method",
+              "default": "`post`",
+              "description": "上传请求的 http method",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "list-type",
+              "default": "`picture`",
+              "description": "上传列表的内建样式，支持两种基础样式 `picture`、`list`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "maximize",
+              "default": "`Number.MAX_VALUE`",
+              "description": "可以设定最大上传文件的大小（字节）",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "maximum",
+              "default": "`1`",
+              "description": "最多可以选择的文件个数，微信基础库 2.25.0 前，最多可支持 9 个文件，2.25.0 及以后最多可支持 20 个文件",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "source-type",
+              "default": "`['album','camera']`",
+              "description": "[选择文件的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "camera",
+              "default": "`back`",
+              "description": "仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "size-type",
+              "default": "`['original','compressed']`",
+              "description": "[是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "media-type",
+              "default": "`['image', 'video', 'mix']`",
+              "description": "[选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "max-duration",
+              "default": "10",
+              "description": "拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "headers",
+              "default": "`{}`",
+              "description": "设置上传的请求头部",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "data",
+              "default": "`{}`",
+              "description": "附加上传的信息 formData",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "xhr-state",
+              "default": "`200`",
+              "description": "接口响应的成功状态（status）值",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "是否禁用文件上传",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "multiple",
+              "default": "`true`",
+              "description": "是否支持文件多选",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "timeout",
+              "default": "`1000 * 30`",
+              "description": "超时时间，单位为毫秒",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "before-xhr-upload",
+              "default": "`null`",
+              "description": "执行 `Taro.uploadFile` 上传时，自定义方式",
+              "value": {
+                "type": "function(taro.uploadfile，option)",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "mode",
+              "default": "`aspectFit`",
+              "description": "预览图片的 mode 属性",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nut-video",
+          "slots": [],
+          "events": [],
+          "attributes": []
+        },
+        {
+          "name": "nut-watermark",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "width",
+              "default": "`120`",
+              "description": "水印的宽度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "height",
+              "default": "`64`",
+              "description": "水印的高度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "rotate",
+              "default": "`-22`",
+              "description": "水印绘制时，旋转的角度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "image",
+              "default": "-",
+              "description": "图片源，建议导出 2 倍或 3 倍图，优先使用图片渲染水印",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "image-width",
+              "default": "`120`",
+              "description": "图片宽度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "image-height",
+              "default": "`64`",
+              "description": "图片高度",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "z-index",
+              "default": "`2000`",
+              "description": "追加的水印元素的 z-index",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "content",
+              "default": "-",
+              "description": "水印文字内容",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "font-color",
+              "default": "`rgba(0, 0, 0, .15)`",
+              "description": "水印文字颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "font-size",
+              "default": "`16`",
+              "description": "文字大小",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "gap-x",
+              "default": "`24`",
+              "description": "水印之间的水平间距",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "gap-y",
+              "default": "`48`",
+              "description": "水印之间的垂直间距",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "full-page",
+              "default": "`true`",
+              "description": "是否覆盖整个页面",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "font-family",
+              "default": "`true`",
+              "description": "水印文字字体",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            }
+          ]
+        }
+      ],
+      "attributes": [],
+      "types-syntax": "typescript"
+    }
+  }
+}

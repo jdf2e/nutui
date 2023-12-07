@@ -1,0 +1,1 @@
+.nut-swipe{position:relative;display:block;cursor:grab;transition:all .3s cubic-bezier(0.19, 1, 0.22, 1)}.nut-swipe__left,.nut-swipe__right{position:absolute;top:0;height:100%}.nut-swipe__left{left:0;transform:translate3d(-100%, 0, 0)}.nut-swipe__right{right:0;transform:translate3d(100%, 0, 0)}.nut-swipe__content{display:inherit}

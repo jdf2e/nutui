@@ -1,0 +1,23 @@
+.nut-list {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &-phantom {
+    position: relative;
+    z-index: -1;
+  }
+
+  &-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &-item {
+    overflow: hidden;
+  }
+}

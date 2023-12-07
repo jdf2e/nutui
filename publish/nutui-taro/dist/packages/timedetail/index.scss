@@ -1,0 +1,62 @@
+.nut-theme-dark {
+  .nut-time-detail {
+    background-color: $dark-background2;
+    &__detail {
+      &__list {
+        &__item {
+          background-color: $dark-background;
+          color: $dark-color;
+          &--curr {
+            color: $timeselect-timedetail-item-cur-text-color;
+          }
+        }
+      }
+    }
+  }
+}
+.nut-time-detail {
+  display: flex;
+  width: 100%;
+  padding: $timeselect-timedetail-padding;
+  &__detail {
+    width: 100%;
+    &__list {
+      &__item {
+        display: inline-block;
+        width: $timeselect-timedetail-item-width;
+        height: $timeselect-timedetail-item-height;
+        line-height: $timeselect-timedetail-item-line-height;
+        text-align: center;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background-color: $timeselect-timedetail-item-bg-color;
+        border-radius: $timeselect-timedetail-item-border-radius;
+        color: $timeselect-timedetail-item-text-color;
+        font-size: $timeselect-timedetail-item-text-font-size;
+        border: 1px solid transparent;
+        font-weight: bold;
+        &--curr {
+          background-color: transparent;
+          border: 1px solid $timeselect-timedetail-item-cur-border;
+          color: $timeselect-timedetail-item-cur-text-color;
+          position: relative;
+          &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $timeselect-timedetail-item-cur-bg-color;
+            opacity: 0.15;
+            content: '';
+          }
+        }
+      }
+    }
+  }
+  &__detail--afternoon {
+    margin-top: 30px;
+  }
+}

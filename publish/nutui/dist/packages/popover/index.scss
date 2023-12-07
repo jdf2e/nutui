@@ -1,0 +1,265 @@
+@import '../popup/index.scss';
+
+.nut-popover {
+  position: absolute;
+  display: inline-block;
+  word-break: normal;
+
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+
+    &-top {
+      bottom: 0;
+      border-top-color: $popover-white-background-color;
+      border-bottom-width: 0;
+      margin-bottom: -8px;
+    }
+
+    &-bottom {
+      top: 0px;
+      border-bottom-color: $popover-white-background-color;
+      border-top-width: 0;
+      margin-top: -8px;
+
+      &.nut-popover-arrow--bottom {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.nut-popover-arrow--bottom-start {
+        left: 16px;
+        transform: translateX(0%);
+      }
+
+      &.nut-popover-arrow--bottom-end {
+        right: 16px;
+        transform: translateX(0%);
+      }
+    }
+
+    &-left {
+      right: 0px;
+      border-left-color: $popover-white-background-color;
+      border-right-width: 0;
+      margin-right: -8px;
+
+      &.nut-popover-arrow--left {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &.nut-popover-arrow--left-start {
+        top: 16px;
+        transform: translateY(0%);
+      }
+
+      &.nut-popover-arrow--left-end {
+        bottom: 16px;
+        transform: translateY(0%);
+      }
+    }
+
+    &-right {
+      left: 0px;
+      border-right-color: $popover-white-background-color;
+      border-left-width: 0;
+      margin-left: -8px;
+
+      &.nut-popover-arrow--right {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &.nut-popover-arrow--right-start {
+        top: 16px;
+        transform: translateY(0%);
+      }
+
+      &.nut-popover-arrow--right-end {
+        bottom: 16px;
+        transform: translateY(0%);
+      }
+    }
+  }
+
+  &-content {
+    position: absolute;
+    z-index: 9999;
+    background: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: #333;
+    box-shadow: 0 2px 12px #3232331f;
+    opacity: 1;
+    transition:
+      opacity 0.15s,
+      transform 0.15s;
+    max-height: initial;
+    overflow-y: initial;
+
+    &-group {
+      display: block;
+      // position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .nut-popover-menu-item {
+      display: block;
+      // padding-bottom: 8px;
+      padding: 8px;
+      border-bottom: 1px solid $popover-border-bottom-color;
+
+      &:first-child {
+        margin-top: 15px;
+      }
+
+      &:last-child {
+        margin-bottom: 2px;
+        border-bottom: none;
+      }
+
+      .nut-popover-item-img {
+        vertical-align: top;
+        margin-right: 3px;
+      }
+
+      .nut-popover-menu-item-name {
+        width: 100%;
+        word-break: keep-all;
+      }
+
+      &.nut-popover-menu-disabled {
+        color: $popover-disable-color;
+        cursor: not-allowed;
+      }
+
+      &.nut-popover-menu-taroitem {
+        display: flex;
+      }
+    }
+
+    &--top {
+      .nut-popover-arrow--top {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &--top-end {
+      .nut-popover-arrow--top-end {
+        right: 16px;
+        transform: translateX(0%);
+      }
+
+      right: 0;
+    }
+
+    &--top-start {
+      left: 0;
+
+      .nut-popover-arrow--top-start {
+        left: 16px;
+        transform: translateX(0%);
+      }
+    }
+
+    &--bottom-end {
+      right: 0;
+    }
+
+    &--left-end {
+      bottom: 0;
+    }
+
+    &--left-start {
+      top: 0;
+    }
+
+    &--right-end {
+      bottom: 0;
+    }
+
+    &--right-start {
+      top: 0;
+    }
+  }
+}
+
+.nut-popover--dark {
+  .nut-popover-content {
+    background: $popover-dark-background-color;
+    color: $popover-white-background-color;
+
+    &--bottom,
+    &--bottom-start,
+    &--bottom-end {
+      .nut-popover-arrow {
+        border-bottom-color: $popover-dark-background-color;
+      }
+    }
+
+    &--top,
+    &--top-start,
+    &--top-end {
+      .nut-popover-arrow {
+        border-top-color: $popover-dark-background-color;
+      }
+    }
+
+    &--left,
+    &--left-start,
+    &--left-end {
+      .nut-popover-arrow {
+        border-left-color: $popover-dark-background-color;
+      }
+    }
+
+    &--right,
+    &--right-start,
+    &--right-end {
+      .nut-popover-arrow {
+        border-right-color: $popover-dark-background-color;
+      }
+    }
+  }
+}
+
+.nut-popover-enter-from,
+.nut-popover-leave-active {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.nut-popover-enter-active {
+  transition-timing-function: ease-out;
+}
+
+.nut-popover-leave-active {
+  transition-timing-function: ease-in;
+}
+
+.nut-popover-content-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1999;
+}
+
+.nut-popover-wrapper {
+  display: inline-block;
+}
+
+// Taro
+.nut-popover-content-copy {
+  position: absolute;
+  top: -99999px;
+}

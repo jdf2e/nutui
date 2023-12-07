@@ -1,0 +1,222 @@
+@import '../popup/index.scss';
+@import '../elevator/index.scss';
+
+.nut-theme-dark {
+  .nut-address {
+    &__header {
+      color: $dark-color;
+
+      &__title {
+        color: $dark-color;
+      }
+    }
+
+    .nut-address__custom {
+      .nut-address__region {
+        color: $dark-color;
+      }
+      .nut-address__detail {
+        .nut-address__detail-list {
+          .nut-address__detail-item {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+
+    .nut-address__exist {
+      .nut-address__exist-group {
+        .nut-address__exist-group-list {
+          .nut-address__exist-group-item {
+            color: $dark-color;
+          }
+        }
+      }
+
+      .nut-address__exist-choose {
+        border-top: 1px solid $dark-background;
+      }
+    }
+    &-custom-buttom {
+      border-top: 1px solid $dark-background;
+    }
+  }
+}
+
+.nut-address {
+  display: block;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px;
+    padding: 0 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    &__title {
+      display: block;
+      color: $address-header-title-color;
+      font-size: $address-header-title-font-size;
+    }
+  }
+
+  // 请选择
+  .nut-address__custom {
+    display: block;
+    .nut-address__region {
+      position: relative;
+      // margin-top: 32px;
+      padding: 0 20px;
+      display: flex;
+      font-size: $address-region-tab-font-size;
+      color: $address-region-tab-color;
+
+      .nut-address__region-item {
+        position: relative;
+        min-width: 2px;
+        margin-right: 30px;
+        display: block;
+        &.active {
+          font-weight: $address-region-tab-active-item-font-weight;
+        }
+
+        view {
+          display: block;
+          max-width: 100px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        span {
+          display: inline-block;
+          max-width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .nut-address__region-line--mini {
+          position: absolute;
+          bottom: -10px;
+          left: 0px;
+          display: inline-block;
+          margin-top: 5px;
+          width: 0;
+          height: 3px;
+          background: $address-region-tab-line;
+          transition: 0.2s all linear;
+
+          &.active {
+            width: 26px;
+          }
+        }
+      }
+
+      .nut-address__region-line {
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        display: inline-block;
+        margin-top: 5px;
+        width: 26px;
+        height: 3px;
+        background: $address-region-tab-line;
+        transition: 0.2s all linear;
+        border-radius: $address-region-tab-line-border-radius;
+        opacity: $address-region-tab-line-opacity;
+      }
+    }
+
+    .nut-address__detail {
+      display: block;
+      margin: 20px 20px 0;
+      .nut-address__detail-list {
+        padding-top: 15px;
+        height: 270px;
+        // overflow-y: auto;
+        box-sizing: border-box;
+        padding: 0;
+        .nut-address__detail-item {
+          display: flex;
+          align-items: center;
+
+          font-size: $address-region-item-font-size;
+          color: $address-region-item-color;
+          &.active {
+            font-weight: bold;
+          }
+          > div {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+    .nut-address__elevator-group {
+      display: flex;
+      margin-top: 20px;
+    }
+  }
+
+  // 配送至
+  .nut-address__exist {
+    display: block;
+    margin-top: 15px;
+
+    .nut-address__exist-group {
+      padding: 15px 20px 0;
+      height: 279px;
+      overflow-y: scroll;
+
+      .nut-address__exist-group-list {
+        box-sizing: border-box;
+        padding: 0;
+        .nut-address__exist-group-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          font-size: $font-size-1;
+          line-height: 14px;
+          color: #333;
+          &.active {
+            font-weight: bold;
+          }
+          .exist-item-icon {
+            margin-right: $address-item-margin-right;
+            color: $address-icon-color !important;
+          }
+          span {
+            display: inline-block;
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    .nut-address__exist-choose {
+      width: 100%;
+      height: 54px;
+      padding: 6px 0px 0;
+      border-top: 1px solid #f2f2f2;
+      .nut-address__exist-choose-btn {
+        width: 90%;
+        height: 42px;
+        line-height: 42px;
+        margin: auto;
+        text-align: center;
+        background: $button-primary-background-color;
+        border-radius: 21px;
+        font-size: 15px;
+        color: $white;
+      }
+    }
+  }
+
+  &-select-icon {
+    margin-right: $address-item-margin-right;
+    color: $address-icon-color !important;
+  }
+}

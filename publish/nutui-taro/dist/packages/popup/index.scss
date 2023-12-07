@@ -1,0 +1,136 @@
+@import '../overlay/index.scss';
+
+.nut-theme-dark {
+  .nut-popup {
+    background: $dark-background2;
+    &__close-icon {
+      color: $dark-color;
+    }
+  }
+}
+
+.nut-popup-slide {
+  &-center-enter-active,
+  &-center-leave-active {
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+
+  &-center-enter-from,
+  &-center-leave-to {
+    opacity: 0;
+  }
+
+  &-top-enter-from,
+  &-top-leave-active {
+    transform: translate(0, -100%);
+  }
+
+  &-right-enter-from,
+  &-right-leave-active {
+    transform: translate(100%, 0);
+  }
+
+  &-bottom-enter-from,
+  &-bottom-leave-active {
+    transform: translate(0, 100%);
+  }
+
+  &-left-enter-from,
+  &-left-leave-active {
+    transform: translate(-100%, 0);
+  }
+}
+
+.nut-popup--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &.round {
+    border-radius: $popup-border-radius;
+  }
+}
+
+.nut-popup--bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  &.round {
+    border-radius: $popup-border-radius $popup-border-radius 0 0;
+  }
+  &--safebottom {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+.nut-popup--right {
+  top: 0;
+  right: 0;
+
+  &.round {
+    border-radius: $popup-border-radius 0 0 $popup-border-radius;
+  }
+}
+
+.nut-popup--left {
+  top: 0;
+  left: 0;
+
+  &.round {
+    border-radius: 0 $popup-border-radius $popup-border-radius 0;
+  }
+}
+
+.nut-popup--top {
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &.round {
+    border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  }
+}
+
+.nut-popup {
+  position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
+  background-color: $white;
+  -webkit-overflow-scrolling: touch;
+  &__close-icon {
+    position: absolute !important;
+    z-index: 1;
+    color: #969799;
+    font-size: 18px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &--top-left {
+      top: $popup-close-icon-margin;
+      left: $popup-close-icon-margin;
+    }
+
+    &--top-right {
+      top: $popup-close-icon-margin;
+      right: $popup-close-icon-margin;
+    }
+
+    &--bottom-left {
+      bottom: $popup-close-icon-margin;
+      left: $popup-close-icon-margin;
+    }
+
+    &--bottom-right {
+      right: $popup-close-icon-margin;
+      bottom: $popup-close-icon-margin;
+    }
+  }
+}

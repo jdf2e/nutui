@@ -1,0 +1,252 @@
+.nut-button {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  flex-shrink: 0;
+  height: $button-default-height;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: $button-default-line-height;
+  font-size: $button-default-font-size;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  appearance: none;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: bottom;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+
+  .nut-button__text {
+    margin-left: 5px;
+  }
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    border: inherit;
+    border-color: $black;
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' ';
+  }
+  &::after {
+    border: none;
+  }
+  &:active::before {
+    opacity: 0.1;
+  }
+  &__wrap {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--loading,
+  &--disabled {
+    &::before {
+      display: none;
+    }
+  }
+  &--default {
+    color: $button-default-color;
+    background: $button-default-bg-color;
+    background-origin: border-box;
+    border: $button-border-width solid $button-default-border-color;
+  }
+
+  &--primary {
+    color: $button-primary-color;
+    background: $button-primary-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+  }
+
+  &--info {
+    color: $button-info-color;
+    background: $button-info-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+  }
+
+  &--success {
+    color: $button-success-color;
+    background: $button-success-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+  }
+
+  &--danger {
+    color: $button-danger-color;
+    background: $button-danger-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+  }
+
+  &--warning {
+    color: $button-warning-color;
+    background: $button-warning-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+  }
+
+  &--plain {
+    background: $button-plain-background-color;
+    background-origin: border-box;
+
+    &.nut-button--primary {
+      color: $button-primary-border-color;
+      border-color: $button-primary-border-color;
+    }
+
+    &.nut-button--info {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
+    }
+
+    &.nut-button--success {
+      color: $button-success-border-color;
+      border-color: $button-success-border-color;
+    }
+
+    &.nut-button--danger {
+      color: $button-danger-border-color;
+      border-color: $button-danger-border-color;
+    }
+
+    &.nut-button--warning {
+      color: $button-warning-border-color;
+      border-color: $button-warning-border-color;
+    }
+  }
+
+  &--large {
+    width: 100%;
+    height: $button-large-height;
+    line-height: $button-large-line-height;
+    font-size: $button-large-font-size;
+  }
+
+  &--normal {
+    padding: $button-default-padding;
+    font-size: $button-default-font-size;
+  }
+
+  &--small {
+    height: $button-small-height;
+    line-height: $button-small-line-height;
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
+
+    &.nut-button--round {
+      border-radius: $button-small-round-border-radius;
+    }
+  }
+  &--mini {
+    height: $button-mini-height;
+    line-height: $button-mini-line-height;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: $button-disabled-opacity;
+  }
+
+  &--loading {
+    cursor: default;
+    opacity: 0.9;
+  }
+
+  &--round {
+    border-radius: $button-border-radius;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+}
+.nut-button--default:not([disabled]):active {
+  color: $button-default-color;
+  background: $button-default-bg-color;
+  background-origin: border-box;
+  border: $button-border-width solid $button-default-border-color;
+}
+.nut-button--primary:not([disabled]):active {
+  color: $button-primary-color;
+  background: $button-primary-background-color;
+  background-origin: border-box;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--info:not([disabled]):active {
+  color: $button-info-color;
+  background: $button-info-background-color;
+  background-origin: border-box;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--success:not([disabled]):active {
+  color: $button-success-color;
+  background: $button-success-background-color;
+  background-origin: border-box;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--danger:not([disabled]):active {
+  color: $button-danger-color;
+  background: $button-danger-background-color;
+  background-origin: border-box;
+  border: $button-border-width solid transparent;
+}
+
+.nut-button--warning:not([disabled]):active {
+  color: $button-warning-color;
+  background: $button-warning-background-color;
+  background-origin: border-box;
+  border: $button-border-width solid transparent;
+}
+.nut-button--plain:not([disabled]):active {
+  background: $button-plain-background-color;
+  background-origin: border-box;
+}
+.nut-button--plain {
+  &.nut-button--primary:not([disabled]):active {
+    color: $button-primary-border-color;
+    border-color: $button-primary-border-color;
+  }
+
+  &.nut-button--info:not([disabled]):active {
+    color: $button-info-border-color;
+    border-color: $button-info-border-color;
+  }
+
+  &.nut-button--success:not([disabled]):active {
+    color: $button-success-border-color;
+    border-color: $button-success-border-color;
+  }
+
+  &.nut-button--danger:not([disabled]):active {
+    color: $button-danger-border-color;
+    border-color: $button-danger-border-color;
+  }
+
+  &.nut-button--warning:not([disabled]):active {
+    color: $button-warning-border-color;
+    border-color: $button-warning-border-color;
+  }
+}

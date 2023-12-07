@@ -1,0 +1,59 @@
+.nut-theme-dark {
+  .nut-countup {
+    background: $dark-background;
+    color: $dark-color;
+    box-shadow: none;
+  }
+}
+.nut-countup {
+  display: block;
+  padding: 5px 20px;
+  color: #000;
+  font-weight: bold;
+  font-family: PingFangSC-Regular;
+  .nut-countup__number {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    .nut-countup__number-item {
+      position: absolute;
+      transition: none;
+      list-style: none;
+      .nut-countup__number-item__span {
+        display: block;
+        font-family: PingFangSC-Regular;
+      }
+    }
+  }
+  .nut-countup-pointstyl {
+    position: absolute;
+    display: block;
+  }
+  .nut-countup__machine {
+    display: block;
+    overflow: hidden;
+    .nut-countup__machine-item {
+      float: left;
+      background-position: center 0;
+      background-repeat: repeat-y;
+      background-attachment: scroll;
+    }
+  }
+  .nut-countup__numberimg {
+    position: relative;
+    display: inline-block;
+    .nut-countup__numberimg__item {
+      position: absolute;
+      display: block;
+      transition: none;
+      display: inline-block;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      font-family: PingFangSC-Regular;
+    }
+  }
+}

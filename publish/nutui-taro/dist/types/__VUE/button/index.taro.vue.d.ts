@@ -1,0 +1,101 @@
+import { PropType, CSSProperties } from 'vue';
+import Taro from '@tarojs/taro';
+import { ButtonShape, ButtonType, ButtonSize, ButtonFormType } from './type';
+
+declare type Install<T> = T & {
+  install(app: import('vue').App): void;
+};
+declare const _default: Install< import("vue").DefineComponent<{
+    color: StringConstructor;
+    shape: {
+        type: PropType<ButtonShape>;
+        default: string;
+    };
+    plain: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    loading: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    type: {
+        type: PropType<ButtonType>;
+        default: string;
+    };
+    formType: {
+        type: PropType<ButtonFormType>;
+        default: string;
+    };
+    size: {
+        type: PropType<ButtonSize>;
+        default: string;
+    };
+    block: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+}, {
+    handleClick: (event: MouseEvent) => void;
+    classes: import("vue").ComputedRef<{
+        [x: string]: boolean | ButtonType | ButtonSize | ButtonShape;
+    }>;
+    getStyle: import("vue").ComputedRef<CSSProperties>;
+    Taro: Taro.TaroStatic;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    color: StringConstructor;
+    shape: {
+        type: PropType<ButtonShape>;
+        default: string;
+    };
+    plain: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    loading: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    type: {
+        type: PropType<ButtonType>;
+        default: string;
+    };
+    formType: {
+        type: PropType<ButtonFormType>;
+        default: string;
+    };
+    size: {
+        type: PropType<ButtonSize>;
+        default: string;
+    };
+    block: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+}>> & {
+    onClick?: ((...args: any[]) => any) | undefined;
+}, {
+    type: ButtonType;
+    block: boolean;
+    size: ButtonSize;
+    disabled: boolean;
+    loading: boolean;
+    shape: ButtonShape;
+    plain: boolean;
+    formType: ButtonFormType;
+}, {}>>;
+export default _default;
+
+declare module 'vue' {
+  interface GlobalComponents {
+      NutButton: typeof _default;
+  }
+}

@@ -1,0 +1,959 @@
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { ref, computed, reactive, watch, toRefs, openBlock, createElementBlock, normalizeClass, createElementVNode, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode } from "vue";
+import { c as createComponent } from "./component-TCzwHGVq.js";
+import { r as requestAniFrame } from "./raf-MQjoO-Ag.js";
+import { u as useLocale } from "./index-s3RgMhc7.js";
+import { _ as _export_sfc } from "./_plugin-vue_export-helper-yVxbj29m.js";
+const Utils = {
+  /**
+   * 是否为闫年
+   * @return {Boolse} true|false
+   */
+  isLeapYear: function(y) {
+    return y % 4 == 0 && y % 100 != 0 || y % 400 == 0;
+  },
+  /**
+   * 返回星期数
+   * @return {String}
+   */
+  getWhatDay: function(year, month, day) {
+    const date = /* @__PURE__ */ new Date(year + "/" + month + "/" + day);
+    const index = date.getDay();
+    const dayNames = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    return dayNames[index];
+  },
+  /**
+   * 返回星期数
+   * @return {Number}
+   */
+  getMonthPreDay: function(year, month) {
+    const date = /* @__PURE__ */ new Date(year + "/" + month + "/01");
+    let day = date.getDay();
+    if (day == 0) {
+      day = 7;
+    }
+    return day;
+  },
+  /**
+   * 返回月份天数
+   * @return {Number}
+   */
+  getMonthDays: function(year, month) {
+    if (/^0/.test(month)) {
+      month = month.split("")[1];
+    }
+    return [0, 31, this.isLeapYear(Number(year)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+  },
+  /**
+   * 补齐数字位数
+   * @return {string}
+   */
+  getNumTwoBit: function(n) {
+    n = Number(n);
+    return (n > 9 ? "" : "0") + n;
+  },
+  /**
+   * 日期对象转成字符串
+   * @return {string}
+   */
+  date2Str: function(date, split) {
+    split = split || "-";
+    const y = date.getFullYear();
+    const m = this.getNumTwoBit(date.getMonth() + 1);
+    const d = this.getNumTwoBit(date.getDate());
+    return [y, m, d].join(split);
+  },
+  /**
+   * 返回日期格式字符串
+   * @param {Number} 0返回今天的日期、1返回明天的日期，2返回后天得日期，依次类推
+   * @return {string} '2014-12-31'
+   */
+  getDay: function(i) {
+    i = i || 0;
+    let date = /* @__PURE__ */ new Date();
+    const diff = i * (1e3 * 60 * 60 * 24);
+    date = new Date(date.getTime() + diff);
+    return this.date2Str(date);
+  },
+  /**
+   * 时间比较
+   * @return {Boolean}
+   */
+  compareDate: function(date1, date2) {
+    const startTime = new Date(date1.replace("-", "/").replace("-", "/"));
+    const endTime = new Date(date2.replace("-", "/").replace("-", "/"));
+    if (startTime >= endTime) {
+      return false;
+    }
+    return true;
+  },
+  /**
+   * 时间是否相等
+   * @return {Boolean}
+   */
+  isEqual: function(date1, date2) {
+    const startTime = new Date(date1).getTime();
+    const endTime = new Date(date2).getTime();
+    if (startTime == endTime) {
+      return true;
+    }
+    return false;
+  },
+  getMonthWeek: function(year, month, date, firstDayOfWeek = 0) {
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
+    let w = dateNow.getDay();
+    let d = dateNow.getDate();
+    let remainder = 6 - w;
+    if (firstDayOfWeek !== 0) {
+      w = w == 0 ? 7 : w;
+      remainder = 7 - w;
+    }
+    return Math.ceil((d + remainder) / 7);
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getYearWeek: function(year, month, date, firstDayOfWeek = 0) {
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
+    const dateFirst = new Date(Number(year), 0, 1);
+    const dataNumber = Math.round((dateNow.valueOf() - dateFirst.valueOf()) / 864e5);
+    return Math.ceil((dataNumber + (dateFirst.getDay() + 1 - 1)) / 7);
+  },
+  getWeekDate: function(year, month, date, firstDayOfWeek = 0) {
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
+    const nowTime = dateNow.getTime();
+    let day = dateNow.getDay();
+    if (firstDayOfWeek === 0) {
+      const oneDayTime = 24 * 60 * 60 * 1e3;
+      const SundayTime = nowTime - day * oneDayTime;
+      const SaturdayTime = nowTime + (6 - day) * oneDayTime;
+      const sunday = this.date2Str(new Date(SundayTime));
+      const saturday = this.date2Str(new Date(SaturdayTime));
+      return [sunday, saturday];
+    } else {
+      day = day == 0 ? 7 : day;
+      const oneDayTime = 24 * 60 * 60 * 1e3;
+      const MondayTime = nowTime - (day - 1) * oneDayTime;
+      const SundayTime = nowTime + (7 - day) * oneDayTime;
+      const monday = this.date2Str(new Date(MondayTime));
+      const sunday = this.date2Str(new Date(SundayTime));
+      return [monday, sunday];
+    }
+  },
+  formatResultDate: function(date) {
+    let days = [...date.split("-")];
+    days[2] = Utils.getNumTwoBit(Number(days[2]));
+    days[3] = `${days[0]}-${days[1]}-${days[2]}`;
+    days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
+    return days;
+  }
+};
+const { create } = createComponent("calendar-item");
+const cN = "NutCalendarItem";
+const _sfc_main = create({
+  props: {
+    type: {
+      type: String,
+      default: "one"
+    },
+    isAutoBackFill: {
+      type: Boolean,
+      default: false
+    },
+    toDateAnimation: {
+      type: Boolean,
+      default: true
+    },
+    poppable: {
+      type: Boolean,
+      default: true
+    },
+    showTitle: {
+      type: Boolean,
+      default: true
+    },
+    showSubTitle: {
+      type: Boolean,
+      default: true
+    },
+    showToday: {
+      type: Boolean,
+      default: true
+    },
+    title: {
+      type: String,
+      default: ""
+    },
+    confirmText: {
+      type: String,
+      default: ""
+    },
+    startText: {
+      type: String,
+      default: ""
+    },
+    endText: {
+      type: String,
+      default: ""
+    },
+    defaultValue: {
+      type: [String, Array],
+      default: ""
+    },
+    startDate: {
+      type: String,
+      default: Utils.getDay(0)
+    },
+    endDate: {
+      type: String,
+      default: Utils.getDay(365)
+    },
+    firstDayOfWeek: {
+      type: Number,
+      default: 0
+    },
+    disabledDate: Function
+  },
+  emits: ["choose", "update", "close", "select"],
+  setup(props, { emit, slots, expose }) {
+    const translate = useLocale(cN);
+    const weekdays = translate("weekdays").map((day, index) => ({
+      day,
+      weekend: index === 0 || index === 6
+    }));
+    const weeks = ref([...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)]);
+    const months = ref(null);
+    const monthsPanel = ref(null);
+    const weeksPanel = ref(null);
+    const viewArea = ref(null);
+    const viewHeight = ref(0);
+    const compConthsData = computed(() => {
+      return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
+    });
+    const showTopBtn = computed(() => {
+      return slots.btn;
+    });
+    const topInfo = computed(() => {
+      return slots["top-info"];
+    });
+    const bottomInfo = computed(() => {
+      return slots["bottom-info"];
+    });
+    const state = reactive({
+      yearMonthTitle: "",
+      defaultRange: [],
+      currDate: "",
+      propStartDate: "",
+      propEndDate: "",
+      unLoadPrev: false,
+      touchParams: {
+        startY: 0,
+        endY: 0,
+        startTime: 0,
+        endTime: 0,
+        lastY: 0,
+        lastTime: 0
+      },
+      transformY: 0,
+      translateY: 0,
+      scrollDistance: 0,
+      defaultData: [],
+      chooseData: [],
+      monthsData: [],
+      dayPrefix: "nut-calendar__day",
+      startData: "",
+      endData: "",
+      isRange: props.type === "range",
+      timer: 0,
+      currentIndex: 0,
+      avgHeight: 0,
+      monthsNum: 0
+    });
+    const splitDate = (date) => {
+      return date.split("-");
+    };
+    const isStart = (currDate) => {
+      return Utils.isEqual(state.currDate[0], currDate);
+    };
+    const isEnd = (currDate) => {
+      return Utils.isEqual(state.currDate[1], currDate);
+    };
+    const isMultiple = (currDate) => {
+      var _a, _b;
+      if (((_a = state.currDate) == null ? void 0 : _a.length) > 0) {
+        return (_b = state.currDate) == null ? void 0 : _b.some((item) => {
+          return Utils.isEqual(item, currDate);
+        });
+      } else {
+        return false;
+      }
+    };
+    const getCurrDate = (day, month) => {
+      return month.curData[0] + "-" + month.curData[1] + "-" + Utils.getNumTwoBit(+day.day);
+    };
+    const getClass = (day, month, index) => {
+      const res = [];
+      if (typeof index === "number" && ((index + 1 + props.firstDayOfWeek) % 7 === 0 || (index + props.firstDayOfWeek) % 7 === 0)) {
+        res.push("weekend");
+      }
+      const currDate = getCurrDate(day, month);
+      const { type } = props;
+      if (day.type == "curr") {
+        if (Utils.isEqual(state.currDate, currDate) || (type == "range" || type == "week") && (isStart(currDate) || isEnd(currDate)) || type == "multiple" && isMultiple(currDate)) {
+          res.push(`${state.dayPrefix}--active`);
+        } else if (state.propStartDate && Utils.compareDate(currDate, state.propStartDate) || state.propEndDate && Utils.compareDate(state.propEndDate, currDate) || props.disabledDate && props.disabledDate(currDate)) {
+          res.push(`${state.dayPrefix}--disabled`);
+        } else if ((type == "range" || type == "week") && Array.isArray(state.currDate) && Object.values(state.currDate).length == 2 && Utils.compareDate(state.currDate[0], currDate) && Utils.compareDate(currDate, state.currDate[1])) {
+          res.push(`${state.dayPrefix}--choose`);
+        }
+      } else {
+        res.push(`${state.dayPrefix}--disabled`);
+      }
+      return res;
+    };
+    const confirm = () => {
+      const { type } = props;
+      if (type == "range" && state.chooseData.length == 2 || type != "range") {
+        let selectData = state.chooseData.slice(0);
+        if (type == "week") {
+          if (state.chooseData.length !== 2) {
+            return;
+          }
+          selectData = {
+            weekDate: [handleWeekDate(state.chooseData[0]), handleWeekDate(state.chooseData[1])]
+          };
+        }
+        emit("choose", selectData);
+        if (props.poppable) {
+          emit("update");
+        }
+      }
+    };
+    const chooseDay = (day, month, isFirst = false) => {
+      var _a, _b;
+      if (!getClass(day, month).includes(`${state.dayPrefix}--disabled`)) {
+        const { type } = props;
+        let [y, m] = month.curData;
+        let days = [...month.curData];
+        days[2] = Utils.getNumTwoBit(Number(day.day));
+        days[3] = `${days[0]}-${days[1]}-${days[2]}`;
+        days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
+        if (type == "multiple") {
+          if (((_a = state.currDate) == null ? void 0 : _a.length) > 0) {
+            let hasIndex = void 0;
+            (_b = state.currDate) == null ? void 0 : _b.forEach((item, index) => {
+              if (item == days[3]) {
+                hasIndex = index;
+              }
+            });
+            if (isFirst) {
+              state.chooseData.push([...days]);
+            } else {
+              if (hasIndex !== void 0) {
+                state.currDate.splice(hasIndex, 1);
+                state.chooseData.splice(hasIndex, 1);
+              } else {
+                state.currDate.push(days[3]);
+                state.chooseData.push([...days]);
+              }
+            }
+          } else {
+            state.currDate = [days[3]];
+            state.chooseData = [[...days]];
+          }
+        } else if (type == "range") {
+          let curDataLength = Object.values(state.currDate).length;
+          if (curDataLength == 2 || curDataLength == 0) {
+            state.currDate = [days[3]];
+          } else {
+            if (Utils.compareDate(state.currDate[0], days[3])) {
+              Array.isArray(state.currDate) && state.currDate.push(days[3]);
+            } else {
+              Array.isArray(state.currDate) && state.currDate.unshift(days[3]);
+            }
+          }
+          if (state.chooseData.length == 2 || !state.chooseData.length) {
+            state.chooseData = [[...days]];
+          } else {
+            if (Utils.compareDate(state.chooseData[0][3], days[3])) {
+              state.chooseData = [...state.chooseData, [...days]];
+            } else {
+              state.chooseData = [[...days], ...state.chooseData];
+            }
+          }
+        } else if (type == "week") {
+          let weekArr = Utils.getWeekDate(y, m, day.day, props.firstDayOfWeek);
+          if (state.propStartDate && Utils.compareDate(weekArr[0], state.propStartDate)) {
+            weekArr.splice(0, 1, state.propStartDate);
+          }
+          if (state.propEndDate && Utils.compareDate(state.propEndDate, weekArr[1])) {
+            weekArr.splice(1, 1, state.propEndDate);
+          }
+          state.currDate = weekArr;
+          state.chooseData = [Utils.formatResultDate(weekArr[0]), Utils.formatResultDate(weekArr[1])];
+        } else {
+          state.currDate = days[3];
+          state.chooseData = [...days];
+        }
+        if (!isFirst) {
+          let selectData = state.chooseData;
+          if (type == "week") {
+            selectData = {
+              weekDate: [
+                handleWeekDate(state.chooseData[0]),
+                handleWeekDate(state.chooseData[1])
+              ]
+            };
+          }
+          emit("select", selectData);
+          if (props.isAutoBackFill || !props.poppable) {
+            confirm();
+          }
+        }
+      }
+    };
+    const handleWeekDate = (weekDate) => {
+      let [y, m, d] = weekDate;
+      let obj = {
+        date: weekDate,
+        monthWeekNum: Utils.getMonthWeek(y, m, d, props.firstDayOfWeek),
+        yearWeekNum: Utils.getYearWeek(y, m, d, props.firstDayOfWeek)
+      };
+      return obj;
+    };
+    const getCurrData = (type) => {
+      const monthData = type == "prev" ? state.monthsData[0] : state.monthsData[state.monthsData.length - 1];
+      let year = parseInt(monthData.curData[0]);
+      let month = parseInt(monthData.curData[1].toString().replace(/^0/, ""));
+      switch (type) {
+        case "prev":
+          month == 1 && (year -= 1);
+          month = month == 1 ? 12 : --month;
+          break;
+        case "next":
+          month == 12 && (year += 1);
+          month = month == 12 ? 1 : ++month;
+          break;
+      }
+      return [year + "", Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month)) + ""];
+    };
+    const getDaysStatus = (days, type, dateInfo) => {
+      let { year, month } = dateInfo;
+      if (type == "prev" && days >= 7) {
+        days -= 7;
+      }
+      return Array.from(Array(days), (v, k) => {
+        return {
+          day: String(k + 1),
+          type,
+          year,
+          month
+        };
+      });
+    };
+    const getPreDaysStatus = (days, type, dateInfo, preCurrMonthDays) => {
+      days = days - props.firstDayOfWeek;
+      let { year, month } = dateInfo;
+      if (type == "prev" && days >= 7) {
+        days -= 7;
+      }
+      let months2 = Array.from(Array(preCurrMonthDays), (v, k) => {
+        return {
+          day: String(k + 1),
+          type,
+          year,
+          month
+        };
+      });
+      return months2.slice(preCurrMonthDays - days);
+    };
+    const getMonth = (curData, type) => {
+      const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
+      let preMonth = Number(curData[1]) - 1;
+      let preYear = Number(curData[0]);
+      if (preMonth <= 0) {
+        preMonth = 12;
+        preYear += 1;
+      }
+      const currMonthDays = Utils.getMonthDays(String(curData[0]), String(curData[1]));
+      const preCurrMonthDays = Utils.getMonthDays(preYear + "", preMonth + "");
+      const title = {
+        year: curData[0],
+        month: curData[1]
+      };
+      const monthInfo = {
+        curData,
+        title: translate("monthTitle", title.year, title.month),
+        monthData: [
+          ...getPreDaysStatus(
+            preMonthDays,
+            "prev",
+            { month: String(preMonth), year: String(preYear) },
+            preCurrMonthDays
+          ),
+          ...getDaysStatus(currMonthDays, "curr", title)
+        ],
+        cssHeight: 0,
+        cssScrollHeight: 0
+      };
+      monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+      let cssScrollHeight = 0;
+      if (state.monthsData.length > 0) {
+        cssScrollHeight = state.monthsData[state.monthsData.length - 1].cssScrollHeight + state.monthsData[state.monthsData.length - 1].cssHeight;
+      }
+      monthInfo.cssScrollHeight = cssScrollHeight;
+      if (type == "next") {
+        if (!state.endData || !Utils.compareDate(
+          `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(state.endData[0], state.endData[1])}`,
+          `${curData[0]}-${curData[1]}-${curData[2]}`
+        )) {
+          state.monthsData.push(monthInfo);
+        }
+      } else {
+        if (!state.startData || !Utils.compareDate(
+          `${curData[0]}-${curData[1]}-${curData[2]}`,
+          `${state.startData[0]}-${state.startData[1]}-01`
+        )) {
+          state.monthsData.unshift(monthInfo);
+        } else {
+          state.unLoadPrev = true;
+        }
+      }
+    };
+    const initData = () => {
+      let propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
+      let propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
+      state.propStartDate = propStartDate;
+      state.propEndDate = propEndDate;
+      state.startData = splitDate(propStartDate);
+      state.endData = splitDate(propEndDate);
+      if (props.defaultValue || Array.isArray(props.defaultValue) && props.defaultValue.length > 0) {
+        state.currDate = props.type !== "one" ? [...props.defaultValue] : props.defaultValue;
+      }
+      const startDate = {
+        year: Number(state.startData[0]),
+        month: Number(state.startData[1])
+      };
+      const endDate = {
+        year: Number(state.endData[0]),
+        month: Number(state.endData[1])
+      };
+      let monthsNum = endDate.month - startDate.month;
+      if (endDate.year - startDate.year > 0) {
+        monthsNum = monthsNum + 12 * (endDate.year - startDate.year);
+      }
+      if (monthsNum <= 0) {
+        monthsNum = 1;
+      }
+      getMonth(state.startData, "next");
+      let i = 1;
+      do {
+        getMonth(getCurrData("next"), "next");
+      } while (i++ < monthsNum);
+      state.monthsNum = monthsNum;
+      if (props.type == "range" && Array.isArray(state.currDate)) {
+        if (state.currDate.length > 0) {
+          if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
+            state.currDate.splice(0, 1, propStartDate);
+          }
+          if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+            state.currDate.splice(1, 1, propEndDate);
+          }
+          state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
+        }
+      } else if (props.type == "multiple" && Array.isArray(state.currDate)) {
+        if (state.currDate.length > 0) {
+          let defaultArr = [];
+          let obj = {};
+          state.currDate.forEach((item) => {
+            if (propStartDate && !Utils.compareDate(item, propStartDate) && propEndDate && !Utils.compareDate(propEndDate, item)) {
+              if (!Object.hasOwnProperty.call(obj, item)) {
+                defaultArr.push(item);
+                obj[item] = item;
+              }
+            }
+          });
+          state.currDate = [...defaultArr];
+          state.defaultData = [...splitDate(defaultArr[0])];
+        }
+      } else if (props.type == "week" && Array.isArray(state.currDate)) {
+        if (state.currDate.length > 0) {
+          let [y, m, d] = splitDate(state.currDate[0]);
+          let weekArr = Utils.getWeekDate(y, m, d, props.firstDayOfWeek);
+          state.currDate = weekArr;
+          if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
+            state.currDate.splice(0, 1, propStartDate);
+          }
+          if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+            state.currDate.splice(1, 1, propEndDate);
+          }
+          state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
+        }
+      } else {
+        if (state.currDate) {
+          if (propStartDate && Utils.compareDate(state.currDate, propStartDate)) {
+            state.currDate = propStartDate;
+          } else if (propEndDate && !Utils.compareDate(state.currDate, propEndDate)) {
+            state.currDate = propEndDate;
+          }
+          state.defaultData = [...splitDate(state.currDate)];
+        }
+      }
+      let current = 0;
+      let lastCurrent = 0;
+      if (state.defaultData.length > 0) {
+        state.monthsData.forEach((item, index) => {
+          if (item.title == translate("monthTitle", state.defaultData[0], state.defaultData[1])) {
+            current = index;
+          }
+          if (props.type == "range" || props.type == "week") {
+            if (item.title == translate("monthTitle", state.defaultData[3], state.defaultData[4])) {
+              lastCurrent = index;
+            }
+          }
+        });
+      }
+      setDefaultRange(monthsNum, current);
+      state.currentIndex = current;
+      state.yearMonthTitle = state.monthsData[state.currentIndex].title;
+      if (state.defaultData.length > 0) {
+        if (state.isRange) {
+          chooseDay({ day: state.defaultData[2], type: "curr" }, state.monthsData[state.currentIndex], true);
+          chooseDay({ day: state.defaultData[5], type: "curr" }, state.monthsData[lastCurrent], true);
+        } else if (props.type == "week") {
+          chooseDay({ day: state.defaultData[2], type: "curr" }, state.monthsData[state.currentIndex], true);
+        } else if (props.type == "multiple") {
+          [...state.currDate].forEach((item) => {
+            let dateArr = splitDate(item);
+            let current2 = state.currentIndex;
+            state.monthsData.forEach((item2, index) => {
+              if (item2.title == translate("monthTitle", dateArr[0], dateArr[1])) {
+                current2 = index;
+              }
+            });
+            chooseDay({ day: dateArr[2], type: "curr" }, state.monthsData[current2], true);
+          });
+        } else {
+          chooseDay({ day: state.defaultData[2], type: "curr" }, state.monthsData[state.currentIndex], true);
+        }
+      }
+      let lastItem = state.monthsData[state.monthsData.length - 1];
+      let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
+      requestAniFrame(() => {
+        if ((months == null ? void 0 : months.value) && (monthsPanel == null ? void 0 : monthsPanel.value) && (viewArea == null ? void 0 : viewArea.value)) {
+          viewHeight.value = months.value.clientHeight;
+          monthsPanel.value.style.height = `${containerHeight}px`;
+          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+        }
+      });
+      state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
+    };
+    const scrollToDate = (date) => {
+      if (Utils.compareDate(date, state.propStartDate)) {
+        date = state.propStartDate;
+      } else if (!Utils.compareDate(date, state.propEndDate)) {
+        date = state.propEndDate;
+      }
+      let dateArr = splitDate(date);
+      state.monthsData.forEach((item, index) => {
+        if (item.title == translate("monthTitle", dateArr[0], dateArr[1])) {
+          if (months.value) {
+            let distance = state.monthsData[index].cssScrollHeight - months.value.scrollTop;
+            if (props.toDateAnimation) {
+              let flag = 0;
+              let interval = setInterval(() => {
+                flag++;
+                if (months.value) {
+                  let offset = distance / 10;
+                  months.value.scrollTop = months.value.scrollTop + offset;
+                }
+                if (flag >= 10) {
+                  clearInterval(interval);
+                  if (months.value) {
+                    months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+                  }
+                }
+              }, 40);
+            } else {
+              months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+            }
+          }
+        }
+      });
+    };
+    const initPosition = () => {
+      if (months == null ? void 0 : months.value) {
+        months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
+    };
+    expose({
+      scrollToDate,
+      initPosition
+    });
+    const setDefaultRange = (monthsNum, current) => {
+      if (monthsNum >= 3) {
+        if (current > 0 && current < monthsNum) {
+          state.defaultRange = [current - 1, current + 3];
+        } else if (current == 0) {
+          state.defaultRange = [current, current + 4];
+        } else if (current == monthsNum) {
+          state.defaultRange = [current - 2, current + 2];
+        }
+      } else {
+        state.defaultRange = [0, monthsNum + 2];
+      }
+      let defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
+      state.translateY = defaultScrollTop;
+    };
+    const isActive = (day, month) => {
+      return (props.type == "range" || props.type == "week") && day.type == "curr" && getClass(day, month).includes("nut-calendar__day--active");
+    };
+    const isStartTip = (day, month) => {
+      return isActive(day, month) && isStart(getCurrDate(day, month));
+    };
+    const isEndTip = (day, month) => {
+      if (state.currDate.length >= 2 && isEnd(getCurrDate(day, month))) {
+        return isActive(day, month);
+      }
+      return false;
+    };
+    const rangeTip = () => {
+      if (state.currDate.length >= 2) {
+        return Utils.isEqual(state.currDate[0], state.currDate[1]);
+      }
+    };
+    const isCurrDay = (dateInfo) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${Number(dateInfo.day) < 10 ? "0" + dateInfo.day : dateInfo.day}`;
+      return Utils.isEqual(date, Utils.date2Str(/* @__PURE__ */ new Date()));
+    };
+    const mothsViewScroll = (e) => {
+      if (state.monthsData.length <= 1) {
+        return;
+      }
+      const currentScrollTop = e.target.scrollTop;
+      let current = Math.floor(currentScrollTop / state.avgHeight);
+      if (current == 0) {
+        if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+          current += 1;
+        }
+      } else if (current > 0 && current < state.monthsNum - 1) {
+        if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+          current += 1;
+        }
+        if (currentScrollTop < state.monthsData[current].cssScrollHeight) {
+          current -= 1;
+        }
+      } else {
+        const viewPosition = Math.round(currentScrollTop + viewHeight.value);
+        if (viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight && currentScrollTop > state.monthsData[current - 1].cssScrollHeight) {
+          current -= 1;
+        }
+        if (current + 1 <= state.monthsNum && viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight) {
+          current += 1;
+        }
+        if (current >= 1 && currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
+          current -= 1;
+        }
+      }
+      if (state.currentIndex !== current) {
+        state.currentIndex = current;
+        setDefaultRange(state.monthsNum, current);
+      }
+      state.yearMonthTitle = state.monthsData[current].title;
+    };
+    const resetRender = () => {
+      state.chooseData.splice(0);
+      state.monthsData.splice(0);
+      initData();
+    };
+    initData();
+    watch(
+      () => props.defaultValue,
+      (val) => {
+        if (val) {
+          if (props.poppable) {
+            resetRender();
+          }
+        }
+      }
+    );
+    return __spreadProps(__spreadValues(__spreadValues({
+      weeks,
+      compConthsData,
+      showTopBtn,
+      topInfo,
+      bottomInfo,
+      rangeTip,
+      mothsViewScroll,
+      getClass,
+      isStartTip,
+      isEndTip,
+      chooseDay,
+      isCurrDay,
+      confirm,
+      months
+    }, toRefs(state)), toRefs(props)), {
+      translate,
+      monthsPanel,
+      weeksPanel,
+      viewArea
+    });
+  }
+});
+const _hoisted_1 = { class: "nut-calendar__header" };
+const _hoisted_2 = {
+  key: 0,
+  class: "nut-calendar__header-title"
+};
+const _hoisted_3 = {
+  key: 1,
+  class: "nut-calendar__header-slot"
+};
+const _hoisted_4 = {
+  key: 2,
+  class: "nut-calendar__header-subtitle"
+};
+const _hoisted_5 = {
+  ref: "weeksPanel",
+  class: "nut-calendar__weekdays"
+};
+const _hoisted_6 = {
+  ref: "monthsPanel",
+  class: "nut-calendar__panel"
+};
+const _hoisted_7 = { class: "nut-calendar__month-title" };
+const _hoisted_8 = { class: "nut-calendar__days" };
+const _hoisted_9 = ["onClick"];
+const _hoisted_10 = { class: "nut-calendar__day-value" };
+const _hoisted_11 = {
+  key: 0,
+  class: "nut-calendar__day-tips nut-calendar__day-tips--top"
+};
+const _hoisted_12 = {
+  key: 1,
+  class: "nut-calendar__day-tips nut-calendar__day-tips--bottom"
+};
+const _hoisted_13 = {
+  key: 2,
+  class: "nut-calendar__day-tips--curr"
+};
+const _hoisted_14 = {
+  key: 4,
+  class: "nut-calendar__day-tip"
+};
+const _hoisted_15 = {
+  key: 0,
+  class: "nut-calendar__footer"
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("view", {
+    class: normalizeClass(["nut-calendar", {
+      "nut-calendar--nopop": !_ctx.poppable,
+      "nut-calendar--nofooter": _ctx.isAutoBackFill
+    }])
+  }, [
+    createElementVNode("view", _hoisted_1, [
+      _ctx.showTitle ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.title || _ctx.translate("title")), 1)) : createCommentVNode("", true),
+      _ctx.showTopBtn ? (openBlock(), createElementBlock("view", _hoisted_3, [
+        renderSlot(_ctx.$slots, "btn")
+      ])) : createCommentVNode("", true),
+      _ctx.showSubTitle ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.yearMonthTitle), 1)) : createCommentVNode("", true),
+      createElementVNode("view", _hoisted_5, [
+        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.weeks, (item, index) => {
+          return openBlock(), createElementBlock("view", {
+            key: index,
+            class: normalizeClass(["nut-calendar__weekday", { weekend: item.weekend }])
+          }, toDisplayString(item.day), 3);
+        }), 128))
+      ], 512)
+    ]),
+    createElementVNode("view", {
+      ref: "months",
+      class: "nut-calendar__content",
+      onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.mothsViewScroll && _ctx.mothsViewScroll(...args))
+    }, [
+      createElementVNode("view", _hoisted_6, [
+        createElementVNode("view", {
+          ref: "viewArea",
+          class: "nut-calendar__body",
+          style: normalizeStyle({ transform: `translateY(${_ctx.translateY}px)` })
+        }, [
+          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.compConthsData, (month, index) => {
+            return openBlock(), createElementBlock("view", {
+              key: index,
+              class: "nut-calendar__month"
+            }, [
+              createElementVNode("view", _hoisted_7, toDisplayString(month.title), 1),
+              createElementVNode("view", _hoisted_8, [
+                createElementVNode("view", {
+                  class: normalizeClass(["nut-calendar__days-item", _ctx.type === "range" ? "nut-calendar__days-item--range" : ""])
+                }, [
+                  (openBlock(true), createElementBlock(Fragment, null, renderList(month.monthData, (day, i) => {
+                    return openBlock(), createElementBlock("view", {
+                      key: i,
+                      class: normalizeClass(["nut-calendar__day", _ctx.getClass(day, month, i)]),
+                      onClick: ($event) => _ctx.chooseDay(day, month)
+                    }, [
+                      createElementVNode("view", _hoisted_10, [
+                        renderSlot(_ctx.$slots, "day", {
+                          date: day.type == "curr" ? day : ""
+                        }, () => [
+                          createTextVNode(toDisplayString(day.type == "curr" ? day.day : ""), 1)
+                        ])
+                      ]),
+                      _ctx.topInfo ? (openBlock(), createElementBlock("view", _hoisted_11, [
+                        renderSlot(_ctx.$slots, "top-info", {
+                          date: day.type == "curr" ? day : ""
+                        })
+                      ])) : createCommentVNode("", true),
+                      _ctx.bottomInfo ? (openBlock(), createElementBlock("view", _hoisted_12, [
+                        renderSlot(_ctx.$slots, "bottom-info", {
+                          date: day.type == "curr" ? day : ""
+                        })
+                      ])) : createCommentVNode("", true),
+                      !_ctx.bottomInfo && _ctx.showToday && _ctx.isCurrDay(day) ? (openBlock(), createElementBlock("view", _hoisted_13, toDisplayString(_ctx.translate("today")), 1)) : createCommentVNode("", true),
+                      _ctx.isStartTip(day, month) ? (openBlock(), createElementBlock("view", {
+                        key: 3,
+                        class: normalizeClass(["nut-calendar__day-tip", { "nut-calendar__day-tips--top": _ctx.rangeTip() }])
+                      }, toDisplayString(_ctx.startText || _ctx.translate("start")), 3)) : createCommentVNode("", true),
+                      _ctx.isEndTip(day, month) ? (openBlock(), createElementBlock("view", _hoisted_14, toDisplayString(_ctx.endText || _ctx.translate("end")), 1)) : createCommentVNode("", true)
+                    ], 10, _hoisted_9);
+                  }), 128))
+                ], 2)
+              ])
+            ]);
+          }), 128))
+        ], 4)
+      ], 512)
+    ], 544),
+    _ctx.poppable && !_ctx.isAutoBackFill ? (openBlock(), createElementBlock("view", _hoisted_15, [
+      renderSlot(_ctx.$slots, "footer-info", { date: _ctx.chooseData }, () => [
+        createElementVNode("view", {
+          class: "nut-calendar__confirm",
+          onClick: _cache[1] || (_cache[1] = (...args) => _ctx.confirm && _ctx.confirm(...args))
+        }, toDisplayString(_ctx.confirmText || _ctx.translate("confirm")), 1)
+      ])
+    ])) : createCommentVNode("", true)
+  ], 2);
+}
+const NutCalendarItem = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+export {
+  NutCalendarItem as N,
+  Utils as U
+};

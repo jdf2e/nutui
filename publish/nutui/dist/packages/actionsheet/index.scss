@@ -1,0 +1,76 @@
+@import '../popup/index.scss';
+
+.nut-theme-dark {
+  .nut-action-sheet {
+    .nut-action-sheet__cancel {
+      border-top: 1px solid $dark-background2;
+    }
+    .nut-action-sheet__title {
+      border-bottom: 1px solid $dark-background2;
+    }
+    .nut-action-sheet__cancel,
+    .nut-action-sheet__item,
+    .nut-action-sheet__title {
+      background: $dark-background;
+      color: $dark-color;
+    }
+  }
+}
+
+.nut-action-sheet {
+  display: block;
+  .nut-action-sheet__title {
+    display: block;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    background-color: $white;
+    border-bottom: 1px solid $actionsheet-light-color;
+    font-size: $font-size-base;
+    color: $title-color;
+  }
+  .nut-action-sheet__menu {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nut-action-sheet__cancel,
+  .nut-action-sheet__item {
+    display: block;
+    padding: 10px;
+    line-height: $actionsheet-item-line-height;
+    font-size: $actionsheet-item-font-size;
+    color: $actionsheet-item-font-color;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: $actionsheet-item-border-bottom;
+    cursor: pointer;
+  }
+
+  .nut-action-sheet__desc {
+    font-size: $actionsheet-item-font-size;
+    color: #999;
+    cursor: default;
+  }
+
+  .nut-action-sheet__subdesc {
+    display: block;
+    font-size: $actionsheet-item-subdesc-font-size;
+    color: #999;
+  }
+
+  .nut-action-sheet__item--disabled {
+    color: #e1e1e1 !important;
+    cursor: not-allowed;
+  }
+  .nut-action-sheet__item--loading {
+    cursor: default;
+  }
+
+  .nut-action-sheet__cancel {
+    margin-top: 5px;
+    border-top: $actionsheet-item-cancel-border-top;
+  }
+}

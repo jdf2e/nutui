@@ -1,0 +1,20 @@
+{
+  "name": "nutui-vue-resolver",
+  "description": "NutUIResolver for unplugin-vue-components",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
+    "./index": {
+      "types": "./index.d.ts",
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts"
+}

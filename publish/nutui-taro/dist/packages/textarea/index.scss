@@ -1,0 +1,66 @@
+.nut-theme-dark {
+  .nut-textarea {
+    background: $dark-background;
+    &__textarea {
+      color: $dark-color;
+    }
+  }
+}
+.nut-textarea {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  background: $white;
+  font-size: $textarea-font;
+  padding: 10px 25px;
+  &--disabled {
+    .nut-textarea__textarea,
+    .nut-textarea__limit {
+      cursor: not-allowed;
+      color: $textarea-disabled-color !important;
+    }
+  }
+  &__limit {
+    position: absolute;
+    right: 15px;
+    bottom: 12px;
+    font-size: $textarea-font;
+    color: $textarea-limit-color;
+  }
+  &__textarea {
+    // min-height: $textarea-height;
+    outline: none;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    font-size: $textarea-font;
+    color: $textarea-text-color;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    line-height: 20px;
+    .taro-textarea {
+      font-size: 14px;
+      resize: none;
+    }
+  }
+  &__textarea__readonly {
+    padding: 5px 10px;
+  }
+  &__ali {
+    line-height: 17px;
+  }
+  .nut-textarea__cpoyText {
+    position: absolute;
+    top: -999999px;
+    left: -999999px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: monospace;
+  }
+}

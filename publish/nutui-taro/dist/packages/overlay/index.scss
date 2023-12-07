@@ -1,0 +1,23 @@
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+}
+
+.nut-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $overlay-bg-color;
+}
+
+.nut-overflow-hidden {
+  overflow: hidden !important;
+}

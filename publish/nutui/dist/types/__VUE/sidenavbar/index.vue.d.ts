@@ -1,0 +1,33 @@
+import { Ref } from 'vue';
+
+declare type Install<T> = T & {
+  install(app: import('vue').App): void;
+};
+declare const _default: Install< import("vue").DefineComponent<{
+    offset: {
+        type: (NumberConstructor | StringConstructor)[];
+        default: number;
+    };
+}, {
+    list: Ref<any>;
+    count: Ref<number>;
+    observer: Ref<{
+        disconnect: () => void;
+        observe: (target: Node, options?: MutationObserverInit | undefined) => void;
+        takeRecords: () => MutationRecord[];
+    } | null>;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    offset: {
+        type: (NumberConstructor | StringConstructor)[];
+        default: number;
+    };
+}>>, {
+    offset: string | number;
+}, {}>>;
+export default _default;
+
+declare module 'vue' {
+  interface GlobalComponents {
+      NutSideNavbar: typeof _default;
+  }
+}

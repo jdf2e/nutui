@@ -1,0 +1,18 @@
+.nut-drag {
+  position: fixed;
+  display: inline-block;
+  z-index: 9997 !important;
+  width: fit-content;
+  height: fit-content;
+
+  .nut-fixed-nav {
+    position: relative !important;
+  }
+}
+.nut-taro-drag {
+  // position: fixed;
+  display: inline-block;
+  z-index: 9997 !important;
+  width: fit-content;
+  height: fit-content;
+}

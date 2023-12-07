@@ -1,0 +1,32 @@
+.nut-theme-dark {
+  .nut-circle-progress__text {
+    color: $dark-color;
+  }
+}
+
+.nut-circle-progress {
+  position: relative;
+
+  &__hover {
+    stroke: $circleprogress-primary-color;
+    transition:
+      stroke-dasharray 0.6s ease 0s,
+      stroke 0.6s ease 0s;
+  }
+
+  &__path {
+    stroke: $circleprogress-path-color;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: $circleprogress-text-color;
+    font-size: $circleprogress-text-size;
+  }
+}

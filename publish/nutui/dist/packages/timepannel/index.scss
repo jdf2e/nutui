@@ -1,0 +1,26 @@
+.nut-theme-dark {
+  .nut-time-pannel {
+    background-color: $dark-background3;
+    color: $dark-color-gray;
+    &--curr {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+  }
+}
+.nut-time-pannel {
+  display: flex;
+  width: $timeselect-timepannel-width;
+  height: $timeselect-timepannel-height;
+  padding: $timeselect-timepannel-padding;
+  align-items: center;
+  justify-content: center;
+  color: $timeselect-timepannel-text-color;
+  font-size: $timeselect-timepannel-font-size;
+  box-sizing: border-box;
+  &--curr {
+    background-color: $timeselect-timepannel-cur-bg-color;
+    color: $timeselect-timepannel-cur-text-color;
+    font-weight: bold;
+  }
+}

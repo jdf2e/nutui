@@ -1,0 +1,142 @@
+.nut-theme-dark {
+  .nut-navbar {
+    background: $dark-background;
+    color: $dark-color;
+    .title {
+      color: $dark-color;
+    }
+  }
+}
+.nut-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  box-sizing: border-box;
+  padding: $navbar-padding;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
+  font-size: $navbar-title-base-font;
+  color: $navbar-color;
+  margin-bottom: $navbar-margin-bottom;
+  overflow: hidden;
+  &:active::before {
+    opacity: 0.1;
+  }
+  &--border {
+    border-bottom: 1px solid #eee;
+  }
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &--placeholder {
+    display: block;
+    width: 100%;
+  }
+  &--safe-area-inset-top {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+  }
+  &--fixed {
+    &.nut-navbar--safe-area-inset-top {
+      height: calc($navbar-height + constant(safe-area-inset-top));
+      height: calc($navbar-height + env(safe-area-inset-top));
+    }
+  }
+  &--clickable {
+    &::before {
+      position: absolute;
+      content: ' ';
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+      border: inherit;
+      border-color: $black;
+      border-radius: inherit;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+
+  .nutui-iconfont {
+    .nut-icon-left {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    min-width: 53%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title {
+      min-width: $navbar-title-width;
+      font-size: $navbar-title-font;
+      font-weight: $navbar-title-font-weight;
+      color: $navbar-title-font-color;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+    &.icon {
+      .icon {
+        margin: $navbar-title-icon-margin;
+      }
+    }
+    .icon {
+      font-size: 0;
+    }
+    .nut-icon {
+      display: inline;
+    }
+    &-desc {
+      font-size: $cell-title-desc-font;
+    }
+    .text__title {
+      display: inline-block;
+    }
+
+    .nut-tabs__titles {
+      background: $white;
+    }
+
+    .nut-tab-pane {
+      display: none;
+    }
+  }
+
+  &__title ::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__left {
+    font-size: $cell-desc-font;
+    color: $cell-desc-color;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 16px;
+  }
+  &__right {
+    font-size: $cell-desc-font;
+    color: $cell-desc-color;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    .rightIcon {
+      margin-left: 16px;
+    }
+    .leftIcon {
+      margin-left: 16px;
+    }
+  }
+}

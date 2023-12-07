@@ -1,0 +1,80 @@
+
+declare type Install<T> = T & {
+  install(app: import('vue').App): void;
+};
+declare const _default: Install< import("vue").DefineComponent<{
+    danmu: {
+        type: ArrayConstructor;
+        default: () => never[];
+    };
+    frequency: {
+        type: NumberConstructor;
+        default: number;
+    };
+    speeds: {
+        type: NumberConstructor;
+        default: number;
+    };
+    rows: {
+        type: NumberConstructor;
+        default: number;
+    };
+    top: {
+        type: NumberConstructor;
+        default: number;
+    };
+    loop: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+}, {
+    classTime: number;
+    classes: import("vue").ComputedRef<{
+        [x: string]: boolean;
+    }>;
+    danmuList: any;
+    add: (word: string) => void;
+    styleList: any[];
+    danmuListSlots: any;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    danmu: {
+        type: ArrayConstructor;
+        default: () => never[];
+    };
+    frequency: {
+        type: NumberConstructor;
+        default: number;
+    };
+    speeds: {
+        type: NumberConstructor;
+        default: number;
+    };
+    rows: {
+        type: NumberConstructor;
+        default: number;
+    };
+    top: {
+        type: NumberConstructor;
+        default: number;
+    };
+    loop: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+}>> & {
+    onClick?: ((...args: any[]) => any) | undefined;
+}, {
+    top: number;
+    loop: boolean;
+    danmu: unknown[];
+    frequency: number;
+    speeds: number;
+    rows: number;
+}, {}>>;
+export default _default;
+
+declare module 'vue' {
+  interface GlobalComponents {
+      NutBarrage: typeof _default;
+  }
+}

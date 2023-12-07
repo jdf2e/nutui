@@ -1,0 +1,139 @@
+.nut-theme-dark {
+  .nut-noticebar__page {
+    background: $dark-background2;
+    color: $dark-color;
+  }
+
+  .nut-noticebar__vertical {
+    .nut-noticebar__vertical-item {
+      color: $dark-color;
+    }
+  }
+}
+.nut-noticebar__page {
+  display: flex;
+  padding: $noticebar-box-padding;
+  height: $noticebar-across-height;
+  font-size: $noticebar-font-size;
+  position: relative;
+  align-items: center;
+  background: $noticebar-background;
+  color: $noticebar-color;
+  &--wrapable {
+    height: auto;
+    padding: $noticebar-wrapable-padding;
+    .nut-noticebar__page-wrap {
+      height: auto !important;
+      .nut-noticebar__page-wrap-content {
+        position: relative;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .nut-noticebar__page--withicon {
+    position: relative;
+    padding-right: 40px;
+  }
+  .nut-noticebar__page-lefticon {
+    display: flex;
+    align-items: center;
+    margin: $noticebar-lefticon-margin;
+    background-size: 100% 100%;
+  }
+  .nut-noticebar__page-righticon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: $noticebar-righticon-margin;
+  }
+  .nut-noticebar__page-wrap {
+    display: flex;
+    flex: 1;
+    height: $noticebar-across-line-height;
+    line-height: $noticebar-across-line-height;
+    overflow: hidden;
+    position: relative;
+  }
+  .nut-noticebar__page-wrap-content {
+    position: absolute;
+    white-space: nowrap;
+    &.nut-ellipsis {
+      display: inline-block;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  // 只跑一次
+  .play {
+    animation: nut-notice-bar-play linear both running;
+  }
+  .play-infinite {
+    animation: nut-notice-bar-play-infinite linear infinite both running;
+  }
+  .play-vertical {
+    animation: nut-notice-bar-play-vertical linear infinite both running;
+  }
+}
+
+@keyframes nut-notice-bar-play {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes nut-notice-bar-play-infinite {
+  to {
+    transform: translateX(-100%);
+  }
+}
+// 垂直方向的滚动
+@keyframes nut-notice-bar-play-vertical {
+  to {
+    transform: translateY($noticebar-across-height);
+  }
+}
+
+// 纵向
+.nut-noticebar__vertical {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: $noticebar-across-height;
+  font-size: $noticebar-font-size;
+  overflow: hidden;
+  padding: $noticebar-box-padding;
+  background: $noticebar-background;
+  color: $noticebar-color;
+
+  .nut-noticebar__vertical-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    flex: 1;
+    overflow: hidden;
+    .nut-noticebar__vertical-item {
+      // display: flex;
+      // align-items: center;
+      height: $noticebar-across-height;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .nut-noticebar-custom-item {
+    position: absolute;
+    top: 999999px;
+  }
+  .go {
+    margin: $noticebar-righticon-margin;
+    align-self: center;
+    display: flex;
+  }
+}

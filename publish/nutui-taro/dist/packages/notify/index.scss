@@ -1,0 +1,49 @@
+@import '../popup/index.scss';
+
+.nut-fade-enter-active {
+  transition: opacity 1s;
+}
+
+.nut-fade-leave-active {
+  transition: opacity 1s;
+}
+
+.nut-fade-enter-from,
+.nut-fade-leave-to {
+  opacity: 0;
+}
+.nut-notify {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: $notify-padding;
+  color: $notify-text-color;
+  font-size: $notify-font-size;
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+  height: $notify-height;
+  line-height: $notify-line-height;
+  &--base {
+    background: $notify-base-background-color;
+  }
+  &--primary {
+    background: $notify-primary-background-color;
+  }
+
+  &--success {
+    background: $notify-success-background-color;
+  }
+
+  &--danger {
+    background: $notify-danger-background-color;
+  }
+
+  &--warning {
+    background: $notify-warning-background-color;
+  }
+  view {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,70 @@
+@import '../badge/index.scss';
+
+.nut-theme-dark {
+  .nut-tabbar-item {
+    &__icon--unactive {
+      color: $dark-color-gray;
+    }
+  }
+}
+.nut-tabbar-item {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: $primary-color;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__icon--unactive {
+    color: $black;
+  }
+
+  &_icon-box {
+    padding: 0px;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .nut-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
+
+    &_tips {
+      position: absolute;
+      background: $tabbar-active-color;
+      border: 1px solid $white;
+      border-radius: 7px;
+      text-align: center;
+      top: -2px;
+      right: -7px;
+      box-shadow: 0 0 0 1px $white;
+      font-size: $font-size-1;
+      color: $white;
+      z-index: 1;
+    }
+    &_icon {
+      display: block;
+      background-size: 100% 100%;
+      background-position: center center;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &_nav-word {
+      font-size: $tabbar-item-text-font-size;
+      line-height: $tabbar-item-text-line-height;
+      margin-top: $tabbar-word-margin-top;
+      display: block;
+    }
+    &_big-word {
+      font-size: $font-size-large;
+      line-height: 1;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.nut-pull-refresh {
+  height: 100%;
+  overflow: hidden;
+  &-container {
+    position: relative;
+    height: 100%;
+
+    &-topbox {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      transform: translateY(-100%);
+      text-align: center;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        margin-right: 4px;
+        width: 16px;
+        height: 16px;
+      }
+      &-text {
+        font-size: $font-size-2;
+        color: $text-color;
+      }
+    }
+  }
+}

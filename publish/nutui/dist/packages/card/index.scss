@@ -1,0 +1,110 @@
+@import '../price/index.scss';
+@import '../tag/index.scss';
+
+.nut-theme-dark {
+  .nut-card {
+    .nut-card__right {
+      color: $dark-color;
+    }
+  }
+}
+
+.nut-card {
+  width: 100%;
+  display: flex;
+
+  .nut-card__left {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    background-color: $card-left-background-color;
+    border-radius: $card-left-border-radius;
+
+    > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .nut-card__right {
+    flex: 1;
+    padding: 0 10px 8px;
+
+    .nut-card__right__title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      word-break: break-all;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .nut-card__right__price {
+      display: flex;
+      align-items: center;
+      height: 18px;
+      line-height: 18px;
+      margin-top: 9px;
+
+      .nut-price {
+        .nut-price--symbol-large {
+          font-size: 12px;
+        }
+
+        .nut-price--large {
+          font-size: 18px;
+        }
+
+        .nut-price--decimal-large {
+          font-size: 12px;
+        }
+      }
+
+      .nut-card__right__price__origin {
+        &.nut-price {
+          margin-left: 2px;
+          color: #d2a448;
+
+          .nut-price--symbol-large {
+            font-size: 12px;
+          }
+
+          .nut-price--large {
+            font-size: 12px;
+          }
+
+          .nut-price--decimal-large {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .nut-card__right__other {
+      display: flex;
+      align-items: center;
+      padding: 5px 0 2px;
+      .nut-tag {
+        border: none;
+        padding: 0 2px;
+        margin-right: 5px;
+        font-size: $card-font-size-0;
+      }
+    }
+
+    .nut-card__right__shop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+
+      .nut-card__right__shop__name {
+        line-height: 1.5;
+        color: #999;
+        font-size: 12px;
+      }
+    }
+  }
+}

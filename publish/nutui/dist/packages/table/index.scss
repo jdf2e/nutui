@@ -1,0 +1,114 @@
+.nut-theme-dark {
+  .nut-table {
+    &__main {
+      color: $dark-color;
+      background-color: $dark-background2;
+      &--striped {
+        .nut-table__main__head {
+          &__tr {
+            background-color: $dark-background3;
+          }
+        }
+        .nut-table__main__body {
+          &__tr:nth-child(odd) {
+            background-color: $dark-color-gray;
+          }
+        }
+        .nut-table__main__body {
+          &__tr:nth-child(even) {
+            background-color: $dark-background3;
+          }
+        }
+      }
+    }
+    &__summary {
+      color: $dark-color;
+      background-color: $dark-background;
+    }
+    &__nodata {
+      color: $dark-color;
+      background-color: $dark-background;
+    }
+  }
+}
+.nut-table {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: $font-size-2;
+  &__main {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: hidden;
+    &--striped {
+      .nut-table__main__head {
+        &__tr {
+          background-color: $table-tr-even-bg-color;
+        }
+      }
+      .nut-table__main__body {
+        &__tr:nth-child(odd) {
+          background-color: $table-tr-odd-bg-color;
+        }
+      }
+      .nut-table__main__body {
+        &__tr:nth-child(even) {
+          background-color: $table-tr-even-bg-color;
+        }
+      }
+    }
+    &__head,
+    &__body {
+      &__tr {
+        display: table-row;
+        &__th {
+          display: table-cell;
+          padding: $table-cols-padding;
+        }
+        &__td {
+          display: table-cell;
+          padding: $table-cols-padding;
+          &__nodata {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        &--border {
+          border: 1px solid $table-border-color;
+        }
+        &--alignleft,
+        &--align {
+          text-align: left;
+        }
+        &--aligncenter {
+          text-align: center;
+        }
+        &--alignright {
+          text-align: right;
+        }
+      }
+    }
+    &__head {
+      display: table-header-group;
+    }
+    &__body {
+      display: table-row-group;
+    }
+  }
+  &__summary {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: $table-cols-padding;
+  }
+  &__nodata {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: $table-cols-padding;
+  }
+}
