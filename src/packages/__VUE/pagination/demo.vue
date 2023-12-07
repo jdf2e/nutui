@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutPagination from './index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Left, Right } from '@nutui/icons-vue';
 const translate = useTranslate({

@@ -62,8 +62,6 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import NutSwitch from './index.vue';
-import NutCell from '../cell/index.vue';
 import { Loading } from '@nutui/icons-vue';
 import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
