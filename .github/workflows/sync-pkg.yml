@@ -36,7 +36,7 @@ jobs:
         with:
           branch: pkg # action 应该部署到的分支 。
           folder: publish #操作应该部署的文件夹 。
-          clean: false
+          clean: true
           target-folder: publish
           git-config-name: github-actions
           git-config-email: action@github.com
