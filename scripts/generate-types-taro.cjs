@@ -112,9 +112,9 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
         const [componentName, setup] = _ComponentName;
         let remain = `
 declare module 'vue' {
-    interface GlobalComponents {
-        Nut${componentName}: typeof _default;
-    }
+  interface GlobalComponents {
+      Nut${componentName}: typeof _default;
+  }
 }`;
         if (setup) {
           let changeContent = content.replace('export default _default;', `declare const _nut_defualt: WithInstall<typeof _default>;\nexport default _nut_defualt;\n${remain}`);

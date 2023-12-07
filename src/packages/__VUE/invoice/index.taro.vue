@@ -43,7 +43,7 @@ import NutForm from '../form/index.taro.vue';
 import NutFormItem from '../formitem/index.taro.vue';
 import NutRadio from '../radio/index.taro.vue';
 import NutRadioGroup from '../radiogroup/index.vue';
-import NutButton from '../button/index.taro.vue';
+import NutButton from '../button/index.taro';
 const { componentName, create } = createComponent('invoice');
 export default create({
   components: {

@@ -46,7 +46,7 @@ import { ref, h } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.taro.vue';
-import NutButton from '../../button/index.taro.vue';
+import NutButton from '../../button/index.taro';
 import NutSwipe from '../../swipe/index.taro.vue';
 
 export default create({

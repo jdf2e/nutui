@@ -29,7 +29,7 @@
 import { reactive, onMounted, onUnmounted, h } from 'vue';
 import { TableColumns } from './types';
 import { showToast } from '@/packages/nutui.vue';
-import Button from '@/packages/__VUE/button/index.vue';
+import Button from '@/packages/__VUE/button';
 import { Dongdong } from '@nutui/icons-vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
