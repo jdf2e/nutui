@@ -42,7 +42,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         marginLeft: string;
     }>;
     foldCount: import("vue").Ref<number>;
-    avatarGroupRef: any;
+    avatarGroupRef: import("vue").Ref<any>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     maxContent: {
         type: StringConstructor;

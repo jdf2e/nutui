@@ -105,10 +105,10 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
-    replace: boolean;
     title: string;
     center: boolean;
     desc: string;
+    replace: boolean;
     size: string;
     subTitle: string;
     descTextAlign: string;

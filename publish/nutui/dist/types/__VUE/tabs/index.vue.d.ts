@@ -106,7 +106,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         color: any;
         background: any;
     }>;
-    container: any;
+    container: Ref<any>;
     getScrollY: import("vue").ComputedRef<any>;
     onStickyScroll: (params: {
         top: number;

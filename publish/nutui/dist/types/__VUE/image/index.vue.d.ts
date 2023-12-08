@@ -108,9 +108,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onError?: ((...args: any[]) => any) | undefined;
 }, {
     round: boolean;
+    position: string;
     width: string;
     height: string;
-    position: string;
     alt: string;
     lazyLoad: boolean;
     fit: ImageFit;

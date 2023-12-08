@@ -92,12 +92,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>>, {
     name: string | number;
-    value: string;
     label: string;
     title: string;
     icon: Record<string, any>;
     border: boolean;
     disabled: boolean;
+    value: string;
     rotate: string | number;
 }, {}>>;
 export default _default;

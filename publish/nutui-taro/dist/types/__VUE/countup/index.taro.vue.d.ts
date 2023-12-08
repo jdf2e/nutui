@@ -74,8 +74,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     topNumber: (index: number) => string | number;
     turnNumber: (index: number) => string | number;
-    toFixed: import("vue").Ref<number>;
     type: import("vue").Ref<string>;
+    toFixed: import("vue").Ref<number>;
     initNum: import("vue").Ref<number>;
     endNum: import("vue").Ref<number>;
     speed: import("vue").Ref<number>;
@@ -186,8 +186,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick?: ((...args: any[]) => any) | undefined;
     onScrollEnd?: ((...args: any[]) => any) | undefined;
 }, {
-    toFixed: number;
     type: string;
+    toFixed: number;
     initNum: number;
     endNum: number;
     speed: number;

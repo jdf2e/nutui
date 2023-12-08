@@ -110,10 +110,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     onOnClickIcon?: ((...args: any[]) => any) | undefined;
     onOnClickRight?: ((...args: any[]) => any) | undefined;
 }, {
-    fixed: boolean;
     title: string;
     desc: string;
     zIndex: string | number;
+    fixed: boolean;
     border: boolean;
     placeholder: boolean;
     leftShow: boolean;

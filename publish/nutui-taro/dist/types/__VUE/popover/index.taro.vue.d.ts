@@ -90,7 +90,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         [key: string]: any;
     }> | "";
     popoverbox: import("vue").Ref<any>;
-    popoverstyles: any;
+    popoverstyles: import("vue").Ref<any>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;

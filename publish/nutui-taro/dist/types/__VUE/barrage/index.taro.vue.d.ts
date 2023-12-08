@@ -32,10 +32,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     classes: import("vue").ComputedRef<{
         [x: string]: boolean;
     }>;
-    danmuList: any;
+    danmuList: import("vue").Ref<any>;
     add: (word: string) => void;
     styleList: any[];
-    danmuListSlots: any;
+    danmuListSlots: import("vue").Ref<any>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     danmu: {
         type: ArrayConstructor;

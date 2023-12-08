@@ -48,7 +48,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }, {
     env: TaroGeneral.ENV_TYPE;
-    textareaRef: any;
+    textareaRef: import("vue").Ref<any>;
     classes: import("vue").ComputedRef<{
         "nut-textarea": boolean;
         "nut-textarea--disabled": boolean;

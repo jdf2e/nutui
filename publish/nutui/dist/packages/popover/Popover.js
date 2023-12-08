@@ -144,9 +144,10 @@ const _sfc_main = create({
       }
       rootRect.value = rect2;
       setTimeout(() => {
+        var _a, _b;
         conentRootRect.value = {
-          height: popoverContentRef.value.clientHeight,
-          width: popoverContentRef.value.clientWidth
+          height: (_a = popoverContentRef.value) == null ? void 0 : _a.clientHeight,
+          width: (_b = popoverContentRef.value) == null ? void 0 : _b.clientWidth
         };
       }, 0);
     };

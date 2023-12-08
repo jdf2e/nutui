@@ -189,7 +189,6 @@ const _sfc_main = create(
     NutCellGroup
   })
 );
-const _hoisted_1 = ["onSubmit"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_cell_group = resolveComponent("nut-cell-group");
   return openBlock(), createElementBlock("form", {
@@ -203,7 +202,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     })
-  ], 40, _hoisted_1);
+  ], 32);
 }
 const NutForm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {

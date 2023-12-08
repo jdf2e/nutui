@@ -145,8 +145,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     regionList: import("vue").ComputedRef<any>;
     transformData: (data: AddressData[]) => CustomRegionData[];
     scrollDom: Ref<HTMLElement | null>;
-    showPopup: any;
-    privateType: any;
+    showPopup: Ref<any>;
+    privateType: Ref<any>;
     tabIndex: Ref<number>;
     tabName: Ref<string[]>;
     selectedRegion: Ref<{
@@ -325,8 +325,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     closeOnClickOverlay: boolean;
     type: string;
     round: boolean;
-    height: string | number;
     position: string;
+    height: string | number;
     transition: string;
     popClass: string;
     closeable: boolean;

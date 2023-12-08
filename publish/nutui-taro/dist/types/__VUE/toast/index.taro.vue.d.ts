@@ -166,8 +166,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     duration: number;
     closeOnClickOverlay: boolean;
     type: string;
-    bottom: string;
     cover: boolean;
+    bottom: string;
     size: string | number;
     icon: Component;
     bgColor: string;
