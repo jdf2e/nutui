@@ -1,5 +1,6 @@
 <script lang="ts">
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
+import type { Component } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -38,7 +39,7 @@ export default create({
     }
   },
   emits: ['change', 'update:modelValue'],
-  setup(props: any, { emit, slots }: any) {
+  setup(props, { emit, slots }) {
     const parent: any = inject(CHECKBOX_KEY, null);
     const state = reactive({
       partialSelect: props.indeterminate
@@ -96,7 +97,7 @@ export default create({
         Checked: slots.checkedIcon ? slots.checkedIcon : Checked,
         CheckDisabled: slots.indeterminate ? slots.indeterminate : CheckDisabled
       };
-      const iconNode = state.partialSelect
+      const iconNode: Component = state.partialSelect
         ? iconNodeMap.CheckDisabled
         : !pValue.value
         ? iconNodeMap.CheckNormal
