@@ -25,6 +25,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
+      all: false,
       provider: 'v8'
     },
     include: ['src/packages/__VUE/**/*.(test|spec).(ts|tsx)'],

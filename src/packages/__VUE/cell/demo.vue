@@ -78,8 +78,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import NutCell from './index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
 import { My } from '@nutui/icons-vue';
 const translate = useTranslate({
   'zh-CN': {

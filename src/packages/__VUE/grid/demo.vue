@@ -151,9 +151,6 @@
 </template>
 
 <script setup lang="ts">
-import NutGrid from './index.vue';
-import NutGridItem from '../griditem/index.vue';
-import NutAvatar from '../avatar/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Dongdong, Home, Search } from '@nutui/icons-vue';
 const translate = useTranslate({

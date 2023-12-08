@@ -1,22 +1,15 @@
 <template>
   <view :class="classes">
-    <rich-text
-      v-if="readonly && env !== 'WEB'"
-      class="nut-textarea__textarea nut-textarea__textarea__readonly"
-      :nodes="readonlyValue"
-    ></rich-text>
     <textarea
-      v-else
       ref="textareaRef"
       v-bind="$attrs"
       :class="['nut-textarea__textarea', env == 'ALIPAY' && 'nut-textarea__ali']"
       :style="styles"
       :rows="rows"
-      :disabled="disabled"
-      :readonly="readonly"
+      :disabled="disabled || readonly"
       :value="modelValue"
       :show-count="false"
-      :maxlength="maxLength"
+      :maxlength="maxLength ? maxLength : -1"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
       @input="change"
@@ -30,7 +23,6 @@
     <view v-if="autosize" class="nut-textarea__cpoyText" :style="copyTxtStyle">{{ modelValue }}</view>
   </view>
 </template>
-<!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
@@ -101,27 +93,19 @@ export default create({
       };
     });
 
-    const styles: any = computed(() => {
-      const styleObj: { textAlign: string; height?: string } = {
+    const styles = computed(() => {
+      const styleObj: any = {
         textAlign: props.textAlign
       };
       if (props.autosize) {
         styleObj['height'] = heightSet.value;
       }
       return styleObj;
-      // return {
-      //   textAlign: props.textAlign,
-      //   height: props.autosize ? heightSet.value : 'null'
-      // };
     });
 
     const copyTxtStyle: any = ref({
       'word-break': 'break-all',
       width: '0'
-    });
-
-    const readonlyValue = computed(() => {
-      return props.modelValue.replace(/\\n/g, '<br/>');
     });
 
     const emitChange = (value: string, event: Event) => {
@@ -140,8 +124,6 @@ export default create({
       } else {
         _onInput(event);
       }
-      // const input = event.target as HTMLInputElement;
-      // emitChange(input.value, event);
     };
     const _onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
@@ -173,9 +155,6 @@ export default create({
     const getContentHeight = () => {
       heightSet.value = 'auto';
       let height = textareaHeight.value;
-      // let textarea = textareaRef.value;
-      // textarea.style.height = 'auto';
-      // let height = textarea.scrollHeight;
       if (typeof props.autosize === 'object') {
         const { maxHeight, minHeight } = props.autosize;
         if (maxHeight !== undefined) {
@@ -186,7 +165,6 @@ export default create({
         }
       }
       if (height) {
-        // textarea.style.height = height + 'px';
         heightSet.value = height + 'px';
       }
     };
@@ -200,11 +178,6 @@ export default create({
         }
       }
     );
-    // const listenInput = () => {
-    // window.addEventListener('compositionend', function () {
-    //   copyHeight();
-    // });
-    // };
 
     const copyHeight = () => {
       const query = Taro.createSelectorQuery();
@@ -251,7 +224,6 @@ export default create({
     const env = Taro.getEnv();
     onMounted(() => {
       if (props.autosize) {
-        // listenInput();
         Taro.nextTick(() => {
           setTimeout(() => {
             if (Taro.getEnv() === 'ALIPAY' || Taro.getEnv() === 'WEB') {
@@ -268,7 +240,6 @@ export default create({
     const startComposing = () => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         composing.value = true;
-        // (event.target as InputTarget)!.composing = true;
       }
     };
 
@@ -276,7 +247,6 @@ export default create({
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (composing.value) {
           composing.value = false;
-          // (target as InputTarget)!.composing = false;
           (target as InputTarget).dispatchEvent(new Event('input'));
         }
       }
@@ -293,8 +263,7 @@ export default create({
       translate,
       copyTxtStyle,
       startComposing,
-      endComposing,
-      readonlyValue
+      endComposing
     };
   }
 });

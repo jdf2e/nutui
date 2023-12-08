@@ -36,9 +36,6 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import NutPullRefresh from './index.vue';
-import NutTabs from '../tabs/index.vue';
-import NutTabPane from '../tabpane/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { showToast } from '@/packages/nutui.vue';
 

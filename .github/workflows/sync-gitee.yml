@@ -1,8 +1,9 @@
 name: Sync to Gitee
 
 on:
-  push:
-    branches: [v4]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
 
 jobs:
   deploy-site-sync-gitee:
