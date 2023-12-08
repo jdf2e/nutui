@@ -96,7 +96,7 @@
     "inquirer": "^9.2.11",
     "lint-staged": "^15.0.1",
     "lzutf8": "^0.6.3",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.0.0",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.5",
     "typescript": "^5.2.2",
