@@ -1,13 +1,12 @@
-name: sync to docs-taro
+name: sync to pkg branch
+
+permissions:
+  contents: write
 
 on:
   push:
     branches:
       - v4 # default branch
-    paths:
-      - '.github/workflows/**'
-      - 'src/**'
-      - 'package.json'
 
 jobs:
   copy:
@@ -26,15 +25,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Copy
-        run: pnpm copy:taro
+      - name: Build @nutui/nutui
+        run: pnpm build
+      
+      - name: Build @nutui/nutui-taro
+        run: pnpm build:taro
 
       - name: Sync
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          branch: new-site # action 应该部署到的分支 。
-          folder: site_docs #操作应该部署的文件夹 。
-          clean: false
-          repository-name: jdf2e/nutui-docs
-          token: ${{ secrets.GIT_ACTION }}
-          target-folder: src/docs_vue_taro
+          branch: pkg # action 应该部署到的分支 。
+          folder: publish #操作应该部署的文件夹 。
+          clean: true
+          target-folder: publish
+          git-config-name: github-actions
+          git-config-email: action@github.com

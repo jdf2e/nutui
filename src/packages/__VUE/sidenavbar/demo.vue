@@ -79,11 +79,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutSideNavbar from './index.vue';
-import NutSideNavbarItem from '../sidenavbaritem/index.vue';
-import NutSubSideNavbar from '../subsidenavbar/index.vue';
-import NutPopup from '../popup/index.vue';
-import NutCell from '../cell/index.vue';
 import { showToast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({

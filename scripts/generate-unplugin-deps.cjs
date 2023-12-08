@@ -32,12 +32,12 @@ export { ${element.name}, show${element.name}, ${element.name} as default };`;
         outputMjs = `import ${element.name} from './${element.name}.js';
 export { ${element.name}, ${element.name} as default };`;
       }
+      let folderName = element.name.toLowerCase();
       tasks.push(
-        fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
+        fs.outputFile(path.resolve(__dirname, `../dist/packages/${folderName}/index.mjs`), outputMjs, 'utf8', () => {
           // console.log('')
         })
       );
-      let folderName = element.name.toLowerCase();
       outputFileEntry += `export * from "./packages/${folderName}/index.mjs";\n`;
       components.push(element.name);
     }

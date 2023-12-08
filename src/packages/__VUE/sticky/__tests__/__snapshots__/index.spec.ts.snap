@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should sticky to bottom after scroll 1`] = `
-"<div class=\\"nut-sticky\\">
-  <div class=\\"nut-sticky__box\\"></div>
+"<div class="nut-sticky">
+  <div class="nut-sticky__box"></div>
 </div>"
 `;
 
 exports[`should sticky to top after scroll 1`] = `
-"<div class=\\"nut-sticky\\">
-  <div class=\\"nut-sticky__box\\" style=\\"top: 0px; position: fixed; z-index: 99;\\"></div>
+"<div class="nut-sticky">
+  <div class="nut-sticky__box" style="top: 0px; position: fixed; z-index: 99;"></div>
 </div>"
 `;
