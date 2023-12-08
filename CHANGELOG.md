@@ -1,3 +1,17 @@
+## v4.2.3
+
+`2023-11-30`
+
+Bug Fixes
+
+- ellipsis: 修复 taro 组件导出问题 @eiinu
+- number-keyboard: 修复标题栏完成按钮样式丢失的问题 (#2696) @Moonofweisheng
+
+Other Changes
+
+- refactor: 优化组件间 provide & inject (#2681) @eiinu
+- deps: bump vite to v5 (#2689) @eiinu
+
 ## v4.2.2
 
 `2023-11-24`

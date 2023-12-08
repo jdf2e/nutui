@@ -32,11 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import NutIndicator from './index.vue';
-import NutCell from '../cell/index.vue';
-import NutButton from '../button/index.vue';
-import NutCol from '../col/index.vue';
-import NutRow from '../row/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {

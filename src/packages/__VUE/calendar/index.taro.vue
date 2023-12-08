@@ -96,7 +96,6 @@ const { create } = createComponent('calendar');
 import NutCalendarItem from '../calendaritem/index.taro.vue';
 import NutPopup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
@@ -176,7 +175,7 @@ export default create({
     disabledDate: Function
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -200,7 +199,7 @@ export default create({
     const initPosition = () => {
       calendarRef.value?.initPosition();
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });

@@ -41,7 +41,6 @@
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
 const { create } = createComponent('elevator');
 
@@ -73,7 +72,7 @@ export default create({
     }
   },
   emits: ['clickItem', 'clickIndex', 'change'],
-  setup(props, context) {
+  setup(props, { emit, expose }) {
     const listview: Ref<any> = ref(null);
     const state = reactive({
       anchorIndex: 0,
@@ -153,13 +152,13 @@ export default create({
     };
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      context.emit('clickItem', key, item);
+      emit('clickItem', key, item);
       state.currentData = item;
       state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
-      context.emit('clickIndex', key);
+      emit('clickIndex', key);
     };
 
     const listViewScroll = (e: Event) => {
@@ -186,7 +185,7 @@ export default create({
       }
     });
 
-    useExpose({
+    expose({
       scrollTo
     });
 
@@ -214,7 +213,7 @@ export default create({
     watch(
       () => state.currentIndex,
       (newVal: number) => {
-        context.emit('change', newVal);
+        emit('change', newVal);
       }
     );
 
