@@ -19,11 +19,11 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { reactive, computed, ref, watch, toRefs, onMounted, openBlock, createElementBlock, createElementVNode, normalizeStyle, Fragment, renderList, normalizeClass, toDisplayString, createCommentVNode, createTextVNode, resolveComponent, renderSlot, mergeProps, createVNode } from "vue";
+import Taro from "@tarojs/taro";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { a as preventDefault, c as clamp } from "../util-WZB3Ltgx.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import Taro from "@tarojs/taro";
 import { u as useLocale } from "../index-DDx91B18.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 const DEFAULT_FILED_NAMES = {
@@ -519,57 +519,9 @@ const baseProps = {
     default: () => ({})
   }
 };
+const { create } = createComponent("picker");
 const cN = "NutPicker";
-const componentWeb = {
-  components: {
-    NutPickerColumn
-  },
-  props: baseProps,
-  emits: ["cancel", "change", "confirm", "update:modelValue"],
-  setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
-      props,
-      emit
-    );
-    const state = reactive({
-      ENV: Taro.getEnv(),
-      ENV_TYPE: Taro.ENV_TYPE
-    });
-    const pickerColumn = ref([]);
-    const swipeRef = (el) => {
-      if (el && pickerColumn.value.length < columnsList.value.length) {
-        pickerColumn.value.push(el);
-      }
-    };
-    const confirmHandler = () => {
-      pickerColumn.value.length > 0 && pickerColumn.value.forEach((column) => {
-        column.stopMomentum();
-      });
-      confirm();
-    };
-    const columnStyle = computed(() => {
-      const styles = {};
-      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
-      styles["--lineHeight"] = `${+props.optionHeight}px`;
-      return styles;
-    });
-    return __spreadProps(__spreadValues({}, toRefs(state)), {
-      columnsType,
-      columnsList,
-      columnFieldNames,
-      cancel,
-      changeHandler,
-      confirmHandler,
-      defaultValues,
-      pickerColumn,
-      swipeRef,
-      translate,
-      columnStyle
-    });
-  }
-};
-const componentWeapp = {
+const _sfc_main = create({
   components: {
     NutPickerColumn
   },
@@ -593,6 +545,28 @@ const componentWeapp = {
       ENV: Taro.getEnv(),
       ENV_TYPE: Taro.ENV_TYPE
     });
+    const pickerColumn = ref([]);
+    const swipeRef = (el) => {
+      if (el && pickerColumn.value.length < columnsList.value.length) {
+        pickerColumn.value.push(el);
+      }
+    };
+    const confirmHandler = () => {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        pickerColumn.value.length > 0 && pickerColumn.value.forEach((column) => {
+          column.stopMomentum();
+        });
+        confirm();
+      } else {
+        if (state.picking) {
+          setTimeout(() => {
+            confirm();
+          }, 0);
+        } else {
+          confirm();
+        }
+      }
+    };
     const pickerViewStyles = computed(() => {
       const styles = {};
       styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
@@ -611,15 +585,6 @@ const componentWeapp = {
       }
       changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
     };
-    const confirmHandler = () => {
-      if (state.picking) {
-        setTimeout(() => {
-          confirm();
-        }, 0);
-      } else {
-        confirm();
-      }
-    };
     const handlePickstart = () => {
       state.picking = true;
     };
@@ -634,6 +599,8 @@ const componentWeapp = {
       changeHandler,
       confirmHandler,
       defaultValues,
+      pickerColumn,
+      swipeRef,
       defaultIndexes,
       tileChange,
       handlePickstart,
@@ -643,10 +610,7 @@ const componentWeapp = {
       pxCheck
     });
   }
-};
-const { create } = createComponent("picker");
-const component = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
-const _sfc_main = create(component);
+});
 const _hoisted_1 = { class: "nut-picker" };
 const _hoisted_2 = {
   key: 0,
@@ -702,12 +666,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }), 128))
         ], 8, _hoisted_5);
       }), 128))
-    ], 16, _hoisted_4)) : createCommentVNode("", true),
-    createTextVNode(),
-    _ctx.ENV == _ctx.ENV_TYPE.WEB ? (openBlock(), createElementBlock("view", {
+    ], 16, _hoisted_4)) : (openBlock(), createElementBlock("view", {
       key: 2,
       class: "nut-picker__column",
-      style: normalizeStyle(_ctx.columnStyle)
+      style: normalizeStyle(_ctx.pickerViewStyles)
     }, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columnsList, (column, columnIndex) => {
         return openBlock(), createElementBlock("view", {
@@ -732,7 +694,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }, null, 8, ["column", "columns-type", "field-names", "value", "swipe-duration", "visible-option-num", "option-height", "onChange"])
         ]);
       }), 128))
-    ], 4)) : createCommentVNode("", true),
+    ], 4)),
     createTextVNode(),
     renderSlot(_ctx.$slots, "default")
   ]);

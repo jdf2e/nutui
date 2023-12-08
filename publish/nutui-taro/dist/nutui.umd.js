@@ -1014,7 +1014,7 @@ var __async = (__this, __arguments, generator) => {
     ]);
   }
   const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["render", _sfc_render$1z]]);
-  const component$4 = (tag) => {
+  const component$3 = (tag) => {
     return {
       props: {
         theme: { type: String, default: "" },
@@ -1072,7 +1072,7 @@ var __async = (__this, __arguments, generator) => {
     };
   };
   const { create: create$1I } = createComponent("config-provider");
-  const _sfc_main$1J = create$1I(component$4("view"));
+  const _sfc_main$1J = create$1I(component$3("view"));
   const { create: create$1H } = createComponent("layout");
   const _sfc_main$1I = create$1H({});
   const LAYOUT_KEY = Symbol("nut-layout");
@@ -1477,7 +1477,7 @@ var __async = (__this, __arguments, generator) => {
       default: false
     }
   };
-  const component$3 = {
+  const component$2 = {
     props: gridProps,
     setup(props, { slots }) {
       useProvide(GRID_KEY, `NutGridItem`)({ props });
@@ -1509,7 +1509,7 @@ var __async = (__this, __arguments, generator) => {
     }
   };
   const { create: create$1C } = createComponent("grid");
-  const _sfc_main$1D = create$1C(component$3);
+  const _sfc_main$1D = create$1C(component$2);
   function useInject(key) {
     const parent = vue.inject(key, null);
     if (parent) {
@@ -6509,7 +6509,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$18]]);
   const CHECKBOX_KEY = Symbol("nut-checkbox");
-  const component$2 = (componentName2, components) => {
+  const component$1 = (componentName2, components) => {
     return {
       components,
       props: {
@@ -6665,7 +6665,7 @@ var __async = (__this, __arguments, generator) => {
     };
   };
   const { create: create$1d, componentName: componentName$h } = createComponent("checkbox");
-  const _sfc_main$1d = create$1d(component$2(componentName$h, { CheckNormal: iconsVueTaro.CheckNormal, Checked: iconsVueTaro.Checked, CheckDisabled: iconsVueTaro.CheckDisabled }));
+  const _sfc_main$1d = create$1d(component$1(componentName$h, { CheckNormal: iconsVueTaro.CheckNormal, Checked: iconsVueTaro.Checked, CheckDisabled: iconsVueTaro.CheckDisabled }));
   const { create: create$1c, componentName: componentName$g } = createComponent("checkbox-group");
   const _sfc_main$1c = create$1c({
     props: {
@@ -7238,57 +7238,9 @@ var __async = (__this, __arguments, generator) => {
       default: () => ({})
     }
   };
+  const { create: create$1a } = createComponent("picker");
   const cN$i = "NutPicker";
-  const componentWeb = {
-    components: {
-      NutPickerColumn
-    },
-    props: baseProps,
-    emits: ["cancel", "change", "confirm", "update:modelValue"],
-    setup(props, { emit }) {
-      const translate = useLocale(cN$i);
-      const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
-        props,
-        emit
-      );
-      const state = vue.reactive({
-        ENV: Taro.getEnv(),
-        ENV_TYPE: Taro.ENV_TYPE
-      });
-      const pickerColumn = vue.ref([]);
-      const swipeRef = (el) => {
-        if (el && pickerColumn.value.length < columnsList.value.length) {
-          pickerColumn.value.push(el);
-        }
-      };
-      const confirmHandler = () => {
-        pickerColumn.value.length > 0 && pickerColumn.value.forEach((column) => {
-          column.stopMomentum();
-        });
-        confirm();
-      };
-      const columnStyle = vue.computed(() => {
-        const styles = {};
-        styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
-        styles["--lineHeight"] = `${+props.optionHeight}px`;
-        return styles;
-      });
-      return __spreadProps(__spreadValues({}, vue.toRefs(state)), {
-        columnsType,
-        columnsList,
-        columnFieldNames,
-        cancel,
-        changeHandler,
-        confirmHandler,
-        defaultValues,
-        pickerColumn,
-        swipeRef,
-        translate,
-        columnStyle
-      });
-    }
-  };
-  const componentWeapp = {
+  const _sfc_main$1a = create$1a({
     components: {
       NutPickerColumn
     },
@@ -7312,6 +7264,28 @@ var __async = (__this, __arguments, generator) => {
         ENV: Taro.getEnv(),
         ENV_TYPE: Taro.ENV_TYPE
       });
+      const pickerColumn = vue.ref([]);
+      const swipeRef = (el) => {
+        if (el && pickerColumn.value.length < columnsList.value.length) {
+          pickerColumn.value.push(el);
+        }
+      };
+      const confirmHandler = () => {
+        if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+          pickerColumn.value.length > 0 && pickerColumn.value.forEach((column) => {
+            column.stopMomentum();
+          });
+          confirm();
+        } else {
+          if (state.picking) {
+            setTimeout(() => {
+              confirm();
+            }, 0);
+          } else {
+            confirm();
+          }
+        }
+      };
       const pickerViewStyles = vue.computed(() => {
         const styles = {};
         styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
@@ -7330,15 +7304,6 @@ var __async = (__this, __arguments, generator) => {
         }
         changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
       };
-      const confirmHandler = () => {
-        if (state.picking) {
-          setTimeout(() => {
-            confirm();
-          }, 0);
-        } else {
-          confirm();
-        }
-      };
       const handlePickstart = () => {
         state.picking = true;
       };
@@ -7353,6 +7318,8 @@ var __async = (__this, __arguments, generator) => {
         changeHandler,
         confirmHandler,
         defaultValues,
+        pickerColumn,
+        swipeRef,
         defaultIndexes,
         tileChange,
         handlePickstart,
@@ -7362,10 +7329,7 @@ var __async = (__this, __arguments, generator) => {
         pxCheck
       });
     }
-  };
-  const { create: create$1a } = createComponent("picker");
-  const component$1 = Taro.getEnv() == Taro.ENV_TYPE.WEB ? componentWeb : componentWeapp;
-  const _sfc_main$1a = create$1a(component$1);
+  });
   const _hoisted_1$Z = { class: "nut-picker" };
   const _hoisted_2$L = {
     key: 0,
@@ -7421,12 +7385,10 @@ var __async = (__this, __arguments, generator) => {
             }), 128))
           ], 8, _hoisted_5$l);
         }), 128))
-      ], 16, _hoisted_4$w)) : vue.createCommentVNode("", true),
-      vue.createTextVNode(),
-      _ctx.ENV == _ctx.ENV_TYPE.WEB ? (vue.openBlock(), vue.createElementBlock("view", {
+      ], 16, _hoisted_4$w)) : (vue.openBlock(), vue.createElementBlock("view", {
         key: 2,
         class: "nut-picker__column",
-        style: vue.normalizeStyle(_ctx.columnStyle)
+        style: vue.normalizeStyle(_ctx.pickerViewStyles)
       }, [
         (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.columnsList, (column, columnIndex) => {
           return vue.openBlock(), vue.createElementBlock("view", {
@@ -7451,7 +7413,7 @@ var __async = (__this, __arguments, generator) => {
             }, null, 8, ["column", "columns-type", "field-names", "value", "swipe-duration", "visible-option-num", "option-height", "onChange"])
           ]);
         }), 128))
-      ], 4)) : vue.createCommentVNode("", true),
+      ], 4)),
       vue.createTextVNode(),
       vue.renderSlot(_ctx.$slots, "default")
     ]);
