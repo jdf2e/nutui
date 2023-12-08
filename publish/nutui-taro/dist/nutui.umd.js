@@ -1014,7 +1014,7 @@ var __async = (__this, __arguments, generator) => {
     ]);
   }
   const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["render", _sfc_render$1z]]);
-  const component$3 = (tag) => {
+  const component$2 = (tag) => {
     return {
       props: {
         theme: { type: String, default: "" },
@@ -1072,7 +1072,7 @@ var __async = (__this, __arguments, generator) => {
     };
   };
   const { create: create$1I } = createComponent("config-provider");
-  const _sfc_main$1J = create$1I(component$3("view"));
+  const _sfc_main$1J = create$1I(component$2("view"));
   const { create: create$1H } = createComponent("layout");
   const _sfc_main$1I = create$1H({});
   const LAYOUT_KEY = Symbol("nut-layout");
@@ -1477,7 +1477,7 @@ var __async = (__this, __arguments, generator) => {
       default: false
     }
   };
-  const component$2 = {
+  const component$1 = {
     props: gridProps,
     setup(props, { slots }) {
       useProvide(GRID_KEY, `NutGridItem`)({ props });
@@ -1509,7 +1509,7 @@ var __async = (__this, __arguments, generator) => {
     }
   };
   const { create: create$1C } = createComponent("grid");
-  const _sfc_main$1D = create$1C(component$2);
+  const _sfc_main$1D = create$1C(component$1);
   function useInject(key) {
     const parent = vue.inject(key, null);
     if (parent) {
@@ -6509,163 +6509,159 @@ var __async = (__this, __arguments, generator) => {
   }
   const Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$18]]);
   const CHECKBOX_KEY = Symbol("nut-checkbox");
-  const component$1 = (componentName2, components) => {
-    return {
-      components,
-      props: {
-        modelValue: {
-          type: Boolean,
-          default: false
-        },
-        disabled: {
-          type: Boolean,
-          default: false
-        },
-        textPosition: {
-          type: String,
-          default: "right"
-        },
-        iconSize: {
-          type: [String, Number],
-          default: ""
-        },
-        label: {
-          type: String,
-          default: ""
-        },
-        indeterminate: {
-          type: Boolean,
-          default: false
-        },
-        shape: {
-          type: String,
-          default: "round"
-          // button
-        }
-      },
-      emits: ["change", "update:modelValue"],
-      setup(props, { emit, slots }) {
-        const parent = vue.inject(CHECKBOX_KEY, null);
-        const state = vue.reactive({
-          partialSelect: props.indeterminate
-        });
-        const hasParent = vue.computed(() => !!parent);
-        const pValue = vue.computed(() => {
-          if (hasParent.value) {
-            return parent.value.value.includes(props.label);
-          } else {
-            return props.modelValue;
-          }
-        });
-        const pDisabled = vue.computed(() => {
-          return hasParent.value ? parent.disabled.value ? parent.disabled.value : props.disabled : props.disabled;
-        });
-        const checked = vue.computed(() => !!props.modelValue);
-        const color = vue.computed(() => {
-          return !pDisabled.value ? state.partialSelect ? "nut-checkbox__icon--indeterminate" : !pValue.value ? "nut-checkbox__icon--unchecked" : "nut-checkbox__icon" : "nut-checkbox__icon--disable";
-        });
-        let updateType = "";
-        const emitChange = (value, label) => {
-          updateType = "click";
-          emit("update:modelValue", value);
-          emit("change", value, label);
-        };
-        vue.watch(
-          () => props.modelValue,
-          (v) => {
-            if (updateType == "click") {
-              updateType = "";
-            } else {
-              emit("change", v);
-            }
-          }
-        );
-        const renderIcon2 = () => {
-          const { iconSize } = props;
-          const iconNodeMap = {
-            CheckNormal: slots.icon ? slots.icon : components.CheckNormal,
-            Checked: slots.checkedIcon ? slots.checkedIcon : components.Checked,
-            CheckDisabled: slots.indeterminate ? slots.indeterminate : components.CheckDisabled
-          };
-          const iconNode = state.partialSelect ? iconNodeMap.CheckDisabled : !pValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
-          const size = pxCheck(iconSize);
-          return vue.h(iconNode, {
-            width: size,
-            height: size,
-            size,
-            class: color.value
-          });
-        };
-        const renderLabel = () => {
-          var _a;
-          return vue.h(
-            "view",
-            {
-              class: `${componentName2}__label ${pDisabled.value ? `${componentName2}__label--disabled` : ""}`
-            },
-            (_a = slots.default) == null ? void 0 : _a.call(slots)
-          );
-        };
-        const renderButton = () => {
-          var _a;
-          return vue.h(
-            "view",
-            {
-              class: `${componentName2}__button ${pValue.value && `${componentName2}__button--active`} ${pDisabled.value ? `${componentName2}__button--disabled` : ""}`
-            },
-            (_a = slots.default) == null ? void 0 : _a.call(slots)
-          );
-        };
-        const handleClick = () => {
-          var _a, _b;
-          if (pDisabled.value)
-            return;
-          if (checked.value && state.partialSelect) {
-            state.partialSelect = false;
-            emitChange(checked.value, (_a = slots.default) == null ? void 0 : _a.call(slots)[0].children);
-            return;
-          }
-          emitChange(!checked.value, (_b = slots.default) == null ? void 0 : _b.call(slots)[0].children);
-          if (hasParent.value) {
-            const value = parent.value.value;
-            const max = parent.max.value;
-            const { label } = props;
-            const index = value.indexOf(label);
-            if (index > -1) {
-              value.splice(index, 1);
-            } else if (index <= -1 && (value.length < max || !max)) {
-              value.push(label);
-            }
-            parent.updateValue(value);
-          }
-        };
-        vue.onMounted(() => {
-          hasParent.value && parent.link(vue.getCurrentInstance());
-        });
-        vue.onBeforeUnmount(() => {
-          hasParent.value && parent.unlink(vue.getCurrentInstance());
-        });
-        vue.watch(
-          () => props.indeterminate,
-          (newVal) => {
-            state.partialSelect = newVal;
-          }
-        );
-        return () => {
-          return vue.h(
-            "view",
-            {
-              class: `${componentName2} ${componentName2}--${props.shape} ${props.textPosition === "left" ? `${componentName2}--reverse` : ""}`,
-              onClick: handleClick
-            },
-            [props.shape == "button" ? renderButton() : [renderIcon2(), renderLabel()]]
-          );
-        };
-      }
-    };
-  };
   const { create: create$1d, componentName: componentName$h } = createComponent("checkbox");
-  const _sfc_main$1d = create$1d(component$1(componentName$h, { CheckNormal: iconsVueTaro.CheckNormal, Checked: iconsVueTaro.Checked, CheckDisabled: iconsVueTaro.CheckDisabled }));
+  const _sfc_main$1d = create$1d({
+    props: {
+      modelValue: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      textPosition: {
+        type: String,
+        default: "right"
+      },
+      iconSize: {
+        type: [String, Number],
+        default: ""
+      },
+      label: {
+        type: String,
+        default: ""
+      },
+      indeterminate: {
+        type: Boolean,
+        default: false
+      },
+      shape: {
+        type: String,
+        default: "round"
+        // button
+      }
+    },
+    emits: ["change", "update:modelValue"],
+    setup(props, { emit, slots }) {
+      const parent = vue.inject(CHECKBOX_KEY, null);
+      const state = vue.reactive({
+        partialSelect: props.indeterminate
+      });
+      const hasParent = vue.computed(() => !!parent);
+      const pValue = vue.computed(() => {
+        if (hasParent.value) {
+          return parent.value.value.includes(props.label);
+        } else {
+          return props.modelValue;
+        }
+      });
+      const pDisabled = vue.computed(() => {
+        return hasParent.value ? parent.disabled.value ? parent.disabled.value : props.disabled : props.disabled;
+      });
+      const checked = vue.computed(() => !!props.modelValue);
+      const color = vue.computed(() => {
+        return !pDisabled.value ? state.partialSelect ? "nut-checkbox__icon--indeterminate" : !pValue.value ? "nut-checkbox__icon--unchecked" : "nut-checkbox__icon" : "nut-checkbox__icon--disable";
+      });
+      let updateType = "";
+      const emitChange = (value, label) => {
+        updateType = "click";
+        emit("update:modelValue", value);
+        emit("change", value, label);
+      };
+      vue.watch(
+        () => props.modelValue,
+        (v) => {
+          if (updateType == "click") {
+            updateType = "";
+          } else {
+            emit("change", v);
+          }
+        }
+      );
+      const renderIcon2 = () => {
+        const { iconSize } = props;
+        const iconNodeMap = {
+          CheckNormal: slots.icon ? slots.icon : iconsVueTaro.CheckNormal,
+          Checked: slots.checkedIcon ? slots.checkedIcon : iconsVueTaro.Checked,
+          CheckDisabled: slots.indeterminate ? slots.indeterminate : iconsVueTaro.CheckDisabled
+        };
+        const iconNode = state.partialSelect ? iconNodeMap.CheckDisabled : !pValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
+        const size = pxCheck(iconSize);
+        return vue.h(iconNode, {
+          width: size,
+          height: size,
+          size,
+          class: color.value
+        });
+      };
+      const renderLabel = () => {
+        var _a;
+        return vue.h(
+          "view",
+          {
+            class: `${componentName$h}__label ${pDisabled.value ? `${componentName$h}__label--disabled` : ""}`
+          },
+          (_a = slots.default) == null ? void 0 : _a.call(slots)
+        );
+      };
+      const renderButton = () => {
+        var _a;
+        return vue.h(
+          "view",
+          {
+            class: `${componentName$h}__button ${pValue.value && `${componentName$h}__button--active`} ${pDisabled.value ? `${componentName$h}__button--disabled` : ""}`
+          },
+          (_a = slots.default) == null ? void 0 : _a.call(slots)
+        );
+      };
+      const handleClick = () => {
+        var _a, _b;
+        if (pDisabled.value)
+          return;
+        if (checked.value && state.partialSelect) {
+          state.partialSelect = false;
+          emitChange(checked.value, (_a = slots.default) == null ? void 0 : _a.call(slots)[0].children);
+          return;
+        }
+        emitChange(!checked.value, (_b = slots.default) == null ? void 0 : _b.call(slots)[0].children);
+        if (hasParent.value) {
+          const value = parent.value.value;
+          const max = parent.max.value;
+          const { label } = props;
+          const index = value.indexOf(label);
+          if (index > -1) {
+            value.splice(index, 1);
+          } else if (index <= -1 && (value.length < max || !max)) {
+            value.push(label);
+          }
+          parent.updateValue(value);
+        }
+      };
+      vue.onMounted(() => {
+        hasParent.value && parent.link(vue.getCurrentInstance());
+      });
+      vue.onBeforeUnmount(() => {
+        hasParent.value && parent.unlink(vue.getCurrentInstance());
+      });
+      vue.watch(
+        () => props.indeterminate,
+        (newVal) => {
+          state.partialSelect = newVal;
+        }
+      );
+      return () => {
+        return vue.h(
+          "view",
+          {
+            class: `${componentName$h} ${componentName$h}--${props.shape} ${props.textPosition === "left" ? `${componentName$h}--reverse` : ""}`,
+            onClick: handleClick
+          },
+          [props.shape == "button" ? renderButton() : [renderIcon2(), renderLabel()]]
+        );
+      };
+    }
+  });
   const { create: create$1c, componentName: componentName$g } = createComponent("checkbox-group");
   const _sfc_main$1c = create$1c({
     props: {
