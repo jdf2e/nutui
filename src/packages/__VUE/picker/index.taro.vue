@@ -85,7 +85,7 @@ export default create({
   },
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
-  setup(props: any, { emit }: any) {
+  setup(props, { emit }) {
     const translate = useLocale(cN);
     const {
       changeHandler,
