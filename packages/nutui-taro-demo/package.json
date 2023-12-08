@@ -48,7 +48,7 @@
     "eslint": "^8.55.0",
     "eslint-config-taro": "3.6.19",
     "style-loader": "^3.3.3",
-    "stylelint": "^16.0.0",
+    "stylelint": "^16.0.1",
     "typescript": "^5.3.3",
     "vue-loader": "^17.3.1",
     "webpack": "^5.89.0"

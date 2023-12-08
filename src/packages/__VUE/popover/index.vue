@@ -196,8 +196,8 @@ export default create({
       rootRect.value = rect;
       setTimeout(() => {
         conentRootRect.value = {
-          height: popoverContentRef.value.clientHeight,
-          width: popoverContentRef.value.clientWidth
+          height: popoverContentRef.value?.clientHeight,
+          width: popoverContentRef.value?.clientWidth
         };
       }, 0);
     };
