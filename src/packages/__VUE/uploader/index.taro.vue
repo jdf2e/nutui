@@ -117,7 +117,7 @@ export default create({
 
     timeout: { type: [Number, String], default: 1000 * 30 },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
-    fileList: { type: Array<any>, default: () => [] },
+    fileList: { type: Array as PropType<any[]>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },
