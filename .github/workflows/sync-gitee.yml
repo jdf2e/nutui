@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy-site-sync-gitee:
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     steps:
       - name: Sync to Gitee
