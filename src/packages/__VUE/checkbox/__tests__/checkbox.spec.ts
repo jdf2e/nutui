@@ -5,7 +5,7 @@ import { reactive, toRefs } from 'vue';
 test('basic usage', () => {
   const wrapper = mount(Checkbox, {
     props: {
-      modelValue: '',
+      modelValue: true,
       label: '复选框'
     }
   });

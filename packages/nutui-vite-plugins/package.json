@@ -19,7 +19,9 @@
   "main": "./dist/index.cjs",
   "module": "dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "pnpm build",
     "dev": "tsup --watch",
@@ -28,16 +30,16 @@
   "author": "jdf2e",
   "license": "MIT",
   "dependencies": {
-    "lzutf8": "^0.6.3",
-    "markdown-it-container": "^3.0.0",
-    "unplugin-vue-markdown": "^0.25.2",
+    "fs-extra": "^11.2.0",
     "highlight.js": "^11.9.0",
-    "fs-extra": "^11.1.1"
+    "lzutf8": "^0.6.3",
+    "markdown-it-container": "^4.0.0",
+    "unplugin-vue-markdown": "^0.25.2"
   },
   "devDependencies": {
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/markdown-it-container": "^2.0.9",
-    "@types/fs-extra": "^11.0.4"
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
   }
 }
