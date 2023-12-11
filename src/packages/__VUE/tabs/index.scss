@@ -43,13 +43,6 @@
         flex-direction: column;
         flex-shrink: 0;
       }
-      &.scrollable {
-        overflow-x: hidden;
-        overflow-y: auto;
-        .nut-tabs__titles-item {
-          padding: 0 10px 0 15px;
-        }
-      }
       &.scroll-vertical {
         overflow-y: scroll;
         height: auto;
@@ -58,6 +51,7 @@
         }
       }
       &-item {
+        width: 100%;
         height: $tabs-vertical-titles-item-height;
         flex: none;
         &__smile {
