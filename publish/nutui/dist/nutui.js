@@ -3840,7 +3840,7 @@ function Bc(e, t, n, l, o, a) {
     }, 8, ["top", "container", "onScroll"])) : (u(), d("view", {
       key: 1,
       ref: "navRef",
-      class: B(["nut-tabs__titles", { [e.type]: e.type, scrollable: e.titleScroll, "scroll-vertical": e.getScrollY, [e.size]: e.size }]),
+      class: B(["nut-tabs__titles", { [e.type]: e.type, scrollable: e.titleScroll, [e.size]: e.size }]),
       style: L(e.tabsNavStyle)
     }, [
       e.$slots.titles ? D(e.$slots, "titles", { key: 0 }) : (u(!0), d(ee, { key: 1 }, re(e.titles, (r, p) => (u(), d("view", {

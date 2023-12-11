@@ -500,7 +500,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       "scroll-left": _ctx.scrollLeft,
       "scroll-top": _ctx.scrollTop,
       "enable-flex": true,
-      class: normalizeClass(["nut-tabs__titles tabs-scrollview", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, "scroll-vertical": _ctx.getScrollY, [_ctx.size]: _ctx.size }]),
+      class: normalizeClass(["nut-tabs__titles", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, [_ctx.size]: _ctx.size }]),
       style: normalizeStyle(_ctx.tabsNavStyle)
     }, {
       default: withCtx(() => [

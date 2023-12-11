@@ -3648,7 +3648,7 @@ var __async = (__this, __arguments, generator) => {
         "scroll-left": _ctx.scrollLeft,
         "scroll-top": _ctx.scrollTop,
         "enable-flex": true,
-        class: vue.normalizeClass(["nut-tabs__titles tabs-scrollview", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, "scroll-vertical": _ctx.getScrollY, [_ctx.size]: _ctx.size }]),
+        class: vue.normalizeClass(["nut-tabs__titles", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, [_ctx.size]: _ctx.size }]),
         style: vue.normalizeStyle(_ctx.tabsNavStyle)
       }, {
         default: vue.withCtx(() => [

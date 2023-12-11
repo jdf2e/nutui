@@ -501,7 +501,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["top", "container", "onScroll"])) : (openBlock(), createElementBlock("view", {
       key: 1,
       ref: "navRef",
-      class: normalizeClass(["nut-tabs__titles", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, "scroll-vertical": _ctx.getScrollY, [_ctx.size]: _ctx.size }]),
+      class: normalizeClass(["nut-tabs__titles", { [_ctx.type]: _ctx.type, scrollable: _ctx.titleScroll, [_ctx.size]: _ctx.size }]),
       style: normalizeStyle(_ctx.tabsNavStyle)
     }, [
       _ctx.$slots.titles ? renderSlot(_ctx.$slots, "titles", { key: 0 }) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(_ctx.titles, (item, index) => {
