@@ -50,7 +50,8 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/]
     }),
     markdown({
-      docRoot: path.resolve(__dirname, './src/packages/__VUE')
+      docRoot: path.resolve(__dirname, './src/packages/__VUE'),
+      docTaroRoot: path.resolve(__dirname, './packages/nutui-taro-demo/src')
     })
   ],
   build: {
