@@ -32,7 +32,7 @@
       <view
         ref="navRef"
         class="nut-tabs__titles"
-        :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
+        :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
       >
         <slot v-if="$slots.titles" name="titles"></slot>

@@ -8,8 +8,8 @@
       :scroll-left="scrollLeft"
       :scroll-top="scrollTop"
       :enable-flex="true"
-      class="nut-tabs__titles tabs-scrollview"
-      :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
+      class="nut-tabs__titles"
+      :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
       <view class="nut-tabs__list">
