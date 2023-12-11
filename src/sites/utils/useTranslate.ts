@@ -19,8 +19,8 @@ export const useTranslate = <
 
 export const translateChange = () => {
   let href = '';
-  let location = window.parent.location;
-  let currentLang = Locale.currentLang;
+  const location = window.parent.location;
+  const currentLang = Locale.currentLang;
   if (currentLang.value == 'zh-CN') {
     href = location.href.replace('zh-CN', 'en-US');
     Locale.use('en-US');
