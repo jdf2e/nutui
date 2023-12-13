@@ -3104,7 +3104,7 @@
             {
               "name": "gutter",
               "default": "`-`",
-              "description": "列元素之间的间距（单位为 `px`）",
+              "description": "列元素之间的间距（单位为`px`）",
               "value": {
                 "type": "string | number",
                 "kind": "expression"
@@ -3113,7 +3113,7 @@
             {
               "name": "justify",
               "default": "`start`",
-              "description": "`Flex` 主轴对齐方式，可选值为 `start` `end` `center` `space-around` `space-between` `space-evenly`",
+              "description": "Flex 主轴对齐方式，可选值为 `start` `end` `center` `space-around` `space-between` `space-evenly`",
               "value": {
                 "type": "string",
                 "kind": "expression"
