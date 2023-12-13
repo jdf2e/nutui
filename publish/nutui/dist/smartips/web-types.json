@@ -4826,6 +4826,15 @@
                 "type": "string",
                 "kind": "expression"
               }
+            },
+            {
+              "name": "size",
+              "default": "`normal`",
+              "description": "尺寸，可选值为 `large` `small` `mini` `normal`，仅在 shape 为 `button` 时生效",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
             }
           ]
         },

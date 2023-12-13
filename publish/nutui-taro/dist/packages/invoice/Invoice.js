@@ -21,7 +21,7 @@ import { provide, readonly, computed, watch, h, ref, reactive, onMounted, toRefs
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import NutForm from "../form/Form.js";
 import NutFormItem from "../formitem/FormItem.js";
-import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_lang-fOfhj0uT.js";
+import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_lang-Mo2SK5IV.js";
 import { R as RADIO_KEY } from "../types-odSRziQJ.js";
 import NutButton from "../button/Button.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";

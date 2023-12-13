@@ -8371,9 +8371,14 @@ var __async = (__this, __arguments, generator) => {
       iconSize: {
         type: [String, Number],
         default: ""
+      },
+      size: {
+        type: String,
+        default: "normal"
       }
     },
     setup(props, { slots }) {
+      const { size } = vue.toRefs(props);
       let parent = vue.inject(RADIO_KEY, null);
       const isCurValue = vue.computed(() => {
         return parent.label.value === props.label;
@@ -8388,11 +8393,11 @@ var __async = (__this, __arguments, generator) => {
           Checked: slots.checkedIcon ? slots.checkedIcon : iconsVueTaro.CheckChecked
         };
         const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
-        const size = pxCheck(iconSize);
+        const size2 = pxCheck(iconSize);
         return vue.h(iconNode, {
-          width: size,
-          height: size,
-          size,
+          width: size2,
+          height: size2,
+          size: size2,
           class: color.value
         });
       };
@@ -8411,7 +8416,7 @@ var __async = (__this, __arguments, generator) => {
         return vue.h(
           "view",
           {
-            class: `${componentName$d}__button ${isCurValue.value && `${componentName$d}__button--active`} ${props.disabled ? `${componentName$d}__button--disabled` : ""}`
+            class: `${componentName$d}__button ${isCurValue.value && `${componentName$d}__button--active`} ${componentName$d}__button--${size.value} ${props.disabled ? `${componentName$d}__button--disabled` : ""}`
           },
           (_a = slots.default) == null ? void 0 : _a.call(slots)
         );

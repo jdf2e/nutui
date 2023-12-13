@@ -1,6 +1,6 @@
-import { inject, computed, h } from "vue";
+import { toRefs, inject, computed, h } from "vue";
 import { c as createComponent } from "./component-TCzwHGVq.js";
-import { CheckNormal, CheckChecked } from "@nutui/icons-vue";
+import { CheckNormal, CheckChecked } from "@nutui/icons-vue-taro";
 import { p as pxCheck } from "./pxCheck-OnXlN1NC.js";
 import { R as RADIO_KEY } from "./types-odSRziQJ.js";
 const { componentName, create } = createComponent("radio");
@@ -26,9 +26,14 @@ const _sfc_main = create({
     iconSize: {
       type: [String, Number],
       default: ""
+    },
+    size: {
+      type: String,
+      default: "normal"
     }
   },
   setup(props, { slots }) {
+    const { size } = toRefs(props);
     let parent = inject(RADIO_KEY, null);
     const isCurValue = computed(() => {
       return parent.label.value === props.label;
@@ -43,10 +48,11 @@ const _sfc_main = create({
         Checked: slots.checkedIcon ? slots.checkedIcon : CheckChecked
       };
       const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
-      const size = pxCheck(iconSize);
+      const size2 = pxCheck(iconSize);
       return h(iconNode, {
-        width: size,
-        height: size,
+        width: size2,
+        height: size2,
+        size: size2,
         class: color.value
       });
     };
@@ -65,7 +71,7 @@ const _sfc_main = create({
       return h(
         "view",
         {
-          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${props.disabled ? `${componentName}__button--disabled` : ""}`
+          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${componentName}__button--${size.value} ${props.disabled ? `${componentName}__button--disabled` : ""}`
         },
         (_a = slots.default) == null ? void 0 : _a.call(slots)
       );
@@ -83,7 +89,7 @@ const _sfc_main = create({
           class: `${componentName} ${componentName}--${props.shape} ${reverseState.value ? `${componentName}--reverse` : ""}`,
           onClick: handleClick
         },
-        [props.shape === "button" ? renderButton() : [renderIcon(), renderLabel()]]
+        [props.shape == "button" ? renderButton() : [renderIcon(), renderLabel()]]
       );
     };
   }

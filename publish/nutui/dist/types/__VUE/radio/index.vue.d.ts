@@ -1,3 +1,5 @@
+import { PropType } from 'vue';
+import { RadioButtonSize } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -19,6 +21,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: string;
     };
+    size: {
+        type: PropType<RadioButtonSize>;
+        default: string;
+    };
 }, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
@@ -38,8 +44,13 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: string;
     };
+    size: {
+        type: PropType<RadioButtonSize>;
+        default: string;
+    };
 }>>, {
     label: string | number | boolean;
+    size: RadioButtonSize;
     disabled: boolean;
     shape: string;
     iconSize: string | number;

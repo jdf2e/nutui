@@ -1,4 +1,4 @@
-import { _ as _sfc_main } from "../index.vue_vue_type_script_lang-KuoPcQZs.js";
+import { _ as _sfc_main } from "../index.vue_vue_type_script_lang-3rT4jo0e.js";
 import "vue";
 import "../component-TCzwHGVq.js";
 import "@nutui/icons-vue";
