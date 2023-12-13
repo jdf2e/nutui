@@ -18,92 +18,29 @@ app.use(Space);
 
 The Space component sets a certain spacing between the subcomponents, the default spacing is 8px.
 
-:::demo
-
-```vue
-<template>
-  <nut-space>
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-  </nut-space>
-</template>
-```
+> demo: space basic
 
 :::
 
-### Direction
+### Custom Direction
 
 By setting the direction property to vertical, you can set the spacing of the vertical alignment.
 
-:::demo
+> demo: space direction
 
-```vue
-<template>
-  <nut-space direction="vertical" fill>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-  </nut-space>
-</template>
-```
-
-:::
-
-### Custom Spacing
+### Custom gutter
 
 Control the size of the spacing by adjusting the gutter value. When the number type is passed, px units are used by default; You can also pass in a string, such as a value with units like 2rem or 5vw.
-You can also set css variables -nut-space-gap control, priority: gutter>css Variables > Default Style.
 
-:::demo
+You can also set css variables `-nut-space-gap`, priority: property > css Variables > Default Style.
 
-```vue
-<template>
-  <!-- gutter -->
-  <nut-space :gutter="20">
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-    <nut-button type="primary">Button</nut-button>
-  </nut-space>
-  <!-- css variables -->
-  <nut-cell :style="{ '--nut-space-gap': '30px' }">
-    <nut-space>
-      <nut-button type="primary">Button</nut-button>
-      <nut-button type="primary">Button</nut-button>
-      <nut-button type="primary">Button</nut-button>
-      <nut-button type="primary">Button</nut-button>
-    </nut-space>
-  </nut-cell>
-</template>
-```
+> demo: space gutter
 
-:::
-
-### word wrap
+### Word wrap
 
 In horizontal mode, the wrap property controls whether child elements are wrapped automatically.
 
-:::demo
-
-```vue
-<template>
-  <nut-space wrap>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-    <nut-button type="primary" block>Button</nut-button>
-  </nut-space>
-</template>
-```
-
-:::
+> demo: space wrap
 
 ### Props
 
