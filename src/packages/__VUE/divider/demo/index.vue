@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full bg-w">
+  <Demo class="full bg-w">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
@@ -17,7 +17,7 @@
 
     <h2>{{ t('vertical') }}</h2>
     <Vertical />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">

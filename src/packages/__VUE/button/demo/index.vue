@@ -1,5 +1,5 @@
 <template>
-  <div class="demo demo-button">
+  <Demo class="demo-button">
     <h2>{{ t('type') }}</h2>
     <Type />
 
@@ -26,7 +26,7 @@
 
     <h2>{{ t('color') }}</h2>
     <Color />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">

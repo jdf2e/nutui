@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full">
+  <Demo class="full">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
@@ -8,7 +8,7 @@
 
     <h2>{{ t('flex') }}</h2>
     <Flex />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
