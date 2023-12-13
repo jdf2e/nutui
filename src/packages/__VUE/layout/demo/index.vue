@@ -1,5 +1,5 @@
 <template>
-  <Demo class="demo full">
+  <div class="demo full">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
@@ -8,11 +8,11 @@
 
     <h2>{{ t('flex') }}</h2>
     <Flex />
-  </Demo>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Gap from './gap.vue';
 import Flex from './flex.vue';
