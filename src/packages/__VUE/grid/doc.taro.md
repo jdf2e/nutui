@@ -17,31 +17,31 @@ app.use(GridItem);
 
 ### 基础用法
 
-> demo: grid basic
+> demo: grid basic layout
 
 ### 自定义列数
 
-> demo: grid column
+> demo: grid column layout
 
 ### 正方形格子
 
-> demo: grid square
+> demo: grid square layout
 
 ### 格子间距
 
-> demo: grid gutter
+> demo: grid gutter layout
 
 ### 内容翻转
 
-> demo: grid reverse
+> demo: grid reverse layout
 
 ### 内容横向
 
-> demo: grid horizontal
+> demo: grid horizontal layout
 
 ### 自定义内容
 
-> demo: grid content
+> demo: grid content layout
 
 ## API
 
