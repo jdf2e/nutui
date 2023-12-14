@@ -8,23 +8,7 @@ import { markdown } from '@nutui/vite-plugins';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/h5/vue/4x/',
-  server: {
-    port: 2023,
-    host: '0.0.0.0',
-    proxy: {
-      '/devServer': {
-        target: 'https://nutui.jd.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/devServer/, '')
-      },
-      '/devTheme': {
-        target: 'https://nutui.jd.com/theme/source',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/devTheme/, '')
-      }
-    }
-  },
+  base: '/',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
   },
@@ -50,7 +34,8 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/]
     }),
     markdown({
-      docRoot: path.resolve(__dirname, './src/packages/__VUE')
+      docRoot: path.resolve(__dirname, './src/packages/__VUE'),
+      docTaroRoot: path.resolve(__dirname, './packages/nutui-taro-demo/src')
     })
   ],
   build: {

@@ -97,7 +97,7 @@ export default create({
     url: { type: String, default: '' },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
     timeout: { type: [Number, String], default: 1000 * 30 },
-    fileList: { type: Array<any>, default: () => [] },
+    fileList: { type: Array as PropType<any[]>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },

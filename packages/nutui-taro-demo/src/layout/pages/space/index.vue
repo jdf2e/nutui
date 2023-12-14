@@ -1,50 +1,38 @@
 <template>
-  <Demo>
-    <h2>基础用法</h2>
-    <nut-cell>
-      <nut-space>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-      </nut-space>
-    </nut-cell>
-    <h2>垂直排列</h2>
-    <nut-cell>
-      <nut-space direction="vertical" fill>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-      </nut-space>
-    </nut-cell>
-    <h2>自定义间距</h2>
-    <nut-cell>
-      <nut-space :gutter="20">
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-      </nut-space>
-    </nut-cell>
-    <nut-cell :style="{ '--nut-space-gap': '30px' }">
-      <nut-space>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-        <nut-button type="primary">按钮</nut-button>
-      </nut-space>
-    </nut-cell>
-    <h2>自动换行</h2>
-    <nut-cell>
-      <nut-space wrap>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-        <nut-button type="primary" block>按钮</nut-button>
-      </nut-space>
-    </nut-cell>
+  <Demo class="full">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('direction') }}</h2>
+    <Direction />
+
+    <h2>{{ t('gutter') }}</h2>
+    <Gutter />
+
+    <h2>{{ t('wrap') }}</h2>
+    <Wrap />
   </Demo>
 </template>
+
+<script lang="ts" setup>
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Direction from './direction.vue';
+import Gutter from './gutter.vue';
+import Wrap from './wrap.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    direction: '垂直排列',
+    gutter: '自定义间距',
+    wrap: '自动换行'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    direction: 'Custom Direction',
+    gutter: 'Custom gutter',
+    wrap: 'Word wrap'
+  }
+});
+</script>
