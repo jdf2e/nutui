@@ -1,46 +1,46 @@
 <template>
-  <div class="demo demo-button">
-    <h2>{{ translate('type') }}</h2>
+  <Demo class="demo-button">
+    <h2>{{ t('type') }}</h2>
     <Type />
 
-    <h2>{{ translate('plain') }}</h2>
+    <h2>{{ t('plain') }}</h2>
     <Plain />
 
-    <h2>{{ translate('disabled') }}</h2>
+    <h2>{{ t('disabled') }}</h2>
     <Disabled />
 
-    <h2>{{ translate('shape') }}</h2>
+    <h2>{{ t('shape') }}</h2>
     <Shape />
 
-    <h2>{{ translate('loading') }}</h2>
+    <h2>{{ t('loading') }}</h2>
     <Loading />
 
-    <h2>{{ translate('icon') }}</h2>
+    <h2>{{ t('icon') }}</h2>
     <Icon />
 
-    <h2>{{ translate('size') }}</h2>
+    <h2>{{ t('size') }}</h2>
     <Size />
 
-    <h2>{{ translate('block') }}</h2>
+    <h2>{{ t('block') }}</h2>
     <Block />
 
-    <h2>{{ translate('color') }}</h2>
+    <h2>{{ t('color') }}</h2>
     <Color />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import Type from './demo/type.vue';
-import Plain from './demo/plain.vue';
-import Disabled from './demo/disabled.vue';
-import Shape from './demo/shape.vue';
-import Loading from './demo/loading.vue';
-import Icon from './demo/icon.vue';
-import Size from './demo/size.vue';
-import Block from './demo/block.vue';
-import Color from './demo/color.vue';
-const translate = useTranslate({
+import { useTranslate } from '@/sites/utils';
+import Type from './type.vue';
+import Plain from './plain.vue';
+import Disabled from './disabled.vue';
+import Shape from './shape.vue';
+import Loading from './loading.vue';
+import Icon from './icon.vue';
+import Size from './size.vue';
+import Block from './block.vue';
+import Color from './color.vue';
+const t = useTranslate({
   'zh-CN': {
     type: '按钮类型',
     plain: '朴素按钮',

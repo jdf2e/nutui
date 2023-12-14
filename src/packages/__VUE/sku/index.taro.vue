@@ -23,7 +23,7 @@
         </template>
       </sku-header>
 
-      <view class="nut-sku-content">
+      <nut-scroll-view class="nut-sku-content" :scroll-y="true">
         <slot name="sku-select-top"></slot>
 
         <slot name="sku-select"></slot>
@@ -44,7 +44,7 @@
         ></sku-stepper>
 
         <slot name="sku-stepper-bottom"></slot>
-      </view>
+      </nut-scroll-view>
 
       <sku-operate
         :btn-extra-text="btnExtraText"
@@ -68,6 +68,7 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import NutPopup from '../popup/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('sku');
@@ -167,7 +168,8 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    NutPopup
+    NutPopup,
+    NutScrollView
   },
 
   setup(props: any, { emit, slots }) {

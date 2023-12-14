@@ -51,13 +51,13 @@ test('base render', async () => {
   root.id = 'target5';
   const wrapper = mount(Tour, {
     props: {
-      visible: false,
+      modelValue: false,
       steps: steps1,
       type: 'tile',
       location: 'bottom-end'
     }
   });
-  await wrapper.setProps({ visible: true });
+  await wrapper.setProps({ modelValue: true });
   expect(wrapper.find('.nut-popover').exists()).toBeTruthy();
   expect(wrapper.find('.nut-popover-content--bottom-end').exists()).toBeTruthy();
 });
@@ -67,7 +67,7 @@ test('custom style', async () => {
   root.id = 'target5';
   const wrapper = mount(Tour, {
     props: {
-      visible: true,
+      modelValue: true,
       steps: steps1,
       type: 'tile',
       location: 'bottom-end',
@@ -91,7 +91,7 @@ test('custom offset', async () => {
   root.id = 'target6';
   const wrapper = mount(Tour, {
     props: {
-      visible: false,
+      modelValue: false,
       steps: steps2,
       type: 'tile',
       location: 'bottom-end',
@@ -100,7 +100,7 @@ test('custom offset', async () => {
       offset: [8, 8]
     }
   });
-  wrapper.setProps({ visible: true });
+  wrapper.setProps({ modelValue: true });
   const arrow = wrapper.find('.nut-popover-arrow');
   expect(arrow.html()).toContain('right: 52px');
 });
@@ -110,7 +110,7 @@ test('slot render', async () => {
   root.id = 'target6';
   const wrapper = mount(Tour, {
     props: {
-      visible: false,
+      modelValue: false,
       steps: steps4,
       type: 'tile',
       location: 'bottom-end',
@@ -122,7 +122,7 @@ test('slot render', async () => {
       default: `nutui 4.x 即将发布，敬请期待`
     }
   });
-  await wrapper.setProps({ visible: true });
+  await wrapper.setProps({ modelValue: true });
   const popover = wrapper.find('.nut-popover-content-group');
   expect(popover.text()).toEqual('nutui 4.x 即将发布，敬请期待');
 });
@@ -134,12 +134,12 @@ test('steps render', async () => {
   root1.id = 'target2';
   const wrapper = mount(Tour, {
     props: {
-      visible: false,
+      modelValue: false,
       steps: steps,
       location: 'bottom-end'
     }
   });
-  await wrapper.setProps({ visible: true });
+  await wrapper.setProps({ modelValue: true });
 
   const btn = wrapper.find('.nut-tour-content-bottom-operate-btn');
   expect(btn.exists()).toBeTruthy();

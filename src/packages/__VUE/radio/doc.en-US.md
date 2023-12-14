@@ -40,7 +40,7 @@ Bind the **label** of the current option through **v-model**. And it must be use
     </nut-cell>
     <nut-cell>
       <nut-radio-group v-model="radioVal">
-        <nut-radio shape="button" label="1">Option 1</nut-radio>
+        <nut-radio shape="button" label="1" size="large">Option 1</nut-radio>
         <nut-radio disabled shape="button" label="2">Option 2</nut-radio>
         <nut-radio shape="button" label="3">Option 3</nut-radio>
       </nut-radio-group>
@@ -78,7 +78,7 @@ const radioVal = ref('1');
     </nut-cell>
     <nut-cell>
       <nut-radio-group v-model="radioVal" direction="horizontal">
-        <nut-radio shape="button" label="1">Option 1</nut-radio>
+        <nut-radio shape="button" label="1" size="large">Option 1</nut-radio>
         <nut-radio shape="button" label="2">Option 2</nut-radio>
         <nut-radio shape="button" label="3">Option 3</nut-radio>
       </nut-radio-group>
@@ -187,6 +187,7 @@ const handleChange = (value) => {
 | icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` |
 | label | Radio box ID | string \| number \| boolean | - |
 | shape | Shape, optional values are `button`、`round` | string | `round` |
+| size | Can be set to `large` `small` `mini` `normal`, when `shape` = `button` | string | `normal` |
 
 ### Radio Slots
 

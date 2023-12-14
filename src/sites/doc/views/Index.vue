@@ -9,16 +9,6 @@
         </div>
       </div>
       <div class="doc-content-document isComponent">
-        <div class="doc-content-tabs">
-          <div
-            v-for="item in data.tabs"
-            :key="item.key"
-            class="tab-item"
-            :class="{ cur: data.curKey === item.key }"
-            @click="handleTabs(item.key)"
-            >{{ item.text }}</div
-          >
-        </div>
         <router-view />
       </div>
       <DocDemoPreview :url="data.demoUrl"></DocDemoPreview>
@@ -26,7 +16,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 import { nav } from '@/config.json';
 import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import DocHeader from '@/sites/doc/components/DocHeader.vue';
@@ -35,7 +25,6 @@ import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { initSiteLang } from '@/sites/assets/util/useTranslate';
 const route = useRoute();
-const router = useRouter();
 initSiteLang();
 const state = reactive({
   fixed: false, // 是否吸顶
@@ -43,7 +32,8 @@ const state = reactive({
   // 组件名称
   componentName: {
     name: '',
-    cName: ''
+    cName: '',
+    type: ''
   }
 });
 const data = reactive({
@@ -66,25 +56,18 @@ const isTaro = (router: RouteLocationNormalized) => {
 };
 
 const watchDemoUrl = (router: RouteLocationNormalized) => {
-  const { origin, pathname } = window.location;
   RefData.getInstance().currentRoute.value = router.path as string;
-  let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
-  data.demoUrl = url.replace('/component', '');
-};
-
-const watchDocMd = (curKey: string) => {
-  const path = route.path;
-  // router.replace(isTaro(route) ? path.substr(0, path.length - 5) : `${path}-taro`);
-  if (curKey.includes('taro')) {
-    router.replace(isTaro(route) ? path : `${path}-taro`);
+  if (isTaro(router)) {
+    data.demoUrl = `http://localhost:10086/#/${
+      state.componentName.type
+    }/pages/${state.componentName.name.toLowerCase()}/index`;
   } else {
-    router.replace(isTaro(route) ? path.substr(0, path.length - 5) : path);
+    if (router.path.includes('zh-CN')) {
+      data.demoUrl = `/demo.html#/zh-CN/${state.componentName.name.toLowerCase()}`;
+    } else {
+      data.demoUrl = `/demo.html#/en-US/${state.componentName.name.toLowerCase()}`;
+    }
   }
-};
-
-const handleTabs = (curKey: string) => {
-  data.curKey = curKey;
-  watchDocMd(curKey);
 };
 
 onMounted(() => {
@@ -96,7 +79,6 @@ onMounted(() => {
 
 const scrollTitle = () => {
   let top = document.documentElement.scrollTop;
-  // console.log('state.hidden', state.hidden)
   if (top > 127) {
     state.fixed = true;
     if (top < 142) {
@@ -118,6 +100,7 @@ const componentTitle = (to?: any) => {
       if (sItem.name.toLowerCase() == state.componentName.name) {
         state.componentName.name = sItem.name;
         state.componentName.cName = sItem.cName;
+        state.componentName.type = item.enName;
         return;
       }
     });
@@ -125,9 +108,9 @@ const componentTitle = (to?: any) => {
 };
 
 onBeforeRouteUpdate((to) => {
+  componentTitle(to);
   watchDemoUrl(to);
   data.curKey = isTaro(to) ? 'taro' : 'vue';
-  componentTitle(to);
 });
 </script>
 
@@ -144,75 +127,6 @@ $doc-title-height: 137px;
 
       .markdown-body {
         min-height: 600px;
-      }
-    }
-    &-tabs {
-      position: absolute;
-      right: 475px;
-      top: 48px;
-      display: flex;
-      height: 40px;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1;
-      padding: 2px;
-      box-sizing: border-box;
-
-      border-radius: 2px;
-      background: #eee;
-      box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
-      &.single {
-        padding: 0;
-        .tab-item {
-          line-height: 40px;
-          cursor: auto;
-        }
-      }
-      .tab-item {
-        position: relative;
-        padding: 0 10px;
-        line-height: 36px;
-        cursor: pointer;
-        font-size: 16px;
-        color: #323232;
-        text-align: center;
-        border-radius: 2px;
-        background: #eee;
-        &.cur {
-          font-weight: bold;
-          color: #323232;
-          background: #fff;
-        }
-      }
-    }
-    &-contributors {
-      margin: 50px 0;
-      a {
-        position: relative;
-      }
-      img {
-        height: 26px;
-        height: 26px;
-        border-radius: 50%;
-        margin-left: 8px;
-      }
-      .contributors-hover {
-        display: none;
-        padding: 5px 10px;
-        color: #fff;
-        font-size: 12px;
-        background-color: #000;
-        border-radius: 5px;
-        position: absolute;
-        /* min-width:150px; */
-        white-space: nowrap;
-        top: -200%;
-        transform: translateX(-55%);
-      }
-      a:hover {
-        .contributors-hover {
-          display: inline-block;
-        }
       }
     }
   }

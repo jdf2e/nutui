@@ -40,7 +40,7 @@ app.use(RadioGroup);
     </nut-cell>
     <nut-cell>
       <nut-radio-group v-model="radioVal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio shape="button" label="1" size="large">选项1</nut-radio>
         <nut-radio disabled shape="button" label="2">选项2</nut-radio>
         <nut-radio shape="button" label="3">选项3</nut-radio>
       </nut-radio-group>
@@ -78,7 +78,7 @@ const radioVal = ref('1');
     </nut-cell>
     <nut-cell>
       <nut-radio-group v-model="radioVal" direction="horizontal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio shape="button" label="1" size="large">选项1</nut-radio>
         <nut-radio shape="button" label="2">选项2</nut-radio>
         <nut-radio shape="button" label="3">选项3</nut-radio>
       </nut-radio-group>
@@ -187,6 +187,7 @@ const handleChange = (value) => {
 | icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18` |
 | label | 单选框标识 | string \| number \| boolean | - |
 | shape | 形状，可选值为 `button`、`round` | string | `round` |
+| size | 尺寸，可选值为 `large` `small` `mini` `normal`，仅在 shape 为 `button` 时生效 | string | `normal` |
 
 ### Radio Slots
 

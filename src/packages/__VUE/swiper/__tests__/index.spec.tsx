@@ -40,8 +40,8 @@ test('should render width and height', async () => {
 
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
-  expect(swiperItem.style.height).toEqual(`${wrapper.vm.height}px`);
-  expect(swiperItem.style.width).toEqual(`${wrapper.vm.width * (wrapper.vm.list as any).length}px`);
+  expect(swiperItem.style.height).toEqual(`500px`);
+  expect(swiperItem.style.width).toEqual(`${300 * 4}px`);
 });
 
 test('should render initpage', async () => {
@@ -77,7 +77,7 @@ test('should render initpage', async () => {
   await nextTick();
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
-  expect(swiperItem.style.transform).toEqual(`translateX(-${wrapper.vm.width * wrapper.vm.page}px)`);
+  expect(swiperItem.style.transform).toEqual(`translateX(-${375 * 2}px)`);
 });
 
 test('should render direction', async () => {
@@ -115,7 +115,7 @@ test('should render direction', async () => {
 
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
-  expect(swiperItem.style.transform).toEqual(`translateY(-${wrapper.vm.height * wrapper.vm.page}px)`);
+  expect(swiperItem.style.transform).toEqual(`translateY(-${300 * 1}px)`);
 });
 
 test('should render pagination', async () => {
