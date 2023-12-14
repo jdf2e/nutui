@@ -6,10 +6,12 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index.taro-vH2b6ZpB.js";
+import { _ as _sfc_main$5 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 import "../pxCheck-OnXlN1NC.js";
 import "@nutui/icons-vue-taro";
 import "../overlay/Overlay.js";
+import "@tarojs/taro";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";
 const _sfc_main$4 = create$4({
@@ -32,7 +34,7 @@ const _sfc_main$4 = create$4({
   }
 });
 const _hoisted_1$4 = { class: "nut-sku-header" };
-const _hoisted_2$4 = ["src"];
+const _hoisted_2$3 = ["src"];
 const _hoisted_3$3 = { class: "nut-sku-header-right" };
 const _hoisted_4$3 = {
   key: 3,
@@ -44,7 +46,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     createElementVNode("img", {
       class: "nut-sku-header-img",
       src: _ctx.goods.imagePath
-    }, null, 8, _hoisted_2$4),
+    }, null, 8, _hoisted_2$3),
     createTextVNode(),
     createElementVNode("view", _hoisted_3$3, [
       _ctx.getSlots("sku-header-price") ? renderSlot(_ctx.$slots, "sku-header-price", { key: 0 }) : (openBlock(), createBlock(_component_nut_price, {
@@ -102,7 +104,7 @@ const _sfc_main$3 = create$3({
   }
 });
 const _hoisted_1$3 = { class: "nut-sku-select" };
-const _hoisted_2$3 = { class: "nut-sku-select-item-title" };
+const _hoisted_2$2 = { class: "nut-sku-select-item-title" };
 const _hoisted_3$2 = { class: "nut-sku-select-item-skus" };
 const _hoisted_4$2 = ["onClick"];
 function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
@@ -112,7 +114,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
         key: item.id,
         class: "nut-sku-select-item"
       }, [
-        createElementVNode("view", _hoisted_2$3, toDisplayString(item.name), 1),
+        createElementVNode("view", _hoisted_2$2, toDisplayString(item.name), 1),
         createTextVNode(),
         createElementVNode("view", _hoisted_3$2, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(item.list, (itemAttr, itemAttrIndex) => {
@@ -195,13 +197,13 @@ const _sfc_main$2 = create$2({
   }
 });
 const _hoisted_1$2 = { class: "nut-sku-stepper" };
-const _hoisted_2$2 = { class: "nut-sku-stepper-title" };
+const _hoisted_2$1 = { class: "nut-sku-stepper-title" };
 const _hoisted_3$1 = ["innerHTML"];
 const _hoisted_4$1 = { class: "nut-sku-stepper-count" };
 function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_input_number = resolveComponent("nut-input-number");
   return openBlock(), createElementBlock("view", _hoisted_1$2, [
-    createElementVNode("view", _hoisted_2$2, toDisplayString(_ctx.stepperTitle), 1),
+    createElementVNode("view", _hoisted_2$1, toDisplayString(_ctx.stepperTitle), 1),
     createTextVNode(),
     createElementVNode("view", {
       class: "nut-sku-stepper-limit",
@@ -275,7 +277,7 @@ const _hoisted_1$1 = {
   key: 0,
   class: "nut-sku-operate"
 };
-const _hoisted_2$1 = {
+const _hoisted_2 = {
   key: 0,
   class: "nut-sku-operate-desc"
 };
@@ -286,7 +288,7 @@ const _hoisted_3 = {
 const _hoisted_4 = ["onClick"];
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.btnOptions.length > 0 ? (openBlock(), createElementBlock("view", _hoisted_1$1, [
-    _ctx.btnExtraText ? (openBlock(), createElementBlock("view", _hoisted_2$1, toDisplayString(_ctx.btnExtraText), 1)) : createCommentVNode("", true),
+    _ctx.btnExtraText ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.btnExtraText), 1)) : createCommentVNode("", true),
     createTextVNode(),
     renderSlot(_ctx.$slots, "operate-btn"),
     createTextVNode(),
@@ -384,7 +386,8 @@ const _sfc_main = create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    NutPopup
+    NutPopup,
+    NutScrollView: _sfc_main$5
   },
   setup(props, { emit, slots }) {
     const translate = useLocale(cN);
@@ -457,11 +460,11 @@ const _sfc_main = create({
   }
 });
 const _hoisted_1 = { class: "nut-sku" };
-const _hoisted_2 = { class: "nut-sku-content" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_sku_header = resolveComponent("sku-header");
   const _component_SkuSelect = resolveComponent("SkuSelect");
   const _component_sku_stepper = resolveComponent("sku-stepper");
+  const _component_nut_scroll_view = resolveComponent("nut-scroll-view");
   const _component_sku_operate = resolveComponent("sku-operate");
   const _component_nut_popup = resolveComponent("nut-popup");
   return openBlock(), createBlock(_component_nut_popup, {
@@ -501,34 +504,40 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           } : void 0
         ]), 1032, ["goods"])) : createCommentVNode("", true),
         createTextVNode(),
-        createElementVNode("view", _hoisted_2, [
-          renderSlot(_ctx.$slots, "sku-select-top"),
-          createTextVNode(),
-          renderSlot(_ctx.$slots, "sku-select"),
-          createTextVNode(),
-          !_ctx.getSlots("sku-select") ? (openBlock(), createBlock(_component_SkuSelect, {
-            key: 0,
-            sku: _ctx.sku,
-            onSelectSku: _ctx.selectSku
-          }, null, 8, ["sku", "onSelectSku"])) : createCommentVNode("", true),
-          createTextVNode(),
-          renderSlot(_ctx.$slots, "sku-stepper"),
-          createTextVNode(),
-          !_ctx.getSlots("sku-stepper") ? (openBlock(), createBlock(_component_sku_stepper, {
-            key: 1,
-            goods: _ctx.goods,
-            "stepper-title": _ctx.stepperTitle || _ctx.translate("buyNumber"),
-            "stepper-max": _ctx.stepperMax,
-            "stepper-min": _ctx.stepperMin,
-            "stepper-extra-text": _ctx.stepperExtraText,
-            onAdd: _ctx.add,
-            onReduce: _ctx.reduce,
-            onChangeStepper: _ctx.changeStepper,
-            onOverLimit: _ctx.stepperOverLimit
-          }, null, 8, ["goods", "stepper-title", "stepper-max", "stepper-min", "stepper-extra-text", "onAdd", "onReduce", "onChangeStepper", "onOverLimit"])) : createCommentVNode("", true),
-          createTextVNode(),
-          renderSlot(_ctx.$slots, "sku-stepper-bottom")
-        ]),
+        createVNode(_component_nut_scroll_view, {
+          class: "nut-sku-content",
+          "scroll-y": true
+        }, {
+          default: withCtx(() => [
+            renderSlot(_ctx.$slots, "sku-select-top"),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "sku-select"),
+            createTextVNode(),
+            !_ctx.getSlots("sku-select") ? (openBlock(), createBlock(_component_SkuSelect, {
+              key: 0,
+              sku: _ctx.sku,
+              onSelectSku: _ctx.selectSku
+            }, null, 8, ["sku", "onSelectSku"])) : createCommentVNode("", true),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "sku-stepper"),
+            createTextVNode(),
+            !_ctx.getSlots("sku-stepper") ? (openBlock(), createBlock(_component_sku_stepper, {
+              key: 1,
+              goods: _ctx.goods,
+              "stepper-title": _ctx.stepperTitle || _ctx.translate("buyNumber"),
+              "stepper-max": _ctx.stepperMax,
+              "stepper-min": _ctx.stepperMin,
+              "stepper-extra-text": _ctx.stepperExtraText,
+              onAdd: _ctx.add,
+              onReduce: _ctx.reduce,
+              onChangeStepper: _ctx.changeStepper,
+              onOverLimit: _ctx.stepperOverLimit
+            }, null, 8, ["goods", "stepper-title", "stepper-max", "stepper-min", "stepper-extra-text", "onAdd", "onReduce", "onChangeStepper", "onOverLimit"])) : createCommentVNode("", true),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "sku-stepper-bottom")
+          ]),
+          _: 3
+        }),
         createTextVNode(),
         createVNode(_component_sku_operate, {
           "btn-extra-text": _ctx.btnExtraText,
