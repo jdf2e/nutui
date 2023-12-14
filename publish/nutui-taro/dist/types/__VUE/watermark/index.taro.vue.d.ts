@@ -153,8 +153,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     zIndex: number;
     content: string;
     height: number;
-    width: number;
     rotate: number;
+    width: number;
     fontSize: string | number;
     gapY: number;
     gapX: number;

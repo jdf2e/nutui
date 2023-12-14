@@ -6,18 +6,18 @@ var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __pow = Math.pow;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a2, b) => {
+var __spreadValues = (a, b) => {
   for (var prop in b || (b = {}))
     if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a2, prop, b[prop]);
+      __defNormalProp(a, prop, b[prop]);
   if (__getOwnPropSymbols)
     for (var prop of __getOwnPropSymbols(b)) {
       if (__propIsEnum.call(b, prop))
-        __defNormalProp(a2, prop, b[prop]);
+        __defNormalProp(a, prop, b[prop]);
     }
-  return a2;
+  return a;
 };
-var __spreadProps = (a2, b) => __defProps(a2, __getOwnPropDescs(b));
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -38,332 +38,14 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { defineComponent, useSlots, h as h$1, openBlock, createBlock, computed, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, toRefs, resolveComponent, createCommentVNode, createTextVNode, renderSlot, reactive, ref, onMounted, watch, Fragment, withModifiers, toDisplayString, withDirectives, createVNode, withCtx, vShow } from "vue";
+import { reactive, ref, computed, onMounted, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, createTextVNode, withModifiers, toDisplayString, withDirectives, normalizeStyle, normalizeClass, createVNode, withCtx, vShow } from "vue";
+import NutButton from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { a as preventDefault, c as clamp } from "../util-WZB3Ltgx.js";
 import { IconFont } from "@nutui/icons-vue-taro";
 import { u as useTouch } from "../index-084nl_oE.js";
 import Taro, { useReady } from "@tarojs/taro";
-const h = /* @__PURE__ */ defineComponent({
-  __name: "IconFont",
-  props: {
-    name: { type: String, default: "" },
-    size: { type: [String, Number], default: "" },
-    width: { type: [String, Number], default: "" },
-    height: { type: [String, Number], default: "" },
-    classPrefix: { type: String, default: "nut-icon" },
-    fontClassName: { type: String, default: "nutui-iconfont" },
-    color: { type: String, default: "" },
-    tag: { type: String, default: "i" }
-  },
-  setup(e) {
-    var c;
-    const t = e, a2 = "nut-icon", o = useSlots(), s = () => t.name ? t.name.indexOf("/") !== -1 : false, r = (n) => {
-      if (n)
-        return isNaN(Number(n)) ? String(n) : n + "px";
-    }, i2 = s();
-    let l2 = h$1(
-      i2 ? "img" : t.tag,
-      {
-        class: i2 ? `${a2}__img` : `${t.fontClassName} ${a2} ${t.classPrefix}-${t.name}`,
-        style: {
-          color: t.color,
-          fontSize: r(t.size),
-          width: r(t.width || t.size),
-          height: r(t.height || t.size)
-        },
-        src: i2 ? t.name : ""
-      },
-      (c = o.default) == null ? void 0 : c.call(o)
-    );
-    const u2 = () => l2;
-    return (n, y) => (openBlock(), createBlock(u2));
-  }
-});
-function S(e) {
-  return e.name = "IconFont", e.install = (t) => {
-    t.component("IconFont", e);
-  }, e;
-}
-S(h);
-const a$1 = (r) => defineComponent({
-  props: {
-    class: { type: String, default: "" },
-    name: { type: String, default: r },
-    color: { type: String, default: "" },
-    width: { type: [String, Number], default: "" },
-    height: { type: [String, Number], default: "" }
-  },
-  setup(e) {
-    const n = (t) => {
-      if (t)
-        return isNaN(Number(t)) ? String(t) : t + "px";
-    }, o = computed(() => {
-      const t = "nut-icon";
-      return {
-        [e.class]: e.class,
-        [t]: true,
-        [t + "-" + e.name]: e.name
-      };
-    }), c = computed(() => {
-      const t = {};
-      return t.height = n(e.height), t.width = n(e.width), t.color = e.color, t;
-    });
-    return { classes: o, style: c };
-  }
-}), l = (r, e) => {
-  const n = r.__vccOpts || r;
-  for (const [o, c] of e)
-    n[o] = c;
-  return n;
-};
-a$1("add");
-a$1("addfollow");
-a$1("arrow-down");
-a$1("arrow-down2");
-a$1("arrow-right");
-a$1("arrow-right2");
-a$1("arrow-up");
-a$1("arrow-up2");
-a$1("ask");
-a$1("ask2");
-a$1("cart");
-a$1("cart2");
-a$1("category");
-a$1("check-checked");
-a$1("check-disabled");
-a$1("check-normal");
-a$1("Check");
-a$1("checked");
-a$1("checklist");
-a$1("circle-close");
-a$1("clock");
-a$1("close-little");
-a$1("close");
-a$1("comment");
-a$1("date");
-a$1("del");
-a$1("del2");
-a$1("dongdong");
-a$1("dou-arrow-up");
-a$1("down-arrow");
-a$1("download");
-a$1("dshop");
-a$1("edit");
-a$1("eye");
-a$1("fabulous");
-a$1("failure");
-a$1("find");
-a$1("follow");
-a$1("footprint");
-a$1("github");
-a$1("heart-fill-n");
-a$1("heart-fill");
-a$1("heart-fill1");
-a$1("heart-fill2");
-a$1("heart-fill3");
-a$1("heart-n");
-a$1("heart");
-a$1("heart1");
-a$1("heart2");
-a$1("home");
-a$1("horizontal-n");
-a$1("horizontal");
-a$1("image-error");
-a$1("image");
-a$1("issue");
-a$1("JD");
-a$1("jdl");
-a$1("JIMI40");
-a$1("joy-smile");
-a$1("left");
-a$1("link");
-const a = a$1("loading"), i = /* @__PURE__ */ createElementVNode("path", {
-  d: "M784 902.4c9.6 19.2 6.4 41.6-12.8 54.4-19.2 9.6-41.6 3.2-51.2-12.8-9.6-19.2-6.4-41.6 12.8-54.4 16-12.8 38.4-8 51.2 12.8zM550.4 984c0 22.4-16 38.4-38.4 38.4s-38.4-16-38.4-38.4v-24c0-22.4 19.2-38.4 41.6-38.4 19.2 0 35.2 16 38.4 38.4v25.6h-3.2zm-240-43.2c-9.6 19.2-35.2 25.6-54.4 16-19.2-9.6-25.6-35.2-16-51.2l28.8-51.2c9.6-19.2 35.2-25.6 54.4-16s25.6 35.2 12.8 54.4l-25.6 48zM121.6 784c-19.2 9.6-41.6 3.2-54.4-16-9.6-19.2-6.4-41.6 12.8-54.4l76.8-44.8c19.2-9.6 41.6-3.2 54.4 16 9.6 19.2 3.2 41.6-16 54.4L121.6 784zM38.4 552C16 552 0 536 0 513.6s16-38.4 38.4-38.4H160c22.4 0 38.4 19.2 38.4 38.4 0 22.4-16 38.4-38.4 38.4H38.4zm44.8-241.6c-19.2-9.6-25.6-35.2-16-51.2 9.6-19.2 35.2-25.6 54.4-16L256 320c19.2 9.6 25.6 35.2 16 54.4s-35.2 25.6-54.4 16l-134.4-80zm160-185.6 92.8 160c9.6 19.2 35.2 25.6 54.4 12.8s25.6-35.2 12.8-54.4l-92.8-160C297.6 64 275.2 60.8 256 70.4c-16 12.8-22.4 33.6-12.8 54.4zM473.6 40c0-22.4 16-38.4 38.4-38.4s38.4 19.2 38.4 38.4v184c0 22.4-19.2 38.4-38.4 38.4-22.4 0-38.4-19.2-38.4-38.4V40zm240 43.2c9.6-19.2 35.2-25.6 54.4-16 19.2 9.6 25.6 35.2 16 51.2l-92.8 160c-9.6 19.2-35.2 25.6-54.4 16-19.2-9.6-25.6-35.2-12.8-54.4l89.6-156.8zm188.8 160-160 92.8c-19.2 9.6-25.6 35.2-16 54.4 12.8 19.2 35.2 25.6 54.4 12.8l160-92.8c19.2-9.6 25.6-35.2 12.8-54.4-9.6-16-32-25.6-51.2-12.8zM985.6 472c22.4 0 38.4 16 38.4 38.4s-16 38.4-38.4 38.4H800c-22.4 0-38.4-19.2-38.4-38.4 0-22.4 19.2-38.4 38.4-38.4h185.6z",
-  fill: "currentColor",
-  "fill-opacity": "0.9"
-}, null, -1), m = [
-  i
-];
-function p(c, z, d, _, f, h2) {
-  return openBlock(), createElementBlock("svg", {
-    class: normalizeClass(c.classes),
-    style: normalizeStyle(c.style),
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 1024 1024",
-    role: "presentation"
-  }, m, 6);
-}
-const u = /* @__PURE__ */ l(a, [["render", p]]);
-a$1("loading1");
-a$1("location");
-a$1("location2");
-a$1("locationg3");
-a$1("lower");
-a$1("marshalling");
-a$1("mask-close");
-a$1("message");
-a$1("microphone");
-a$1("minus");
-a$1("more-s");
-a$1("more-x");
-a$1("more");
-a$1("my");
-a$1("my2");
-a$1("notice");
-a$1("order");
-a$1("people");
-a$1("photograph");
-a$1("play-circle-fill");
-a$1("play-double-back");
-a$1("play-double-forward");
-a$1("play-start");
-a$1("play-stop");
-a$1("plus");
-a$1("poweroff-circle-fill");
-a$1("rect-down");
-a$1("rect-left");
-a$1("rect-right");
-a$1("rect-up");
-a$1("refresh");
-a$1("refresh2");
-a$1("retweet");
-a$1("right");
-a$1("s-follow");
-a$1("scan");
-a$1("scan2");
-a$1("screen-little");
-a$1("search");
-a$1("search2");
-a$1("service");
-a$1("setting");
-a$1("share-n");
-a$1("share");
-a$1("share1");
-a$1("shop");
-a$1("shop3");
-a$1("star-fill-n");
-a$1("star-fill");
-a$1("star-fill1");
-a$1("star-fill2");
-a$1("star-n");
-a$1("star");
-a$1("star1");
-a$1("star11");
-a$1("star2");
-a$1("success");
-a$1("tips");
-a$1("top");
-a$1("triangle-down");
-a$1("triangle-up");
-a$1("uploader");
-a$1("voice");
-const { componentName, create: create$1 } = createComponent("button");
-const _sfc_main$1 = create$1({
-  components: { Loading: u },
-  props: {
-    color: String,
-    shape: {
-      type: String,
-      default: "round"
-    },
-    plain: {
-      type: Boolean,
-      default: false
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: "default"
-    },
-    size: {
-      type: String,
-      default: "normal"
-    },
-    block: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ["click"],
-  setup(props, { emit }) {
-    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
-    const handleClick = (event) => {
-      if (!loading.value && !disabled.value) {
-        emit("click", event);
-      }
-    };
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${type.value}`]: type.value,
-        [`${prefixCls}--${size.value}`]: size.value,
-        [`${prefixCls}--${shape.value}`]: shape.value,
-        [`${prefixCls}--plain`]: plain.value,
-        [`${prefixCls}--block`]: block.value,
-        [`${prefixCls}--disabled`]: disabled.value,
-        [`${prefixCls}--loading`]: loading.value
-      };
-    });
-    const getStyle = computed(() => {
-      var _a;
-      const style = {};
-      if (color == null ? void 0 : color.value) {
-        if (plain.value) {
-          style.color = color.value;
-          style.background = "#fff";
-          if (!((_a = color.value) == null ? void 0 : _a.includes("gradient"))) {
-            style.borderColor = color.value;
-          }
-        } else {
-          style.color = "#fff";
-          style.background = color.value;
-        }
-      }
-      return style;
-    });
-    return {
-      handleClick,
-      classes,
-      getStyle
-    };
-  }
-});
-const _hoisted_1$1 = { class: "nut-button__wrap" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Loading = resolveComponent("Loading");
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes),
-    style: normalizeStyle(_ctx.getStyle),
-    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
-  }, [
-    createElementVNode("view", _hoisted_1$1, [
-      _ctx.loading ? (openBlock(), createBlock(_component_Loading, {
-        key: 0,
-        class: "nut-icon-loading"
-      })) : createCommentVNode("", true),
-      createTextVNode(),
-      _ctx.$slots.icon && !_ctx.loading ? renderSlot(_ctx.$slots, "icon", { key: 1 }) : createCommentVNode("", true),
-      createTextVNode(),
-      _ctx.$slots.default ? (openBlock(), createElementBlock("view", {
-        key: 2,
-        class: normalizeClass({ "nut-button__text": _ctx.$slots.icon || _ctx.loading })
-      }, [
-        renderSlot(_ctx.$slots, "default")
-      ], 2)) : createCommentVNode("", true)
-    ])
-  ], 6);
-}
-const NutButton = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const compareVersion = (v1Old, v2Old) => {
   let v1 = v1Old.split(".");
   let v2 = v2Old.split(".");
@@ -374,9 +56,9 @@ const compareVersion = (v1Old, v2Old) => {
   while (v2.length < len) {
     v2.push("0");
   }
-  for (let i2 = 0; i2 < len; i2++) {
-    const num1 = parseInt(v1[i2]);
-    const num2 = parseInt(v2[i2]);
+  for (let i = 0; i < len; i++) {
+    const num1 = parseInt(v1[i]);
+    const num2 = parseInt(v2[i]);
     if (num1 > num2) {
       return 1;
     } else if (num1 < num2) {
