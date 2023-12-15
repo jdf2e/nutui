@@ -19,47 +19,47 @@ app.use(RadioGroup);
 
 通过 `v-model` 绑定某个选项的 `label` 字段。`nut-radio` 必须与 `nut-radio-group` 相结合进行使用。
 
-> demo: radio basic
+> demo: radio basic dentry
 
 ### 水平方向
 
 通过 `direction` 设置方向，默认值为 `vertical`，可设置为 `horizontal`。
 
-> demo: radio horizontal
+> demo: radio horizontal dentry
 
 ### 禁用状态
 
-> demo: radio disabled
+> demo: radio disabled dentry
 
 ### 自定义图标
 
-> demo: radio icon
+> demo: radio icon dentry
 
 ### 左侧文本
 
 通过 `text-position` 设置文本位置，默认值为 `right`，可设置为 `left`。
 
-> demo: radio position
+> demo: radio position dentry
 
 ### 图标尺寸
 
-> demo: radio icon-size
+> demo: radio icon-size dentry
 
 ### 设置形状
 
 通过 `shape` 设置 Radio 形状，默认值为 `round`，可设置为 `button`。
 
-> demo: radio shape
+> demo: radio shape dentry
 
 ### 自定义按钮尺寸 v4.2.4
 
 通过 `size` 设置 Radio 大小，仅在 `shape` 为 `button` 时生效。
 
-> demo: radio size
+> demo: radio size dentry
 
 ### 触发事件
 
-> demo: radio event
+> demo: radio event dentry
 
 ## API
 
