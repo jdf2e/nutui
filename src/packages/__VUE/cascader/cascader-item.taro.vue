@@ -38,7 +38,7 @@ import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig, CascaderTabs } from './types';
 import { Loading, Checklist } from '@nutui/icons-vue-taro';
 import NutTabs from '../tabs/index.taro.vue';
-import NutTabPane from '../tabpane/index.vue';
+import NutTabPane from '../tabpane/index.taro.vue';
 import Tree from './tree';
 import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('cascader-item');
