@@ -4,7 +4,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { RADIO_KEY, RadioButtonSize } from './types';
+import { RADIO_KEY, RadioShape, RadioButtonSize } from './types';
 
 export default create({
   components: {
@@ -17,8 +17,8 @@ export default create({
       default: false
     },
     shape: {
-      type: String,
-      default: 'round' // button
+      type: String as PropType<RadioShape>,
+      default: 'round'
     },
     label: {
       type: [String, Number, Boolean],
