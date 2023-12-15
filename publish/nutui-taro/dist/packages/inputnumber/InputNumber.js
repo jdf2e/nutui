@@ -58,7 +58,7 @@ const _sfc_main = create({
     };
     const change = (event) => {
       const input = event.target;
-      emit("update:modelValue", Number(input.value), event);
+      emit("update:modelValue", input.value, event);
     };
     const emitChange = (value, event) => {
       let output_value = fixedDecimalPlaces(value);

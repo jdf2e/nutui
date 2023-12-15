@@ -6703,7 +6703,7 @@ const Af = /* @__PURE__ */ K(Ef, [["render", Pf]]), { componentName: zf, create:
       };
     }), s = (g) => Number(g).toFixed(Number(e.decimalPlaces)), o = (g) => {
       const b = g.target;
-      t("update:modelValue", b.valueAsNumber, g);
+      t("update:modelValue", b.value, g);
     }, a = (g, b) => {
       let w = s(g);
       t("update:modelValue", w, b), Number(e.modelValue) !== Number(w) && t("change", w, b);
