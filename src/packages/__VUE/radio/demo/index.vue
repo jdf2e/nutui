@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Horizontal from './horizontal.vue';
 import Disabled from './disabled.vue';

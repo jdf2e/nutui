@@ -7,7 +7,7 @@ const replaceFile = (file) => {
     if (err) throw err;
   
     // 修改文件内容
-    data = data.replace(/> demo: ([0-9a-z .]*)[\n|\r\n]/g, (_match, $1) => {
+    data = data.replace(/> demo: ([-0-9a-z .]*)[\n|\r\n]/g, (_match, $1) => {
       const [left, right, type] = $1.split(' ');
       const target = path.resolve('packages/nutui-taro-demo/src', type, 'pages', left, `${right}.vue`);
       let code = '';
