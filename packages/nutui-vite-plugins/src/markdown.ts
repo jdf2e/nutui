@@ -25,7 +25,7 @@ const TransformMarkdownDemo = (options: MarkdownOptions): Plugin => {
     transform(src, id) {
       if (fileRegex.test(id)) {
         return {
-          code: src.replace(/> demo: ([0-9a-z .]*)[\n|\r\n]/g, (_match, $1: string) => {
+          code: src.replace(/> demo: ([-0-9a-z .]*)[\n|\r\n]/g, (_match, $1: string) => {
             const [comp, demo, type] = $1.split(' ');
             const docPath = type
               ? path.resolve(options.docTaroRoot, type, 'pages', comp, `${demo}.vue`)

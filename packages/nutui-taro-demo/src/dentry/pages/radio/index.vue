@@ -1,102 +1,68 @@
 <template>
-  <Demo class="full">
-    <nut-cell-group title="基础用法">
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio disabled label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal" text-position="left">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio disabled label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal">
-          <nut-radio shape="button" label="1">选项1</nut-radio>
-          <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-          <nut-radio shape="button" label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="水平使用">
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal" direction="horizontal">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal" text-position="left" direction="horizontal">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal" direction="horizontal">
-          <nut-radio shape="button" label="1">选项1</nut-radio>
-          <nut-radio shape="button" label="2">选项2</nut-radio>
-          <nut-radio shape="button" label="3">选项3</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="自定义尺寸">
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal4">
-          <nut-radio label="1" icon-size="12">自定义尺寸12</nut-radio>
-          <nut-radio label="2" icon-size="12">自定义尺寸12</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="自定义图标">
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal5">
-          <nut-radio label="1">
-            自定义图标
-            <template #icon> <Checklist /> </template>
-            <template #checkedIcon> <Checklist color="red" /> </template>
-          </nut-radio>
-          <nut-radio label="2">
-            自定义图标
-            <template #icon> <Checklist /> </template>
-            <template #checkedIcon> <Checklist color="red" /> </template>
-          </nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="触发事件">
-      <nut-cell>
-        <nut-radio-group v-model="state.radioVal6" @change="handleChange">
-          <nut-radio label="1">触发事件</nut-radio>
-          <nut-radio label="2">触发事件</nut-radio>
-        </nut-radio-group>
-      </nut-cell>
-      <nut-cell title="当前选中值" :desc="state.radioVal6"></nut-cell>
-    </nut-cell-group>
+  <Demo class="bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('horizontal') }}</h2>
+    <Horizontal />
+
+    <h2>{{ t('disabled') }}</h2>
+    <Disabled />
+
+    <h2>{{ t('icon') }}</h2>
+    <Icon />
+
+    <h2>{{ t('position') }}</h2>
+    <Position />
+
+    <h2>{{ t('iconSize') }}</h2>
+    <IconSize />
+
+    <h2>{{ t('shape') }}</h2>
+    <Shape />
+
+    <h2>{{ t('size') }}</h2>
+    <Size />
+
+    <h2>{{ t('event') }}</h2>
+    <Event />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { Checklist } from '@nutui/icons-vue-taro';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Horizontal from './horizontal.vue';
+import Disabled from './disabled.vue';
+import Icon from './icon.vue';
+import Position from './position.vue';
+import IconSize from './icon-size.vue';
+import Shape from './shape.vue';
+import Size from './size.vue';
+import Event from './event.vue';
 
-const state = reactive({
-  radioVal: '1',
-  radioVal2: '2',
-  radioVal3: '1',
-  radioVal4: '1',
-  radioVal5: '1',
-  radioVal6: '1'
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    horizontal: '水平方向',
+    disabled: '禁用状态',
+    icon: '自定义图标',
+    position: '左侧文本',
+    iconSize: '图标尺寸',
+    shape: '设置形状',
+    size: '自定义按钮尺寸',
+    event: '触发事件'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    horizontal: 'Horizontal',
+    disabled: 'Disabled',
+    icon: 'Custom Icon',
+    position: 'Text Position',
+    iconSize: 'Icon Size',
+    shape: 'Shape',
+    size: 'Custom Button Size',
+    event: 'Event'
+  }
 });
-const handleChange = (value: any) => {
-  console.log(value);
-};
 </script>
-
-<style lang="scss" scoped></style>

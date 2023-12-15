@@ -17,97 +17,49 @@ app.use(RadioGroup);
 
 ### Basic Usage
 
-Bind the **label** of the current option through **v-model**. And it must be used in combination with **nut-radio-group** and **nut-radio**
+Bind the `label` field of an option through `v-model`. `nut-radio` must be used in conjunction with `nut-radio-group`.
 
 > demo: radio basic
 
 ### Horizontal
 
+Set the direction through `direction`. The default value is `vertical` and can be set to `horizontal`.
+
 > demo: radio horizontal
 
-### Custom size
+### Disabled
 
-:::demo
-
-```vue
-<template>
-  <nut-cell-group title="Custom size">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio label="1" icon-size="12">Custom size 12</nut-radio>
-        <nut-radio label="2" icon-size="12">Custom size 12</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-</script>
-```
-
-:::
+> demo: radio disabled
 
 ### Custom icon
 
-Customize the icon through the slot, it is recommended to set the `icon` and `checkedIcon` two slots at the same time
+> demo: radio icon
 
-:::demo
+### Text Position
 
-```vue
-<template>
-  <nut-cell-group title="Radio Custom icon">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio label="1">
-          Custom icon
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
-        </nut-radio>
-        <nut-radio label="2">
-          Custom icon
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
-        </nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Checklist } from '@nutui/icons-vue';
-const radioVal = ref('1');
-</script>
-```
+Set the text position through `text-position`. The default value is `right` and can be set to `left`.
 
-:::
+> demo: radio position
 
-### Trigger change event
+### Icon Size
 
-:::demo
+> demo: radio icon-size
 
-```vue
-<template>
-  <nut-cell-group title="Trigger event">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" @change="handleChange">
-        <nut-radio label="1">Trigger event</nut-radio>
-        <nut-radio label="2">Trigger event</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell title="Currently selected value" :desc="radioVal"></nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-const handleChange = (value) => {
-  console.log(value);
-};
-</script>
-```
+### Shape
 
-:::
+Set the Radio shape through `shape`. The default value is `round` and can be set to `button`.
+
+> demo: radio shape
+
+### Custom Button Size v4.2.4
+
+Set the Radio size through `size`, which only takes effect when `shape` is `button`.
+
+> demo: radio size
+
+### Event Trigger
+
+> demo: radio event
 
 ## API
 
@@ -119,7 +71,7 @@ const handleChange = (value) => {
 | icon-size | [Icon Size](#/en-US/icon) | string \| number | `18` |
 | label | Radio box ID | string \| number \| boolean | - |
 | shape | Shape, optional values are `button`、`round` | string | `round` |
-| size | Can be set to `small` `mini` `normal`, when `shape` = `button` | string | `normal` |
+| size`v4.2.4` | Can be set to `small` `mini` `normal`, when `shape` = `button` | string | `normal` |
 
 ### Radio Slots
 
