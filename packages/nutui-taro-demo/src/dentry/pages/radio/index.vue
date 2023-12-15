@@ -10,7 +10,7 @@
     <Disabled />
 
     <h2>{{ t('icon') }}</h2>
-    <Icon />
+    <IconDemo />
 
     <h2>{{ t('position') }}</h2>
     <Position />
@@ -34,7 +34,7 @@ import { useTranslate } from '../../../utils';
 import Basic from './basic.vue';
 import Horizontal from './horizontal.vue';
 import Disabled from './disabled.vue';
-import Icon from './icon.vue';
+import IconDemo from './icon.vue';
 import Position from './position.vue';
 import IconSize from './icon-size.vue';
 import Shape from './shape.vue';

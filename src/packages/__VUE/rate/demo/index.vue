@@ -7,7 +7,7 @@
     <Half />
 
     <h2>{{ t('icon') }}</h2>
-    <IconDemo />
+    <Icon />
 
     <h2>{{ t('count') }}</h2>
     <Count />
@@ -30,10 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Half from './half.vue';
-import IconDemo from './icon.vue';
+import Icon from './icon.vue';
 import Count from './count.vue';
 import Color from './color.vue';
 import Disabled from './disabled.vue';
