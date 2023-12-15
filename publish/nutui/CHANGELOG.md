@@ -1,3 +1,22 @@
+## v4.2.4
+
+`2023-12-15`
+
+Features
+
+- form: 新增 label-position & star-position (#2659) (#2663) @yi-boide
+- radio: 组件设置 button 形状时支持改变大小 (#2701) @iCheng
+
+Bug Fixes
+
+- input-number: 修复 iOS 下输入小数点后清空输入框的问题 (#2704) @Formulaaa
+- range: 优化滑动事件处理逻辑 (#2712) @eiinu
+- textarea: 调整 readonly & maxlength 实现逻辑 (#2710) @eiinu
+- tabs: 修复 vertical 方式下标题样式错误 (#2727) @eiinu
+- tabs: 修复嵌套使用时的样式错乱问题 (#2728) @eiinu
+- sku: 修复小程序下内容的滚动问题 (#2737) @eiinu
+- navbar: 修复标题居中等样式问题 (#2739) @eiinu
+
 ## v4.2.3
 
 `2023-11-30`
