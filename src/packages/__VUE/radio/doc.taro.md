@@ -187,7 +187,7 @@ const handleChange = (value) => {
 | icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18` |
 | label | 单选框标识 | string \| number \| boolean | - |
 | shape | 形状，可选值为 `button`、`round` | string | `round` |
-| size | 尺寸，可选值为 `large` `small` `mini` `normal`，仅在 shape 为 `button` 时生效 | string | `normal` |
+| size | 尺寸，可选值为 `small` `mini` `normal`，仅在 shape 为 `button` 时生效 | string | `normal` |
 
 ### Radio Slots
 
