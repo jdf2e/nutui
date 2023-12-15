@@ -17,7 +17,7 @@
       </nut-cell>
       <nut-cell>
         <nut-radio-group v-model="state.radioVal">
-          <nut-radio shape="button" label="1" size="large">{{ translate('option1') }}</nut-radio>
+          <nut-radio shape="button" label="1" size="small">{{ translate('option1') }}</nut-radio>
           <nut-radio disabled shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>
@@ -40,7 +40,7 @@
       </nut-cell>
       <nut-cell>
         <nut-radio-group v-model="state.radioVal" direction="horizontal">
-          <nut-radio shape="button" label="1" size="large">{{ translate('option1') }}</nut-radio>
+          <nut-radio shape="button" label="1" size="small">{{ translate('option1') }}</nut-radio>
           <nut-radio shape="button" label="2">{{ translate('option2') }}</nut-radio>
           <nut-radio shape="button" label="3">{{ translate('option3') }}</nut-radio>
         </nut-radio-group>

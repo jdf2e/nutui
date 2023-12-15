@@ -1,7 +1,7 @@
 <script lang="ts">
-import { h, provide, computed, readonly, watch } from 'vue';
+import { h, provide, computed, readonly, watch, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { RADIO_KEY } from '../radio/types';
+import { RADIO_KEY, RadioGroupTextPosition, RadioGroupDirection } from '../radio/types';
 const { componentName, create } = createComponent('radio-group');
 
 export default create({
@@ -11,11 +11,11 @@ export default create({
       default: ''
     },
     direction: {
-      type: String,
-      default: 'vertical' //horizontal
+      type: String as PropType<RadioGroupDirection>,
+      default: 'vertical'
     },
     textPosition: {
-      type: String,
+      type: String as PropType<RadioGroupTextPosition>,
       default: 'right'
     }
   },
