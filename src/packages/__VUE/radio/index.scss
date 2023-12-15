@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:last-child {
     margin-bottom: 0 !important;
