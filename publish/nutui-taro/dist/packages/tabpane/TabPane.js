@@ -57,7 +57,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 6);
 }
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const NutTabPane = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  index_taro as default
+  NutTabPane as default
 };

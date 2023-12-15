@@ -54,14 +54,15 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { inject, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot, ref, watch, resolveComponent, createBlock, withCtx, Fragment, renderList, createElementVNode, createVNode, toDisplayString, createTextVNode, createCommentVNode } from "vue";
+import { computed, ref, watch, resolveComponent, openBlock, createBlock, withCtx, createElementBlock, Fragment, renderList, createElementVNode, createVNode, normalizeClass, toDisplayString, createTextVNode, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { N as NutPopup, p as popupProps } from "../index.taro-vH2b6ZpB.js";
-import { _ as _sfc_main$3 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
+import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { Loading, Checklist } from "@nutui/icons-vue-taro";
 import NutTabs from "../tabs/Tabs.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import NutTabPane from "../tabpane/TabPane.js";
 import { u as useLocale } from "../index-DDx91B18.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../overlay/Overlay.js";
 import "@tarojs/taro";
 import "../util-WZB3Ltgx.js";
@@ -130,44 +131,6 @@ const convertListToOptions = (list, options) => {
   map = null;
   return result;
 };
-const { create: create$2 } = createComponent("tab-pane");
-const _sfc_main$2 = create$2({
-  props: {
-    title: {
-      type: [String, Number],
-      default: ""
-    },
-    paneKey: {
-      type: [String, Number],
-      default: ""
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ["click"],
-  setup(props) {
-    const parentOption = inject("tabsOpiton");
-    const paneStyle = computed(() => {
-      return {
-        display: parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? "none" : void 0
-      };
-    });
-    return __spreadProps(__spreadValues({}, parentOption), {
-      paneStyle
-    });
-  }
-});
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(["nut-tab-pane", { inactive: _ctx.paneKey != _ctx.activeKey && _ctx.autoHeight }]),
-    style: normalizeStyle(_ctx.paneStyle)
-  }, [
-    renderSlot(_ctx.$slots, "default")
-  ], 6);
-}
-const NutTabPane = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
 class Tree {
   constructor(nodes, config) {
     __publicField(this, "nodes");
@@ -234,7 +197,7 @@ const _sfc_main$1 = create$1({
     Checklist,
     NutTabs,
     NutTabPane,
-    NutScrollView: _sfc_main$3
+    NutScrollView: _sfc_main$2
   },
   props: {
     visible: Boolean,
