@@ -95,6 +95,36 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 
 :::
 
+### Multiline Watermark
+
+The content attribute is passed into a string array, showing a multi-line watermark
+
+:::demo
+
+```vue
+<template>
+  <nut-cell class="wrap">
+    <nut-watermark
+      :full-page="false"
+      :gap-y="24"
+      font-color="#fa2c19"
+      :content="['nut-ui', 'water-mark']"
+    ></nut-watermark>
+  </nut-cell>
+</template>
+<script setup></script>
+<style>
+.wrap {
+  width: 100%;
+  height: 240px;
+  display: block;
+  background: #fff;
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### Props
@@ -108,7 +138,7 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 | image-width | Width of image | number | `120` |
 | image-height | Height of image | number | `64` |
 | z-index | Z-index of the appended watermark element | number | `2000` |
-| content | Watermark text content | string | - |
+| content | Watermark text content | string | string[] | - |
 | font-color | Watermark text color | string | `rgba(0, 0, 0, .15)` |
 | font-size | Watermark text font size | string \| number | `16` |
 | gap-x | Horizontal spacing between watermarks | number | `24` |
