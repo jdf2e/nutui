@@ -11,7 +11,6 @@ const _sfc_main = create({
     direction: {
       type: String,
       default: "vertical"
-      //horizontal
     },
     textPosition: {
       type: String,

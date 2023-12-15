@@ -1,3 +1,5 @@
+import { PropType } from 'vue';
+import { RadioGroupTextPosition, RadioGroupDirection } from '../radio/types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -8,11 +10,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     direction: {
-        type: StringConstructor;
+        type: PropType<RadioGroupDirection>;
         default: string;
     };
     textPosition: {
-        type: StringConstructor;
+        type: PropType<RadioGroupTextPosition>;
         default: string;
     };
 }, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
@@ -23,11 +25,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     direction: {
-        type: StringConstructor;
+        type: PropType<RadioGroupDirection>;
         default: string;
     };
     textPosition: {
-        type: StringConstructor;
+        type: PropType<RadioGroupTextPosition>;
         default: string;
     };
 }>> & {
@@ -35,8 +37,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     modelValue: string | number | boolean;
-    direction: string;
-    textPosition: string;
+    direction: RadioGroupDirection;
+    textPosition: RadioGroupTextPosition;
 }, {}>>;
 export default _default;
 

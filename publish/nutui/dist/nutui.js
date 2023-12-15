@@ -7068,7 +7068,6 @@ const ep = /* @__PURE__ */ K(Kf, [["render", xf]]), io = Symbol("nut-radio"), { 
     shape: {
       type: String,
       default: "round"
-      // button
     },
     label: {
       type: [String, Number, Boolean],
@@ -7135,7 +7134,6 @@ const ep = /* @__PURE__ */ K(Kf, [["render", xf]]), io = Symbol("nut-radio"), { 
     direction: {
       type: String,
       default: "vertical"
-      //horizontal
     },
     textPosition: {
       type: String,

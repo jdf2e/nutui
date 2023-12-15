@@ -1,6 +1,6 @@
 import { toRefs, inject, computed, h } from "vue";
 import { c as createComponent } from "./component-TCzwHGVq.js";
-import { CheckNormal, CheckChecked } from "@nutui/icons-vue-taro";
+import { CheckNormal, CheckChecked } from "@nutui/icons-vue";
 import { p as pxCheck } from "./pxCheck-OnXlN1NC.js";
 import { R as RADIO_KEY } from "./types-odSRziQJ.js";
 const { componentName, create } = createComponent("radio");
@@ -17,7 +17,6 @@ const _sfc_main = create({
     shape: {
       type: String,
       default: "round"
-      // button
     },
     label: {
       type: [String, Number, Boolean],
@@ -52,7 +51,6 @@ const _sfc_main = create({
       return h(iconNode, {
         width: size2,
         height: size2,
-        size: size2,
         class: color.value
       });
     };
@@ -89,7 +87,7 @@ const _sfc_main = create({
           class: `${componentName} ${componentName}--${props.shape} ${reverseState.value ? `${componentName}--reverse` : ""}`,
           onClick: handleClick
         },
-        [props.shape == "button" ? renderButton() : [renderIcon(), renderLabel()]]
+        [props.shape === "button" ? renderButton() : [renderIcon(), renderLabel()]]
       );
     };
   }

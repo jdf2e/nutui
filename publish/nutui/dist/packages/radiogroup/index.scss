@@ -3,8 +3,6 @@
   .nut-radio {
     margin-bottom: 5px;
   }
-  &--vertical {
-  }
   &--horizontal {
     .nut-radio {
       display: inline-flex;
@@ -13,9 +11,6 @@
         .nut-radio__label {
           margin: 0 6px;
         }
-      }
-      &--button {
-        // ...
       }
     }
   }

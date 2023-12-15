@@ -8362,7 +8362,6 @@ var __async = (__this, __arguments, generator) => {
       shape: {
         type: String,
         default: "round"
-        // button
       },
       label: {
         type: [String, Number, Boolean],
@@ -8449,7 +8448,6 @@ var __async = (__this, __arguments, generator) => {
       direction: {
         type: String,
         default: "vertical"
-        //horizontal
       },
       textPosition: {
         type: String,
@@ -19687,7 +19685,6 @@ var __async = (__this, __arguments, generator) => {
       direction: {
         type: String,
         default: "vertical"
-        //horizontal
       },
       textPosition: {
         type: String,

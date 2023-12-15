@@ -1,4 +1,4 @@
-import { _ as _sfc_main } from "../index.taro.vue_vue_type_script_lang-Mo2SK5IV.js";
+import { _ as _sfc_main } from "../index.taro.vue_vue_type_script_lang-PWsSAY8w.js";
 import "vue";
 import "../component-TCzwHGVq.js";
 import "@nutui/icons-vue-taro";
