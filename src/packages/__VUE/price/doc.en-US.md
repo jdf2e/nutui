@@ -102,16 +102,16 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 ### Props
 
-| Attribute              | Description                                                    | Type             | Default  |
-| ---------------------- | -------------------------------------------------------------- | ---------------- | -------- |
-| price                  | Price                                                          | number \| string | `0`      |
-| need-symbol            | Add symbol                                                     | boolean          | `true`   |
-| symbol                 | Symbol type                                                    | string           | `&yen;`  |
-| decimal-digits         | Decimal digits                                                 | number           | `2`      |
-| thousands              | Thousands separation                                           | boolean          | `false`  |
-| position               | The symbol appear before or after the price，`before`、`after` | string           | `before` |
-| size                   | Size，`small`、`normal`、`large`                               | string           | `normal` |
-| strike-through`v4.0.3` | strike-through                                                 | Boolean          | false    |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| price | Price | number \| string | `0` |
+| need-symbol | Add symbol | boolean | `true` |
+| symbol | Symbol type | string | `&yen;` |
+| decimal-digits | Decimal digits | number | `2` |
+| thousands | Thousands separation | boolean | `false` |
+| position | The symbol appear before or after the price，`before`、`after` | string | `before` |
+| size | Size，`small`、`normal`、`large` | string | `normal` |
+| strike-through`v4.0.3` | strike-through | Boolean | false |
 
 ## Theming
 
@@ -119,14 +119,14 @@ Three sizes are supported: small, normal, and large, and the default is normal.
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                            | Default Value |
-| ------------------------------- | ------------- |
-| --nut-price-symbol-big-size     | _18px_        |
-| --nut-price-big-size            | _24px_        |
-| --nut-price-decimal-big-size    | _18px_        |
-| --nut-price-symbol-medium-size  | _14px_        |
-| --nut-price-medium-size         | _16px_        |
-| --nut-price-decimal-medium-size | _14px_        |
-| --nut-price-symbol-small-size   | _10px_        |
-| --nut-price-small-size          | _12px_        |
-| --nut-price-decimal-small-size  | _10px_        |
+| Name | Default Value |
+| --- | --- |
+| --nut-price-symbol-big-size | _18px_ |
+| --nut-price-big-size | _24px_ |
+| --nut-price-decimal-big-size | _18px_ |
+| --nut-price-symbol-medium-size | _14px_ |
+| --nut-price-medium-size | _16px_ |
+| --nut-price-decimal-medium-size | _14px_ |
+| --nut-price-symbol-small-size | _10px_ |
+| --nut-price-small-size | _12px_ |
+| --nut-price-decimal-small-size | _10px_ |

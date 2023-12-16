@@ -144,23 +144,23 @@ const changeProgress = (val) => {
 
 ### Props
 
-| Attribute | Description              | Type    | Default    |
-| --------- | ------------------------ | ------- | ---------- |
-| url       | Audio URL                | string  | `''`       |
-| muted     | Whether to be muted      | boolean | `false`    |
-| autoplay  | Whether to autoplay      | boolean | `false`    |
-| loop      | Whether to loop playback | boolean | `false`    |
-| preload   | Whether to proload audio | string  | `auto`     |
-| type      | Show type                | String  | `progress` |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| url | Audio URL | string | `''` |
+| muted | Whether to be muted | boolean | `false` |
+| autoplay | Whether to autoplay | boolean | `false` |
+| loop | Whether to loop playback | boolean | `false` |
+| preload | Whether to proload audio | string | `auto` |
+| type | Show type | String | `progress` |
 
 ### Events
 
-| Attribute       | Description                                    | CallBack                 |
-| --------------- | ---------------------------------------------- | ------------------------ |
-| fast-back       | Emitted when audio back                        | play time（millisecond） |
-| forward         | Emitted when audio forward                     | play time（millisecond） |
-| play            | Emitted when audio play or pause               | play status              |
-| ended           | Emitted when audio ended                       | ——                       |
-| mute            | Emitted when audio mute                        | ——                       |
-| change-progress | Emitted when audio progress change             | play time（millisecond） |
-| can-play        | Emitted when the user agent can play the media | `event: Event`           |
+| Attribute | Description | CallBack |
+| --- | --- | --- |
+| fast-back | Emitted when audio back | play time（millisecond） |
+| forward | Emitted when audio forward | play time（millisecond） |
+| play | Emitted when audio play or pause | play status |
+| ended | Emitted when audio ended | —— |
+| mute | Emitted when audio mute | —— |
+| change-progress | Emitted when audio progress change | play time（millisecond） |
+| can-play | Emitted when the user agent can play the media | `event: Event` |
