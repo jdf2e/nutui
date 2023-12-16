@@ -18,29 +18,29 @@ app.use(Swipe);
 
 ### 基础用法
 
-> demo: swipe basic
+> demo: swipe basic feedback
 
 ### 禁止滑动
 
-> demo: swipe disabled
+> demo: swipe disabled feedback
 
 ### 左右滑动
 
-> demo: swipe direction
+> demo: swipe direction feedback
 
 ### Ref 方法
 
-> demo: swipe methods
+> demo: swipe methods feedback
 
 ### 自定义内容
 
-> demo: swipe content
+> demo: swipe content feedback
 
 ### 使用 SwipeGroup 控制 Swipe 之间互斥
 
 此时各个 Swipe 的 name 为必填项。
 
-> demo: swipe lock
+> demo: swipe lock feedback
 
 ## Swipe
 
