@@ -11,9 +11,10 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onDeactivated, onActivated, reactive, ref } from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
+import { DragDirection } from './types';
 const { create } = createComponent('drag');
 export default create({
   props: {
@@ -22,7 +23,7 @@ export default create({
       default: false
     },
     direction: {
-      type: String,
+      type: String as PropType<DragDirection>,
       default: 'all'
     },
     boundary: {
