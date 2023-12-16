@@ -11,7 +11,7 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Show from './show.vue';
 import Loop from './loop.vue';
 import Click from './click.vue';
