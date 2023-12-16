@@ -55,10 +55,10 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
+import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties, PropType } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue';
-import { TextAlign } from './type';
+import { SearchbarInputAlign, SearchbarShape } from './types';
 import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('searchbar');
 
@@ -79,7 +79,7 @@ export default create({
       default: ''
     },
     shape: {
-      type: String,
+      type: String as PropType<SearchbarShape>,
       default: 'round'
     },
     maxLength: {
@@ -123,7 +123,7 @@ export default create({
       default: false
     },
     inputAlign: {
-      type: String,
+      type: String as PropType<SearchbarInputAlign>,
       default: 'left'
     },
     safeAreaInsetBottom: {
@@ -219,7 +219,7 @@ export default create({
 
     const styleSearchbar = computed(() => {
       const style: CSSProperties = {
-        textAlign: props.inputAlign as TextAlign
+        textAlign: props.inputAlign
       };
       return style;
     });
@@ -251,3 +251,4 @@ export default create({
   }
 });
 </script>
+./types
