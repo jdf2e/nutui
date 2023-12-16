@@ -1,6 +1,6 @@
 import { PropType, Ref, CSSProperties } from 'vue';
 import { CircleClose } from '@nutui/icons-vue-taro';
-export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
+import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -15,7 +15,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<SearchbarShape>;
         default: string;
     };
     maxLength: {
@@ -59,11 +59,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     inputAlign: {
-        type: StringConstructor;
+        type: PropType<SearchbarInputAlign>;
         default: string;
     };
     confirmType: {
-        type: PropType<confirmTextType>;
+        type: PropType<SearchbarConfirmType>;
         default: string;
     };
     safeAreaInsetBottom: {
@@ -107,7 +107,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<SearchbarShape>;
         default: string;
     };
     maxLength: {
@@ -151,11 +151,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     inputAlign: {
-        type: StringConstructor;
+        type: PropType<SearchbarInputAlign>;
         default: string;
     };
     confirmType: {
-        type: PropType<confirmTextType>;
+        type: PropType<SearchbarConfirmType>;
         default: string;
     };
     safeAreaInsetBottom: {
@@ -180,15 +180,15 @@ declare const _default: Install< import("vue").DefineComponent<{
     disabled: boolean;
     safeAreaInsetBottom: boolean;
     modelValue: string | number;
-    shape: string;
+    shape: SearchbarShape;
     background: string;
     readonly: boolean;
     placeholder: string;
-    inputAlign: string;
+    inputAlign: SearchbarInputAlign;
     maxLength: string | number;
     clearable: boolean;
     autofocus: boolean;
-    confirmType: confirmTextType;
+    confirmType: SearchbarConfirmType;
     inputType: string;
     clearIcon: Record<string, any>;
     inputBackground: string;

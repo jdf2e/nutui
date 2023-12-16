@@ -1,4 +1,5 @@
-import { Ref, CSSProperties } from 'vue';
+import { Ref, CSSProperties, PropType } from 'vue';
+import { SearchbarInputAlign, SearchbarShape } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -17,7 +18,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<SearchbarShape>;
         default: string;
     };
     maxLength: {
@@ -115,7 +116,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     inputAlign: {
-        type: StringConstructor;
+        type: PropType<SearchbarInputAlign>;
         default: string;
     };
     safeAreaInsetBottom: {
@@ -159,7 +160,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<SearchbarShape>;
         default: string;
     };
     maxLength: {
@@ -257,7 +258,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     inputAlign: {
-        type: StringConstructor;
+        type: PropType<SearchbarInputAlign>;
         default: string;
     };
     safeAreaInsetBottom: {
@@ -279,11 +280,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     disabled: boolean;
     safeAreaInsetBottom: boolean;
     modelValue: string | number;
-    shape: string;
+    shape: SearchbarShape;
     background: string;
     readonly: boolean;
     placeholder: string;
-    inputAlign: string;
+    inputAlign: SearchbarInputAlign;
     maxLength: string | number;
     clearable: boolean;
     autofocus: boolean;
