@@ -2200,8 +2200,8 @@
             },
             {
               "name": "direction",
-              "default": "`'all'`",
-              "description": "拖拽元素的拖拽方向限制，**x**/**y**/**all**三选一",
+              "default": "`all`",
+              "description": "拖拽元素的拖拽方向限制，`x`、`y`、`all`",
               "value": {
                 "type": "string",
                 "kind": "expression"
