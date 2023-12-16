@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Shape from './shape.vue';
 import Left from './left.vue';
