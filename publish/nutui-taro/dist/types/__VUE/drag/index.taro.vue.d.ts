@@ -1,3 +1,5 @@
+import { PropType } from 'vue';
+import { DragDirection } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -8,7 +10,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     direction: {
-        type: StringConstructor;
+        type: PropType<DragDirection>;
         default: string;
     };
     boundary: {
@@ -33,7 +35,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     direction: {
-        type: StringConstructor;
+        type: PropType<DragDirection>;
         default: string;
     };
     boundary: {
@@ -46,7 +48,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         };
     };
 }>>, {
-    direction: string;
+    direction: DragDirection;
     attract: boolean;
     boundary: Record<string, any>;
 }, {}>>;
