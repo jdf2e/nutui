@@ -14,89 +14,39 @@ const app = createApp();
 app.use(Price);
 ```
 
-### Price size
+### Size
 
-Three sizes are supported: small, normal, and large, and the default is normal.
+size: `small`, `normal`, `large`
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="0" size="small" :need-symbol="false" />
-  <nut-price :price="0" size="normal" :need-symbol="false" />
-  <nut-price :price="0" size="large" :need-symbol="false" />
-</template>
-```
-
-:::
+> demo: price size
 
 ### Decimals places
 
 `decimal-digits` can set the number of decimal places, and 2 decimal places are displayed by default.
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888" :decimal-digits="0" />
-</template>
-```
-
-:::
+> demo: price decimal
 
 ### Strike Through
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" strike-through />
-</template>
-```
-
-:::
+> demo: price through
 
 ### Currency symbol
 
 `symbol` can set the currency symbol, the default is `¥`.
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="10010.01" symbol="¥" />
-</template>
-```
-
-:::
+> demo: price symbol
 
 ### Currency symbol position
 
 `position` can adjust the currency symbol position.
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888.01" position="after" symbol="RMB" />
-</template>
-```
-
-:::
+> demo: price position
 
 ### Thousands separator
 
 `thousands` can be displayed as thousands.
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="15213.1221" :decimal-digits="3" thousands />
-</template>
-```
-
-:::
+> demo: price thousands
 
 ## API
 
