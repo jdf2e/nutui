@@ -5073,20 +5073,20 @@
               }
             },
             {
-              "name": "row",
-              "default": "`1`",
-              "description": "设置段落行数",
+              "name": "title",
+              "default": "`true`",
+              "description": "是否显示段落标题（第一行显示）",
               "value": {
-                "type": "string",
+                "type": "boolean",
                 "kind": "expression"
               }
             },
             {
-              "name": "title",
-              "default": "`true`",
-              "description": "是否显示段落标题",
+              "name": "row",
+              "default": "`1`",
+              "description": "设置段落行数（title 下方展示）",
               "value": {
-                "type": "boolean",
+                "type": "string",
                 "kind": "expression"
               }
             }
