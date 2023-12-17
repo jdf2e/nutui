@@ -36,17 +36,15 @@ const t = useTranslate({
     avatar: '显示头像',
     round: '标题段落圆角风格',
     picture: '图片组合',
-    sub: '显示子组件',
-    desc: '一套京东风格的轻量级移动端Vue组库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。'
+    sub: '显示子组件'
   },
   'en-US': {
     basic: 'Basic Usage',
-    row: 'Incoming multiline',
-    avatar: 'Show Faces',
-    round: 'Title paragraph fillet style',
+    row: 'Multi lines',
+    avatar: 'Show Avatar',
+    round: 'Round Style',
     picture: 'Picture combination',
-    sub: 'Display subcomponents',
-    desc: 'A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.'
+    sub: 'Display sub-component'
   }
 });
 </script>
