@@ -18,85 +18,35 @@ app.use(Price);
 
 支持 small、normal、large 三种尺寸，默认为 normal。
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="0" size="small" :need-symbol="false" />
-  <nut-price :price="0" size="normal" :need-symbol="false" />
-  <nut-price :price="0" size="large" :need-symbol="false" />
-</template>
-```
-
-:::
+> demo: price size exhibition
 
 ### 小数点位数
 
 `decimal-digits` 可设置小数点位数，默认展示 2 位小数。
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888" :decimal-digits="0" />
-</template>
-```
-
-:::
+> demo: price decimal exhibition
 
 ### 划线价
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888" :decimal-digits="0" size="normal" need-symbol thousands strike-through />
-</template>
-```
-
-:::
+> demo: price through exhibition
 
 ### 货币符号
 
 `symbol` 可设置货币符号，默认为 `¥`。
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="10010.01" symbol="¥" />
-</template>
-```
-
-:::
+> demo: price symbol exhibition
 
 ### 货币符号位置
 
 `position` 可以调整货币符号位置。
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="8888.01" position="after" symbol="元" />
-</template>
-```
-
-:::
+> demo: price position exhibition
 
 ### 千位分隔
 
 `thousands` 可以按照千分号形式显示。
 
-:::demo
-
-```vue
-<template>
-  <nut-price :price="15213.1221" :decimal-digits="3" thousands />
-</template>
-```
-
-:::
+> demo: price thousands exhibition
 
 ## API
 

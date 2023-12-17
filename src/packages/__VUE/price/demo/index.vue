@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Size from './size.vue';
 import Decimal from './decimal.vue';
 import Through from './through.vue';
