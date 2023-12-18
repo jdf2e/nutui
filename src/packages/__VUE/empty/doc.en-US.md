@@ -16,72 +16,19 @@ app.use(Empty);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-empty description="no data"></nut-empty>
-</template>
-```
-
-:::
+> demo: empty basic
 
 ### Image Type
 
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="tabValue">
-    <nut-tab-pane title="empty">
-      <nut-empty image="empty" description="no cotent"></nut-empty>
-    </nut-tab-pane>
-    <nut-tab-pane title="error">
-      <nut-empty image="error" description="error"></nut-empty>
-    </nut-tab-pane>
-    <nut-tab-pane title="no network">
-      <nut-empty image="network" description="network"></nut-empty>
-    </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const tabValue = ref(0);
-</script>
-```
-
-:::
+> demo: empty type
 
 ### Custom Image
 
-:::demo
-
-```vue
-<template>
-  <nut-empty
-    image="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
-    description="Description"
-  ></nut-empty>
-</template>
-```
-
-:::
+> demo: empty custom
 
 ### Bottom Content
 
-:::demo
-
-```vue
-<template>
-  <nut-empty image="error" description="Failed to load">
-    <div style="margin-top: 10px">
-      <nut-button icon="refresh" type="primary">Retry</nut-button>
-    </div>
-  </nut-empty>
-</template>
-```
-
-:::
+> demo: empty bottom
 
 ## Empty
 

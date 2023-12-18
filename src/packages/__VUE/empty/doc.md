@@ -16,72 +16,19 @@ app.use(Empty);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-empty description="无数据"></nut-empty>
-</template>
-```
-
-:::
+> demo: empty basic
 
 ### 图片类型
 
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="tabValue">
-    <nut-tab-pane title="无内容">
-      <nut-empty image="empty" description="无内容"></nut-empty>
-    </nut-tab-pane>
-    <nut-tab-pane title="加载失败/错误">
-      <nut-empty image="error" description="加载失败/错误"></nut-empty>
-    </nut-tab-pane>
-    <nut-tab-pane title="无网络">
-      <nut-empty image="network" description="无网络"></nut-empty>
-    </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const tabValue = ref(0);
-</script>
-```
-
-:::
+> demo: empty type
 
 ### 自定义图片
 
-:::demo
-
-```vue
-<template>
-  <nut-empty
-    image="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
-    description="描述文字"
-  ></nut-empty>
-</template>
-```
-
-:::
+> demo: empty custom
 
 ### 底部内容
 
-:::demo
-
-```vue
-<template>
-  <nut-empty image="error" description="加载失败">
-    <div style="margin-top: 10px">
-      <nut-button icon="refresh" type="primary">重试</nut-button>
-    </div>
-  </nut-empty>
-</template>
-```
-
-:::
+> demo: empty bottom
 
 ## Empty
 
