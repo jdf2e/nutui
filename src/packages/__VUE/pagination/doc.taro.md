@@ -17,91 +17,24 @@ app.use(Pagination);
 ### 基础用法
 
 通过 v-model 来绑定当前页码。
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="25" :items-per-page="5" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination basic nav
 
 ### 简单模式
 
- 将 mode 设置为 simple 来切换到简单模式，此时分页器不会展示具体的页码按钮。
-:::demo
+将 mode 设置为 `simple` 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 
-```vue
-<template>
-  <nut-pagination v-model="page" :page-count="12" mode="simple" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination simple nav
 
 ### 显示省略号
 
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination ellipse nav
 
 ### 自定义按钮
 
-设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
-:::demo
-
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="500" @change="pageChange" :show-page-size="5">
-    <template #prev-text>
-      <Left size="10px" />
-    </template>
-    <template #next-text>
-      <Right size="10px" />
-    </template>
-    <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
-  </nut-pagination>
-</template>
-<script setup>
-import { Left, Right } from '@nutui/icons-vue-taro';
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination custom nav
 
 ## API
 
