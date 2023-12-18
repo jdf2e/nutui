@@ -130,17 +130,17 @@ const _hoisted_5 = { class: "nut-table__main__body" };
 const _hoisted_6 = { key: 1 };
 const _hoisted_7 = {
   key: 0,
-  class: "nut-table__summary"
-};
-const _hoisted_8 = ["innerHTML"];
-const _hoisted_9 = {
-  key: 1,
   class: "nut-table__nodata"
 };
-const _hoisted_10 = {
+const _hoisted_8 = {
   key: 0,
   class: "nut-table__nodata__text"
 };
+const _hoisted_9 = {
+  key: 1,
+  class: "nut-table__summary"
+};
+const _hoisted_10 = ["innerHTML"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_DownArrow = resolveComponent("DownArrow");
   const _component_RenderColumn = resolveComponent("RenderColumn");
@@ -193,21 +193,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ])
     ], 2),
     createTextVNode(),
-    _ctx.summary ? (openBlock(), createElementBlock("view", _hoisted_7, [
-      createElementVNode("span", {
-        class: "nut-table__summary__text",
-        innerHTML: _ctx.summary().value
-      }, null, 8, _hoisted_8)
-    ])) : createCommentVNode("", true),
-    createTextVNode(),
-    !_ctx.curData.length ? (openBlock(), createElementBlock("view", _hoisted_9, [
+    !_ctx.curData.length ? (openBlock(), createElementBlock("view", _hoisted_7, [
       createElementVNode("div", {
         class: normalizeClass(["nut-table__nodata", { "nut-table__nodata--border": _ctx.bordered }])
       }, [
         renderSlot(_ctx.$slots, "nodata"),
         createTextVNode(),
-        !_ctx.$slots.nodata ? (openBlock(), createElementBlock("div", _hoisted_10, toDisplayString(_ctx.translate("noData")), 1)) : createCommentVNode("", true)
+        !_ctx.$slots.nodata ? (openBlock(), createElementBlock("div", _hoisted_8, toDisplayString(_ctx.translate("noData")), 1)) : createCommentVNode("", true)
       ], 2)
+    ])) : createCommentVNode("", true),
+    createTextVNode(),
+    _ctx.summary ? (openBlock(), createElementBlock("view", _hoisted_9, [
+      createElementVNode("span", {
+        class: "nut-table__summary__text",
+        innerHTML: _ctx.summary().value
+      }, null, 8, _hoisted_10)
     ])) : createCommentVNode("", true)
   ]);
 }
