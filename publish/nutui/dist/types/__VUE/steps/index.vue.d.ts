@@ -1,10 +1,12 @@
+import { PropType } from 'vue';
+import { StepsDirection } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     direction: {
-        type: StringConstructor;
+        type: PropType<StepsDirection>;
         default: string;
     };
     current: {
@@ -19,7 +21,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     [key: string]: any;
 }>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "clickStep"[], "clickStep", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     direction: {
-        type: StringConstructor;
+        type: PropType<StepsDirection>;
         default: string;
     };
     current: {
@@ -33,7 +35,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClickStep?: ((...args: any[]) => any) | undefined;
 }, {
-    direction: string;
+    direction: StepsDirection;
     current: string | number;
     progressDot: boolean;
 }, {}>>;
