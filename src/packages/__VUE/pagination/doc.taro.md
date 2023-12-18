@@ -34,7 +34,7 @@ app.use(Pagination);
 
 ### 自定义按钮
 
-> demo: pagination custom
+> demo: pagination custom nav
 
 ## API
 
