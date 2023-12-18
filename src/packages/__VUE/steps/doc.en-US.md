@@ -17,142 +17,27 @@ app.use(Step);
 
 ### Basic Usage
 
-:::demo
+> demo: steps basic
 
-```vue
-<template>
-  <nut-steps :current="current1" @click-step="handleClickStep">
-    <nut-step title="Step One">
-      1
-      <template #title>Step One</template>
-    </nut-step>
-    <nut-step title="Not started">2</nut-step>
-    <nut-step title="Not started">3</nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { ref } from 'vue';
-const current1 = ref(1);
-const handleClickStep = (index) => {
-  console.log(index);
-};
-</script>
-```
+### Dot Style
 
-:::
+> demo: steps dot
 
-### Basic Usage(Dot)
+### Title and Description
 
-:::demo
-
-```vue
-<template>
-  <nut-steps :current="current2" progress-dot>
-    <nut-step></nut-step>
-    <nut-step></nut-step>
-    <nut-step></nut-step>
-  </nut-steps>
-  <div class="steps-button">
-    <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
-  </div>
-</template>
-<script setup>
-import { ref } from 'vue';
-const curren2 = ref(1);
-const handleClickStep = (index) => {
-  console.log(index);
-};
-</script>
-```
-
-:::
-
-### Title and description information
-
-:::demo
-
-```vue
-<template>
-  <nut-steps :current="current2">
-    <nut-step title="Completed" content="Step description">1</nut-step>
-    <nut-step title="In progress" content="Step description">2</nut-step>
-    <nut-step title="Not started" content="Step description">3</nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { ref } from 'vue';
-const curren2 = ref(1);
-</script>
-```
-
-:::
+> demo: steps desc
 
 ### Custom icon
 
-:::demo
-
-```vue
-<template>
-  <nut-steps current="1">
-    <nut-step title="Completed">
-      <template #icon><Service /></template>
-    </nut-step>
-    <nut-step title="In progress">
-      <template #icon><People /></template>
-    </nut-step>
-    <nut-step title="Not started">
-      <template #icon><Location2 /></template>
-    </nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { Service, People, Location2 } from '@nutui/icons-vue';
-</script>
-```
-
-:::
+> demo: steps custom
 
 ### Vertical step bar
 
-:::demo
-
-```vue
-<template>
-  <nut-steps direction="vertical" current="2">
-    <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>
-    <nut-step title="In progress" content="Your order is in transit">2</nut-step>
-    <nut-step
-      title="Not started"
-      content="The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone"
-      >3</nut-step
-    >
-  </nut-steps>
-</template>
-```
-
-:::
+> demo: steps vertical
 
 ### Point step and vertical direction
 
-:::demo
-
-```vue
-<template>
-  <nut-steps direction="vertical" progress-dot current="2">
-    <nut-step title="Completed" content="Your order has been packaged and the goods have been delivered">1</nut-step>
-    <nut-step title="In progress" content="Your order is in transit">2</nut-step>
-    <nut-step title="Not started">
-      3
-      <template #content>
-        <p>The receiving address is：</p>
-        <p>Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone</p>
-      </template>
-    </nut-step>
-  </nut-steps>
-</template>
-```
-
-:::
+> demo: steps vertical-dot
 
 ## API
 
