@@ -1,3 +1,5 @@
+import { PropType } from 'vue';
+import { PaginationMode } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -8,7 +10,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     mode: {
-        type: StringConstructor;
+        type: PropType<PaginationMode>;
         default: string;
     };
     prevText: {
@@ -43,7 +45,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     modelValue: import("vue").Ref<number>;
     select: (curPage: number, isSelect: boolean) => void;
     countRef: import("vue").ComputedRef<number>;
-    mode: import("vue").Ref<string>;
+    mode: import("vue").Ref<PaginationMode>;
     pages: import("vue").ComputedRef<{
         number: number;
         text: string | number;
@@ -57,7 +59,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     mode: {
-        type: StringConstructor;
+        type: PropType<PaginationMode>;
         default: string;
     };
     prevText: {
@@ -93,7 +95,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     modelValue: number;
-    mode: string;
+    mode: PaginationMode;
     prevText: string;
     nextText: string;
     pageCount: string | number;
