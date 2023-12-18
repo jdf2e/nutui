@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Dot from './dot.vue';
 import Desc from './desc.vue';

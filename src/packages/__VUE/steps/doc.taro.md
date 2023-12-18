@@ -17,138 +17,27 @@ app.use(Step);
 
 ### 基础用法
 
-:::demo
+> demo: steps basic exhibition
 
-```vue
-<template>
-  <nut-steps :current="current1" @click-step="handleClickStep">
-    <nut-step title="步骤一">
-      1
-      <template #title>步骤一</template>
-    </nut-step>
-    <nut-step title="未开始">2</nut-step>
-    <nut-step title="未开始">3</nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { ref } from 'vue';
-const current1 = ref(1);
-const handleClickStep = (index) => {
-  console.log(index);
-};
-</script>
-```
+### 点状样式
 
-:::
-
-### 基础用法（点状）
-
-:::demo
-
-```vue
-<template>
-  <nut-steps :current="current2" progress-dot>
-    <nut-step></nut-step>
-    <nut-step></nut-step>
-    <nut-step></nut-step>
-  </nut-steps>
-  <div class="steps-button">
-    <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
-  </div>
-</template>
-<script setup>
-import { ref } from 'vue';
-const curren2 = ref(1);
-const handleClickStep = (index) => {
-  console.log(index);
-};
-</script>
-```
-
-:::
+> demo: steps dot exhibition
 
 ### 标题和描述信息
 
-:::demo
-
-```vue
-<template>
-  <nut-steps :current="current2">
-    <nut-step title="已完成" content="步骤描述">1</nut-step>
-    <nut-step title="进行中" content="步骤描述">2</nut-step>
-    <nut-step title="未开始" content="步骤描述">3</nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { ref } from 'vue';
-const curren2 = ref(1);
-</script>
-```
-
-:::
+> demo: steps desc exhibition
 
 ### 自定义图标
 
-:::demo
-
-```vue
-<template>
-  <nut-steps current="1">
-    <nut-step title="已完成">
-      <template #icon><Service /></template>
-    </nut-step>
-    <nut-step title="进行中">
-      <template #icon><People /></template>
-    </nut-step>
-    <nut-step title="未开始">
-      <template #icon><Location2 /></template>
-    </nut-step>
-  </nut-steps>
-</template>
-<script setup>
-import { Service, People, Location2 } from '@nutui/icons-vue-taro';
-</script>
-```
-
-:::
+> demo: steps custom exhibition
 
 ### 竖向步骤条
 
-:::demo
-
-```vue
-<template>
-  <nut-steps direction="vertical" current="2">
-    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-    <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
-  </nut-steps>
-</template>
-```
-
-:::
+> demo: steps vertical exhibition
 
 ### 点状步骤和垂直方向
 
-:::demo
-
-```vue
-<template>
-  <nut-steps direction="vertical" progress-dot current="2">
-    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-    <nut-step title="未开始">
-      3
-      <template #content>
-        <p>收货地址为：</p>
-        <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
-      </template>
-    </nut-step>
-  </nut-steps>
-</template>
-```
-
-:::
+> demo: steps vertical-dot exhibition
 
 ## API
 
