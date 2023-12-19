@@ -97,6 +97,36 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 
 :::
 
+### 多行水印
+
+content属性传入string数组，展示的则是多行水印
+
+:::demo
+
+```vue
+<template>
+  <nut-cell class="wrap">
+    <nut-watermark
+      :full-page="false"
+      :gap-y="24"
+      font-color="#fa2c19"
+      :content="['nut-ui', 'water-mark']"
+    ></nut-watermark>
+  </nut-cell>
+</template>
+<script setup></script>
+<style>
+.wrap {
+  width: 100%;
+  height: 240px;
+  display: block;
+  background: #fff;
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### Props
@@ -110,7 +140,7 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 | image-width | 图片宽度 | number | `120` |
 | image-height | 图片高度 | number | `64` |
 | z-index | 追加的水印元素的 z-index | number | `2000` |
-| content | 水印文字内容 | string | - |
+| content | 水印文字内容 | string | string[] | - |
 | font-color | 水印文字颜色 | string | `rgba(0, 0, 0, .15)` |
 | font-size | 文字大小 | string \| number | `16` |
 | gap-x | 水印之间的水平间距 | number | `24` |
