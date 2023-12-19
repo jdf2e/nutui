@@ -16,70 +16,11 @@ app.use(Signature);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-signature @confirm="confirm" @clear="clear"></nut-signature>
-  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const demoSignUrl = ref('');
-const confirm = (canvas, data) => {
-  if (data === '') {
-    console.log(canvas);
-    return false;
-  }
-  demoSignUrl.value = data;
-  console.log('图片地址', canvas, data);
-};
-const clear = () => {
-  demoSignUrl.value = '';
-  console.log('清除事件');
-};
-</script>
-```
-
-:::
+> demo: signature basic business
 
 ### 修改颜色和签字粗细
 
-:::demo
-
-```vue
-<template>
-  <nut-signature
-    :lineWidth="state.lineWidth"
-    :strokeStyle="state.strokeStyle"
-    @confirm="confirm"
-    @clear="clear"
-  ></nut-signature>
-  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const state = reactive({
-  lineWidth: 4,
-  strokeStyle: 'green'
-});
-const demoSignUrl = ref('');
-const confirm = (canvas, data) => {
-  if (data === '') {
-    console.log(canvas);
-    return false;
-  }
-  demoSignUrl.value = data;
-  console.log('图片地址', canvas, data);
-};
-const clear = () => {
-  demoSignUrl.value = '';
-  console.log('清除事件');
-};
-</script>
-```
-
-:::
+> demo: signature custom business
 
 ## API
 
