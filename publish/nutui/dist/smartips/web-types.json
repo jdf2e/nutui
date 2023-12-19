@@ -7122,7 +7122,7 @@
             },
             {
               "name": "content",
-              "default": "-",
+              "default": "string[]",
               "description": "水印文字内容",
               "value": {
                 "type": "string",

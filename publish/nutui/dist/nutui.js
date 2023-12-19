@@ -13550,7 +13550,7 @@ const wy = /* @__PURE__ */ K(yy, [["render", ky]]), { componentName: Cy, create:
       default: 64
     },
     content: {
-      type: String,
+      type: [String, Array],
       default: ""
     },
     fontColor: {
@@ -13616,7 +13616,9 @@ const wy = /* @__PURE__ */ K(yy, [["render", ky]]), { componentName: Cy, create:
         } else if (v) {
           T.textBaseline = "middle", T.textAlign = "center", T.translate(A / 2, C / 2), T.rotate(Math.PI / 180 * Number(i));
           const E = Number(w) * I;
-          T.font = `${y} normal ${g} ${E}px/${C}px ${c}`, T.fillStyle = b, T.fillText(v, 0, 0), T.restore(), t.base64Url = k.toDataURL();
+          T.font = `${y} normal ${g} ${E}px/${C}px ${c}`, T.fillStyle = b, Array.isArray(v) ? v.map((V, X) => {
+            T.fillText(V, 0, (X - 1) * E);
+          }) : T.fillText(v, 0, 0), T.restore(), t.base64Url = k.toDataURL();
         }
       } else
         throw new Error("当前环境不支持Canvas");
