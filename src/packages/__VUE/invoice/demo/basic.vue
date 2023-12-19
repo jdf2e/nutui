@@ -1,45 +1,17 @@
 <template>
-  <div class="demo full">
-    <h2>{{ translate('basic') }}</h2>
-    <nut-invoice :data="data" :form-value="formValue" @submit="submit"></nut-invoice>
-  </div>
+  <nut-invoice :data="data" :form-value="formValue" @submit="submit"></nut-invoice>
 </template>
-
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showToast } from '@/packages/nutui.vue';
-const translate = useTranslate({
-  'zh-CN': {
-    basic: '基础用法'
-  },
-  'en-US': {
-    basic: 'Basic Usage'
-  }
-});
-const formValue = reactive({
-  type: '企业',
-  name: '',
-  num: '',
-  adress: '',
-  tel: '',
-  address: '',
-  bank: '',
-  account: ''
-});
-
-// Promise 异步校验
 const asyncValidator = (val: string) => {
   return new Promise((resolve) => {
-    showToast.loading('模拟异步验证中...');
     setTimeout(() => {
-      showToast.hide();
       resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
     }, 1000);
   });
 };
 
-let data: any = ref([
+const data = ref([
   {
     type: 'radio',
     label: '发票类型',
@@ -96,7 +68,18 @@ let data: any = ref([
   }
 ]);
 
-const submit = (valid: boolean, errors: []) => {
+const formValue = reactive({
+  type: '企业',
+  name: '',
+  num: '',
+  adress: '',
+  tel: '',
+  address: '',
+  bank: '',
+  account: ''
+});
+
+const submit = (valid: boolean, errors: any) => {
   if (valid) {
     console.log('success', formValue);
   } else {
@@ -104,9 +87,3 @@ const submit = (valid: boolean, errors: []) => {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.nut-button {
-  margin-right: 10px;
-}
-</style>
