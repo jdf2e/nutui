@@ -18,12 +18,12 @@
 import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
 import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarShape, AvatarSize, AvatarZIndex } from '../avatar/types';
-import Avatar from '../avatar/index.taro.vue';
+import { AVATAR_KEY, type AvatarShape, type AvatarSize, type AvatarZIndex } from '../avatar/types';
+import NutAvatar from '../avatar/index.taro.vue';
 const { create } = createComponent('avatar-group');
 export default create({
   components: {
-    [Avatar.name]: Avatar
+    NutAvatar
   },
   props: {
     maxContent: {
@@ -142,7 +142,7 @@ export default create({
       observer.value?.disconnect();
     });
 
-    provide('avatarGroup', {
+    provide(AVATAR_KEY, {
       props,
       avatarGroupRef
     });

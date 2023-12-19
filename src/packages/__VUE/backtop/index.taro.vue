@@ -19,14 +19,14 @@
 
 <script lang="ts">
 import { reactive, computed, toRefs } from 'vue';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
 import { Top } from '@nutui/icons-vue-taro';
 export default create({
   components: {
     Top,
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     height: {

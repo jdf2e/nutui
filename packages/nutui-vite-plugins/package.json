@@ -1,0 +1,45 @@
+{
+  "name": "@nutui/vite-plugins",
+  "version": "1.0.0",
+  "private": "true",
+  "type": "module",
+  "description": "",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./markdown": {
+      "import": "./dist/markdown.js",
+      "require": "./dist/markdown.cjs",
+      "types": "./dist/markdown.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "pnpm build",
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "author": "jdf2e",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "highlight.js": "^11.9.0",
+    "lzutf8": "^0.6.3",
+    "markdown-it-container": "^4.0.0",
+    "unplugin-vue-markdown": "^0.25.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/markdown-it-container": "^2.0.9",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}

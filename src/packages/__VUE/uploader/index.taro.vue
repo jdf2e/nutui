@@ -76,15 +76,19 @@ import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import Progress from '../progress/index.taro.vue';
-import Button from '../button/index.taro.vue';
-const { create, translate } = createComponent('uploader');
+import NutProgress from '../progress/index.taro.vue';
+import NutButton from '../button/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('uploader');
+const cN = 'NutUploader';
+
 export default create({
   components: {
-    [Progress.name]: Progress,
-    [Button.name]: Button,
+    NutProgress,
+    NutButton,
     Photograph,
     Failure,
     Loading,
@@ -113,7 +117,7 @@ export default create({
 
     timeout: { type: [Number, String], default: 1000 * 30 },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
-    fileList: { type: Array<any>, default: () => [] },
+    fileList: { type: Array as PropType<any[]>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },
@@ -159,6 +163,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<UploaderTaro>[]>([]);
 
@@ -334,6 +339,7 @@ export default create({
         let fileType = file.type;
         let filepath = (file.tempFilePath || file.path) as string;
         const fileItem = reactive(new FileItem());
+        fileItem.message = translate('ready');
         if (file.fileType) {
           fileType = file.fileType;
         } else {

@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-elevator">
     <nut-scroll-view
       ref="listview"
       class="nut-elevator__list nut-elevator__list--mini"
@@ -10,11 +10,6 @@
       :style="{ height: isNaN(+height) ? height : `${height}px` }"
       @scroll="listViewScroll"
     >
-      <view v-show="scrollY > 0" :style="fixedStyle" class="nut-elevator__list__fixed__wrapper">
-        <view v-if="isSticky" class="nut-elevator__list__fixed nut-elevator__list__fixed--mini">
-          <span class="nut-elevator__fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
-        </view>
-      </view>
       <view
         v-for="(item, index) in indexList"
         :key="item[acceptKey]"
@@ -36,6 +31,9 @@
         </view>
       </view>
     </nut-scroll-view>
+    <view v-show="scrollY > 2 && isSticky" class="nut-elevator__list__fixed">
+      <view class="nut-elevator__list__fixed-title">{{ indexList[currentIndex][acceptKey] }}</view>
+    </view>
     <view v-show="scrollStart" v-if="indexList.length > 0" class="nut-elevator__code--current">
       {{ indexList[codeIndex][acceptKey] }}
     </view>
@@ -57,16 +55,15 @@
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { ElevatorData } from './type';
-const { componentName, create } = createComponent('elevator');
+const { create } = createComponent('elevator');
 
 import Taro from '@tarojs/taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export default create({
   components: {
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     height: {
@@ -97,7 +94,7 @@ export default create({
     }
   },
   emits: ['clickItem', 'clickIndex', 'change'],
-  setup(props, context) {
+  setup(props, { emit, expose }) {
     const spaceHeight = 23;
     const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>;
     const state = reactive({
@@ -116,13 +113,6 @@ export default create({
       currentData: {} as ElevatorData,
       currentKey: '',
       scrollY: 0
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const clientHeight = computed(() => {
@@ -196,13 +186,13 @@ export default create({
     };
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      context.emit('clickItem', key, item);
+      emit('clickItem', key, item);
       state.currentData = item;
       state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
-      context.emit('clickIndex', key);
+      emit('clickIndex', key);
     };
 
     const listViewScroll = (e: Event) => {
@@ -220,7 +210,7 @@ export default create({
       }
     };
 
-    useExpose({
+    expose({
       scrollTo
     });
 
@@ -234,12 +224,11 @@ export default create({
     watch(
       () => state.currentIndex,
       (newVal: number) => {
-        context.emit('change', newVal);
+        emit('change', newVal);
       }
     );
 
     return {
-      classes,
       ...toRefs(state),
       clientHeight,
       fixedStyle,

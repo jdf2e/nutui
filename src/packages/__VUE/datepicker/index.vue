@@ -23,12 +23,12 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import Picker from '../picker/index.vue';
+import NutPicker from '../picker/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
-const { create, translate } = createComponent('date-picker');
+const { create } = createComponent('date-picker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -38,16 +38,16 @@ function isDate(val: Date): val is Date {
 const zhCNType: {
   [props: string]: string;
 } = {
-  day: translate('day'),
-  year: translate('year'),
-  month: translate('month'),
-  hour: translate('hour'),
-  minute: translate('min'),
-  seconds: translate('seconds')
+  day: '日',
+  year: '年',
+  month: '月',
+  hour: '时',
+  minute: '分',
+  seconds: '秒'
 };
 export default create({
   components: {
-    [Picker.name]: Picker
+    NutPicker
   },
   props: {
     modelValue: null,

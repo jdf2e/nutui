@@ -15,12 +15,12 @@
 <script lang="ts">
 import { ref, watch, onUnmounted } from 'vue';
 import { createComponent } from '../../utils/create';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
 const { create } = createComponent('notify');
 
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     id: String,

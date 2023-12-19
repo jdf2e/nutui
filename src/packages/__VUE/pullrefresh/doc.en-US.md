@@ -50,13 +50,19 @@ const refreshFun = () => {
 
 ### Custom Tips
 
-The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt` ，Complex styles can be implemented through slots。
+The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'complete' `，respectively corresponding to the attribute `pullingTxt、loosingTxt、loadingTxt、completeTxt` ，Complex styles can be implemented through slots。
 
 :::demo
 
 ```vue
 <template>
-  <nut-pull-refresh v-model="refresh2" loosing-txt="Relax" loading-txt="Desperate loading..." @refresh="refreshFun">
+  <nut-pull-refresh
+    v-model="refresh2"
+    loosing-txt="Relax"
+    loading-txt="Desperate loading..."
+    :complete-duration="1000"
+    @refresh="refreshFun"
+  >
     <template #pulling-txt>
       <div>Pull</div>
     </template>
@@ -124,29 +130,32 @@ const refreshFun = () => {
 
 ### Props
 
-| Attribute     | Description                              | Type             | Default               |
-| ------------- | ---------------------------------------- | ---------------- | --------------------- |
-| v-model       | Loading status                           | boolean          | `false`               |
-| pull-distance | The distance to trigger the pull refresh | number \| string | `50`                  |
-| head-height   | Height of head                           | number \| string | `50`                  |
-| loading-icon  | Loading icon                             | string           | `loading`             |
-| pulling-txt   | Text to show when pulling                | string           | `Pull to refresh...`  |
-| loosing-txt   | Text to show when loosing                | string           | `Loose to refresh...` |
-| loading-txt   | Text to show when loading                | string           | `Loading...`          |
-| duration      | Pull down animation duration             | number           | `0.3`                 |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| v-model | Loading status | boolean | `false` |
+| pull-distance | The distance to trigger the pull refresh | number \| string | `50` |
+| head-height | Height of head | number \| string | `50` |
+| loading-icon | Loading icon | string | `loading` |
+| pulling-txt | Text to show when pulling | string | `Pull to refresh...` |
+| loosing-txt | Text to show when loosing | string | `Loose to refresh...` |
+| loading-txt | Text to show when loading | string | `Loading...` |
+| complete-txt | Text to show when complete | string | `Refresh successfully` |
+| complete-duration | Duration of text display when loading is complete (milliseconds),Load completion copy is not displayed when it is `0` | number | `0` |
+| duration | Pull down animation duration | number | `0.3` |
 
 ### Events
 
-| Event   | Description                            | Arguments                       |
-| ------- | -------------------------------------- | ------------------------------- |
-| change  | Emitted when draging or status changed | {status:string,distance:number} |
-| refresh | Emitted after pulling refresh          | -                               |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| change | Emitted when draging or status changed | {status:string,distance:number} |
+| refresh | Emitted after pulling refresh | - |
 
 ### Slots
 
-| Name    | Description                     |
-| ------- | ------------------------------- |
+| Name | Description |
+| --- | --- |
 | pulling | Content of head when at pulling |
 | loosing | Content of head when at loosing |
 | loading | Content of head when at loading |
-| default | Default slot                    |
+| complete | Content of head when at complete |
+| default | Default slot |

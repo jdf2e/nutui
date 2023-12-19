@@ -34,11 +34,11 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('comment-header');
-import Rate from '../../rate/index.vue';
+import NutRate from '../../rate/index.vue';
 
 export default create({
   components: {
-    [Rate.name]: Rate
+    NutRate
   },
   props: {
     type: {

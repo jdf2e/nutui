@@ -1,111 +1,50 @@
 <template>
-  <div class="demo padding" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <div class="steps-wrapper">
-      <nut-steps :current="state.current1">
-        <nut-step title="步骤一">
-          1
-          <template #title>步骤一</template>
-        </nut-step>
-        <nut-step title="步骤二">2</nut-step>
-        <nut-step title="步骤三">3</nut-step>
-      </nut-steps>
-      <div class="steps-button">
-        <nut-button type="primary" @click="handleStep('current1')">下一步</nut-button>
-      </div>
-    </div>
-    <h2>基础用法（点状）</h2>
-    <div class="steps-wrapper">
-      <nut-steps :current="state.current2" progress-dot>
-        <nut-step></nut-step>
-        <nut-step></nut-step>
-        <nut-step></nut-step>
-      </nut-steps>
-      <div class="steps-button">
-        <nut-button size="mini" type="primary" @click="handleStep('current2')">下一步</nut-button>
-      </div>
-    </div>
-    <h2>标题和描述信息</h2>
-    <div class="steps-wrapper">
-      <nut-steps :current="state.current3">
-        <nut-step title="步骤一" content="步骤描述">1</nut-step>
-        <nut-step title="步骤二" content="步骤描述"></nut-step>
-        <nut-step title="步骤三" content="步骤描述"></nut-step>
-      </nut-steps>
-      <div class="steps-button" style="margin-top: 10px">
-        <nut-button type="primary" @click="handleStep('current3')">下一步</nut-button>
-      </div>
-    </div>
-    <h2>自定义图标</h2>
-    <div class="steps-wrapper">
-      <nut-steps current="4">
-        <nut-step title="已完成" icon="service">1</nut-step>
-        <nut-step title="进行中" icon="people">2</nut-step>
-        <nut-step title="未开始" icon="location2">3</nut-step>
-      </nut-steps>
-    </div>
-    <h2>竖向步骤条</h2>
-    <div class="steps-wrapper" style="height: 300px; padding: 15px 30px">
-      <nut-steps direction="vertical" current="2">
-        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-        <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
-      </nut-steps>
-    </div>
-    <h2>点状步骤和垂直方向</h2>
-    <div class="steps-wrapper" style="height: 300px; padding: 15px 40px">
-      <nut-steps direction="vertical" progress-dot current="2">
-        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
-        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-        <nut-step title="未开始"
-          >3
-          <template #content>
-            <p>收货地址为：</p>
-            <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
-          </template>
-        </nut-step>
-      </nut-steps>
-    </div>
-  </div>
+  <Demo class="full">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('dot') }}</h2>
+    <Dot />
+
+    <h2>{{ t('desc') }}</h2>
+    <Desc />
+
+    <h2>{{ t('custom') }}</h2>
+    <Custom />
+
+    <h2>{{ t('vertical') }}</h2>
+    <Vertical />
+
+    <h2>{{ t('verticalDot') }}</h2>
+    <VerticalDot />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-const state = reactive({
-  current1: 1,
-  current2: 1,
-  current3: 1,
-  current4: 1,
-  current5: 1
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Dot from './dot.vue';
+import Desc from './desc.vue';
+import Custom from './custom.vue';
+import Vertical from './vertical.vue';
+import VerticalDot from './vertical-dot.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    dot: '点状样式',
+    desc: '标题和描述信息',
+    custom: '自定义图标',
+    vertical: '竖向步骤条',
+    verticalDot: '点状步骤和垂直方向'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    dot: 'Dot Style',
+    desc: 'Title and description information',
+    custom: 'Custom Icon',
+    vertical: 'Vertical step bar',
+    verticalDot: 'Point steps and vertical orientation'
+  }
 });
-
-const handleStep = (params) => {
-  if (state[params] >= 3) {
-    state[params] = 1;
-  } else {
-    state[params] += 1;
-  }
-};
 </script>
-
-<style lang="scss">
-.padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  h2 {
-    padding-left: 27px !important;
-  }
-}
-.steps-wrapper {
-  width: 100%;
-  padding: 15px 0;
-  background-color: #fff;
-  .steps-button {
-    text-align: center;
-  }
-}
-</style>

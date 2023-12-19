@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
+  <Demo class="full">
     <Header />
     <h2>基础用法</h2>
     <div class="demo__piece">
@@ -7,7 +7,7 @@
     </div>
     <h2>环形进度条自定义宽度</h2>
     <div class="demo__piece">
-      <nut-circle-progress progress="50" strokeWidth="10" />
+      <nut-circle-progress progress="50" stroke-width="10" />
     </div>
 
     <h2>环形进度条自定义颜色(支持渐变色)</h2>
@@ -31,14 +31,11 @@
       <nut-button type="primary" @click="reduce">减少</nut-button>
       <nut-button type="primary" @click="add">增加</nut-button>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const gradientColor = {
   '0%': '#FF5E5E',
   '100%': '#FFA062'

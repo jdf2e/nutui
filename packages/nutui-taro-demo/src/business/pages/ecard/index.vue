@@ -1,59 +1,19 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-cell>
-      <nut-ecard
-        v-model="money"
-        @inputChange="inputChange"
-        @change="change"
-        @changeStep="changeStep"
-        :data-list="dataList"
-      ></nut-ecard>
-    </nut-cell>
-  </div>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+  </Demo>
 </template>
-<script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-export default defineComponent({
-  components: { Header },
-  setup() {
-    const env = Taro.getEnv();
-    const dataList = reactive([
-      {
-        price: 10
-      },
-      {
-        price: 20
-      },
-      {
-        price: 30
-      },
-      {
-        price: 40
-      }
-    ]);
-    const money = ref(0);
-    const inputChange = (val: number) => {
-      money.value = val;
-    };
-    const change = (item: { price: number }) => {
-      money.value = item.price;
-    };
-    const changeStep = (num: number, price: number) => {
-      const val = price * num;
-      money.value = val;
-    };
-    return {
-      dataList,
-      inputChange,
-      change,
-      money,
-      changeStep,
-      env
-    };
+<script setup lang="ts">
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法'
+  },
+  'en-US': {
+    basic: 'Basic Usage'
   }
 });
 </script>

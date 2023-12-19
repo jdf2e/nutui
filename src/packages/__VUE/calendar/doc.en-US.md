@@ -217,6 +217,76 @@ const select = (param) => {
 
 :::
 
+### Customize the disable date
+
+By configuring the `disabled-date` function callback, you can customize to disable certain dates from being selected.
+When the type is `range`, if this function is set, you need to filter out the disabled date after selecting the result
+
+:::demo
+
+```html
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="Customize the disable date"
+    :desc="date ? `${date}` : 'Please Select Date'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2022-01-01`"
+    :end-date="`2022-11-30`"
+    :disabled-date="disabledDate"
+  >
+  </nut-calendar>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        isVisible: false,
+        date: ''
+      });
+      const openSwitch = (param) => {
+        state[`${param}`] = true;
+      };
+      const closeSwitch = (param) => {
+        state[`${param}`] = false;
+      };
+      const setChooseValue = (param) => {
+        state.date = param[3];
+      };
+      const disabledDate = (date) => {
+        const disabledDate = {
+          '2022-01-05': true,
+          '2022-01-06': true,
+          '2022-01-10': true,
+          '2022-01-11': true,
+          '2022-01-12': true,
+          '2022-01-13': true,
+          '2022-01-14': true
+        };
+        return disabledDate[date];
+      };
+      return {
+        ...toRefs(state),
+        openSwitch,
+        closeSwitch,
+        setChooseValue,
+        disabledDate
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### Quick Select Single Date
 
 :::demo
@@ -235,8 +305,6 @@ const select = (param) => {
     @close="closeSwitch('isVisible')"
     @choose="setChooseValue"
     :default-value="state.date"
-    :start-date="null"
-    :end-date="null"
     :is-auto-back-fill="true"
   >
   </nut-calendar>
@@ -657,6 +725,7 @@ const setChooseValue = (param) => {
 | show-sub-title | Whether to display the date title | boolean | `true` |
 | to-date-animation | Whether to use scroll animation | boolean | `true` |
 | first-day-of-week | Set the start day of week | 0-6 | `0` |
+| disabled-date | A function that determines whether the date is disabled takes a `year - month - day` as an argument. A Boolean value should be returned. | function | `-` |
 
 ### Events
 

@@ -1,3 +1,87 @@
+## v4.2.4
+
+`2023-12-15`
+
+Features
+
+- form: 新增 label-position & star-position (#2659) (#2663) @yi-boide
+- radio: 组件设置 button 形状时支持改变大小 (#2701) @iCheng
+
+Bug Fixes
+
+- input-number: 修复 iOS 下输入小数点后清空输入框的问题 (#2704) @Formulaaa
+- range: 优化滑动事件处理逻辑 (#2712) @eiinu
+- textarea: 调整 readonly & maxlength 实现逻辑 (#2710) @eiinu
+- tabs: 修复 vertical 方式下标题样式错误 (#2727) @eiinu
+- tabs: 修复嵌套使用时的样式错乱问题 (#2728) @eiinu
+- sku: 修复小程序下内容的滚动问题 (#2737) @eiinu
+- navbar: 修复标题居中等样式问题 (#2739) @eiinu
+
+## v4.2.3
+
+`2023-11-30`
+
+Bug Fixes
+
+- ellipsis: 修复 taro 组件导出问题 @eiinu
+- number-keyboard: 修复标题栏完成按钮样式丢失的问题 (#2696) @Moonofweisheng
+
+Other Changes
+
+- refactor: 优化组件间 provide & inject (#2681) @eiinu
+- deps: bump vite to v5 (#2689) @eiinu
+
+## v4.2.2
+
+`2023-11-24`
+
+Features
+
+- pull-refresh: 新增 complete 状态文案与插槽 (#2636) (#2639) @yi-boide
+- form-item: required 样式支持由 rules 控制 (#2637) (#2640) @yi-boide
+
+Bug Fixes
+
+- input-number: 修复禁用无效问题 (#2680) @iCheng
+- list: 修复滚动滑动触底报错问题 (#2658) @zhangyuanliang
+- swiper: 修复 swiper-item 宽高错误问题 (#2679) @eiinu
+- address: 选择最后一级时 onChange 缺少 value 字段 @eiinu
+- picker: 调整 columns 类型定义 (#2662) @eiinu
+- input: 调整 type 类型定义 @eiinu
+
+Other Changes
+
+- locale: add use-locale (#2642) @eiinu
+- build: adjust dir structure of production (#2654) @eiinu
+- build: componentName kebab-case -> PascalCase @eiinu
+- chore: bump taro v3.6.19 (#2682) @eiinu
+
+## v4.2.1
+
+`2023-11-10`
+
+Features
+
+- dialog: 新增 ok-auto-close 属性 (#2626) (#2627) @yi-boide
+- input: 增加软键盘确认事件 (#2229) (#2622) @yi-boide
+- image-preview: taro 端新增 long-press 事件 & 新增长按保存相册 demo (#2592) @yi-boide @ntnyq
+- calendar: 增加自定义禁用函数 disabled-date (#2502) (#2614) @yi-boide
+- popup 关联组件增加 z-index 属性 (#2632) @eiinu
+- input: modelValue 支持 number 类型 (#2635) (#2638) @yi-boide
+
+Bug Fixes
+
+- swiper: 修复页面中未设置 z-index 的 fixed 元素无法覆盖 swiper 问题 (#2617) @oasis-cloud
+- swiper: 修复动态修改 height 后组件视图未更新问题 (#2485) (#2625) @yi-boide
+- ellipsis: 修复 direction 默认值 (#2631) @swbcnegc
+- date-picker: 修复中文包字段错误 (#2628) @eiinu
+- checkbox: 修复样式对齐问题 (#2641) @eiinu
+- elevator: 修复滚动后无法点击问题 #2603 (#2645) @eiinu
+
+Other Changes
+
+- docs: demo 更新为 script setup 风格 @eiinu
+
 ## v4.2.0
 
 `2023-10-27`

@@ -57,10 +57,10 @@ export default defineConfig({
       input,
       output: {
         paths: {
-          '@/packages/locale': '../locale/lang'
+          '@/packages/locale': '@nutui/nutui-taro/dist/packages/locale/lang'
         },
-        dir: path.resolve(__dirname, './dist/packages/_es'),
-        entryFileNames: '[name].js',
+        dir: path.resolve(__dirname, './dist/packages'),
+        entryFileNames: (chunkInfo) => `${chunkInfo.name.toLowerCase()}/${chunkInfo.name}.js`,
         plugins: []
       }
     },

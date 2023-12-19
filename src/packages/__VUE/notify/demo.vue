@@ -25,43 +25,36 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import NutNotify from './index.vue';
 import { showNotify } from './index';
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('notify');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      t1: '通知类型',
-      t2: '自定义',
-      t3: '自定义时长',
-      cusPostion: '自定义位置',
-      useTemplate: '组件调用',
-      primaryNotify: '主要通知',
-      successNotify: '成功通知',
-      errorNotify: '危险通知',
-      warningNotify: '警告通知',
-      cusBgNotify: '自定义背景色和字体颜色'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      t1: 'Notify Type',
-      t2: 'Custom',
-      t3: 'Custom Duration',
-      cusPostion: 'Custom Postion',
-      useTemplate: 'Template use',
-      primaryNotify: 'Primary Notify',
-      successNotify: 'Success Notify',
-      errorNotify: 'Error Notify',
-      warningNotify: 'Warning Notify',
-      cusBgNotify: 'Customize background and font colors'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    t1: '通知类型',
+    t2: '自定义',
+    t3: '自定义时长',
+    cusPostion: '自定义位置',
+    useTemplate: '组件调用',
+    primaryNotify: '主要通知',
+    successNotify: '成功通知',
+    errorNotify: '危险通知',
+    warningNotify: '警告通知',
+    cusBgNotify: '自定义背景色和字体颜色'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    t1: 'Notify Type',
+    t2: 'Custom',
+    t3: 'Custom Duration',
+    cusPostion: 'Custom Postion',
+    useTemplate: 'Template use',
+    primaryNotify: 'Primary Notify',
+    successNotify: 'Success Notify',
+    errorNotify: 'Error Notify',
+    warningNotify: 'Warning Notify',
+    cusBgNotify: 'Customize background and font colors'
+  }
+});
 const baseNotify = (msg: string) => {
   showNotify.text(msg, {
     onClose: () => {

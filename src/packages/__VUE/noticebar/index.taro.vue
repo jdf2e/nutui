@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-noticebar">
     <view
       v-show="showNoticebar"
       v-if="direction == 'across'"
@@ -78,11 +78,23 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, onUnmounted, reactive, computed, onActivated, onDeactivated, ref, watch, h } from 'vue';
+import {
+  toRefs,
+  onMounted,
+  onUnmounted,
+  reactive,
+  computed,
+  onActivated,
+  onDeactivated,
+  ref,
+  watch,
+  h,
+  PropType
+} from 'vue';
 import { Notice, CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { componentName, create } = createComponent('noticebar');
+const { create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 
 interface stateProps {
@@ -110,10 +122,8 @@ export default create({
       default: 'across'
     },
     list: {
-      type: Array,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<any[]>,
+      default: () => []
     },
     standTime: {
       type: Number,
@@ -185,7 +195,6 @@ export default create({
       offsetWidth: 0,
       showNoticebar: true,
       animationClass: '',
-
       animate: false,
       scrollList: [],
       distance: 0,
@@ -194,13 +203,6 @@ export default create({
       isCanScroll: null,
       showNotica: true,
       id: Math.round(Math.random() * 100000)
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const isEllipsis = computed(() => {
@@ -445,10 +447,8 @@ export default create({
     });
 
     return {
-      ...toRefs(props),
       ...toRefs(state),
       isEllipsis,
-      classes,
       barStyle,
       contentStyle,
       horseLampStyle,

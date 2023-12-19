@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-cell>
       <nut-switch v-model="data.checked1" />
@@ -13,7 +12,7 @@
 
     <h2>加载状态</h2>
     <nut-cell>
-      <nut-switch v-model="data.checked3" loading activeColor="red" />
+      <nut-switch v-model="data.checked3" loading active-color="red" />
     </nut-cell>
 
     <h2>change事件</h2>
@@ -23,7 +22,7 @@
 
     <h2>异步控制</h2>
     <nut-cell>
-      <nut-switch :model-value="checkedAsync" @change="changeAsync" :loading="loadingAsync" />
+      <nut-switch :model-value="checkedAsync" :loading="loadingAsync" @change="changeAsync" />
     </nut-cell>
 
     <h2>自定义颜色</h2>
@@ -40,15 +39,12 @@
     <nut-cell>
       <nut-switch v-model="data.checked8" loading><Loading name="loading" /></nut-switch>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Loading } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 const data = reactive({
   checked1: true,
   checked2: true,

@@ -34,9 +34,13 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watchEffect, computed } from 'vue';
+import { toRefs, watchEffect, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('pagination');
+import { useLocale } from '@/packages/utils/useLocale';
+import { PaginationMode } from './types';
+const { create } = createComponent('pagination');
+
+const cN = 'NutPagination';
 
 export default create({
   props: {
@@ -45,7 +49,7 @@ export default create({
       default: 1
     },
     mode: {
-      type: String,
+      type: String as PropType<PaginationMode>,
       default: 'multi'
     },
     prevText: {
@@ -82,6 +86,7 @@ export default create({
   emits: ['change', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const { modelValue, mode, showPageSize, forceEllipses } = toRefs(props);
 
     //计算页面的数量

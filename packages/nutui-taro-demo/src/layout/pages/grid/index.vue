@@ -1,90 +1,58 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-grid>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+  <Demo class="full">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>自定义列数</h2>
-    <nut-grid :column-num="3">
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+    <h2>{{ t('column') }}</h2>
+    <Column />
 
-    <h2>正方形格子</h2>
-    <nut-grid :column-num="3" square>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+    <h2>{{ t('square') }}</h2>
+    <Sqaure />
 
-    <h2>格子间距</h2>
-    <nut-grid :gutter="10">
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+    <h2>{{ t('gutter') }}</h2>
+    <Gutter />
 
-    <h2>内容翻转</h2>
-    <nut-grid reverse>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+    <h2>{{ t('reverse') }}</h2>
+    <Reverse />
 
-    <h2>内容横向</h2>
-    <nut-grid direction="horizontal">
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
+    <h2>{{ t('horizontal') }}</h2>
+    <Horizontal />
 
-    <h2>图标颜色/大小</h2>
-    <nut-grid :column-num="3">
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-      <nut-grid-item text="文字">
-        <Dongdong size="40px" color="#478EF2" />
-      </nut-grid-item>
-      <nut-grid-item text="文字"><Dongdong /></nut-grid-item>
-    </nut-grid>
-
-    <!-- <h2>页面导航</h2>
-    <nut-grid :column-num="2">
-      <nut-grid-item icon="home" text="路由跳转 ’/‘ " to="/"></nut-grid-item>
-      <nut-grid-item icon="search" text="URL 跳转" url="https://jd.com"></nut-grid-item>
-    </nut-grid> -->
-
-    <h2>自定义内容</h2>
-    <nut-grid :border="false">
-      <nut-grid-item v-for="i in 4" :key="i">
-        <nut-avatar size="large">
-          <img
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
-        </nut-avatar>
-      </nut-grid-item>
-    </nut-grid>
-  </div>
+    <h2>{{ t('content') }}</h2>
+    <Content />
+  </Demo>
 </template>
+
 <script setup lang="ts">
-import { Dongdong } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Column from './column.vue';
+import Sqaure from './square.vue';
+import Gutter from './gutter.vue';
+import Reverse from './reverse.vue';
+import Horizontal from './horizontal.vue';
+import Content from './content.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    text: '文字',
+    column: '自定义列数',
+    square: '正方形格子',
+    gutter: '格子间距',
+    reverse: '内容翻转',
+    horizontal: '内容横向',
+    content: '自定义内容'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    text: 'text',
+    column: 'Column Num',
+    square: 'Square',
+    gutter: 'Gutter',
+    reverse: 'Reverse',
+    horizontal: 'Horizontal',
+    content: 'Custom Content'
+  }
+});
 </script>

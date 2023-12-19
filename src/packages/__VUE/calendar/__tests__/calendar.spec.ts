@@ -127,3 +127,27 @@ test('choose event when click item', async () => {
   const arr2: any = wrapper.emitted<[Date]>('choose')![0][0];
   expect(arr2[3]).toEqual('2022-02-14');
 });
+test('Customize the disable date', async () => {
+  const wrapper = mount(Calendar, {
+    props: {
+      poppable: false,
+      defaultValue: '2022-03-18',
+      startDate: '2022-01-01',
+      endDate: '2022-12-31',
+      disabledDate: (date: string) => {
+        const disabledDate: { [key: string]: boolean } = {
+          '2022-01-05': true,
+          '2022-01-06': true,
+          '2022-01-10': true,
+          '2022-01-11': true,
+          '2022-01-12': true,
+          '2022-01-13': true,
+          '2022-01-14': true
+        };
+        return disabledDate[date];
+      }
+    }
+  });
+  await nextTick();
+  expect(wrapper.findAll('.nut-calendar__day--disabled').length).toBeGreaterThanOrEqual(7);
+});

@@ -12,7 +12,7 @@
     <div ref="root" class="nut-number-keyboard">
       <div v-if="title" class="nut-number-keyboard__header">
         <h3 class="nut-number-keyboard__title">{{ title }}</h3>
-        <span v-if="type == 'default'" class="van-number-keyboard__close" @click="closeBoard()">{{
+        <span v-if="type == 'default'" class="nut-number-keyboard__close" @click="closeBoard()">{{
           translate('done')
         }}</span>
       </div>
@@ -79,15 +79,17 @@
 <script lang="ts">
 import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Popup from '../popup/index.taro.vue';
-const { create, translate } = createComponent('number-keyboard');
+import NutPopup from '../popup/index.taro.vue';
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;
   type: string;
 }
+const cN = 'NutNumberKeyboard';
 export default create({
   components: {
-    [Popup.name]: Popup
+    NutPopup
   },
   props: {
     confirmText: {
@@ -137,6 +139,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:modelValue', 'update:visible'],
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
@@ -231,9 +234,10 @@ export default create({
     }
 
     function closeBoard() {
-      emit('close');
       emit('update:visible', false);
+      emit('close');
     }
+
     return {
       clickKeyIndex,
       defaultKey,

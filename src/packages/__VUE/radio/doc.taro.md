@@ -17,165 +17,49 @@ app.use(RadioGroup);
 
 ### 基础用法
 
-通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radio-group** 和 **nut-radio** 相结合进行使用
+通过 `v-model` 绑定某个选项的 `label` 字段。`nut-radio` 必须与 `nut-radio-group` 相结合进行使用。
 
-:::demo
+> demo: radio basic dentry
 
-```vue
-<template>
-  <nut-cell-group title="基础用法">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio label="1">选项1</nut-radio>
-        <nut-radio disabled label="2">选项2</nut-radio>
-        <nut-radio label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" text-position="left">
-        <nut-radio label="1">选项1</nut-radio>
-        <nut-radio disabled label="2">选项2</nut-radio>
-        <nut-radio label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
-        <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-        <nut-radio shape="button" label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-</script>
-```
+### 水平方向
 
-:::
+通过 `direction` 设置方向，默认值为 `vertical`，可设置为 `horizontal`。
 
-### 水平使用
+> demo: radio horizontal dentry
 
-:::demo
+### 禁用状态
 
-```vue
-<template>
-  <nut-cell-group title="水平使用">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" direction="horizontal">
-        <nut-radio label="1">选项1</nut-radio>
-        <nut-radio label="2">选项2</nut-radio>
-        <nut-radio label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" text-position="left" direction="horizontal">
-        <nut-radio label="1">选项1</nut-radio>
-        <nut-radio label="2">选项2</nut-radio>
-        <nut-radio label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" direction="horizontal">
-        <nut-radio shape="button" label="1">选项1</nut-radio>
-        <nut-radio shape="button" label="2">选项2</nut-radio>
-        <nut-radio shape="button" label="3">选项3</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-</script>
-```
-
-:::
-
-### 自定义尺寸
-
-:::demo
-
-```vue
-<template>
-  <nut-cell-group title="自定义尺寸">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio label="1" icon-size="12">自定义尺寸12</nut-radio>
-        <nut-radio label="2" icon-size="12">自定义尺寸12</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-</script>
-```
-
-:::
+> demo: radio disabled dentry
 
 ### 自定义图标
 
-通过 `slot` 自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
+> demo: radio icon dentry
 
-:::demo
+### 左侧文本
 
-```vue
-<template>
-  <nut-cell-group title="Radio自定义图标">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal">
-        <nut-radio label="1">
-          自定义图标
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
-        </nut-radio>
-        <nut-radio label="2">
-          自定义图标
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
-        </nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Checklist } from '@nutui/icons-vue-taro';
-const radioVal = ref('1');
-</script>
-```
+通过 `text-position` 设置文本位置，默认值为 `right`，可设置为 `left`。
 
-:::
+> demo: radio position dentry
 
-### 触发 change 事件
+### 图标尺寸
 
-:::demo
+> demo: radio icon-size dentry
 
-```vue
-<template>
-  <nut-cell-group title="触发事件">
-    <nut-cell>
-      <nut-radio-group v-model="radioVal" @change="handleChange">
-        <nut-radio label="1">触发事件</nut-radio>
-        <nut-radio label="2">触发事件</nut-radio>
-      </nut-radio-group>
-    </nut-cell>
-    <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const radioVal = ref('1');
-const handleChange = (value) => {
-  console.log(value);
-};
-</script>
-```
+### 设置形状
 
-:::
+通过 `shape` 设置 Radio 形状，默认值为 `round`，可设置为 `button`。
+
+> demo: radio shape dentry
+
+### 自定义按钮尺寸 v4.2.4
+
+通过 `size` 设置 Radio 大小，仅在 `shape` 为 `button` 时生效。
+
+> demo: radio size dentry
+
+### 触发事件
+
+> demo: radio event dentry
 
 ## API
 
@@ -187,6 +71,7 @@ const handleChange = (value) => {
 | icon-size | [图标尺寸](#/zh-CN/component/icon) | string \| number | `18` |
 | label | 单选框标识 | string \| number \| boolean | - |
 | shape | 形状，可选值为 `button`、`round` | string | `round` |
+| size`v4.2.4` | 尺寸，可选值为 `small` `mini` `normal`，仅在 shape 为 `button` 时生效 | string | `normal` |
 
 ### Radio Slots
 

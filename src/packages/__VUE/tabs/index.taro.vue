@@ -8,8 +8,8 @@
       :scroll-left="scrollLeft"
       :scroll-top="scrollTop"
       :enable-flex="true"
-      class="nut-tabs__titles tabs-scrollview"
-      :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
+      class="nut-tabs__titles"
+      :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
       <view class="nut-tabs__list">
@@ -58,7 +58,7 @@ import Taro from '@tarojs/taro';
 import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 
 export class Title {
   title = '';
@@ -72,7 +72,7 @@ const { create } = createComponent('tabs');
 export default create({
   components: {
     JoySmile,
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     modelValue: {
@@ -150,7 +150,7 @@ export default create({
       vnodes.forEach((vnode: VNode, index: number) => {
         let type = vnode.type;
         type = (type as any).name || type;
-        if (type == 'nut-tab-pane') {
+        if (type == 'NutTabPane') {
           let title = new Title();
           if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
             let paneKeyType = TypeOfFun(vnode.props?.['pane-key']);

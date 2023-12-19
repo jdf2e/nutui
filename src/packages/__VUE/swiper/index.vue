@@ -1,7 +1,7 @@
 <template>
   <view
     ref="container"
-    :class="classes"
+    class="nut-swiper"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
@@ -40,19 +40,17 @@ import {
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch/index';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { clamp } from '@/packages/utils/util';
 import requestAniFrame from '@/packages/utils/raf';
+import { SWIPER_KEY } from './types';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
     width: {
-      type: [Number, String],
-      default: window.innerWidth
+      type: [Number, String]
     },
     height: {
-      type: [Number, String],
-      default: 0
+      type: [Number, String]
     },
     direction: {
       type: String,
@@ -97,7 +95,7 @@ export default create({
   },
   emits: ['change'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const container = ref();
     const state = reactive({
       active: 0,
@@ -115,13 +113,6 @@ export default create({
     });
 
     const touch = useTouch();
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
     const isVertical = computed(() => props.direction === 'vertical');
 
@@ -219,8 +210,6 @@ export default create({
       if (!props.loop) {
         targetOffset = clamp(targetOffset, minOffset.value, 0);
       }
-
-      // console.log(offset, currentPosition, targetOffset);
 
       return targetOffset;
     };
@@ -395,13 +384,13 @@ export default create({
       autoplay();
     };
 
-    provide('parent', {
+    provide(SWIPER_KEY, {
       props,
       size,
       relation
     });
 
-    useExpose({
+    expose({
       prev,
       next,
       to
@@ -451,7 +440,6 @@ export default create({
 
     return {
       state,
-      classes,
       classesInner,
       classesPagination,
       container,

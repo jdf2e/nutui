@@ -32,7 +32,7 @@
       <view
         ref="navRef"
         class="nut-tabs__titles"
-        :class="{ [type]: type, scrollable: titleScroll, 'scroll-vertical': getScrollY, [size]: size }"
+        :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
@@ -83,12 +83,12 @@ export class Title {
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small';
-import Sticky from '../sticky/index.vue';
+import NutSticky from '../sticky/index.vue';
 const { create } = createComponent('tabs');
 import { JoySmile } from '@nutui/icons-vue';
 import { useTabContentTouch } from './hooks';
 export default create({
-  components: { [Sticky.name]: Sticky, JoySmile },
+  components: { NutSticky, JoySmile },
   props: {
     modelValue: {
       type: [String, Number],
@@ -150,7 +150,7 @@ export default create({
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
-    const container = ref(null);
+    const container = ref<any>(null);
     let stickyFixed: boolean;
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),
@@ -163,7 +163,7 @@ export default create({
       vnodes.forEach((vnode: VNode, index: number) => {
         let type = vnode.type;
         type = (type as any).name || type;
-        if (type == 'nut-tab-pane') {
+        if (type == 'NutTabPane') {
           let title = new Title();
           if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
             let paneKeyType = TypeOfFun(vnode.props?.['pane-key']);

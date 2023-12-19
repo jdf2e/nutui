@@ -1,14 +1,14 @@
 <template>
   <nut-cell
     class="nut-form-item"
-    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class]"
+    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class, labelPositionClass]"
     :style="$attrs.style"
   >
     <view
       v-if="label || getSlots('label')"
       class="nut-cell__title nut-form-item__label"
       :style="labelStyle"
-      :class="{ required: required }"
+      :class="{ required: isRequired, [starPositionClass]: starPositionClass }"
     >
       <slot name="label">{{ label }}</slot>
     </view>
@@ -24,10 +24,12 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, CSSProperties, getCurrentInstance, onUnmounted } from 'vue';
-import type { FormItemRule } from './types';
+import type { FormItemRule, FormItemLabelPosition, FormItemStarPosition } from './types';
+import { computed, inject, PropType, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import Cell from '../cell/index.vue';
+import NutCell from '../cell/index.vue';
+import { FORM_KEY } from '../form/types';
+import { useParent } from '@/packages/utils';
 const { create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,
@@ -71,33 +73,45 @@ export default create({
     bodyAlign: {
       type: String,
       default: ''
+    },
+    labelPosition: {
+      type: String as PropType<FormItemLabelPosition>,
+      default: ''
+    },
+    starPosition: {
+      type: String as PropType<FormItemStarPosition>,
+      default: ''
     }
   },
   components: {
-    [Cell.name]: Cell
+    NutCell
   },
   setup(props, { slots }) {
-    const useParent: any = () => {
-      const parent = inject('NutFormParent', null);
-      if (parent) {
-        // 获取子组件自己的实例
-        const instance = getCurrentInstance()!;
-        const { link, removeLink } = parent;
-        // @ts-ignore
-        link(instance);
-        onUnmounted(() => {
-          // @ts-ignore
-          removeLink(instance);
-        });
-        return { parent };
+    const { parent: parentObj } = useParent(FORM_KEY);
+    const isRequired = computed(() => {
+      const rules = parentObj.props?.rules;
+      let formRequired = false;
+      for (const key in rules) {
+        if (Object.prototype.hasOwnProperty.call(rules, key) && key === props.prop && Array.isArray(rules[key])) {
+          formRequired = rules[key].some((rule: FormItemRule) => rule.required);
+        }
       }
-    };
-    useParent();
+      return props.required || props.rules.some((rule) => rule.required) || formRequired;
+    });
+
+    const labelPositionClass = computed(() => {
+      const labelPosition = parentObj.props.labelPosition;
+      const position = props.labelPosition ? props.labelPosition : labelPosition;
+      return position !== 'left' ? `nut-form-item__${position}` : '';
+    });
+
+    const starPositionClass = computed(() => {
+      const starPosition = parentObj.props.starPosition;
+      const position = props.starPosition ? props.starPosition : starPosition;
+      return position !== 'left' ? `nut-form-item__star-${position}` : '';
+    });
 
     const parent = inject('formErrorTip') as any;
-    provide('form', {
-      props
-    });
 
     const labelStyle = computed(() => {
       return {
@@ -116,7 +130,16 @@ export default create({
       } as CSSProperties;
     });
     const getSlots = (name: string) => slots[name];
-    return { parent, labelStyle, bodyStyle, errorMessageStyle, getSlots };
+    return {
+      parent,
+      labelStyle,
+      bodyStyle,
+      errorMessageStyle,
+      getSlots,
+      isRequired,
+      labelPositionClass,
+      starPositionClass
+    };
   }
 });
 </script>

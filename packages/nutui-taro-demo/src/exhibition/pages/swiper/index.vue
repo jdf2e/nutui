@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <view class="demo-box">
       <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
@@ -46,7 +45,7 @@
     </view>
     <h2>自定义指示器(异步加载3s)</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="state.page" :loop="true" @change="change1" auto-play="2000">
+      <nut-swiper :init-page="state.page" :loop="true" auto-play="2000" @change="change1">
         <nut-swiper-item v-for="item in state.list1" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -57,7 +56,7 @@
     </view>
     <h2>手动切换</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="state.page" :loop="true" ref="swiper">
+      <nut-swiper ref="swiper" :init-page="state.page" :loop="true">
         <nut-swiper-item v-for="item in state.list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -87,15 +86,12 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, onMounted, ref, Ref } from 'vue';
 import { Left, Right } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const swiper = ref(null) as Ref;
 const state = reactive({
   page: 2,

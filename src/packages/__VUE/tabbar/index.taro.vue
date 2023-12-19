@@ -14,6 +14,7 @@
 import { onMounted, provide, reactive, ref, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
+import { TABBAR_KEY } from './types';
 const { create } = createComponent('tabbar');
 export default create({
   props: {
@@ -63,7 +64,7 @@ export default create({
       parentData.modelValue = active;
       emit('tabSwitch', parentData.children[index], active);
     }
-    let parentData = reactive({
+    const parentData = reactive({
       children: mdValue.children,
       size: props.size,
       modelValue: mdValue.val,
@@ -71,7 +72,7 @@ export default create({
       activeColor: props.activeColor,
       changeIndex
     });
-    provide('parent', parentData);
+    provide(TABBAR_KEY, parentData);
     watch(
       () => props.modelValue,
       (value) => {

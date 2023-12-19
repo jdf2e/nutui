@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-trend-arrow">
     <span v-if="!arrowLeft" class="nut-trend-arrow-icon-before nut-trend-arrow-rate" :style="calcStyle">{{
       calcRate
     }}</span>
@@ -19,7 +19,7 @@ import { reactive, toRefs, computed } from 'vue';
 import { myFixed } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
 import { TriangleUp, TriangleDown } from '@nutui/icons-vue-taro';
-const { componentName, create } = createComponent('trend-arrow');
+const { create } = createComponent('trend-arrow');
 
 export default create({
   components: { TriangleUp, TriangleDown },
@@ -65,12 +65,6 @@ export default create({
     const state = reactive({
       rateTrend: props.rate > 0 ? true : false
     });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
     const calcRate = computed(() => {
       const { rate, digits, showSign, showZero } = props;
       state.rateTrend = rate > 0 ? true : false;
@@ -92,7 +86,7 @@ export default create({
       };
       return style;
     });
-    return { ...toRefs(state), classes, calcRate, calcStyle };
+    return { ...toRefs(state), calcRate, calcStyle };
   }
 });
 </script>

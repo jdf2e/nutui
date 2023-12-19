@@ -1,6 +1,5 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo>
     <h2>基础用法</h2>
     <nut-row type="flex">
       <nut-col :span="8">
@@ -8,8 +7,8 @@
           v-model:visible="state.lightTheme"
           :list="iconItemList"
           location="bottom-start"
-          @choose="chooseItem"
           custom-class="popover-demo-custom"
+          @choose="chooseItem"
         >
           <template #reference>
             <nut-button type="primary" shape="square">明朗风格</nut-button>
@@ -61,7 +60,7 @@
 
       <template #content>
         <div class="self-content">
-          <div class="self-content-item" v-for="(item, index) in selfContent" :key="index">
+          <div v-for="(item, index) in selfContent" :key="index" class="self-content-item">
             <!-- <component :is="renderIcon(item.name)"></component> -->
             <Service />
             <div class="self-content-desc">{{ item.desc }}</div>
@@ -73,18 +72,18 @@
     <h2>位置自定义</h2>
     <nut-cell title="点击查看更多方向" @click="handlePicker"></nut-cell>
 
-    <nut-popup position="bottom" v-model:visible="state.showPicker" custom-class="popover-demo-custom">
+    <nut-popup v-model:visible="state.showPicker" position="bottom" custom-class="popover-demo-custom">
       <nut-picker
         :columns="columns"
         title=""
-        @change="change"
         :swipe-duration="500"
+        @change="change"
         @confirm="closePicker"
         @close="closePicker"
       >
         <template #top>
           <div class="brickBox">
-            <div class="brick" id="pickerTarget"></div>
+            <div id="pickerTarget" class="brick"></div>
           </div>
         </template>
       </nut-picker>
@@ -92,7 +91,7 @@
 
     <nut-popover
       v-model:visible="state.customPositon"
-      targetId="pickerTarget"
+      target-id="pickerTarget"
       :location="curPostion"
       theme="dark"
       :list="positionList"
@@ -101,10 +100,10 @@
     </nut-popover>
 
     <h2>自定义目标元素</h2>
-    <nut-button type="primary" shape="square" id="popid" @click="clickCustomHandle"> 自定义对象 </nut-button>
+    <nut-button id="popid" type="primary" shape="square" @click="clickCustomHandle"> 自定义对象 </nut-button>
     <nut-popover
       v-model:visible="state.customTarget"
-      targetId="popid"
+      target-id="popid"
       :list="iconItemList"
       location="top-start"
       custom-class="popover-demo-custom"
@@ -116,7 +115,7 @@
       v-model:visible="state.customColor"
       :list="iconItemList"
       location="right-start"
-      bgColor="#f00"
+      bg-color="#f00"
       theme="dark"
       custom-class="popover-demo-custom"
     >
@@ -124,14 +123,11 @@
         <nut-button type="primary" shape="square">自定义颜色</nut-button>
       </template>
     </nut-popover>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { reactive, ref, h } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Service, Notice, Location, Category, Scan2, Message, Cart2, My2 } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 const state = reactive({
   showIcon: false,
   placement: false,

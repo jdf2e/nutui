@@ -25,23 +25,19 @@ config.nav.forEach((item) => {
     if (element.exclude != true) {
       let outputMjs = '';
       if (element.type == 'methods' && target == 'nutui') {
-        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
-import { show${element.name} } from '../_es/${element.name}.js';
-const treeshaking = (t) => t;
-const ${element.name} = treeshaking(_${element.name});
-export { ${element.name}, show${element.name} };`;
+        outputMjs = `import ${element.name} from './${element.name}.js';
+import { show${element.name} } from './${element.name}.js';
+export { ${element.name}, show${element.name}, ${element.name} as default };`;
       } else {
-        outputMjs = `import _${element.name} from '../_es/${element.name}.js';
-const treeshaking = (t) => t;
-const ${element.name} = treeshaking(_${element.name});
-export { ${element.name} };`;
+        outputMjs = `import ${element.name} from './${element.name}.js';
+export { ${element.name}, ${element.name} as default };`;
       }
+      let folderName = element.name.toLowerCase();
       tasks.push(
-        fs.outputFile(path.resolve(__dirname, `../dist/packages/${element.name}/index.mjs`), outputMjs, 'utf8', () => {
+        fs.outputFile(path.resolve(__dirname, `../dist/packages/${folderName}/index.mjs`), outputMjs, 'utf8', () => {
           // console.log('')
         })
       );
-      let folderName = element.name.toLowerCase();
       outputFileEntry += `export * from "./packages/${folderName}/index.mjs";\n`;
       components.push(element.name);
     }

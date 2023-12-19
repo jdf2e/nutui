@@ -94,44 +94,38 @@
 
 <script setup lang="ts">
 import { reactive, computed } from 'vue';
-import NutTabs from './index.vue';
-import NutTabPane from '../tabpane/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('tabs');
 import { Dongdong } from '@nutui/icons-vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      swipeable: '手势滑动切换',
-      title1: '基础用法-微笑曲线',
-      title3: '数据异步渲染 3s',
-      title4: '数量多，滚动操作（横向）',
-      title5: '左右布局',
-      title6: '左右布局-微笑曲线',
-      title7: '标签栏字体尺寸 large normal small',
-      title8: '自定义标签栏',
-      title9: 'TabPane 自动高度',
-      title10: '数量多，滚动操作（纵向）',
-      custom: () => `自定义 ${1}`
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      swipeable: 'Swipeable',
-      title1: 'Basic Usage - Smile Curve',
-      title3: 'Data is rendered asynchronously for 3s',
-      title4: 'A large number of scrolling operations(horizontal)',
-      title5: 'Left and right layout',
-      title6: 'Left and Right Layout - Smile Curve',
-      title7: 'tab bar font size large normal small',
-      title8: 'custom tab bar',
-      title9: 'TabPane auto height',
-      title10: 'A large number of scrolling operations(vertical)',
-      custom: () => `custom ${1}`
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    swipeable: '手势滑动切换',
+    title1: '基础用法-微笑曲线',
+    title3: '数据异步渲染 3s',
+    title4: '数量多，滚动操作（横向）',
+    title5: '左右布局',
+    title6: '左右布局-微笑曲线',
+    title7: '标签栏字体尺寸 large normal small',
+    title8: '自定义标签栏',
+    title9: 'TabPane 自动高度',
+    title10: '数量多，滚动操作（纵向）',
+    custom: () => `自定义 ${1}`
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    swipeable: 'Swipeable',
+    title1: 'Basic Usage - Smile Curve',
+    title3: 'Data is rendered asynchronously for 3s',
+    title4: 'A large number of scrolling operations(horizontal)',
+    title5: 'Left and right layout',
+    title6: 'Left and Right Layout - Smile Curve',
+    title7: 'tab bar font size large normal small',
+    title8: 'custom tab bar',
+    title9: 'TabPane auto height',
+    title10: 'A large number of scrolling operations(vertical)',
+    custom: () => `custom ${1}`
+  }
+});
 const state = reactive({
   tab1value: '0',
   tab11value: '0',

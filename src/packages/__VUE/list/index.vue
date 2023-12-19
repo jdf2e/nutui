@@ -1,5 +1,5 @@
 <template>
-  <div ref="list" :class="classes" :style="{ height: `${getContainerHeight}px` }" @scroll.passive="handleScrollEvent">
+  <div ref="list" class="nut-list" :style="{ height: `${getContainerHeight}px` }" @scroll.passive="handleScrollEvent">
     <div ref="phantom" class="nut-list-phantom" :style="{ height: phantomHeight + 'px' }"></div>
     <div ref="actualContent" class="nut-list-container" :style="{ transform: getTransform() }">
       <div v-for="(item, index) in visibleData" :key="item" class="nut-list-item">
@@ -13,7 +13,7 @@ import { reactive, toRefs, computed, ref, Ref, watch, ComputedRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 import { useRect } from '@/packages/utils/useRect';
-const { componentName, create } = createComponent('list');
+const { create } = createComponent('list');
 const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
 
 export default create({
@@ -66,13 +66,6 @@ export default create({
 
     const end = computed(() => {
       return Math.min(state.originStartIndex + visibleCount.value + props.bufferSize, state.list.length);
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const visibleData: ComputedRef = computed(() => {
@@ -193,6 +186,8 @@ export default create({
       state.scrollTop = scrollTop;
     };
 
+    initCachedPosition();
+
     watch(
       () => props.listData,
       (val: any[]) => {
@@ -223,7 +218,6 @@ export default create({
       actualContent,
       getTransform,
       visibleData,
-      classes,
       getContainerHeight,
       handleScrollEvent
     };

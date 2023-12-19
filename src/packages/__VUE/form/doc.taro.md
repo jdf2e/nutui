@@ -139,6 +139,7 @@ const dynamicForm = {
     :model-value="formData"
     :rules="{
       name: [
+        { required: true, message: '请填写姓名' },
         {
           message: 'name 至少两个字符',
           validator: nameLengthValidator
@@ -147,7 +148,7 @@ const dynamicForm = {
     }"
     ref="ruleForm"
   >
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+    <nut-form-item label="姓名" prop="name">
       <nut-input
         class="nut-input-text"
         @blur="customBlurValidate('name')"
@@ -410,6 +411,35 @@ const addressModule = reactive({
 
 :::
 
+### 自定义 Label & Star 位置 v4.2.4
+
+:::demo
+
+```vue
+<template>
+  <nut-form label-position="top" star-position="right">
+    <nut-form-item label="姓名" required>
+      <nut-input v-model="basicData.name" class="nut-input-text" placeholder="请输入姓名" type="text" />
+    </nut-form-item>
+    <nut-form-item label="年龄" required>
+      <nut-input v-model="basicData.age" class="nut-input-text" placeholder="请输入年龄" type="text" />
+    </nut-form-item>
+    <nut-form-item label="备注" label-position="left">
+      <nut-textarea placeholder="请输入备注" type="text" />
+    </nut-form-item>
+  </nut-form>
+</template>
+<script setup>
+import { reactive } from 'vue';
+const basicData = reactive({
+  name: '',
+  age: ''
+});
+</script>
+```
+
+:::
+
 ## API
 
 ### Form Props
@@ -418,6 +448,8 @@ const addressModule = reactive({
 | --- | --- | --- | --- |
 | model-value | 表单数据对象(使用表单校验时，_必填_) | object |  |
 | rules | 统一配置每个 `FormItem` 的 `rules` | { prop: FormItemRule[] } | `{}` |
+| label-position`v4.2.4` | 表单项 label 的位置 | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 
 ### Form Events
 
@@ -438,6 +470,8 @@ const addressModule = reactive({
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | string | `left` |
 | show-error-line | 是否在校验不通过时标红输入框 | boolean | `true` |
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | boolean | `true` |
+| label-position`v4.2.4` | 表单项 label 的位置，优先级高于 form 中的 label-position | `top` \| `left` \| `right` | `left` |
+| star-position`v4.2.4` | 必填表单项 label 的红色星标位置，优先级高于 form 中的 star-position | `left` \| `right` | `left` |
 
 ### FormItemRule 数据结构
 

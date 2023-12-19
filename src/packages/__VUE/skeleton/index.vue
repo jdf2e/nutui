@@ -17,13 +17,13 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import Avatar from '../avatar/index.vue';
+import NutAvatar from '../avatar/index.vue';
 import { AvatarShape } from '../avatar/types';
 import { CSSProperties, PropType, computed, toRefs } from 'vue';
 const { create } = createComponent('skeleton');
 export default create({
   components: {
-    [Avatar.name]: Avatar
+    NutAvatar
   },
   props: {
     //每行宽度

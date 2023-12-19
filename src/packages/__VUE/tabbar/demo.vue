@@ -120,38 +120,32 @@
 
 <script setup lang="ts">
 import { h, ref } from 'vue';
-import NutTabbar from './index.vue';
-import NutTabbarItem from '../tabbaritem/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('tabbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      byName: '通过名称匹配',
-      customIcon: '自定义图标',
-      customCheck: '自定义选中',
-      showBadge: '徽标提示',
-      customColor: '自定义颜色',
-      customQuantity: '自定义数量',
-      fixedBottom: '固定底部',
-      title: '标签'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      byName: 'Match by name',
-      customIcon: 'Custom Icon',
-      customCheck: 'Custom Check',
-      showBadge: 'Show Badge',
-      customColor: 'Custom Color',
-      customQuantity: 'Custom Quantity',
-      fixedBottom: 'Fixed Bottom',
-      title: 'tab'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    byName: '通过名称匹配',
+    customIcon: '自定义图标',
+    customCheck: '自定义选中',
+    showBadge: '徽标提示',
+    customColor: '自定义颜色',
+    customQuantity: '自定义数量',
+    fixedBottom: '固定底部',
+    title: '标签'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    byName: 'Match by name',
+    customIcon: 'Custom Icon',
+    customCheck: 'Custom Check',
+    showBadge: 'Show Badge',
+    customColor: 'Custom Color',
+    customQuantity: 'Custom Quantity',
+    fixedBottom: 'Fixed Bottom',
+    title: 'tab'
+  }
+});
 const active = ref(2);
 const activeName = ref('category');
 function tabSwitch(item: Record<string, unknown>, index: number) {

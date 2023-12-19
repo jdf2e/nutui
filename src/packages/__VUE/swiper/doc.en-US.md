@@ -444,8 +444,8 @@ const page = ref(2);
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| width | Width of rotation card | number \| string | `window.innerWidth ` |
-| height | Height of rotation card | number \| string | `0` |
+| width | Width of rotation card | number \| string | - |
+| height | Height of rotation card | number \| string | - |
 | direction | Rotation direction, optional value：`horizontal`,`vertical` | string | `'horizontal'` |
 | pagination-visible | Is the paging indicator displayed | boolean | `false` |
 | pagination-color | The color selected by the pagination indicator | string | `'#fff'` |

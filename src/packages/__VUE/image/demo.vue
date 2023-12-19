@@ -99,36 +99,28 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Loading, CircleClose } from '@nutui/icons-vue';
-import NutImage from './index.vue';
-import NutCell from '../cell/index.vue';
-import NutCol from '../col/index.vue';
-import NutRow from '../row/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('image');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { ImageFit } from './type';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      fill: '填充模式',
-      position: '图片位置',
-      circle: '圆形图片',
-      loading: '加载中提示',
-      error: '加载失败',
-      lay: '懒加载'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      fill: 'Object Fill',
-      position: 'Object Position',
-      circle: 'Round',
-      loading: 'Loading',
-      error: 'Error',
-      lazy: 'Lazy Load'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    fill: '填充模式',
+    position: '图片位置',
+    circle: '圆形图片',
+    loading: '加载中提示',
+    error: '加载失败',
+    lazy: '懒加载'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    fill: 'Object Fill',
+    position: 'Object Position',
+    circle: 'Round',
+    loading: 'Loading',
+    error: 'Error',
+    lazy: 'Lazy Load'
+  }
+});
 const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
 const fits = ref<ImageFit[]>(['contain', 'cover', 'fill', 'none', 'scale-down']);
 const position1 = ref(['left', 'center', 'right']);

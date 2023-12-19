@@ -1,47 +1,50 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <DocHeader />
-    <nut-cell-group title="支持三种尺寸：small、normal、large">
-      <nut-cell>
-        <nut-price :price="0" size="small" :need-symbol="false" />
-      </nut-cell>
-      <nut-cell>
-        <nut-price :price="0" size="normal" :need-symbol="false" />
-      </nut-cell>
-      <nut-cell>
-        <nut-price :price="0" size="large" :need-symbol="false" />
-      </nut-cell>
-    </nut-cell-group>
-    <h2>不保留小数</h2>
-    <nut-cell>
-      <nut-price :price="8888" :decimal-digits="0" />
-    </nut-cell>
-    <h2>划线价</h2>
-    <nut-cell>
-      <nut-price :price="8888" :decimal-digits="0" size="normal" need-symbol thousands strike-through />
-    </nut-cell>
-    <h2>货币符号</h2>
-    <nut-cell>
-      <nut-price :price="10010.01" symbol="¥" />
-    </nut-cell>
-    <h2>货币符号位置</h2>
-    <nut-cell>
-      <nut-price :price="8888.01" position="after" symbol="元" />
-    </nut-cell>
-    <h2>千位分隔</h2>
-    <nut-cell>
-      <nut-price :price="15213.1221" :decimal-digits="3" thousands />
-    </nut-cell>
-  </div>
+  <Demo>
+    <h2>{{ t('size') }}</h2>
+    <Size />
+
+    <h2>{{ t('decimal') }}</h2>
+    <Decimal />
+
+    <h2>{{ t('through') }}</h2>
+    <Through />
+
+    <h2>{{ t('symbol') }}</h2>
+    <Symbol />
+
+    <h2>{{ t('position') }}</h2>
+    <Position />
+
+    <h2>{{ t('title5') }}</h2>
+    <Thousands />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import DocHeader from '../../../components/header.vue';
-const env = Taro.getEnv();
-const price = ref(0);
-setInterval(() => {
-  price.value = Math.random() * 10000000;
-}, 1000);
+import { useTranslate } from '../../../utils';
+import Size from './size.vue';
+import Decimal from './decimal.vue';
+import Through from './through.vue';
+import Symbol from './symbol.vue';
+import Position from './position.vue';
+import Thousands from './thousands.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    size: '尺寸',
+    decimal: '不保留小数',
+    through: '划线价',
+    symbol: '货币符号',
+    position: '货币符号位置',
+    title5: '千位分隔'
+  },
+  'en-US': {
+    size: 'Size',
+    decimal: 'No decimals',
+    through: 'Strike Through',
+    symbol: 'Currency symbol',
+    position: 'Currency symbol position',
+    title5: 'Separated by thousands'
+  }
+});
 </script>

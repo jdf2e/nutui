@@ -23,7 +23,7 @@
         </template>
       </sku-header>
 
-      <view class="nut-sku-content">
+      <nut-scroll-view class="nut-sku-content" :scroll-y="true">
         <slot name="sku-select-top"></slot>
 
         <slot name="sku-select"></slot>
@@ -44,7 +44,7 @@
         ></sku-stepper>
 
         <slot name="sku-stepper-bottom"></slot>
-      </view>
+      </nut-scroll-view>
 
       <sku-operate
         :btn-extra-text="btnExtraText"
@@ -67,9 +67,13 @@ import SkuHeader from './components/SkuHeader.taro.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.taro.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import Popup from '../popup/index.taro.vue';
+import NutPopup from '../popup/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('sku');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('sku');
+
+const cN = 'NutSku';
 
 export default create({
   props: {
@@ -164,10 +168,13 @@ export default create({
     SkuSelect,
     SkuStepper,
     SkuOperate,
-    [Popup.name]: Popup
+    NutPopup,
+    NutScrollView
   },
 
   setup(props: any, { emit, slots }) {
+    const translate = useLocale(cN);
+
     const showPopup = ref(props.visible);
 
     const goodsCount = ref(props.stepperMin);

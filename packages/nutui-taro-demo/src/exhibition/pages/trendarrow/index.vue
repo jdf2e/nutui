@@ -1,6 +1,5 @@
 <template>
-  <div class="trendarrow-demo demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="trendarrow-demo">
     <h2>基础用法</h2>
     <nut-cell>
       <nut-trend-arrow :sync-text-color="false" :rate="1" />
@@ -18,26 +17,26 @@
     </nut-cell>
     <view class="title">箭头在前面</view>
     <nut-cell>
-      <nut-trend-arrow arrowLeft :rate="0.2535" />
-      <nut-trend-arrow arrowLeft :rate="-0.2535" />
+      <nut-trend-arrow arrow-left :rate="0.2535" />
+      <nut-trend-arrow arrow-left :rate="-0.2535" />
     </nut-cell>
     <view class="title">显示正负号</view>
     <nut-cell>
-      <nut-trend-arrow showSign :rate="1" />
-      <nut-trend-arrow showSign :rate="-0.2535" />
+      <nut-trend-arrow show-sign :rate="1" />
+      <nut-trend-arrow show-sign :rate="-0.2535" />
     </nut-cell>
     <view class="title">是否展示0</view>
     <nut-cell>
-      <nut-trend-arrow showSign :rate="0" />
-      <nut-trend-arrow showSign showZero :rate="0" />
+      <nut-trend-arrow show-sign :rate="0" />
+      <nut-trend-arrow show-sign show-zero :rate="0" />
     </nut-cell>
     <view class="title">自定义颜色</view>
     <nut-cell>
       <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)" />
-      <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)" />
+      <nut-trend-arrow :rate="-0.2535" show-sign drop-color="rgb(255, 190, 13)" />
       <nut-trend-arrow
         :sync-text-color="false"
-        showSign
+        show-sign
         :rate="-0.2535"
         text-color="rgb(39,197,48)"
         drop-color="rgb(255, 190, 13)"
@@ -52,13 +51,10 @@
         <template #down-icon><Failure color="red" /></template>
       </nut-trend-arrow>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import { Success, Failure } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
 </script>
 <style lang="scss">
 .trendarrow-demo {

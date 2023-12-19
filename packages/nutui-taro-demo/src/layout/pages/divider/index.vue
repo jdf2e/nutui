@@ -1,30 +1,49 @@
 <template>
-  <div class="demo full bg-w" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-divider />
-    <h2>展示文本</h2>
-    <nut-divider>文本</nut-divider>
-    <h2>内容位置</h2>
-    <nut-divider content-position="left">文本</nut-divider>
-    <nut-divider content-position="right">文本</nut-divider>
-    <h2>虚线</h2>
-    <nut-divider dashed>文本</nut-divider>
-    <h2>自定义样式</h2>
-    <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
-    <h2>垂直分割线</h2>
-    <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
-      <text>文本</text>
-      <nut-divider direction="vertical" />
-      <text>文本</text>
-      <nut-divider direction="vertical" />
-      <text>文本</text>
-    </div>
-  </div>
+  <Demo class="full bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('text') }}</h2>
+    <Text />
+
+    <h2>{{ t('position') }}</h2>
+    <Position />
+
+    <h2>{{ t('dashed') }}</h2>
+    <Dashed />
+
+    <h2>{{ t('custom') }}</h2>
+    <Custom />
+
+    <h2>{{ t('vertical') }}</h2>
+    <Vertical />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Text from './text.vue';
+import Position from './position.vue';
+import Dashed from './dashed.vue';
+import Custom from './custom.vue';
+import Vertical from './vertical.vue';
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    text: '展示文本',
+    position: '内容位置',
+    dashed: '虚线',
+    custom: '自定义样式',
+    vertical: '垂直分割线'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    text: 'With Text',
+    position: 'Content Position',
+    dashed: 'Dashed',
+    custom: 'Custom Style',
+    vertical: 'Vertical Divider'
+  }
+});
 </script>

@@ -25,11 +25,15 @@
 <script lang="ts">
 import { watch, ref, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { useLocale } from '@/packages/utils/useLocale';
 
-const { componentName, create, translate } = createComponent('textarea');
 export interface InputTarget extends HTMLInputElement {
   composing: boolean;
 }
+
+const { create } = createComponent('textarea');
+const cN = 'NutTextarea';
+
 export default create({
   props: {
     modelValue: {
@@ -77,9 +81,10 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
+    const translate = useLocale(cN);
     const textareaRef = ref();
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-textarea';
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: props.disabled

@@ -1,92 +1,52 @@
 <template>
-  <div class="demo full" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-swipe>
-      <nut-cell round-radius="0" title="左滑删除" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-      </template>
-    </nut-swipe>
-    <h2>禁止滑动</h2>
-    <nut-swipe disabled>
-      <nut-cell round-radius="0" title="禁止滑动" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-      </template>
-    </nut-swipe>
-    <h2>左右滑动</h2>
-    <nut-swipe>
-      <template #left>
-        <nut-button shape="square" style="height: 100%" type="success">选择</nut-button>
-      </template>
-      <nut-cell round-radius="0" title="左滑右滑都可以哦" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-        <nut-button shape="square" style="height: 100%" type="info">收藏</nut-button>
-      </template>
-    </nut-swipe>
-    <h2>异步控制 <nut-switch v-model="checked" @change="changSwitch" /></h2>
-    <nut-swipe ref="refSwipe">
-      <nut-cell title="异步打开关闭"></nut-cell>
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-      </template>
-    </nut-swipe>
-    <h2>自定义</h2>
-    <nut-swipe>
-      <template #left>
-        <nut-button shape="square" style="height: 100%" type="success">选择</nut-button>
-      </template>
-      <nut-cell title="商品描述">
-        <template #link>
-          <nut-input-number v-model="number" />
-        </template>
-      </nut-cell>
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-        <nut-button shape="square" style="height: 100%" type="info">收藏</nut-button>
-      </template>
-    </nut-swipe>
-    <h2>使用 SwipeGroup 控制 Swipe 之间互斥</h2>
-    <nut-swipe-group lock>
-      <nut-swipe name="11">
-        <nut-cell round-radius="0" title="左滑删除" />
-        <template #right>
-          <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-        </template>
-      </nut-swipe>
-      <nut-swipe name="22">
-        <nut-cell round-radius="0" title="左滑删除" />
-        <template #right>
-          <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-        </template>
-      </nut-swipe>
-      <div>
-        <nut-swipe name="33">
-          <nut-cell round-radius="0" title="左滑删除" />
-          <template #right>
-            <nut-button shape="square" style="height: 100%" type="danger">删除</nut-button>
-          </template>
-        </nut-swipe>
-      </div>
-    </nut-swipe-group>
-  </div>
+  <Demo class="full">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('disabled') }}</h2>
+    <Disabled />
+
+    <h2>{{ t('direction') }}</h2>
+    <Direction />
+
+    <h2> {{ t('methods') }} </h2>
+    <Methods />
+
+    <h2>{{ t('content') }}</h2>
+    <Content />
+
+    <h2>{{ t('lock') }}</h2>
+    <Lock />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
-const refSwipe = ref<HTMLElement>();
-const checked = ref(false);
-const number = ref(0);
-const changSwitch = (value: boolean) => {
-  if (value) {
-    refSwipe.value?.open('left');
-  } else {
-    refSwipe.value?.close();
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Disabled from './disabled.vue';
+import Direction from './direction.vue';
+import Methods from './methods.vue';
+import Content from './content.vue';
+import Lock from './lock.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    leftDel: '左滑删除',
+    disabled: '禁用滑动',
+    direction: '左右滑动',
+    methods: 'Ref 方法',
+    content: '自定义内容',
+    lock: '使用 SwipeGroup 控制 Swipe 之间互斥'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    leftDel: 'Swipe left to delete',
+    disabled: 'Disable swipe',
+    direction: 'Swipe Left or Right',
+    methods: 'Ref methods',
+    content: 'Custom Content',
+    lock: 'Use SwipeGroup to make swipe exclusive'
   }
-};
+});
 </script>

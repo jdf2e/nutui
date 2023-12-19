@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-side-navbar">
     <view class="nut-side-navbar__content">
       <view ref="list" class="nut-side-navbar__content__list">
         <slot></slot>
@@ -8,9 +8,9 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
+import { onMounted, reactive, ref, toRefs, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('side-navbar');
+const { create } = createComponent('side-navbar');
 export default create({
   props: {
     offset: {
@@ -23,13 +23,6 @@ export default create({
     const state = reactive({
       count: 1,
       observer: null as MutationObserver | null
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     const setPaddingLeft = (nodeList: any[], level = 1) => {
@@ -74,8 +67,7 @@ export default create({
 
     return {
       ...toRefs(state),
-      list,
-      classes
+      list
     };
   }
 });

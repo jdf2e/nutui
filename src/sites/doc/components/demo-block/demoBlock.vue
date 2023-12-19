@@ -1,5 +1,5 @@
 <template>
-  <div class="online-code" ref="onlineCode">
+  <div ref="onlineCode" class="online-code">
     <slot></slot>
     <div class="online-part">
       <template v-if="codeType === 'vue'">
@@ -95,11 +95,11 @@ onMounted(() => {
   const parameters = getParameters({
     files: {
       'package.json': {
-        content: codesandboxPackage,
+        content: codesandboxPackage as unknown as string,
         isBinary: false
       },
       'tsconfig.json': {
-        content: codesandboxtsconfig,
+        content: codesandboxtsconfig as unknown as string,
         isBinary: false
       },
       'vite.config.ts': {

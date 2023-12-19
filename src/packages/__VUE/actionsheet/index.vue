@@ -8,7 +8,7 @@
     :z-index="zIndex"
     @click-overlay="close"
   >
-    <view :class="classes">
+    <view class="nut-action-sheet">
       <view v-if="title" class="nut-action-sheet__title">{{ title }}</view>
       <slot></slot>
       <view v-if="!slotDefault">
@@ -25,7 +25,7 @@
             :style="{ color: isHighlight(item) || item.color }"
             @click="chooseItem(item, index)"
           >
-            <Loading v-if="item.loading" name="loading"></Loading>
+            <Loading v-if="item.loading"></Loading>
             <view v-else> {{ item[optionTag] }}</view>
             <view class="nut-action-sheet__subdesc">{{ item[optionSubTag] }}</view>
           </view>
@@ -39,23 +39,23 @@
 </template>
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import { computed, useSlots } from 'vue';
+import { useSlots } from 'vue';
 import type { PropType } from 'vue';
 import { popupProps } from '../popup/props';
-import Popup from '../popup/index.vue';
+import NutPopup from '../popup/index.vue';
 import { Loading } from '@nutui/icons-vue';
-const { componentName, create } = createComponent('action-sheet');
-export interface menuItems {
-  disable: boolean;
-  loading: boolean;
-  color: string;
-  name: string;
-  subname: string;
-  [x: string]: string | boolean;
+const { create } = createComponent('action-sheet');
+export interface ActionSheetMenuItems {
+  [key: PropertyKey]: any;
+  name?: string;
+  subname?: string;
+  disable?: boolean;
+  loading?: boolean;
+  color?: string;
 }
 export default create({
   components: {
-    [Popup.name]: Popup,
+    NutPopup,
     Loading
   },
   props: {
@@ -89,7 +89,7 @@ export default create({
       default: ''
     },
     menuItems: {
-      type: Array as PropType<menuItems[]>,
+      type: Array as PropType<ActionSheetMenuItems[]>,
       default: () => []
     },
     closeAbled: {
@@ -101,14 +101,8 @@ export default create({
 
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
-    const isHighlight = (item: { [x: string]: string | boolean }) => {
+    const isHighlight = (item: ActionSheetMenuItems) => {
       return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
     };
 
@@ -117,7 +111,7 @@ export default create({
       emit('update:visible', false);
     };
 
-    const chooseItem = (item: { disable: boolean; loading: boolean }, index: any) => {
+    const chooseItem = (item: ActionSheetMenuItems, index: number) => {
       if (!item.disable && !item.loading) {
         emit('choose', item, index);
         emit('update:visible', false);
@@ -136,8 +130,7 @@ export default create({
       isHighlight,
       cancelActionSheet,
       chooseItem,
-      close,
-      classes
+      close
     };
   }
 });

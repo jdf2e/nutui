@@ -1,13 +1,44 @@
-<template src="./template.html"></template>
+<template>
+  <view :class="classes" :style="position">
+    <nut-overlay v-if="overlay" :visible="visible" :z-index="200" @click="updateValue(false)" />
+    <slot name="list">
+      <view class="nut-fixed-nav__list">
+        <view
+          v-for="(item, index) in navList"
+          :key="item.id || index"
+          class="nut-fixed-nav__list-item"
+          :class="{ active: item.id == current }"
+          @click="selected(item, $event)"
+        >
+          <img :src="item.icon" />
+          <view class="span">{{ item.text }}</view>
+          <view v-if="item.num" class="b">{{ item.num }}</view>
+        </view>
+      </view>
+    </slot>
+    <div class="nut-fixed-nav__btn" @click="updateValue()">
+      <slot name="btn">
+        <Left color="#fff" />
+        <view class="text">
+          {{ visible ? activeText || translate('activeText') : unActiveText || translate('unActiveText') }}
+        </view>
+      </slot>
+    </div>
+  </view>
+</template>
 <script lang="ts">
 import { PropType, computed, ref } from 'vue';
 import { Left } from '@nutui/icons-vue';
-import OverLay from '../overlay/index.vue';
+import NutOverlay from '../overlay/index.vue';
 import { createComponent } from '@/packages/utils/create';
-const { translate, create, componentName } = createComponent('fixed-nav');
+import { useLocale } from '@/packages/utils/useLocale';
+const { create } = createComponent('fixed-nav');
+
+const cN = 'NutFixedNav';
+
 export default create({
   components: {
-    [OverLay.name]: OverLay,
+    NutOverlay,
     Left
   },
   props: {
@@ -52,8 +83,9 @@ export default create({
   emits: ['update:visible', 'selected'],
 
   setup(props: any, { emit }: any) {
+    const translate = useLocale(cN);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = 'nut-fixed-nav';
       return {
         [prefixCls]: true,
         active: props.visible,

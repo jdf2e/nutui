@@ -33,11 +33,12 @@
 <script lang="ts">
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
-import Badge from '../badge/index.vue';
+import NutBadge from '../badge/index.vue';
 import { Component, ComponentInternalInstance, computed, getCurrentInstance, inject, reactive, PropType } from 'vue';
+import { TABBAR_KEY } from '../tabbar/types';
 const { create } = createComponent('tabbar-item');
 export default create({
-  components: { [Badge.name]: Badge },
+  components: { NutBadge },
   props: {
     tabTitle: {
       // 标签页的标题
@@ -62,7 +63,7 @@ export default create({
     const isHaveSlot = (slot: string) => {
       return slots[slot];
     };
-    const parent: any = inject('parent');
+    const parent: any = inject(TABBAR_KEY);
     const state = reactive({
       unactiveColor: parent.unactiveColor, // 未选中的颜色
       activeColor: parent.activeColor, // 选中的颜色

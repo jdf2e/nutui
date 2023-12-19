@@ -7,7 +7,7 @@ const modulesPage = import.meta.glob('/src/packages/__VUE/**/doc.md');
 for (const path in modulesPage) {
   const name = (/packages\/__VUE\/(.*)\/doc.md/.exec(path) as any[])[1];
   pagesRouter.push({
-    path: '/zh-CN/component/' + name,
+    path: '/h5/zh-CN/' + name,
     component: modulesPage[path]
   });
 }
@@ -18,7 +18,7 @@ const modulesEnPage = import.meta.glob('/src/packages/__VUE/**/doc.en-US.md');
 for (const path in modulesEnPage) {
   const name = (/packages\/__VUE\/(.*)\/doc.en-US.md/.exec(path) as any[])[1];
   pagesEnRouter.push({
-    path: '/en-US/component/' + name,
+    path: '/h5/en-US/' + name,
     component: modulesEnPage[path]
   });
 }
@@ -28,25 +28,25 @@ const modulesPageTaro = import.meta.glob('/src/packages/__VUE/**/*.taro.md');
 for (const path in modulesPageTaro) {
   const name = (/packages\/__VUE\/(.*)\/doc.taro.md/.exec(path) as any[])[1];
   pagesRouter.push({
-    path: `/zh-CN/component/${name}-taro`,
+    path: '/taro/zh-CN/' + name,
     component: modulesPageTaro[path]
   });
   pagesEnRouter.push({
-    path: `/en-US/component/${name}-taro`,
+    path: '/taro/en-US/' + name,
     component: modulesPageTaro[path]
   });
 }
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/zh-CN',
-    name: '/zh-CN',
+    path: '/h5/zh-CN',
+    name: '/h5/zh-CN',
     component: Index,
     children: pagesRouter
   },
   {
-    path: '/en-US',
-    name: '/en-US',
+    path: '/h5/en-US',
+    name: '/h5/en-US',
     component: Index,
     children: pagesEnRouter
   }
@@ -55,7 +55,7 @@ routes.push({
   name: 'notFound',
   path: '/:path(.*)+',
   redirect: {
-    path: '/zh-CN/component/button'
+    path: '/h5/zh-CN/button'
   }
 });
 const router = createRouter({
@@ -71,7 +71,7 @@ const router = createRouter({
     }
   }
 });
-router.afterEach((to, from) => {
+router.afterEach(() => {
   window.scrollTo(0, 0);
 });
 export default router;

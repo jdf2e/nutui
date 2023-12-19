@@ -1,12 +1,13 @@
 <script lang="ts">
-import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
+import { provide, computed, reactive, h, ComponentInternalInstance, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { STEPS_KEY, StepsDirection } from './types';
 const { create, componentName } = createComponent('steps');
 
 export default create({
   props: {
     direction: {
-      type: String,
+      type: String as PropType<StepsDirection>,
       default: 'horizontal'
     },
     current: {
@@ -41,7 +42,7 @@ export default create({
       emit('clickStep', index);
     };
 
-    provide('parent', {
+    provide(STEPS_KEY, {
       relation,
       state,
       props,

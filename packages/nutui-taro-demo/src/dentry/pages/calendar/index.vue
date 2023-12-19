@@ -1,6 +1,5 @@
 <template>
-  <div class="demo calendar_demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="calendar_demo">
     <h2>基础用法</h2>
     <div>
       <nut-cell
@@ -13,10 +12,10 @@
       <nut-calendar
         v-model:visible="state.isVisible"
         :default-value="state.date"
-        @close="closeSwitch('isVisible')"
-        @choose="setChooseValue"
         :start-date="`2022-01-11`"
         :end-date="`2022-11-30`"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
       >
       </nut-calendar>
     </div>
@@ -75,13 +74,33 @@
         type="week"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
+        :first-day-of-week="1"
         @close="closeSwitch('isVisible9')"
         @choose="setChooseValue9"
         @select="select"
-        :first-day-of-week="1"
       >
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="自定义禁用日期"
+        :desc="date ? `${date}` : '请选择'"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-11-30`"
+        :disabled-date="disabledDate"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+      >
+      </nut-calendar>
+    </div>
+
     <h2>快捷选择</h2>
     <div>
       <nut-cell
@@ -93,10 +112,10 @@
       </nut-cell>
       <nut-calendar
         v-model:visible="state.isVisible3"
-        @close="closeSwitch('isVisible3')"
-        @choose="setChooseValue3"
         :default-value="state.date3"
         :is-auto-back-fill="true"
+        @close="closeSwitch('isVisible3')"
+        @choose="setChooseValue3"
       >
       </nut-calendar>
     </div>
@@ -114,9 +133,9 @@
         type="range"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
+        :is-auto-back-fill="true"
         @close="closeSwitch('isVisible4')"
         @choose="setChooseValue4"
-        :is-auto-back-fill="true"
       >
       </nut-calendar>
     </div>
@@ -144,8 +163,8 @@
             <view class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></view>
           </view>
         </template>
-        <template #day="date">
-          <span>{{ date.date.day }}</span>
+        <template #day="d">
+          <span>{{ d.date.day }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -161,27 +180,27 @@
         v-model:visible="state.isVisible6"
         :default-value="state.date6"
         type="range"
-        @close="closeSwitch('isVisible6')"
-        @choose="setChooseValue6"
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
         confirm-text="submit"
         start-text="入店"
         end-text="离店"
         title="日期选择"
+        @close="closeSwitch('isVisible6')"
+        @choose="setChooseValue6"
       >
-        <template #day="date">
-          <view>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</view>
+        <template #day="d">
+          <view>{{ d.date.day <= 9 ? '0' + d.date.day : d.date.day }}</view>
         </template>
-        <template #bottom-info="date">
-          <view class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</view>
+        <template #bottom-info="d">
+          <view class="info">{{ d.date ? (d.date.day == 10 ? '十' : '') : '' }}</view>
         </template>
       </nut-calendar>
     </div>
     <h2>自定义周起始日</h2>
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="自定义周起始日"
         :desc="state.date8 ? `${state.date8}` : '请选择'"
         @click="openSwitch('isVisible8')"
@@ -190,9 +209,9 @@
       <nut-calendar
         v-model:visible="state.isVisible8"
         :default-value="state.date8"
+        :first-day-of-week="2"
         @close="closeSwitch('isVisible8')"
         @choose="setChooseValue8"
-        :first-day-of-week="2"
       >
       </nut-calendar>
     </div>
@@ -202,21 +221,19 @@
         :poppable="false"
         :default-value="state.date2"
         :is-auto-back-fill="true"
-        @choose="setChooseValue2"
         :start-date="`2020-02-01`"
         :end-date="`2020-12-30`"
+        @choose="setChooseValue2"
       >
       </nut-calendar>
     </div>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
 import Utils from '@/packages/utils/date';
-const env = Taro.getEnv();
+import { toRefs } from 'vue';
 
 const calendarRef = ref<any>(null);
 const state = reactive({
@@ -242,6 +259,7 @@ const state = reactive({
   isVisible8: false,
   isVisible9: false
 });
+const { isVisible, date } = toRefs(state);
 const openSwitch = (param: string) => {
   state[`${param}`] = true;
 };
@@ -313,6 +331,18 @@ const goDate = () => {
     calendarRef.value.scrollToDate(Utils.date2Str(date1));
   }
 };
+const disabledDate = (date) => {
+  const disabledDate = {
+    '2022-01-05': true,
+    '2022-01-06': true,
+    '2022-01-10': true,
+    '2022-01-11': true,
+    '2022-01-12': true,
+    '2022-01-13': true,
+    '2022-01-14': true
+  };
+  return disabledDate[date];
+};
 </script>
 
 <style lang="scss">
@@ -321,19 +351,23 @@ const goDate = () => {
     flex: initial;
   }
 }
+
 .test-calendar-wrapper {
   display: flex;
   width: 100%;
   height: 560px;
   overflow: hidden;
 }
+
 .wrapper {
   display: flex;
   padding: 0 40px;
   justify-content: center;
 }
+
 .d_div {
   margin: 0px 5px;
+
   .d_btn {
     background: #fa3f19;
     color: #fff;
@@ -344,6 +378,7 @@ const goDate = () => {
     height: 16px;
   }
 }
+
 .info {
   font-size: 12px;
   line-height: 14px;

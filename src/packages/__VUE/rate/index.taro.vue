@@ -1,10 +1,58 @@
-<template src="./template.html"></template>
+<template>
+  <view class="nut-rate">
+    <view
+      v-for="n in Number(count)"
+      :id="'rateRefs-' + refRandomId + n"
+      :key="n"
+      ref="rateRefs"
+      class="nut-rate-item"
+      :style="n < Number(count) ? { marginRight: pxCheck(spacing) } : {}"
+    >
+      <view class="nut-rate-item__icon--full">
+        <component
+          :is="
+            renderIcon(customIcon, {
+              width: size,
+              height: size,
+              size,
+              color: n <= Number(modelValue) ? activeColor : voidColor
+            })
+          "
+          class="nut-rate-item__icon"
+          :class="{ 'nut-rate-item__icon--disabled': disabled || n > Number(modelValue) }"
+          @click="onClick(1, n)"
+        ></component>
+      </view>
+      <view v-if="allowHalf && Number(modelValue) + 1 > n" class="nut-rate-item__icon--half">
+        <component
+          :is="
+            renderIcon(customIcon, {
+              width: size,
+              height: size,
+              size,
+              color: n <= Number(modelValue) + 1 ? activeColor : voidColor
+            })
+          "
+          class="nut-rate-item__icon"
+          @click="onClick(2, n)"
+        ></component>
+      </view>
+      <view v-else-if="allowHalf && Number(modelValue) + 1 < n" class="nut-rate-item__icon--half">
+        <component
+          :is="renderIcon(customIcon, { width: size, height: size, size, color: voidColor })"
+          class="nut-rate-item__icon nut-rate-item__icon--disabled"
+          @click="onClick(2, n)"
+        ></component>
+      </view>
+    </view>
+  </view>
+</template>
 <script lang="ts">
+import { ref } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
-import { computed, ref } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { create, componentName } = createComponent('rate');
+const { create } = createComponent('rate');
 export default create({
   props: {
     count: {
@@ -52,14 +100,8 @@ export default create({
   },
   components: { StarFillN },
   emits: ['update:modelValue', 'change'],
-  setup(props: any, { emit, slots }: any) {
+  setup(props, { emit, slots }) {
     const rateRefs = ref<HTMLElement[]>([]);
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
     const updateVal = (value: number) => {
       emit('update:modelValue', value);
       emit('change', value);
@@ -79,7 +121,6 @@ export default create({
     };
     const refRandomId = Math.random().toString(36).slice(-8);
     return {
-      classes,
       onClick,
       pxCheck,
       rateRefs,

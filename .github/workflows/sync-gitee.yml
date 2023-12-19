@@ -1,11 +1,13 @@
 name: Sync to Gitee
 
 on:
-  push:
-    branches: [v4]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
 
 jobs:
   deploy-site-sync-gitee:
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     steps:
       - name: Sync to Gitee

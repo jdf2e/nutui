@@ -1,7 +1,7 @@
 <script lang="ts">
 import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useExpose } from '@/packages/utils/useExpose/index';
+import { CHECKBOX_KEY } from '../checkbox/types';
 const { create, componentName } = createComponent('checkbox-group');
 
 export default create({
@@ -20,7 +20,7 @@ export default create({
     }
   },
   emits: ['change', 'update:modelValue'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, expose }) {
     const state = reactive({
       children: [] as ComponentPublicInstance[]
     });
@@ -63,7 +63,7 @@ export default create({
       emit('update:modelValue', value);
     };
 
-    provide('parent', {
+    provide(CHECKBOX_KEY, {
       value: computed(() => props.modelValue),
       disabled: computed(() => props.disabled),
       max: computed(() => props.max),
@@ -79,7 +79,7 @@ export default create({
       }
     );
 
-    useExpose({ toggleAll, toggleReverse });
+    expose({ toggleAll, toggleReverse });
 
     return () => {
       return h(

@@ -67,6 +67,7 @@
       :model-value="formData"
       :rules="{
         name: [
+          { required: true, message: translate('nameTip') },
           {
             message: '名称两个字以上',
             validator: nameLengthValidator
@@ -74,12 +75,7 @@
         ]
       }"
     >
-      <nut-form-item
-        :label="translate('name')"
-        prop="name"
-        required
-        :rules="[{ required: true, message: translate('nameTip') }]"
-      >
+      <nut-form-item :label="translate('name')" prop="name">
         <nut-input
           v-model="formData.name"
           class="nut-input-text"
@@ -187,98 +183,108 @@
         ></nut-address>
       </nut-form-item>
     </nut-form>
+    <h2>{{ translate('customLabelPosition') }}</h2>
+    <nut-form label-position="top" star-position="right">
+      <nut-form-item :label="translate('name')" required>
+        <nut-input v-model="basicData.name" class="nut-input-text" :placeholder="translate('nameTip')" type="text" />
+      </nut-form-item>
+      <nut-form-item :label="translate('age')" required>
+        <nut-input v-model="basicData.age" class="nut-input-text" :placeholder="translate('ageTip')" type="text" />
+      </nut-form-item>
+      <nut-form-item :label="translate('remarks')" label-position="left">
+        <nut-textarea :placeholder="translate('remarksTip')" type="text" />
+      </nut-form-item>
+    </nut-form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { showToast } from '@/packages/nutui.vue';
 import { reactive, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('form');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { FormItemRuleWithoutValidator } from '../formitem/types';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      title1: '动态表单',
-      title2: '表单校验',
-      title3: '表单类型',
-      name: '姓名',
-      nameTip: '请输入姓名',
-      nameTip1: '请输入姓名，blur 事件校验',
-      age: '年龄',
-      ageTip: '请输入年龄',
-      ageTip1: '请输入年龄，必须数字且0-200区间',
-      ageTip2: '必须输入数字',
-      ageTip3: '必须输入0-200区间',
-      tel: '联系电话',
-      telTip: '请输入联系电话',
-      telTip1: '异步校验电话格式',
-      telTip2: '电话格式不正确',
-      address: '地址',
-      addressTip: '请输入地址',
-      addressTip1: '请选择地址',
-      addressTip2: '请选择所在地区',
-      remarks: '备注',
-      remarksTip: '请输入备注',
-      add: '添加',
-      remove: '删除',
-      submit: '提交',
-      reset: '重置提示状态',
-      switch: '开关',
-      checkbox: '复选框',
-      radiogroup: '单选按钮',
-      option: (v: string) => '选项' + v,
-      rate: '评分',
-      inputnumber: '步进器',
-      range: '滑块',
-      uploader: '文件上传',
-      success: '上传成功',
-      uploading: '上传中...',
-      asyncValidator: '模拟异步验证中'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Dynamic Form',
-      title2: 'Validate Form',
-      title3: 'Form Type',
-      name: 'Name',
-      nameTip: 'Please enter your name',
-      nameTip1: 'Please enter , blur event validate',
-      age: 'Age',
-      ageTip: 'Please enter age',
-      ageTip1: 'Please enter the age, which must be numeric and in the range of 0-200',
-      ageTip2: 'You must enter a number',
-      ageTip3: 'The range 0-200 must be entered',
-      tel: 'Tel',
-      telTip: 'Please enter tel',
-      telTip1: 'Async check tel format',
-      telTip2: 'Tel format is incorrect',
-      address: 'Address',
-      addressTip: 'Please enter address',
-      addressTip1: 'Please select an address',
-      addressTip2: 'Please select your region',
-      remarks: 'Remarks',
-      remarksTip: 'Please enter remarks',
-      add: 'Add',
-      remove: 'Remove',
-      submit: 'Submit',
-      reset: 'Reset prompt status',
-      switch: 'Switch',
-      checkbox: 'Checkbox',
-      radiogroup: 'Radiogroup',
-      option: (v: string) => 'Option' + v,
-      rate: 'Rate',
-      inputnumber: 'Inputnumber',
-      range: 'Range',
-      uploader: 'Upload file',
-      success: 'Upload successful',
-      uploading: 'Uploading',
-      asyncValidator: 'Simulating asynchronous verification'
-    }
-  });
-initTranslate();
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    title1: '动态表单',
+    title2: '表单校验',
+    title3: '表单类型',
+    name: '姓名',
+    nameTip: '请输入姓名',
+    nameTip1: '请输入姓名，blur 事件校验',
+    age: '年龄',
+    ageTip: '请输入年龄',
+    ageTip1: '请输入年龄，必须数字且0-200区间',
+    ageTip2: '必须输入数字',
+    ageTip3: '必须输入0-200区间',
+    tel: '联系电话',
+    telTip: '请输入联系电话',
+    telTip1: '异步校验电话格式',
+    telTip2: '电话格式不正确',
+    address: '地址',
+    addressTip: '请输入地址',
+    addressTip1: '请选择地址',
+    addressTip2: '请选择所在地区',
+    remarks: '备注',
+    remarksTip: '请输入备注',
+    add: '添加',
+    remove: '删除',
+    submit: '提交',
+    reset: '重置提示状态',
+    switch: '开关',
+    checkbox: '复选框',
+    radiogroup: '单选按钮',
+    option: (v: string) => '选项' + v,
+    rate: '评分',
+    inputnumber: '步进器',
+    range: '滑块',
+    uploader: '文件上传',
+    success: '上传成功',
+    uploading: '上传中...',
+    asyncValidator: '模拟异步验证中',
+    customLabelPosition: '自定义 label 位置'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Dynamic Form',
+    title2: 'Validate Form',
+    title3: 'Form Type',
+    name: 'Name',
+    nameTip: 'Please enter your name',
+    nameTip1: 'Please enter , blur event validate',
+    age: 'Age',
+    ageTip: 'Please enter age',
+    ageTip1: 'Please enter the age, which must be numeric and in the range of 0-200',
+    ageTip2: 'You must enter a number',
+    ageTip3: 'The range 0-200 must be entered',
+    tel: 'Tel',
+    telTip: 'Please enter tel',
+    telTip1: 'Async check tel format',
+    telTip2: 'Tel format is incorrect',
+    address: 'Address',
+    addressTip: 'Please enter address',
+    addressTip1: 'Please select an address',
+    addressTip2: 'Please select your region',
+    remarks: 'Remarks',
+    remarksTip: 'Please enter remarks',
+    add: 'Add',
+    remove: 'Remove',
+    submit: 'Submit',
+    reset: 'Reset prompt status',
+    switch: 'Switch',
+    checkbox: 'Checkbox',
+    radiogroup: 'Radiogroup',
+    option: (v: string) => 'Option' + v,
+    rate: 'Rate',
+    inputnumber: 'Inputnumber',
+    range: 'Range',
+    uploader: 'Upload file',
+    success: 'Upload successful',
+    uploading: 'Uploading',
+    asyncValidator: 'Simulating asynchronous verification',
+    customLabelPosition: 'Customize the label location'
+  }
+});
 const formData = reactive({
   name: '',
   age: '',

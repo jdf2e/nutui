@@ -68,33 +68,27 @@
 </template>
 
 <script setup lang="ts">
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: 'IconFont 基础用法',
-      svg: 'SVG 按需使用',
-      imageLink: '图片链接',
-      iconColor: '图标颜色',
-      iconSize: '图标大小',
-      copyToast: '复制成功'
-    },
-    'en-US': {
-      basic: 'IconFont Basic Usage',
-      svg: 'SVG import on demand',
-      imageLink: 'Image Link',
-      iconColor: 'Icon Color',
-      iconSize: 'Icon Size',
-      copyToast: 'Copied successfully'
-    }
-  });
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('icon');
+const translate = useTranslate({
+  'zh-CN': {
+    basic: 'IconFont 基础用法',
+    svg: 'SVG 按需使用',
+    imageLink: '图片链接',
+    iconColor: '图标颜色',
+    iconSize: '图标大小',
+    copyToast: '复制成功'
+  },
+  'en-US': {
+    basic: 'IconFont Basic Usage',
+    svg: 'SVG import on demand',
+    imageLink: 'Image Link',
+    iconColor: 'Icon Color',
+    iconSize: 'Icon Size',
+    copyToast: 'Copied successfully'
+  }
+});
 import { showToast } from '@/packages/nutui.vue';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
-initTranslate();
 const copyTag = (name: string) => {
   const text = `<IconFont name="${name}"></IconFont>`;
   const displayText = `&lt;IconFont name="${name}"&gt;&lt;/IconFont&gt;`;

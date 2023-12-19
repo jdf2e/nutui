@@ -1,58 +1,68 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-cell class="cell">
-      <nut-rate v-model="state.val" />
-    </nut-cell>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>半星</h2>
-    <nut-cell class="cell"><nut-rate allow-half v-model="state.val1"></nut-rate></nut-cell>
+    <h2>{{ t('half') }}</h2>
+    <Half />
 
-    <h2>自定义 icon </h2>
-    <nut-cell class="cell"><nut-rate :custom-icon="HeartFill" v-model="state.val2"></nut-rate></nut-cell>
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
 
-    <h2>自定义数量</h2>
-    <nut-cell class="cell"><nut-rate count="10" v-model="state.val3"></nut-rate></nut-cell>
+    <h2>{{ t('count') }}</h2>
+    <Count />
 
-    <h2>自定义颜色</h2>
-    <nut-cell class="cell"><nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate></nut-cell>
+    <h2>{{ t('color') }}</h2>
+    <Color />
 
-    <h2>禁用状态</h2>
-    <nut-cell class="cell"><nut-rate disabled v-model="state.val5"></nut-rate></nut-cell>
+    <h2>{{ t('disabled') }}</h2>
+    <Disabled />
 
-    <h2>只读状态</h2>
-    <nut-cell class="cell"><nut-rate v-model="state.val6" readonly></nut-rate></nut-cell>
+    <h2>{{ t('read') }}</h2>
+    <Read />
 
-    <h2>绑定事件</h2>
-    <nut-cell class="cell"><nut-rate v-model="state.val7" @change="onChange"></nut-rate></nut-cell>
+    <h2>{{ t('event') }}</h2>
+    <Event />
 
-    <h2>自定义尺寸 35px</h2>
-    <nut-cell class="cell"><nut-rate v-model="state.val8" size="35"></nut-rate></nut-cell>
-  </div>
+    <h2>{{ t('size') }}</h2>
+    <Size />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-import { HeartFill } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Half from './half.vue';
+import IconDemo from './icon.vue';
+import Count from './count.vue';
+import Color from './color.vue';
+import Disabled from './disabled.vue';
+import Read from './read.vue';
+import Event from './event.vue';
+import Size from './size.vue';
 
-const state = reactive({
-  val: 3,
-  val1: 3.5,
-  val2: 3,
-  val3: 3,
-  val4: 3,
-  val5: 3,
-  val6: 3,
-  val7: 3,
-  val8: 3
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    half: '半星',
+    icon: '自定义图标',
+    count: '自定义数量',
+    color: '自定义颜色',
+    disabled: '禁用状态',
+    read: '只读状态',
+    event: '绑定事件',
+    size: '自定义尺寸 35px'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    half: 'Half Star',
+    icon: 'Custom Icon',
+    count: 'Custom Count',
+    color: 'Custom Color',
+    disabled: 'Disabled',
+    read: 'Read Only',
+    event: 'event',
+    size: 'Custom size 35px'
+  }
 });
-const onChange = (val) => {
-  console.log(val);
-};
 </script>
-
-<style lang="scss" scoped></style>

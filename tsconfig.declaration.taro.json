@@ -6,7 +6,6 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/**/*.d.ts",
     "src/packages/__VUE/**/index.taro.vue",
     "src/packages/__VUE/**/*.ts",
     "src/packages/nutui.taro.vue.build.ts",
@@ -18,7 +17,6 @@
     "node_modules",
     "**/test/**/*",
     "**/demo/**/*",
-    "src/packages/__VUE/**/__tests__/",
-    "src/packages/__VUE/**/__test__/"
+    "src/packages/__VUE/**/__tests__/"
   ]
 }

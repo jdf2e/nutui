@@ -38,7 +38,7 @@ const { create } = createComponent('comment-images');
 import { Right } from '@nutui/icons-vue';
 
 interface VideosType {
-  id: number | string;
+  id?: number | string;
   mainUrl: string;
   videoUrl: string;
 }

@@ -70,79 +70,62 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import NutConfigProvider from './index.vue';
-import NutCell from '../cell/index.vue';
-import NutForm from '../form/index.vue';
-import NutFormItem from '../formitem/index.vue';
-import NutRange from '../range/index.vue';
-import NutSwitch from '../switch/index.vue';
-import NutRate from '../rate/index.vue';
-import NutInputNumber from '../inputnumber/index.vue';
-import NutUploader from '../uploader/index.vue';
-import NutAddress from '../address/index.vue';
-import NutRadio from '../radio/index.vue';
-import NutCheckbox from '../checkbox/index.vue';
-import NutRadioGroup from '../radiogroup/index.vue';
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('configprovider');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基础用法',
-      custom: '定制主题',
-      title1: '切换暗黑',
-      title2: '我是标题',
-      title3: '副标题描述',
-      desc: '描述文字',
-      address: '地址',
-      addressTip: '请输入地址',
-      addressTip1: '请选择地址',
-      addressTip2: '请选择所在地区',
-      remarks: '备注',
-      remarksTip: '请输入备注',
-      switch: '开关',
-      checkbox: '复选框',
-      radiogroup: '单选按钮',
-      option: (v: string) => '选项' + v,
-      rate: '评分',
-      inputnumber: '步进器',
-      range: '滑块',
-      uploader: '文件上传',
-      success: '上传成功',
-      uploading: '上传中...',
-      asyncValidator: '模拟异步验证中'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      custom: 'Custom Theme',
-      title1: 'Switch Dark Mode',
-      title2: 'Title',
-      title3: 'Subtitle Description',
-      desc: 'Description',
-      nameTip: 'Please enter your name',
-      address: 'Address',
-      addressTip: 'Please enter address',
-      addressTip1: 'Please select an address',
-      addressTip2: 'Please select your region',
-      remarks: 'Remarks',
-      remarksTip: 'Please enter remarks',
-      switch: 'Switch',
-      checkbox: 'Checkbox',
-      radiogroup: 'Radiogroup',
-      option: (v: string) => 'Option' + v,
-      rate: 'Rate',
-      inputnumber: 'Inputnumber',
-      range: 'Range',
-      uploader: 'Upload file',
-      success: 'Upload successful',
-      uploading: 'Uploading',
-      asyncValidator: 'Simulating asynchronous verification'
-    }
-  });
+const translate = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    custom: '定制主题',
+    title1: '切换暗黑',
+    title2: '我是标题',
+    title3: '副标题描述',
+    desc: '描述文字',
+    address: '地址',
+    addressTip: '请输入地址',
+    addressTip1: '请选择地址',
+    addressTip2: '请选择所在地区',
+    remarks: '备注',
+    remarksTip: '请输入备注',
+    switch: '开关',
+    checkbox: '复选框',
+    radiogroup: '单选按钮',
+    option: (v: string) => '选项' + v,
+    rate: '评分',
+    inputnumber: '步进器',
+    range: '滑块',
+    uploader: '文件上传',
+    success: '上传成功',
+    uploading: '上传中...',
+    asyncValidator: '模拟异步验证中'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    custom: 'Custom Theme',
+    title1: 'Switch Dark Mode',
+    title2: 'Title',
+    title3: 'Subtitle Description',
+    desc: 'Description',
+    nameTip: 'Please enter your name',
+    address: 'Address',
+    addressTip: 'Please enter address',
+    addressTip1: 'Please select an address',
+    addressTip2: 'Please select your region',
+    remarks: 'Remarks',
+    remarksTip: 'Please enter remarks',
+    switch: 'Switch',
+    checkbox: 'Checkbox',
+    radiogroup: 'Radiogroup',
+    option: (v: string) => 'Option' + v,
+    rate: 'Rate',
+    inputnumber: 'Inputnumber',
+    range: 'Range',
+    uploader: 'Upload file',
+    success: 'Upload successful',
+    uploading: 'Uploading',
+    asyncValidator: 'Simulating asynchronous verification'
+  }
+});
 
-initTranslate();
 const checked = ref(false);
 const theme = ref('');
 const change = (v: boolean) => {

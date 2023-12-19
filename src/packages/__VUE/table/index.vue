@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view class="nut-table">
     <view class="nut-table__main" :class="{ 'nut-table__main--striped': striped }">
       <view class="nut-table__main__head">
         <view class="nut-table__main__head__tr">
@@ -49,14 +49,17 @@
     </view>
   </view>
 </template>
-
 <script lang="ts">
-import { computed, PropType, reactive, toRefs, watch } from 'vue';
+import { PropType, reactive, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create, translate } = createComponent('table');
+const { create } = createComponent('table');
 import RenderColumn from './renderColumn';
 import { DownArrow } from '@nutui/icons-vue';
-import { TableColumnProps } from './types';
+import { TableColumns } from './types';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const cN = 'NutTable';
+
 export default create({
   components: {
     RenderColumn,
@@ -68,16 +71,12 @@ export default create({
       default: true
     },
     columns: {
-      type: Array as PropType<TableColumnProps[]>,
-      default: () => {
-        return [];
-      }
+      type: Array as PropType<TableColumns[]>,
+      default: () => []
     },
     data: {
-      type: Object,
-      default: () => {
-        return {};
-      }
+      type: Object as PropType<any>,
+      default: () => ({})
     },
     summary: {
       type: Function,
@@ -89,39 +88,35 @@ export default create({
     }
   },
   emits: ['sorter'],
-  setup(props: any, { emit }: any) {
+  setup(props: any, { emit }) {
+    const translate = useLocale(cN);
+
     const state = reactive({
       curData: props.data
     });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
 
-    const cellClasses = (item: TableColumnProps) => {
+    const cellClasses = (item: TableColumns) => {
       return {
         'nut-table__main__head__tr--border': props.bordered,
         [`nut-table__main__head__tr--align${item.align ? item.align : ''}`]: true
       };
     };
 
-    const stylehead = (item: TableColumnProps) => {
+    const stylehead = (item: TableColumns) => {
       return item.stylehead ? item.stylehead : '';
     };
-    const stylecolumn = (item: TableColumnProps) => {
+    const stylecolumn = (item: TableColumns) => {
       return item.stylecolumn ? item.stylecolumn : '';
     };
 
-    const getColumnItem = (value: string): TableColumnProps => {
-      return props.columns.filter((item: TableColumnProps) => item.key === value)[0];
+    const getColumnItem = (value: string): TableColumns => {
+      return props.columns.filter((item: TableColumns) => item.key === value)[0];
     };
     const getColumnItemStyle = (value: string) => {
-      const style = props.columns.filter((item: TableColumnProps) => item.key === value);
+      const style = props.columns.filter((item: TableColumns) => item.key === value);
       return style[0].stylecolumn ? style[0].stylecolumn : '';
     };
-    const handleSorterClick = (item: TableColumnProps) => {
+    const handleSorterClick = (item: TableColumns) => {
       if (item.sorter) {
         emit('sorter', item);
         state.curData =
@@ -134,7 +129,7 @@ export default create({
     };
 
     const sortDataItem = () => {
-      return props.columns.map((columns: TableColumnProps) => {
+      return props.columns.map((columns: TableColumns) => {
         return [columns.key, columns.render];
       });
     };
@@ -148,7 +143,6 @@ export default create({
 
     return {
       ...toRefs(state),
-      classes,
       cellClasses,
       getColumnItem,
       getColumnItemStyle,

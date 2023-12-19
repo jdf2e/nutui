@@ -84,13 +84,15 @@
 <script lang="ts">
 import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
-import ScrollView from '../scroll-view/index.taro.vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
-import { useExpose } from '@/packages/utils/useExpose/index';
+import { useLocale } from '@/packages/utils/useLocale';
+
+const { create } = createComponent('calendar-item');
+const cN = 'NutCalendarItem';
 const TARO_ENV = Taro.getEnv();
 
 type StringArr = string[];
@@ -102,7 +104,7 @@ interface CalendarDateProp {
 
 export default create({
   components: {
-    'nut-scroll-view': ScrollView
+    NutScrollView
   },
   props: {
     type: {
@@ -164,11 +166,13 @@ export default create({
     firstDayOfWeek: {
       type: Number,
       default: 0
-    }
+    },
+    disabledDate: Function
   },
   emits: ['choose', 'update', 'close', 'select'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
+    const translate = useLocale(cN);
     // 新增：自定义周起始日
     const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
       day: day,
@@ -271,7 +275,8 @@ export default create({
           res.push(`${state.dayPrefix}--active`);
         } else if (
           (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
-          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
+          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate)) ||
+          (props.disabledDate && props.disabledDate(currDate))
         ) {
           res.push(`${state.dayPrefix}--disabled`);
         } else if (
@@ -705,7 +710,7 @@ export default create({
     const initPosition = () => {
       state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });

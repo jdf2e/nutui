@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import Markdown from 'unplugin-vue-markdown/vite';
 import path from 'path';
 import config from './package.json';
-const hljs = require('highlight.js'); // https://highlightjs.org/
-import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
+import { markdown } from '@nutui/vite-plugins';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -48,43 +46,9 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    Markdown({
-      // default options passed to markdown-it
-      // see: https://markdown-it.github.io/markdown-it/
-      markdownItOptions: {
-        highlight: function (str, lang) {
-          if (lang && hljs.getLanguage(lang)) {
-            try {
-              return hljs.highlight(lang, str).value;
-            } catch (__) {}
-          }
-
-          return ''; // 使用额外的默认转义
-        }
-      },
-      markdownItSetup(md) {
-        md.use(require('markdown-it-container'), 'demo', {
-          validate: function (params) {
-            return params.match(/^demo\s*(.*)$/);
-          },
-
-          render: function (tokens, idx) {
-            const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
-            if (tokens[idx].nesting === 1) {
-              // opening tag
-              const contentHtml = compressText(tokens[idx + 1].content);
-              return `<demo-block data-type="vue" data-value="${contentHtml}">` + md.utils.escapeHtml(m[1]) + '\n';
-            } else {
-              // closing tag
-              return '</demo-block>\n';
-            }
-          }
-        });
-      }
+    markdown({
+      docRoot: path.resolve(__dirname, './src/packages/__VUE')
     })
-    // legacy({
-    //   targets: ['defaults', 'not IE 11']
-    // })
   ],
   build: {
     target: 'es2015',

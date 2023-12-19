@@ -87,6 +87,25 @@
       >
       </nut-calendar>
     </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        :title="translate('disabledDate')"
+        :desc="date ? `${date}` : translate('please')"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-11-30`"
+        :disabled-date="disabledDate"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+      >
+      </nut-calendar>
+    </div>
     <h2>{{ translate('title1') }}</h2>
     <div>
       <nut-cell
@@ -99,8 +118,6 @@
       <nut-calendar
         v-model:visible="state.isVisible3"
         :default-value="state.date3"
-        :start-date="null"
-        :end-date="null"
         :is-auto-back-fill="true"
         @close="closeSwitch('isVisible3')"
         @choose="setChooseValue3"
@@ -163,8 +180,8 @@
             </div>
           </div>
         </template>
-        <template #day="date">
-          <span>{{ date.date.day }}</span>
+        <template #day="d">
+          <span>{{ d.date.day }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -193,11 +210,11 @@
         @close="closeSwitch('isVisible6')"
         @choose="setChooseValue6"
       >
-        <template #day="date">
-          <span>{{ renderDate(date) }}</span>
+        <template #day="d">
+          <span>{{ renderDate(d) }}</span>
         </template>
-        <template #bottom-info="date">
-          <span class="info">{{ date.date ? (date.date.day == 10 ? '十' : '') : '' }}</span>
+        <template #bottom-info="d">
+          <span class="info">{{ d.date ? (d.date.day == 10 ? '十' : '') : '' }}</span>
         </template>
       </nut-calendar>
     </div>
@@ -264,73 +281,71 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { reactive, ref, toRefs } from 'vue';
 import Utils from '@/packages/utils/date';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { CalendarRef, Day } from '../calendaritem/type';
 
-const { translate } = createComponent('calendar');
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '快捷选择',
-      title2: '自定义日历',
-      title3: '自定义周起始日',
-      title4: '平铺展示',
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '快捷选择',
+    title2: '自定义日历',
+    title3: '自定义周起始日',
+    title4: '平铺展示',
 
-      please: '请选择',
-      single: '选择单个日期',
-      range: '选择日期区间',
-      multiple: '选择多个日期',
-      week: '选择周',
+    please: '请选择',
+    single: '选择单个日期',
+    range: '选择日期区间',
+    multiple: '选择多个日期',
+    week: '选择周',
+    disabledDate: '自定义禁用日期',
 
-      conjunction: '至',
-      custom_btn: '自定义按钮',
-      timeText: '自定义时间文案',
-      custom_footer: '自定义底部',
-      custom_footer_text1: '偶数的日期不能选择',
-      custom_footer_text2: '奇数的日期可以选择',
+    conjunction: '至',
+    custom_btn: '自定义按钮',
+    timeText: '自定义时间文案',
+    custom_footer: '自定义底部',
+    custom_footer_text1: '偶数的日期不能选择',
+    custom_footer_text2: '奇数的日期可以选择',
 
-      goDate: '去某个月',
-      seven: '最近七天',
-      current: '当月',
-      enter: '入店',
-      leave: '离店',
-      mid: '中旬',
-      selected: '已选择：'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Quick Select',
-      title2: 'Custom Calendar',
-      title3: 'Custom First Day Of Week',
-      title4: 'Tiled Display',
+    goDate: '去某个月',
+    seven: '最近七天',
+    current: '当月',
+    enter: '入店',
+    leave: '离店',
+    mid: '中旬',
+    selected: '已选择：'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Quick Select',
+    title2: 'Custom Calendar',
+    title3: 'Custom First Day Of Week',
+    title4: 'Tiled Display',
 
-      please: 'Please Select Date',
-      single: 'Select Single Date',
-      range: 'Select Date Range',
-      multiple: 'Select Multiple Date',
-      week: 'Select Week',
+    please: 'Please Select Date',
+    single: 'Select Single Date',
+    range: 'Select Date Range',
+    multiple: 'Select Multiple Date',
+    week: 'Select Week',
+    disabledDate: 'Disabled Date',
 
-      conjunction: '-',
-      custom_btn: 'Custom Button',
-      timeText: 'Custom Date Text',
-      custom_footer: 'Custom Footer',
-      custom_footer_text1: 'Even dates cannot be selected',
-      custom_footer_text2: 'Odd dates can be selected',
+    conjunction: '-',
+    custom_btn: 'Custom Button',
+    timeText: 'Custom Date Text',
+    custom_footer: 'Custom Footer',
+    custom_footer_text1: 'Even dates cannot be selected',
+    custom_footer_text2: 'Odd dates can be selected',
 
-      goDate: 'Go Date',
-      seven: 'Last Seven Days',
-      current: 'This Month',
-      enter: 'enter',
-      leave: 'leave',
-      mid: 'mid',
-      selected: 'selected:'
-    }
-  });
-initTranslate();
+    goDate: 'Go Date',
+    seven: 'Last Seven Days',
+    current: 'This Month',
+    enter: 'enter',
+    leave: 'leave',
+    mid: 'mid',
+    selected: 'selected:'
+  }
+});
 const calendarRef = ref<null | CalendarRef>(null);
 const state = reactive({
   isVisible: false,
@@ -358,6 +373,7 @@ const state = reactive({
   isVisible10: false,
   disabled10: false
 });
+const { isVisible, date } = toRefs(state);
 const openSwitch = (param: string) => {
   (state as any)[`${param}`] = true;
 };
@@ -440,6 +456,20 @@ const renderDate = (date: { date: Day }) => {
 const clickBtn10 = (dateInfo: any) => {
   state.date10 = dateInfo.date[3];
   state.isVisible10 = false;
+};
+const disabledDate = (date: string) => {
+  const disabledDate: {
+    [key: string]: boolean | undefined;
+  } = {
+    '2022-01-05': true,
+    '2022-01-06': true,
+    '2022-01-10': true,
+    '2022-01-11': true,
+    '2022-01-12': true,
+    '2022-01-13': true,
+    '2022-01-14': true
+  };
+  return disabledDate[date];
 };
 </script>
 

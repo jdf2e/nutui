@@ -1,252 +1,69 @@
 <template>
-  <div class="demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>基础用法</h2>
-    <nut-table :columns="state.columns1" :data="state.data1"></nut-table>
-    <h2>是否显示边框，文字对齐</h2>
-    <nut-table :columns="state.columns2" :data="state.data1" :bordered="state.bordered1"></nut-table>
-    <h2>显示总结栏</h2>
-    <nut-table :columns="state.columns3" :data="state.data2" :summary="state.summary"></nut-table>
-    <h2>条纹、明暗交替</h2>
-    <nut-table :columns="state.columns3" :data="state.data2" :striped="state.striped"></nut-table>
-    <h2>无数据默认展示，支持自定义</h2>
-    <nut-table :columns="state.columns3" :data="state.data3"> </nut-table>
-    <br />
-    <nut-table :columns="state.columns3" :data="state.data3">
-      <template #nodata>
-        <div class="no-data"> 这里是自定义展示 </div>
-      </template>
-    </nut-table>
-    <h2>自定义单元格</h2>
-    <nut-table :columns="state.columns4" :data="state.data4"> </nut-table>
-    <h2>支持异步渲染(5s之后看效果)</h2>
-    <nut-table :columns="state.columns3" :data="state.data5"> </nut-table>
-    <h2>支持排序</h2>
-    <nut-table :columns="state.columns6" :data="state.data6" @sorter="handleSorter"> </nut-table>
-  </div>
+  <Demo class="bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('border') }}</h2>
+    <Border />
+
+    <h2>{{ t('align') }}</h2>
+    <Align />
+
+    <h2>{{ t('summary') }}</h2>
+    <Summary />
+
+    <h2>{{ t('striped') }}</h2>
+    <Striped />
+
+    <h2>{{ t('nodata') }}</h2>
+    <Nodata />
+
+    <h2>{{ t('custom') }}</h2>
+    <Custom />
+
+    <h2>{{ t('async') }}</h2>
+    <Async />
+
+    <h2>{{ t('sort') }}</h2>
+    <Sort />
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, onUnmounted, h } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-import Button from '@/packages/__VUE/button';
-import { TableColumnProps } from '@/packages/__VUE/table/types';
-import { Dongdong } from '@nutui/icons-vue-taro';
-const env = Taro.getEnv();
-const state = reactive({
-  bordered1: false,
-  striped: true,
-  columns1: [
-    {
-      title: '姓名',
-      key: 'name'
-    },
-    {
-      title: '性别',
-      key: 'sex'
-    },
-    {
-      title: '学历',
-      key: 'record'
-    }
-  ],
-  columns2: [
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center'
-    },
-    {
-      title: '性别',
-      key: 'sex'
-    },
-    {
-      title: '学历',
-      key: 'record'
-    }
-  ],
-  columns3: [
-    {
-      title: '姓名',
-      key: 'name'
-    },
-    {
-      title: '性别',
-      key: 'sex'
-    },
-    {
-      title: '学历',
-      key: 'record'
-    },
-    {
-      title: '年龄',
-      key: 'age'
-    },
-    {
-      title: '地址',
-      key: 'address'
-    }
-  ],
-  columns4: [
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center'
-    },
-    {
-      title: '性别',
-      key: 'sex'
-    },
-    {
-      title: '学历',
-      key: 'record'
-    },
-    {
-      title: '操作',
-      key: 'render'
-    }
-  ],
-  columns6: [
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-      sorter: true
-    },
-    {
-      title: '性别',
-      key: 'sex'
-    },
-    {
-      title: '学历',
-      key: 'record'
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      sorter: (row1: any, row2: any) => {
-        return row1.age - row2.age;
-      }
-    }
-  ],
-  data1: [
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学'
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科'
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中'
-    }
-  ],
-  data2: [
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      age: 13,
-      address: '北京'
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      age: 34,
-      address: '上海'
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      age: 4,
-      address: '杭州'
-    }
-  ],
-  data3: [],
-  data4: [
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      render: () => {
-        return h(Button, { size: 'small', type: 'primary' }, () => 'Hello');
-      }
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      render: () => {
-        return h(Dongdong, { size: '14px' });
-      }
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      render: () => {
-        return h(Button, { type: 'success', size: 'small' }, () => '编辑按钮');
-      }
-    }
-  ],
-  data5: [],
-  data6: [
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      age: 10
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      age: 30
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      age: 4
-    }
-  ],
-  timer: null as number | null,
-  summary: () => {
-    return {
-      value: '这是总结栏',
-      colspan: 5
-    };
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Border from './border.vue';
+import Align from './align.vue';
+import Summary from './summary.vue';
+import Striped from './striped.vue';
+import Nodata from './nodata.vue';
+import Custom from './custom.vue';
+import Async from './async.vue';
+import Sort from './sort.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    border: '是否显示边框',
+    align: '文字对齐方式',
+    summary: '显示总结栏',
+    striped: '条纹、明暗交替',
+    nodata: '无数据默认展示，支持自定义',
+    custom: '自定义单元格',
+    async: '异步渲染(等待 5s)',
+    sort: '支持排序'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    border: 'Whether to display border',
+    align: 'Text Align',
+    summary: 'Show summary bar',
+    striped: 'Stripes, alternating light and shade',
+    nodata: 'No data is displayed by default, and customization is supported',
+    title5: 'Here is the custom display',
+    custom: 'Custom cell',
+    async: 'Asynchronous rendering(See the effect after 5S)',
+    sort: 'Support sorting'
   }
 });
-
-const handleSorter = (item: TableColumnProps) => {
-  console.log(JSON.stringify(item));
-};
-
-onMounted(() => {
-  state.timer = setTimeout(() => {
-    state.data5 = state.data2.slice() as any;
-  }, 5000);
-});
-
-onUnmounted(() => {
-  state.timer = null;
-});
 </script>
-
-<style lang="scss">
-.demo {
-  padding-bottom: 20px !important;
-}
-.nut-table {
-  background-color: #fff;
-}
-</style>

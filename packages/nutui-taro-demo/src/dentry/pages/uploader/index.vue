@@ -1,13 +1,12 @@
 <template>
-  <div class="demo bg-w" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
+  <Demo class="bg-w">
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple @delete="onDelete">
+    <nut-uploader v-model:file-list="defaultFileList" :url="uploadUrl" maximum="3" multiple @delete="onDelete">
     </nut-uploader>
     <h2>基础用法-上传列表展示</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList1" maximum="10" multiple list-type="list">
+    <nut-uploader v-model:file-list="defaultFileList1" :url="uploadUrl" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">上传文件</nut-button>
     </nut-uploader>
     <h2>自定义上传样式</h2>
@@ -44,19 +43,16 @@
     <h2>自定义 Taro.uploadFile 上传方式(before-xhr-upload) </h2>
     <nut-uploader :url="uploadUrl" :before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
-    <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+    <nut-uploader ref="uploadRef" :url="uploadUrl" maximum="5" :auto-upload="false"></nut-uploader>
     <nut-button type="success" size="small" @click="submitUpload">手动执行上传</nut-button>
     <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
     <h2>禁用状态</h2>
     <nut-uploader disabled></nut-uploader>
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-const env = Taro.getEnv();
 const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
 const progressPercentage = ref<string | number>(0);
 const formData = {
@@ -114,7 +110,7 @@ const onOversize = (files: File[]) => {
 const onDelete = (file: any, fileList: any[]) => {
   console.log('delete 事件触发', file, fileList);
 };
-const onProgress = ({ event, options, percentage }: any) => {
+const onProgress = ({ percentage }: any) => {
   progressPercentage.value = percentage;
   console.log('progress 事件触发', percentage);
 };

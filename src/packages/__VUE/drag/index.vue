@@ -1,7 +1,7 @@
 <template>
   <view
     ref="myDrag"
-    :class="classes"
+    class="nut-drag"
     @touchstart="touchStart($event)"
     @touchmove="touchMove($event)"
     @touchend="touchEnd($event)"
@@ -11,10 +11,11 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
-const { componentName, create } = createComponent('drag');
+import { DragDirection } from './types';
+const { create } = createComponent('drag');
 export default create({
   props: {
     attract: {
@@ -22,7 +23,7 @@ export default create({
       default: false
     },
     direction: {
-      type: String,
+      type: String as PropType<DragDirection>,
       default: 'all'
     },
     boundary: {
@@ -58,13 +59,6 @@ export default create({
         right: 0,
         bottom: 0
       } as Record<string, any>
-    });
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
     });
 
     function getInfo() {
@@ -190,7 +184,6 @@ export default create({
       myDrag.value.removeEventListener('touchend', touchEnd);
     });
     return {
-      classes,
       myDrag,
       touchStart,
       touchMove,

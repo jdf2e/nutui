@@ -1,14 +1,10 @@
 <template>
   <div class="doc-nav" :class="{ fixed: fixed }">
-    <ol v-for="_nav in nav" :key="_nav">
+    <ol v-for="_nav in nav" :key="_nav.name">
       <li>{{ _nav.name }}</li>
       <ul>
-        <template
-          :class="{ active: isActive(_package.name) }"
-          v-for="_package in reorder(_nav.packages)"
-          :key="_package"
-        >
-          <li v-if="_package.show">
+        <template v-for="_package in reorder(_nav.packages)" :key="_package">
+          <li v-if="_package.show" :class="{ active: isActive(_package.name) }">
             <router-link :to="_package.name.toLowerCase()" :class="{ active: isActive(_package.name) }">
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
             </router-link>

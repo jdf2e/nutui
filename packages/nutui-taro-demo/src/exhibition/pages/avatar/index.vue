@@ -1,143 +1,67 @@
 <template>
-  <div class="demo full avatar-demo" :class="{ web: env === 'WEB' }">
-    <Header v-if="env === 'WEB'" />
-    <h2>支持三种尺寸：small、normal、large</h2>
-    <nut-cell>
-      <nut-avatar size="large">
-        <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-        />
-      </nut-avatar>
-      <nut-avatar size="normal">
-        <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-        />
-      </nut-avatar>
-      <nut-avatar size="small">
-        <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-        />
-      </nut-avatar>
-    </nut-cell>
-    <h2>支持两种形状：square、round</h2>
-    <nut-cell>
-      <nut-avatar shape="square"><My /></nut-avatar>
-      <nut-avatar shape="round"><My /></nut-avatar>
-    </nut-cell>
-    <h2>支持三种类型：图片、Icon 以及字符</h2>
-    <nut-cell>
-      <nut-avatar>
-        <img
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-        />
-      </nut-avatar>
-      <nut-avatar><My /></nut-avatar>
-      <nut-avatar>王</nut-avatar>
-    </nut-cell>
-    <h2>Icon 和字符型可以自定义颜色及背景色</h2>
-    <nut-cell>
-      <nut-avatar class="demo-avatar" bg-color="#FA2C19"><My color="#fff" /></nut-avatar>
-      <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-    </nut-cell>
-    <h2>带徽标的头像</h2>
-    <nut-cell>
-      <nut-badge value="8">
-        <nut-avatar shape="square"><My /></nut-avatar>
-      </nut-badge>
-      <nut-badge dot>
-        <nut-avatar shape="square"><My /></nut-avatar>
-      </nut-badge>
-    </nut-cell>
-    <h2>头像组合展现</h2>
-    <nut-cell>
-      <nut-avatar-group span="-4">
-        <nut-avatar>
-          <img
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-          />
-        </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
-        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-      </nut-avatar-group>
-    </nut-cell>
+  <Demo class="bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <nut-cell>
-      <nut-avatar-group max-count="3" max-color="#fff" max-bgColor="#498ff2">
-        <nut-avatar>
-          <img
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-          />
-        </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
-        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-        <nut-avatar><My /></nut-avatar>
-      </nut-avatar-group>
-    </nut-cell>
-    <h2>组合头像可控制层级方向</h2>
-    <nut-cell>
-      <nut-avatar-group max-count="3" zIndex="right" max-content="...">
-        <nut-avatar>
-          <img
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-          />
-        </nut-avatar>
-        <nut-avatar><My /></nut-avatar>
-        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">小明</nut-avatar>
-        <nut-avatar><My /></nut-avatar>
-      </nut-avatar-group>
-    </nut-cell>
+    <h2>{{ t('size') }}</h2>
+    <Size />
 
-    <h2>点击头像触发事件</h2>
-    <nut-cell>
-      <nut-avatar @click="handleClick"><My /></nut-avatar>
-    </nut-cell>
+    <h2>{{ t('shape') }}</h2>
+    <Shape />
 
-    <h2 class="demo-avatar-group-title">动态添加头像<nut-button @click="addAvatar" size="mini">添加</nut-button></h2>
-    <nut-cell>
-      <nut-avatar-group max-count="4" zIndex="right">
-        <nut-avatar v-for="i in avatarCount" :key="i">
-          <My v-if="i % 2 == 0" />
-          <img
-            v-else
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-          />
-        </nut-avatar>
-      </nut-avatar-group>
-    </nut-cell>
-  </div>
+    <h2>{{ t('color') }}</h2>
+    <Color />
+
+    <h2>{{ t('badge') }}</h2>
+    <Badge />
+
+    <h2>{{ t('group') }}</h2>
+    <Group />
+
+    <h2>{{ t('zindex') }}</h2>
+    <Zindex />
+
+    <h2>{{ t('click') }}</h2>
+    <Click />
+
+    <h2>{{ t('count') }}</h2>
+    <Count />
+  </Demo>
 </template>
 <script setup lang="ts">
-import { My } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
-import Header from '../../../components/header.vue';
-import { ref } from 'vue';
-const env = Taro.getEnv();
-const handleClick = () => {
-  console.log('触发点击头像');
-};
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Size from './size.vue';
+import Shape from './shape.vue';
+import Color from './color.vue';
+import Badge from './badge.vue';
+import Click from './click.vue';
+import Group from './group.vue';
+import Zindex from './zindex.vue';
+import Count from './count.vue';
 
-const avatarCount = ref(4);
-const addAvatar = () => {
-  avatarCount.value += 1;
-};
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    size: '尺寸',
+    shape: '形状',
+    color: '自定义颜色',
+    badge: '带徽标的头像',
+    group: '头像组合展现',
+    zindex: '组合头像可控制层级方向',
+    click: '点击事件',
+    count: '动态修改数量'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    size: 'Size',
+    shape: 'Shape',
+    color: 'Color',
+    badge: 'Avatar with Badge',
+    group: 'Avatar group display',
+    zindex: 'Avatar group to control hierarchy direction',
+    click: 'Click Event',
+    count: 'Dynamically change count'
+  }
+});
 </script>
-<style lang="scss">
-.avatar-demo {
-  .nut-cell {
-    align-items: flex-end;
-    border-radius: 0;
-    & > view {
-      margin-right: 30px;
-    }
-  }
-  .demo-avatar {
-    color: #fff;
-  }
-  .demo-avatar-group-title {
-    display: flex;
-    align-items: center;
-    row-gap: 8px;
-    column-gap: 8px;
-  }
-}
-</style>

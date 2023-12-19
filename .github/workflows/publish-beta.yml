@@ -5,6 +5,7 @@ on:
 
 jobs:
   publish-beta:
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

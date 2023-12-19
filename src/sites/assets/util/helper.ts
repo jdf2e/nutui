@@ -179,7 +179,7 @@ export const useThemeEditor = function () {
         customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jddkh.scss_source';
       }
       if (customUrl) {
-        loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then((res) => {
+        loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then(() => {
           Promise.all([getSassVariables(customUrl), getRawSassStyle()]);
         });
         store.init = true;

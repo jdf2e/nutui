@@ -92,30 +92,26 @@
 </template>
 
 <script setup lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { translate } = createComponent('badge');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { Check, Download } from '@nutui/icons-vue';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      title: '基础用法',
-      title1: '最大值',
-      title2: '自定义颜色',
-      title3: '自定义徽标内容',
-      title4: '自定义位置',
-      title5: '独立展示'
-    },
-    'en-US': {
-      title: 'Basic Usage',
-      title1: 'Max',
-      title2: 'Custom Color',
-      title3: 'Custom Content',
-      title4: 'Custom Position ',
-      title5: 'Standalone'
-    }
-  });
-initTranslate();
+import { Check, Download, Link as IconLink } from '@nutui/icons-vue';
+const translate = useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '最大值',
+    title2: '自定义颜色',
+    title3: '自定义徽标内容',
+    title4: '自定义位置',
+    title5: '独立展示'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Max',
+    title2: 'Custom Color',
+    title3: 'Custom Content',
+    title4: 'Custom Position ',
+    title5: 'Standalone'
+  }
+});
 </script>
 
 <style lang="scss" scoped>

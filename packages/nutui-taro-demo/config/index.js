@@ -11,7 +11,20 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['@tarojs/plugin-html'],
+  plugins: [
+    '@tarojs/plugin-html',
+    [
+      '@tarojs/plugin-framework-vue3',
+      {
+        vueLoaderOption: {
+          compilerOptions: {
+            isCustomElement: (tag) => tag.includes('taro-scroll-view-core'),
+            whitespace: 'preserve'
+          }
+        }
+      }
+    ]
+  ],
   alias: {
     '@/packages': path.resolve(__dirname, '../../../src/packages')
   },
@@ -29,7 +42,7 @@ const config = {
     prebundle: { enable: false }
   },
   mini: {
-    webpackChain(chain, webpack) {
+    webpackChain(chain) {
       chain.merge({
         module: {
           rule: [
