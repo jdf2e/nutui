@@ -2090,7 +2090,7 @@
           "events": [],
           "attributes": [
             {
-              "name": "modelValue",
+              "name": "model-value",
               "default": "`0`",
               "description": "购买电子卡所需价钱",
               "value": {
