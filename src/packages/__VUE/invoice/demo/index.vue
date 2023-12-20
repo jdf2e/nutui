@@ -1,14 +1,15 @@
 <template>
-  <Demo>
-    <h2>{{ t('basic') }}</h2>
+  <Demo class="full">
+    <h2>{{ translate('basic') }}</h2>
     <Basic />
   </Demo>
 </template>
+
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 
-const t = useTranslate({
+const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法'
   },

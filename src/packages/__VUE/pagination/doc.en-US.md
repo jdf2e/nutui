@@ -17,91 +17,24 @@ app.use(Pagination);
 ### Basic Usage
 
 Bind current page with v-model.
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="25" :items-per-page="5" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination basic
 
 ### Simple mode
 
 Pagination can be switched to simple mode with simple mode attribute, and pagination cann't display specific page buttons.
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :page-count="12" mode="simple" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination simple
 
 ### Show ellipses
 
 The ellipses button will display after with force-ellipses attribute, click it can jump quickly.
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination ellipse
 
 ### Custom Button
 
-Custom pagination button content with pre-text slot、next-text slot and so on.
-:::demo
-
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="500" @change="pageChange" :show-page-size="5">
-    <template #prev-text>
-      <Left width="10px" height="10px" />
-    </template>
-    <template #next-text>
-      <Right width="10px" height="10px" />
-    </template>
-    <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
-  </nut-pagination>
-</template>
-<script setup>
-import { Left, Right } from '@nutui/icons-vue';
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination custom
 
 ## API
 

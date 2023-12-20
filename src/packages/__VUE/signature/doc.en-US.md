@@ -16,70 +16,11 @@ app.use(Signature);
 
 ### Basic usage
 
-:::demo
-
-```vue
-<template>
-  <nut-signature @confirm="confirm" @clear="clear"></nut-signature>
-  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const demoSignUrl = ref('');
-const confirm = (canvas, data) => {
-  if (data === '') {
-    console.log(canvas);
-    return false;
-  }
-  demoSignUrl.value = data;
-  console.log('img data', canvas, data);
-};
-const clear = () => {
-  demoSignUrl.value = '';
-  console.log('clear');
-};
-</script>
-```
-
-:::
+> demo: signature basic
 
 ### Modify color and signature thickness
 
-:::demo
-
-```vue
-<template>
-  <nut-signature
-    :lineWidth="state.lineWidth"
-    :strokeStyle="state.strokeStyle"
-    @confirm="confirm"
-    @clear="clear"
-  ></nut-signature>
-  <img :src="demoSignUrl" class="demoSignUrl" v-if="demoSignUrl" />
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const state = reactive({
-  lineWidth: 4,
-  strokeStyle: 'green'
-});
-const demoSignUrl = ref('');
-const confirm = (canvas, data) => {
-  if (data === '') {
-    console.log(canvas);
-    return false;
-  }
-  demoSignUrl.value = data;
-  console.log('img data', canvas, data);
-};
-const clear = () => {
-  demoSignUrl.value = '';
-  console.log('clear');
-};
-</script>
-```
-
-:::
+> demo: signature custom
 
 ## API
 
