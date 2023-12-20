@@ -1,7 +1,8 @@
-import { toRefs, reactive, ref, provide, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot } from "vue";
+import { toRefs, ref, reactive, provide, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import Taro from "@tarojs/taro";
 import { T as TABBAR_KEY } from "../types-Cq2YypZn.js";
+import { u as useTaroRect } from "../index-Isui2_f6.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("tabbar");
 const _sfc_main = create({
@@ -41,12 +42,14 @@ const _sfc_main = create({
   },
   emits: ["tabSwitch", "update:modelValue"],
   setup(props, { emit }) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const { bottom, placeholder } = toRefs(props);
+    const height = ref("auto");
     const mdValue = reactive({
       val: props.modelValue,
       children: []
     });
-    const height = ref();
+    const nutTabbarRef = ref(null);
     function changeIndex(index, active) {
       emit("update:modelValue", active);
       parentData.modelValue = active;
@@ -69,32 +72,38 @@ const _sfc_main = create({
     );
     onMounted(() => {
       if (bottom.value && placeholder.value) {
-        setTimeout(() => {
-          const query = Taro.createSelectorQuery();
-          query.select(".nut-tabbar").boundingClientRect();
-          query.exec((res) => {
-            height.value = res[0].height;
-          });
-        }, 500);
+        Taro.nextTick(() => {
+          useTaroRect(nutTabbarRef).then(
+            (rect) => {
+              height.value = `${rect.height}px`;
+            },
+            () => {
+            }
+          );
+        });
       }
     });
     return {
+      refRandomId,
       changeIndex,
+      nutTabbarRef,
       height
     };
   }
 });
+const _hoisted_1 = ["id"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("view", {
     class: normalizeClass({ "nut-tabbar__placeholder": _ctx.bottom && _ctx.placeholder }),
-    style: normalizeStyle({ height: _ctx.height + "px" })
+    style: normalizeStyle({ height: _ctx.height })
   }, [
     createElementVNode("view", {
-      ref: "nutTabbar",
+      id: `nut-tabbar-${_ctx.refRandomId}`,
+      ref: "nutTabbarRef",
       class: normalizeClass(["nut-tabbar", { "nut-tabbar-bottom": _ctx.bottom, "nut-tabbar-safebottom": _ctx.safeAreaInsetBottom }])
     }, [
       renderSlot(_ctx.$slots, "default")
-    ], 2)
+    ], 10, _hoisted_1)
   ], 6);
 }
 const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
