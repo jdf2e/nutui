@@ -196,10 +196,14 @@
 
     &.smile {
       .nut-tabs__titles-item {
+        .nut-tabs__titles-item__smile {
+          display: none;
+        }
         &.active {
           .nut-tabs__titles-item__smile {
             width: 36px;
             height: 10px;
+            display: block;
           }
         }
       }

@@ -17,121 +17,54 @@ app.use(Pagination);
 ### 基础用法
 
 通过 v-model 来绑定当前页码。
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="25" :items-per-page="5" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination basic nav
 
 ### 简单模式
 
- 将 mode 设置为 simple 来切换到简单模式，此时分页器不会展示具体的页码按钮。
-:::demo
+将 mode 设置为 `simple` 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 
-```vue
-<template>
-  <nut-pagination v-model="page" :page-count="12" mode="simple" @change="pageChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination simple nav
 
 ### 显示省略号
 
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
-:::demo
 
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="125" :show-page-size="3" @change="pageChange" force-ellipses />
-</template>
-<script setup>
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination ellipse nav
 
 ### 自定义按钮
 
-设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
-:::demo
-
-```vue
-<template>
-  <nut-pagination v-model="page" :total-items="500" @change="pageChange" :show-page-size="5">
-    <template #prev-text>
-      <Left size="10px" />
-    </template>
-    <template #next-text>
-      <Right size="10px" />
-    </template>
-    <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
-  </nut-pagination>
-</template>
-<script setup>
-import { Left, Right } from '@nutui/icons-vue-taro';
-import { ref } from 'vue';
-const page = ref(1);
-const pageChange = (value) => {
-  console.log(value);
-};
-</script>
-```
-
-:::
+> demo: pagination custom nav
 
 ## API
 
 ### Props
 
-| 参数           | 说明                       | 类型             | 默认值              |
-| -------------- | -------------------------- | ---------------- | ------------------- |
-| v-model        | 当前页码                   | number           | `1`                 |
-| mode           | 显示模式,可选值为 `simple` | string           | `multi`             |
-| prev-text      | 上一页按钮文字             | string           | `上一页`            |
-| next-text      | 下一页按钮文字             | string           | `下一页`            |
-| page-count     | 总页数                     | string \| number | `传入/根据页数计算` |
-| total-items    | 总记录数                   | string \| number | `0`                 |
-| items-per-page | 每页记录数                 | string \| number | `10`                |
-| show-page-size | 显示的页码个数             | string \| number | `5`                 |
-| force-ellipses | 是否显示省略号             | boolean          | `false`             |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 当前页码 | number | `1` |
+| mode | 显示模式,可选值为 `simple` | string | `multi` |
+| prev-text | 上一页按钮文字 | string | `上一页` |
+| next-text | 下一页按钮文字 | string | `下一页` |
+| page-count | 总页数 | string \| number | `传入/根据页数计算` |
+| total-items | 总记录数 | string \| number | `0` |
+| items-per-page | 每页记录数 | string \| number | `10` |
+| show-page-size | 显示的页码个数 | string \| number | `5` |
+| force-ellipses | 是否显示省略号 | boolean | `false` |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数 |
-| ------ | -------------- | -------- |
-| change | 页码改变时触发 | value    |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| change | 页码改变时触发 | value |
 
 ### Slots
 
-| 名称      | 描述                 | 参数 |
-| --------- | -------------------- | ---- |
-| prev-text | 自定义上一页按钮内容 | -    |
-| next-text | 自定义下一页按钮内容 | -    |
-| page      | 自定义页码           | -    |
+| 名称 | 描述 | 参数 |
+| --- | --- | --- |
+| prev-text | 自定义上一页按钮内容 | - |
+| next-text | 自定义下一页按钮内容 | - |
+| page | 自定义页码 | - |
 
 ## 主题定制
 
@@ -139,14 +72,14 @@ const pageChange = (value) => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                      | 默认值                                                                                  |
-| ----------------------------------------- | --------------------------------------------------------------------------------------- |
-| --nut-pagination-color                    | _var(--nut-primary-color)_                                                              |
-| --nut-pagination-font-size                | _var(--nut-font-size-2)_                                                                |
-| --nut-pagination-item-border-color        | _#e4e7eb_                                                                               |
-| --nut-pagination-active-background-color  | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_ |
-| --nut-pagination-disable-color            | _rgba(116, 116, 116, 0.31)_                                                             |
-| --nut-pagination-disable-background-color | _#f7f8fa_                                                                               |
-| --nut-pagination-item-border-width        | _1px_                                                                                   |
-| --nut-pagination-item-border-radius       | _2px_                                                                                   |
-| --nut-pagination-prev-next-padding        | _0 11px_                                                                                |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-pagination-color | _var(--nut-primary-color)_ |
+| --nut-pagination-font-size | _var(--nut-font-size-2)_ |
+| --nut-pagination-item-border-color | _#e4e7eb_ |
+| --nut-pagination-active-background-color | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_ |
+| --nut-pagination-disable-color | _rgba(116, 116, 116, 0.31)_ |
+| --nut-pagination-disable-background-color | _#f7f8fa_ |
+| --nut-pagination-item-border-width | _1px_ |
+| --nut-pagination-item-border-radius | _2px_ |
+| --nut-pagination-prev-next-padding | _0 11px_ |

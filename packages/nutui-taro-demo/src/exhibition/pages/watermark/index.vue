@@ -19,6 +19,15 @@
       <img :src="src" alt="" />
       <nut-watermark :full-page="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
     </nut-cell>
+    <h2>多行水印</h2>
+    <nut-cell class="wrap wrap2">
+      <nut-watermark
+        :full-page="false"
+        :gap-y="24"
+        font-color="#fa2c19"
+        :content="['nut-ui', 'water-mark']"
+      ></nut-watermark>
+    </nut-cell>
   </Demo>
 </template>
 <script setup lang="ts">

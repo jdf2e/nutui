@@ -18,193 +18,70 @@ app.use(Swipe);
 
 ### Basic usage
 
-:::demo
+> demo: swipe basic
 
-```vue
-<template>
-  <nut-swipe>
-    <nut-cell round-radius="0" title="Swipe left to delete" />
-    <template #right>
-      <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
-    </template>
-  </nut-swipe>
-</template>
-```
+### Disabled
 
-:::
+> demo: swipe disabled
 
-### Disable swipe
+### Swipe left or right
 
-:::demo
+> demo: swipe direction
 
-```vue
-<template>
-  <nut-swipe disabled>
-    <nut-cell round-radius="0" title="Disable swipe" />
-    <template #right>
-      <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
-    </template>
-  </nut-swipe>
-</template>
-```
+### Ref methods
 
-:::
+> demo: swipe methods
 
-### Swipe left and right
+### Custom content
 
-:::demo
-
-```vue
-<template>
-  <nut-swipe>
-    <template #left>
-      <nut-button shape="square" style="height:100%" type="success">Select</nut-button>
-    </template>
-    <nut-cell round-radius="0" title="You can swipe left and right" />
-    <template #right>
-      <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
-      <nut-button shape="square" style="height:100%" type="info">Collect</nut-button>
-    </template>
-  </nut-swipe>
-</template>
-```
-
-:::
-
-### Async control swipe
-
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" @change="changSwitch" />
-  <nut-swipe ref="refSwipe">
-    <nut-cell title="Async on and off"></nut-cell>
-    <template #right>
-      <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
-    </template>
-  </nut-swipe>
-</template>
-<script setup>
-import { ref } from 'vue';
-const refSwipe = ref();
-const checked = ref(false);
-const changSwitch = (value) => {
-  if (value) {
-    refSwipe.value?.open('left');
-  } else {
-    refSwipe.value?.close();
-  }
-};
-</script>
-```
-
-:::
-
-### Custom
-
-:::demo
-
-```vue
-<template>
-  <nut-swipe>
-    <template #left>
-      <nut-button shape="square" style="height:100%" type="success">Select</nut-button>
-    </template>
-    <nut-cell title="product description">
-      <template #link>
-        <nut-input-number v-model="number" />
-      </template>
-    </nut-cell>
-    <template #right>
-      <nut-button shape="square" style="height:100%" type="danger">Delelte</nut-button>
-      <nut-button shape="square" style="height:100%" type="info">Collect</nut-button>
-    </template>
-  </nut-swipe>
-</template>
-<script setup>
-import { ref } from 'vue';
-const number = ref(0);
-</script>
-```
-
-:::
+> demo: swipe content
 
 ### Use SwipeGroup to make swipe exclusive
 
 The prop `name` of Swipe is required.
 
-:::demo
-
-```vue
-<template>
-  <nut-swipe-group lock>
-    <nut-swipe name="11">
-      <nut-cell round-radius="0" title="Swipe left to delete" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">delete</nut-button>
-      </template>
-    </nut-swipe>
-    <nut-swipe name="22">
-      <nut-cell round-radius="0" title="Swipe left to delete" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">delete</nut-button>
-      </template>
-    </nut-swipe>
-    <div>
-      <nut-swipe name="33">
-        <nut-cell round-radius="0" title="Swipe left to delete" />
-        <template #right>
-          <nut-button shape="square" style="height: 100%" type="danger">delete</nut-button>
-        </template>
-      </nut-swipe>
-    </div>
-  </nut-swipe-group>
-</template>
-```
-
-:::
+> demo: swipe lock
 
 ## Swipe
 
 ### Props
 
-| Attribute                   | Description                                    | Type    | Default |
-| --------------------------- | ---------------------------------------------- | ------- | ------- |
-| name                        | identifies                                     | string  | -       |
-| disabled                    | Whether to disabled swipe                      | string  | `false` |
-| touch-move-prevent-default  | Whether to stop touchmove event preventdefault | boolean | `false` |
-| touch-move-stop-propagation | Whether to stop touchmove event propagation    | boolean | `false` |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| name | identifies | string | - |
+| disabled | Whether to disabled swipe | string | `false` |
+| touch-move-prevent-default | Whether to stop touchmove event preventdefault | boolean | `false` |
+| touch-move-stop-propagation | Whether to stop touchmove event propagation | boolean | `false` |
 
 ### Events
 
-| Event | Description                                          | Arguments                            |
-| ----- | ---------------------------------------------------- | ------------------------------------ |
-| open  | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| open | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 | close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
 ### Slots
 
-| Name    | Description    |
-| ------- | -------------- |
-| left    | Custom left    |
+| Name | Description |
+| --- | --- |
+| left | Custom left |
 | default | Custom default |
-| right   | Custom right   |
+| right | Custom right |
 
 ### Methods
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe instance and call instance methods.
 
-| Name  | Description                         | Arguments                                        |
-| ----- | ----------------------------------- | ------------------------------------------------ |
-| click | click event                         | `name, position: 'left' \| 'content' \| 'right'` |
-| open  | open swipe, swipe left/swipe right  | `name, position: 'left' \| 'right' `             |
-| close | close swipe, swipe left/swipe right | `name, position: 'left' \| 'right' `             |
+| Name | Description | Arguments |
+| --- | --- | --- |
+| click | click event | `name, position: 'left' \| 'content' \| 'right'` |
+| open | open swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
+| close | close swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
 ## SwipeGroup
 
 ### Props
 
-| Attribute    | Description                                  | Type    | Default |
-| ------------ | -------------------------------------------- | ------- | ------- |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
 | lock`v4.1.1` | When a child Swipe opens, others will close. | boolean | `false` |

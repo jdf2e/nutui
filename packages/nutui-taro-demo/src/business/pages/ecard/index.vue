@@ -1,42 +1,19 @@
 <template>
   <Demo>
-    <h2>基础用法</h2>
-    <nut-cell>
-      <nut-ecard
-        v-model="money"
-        :data-list="dataList"
-        @input-change="inputChange"
-        @change="change"
-        @change-step="changeStep"
-      ></nut-ecard>
-    </nut-cell>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
   </Demo>
 </template>
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-const dataList = reactive([
-  {
-    price: 10
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法'
   },
-  {
-    price: 20
-  },
-  {
-    price: 30
-  },
-  {
-    price: 40
+  'en-US': {
+    basic: 'Basic Usage'
   }
-]);
-const money = ref(0);
-const inputChange = (val: number) => {
-  money.value = val;
-};
-const change = (item: { price: number }) => {
-  money.value = item.price;
-};
-const changeStep = (num: number, price: number) => {
-  const val = price * num;
-  money.value = val;
-};
+});
 </script>

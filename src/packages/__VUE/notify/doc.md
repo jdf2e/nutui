@@ -139,23 +139,23 @@ const onClick = () => {
 
 ### Props
 
-| 参数       | 说明                                                              | 类型             | 默认值   |
-| ---------- | ----------------------------------------------------------------- | ---------------- | -------- |
-| type       | 提示的信息类型，可选值为`primary`、`success`、`danger`、`warning` | string           | `danger` |
-| visible    | 显示与否                                                          | boolean          | `false`  |
-| msg        | 展示文案，支持通过`\n`换行                                        | string           | `''`     |
-| duration   | 展示时长(ms)，值为 0 时，`notify` 不会消失                        | number           | `3000`   |
-| color      | 字体颜色                                                          | string           | `''`     |
-| background | 背景样式                                                          | string           | `''`     |
-| class-name | 自定义类名                                                        | string \| number | `1`      |
-| position   | 自定义位置，可选值为 `top` `bottom` `left` `right` `center`       | string           | `top`    |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| type | 提示的信息类型，可选值为`primary`、`success`、`danger`、`warning` | string | `danger` |
+| visible | 显示与否 | boolean | `false` |
+| msg | 展示文案，支持通过`\n`换行 | string | `''` |
+| duration | 展示时长(ms)，值为 0 时，`notify` 不会消失 | number | `3000` |
+| color | 字体颜色 | string | `''` |
+| background | 背景样式 | string | `''` |
+| class-name | 自定义类名 | string \| number | `1` |
+| position | 自定义位置，可选值为 `top` `bottom` `left` `right` `center` | string | `top` |
 
 ### Events
 
-| 事件名 | 说明         | 回调参数 |
-| ------ | ------------ | -------- |
-| click  | 点击事件回调 | `-`      |
-| closed | 关闭事件回调 | `-`      |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| click | 点击事件回调 | `-` |
+| closed | 关闭事件回调 | `-` |
 
 ## 主题定制
 
@@ -163,15 +163,15 @@ const onClick = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                  | 默认值                                                                                                                        |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| --nut-notify-text-color               | _var(--nut-white)_                                                                                                            |
-| --nut-notify-padding                  | _12px 0_                                                                                                                      |
-| --nut-notify-font-size                | _14px_                                                                                                                        |
-| --nut-notify-height                   | _44px_                                                                                                                        |
-| --nut-notify-line-height              | _auto_                                                                                                                        |
-| --nut-notify-base-background-color    | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_                                       |
-| --nut-notify-primary-background-color | _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_                                               |
+| 名称 | 默认值 |
+| --- | --- |
+| --nut-notify-text-color | _var(--nut-white)_ |
+| --nut-notify-padding | _12px 0_ |
+| --nut-notify-font-size | _14px_ |
+| --nut-notify-height | _44px_ |
+| --nut-notify-line-height | _auto_ |
+| --nut-notify-base-background-color | _linear-gradient(135deg,var(--nut-primary-color) 0%,var(--nut-primary-color-end) 100%)_ |
+| --nut-notify-primary-background-color | _linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)_ |
 | --nut-notify-success-background-color | _linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)_ |
-| --nut-notify-danger-background-color  | _rgba(250, 50, 25, 1)_                                                                                                        |
-| --nut-notify-warning-background-color | _linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)_                                                |
+| --nut-notify-danger-background-color | _rgba(250, 50, 25, 1)_ |
+| --nut-notify-warning-background-color | _linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)_ |

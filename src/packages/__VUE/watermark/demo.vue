@@ -19,6 +19,15 @@
       <img :src="src" alt="" />
       <nut-watermark :full-page="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
     </nut-cell>
+    <h4>{{ translate('title3') }}</h4>
+    <nut-cell class="wrap wrap2">
+      <nut-watermark
+        :full-page="false"
+        :gap-y="24"
+        font-color="#fa2c19"
+        :content="['nut-ui', 'water-mark']"
+      ></nut-watermark>
+    </nut-cell>
   </div>
 </template>
 <script setup lang="ts">
@@ -28,12 +37,14 @@ const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     title2: '局部用法',
+    title3: '多行水印',
     btn1: '文字水印',
     btn2: '图片水印'
   },
   'en-US': {
     basic: 'Basic Usage',
     title2: 'Part Usage',
+    title3: 'Multiline Watermark',
     btn1: 'Text Watermark',
     btn2: 'Image Watermark'
   }

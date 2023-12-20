@@ -97,6 +97,36 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 
 :::
 
+### 多行水印
+
+content属性传入string数组，展示的则是多行水印
+
+:::demo
+
+```vue
+<template>
+  <nut-cell class="wrap">
+    <nut-watermark
+      :full-page="false"
+      :gap-y="24"
+      font-color="#fa2c19"
+      :content="['nut-ui', 'water-mark']"
+    ></nut-watermark>
+  </nut-cell>
+</template>
+<script setup></script>
+<style>
+.wrap {
+  width: 100%;
+  height: 240px;
+  display: block;
+  background: #fff;
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### Props
