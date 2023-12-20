@@ -8834,8 +8834,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const _onInput = (event) => {
-        const input = event.target;
-        let value = input.value;
+        let { value } = event.detail;
         if (props.maxLength && value.length > Number(props.maxLength)) {
           value = value.slice(0, Number(props.maxLength));
         }
