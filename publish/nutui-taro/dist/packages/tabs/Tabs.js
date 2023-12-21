@@ -38,16 +38,16 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import Taro from "@tarojs/taro";
 import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, normalizeStyle, withCtx, createElementVNode, renderSlot, Fragment, renderList, createCommentVNode, createTextVNode, toDisplayString } from "vue";
-import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { JoySmile } from "@nutui/icons-vue-taro";
+import { c as createComponent } from "../component-TCzwHGVq.js";
+import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { r as requestAniFrame } from "../raf-9SbwNmt2.js";
-import Taro from "@tarojs/taro";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useTaroRect } from "../index-Isui2_f6.js";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const useTabContentTouch = (props, tabMethods, taro, useTaroRect2) => {
   const tabsContentRef = ref();
@@ -181,7 +181,6 @@ const _sfc_main = create({
     direction: {
       type: String,
       default: "horizontal"
-      //vertical
     },
     size: {
       type: String,
@@ -190,7 +189,6 @@ const _sfc_main = create({
     type: {
       type: String,
       default: "line"
-      //card、line、smile
     },
     titleScroll: {
       type: Boolean,

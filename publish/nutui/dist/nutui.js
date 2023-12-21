@@ -3603,7 +3603,6 @@ const { create: Nc } = W("tabs"), Dc = Nc({
     direction: {
       type: String,
       default: "horizontal"
-      //vertical
     },
     size: {
       type: String,
@@ -3612,7 +3611,6 @@ const { create: Nc } = W("tabs"), Dc = Nc({
     type: {
       type: String,
       default: "line"
-      //card、line、smile
     },
     titleScroll: {
       type: Boolean,

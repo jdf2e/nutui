@@ -38,14 +38,14 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { c as createComponent } from "../component-TCzwHGVq.js";
 import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, createBlock, withCtx, createElementVNode, normalizeStyle, renderSlot, Fragment, renderList, createCommentVNode, createVNode, toDisplayString } from "vue";
+import NutSticky from "../sticky/Sticky.js";
+import { JoySmile } from "@nutui/icons-vue";
+import { c as createComponent } from "../component-TCzwHGVq.js";
 import { T as TypeOfFun } from "../util-4Jkyw4BJ.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { u as useRect } from "../index-rf29bejW.js";
 import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";
-import NutSticky from "../sticky/Sticky.js";
-import { JoySmile } from "@nutui/icons-vue";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../index-xDfQLRen.js";
@@ -178,7 +178,6 @@ const _sfc_main = create({
     direction: {
       type: String,
       default: "horizontal"
-      //vertical
     },
     size: {
       type: String,
@@ -187,7 +186,6 @@ const _sfc_main = create({
     type: {
       type: String,
       default: "line"
-      //card、line、smile
     },
     titleScroll: {
       type: Boolean,

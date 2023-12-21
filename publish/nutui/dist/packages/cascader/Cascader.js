@@ -64,11 +64,11 @@ import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../overlay/Overlay.js";
 import "../util-4Jkyw4BJ.js";
-import "../pxCheck-OnXlN1NC.js";
-import "../index-rf29bejW.js";
-import "../raf-MQjoO-Ag.js";
 import "../sticky/Sticky.js";
 import "../index-xDfQLRen.js";
+import "../index-rf29bejW.js";
+import "../pxCheck-OnXlN1NC.js";
+import "../raf-MQjoO-Ag.js";
 import "../index-084nl_oE.js";
 import "@nutui/nutui/dist/packages/locale/lang";
 const formatTree = (tree, parent, config) => tree.map((node) => {

@@ -3337,7 +3337,6 @@ var __async = (__this, __arguments, generator) => {
       direction: {
         type: String,
         default: "horizontal"
-        //vertical
       },
       size: {
         type: String,
@@ -3346,7 +3345,6 @@ var __async = (__this, __arguments, generator) => {
       type: {
         type: String,
         default: "line"
-        //card、line、smile
       },
       titleScroll: {
         type: Boolean,
