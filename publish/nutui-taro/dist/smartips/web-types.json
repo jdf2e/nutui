@@ -6757,7 +6757,7 @@
               "default": "-",
               "description": "水印文字内容",
               "value": {
-                "type": "string",
+                "type": "string | string[]",
                 "kind": "expression"
               }
             },
