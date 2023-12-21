@@ -11,7 +11,7 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Part from './part.vue';
 import Multi from './multi.vue';
