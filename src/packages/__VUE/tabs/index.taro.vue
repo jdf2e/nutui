@@ -238,15 +238,15 @@ export default create({
 
           if (navRectRef.value) {
             if (props.direction === 'vertical') {
-              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.height, 0);
-              if (titlesTotalHeight > navRectRef.value.height) {
+              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.height, 0);
+              if (titlesTotalHeight > navRectRef.value?.height) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
               }
             } else {
-              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
-              if (titlesTotalWidth > navRectRef.value.width) {
+              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.width, 0);
+              if (titlesTotalWidth > navRectRef.value?.width) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
@@ -261,14 +261,14 @@ export default create({
             const DEFAULT_PADDING = 11;
             const top = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.height + 0, DEFAULT_PADDING);
-            to = top - (navRectRef.value.height - titleRect.height) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.height + 0, DEFAULT_PADDING);
+            to = top - (navRectRef.value?.height - titleRect?.height) / 2;
           } else {
             const DEFAULT_PADDING = 31;
             const left = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, DEFAULT_PADDING);
-            to = left - (navRectRef.value.width - titleRect.width) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.width + 20, DEFAULT_PADDING);
+            to = left - (navRectRef.value?.width - titleRect?.width) / 2;
           }
 
           nextTick(() => {
