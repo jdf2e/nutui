@@ -73,6 +73,8 @@ const _sfc_main = create({
       return value > Number(props.min) && !props.disabled;
     };
     const reduce = (event) => {
+      if (props.disabled)
+        return;
       emit("reduce", event);
       let output_value = Number(props.modelValue) - Number(props.step);
       if (reduceAllow() && output_value >= Number(props.min)) {
@@ -83,6 +85,8 @@ const _sfc_main = create({
       }
     };
     const add = (event) => {
+      if (props.disabled)
+        return;
       emit("add", event);
       let output_value = Number(props.modelValue) + Number(props.step);
       if (addAllow() && output_value <= Number(props.max)) {

@@ -7811,6 +7811,8 @@ var __async = (__this, __arguments, generator) => {
         return value > Number(props.min) && !props.disabled;
       };
       const reduce = (event) => {
+        if (props.disabled)
+          return;
         emit("reduce", event);
         let output_value = Number(props.modelValue) - Number(props.step);
         if (reduceAllow() && output_value >= Number(props.min)) {
@@ -7821,6 +7823,8 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const add = (event) => {
+        if (props.disabled)
+          return;
         emit("add", event);
         let output_value = Number(props.modelValue) + Number(props.step);
         if (addAllow() && output_value <= Number(props.max)) {
