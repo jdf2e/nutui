@@ -17,249 +17,39 @@ app.use(TabPane);
 
 ### 基础用法
 
-:::demo
+> demo: tabs basic nav
 
-```vue
-<template>
-  <nut-tabs v-model="value">
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-</script>
-```
+### Smile 类型
 
-:::
+> demo: tabs smile nav
+
+### 自动高度
+
+> demo: tabs auto-height nav
 
 ### 手势滑动切换
 
-:::demo
+> demo: tabs swipeable nav
 
-```vue
-<template>
-  <nut-tabs v-model="value" swipeable>
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-</script>
-```
+### 标题滚动（上下布局）
 
-:::
+> demo: tabs scroll nav
 
-### 基础用法-微笑曲线
+### 标题滚动（左右布局）
 
-:::demo
+> demo: tabs vertical nav
 
-```vue
-<template>
-  <nut-tabs v-model="value" type="smile">
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-</script>
-```
+### 左右布局 + Smile 类型
 
-:::
+> demo: tabs vertical-smile nav
 
-### TabPane 自动高度
+### 字体尺寸
 
-自动高度。设置为 true 时，nut-tabs 和 nut-tabs\_\_content 会随着当前 nut-tab-pane 的高度而发生变化。
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="value" auto-height>
-    <nut-tab-pane title="Tab 1" pane-key="0">
-      <p>Tab 1</p>
-      <p>Tab 1</p>
-      <p>Tab 1</p>
-      <p>Tab 1</p>
-    </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-</script>
-```
-
-:::
-
-### 数据异步渲染 3s
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="value">
-    <nut-tab-pane v-for="item in list" :title="'Tab ' + item" :pane-key="item"> Tab {{ item }} </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-const list = ref(new Array(2).fill(0).map((_, index) => index));
-setTimeout(() => {
-  list.value.push(999);
-}, 3000);
-</script>
-```
-
-:::
-
-### 数量多，滚动操作
-
-可通过`direction`属性修改标题栏自动滚动方向。
-
-在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="value" title-scroll title-gutter="10" name="tabName">
-    <nut-tab-pane v-for="item in list" :title="'Tab ' + item" :pane-key="item"> Tab {{ item }} </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-const list = new Array(10).fill(0).map((_, index) => index);
-</script>
-```
-
-:::
-
-### 左右布局
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs style="height:300px" v-model="value" title-scroll direction="vertical">
-    <nut-tab-pane v-for="item in list" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-const list = new Array(2).fill(0).map((_, index) => index);
-</script>
-```
-
-:::
-
-### 左右布局-微笑曲线
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs style="height:300px" v-model="value" type="smile" title-scroll direction="vertical">
-    <nut-tab-pane v-for="item in list" :pane-key="item" :title="'Tab ' + item"> Tab {{ item }} </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-const list = new Array(2).fill(0).map((_, index) => index);
-</script>
-```
-
-:::
-
-### 标签栏字体尺寸 large normal small
-
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="value" size="large">
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-  <nut-tabs v-model="value" size="normal">
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-  <nut-tabs v-model="value" size="small">
-    <nut-tab-pane title="Tab 1" pane-key="0"> Tab 1 </nut-tab-pane>
-    <nut-tab-pane title="Tab 2" pane-key="1"> Tab 2 </nut-tab-pane>
-    <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('0');
-</script>
-```
-
-:::
+> demo: tabs size nav
 
 ### 自定义标签栏
 
-:::demo
-
-```vue
-<template>
-  <nut-tabs v-model="value">
-    <template #titles>
-      <div
-        class="nut-tabs__titles-item"
-        @click="value = item.paneKey"
-        :class="{ active: value == item.paneKey }"
-        :key="item.paneKey"
-        v-for="item in list"
-      >
-        <Dongdong />
-        <span class="nut-tabs__titles-item__text">{{ item.title }}</span>
-        <span class="nut-tabs__titles-item__line"></span>
-      </div>
-    </template>
-    <nut-tab-pane v-for="item in list" :pane-key="item.paneKey"> {{ item.title }} </nut-tab-pane>
-  </nut-tabs>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
-const value = ref('c1');
-const list = ref([
-  {
-    title: '自定义 1',
-    paneKey: 'c1'
-  },
-  {
-    title: '自定义 2',
-    paneKey: 'c2'
-  },
-  {
-    title: '自定义 3',
-    paneKey: 'c3'
-  }
-]);
-</script>
-```
-
-:::
+> demo: tabs custom nav
 
 ## API
 
@@ -268,7 +58,7 @@ const list = ref([
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | v-model | 绑定当前选中标签的标识符 | number \| string | `0` |
-| color | 标签选中色 | string | `#1a1a1a ` |
+| color | 标签选中色 | string | `#1a1a1a` |
 | background | 标签栏背景颜色 | string | `#f5f5f5` |
 | direction | 使用横纵方向 可选值 horizontal、vertical | string | `horizontal` |
 | type | 选中底部展示样式 可选值 line、smile | string | `line` |
