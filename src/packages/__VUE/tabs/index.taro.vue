@@ -48,17 +48,29 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import Taro from '@tarojs/taro';
+import {
+  onMounted,
+  provide,
+  VNode,
+  ref,
+  Ref,
+  computed,
+  onActivated,
+  watch,
+  nextTick,
+  CSSProperties,
+  PropType
+} from 'vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { JoySmile } from '@nutui/icons-vue-taro';
+import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';
-import Taro from '@tarojs/taro';
-import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import NutScrollView from '../scroll-view/index.taro.vue';
+import type { RectItem, TabsDirection, TabsSize, TabsType } from './types';
 
 export class Title {
   title = '';
@@ -67,8 +79,9 @@ export class Title {
   disabled = false;
   constructor() {}
 }
-export type TabsSize = 'large' | 'normal' | 'small';
+
 const { create } = createComponent('tabs');
+
 export default create({
   components: {
     JoySmile,
@@ -84,16 +97,16 @@ export default create({
       default: ''
     },
     direction: {
-      type: String,
-      default: 'horizontal' //vertical
+      type: String as PropType<TabsDirection>,
+      default: 'horizontal'
     },
     size: {
-      type: String as import('vue').PropType<TabsSize>,
+      type: String as PropType<TabsSize>,
       default: 'normal'
     },
     type: {
-      type: String,
-      default: 'line' //card、line、smile
+      type: String as PropType<TabsType>,
+      default: 'line'
     },
     titleScroll: {
       type: Boolean,
