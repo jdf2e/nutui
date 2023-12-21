@@ -69,12 +69,29 @@
   </view>
 </template>
 <script lang="ts">
+import {
+  onMounted,
+  provide,
+  VNode,
+  ref,
+  Ref,
+  computed,
+  onActivated,
+  watch,
+  nextTick,
+  CSSProperties,
+  PropType
+} from 'vue';
+import NutSticky from '../sticky/index.vue';
+import { JoySmile } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';
+import { useTabContentTouch } from './hooks';
+import type { TabsDirection, TabsSize, TabsType } from './types';
+
 export class Title {
   title = '';
   titleSlot?: VNode[];
@@ -82,11 +99,9 @@ export class Title {
   disabled = false;
   constructor() {}
 }
-export type TabsSize = 'large' | 'normal' | 'small';
-import NutSticky from '../sticky/index.vue';
+
 const { create } = createComponent('tabs');
-import { JoySmile } from '@nutui/icons-vue';
-import { useTabContentTouch } from './hooks';
+
 export default create({
   components: { NutSticky, JoySmile },
   props: {
@@ -99,16 +114,16 @@ export default create({
       default: ''
     },
     direction: {
-      type: String,
-      default: 'horizontal' //vertical
+      type: String as PropType<TabsDirection>,
+      default: 'horizontal'
     },
     size: {
-      type: String as import('vue').PropType<TabsSize>,
+      type: String as PropType<TabsSize>,
       default: 'normal'
     },
     type: {
-      type: String,
-      default: 'line' //card、line、smile
+      type: String as PropType<TabsType>,
+      default: 'line'
     },
     titleScroll: {
       type: Boolean,
