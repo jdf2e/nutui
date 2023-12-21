@@ -92,7 +92,6 @@ export default create({
     };
     const change = (event: Event) => {
       const input = event.target as HTMLInputElement;
-
       emit('update:modelValue', input.value, event);
     };
     const emitChange = (value: string | number, event: Event) => {
@@ -155,7 +154,6 @@ export default create({
       }
       return value;
     };
-
     watch(
       () => [props.max, props.min],
       () => {

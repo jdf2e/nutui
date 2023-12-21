@@ -8,8 +8,8 @@
 .skeleton-picture {
   display: flex;
   justify-content: space-between;
-  .item {
-    width: 47%;
-  }
+}
+.skeleton-picture .item {
+  width: 47%;
 }
 </style>
