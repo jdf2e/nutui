@@ -3638,7 +3638,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_2$S = ["onClick"];
   const _hoisted_3$F = {
     key: 0,
-    class: "nut-tabs__titles-item nut-tabs__titles-placeholder"
+    class: "nut-tabs__titles-placeholder"
   };
   const _hoisted_4$A = ["id"];
   function _sfc_render$1h(_ctx, _cache, $props, $setup, $data, $options) {

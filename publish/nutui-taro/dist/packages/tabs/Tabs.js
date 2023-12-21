@@ -482,7 +482,7 @@ const _hoisted_1 = { class: "nut-tabs__list" };
 const _hoisted_2 = ["onClick"];
 const _hoisted_3 = {
   key: 0,
-  class: "nut-tabs__titles-item nut-tabs__titles-placeholder"
+  class: "nut-tabs__titles-placeholder"
 };
 const _hoisted_4 = ["id"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
