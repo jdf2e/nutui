@@ -1,7 +1,7 @@
 <template>
   <view ref="container" class="nut-tabs" :class="[direction]">
     <nut-scroll-view
-      :id="`nut-tabs__titles_${name}`"
+      :id="`nut-tabs__titles_${refRandomId}`"
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
@@ -143,15 +143,12 @@ export default create({
     top: {
       type: Number,
       default: 0
-    },
-    name: {
-      type: String,
-      default: ''
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const container = ref(null);
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),
@@ -231,12 +228,10 @@ export default create({
     const titleRectRef = ref<RectItem[]>([]);
     const canShowLabel = ref(false);
     const scrollIntoView = () => {
-      if (!props.name) return;
-
       raf(() => {
         Promise.all([
-          getRect(`#nut-tabs__titles_${props.name}`),
-          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+          getRect(`#nut-tabs__titles_${refRandomId}`),
+          getAllRect(`#nut-tabs__titles_${refRandomId} .nut-tabs__titles-item`)
         ]).then(([navRect, titleRects]: any) => {
           navRectRef.value = navRect;
           titleRectRef.value = titleRects;
@@ -399,7 +394,6 @@ export default create({
       }
       return { marginLeft: px, marginRight: px };
     });
-    const refRandomId = Math.random().toString(36).slice(-8);
     return {
       titles,
       tabsContentRef,

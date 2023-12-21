@@ -84,8 +84,8 @@ app.use(TabPane);
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| title | 标题 | string |  |
-| pane-key | 标签 Key , 匹配的标识符 | string | 默认索引 0,1,2... |
+| title | 标题 | string | - |
+| pane-key | 标签 Key , 匹配的标识符 | string | - |
 | disabled | 是否禁用标签 | boolean | false |
 
 ### TabPane Slots
