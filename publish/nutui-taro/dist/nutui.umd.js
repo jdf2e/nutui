@@ -20390,7 +20390,7 @@ var __async = (__this, __arguments, generator) => {
       }
     });
   }
-  const version = "4.2.4";
+  const version = "4.2.5";
   const nutui_taro_vue_build = { install, version, Locale };
   exports2.ActionSheet = ActionSheet;
   exports2.Address = Address;
