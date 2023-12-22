@@ -15,7 +15,6 @@
   text-align: center;
   pointer-events: none;
   z-index: 9999;
-  font-family: $font-family;
   &-small {
     .nut-toast-inner {
       font-size: $font-size-small;
