@@ -1,7 +1,7 @@
 <template>
   <view ref="container" class="nut-tabs" :class="[direction]">
     <nut-scroll-view
-      :id="`nut-tabs__titles_${name}`"
+      :id="`nut-tabs__titles_${refRandomId}`"
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
@@ -143,15 +143,12 @@ export default create({
     top: {
       type: Number,
       default: 0
-    },
-    name: {
-      type: String,
-      default: ''
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const container = ref(null);
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),
@@ -231,27 +228,25 @@ export default create({
     const titleRectRef = ref<RectItem[]>([]);
     const canShowLabel = ref(false);
     const scrollIntoView = () => {
-      if (!props.name) return;
-
       raf(() => {
         Promise.all([
-          getRect(`#nut-tabs__titles_${props.name}`),
-          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+          getRect(`#nut-tabs__titles_${refRandomId}`),
+          getAllRect(`#nut-tabs__titles_${refRandomId} .nut-tabs__titles-item`)
         ]).then(([navRect, titleRects]: any) => {
           navRectRef.value = navRect;
           titleRectRef.value = titleRects;
 
           if (navRectRef.value) {
             if (props.direction === 'vertical') {
-              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.height, 0);
-              if (titlesTotalHeight > navRectRef.value.height) {
+              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.height, 0);
+              if (titlesTotalHeight > navRectRef.value?.height) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
               }
             } else {
-              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
-              if (titlesTotalWidth > navRectRef.value.width) {
+              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.width, 0);
+              if (titlesTotalWidth > navRectRef.value?.width) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
@@ -266,14 +261,14 @@ export default create({
             const DEFAULT_PADDING = 11;
             const top = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.height + 0, DEFAULT_PADDING);
-            to = top - (navRectRef.value.height - titleRect.height) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.height + 0, DEFAULT_PADDING);
+            to = top - (navRectRef.value?.height - titleRect?.height) / 2;
           } else {
             const DEFAULT_PADDING = 31;
             const left = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, DEFAULT_PADDING);
-            to = left - (navRectRef.value.width - titleRect.width) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.width + 20, DEFAULT_PADDING);
+            to = left - (navRectRef.value?.width - titleRect?.width) / 2;
           }
 
           nextTick(() => {
@@ -399,7 +394,6 @@ export default create({
       }
       return { marginLeft: px, marginRight: px };
     });
-    const refRandomId = Math.random().toString(36).slice(-8);
     return {
       titles,
       tabsContentRef,
