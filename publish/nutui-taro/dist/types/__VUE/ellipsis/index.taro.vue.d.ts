@@ -34,7 +34,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }, {
-    root: import("vue").Ref<null>;
+    rootId: import("vue").Ref<string>;
     rootContain: import("vue").Ref<null>;
     symbolContain: import("vue").Ref<null>;
     ellipsis: {

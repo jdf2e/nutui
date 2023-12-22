@@ -37,7 +37,7 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { ref, reactive, computed, onMounted, unref, toRefs, openBlock, createElementBlock, createElementVNode, toDisplayString, createCommentVNode, createTextVNode, withModifiers, normalizeStyle } from "vue";
+import { ref, reactive, computed, onMounted, toRefs, openBlock, createElementBlock, createElementVNode, toDisplayString, createCommentVNode, createTextVNode, withModifiers, normalizeStyle } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useTaroRect } from "../index-Isui2_f6.js";
 import Taro from "@tarojs/taro";
@@ -76,7 +76,6 @@ const _sfc_main = create({
   },
   emits: ["click", "change"],
   setup(props, { emit }) {
-    const root = ref(null);
     const rootContain = ref(null);
     const symbolContain = ref(null);
     let contantCopy = ref(props.content);
@@ -85,6 +84,7 @@ const _sfc_main = create({
     let originHeight = 0;
     const ellipsis = reactive({});
     const refRandomId = Math.random().toString(36).slice(-8);
+    const rootId = ref("root" + refRandomId);
     let widthRef = ref("auto");
     const state = reactive({
       exceeded: false,
@@ -120,9 +120,8 @@ const _sfc_main = create({
       );
     };
     const getReference = () => __async(this, null, function* () {
-      let element = unref(root);
       const query = Taro.createSelectorQuery();
-      query.select(`#${element.id}`) && query.select(`#${element.id}`).fields(
+      query.select(`#${rootId.value}`) && query.select(`#${rootId.value}`).fields(
         {
           computedStyle: ["width", "height", "lineHeight", "paddingTop", "paddingBottom", "fontSize"]
         },
@@ -253,7 +252,7 @@ const _sfc_main = create({
       emit("click");
     };
     return __spreadProps(__spreadValues({}, toRefs(state)), {
-      root,
+      rootId,
       rootContain,
       symbolContain,
       ellipsis,
@@ -281,8 +280,7 @@ const _hoisted_6 = ["id"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("view", null, [
     createElementVNode("view", {
-      id: "root" + _ctx.refRandomId,
-      ref: "root",
+      id: _ctx.rootId,
       class: "nut-ellipsis ell",
       onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
     }, [

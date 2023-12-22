@@ -15791,7 +15791,6 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["click", "change"],
     setup(props, { emit }) {
-      const root = vue.ref(null);
       const rootContain = vue.ref(null);
       const symbolContain = vue.ref(null);
       let contantCopy = vue.ref(props.content);
@@ -15800,6 +15799,7 @@ var __async = (__this, __arguments, generator) => {
       let originHeight = 0;
       const ellipsis = vue.reactive({});
       const refRandomId = Math.random().toString(36).slice(-8);
+      const rootId = vue.ref("root" + refRandomId);
       let widthRef = vue.ref("auto");
       const state = vue.reactive({
         exceeded: false,
@@ -15835,9 +15835,8 @@ var __async = (__this, __arguments, generator) => {
         );
       };
       const getReference = () => __async(this, null, function* () {
-        let element = vue.unref(root);
         const query = Taro.createSelectorQuery();
-        query.select(`#${element.id}`) && query.select(`#${element.id}`).fields(
+        query.select(`#${rootId.value}`) && query.select(`#${rootId.value}`).fields(
           {
             computedStyle: ["width", "height", "lineHeight", "paddingTop", "paddingBottom", "fontSize"]
           },
@@ -15968,7 +15967,7 @@ var __async = (__this, __arguments, generator) => {
         emit("click");
       };
       return __spreadProps(__spreadValues({}, vue.toRefs(state)), {
-        root,
+        rootId,
         rootContain,
         symbolContain,
         ellipsis,
@@ -15996,8 +15995,7 @@ var __async = (__this, __arguments, generator) => {
   function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, [
       vue.createElementVNode("view", {
-        id: "root" + _ctx.refRandomId,
-        ref: "root",
+        id: _ctx.rootId,
         class: "nut-ellipsis ell",
         onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
       }, [
