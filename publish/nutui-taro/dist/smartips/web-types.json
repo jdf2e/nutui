@@ -5800,9 +5800,9 @@
               }
             },
             {
-              "name": "name",
+              "name": "name ",
               "default": "''",
-              "description": "在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。",
+              "description": "必须设置 name 才能开启 title-scroll 功能，版本 >=4.2.5 时不再需要。",
               "value": {
                 "type": "string",
                 "kind": "expression"

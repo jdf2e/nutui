@@ -225,14 +225,11 @@ const _sfc_main = create({
     top: {
       type: Number,
       default: 0
-    },
-    name: {
-      type: String,
-      default: ""
     }
   },
   emits: ["update:modelValue", "click", "change"],
   setup(props, { emit, slots }) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const container = ref(null);
     provide("tabsOpiton", {
       activeKey: computed(() => props.modelValue || "0"),
@@ -302,26 +299,25 @@ const _sfc_main = create({
     const titleRectRef = ref([]);
     const canShowLabel = ref(false);
     const scrollIntoView = () => {
-      if (!props.name)
-        return;
       requestAniFrame(() => {
         Promise.all([
-          getRect(`#nut-tabs__titles_${props.name}`),
-          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+          getRect(`#nut-tabs__titles_${refRandomId}`),
+          getAllRect(`#nut-tabs__titles_${refRandomId} .nut-tabs__titles-item`)
         ]).then(([navRect, titleRects]) => {
+          var _a, _b, _c, _d;
           navRectRef.value = navRect;
           titleRectRef.value = titleRects;
           if (navRectRef.value) {
             if (props.direction === "vertical") {
-              const titlesTotalHeight = titleRects.reduce((prev, curr) => prev + curr.height, 0);
-              if (titlesTotalHeight > navRectRef.value.height) {
+              const titlesTotalHeight = titleRects.reduce((prev, curr) => prev + (curr == null ? void 0 : curr.height), 0);
+              if (titlesTotalHeight > ((_a = navRectRef.value) == null ? void 0 : _a.height)) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
               }
             } else {
-              const titlesTotalWidth = titleRects.reduce((prev, curr) => prev + curr.width, 0);
-              if (titlesTotalWidth > navRectRef.value.width) {
+              const titlesTotalWidth = titleRects.reduce((prev, curr) => prev + (curr == null ? void 0 : curr.width), 0);
+              if (titlesTotalWidth > ((_b = navRectRef.value) == null ? void 0 : _b.width)) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
@@ -332,12 +328,12 @@ const _sfc_main = create({
           let to = 0;
           if (props.direction === "vertical") {
             const DEFAULT_PADDING = 11;
-            const top = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + curr.height + 0, DEFAULT_PADDING);
-            to = top - (navRectRef.value.height - titleRect.height) / 2;
+            const top = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.height) + 0, DEFAULT_PADDING);
+            to = top - (((_c = navRectRef.value) == null ? void 0 : _c.height) - (titleRect == null ? void 0 : titleRect.height)) / 2;
           } else {
             const DEFAULT_PADDING = 31;
-            const left = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + curr.width + 20, DEFAULT_PADDING);
-            to = left - (navRectRef.value.width - titleRect.width) / 2;
+            const left = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.width) + 20, DEFAULT_PADDING);
+            to = left - (((_d = navRectRef.value) == null ? void 0 : _d.width) - (titleRect == null ? void 0 : titleRect.width)) / 2;
           }
           nextTick(() => {
             scrollWithAnimation.value = true;
@@ -457,7 +453,6 @@ const _sfc_main = create({
       }
       return { marginLeft: px, marginRight: px };
     });
-    const refRandomId = Math.random().toString(36).slice(-8);
     return __spreadValues(__spreadValues({
       titles,
       tabsContentRef,
@@ -491,7 +486,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(["nut-tabs", [_ctx.direction]])
   }, [
     createVNode(_component_nut_scroll_view, {
-      id: `nut-tabs__titles_${_ctx.name}`,
+      id: `nut-tabs__titles_${_ctx.refRandomId}`,
       "scroll-x": _ctx.getScrollX,
       "scroll-y": _ctx.getScrollY,
       "scroll-with-animation": _ctx.scrollWithAnimation,
