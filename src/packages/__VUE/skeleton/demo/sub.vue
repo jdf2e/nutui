@@ -30,7 +30,6 @@ const checked = ref(false);
 }
 .demo-skeleton .right-content {
   margin-left: 19px;
-  font-family: PingFangSC;
   display: flex;
   flex-direction: column;
 }

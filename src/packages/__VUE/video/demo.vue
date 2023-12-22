@@ -147,7 +147,6 @@ const changeVideo = () => {
 h4 {
   margin-left: 25px;
   margin-top: 20px;
-  font-family: PingFangSC-Regular;
   font-size: 14px;
   color: rgba(144, 156, 164, 1);
 }
