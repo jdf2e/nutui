@@ -13037,9 +13037,6 @@ function P0(e, t, n, s, o, a) {
 }
 const A0 = /* @__PURE__ */ K(L0, [["render", P0]]), { create: z0 } = W("collapse-item"), V0 = z0({
   props: {
-    collapseRef: {
-      type: Object
-    },
     title: {
       type: String,
       default: ""

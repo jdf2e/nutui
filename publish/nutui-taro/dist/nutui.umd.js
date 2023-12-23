@@ -15288,9 +15288,6 @@ var __async = (__this, __arguments, generator) => {
   const { create: create$u } = createComponent("collapse-item");
   const _sfc_main$u = create$u({
     props: {
-      collapseRef: {
-        type: Object
-      },
       title: {
         type: String,
         default: ""
