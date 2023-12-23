@@ -17,135 +17,35 @@ app.use(CollapseItem);
 
 ### Basic Usage
 
-Control the expanded panel list through 'V-model', and 'activenames' is in array format
+The CollapseItem component must set the name property as a unique identifier.
 
-:::demo
+> demo: collapse basic
 
-```vue
-<template>
-  <nut-collapse v-model="activeNames" @change="onChange">
-    <nut-collapse-item :name="1">
-      <template #title> {{ title.title1 }} </template>
-      Nutui is a lightweight Vue component library with JD style
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title2" :name="2">
-      The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title3" :name="3" disabled> </nut-collapse-item>
-  </nut-collapse>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const activeNames = ref([1, 2]);
-const title = reactive({
-  title1: 'title1',
-  title2: 'title2',
-  title3: 'title3'
-});
-const onChange = (modelValue, currName, status) => {
-  // currName: collapse-item name
-  // status: true open, false close
-  console.log(modelValue, currName, status);
-};
-</script>
-```
+### v-model & onChange
 
-:::
+The expanded CollapseItem can be controlled through `v-model`, which is an array type by default, where the value is the name attribute of the corresponding CollapseItem.
 
-### accordion
+> demo: collapse data
 
-You can set accordion mode through 'accordion', and expand up to one panel. At this time, 'activename' is in string format`value` you can set the content of a subtitle
+### 手风琴
 
-:::demo
+Accordion mode can be set through `accordion`, and up to one panel can be expanded. In this case, `v-model` is a single name.
 
-```vue
-<template>
-  <nut-collapse v-model="activeName" :accordion="true">
-    <nut-collapse-item :title="title.title1" :name="1" :value="subTitle">
-      Build scenes based on JD design language system
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title2" :name="2">
-      Improve the modularity and generality of the boundary
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title3" :name="3">
-      It adopts combinatorial API composition syntax to reconstruct, with clear structure and modular function
-    </nut-collapse-item>
-  </nut-collapse>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const activeName = ref(1);
-const subTitle = 'subtitle';
-const title = reactive({
-  title1: 'title1',
-  title2: 'title2',
-  title3: 'title3'
-});
-</script>
-```
+> demo: collapse accordion
 
-:::
+### 自定义折叠图标
 
-### Custom collapse Icon
+Set a custom icon through the `slots.icon` or `props.icon` property.
 
-Set custom icons through icon and rotate to set the rotation angle of icons
+> demo: collapse custom
 
-:::demo
+### 禁用状态
 
-```vue
-<template>
-  <nut-collapse v-model="activeName" :accordion="true">
-    <nut-collapse-item :title="title.title1" :name="1" :icon="Notice">
-      <template #value> text test </template>
-      NUTUI3. 0 rethink its internal consistency and composability
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title2" :name="2" :icon="Follow">
-      Improve the efficiency of production research output docking and reduce the output workload
-    </nut-collapse-item>
-  </nut-collapse>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-import { Notice, Follow } from '@nutui/icons-vue';
-const activeName = ref(1);
-const title = reactive({
-  title1: 'title1',
-  title2: 'title2'
-});
-</script>
-```
+> demo: collapse disabled
 
-:::
+### 设置固定内容（不折叠）
 
-### Set fixed content (do not collapse)
-
-Set content through slot: extra
-
-:::demo
-
-```vue
-<template>
-  <nut-collapse v-model="activeName" :accordion="true">
-    <nut-collapse-item :title="title.title1" :name="1">
-      <template #extra>fixed content</template>
-      Nutui is a lightweight Vue component library with JD style
-    </nut-collapse-item>
-    <nut-collapse-item :title="title.title2" :name="2">
-      The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-    </nut-collapse-item>
-  </nut-collapse>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const activeName = ref(1);
-const title = reactive({
-  title1: 'title1',
-  title2: 'title2'
-});
-</script>
-```
-
-:::
+> demo: collapse extra
 
 ## API
 
