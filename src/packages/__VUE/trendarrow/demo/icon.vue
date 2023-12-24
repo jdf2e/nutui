@@ -12,3 +12,6 @@
     </nut-trend-arrow>
   </nut-cell>
 </template>
+<script setup lang="ts">
+import { Success, Failure } from '@nutui/icons-vue';
+</script>
