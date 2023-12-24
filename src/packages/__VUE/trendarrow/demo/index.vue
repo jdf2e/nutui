@@ -23,7 +23,7 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Digits from './digits.vue';
 import Left from './left.vue';
