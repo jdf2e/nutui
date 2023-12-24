@@ -18,45 +18,45 @@ app.use(InputNumber);
 
 初始化一个默认值
 
-> demo: inputnumber basic
+> demo: inputnumber basic dentry
 
 ### 步长设置
 
 设置步长 `step` 5
 
-> demo: inputnumber step
+> demo: inputnumber step dentry
 
 ### 限制输入范围
 
 `min` 和 `max` 属性分别表示最小值和最大值
 
-> demo: inputnumber limit
+> demo: inputnumber limit dentry
 
 ### 禁用状态
 
 `disabled` 禁用状态下无法点击按钮或修改输入框。
 
-> demo: inputnumber disabled
+> demo: inputnumber disabled dentry
 
 ### 只读禁用输入框
 
 `readonly` 设置只读禁用输入框输入行为
 
-> demo: inputnumber readonly
+> demo: inputnumber readonly dentry
 
 ### 支持小数点
 
 设置步长 `step` 0.1 `decimal-places` 小数保留 1 位
 
-> demo: inputnumber decimal
+> demo: inputnumber decimal dentry
 
 ### 自定义按钮大小
 
-> demo: inputnumber size
+> demo: inputnumber size dentry
 
 ### 自定义按钮图标
 
-> demo: inputnumber icon
+> demo: inputnumber icon dentry
 
 ## API
 
