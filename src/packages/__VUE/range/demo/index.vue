@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Range from './range.vue';
 import Limit from './limit.vue';
