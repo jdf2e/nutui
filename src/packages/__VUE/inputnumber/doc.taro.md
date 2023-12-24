@@ -18,173 +18,45 @@ app.use(InputNumber);
 
 初始化一个默认值
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber basic
 
 ### 步长设置
 
 设置步长 `step` 5
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" step="5" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber step
 
 ### 限制输入范围
 
 `min` 和 `max` 属性分别表示最小值和最大值
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" min="10" max="20" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(10);
-</script>
-```
-
-:::
+> demo: inputnumber limit
 
 ### 禁用状态
 
 `disabled` 禁用状态下无法点击按钮或修改输入框。
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" disabled />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber disabled
 
 ### 只读禁用输入框
 
 `readonly` 设置只读禁用输入框输入行为
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" readonly />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber readonly
 
 ### 支持小数点
 
 设置步长 `step` 0.1 `decimal-places` 小数保留 1 位
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" step="0.1" decimal-places="1" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
-
-### 支持异步修改
-
-通过 `change` 事件和 `model-value` 进行异步修改
-
-:::demo
-
-```vue
-<template>
-  <nut-input-number :model-value="value" @change="onChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-const onChange = (value) => {
-  console.log('异步演示 2 秒后更改');
-  setTimeout(() => {
-    state.value = value;
-  }, 2000);
-};
-</script>
-```
-
-:::
+> demo: inputnumber decimal
 
 ### 自定义按钮大小
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" button-size="30" input-width="50" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber size
 
 ### 自定义按钮图标
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value">
-    <template #left-icon>
-      <Left />
-    </template>
-    <template #right-icon>
-      <Right />
-    </template>
-  </nut-input-number>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Left, Right } from '@nutui/icons-vue-taro';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber icon
 
 ## API
 
