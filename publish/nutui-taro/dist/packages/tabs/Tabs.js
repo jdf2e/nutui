@@ -526,7 +526,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               ], 14, _hoisted_2);
             }), 128)),
             createTextVNode(),
-            _ctx.canShowLabel ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true)
+            _ctx.canShowLabel && _ctx.titleScroll ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true)
           ], 64))
         ])
       ]),

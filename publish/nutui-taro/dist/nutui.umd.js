@@ -3682,7 +3682,7 @@ var __async = (__this, __arguments, generator) => {
                 ], 14, _hoisted_2$S);
               }), 128)),
               vue.createTextVNode(),
-              _ctx.canShowLabel ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_3$F)) : vue.createCommentVNode("", true)
+              _ctx.canShowLabel && _ctx.titleScroll ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_3$F)) : vue.createCommentVNode("", true)
             ], 64))
           ])
         ]),
