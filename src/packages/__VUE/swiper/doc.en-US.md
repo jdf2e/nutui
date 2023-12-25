@@ -449,6 +449,7 @@ const page = ref(2);
 | direction | Rotation direction, optional value：`horizontal`,`vertical` | string | `'horizontal'` |
 | pagination-visible | Is the paging indicator displayed | boolean | `false` |
 | pagination-color | The color selected by the pagination indicator | string | `'#fff'` |
+| pagination-unselected-color | The color unselected by the pagination indicator | string | `'#ddd'` |
 | loop | Whether to rotate | boolean | `true` |
 | duration | Animation duration（Unit ms） | number \| string | `500` |
 | auto-play | Automatic rotation duration, 0 means no automatic rotation | number \| string | `0` |
