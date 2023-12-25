@@ -16,56 +16,15 @@ app.use(Tag);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-tag>tag</nut-tag>
-  <nut-tag type="primary">tag</nut-tag>
-  <nut-tag type="success">tag</nut-tag>
-  <nut-tag type="danger">tag</nut-tag>
-  <nut-tag type="warning">tag</nut-tag>
-</template>
-```
-
-:::
+> demo: tag basic
 
 ### Style
 
-:::demo
-
-```vue
-<template>
-  <nut-tag plain>plain</nut-tag>
-  <nut-tag round type="primary">round</nut-tag>
-  <nut-tag mark type="primary">mark</nut-tag>
-  <nut-tag v-if="show" closeable @close="close" type="primary">close</nut-tag>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const show = ref(true);
-const close = () => {
-  show.value = false;
-};
-</script>
-```
-
-:::
+> demo: tag custom
 
 ### Custom Color
 
-:::demo
-
-```vue
-<template>
-  <nut-tag color="#FA685D">background</nut-tag>
-  <nut-tag color="#E9E9E9" textColor="#999999">text</nut-tag>
-  <nut-tag color="#FA2400" plain>plain</nut-tag>
-</template>
-```
-
-:::
+> demo: tag color
 
 ## API
 
