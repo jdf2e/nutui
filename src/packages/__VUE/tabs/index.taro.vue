@@ -29,7 +29,7 @@
             </view>
             <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
           </view>
-          <view v-if="canShowLabel" class="nut-tabs__titles-placeholder"></view>
+          <view v-if="canShowLabel && titleScroll" class="nut-tabs__titles-placeholder"></view>
         </template>
       </view>
     </nut-scroll-view>
