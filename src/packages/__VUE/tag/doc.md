@@ -16,56 +16,15 @@ app.use(Tag);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-tag>标签</nut-tag>
-  <nut-tag type="primary">标签</nut-tag>
-  <nut-tag type="success">标签</nut-tag>
-  <nut-tag type="danger">标签</nut-tag>
-  <nut-tag type="warning">标签</nut-tag>
-</template>
-```
-
-:::
+> demo: tag basic
 
 ### 样式风格
 
-:::demo
-
-```vue
-<template>
-  <nut-tag plain>空心</nut-tag>
-  <nut-tag round type="primary">圆角</nut-tag>
-  <nut-tag mark type="primary">标记</nut-tag>
-  <nut-tag v-if="show" closeable @close="close" type="primary">可关闭</nut-tag>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const show = ref(true);
-const close = () => {
-  show.value = false;
-};
-</script>
-```
-
-:::
+> demo: tag custom
 
 ### 颜色自定义
 
-:::demo
-
-```vue
-<template>
-  <nut-tag color="#FA685D">背景颜色</nut-tag>
-  <nut-tag color="#E9E9E9" textColor="#999999">文字颜色</nut-tag>
-  <nut-tag color="#FA2400" plain>空心颜色</nut-tag>
-</template>
-```
-
-:::
+> demo: tag color
 
 ## API
 
