@@ -24,9 +24,8 @@
     padding: 0;
   }
 
-  .nut-tabs__titles-item {
+  &.nut-tabs.horizontal .nut-tabs__titles .nut-tabs__titles-item {
     flex: initial;
-    min-width: auto;
     padding: $cascader-tabs-item-padding;
     white-space: nowrap;
   }
