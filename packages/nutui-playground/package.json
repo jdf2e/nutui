@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.3",
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.0.0",
     "rimraf": "^5.0.5",
     "vite": "^5.0.7",
     "vue": "^3.3.11"
