@@ -1,3 +1,5 @@
+import { type PropType } from 'vue';
+import type { AudioType } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
@@ -28,7 +30,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<AudioType>;
         default: string;
     };
 }, {
@@ -52,7 +54,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     hanMuted: import("vue").Ref<boolean>;
     playing: import("vue").Ref<boolean>;
     handPlaying: import("vue").Ref<boolean>;
-    type: import("vue").Ref<string>;
+    type: import("vue").Ref<AudioType>;
     loop: import("vue").Ref<boolean>;
     url: import("vue").Ref<string>;
     muted: import("vue").Ref<boolean>;
@@ -91,7 +93,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<AudioType>;
         default: string;
     };
 }>> & {
@@ -103,7 +105,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChangeProgress?: ((...args: any[]) => any) | undefined;
     onCanPlay?: ((...args: any[]) => any) | undefined;
 }, {
-    type: string;
+    type: AudioType;
     loop: boolean;
     url: string;
     muted: boolean;

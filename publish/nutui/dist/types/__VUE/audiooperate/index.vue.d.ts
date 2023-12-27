@@ -1,10 +1,12 @@
+import { type PropType } from 'vue';
+import type { AudioOperateType } from './types';
 
 declare type Install<T> = T & {
   install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     type: {
-        type: StringConstructor;
+        type: PropType<AudioOperateType>;
         default: () => string;
     };
 }, {
@@ -16,17 +18,17 @@ declare const _default: Install< import("vue").DefineComponent<{
     forward: import("vue").Ref<(payload: MouseEvent) => void>;
     fastBack: import("vue").Ref<(payload: MouseEvent) => void>;
     changeStatus: import("vue").Ref<(payload: MouseEvent) => void>;
-    type: import("vue").Ref<string>;
+    type: import("vue").Ref<AudioOperateType>;
     onClick: import("vue").Ref<((...args: any[]) => any) | undefined>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
-        type: StringConstructor;
+        type: PropType<AudioOperateType>;
         default: () => string;
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
-    type: string;
+    type: AudioOperateType;
 }, {}>>;
 export default _default;
 
