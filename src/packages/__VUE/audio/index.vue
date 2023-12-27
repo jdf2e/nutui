@@ -60,7 +60,7 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, onMounted, reactive, watch, provide, PropType } from 'vue';
+import { toRefs, ref, onMounted, reactive, watch, provide, type PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Service } from '@nutui/icons-vue';
 import NutRange from '../range/index.vue';
