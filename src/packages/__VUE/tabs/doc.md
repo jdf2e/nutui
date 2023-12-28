@@ -72,6 +72,7 @@ app.use(TabPane);
 | sticky | 是否使用粘性布局 | boolean | `false` |
 | top | 粘性布局下的吸顶距离 | number | `0` |
 | name | 在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。 | string | '' |
+| alignment | 横轴方向的标题对齐方式，可选值 left、center | string | `center` |
 
 ### Tabs Slots
 

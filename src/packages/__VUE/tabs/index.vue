@@ -5,7 +5,12 @@
         <view
           ref="navRef"
           class="nut-tabs__titles"
-          :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+          :class="{
+            'nut-tabs__titles-left': alignment === 'left',
+            [type]: type,
+            scrollable: titleScroll,
+            [size]: size
+          }"
           :style="tabsNavStyle"
         >
           <slot v-if="$slots.titles" name="titles"></slot>
@@ -15,7 +20,11 @@
               :key="item.paneKey"
               class="nut-tabs__titles-item"
               :style="titleStyle"
-              :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+              :class="{
+                'nut-tabs__titles-item-left': alignment === 'left',
+                active: item.paneKey == modelValue,
+                disabled: item.disabled
+              }"
               @click="tabChange(item, index)"
             >
               <view v-if="type == 'line'" class="nut-tabs__titles-item__line" :style="tabsActiveStyle"></view>
@@ -32,7 +41,7 @@
       <view
         ref="navRef"
         class="nut-tabs__titles"
-        :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+        :class="{ 'nut-tabs__titles-left': alignment === 'left', [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
@@ -43,7 +52,11 @@
             :ref="(e) => setTabItemRef(e as HTMLElement, index)"
             class="nut-tabs__titles-item"
             :style="titleStyle"
-            :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+            :class="{
+              'nut-tabs__titles-item-left': alignment === 'left',
+              active: item.paneKey == modelValue,
+              disabled: item.disabled
+            }"
             @click="tabChange(item, index)"
           >
             <view v-if="type == 'line'" class="nut-tabs__titles-item__line" :style="tabsActiveStyle"></view>
@@ -90,7 +103,7 @@ import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import raf from '@/packages/utils/raf';
 import { useTabContentTouch } from './hooks';
-import type { TabsDirection, TabsSize, TabsType } from './types';
+import type { TabsDirection, TabsSize, TabsType, Alignment } from './types';
 
 export class Title {
   title = '';
@@ -160,6 +173,10 @@ export default create({
     top: {
       type: Number,
       default: 0
+    },
+    alignment: {
+      type: String as PropType<Alignment>,
+      default: 'center'
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
