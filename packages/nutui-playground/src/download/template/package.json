@@ -7,7 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11",
+    "vue": "^3.4.2",
     "@nutui/nutui": "^4.2.6",
     "@nutui/touch-emulator": "^1.0.0"
   },

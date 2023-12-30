@@ -19,7 +19,7 @@
     "@vitejs/plugin-vue": "^5.0.1",
     "rimraf": "^5.0.5",
     "vite": "^5.0.10",
-    "vue": "^3.3.11"
+    "vue": "^3.4.2"
   },
   "dependencies": {
     "@vue/repl": "^3.1.0",

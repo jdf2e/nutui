@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@nutui/nutui": "^4.2.6",
-    "vue": "^3.3.11"
+    "vue": "^3.4.2"
   },
   "devDependencies": {
     "unplugin-vue-components": "^0.26.0",
