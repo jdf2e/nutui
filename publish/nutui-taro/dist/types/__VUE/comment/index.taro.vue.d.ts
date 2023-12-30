@@ -56,7 +56,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handleClick: () => void;
     clickImages: (value: any) => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "clickImages" | "clickOperate")[], "click" | "clickImages" | "clickOperate", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "clickImages" | "clickOperate")[], "click" | "clickImages" | "clickOperate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     headerType: {
         type: StringConstructor;
         default: string;

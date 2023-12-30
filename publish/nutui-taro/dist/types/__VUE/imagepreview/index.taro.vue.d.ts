@@ -93,7 +93,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         QQ: TaroGeneral.ENV_TYPE.QQ;
         JD: TaroGeneral.ENV_TYPE.JD;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "change" | "longPress")[], "close" | "change" | "longPress", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "longPress")[], "change" | "close" | "longPress", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     show: {
         type: BooleanConstructor;
         default: boolean;

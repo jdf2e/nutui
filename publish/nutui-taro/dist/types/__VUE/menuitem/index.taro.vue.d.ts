@@ -46,7 +46,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick: (option: MenuItemOption) => void;
     handleClose: () => void;
     handleClickOutside: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: StringConstructor;
     options: {
         type: PropType<MenuItemOption[]>;

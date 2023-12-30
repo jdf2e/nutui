@@ -38,7 +38,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     x: import("vue").Ref<number>;
     distance: import("vue").Ref<number>;
     scroller: import("vue").Ref<HTMLElement | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "scrollChange" | "loadMore")[], "update:modelValue" | "scrollChange" | "loadMore", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "scrollChange" | "loadMore")[], "update:modelValue" | "scrollChange" | "loadMore", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: BooleanConstructor;
         default: boolean;

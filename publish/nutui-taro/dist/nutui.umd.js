@@ -2237,11 +2237,19 @@ var __async = (__this, __arguments, generator) => {
     __name: "index.taro",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.unref(Taro).getEnv() === vue.unref(Taro).ENV_TYPE.WEB ? (vue.openBlock(), vue.createElementBlock("taro-scroll-view-core", vue.normalizeProps(vue.mergeProps({ key: 0 }, _ctx.$attrs)), [
-          vue.renderSlot(_ctx.$slots, "default")
-        ], 16)) : (vue.openBlock(), vue.createElementBlock("scroll-view", vue.normalizeProps(vue.mergeProps({ key: 1 }, _ctx.$attrs)), [
-          vue.renderSlot(_ctx.$slots, "default")
-        ], 16));
+        const _component_taro_scroll_view_core = vue.resolveComponent("taro-scroll-view-core");
+        const _component_scroll_view = vue.resolveComponent("scroll-view");
+        return vue.unref(Taro).getEnv() === vue.unref(Taro).ENV_TYPE.WEB ? (vue.openBlock(), vue.createBlock(_component_taro_scroll_view_core, vue.normalizeProps(vue.mergeProps({ key: 0 }, _ctx.$attrs)), {
+          default: vue.withCtx(() => [
+            vue.renderSlot(_ctx.$slots, "default")
+          ]),
+          _: 3
+        }, 16)) : (vue.openBlock(), vue.createBlock(_component_scroll_view, vue.normalizeProps(vue.mergeProps({ key: 1 }, _ctx.$attrs)), {
+          default: vue.withCtx(() => [
+            vue.renderSlot(_ctx.$slots, "default")
+          ]),
+          _: 3
+        }, 16));
       };
     }
   });
@@ -16032,8 +16040,7 @@ var __async = (__this, __arguments, generator) => {
         ref: "symbolContain",
         class: "nut-ellipsis__copy",
         style: { "display": "inline" }
-      }, vue.toDisplayString(_ctx.symbolText), 9, _hoisted_6$8),
-      vue.createTextVNode()
+      }, vue.toDisplayString(_ctx.symbolText), 9, _hoisted_6$8)
     ]);
   }
   const Ellipsis = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r]]);

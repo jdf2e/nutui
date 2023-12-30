@@ -20,7 +20,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         paddingLeft: string;
         paddingRight: string;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, never[], never, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, never[], never, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     span: {
         type: (NumberConstructor | StringConstructor)[];
         default: string;

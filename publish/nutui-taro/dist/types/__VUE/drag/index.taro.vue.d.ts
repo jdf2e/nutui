@@ -29,7 +29,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     touchEnd: (e: TouchEvent) => void;
     state: any;
     refRandomId: string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     attract: {
         type: BooleanConstructor;
         default: boolean;

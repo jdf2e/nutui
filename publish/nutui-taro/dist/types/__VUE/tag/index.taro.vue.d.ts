@@ -44,7 +44,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     style: import("vue").ComputedRef<CSSProperties>;
     onClose: (event: Event) => void;
     onClick: (event: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "click")[], "close" | "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close")[], "click" | "close", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     color: {
         type: StringConstructor;
         default: string;

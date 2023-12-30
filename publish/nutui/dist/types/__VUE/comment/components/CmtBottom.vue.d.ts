@@ -18,7 +18,7 @@ declare const _default: import("vue").DefineComponent<{
     mergeOp: import("vue").Ref<never[]>;
     handleClick: () => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("handleClick" | "clickOperate")[], "handleClick" | "clickOperate", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("handleClick" | "clickOperate")[], "handleClick" | "clickOperate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;

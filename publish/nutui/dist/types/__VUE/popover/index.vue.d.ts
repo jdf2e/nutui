@@ -86,7 +86,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderIcon: (icon: import("vue").Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | "";
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -155,8 +155,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;

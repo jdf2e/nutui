@@ -22,7 +22,7 @@ declare const _default: import("vue").DefineComponent<{
     overlimit: (e: Event, action: string) => void;
     getExtraText: () => any;
     changeStepper: (value: number) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "click" | "add" | "changeSku" | "changeStepper" | "clickBtnOptions" | "overLimit")[], "reduce" | "click" | "add" | "changeSku" | "changeStepper" | "clickBtnOptions" | "overLimit", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "add" | "click" | "changeSku" | "changeStepper" | "clickBtnOptions" | "overLimit")[], "reduce" | "add" | "click" | "changeSku" | "changeStepper" | "clickBtnOptions" | "overLimit", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     stepperMax: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;

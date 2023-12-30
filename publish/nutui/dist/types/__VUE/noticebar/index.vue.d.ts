@@ -102,7 +102,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     keepAlive: import("vue").Ref<boolean>;
     isCanScroll: import("vue").Ref<boolean | null>;
     showNotica: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "click" | "acrossEnd")[], "close" | "click" | "acrossEnd", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "acrossEnd")[], "click" | "close" | "acrossEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     direction: {
         type: StringConstructor;
         default: string;

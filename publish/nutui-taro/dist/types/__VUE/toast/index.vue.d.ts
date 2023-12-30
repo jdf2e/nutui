@@ -76,7 +76,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderIcon: (icon: Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | "";
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "close"[], "close", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "close"[], "close", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     msg: StringConstructor;
     duration: {
@@ -137,6 +137,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClose?: ((...args: any[]) => any) | undefined;
 }, {
+    size: string | number;
     title: string;
     center: boolean;
     duration: number;
@@ -144,7 +145,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: string;
     cover: boolean;
     bottom: string;
-    size: string | number;
     icon: Component;
     bgColor: string;
     textAlignCenter: boolean;

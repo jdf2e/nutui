@@ -61,7 +61,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     copyTxtStyle: any;
     startComposing: () => void;
     endComposing: ({ target }: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "blur" | "focus")[], "change" | "update:modelValue" | "blur" | "focus", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("blur" | "change" | "focus" | "update:modelValue")[], "blur" | "change" | "focus" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: StringConstructor;
         default: string;
@@ -103,9 +103,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onFocus?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;

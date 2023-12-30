@@ -34,7 +34,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     touchStyle: import("vue").ComputedRef<{
         transform: string;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "click" | "open")[], "close" | "click" | "open", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "open")[], "click" | "close" | "open", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;

@@ -21,7 +21,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     handleClick: () => void;
     direction: import("vue").Ref<string>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "titleClick"[], "titleClick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "titleClick"[], "titleClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;

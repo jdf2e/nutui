@@ -45,7 +45,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     checkPoint: (price: string | number) => boolean;
     formatThousands: (num: any) => any;
     formatDecimal: (decimalNum: any) => string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     price: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;

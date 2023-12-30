@@ -43,7 +43,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     foldCount: import("vue").Ref<number>;
     avatarGroupRef: import("vue").Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     maxContent: {
         type: StringConstructor;
         default: string;
@@ -77,9 +77,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
+    size: string | number;
     span: string | number;
     zIndex: AvatarZIndex;
-    size: string | number;
     shape: AvatarShape;
     maxContent: string;
     maxCount: string | number;

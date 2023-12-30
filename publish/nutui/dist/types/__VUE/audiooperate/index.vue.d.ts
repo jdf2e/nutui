@@ -20,7 +20,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     changeStatus: import("vue").Ref<(payload: MouseEvent) => void>;
     type: import("vue").Ref<AudioOperateType>;
     onClick: import("vue").Ref<((...args: any[]) => any) | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: PropType<AudioOperateType>;
         default: () => string;

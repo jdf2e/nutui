@@ -12,7 +12,7 @@ declare const _default: import("vue").DefineComponent<{
         disable: boolean;
     }[]>;
     changeSaleChild: (attrItem: any, index: any, parentItem: any, parentIndex: any) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "selectSku"[], "selectSku", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "selectSku"[], "selectSku", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     sku: {
         type: ArrayConstructor;
         default: () => never[];

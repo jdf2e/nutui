@@ -125,7 +125,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     isCurrDay: (dateInfo: Day) => boolean;
     confirm: () => void;
     months: import("vue").Ref<HTMLElement | null>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "close" | "choose" | "update")[], "select" | "close" | "choose" | "update", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "close" | "choose" | "update")[], "select" | "close" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;

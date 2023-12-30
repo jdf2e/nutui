@@ -24,7 +24,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     reset: () => void;
     submit: () => boolean;
     formErrorTip: import("vue").ComputedRef<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ObjectConstructor;
         default: () => {};

@@ -36,7 +36,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     add: (word: string) => void;
     styleList: any[];
     danmuListSlots: import("vue").Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     danmu: {
         type: ArrayConstructor;
         default: () => never[];

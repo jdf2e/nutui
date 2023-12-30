@@ -57,7 +57,7 @@ var __async = (__this, __arguments, generator) => {
 import { computed, ref, watch, resolveComponent, openBlock, createBlock, withCtx, createElementBlock, Fragment, renderList, createElementVNode, createVNode, normalizeClass, toDisplayString, createTextVNode, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { N as NutPopup, p as popupProps } from "../index.taro-vH2b6ZpB.js";
-import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
+import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_lang-4FrUcxMV.js";
 import { Loading, Checklist } from "@nutui/icons-vue-taro";
 import NutTabs from "../tabs/Tabs.js";
 import NutTabPane from "../tabpane/TabPane.js";

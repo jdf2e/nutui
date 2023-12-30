@@ -26,7 +26,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         height?: undefined;
     }>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     image: {
         type: PropType<string>;
         default: string;

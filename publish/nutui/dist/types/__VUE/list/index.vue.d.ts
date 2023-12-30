@@ -43,7 +43,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         dValue: number;
     }[]>;
     phantomHeight: Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollBottom" | "scrollUp" | "scrollDown")[], "scrollBottom" | "scrollUp" | "scrollDown", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollBottom" | "scrollUp" | "scrollDown")[], "scrollBottom" | "scrollUp" | "scrollDown", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     listData: {
         type: ArrayConstructor;
         default: () => never[];

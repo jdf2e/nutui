@@ -121,7 +121,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderInput: () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("progress" | "start" | "change" | "success" | "delete" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "progress" | "start" | "change" | "success" | "delete" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "progress" | "change" | "start" | "success" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "delete" | "progress" | "change" | "start" | "success" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;
@@ -218,8 +218,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: FunctionConstructor;
     };
 }>> & {
-    onChange?: ((...args: any[]) => any) | undefined;
     onProgress?: ((...args: any[]) => any) | undefined;
+    onChange?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
     onStart?: ((...args: any[]) => any) | undefined;
     onFailure?: ((...args: any[]) => any) | undefined;

@@ -37,7 +37,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     style: ComputedRef<any>;
     onClick: (e: MouseEvent) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "update:visible")[], "click" | "update:visible", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "update:visible")[], "click" | "update:visible", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;

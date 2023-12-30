@@ -80,7 +80,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onTime: Ref<((...args: any[]) => any) | undefined>;
     onPlayend: Ref<((...args: any[]) => any) | undefined>;
     root: Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("time" | "click" | "play" | "pause" | "playend")[], "time" | "click" | "play" | "pause" | "playend", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("time" | "click" | "pause" | "play" | "playend")[], "time" | "click" | "pause" | "play" | "playend", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     source: {
         type: ObjectConstructor;
         default: {};

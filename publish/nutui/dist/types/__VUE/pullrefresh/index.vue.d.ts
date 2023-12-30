@@ -71,7 +71,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     status: import("vue").Ref<PullRefreshStatus>;
     scroller: import("vue").Ref<HTMLElement | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "refresh")[], "change" | "update:modelValue" | "refresh", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "refresh")[], "change" | "update:modelValue" | "refresh", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: BooleanConstructor;
         default: boolean;

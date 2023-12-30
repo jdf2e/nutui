@@ -64,7 +64,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     pickerColumn: import("vue").Ref<any[]>;
     swipeRef: (el: any) => void;
     columnStyle: import("vue").ComputedRef<CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "change" | "update:modelValue" | "confirm")[], "cancel" | "change" | "update:modelValue" | "confirm", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "change" | "update:modelValue" | "confirm")[], "cancel" | "change" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: import("vue").PropType<(string | number)[]>;
         default: () => never[];
@@ -110,8 +110,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    onChange?: ((...args: any[]) => any) | undefined;
     onCancel?: ((...args: any[]) => any) | undefined;
+    onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
 }, {

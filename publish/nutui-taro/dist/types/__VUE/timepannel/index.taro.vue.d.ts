@@ -18,7 +18,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     handlePannel: (pannelKey: number | string) => void;
     currentKey: import("vue").Ref<unknown>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;

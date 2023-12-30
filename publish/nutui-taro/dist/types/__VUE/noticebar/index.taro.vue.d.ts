@@ -104,7 +104,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     isCanScroll: import("vue").Ref<boolean | null>;
     showNotica: import("vue").Ref<boolean>;
     id: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "click" | "acrossEnd")[], "close" | "click" | "acrossEnd", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "acrossEnd")[], "click" | "close" | "acrossEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     direction: {
         type: StringConstructor;
         default: string;

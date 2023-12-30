@@ -104,7 +104,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     zIndex: import("vue").Ref<string | number>;
     showSlot: import("vue").Ref<boolean>;
     closed: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -189,8 +189,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
     onClickPop?: ((...args: any[]) => any) | undefined;
     onClickCloseIcon?: ((...args: any[]) => any) | undefined;

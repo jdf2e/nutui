@@ -178,9 +178,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     existAddressTitle: import("vue").Ref<string>;
     customAndExistTitle: import("vue").Ref<string>;
     columnsPlaceholder: import("vue").Ref<string | unknown[]>;
-    "onUpdate:visible": import("vue").Ref<((...args: any[]) => any) | undefined>;
     onChange: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onClose: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    "onUpdate:visible": import("vue").Ref<((...args: any[]) => any) | undefined>;
     onType: import("vue").Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
     onSelected: import("vue").Ref<((...args: any[]) => any) | undefined>;
@@ -208,7 +208,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     clickOverlay: () => void;
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "type" | "change" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "close" | "update:visible" | "type" | "change" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -345,9 +345,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onType?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;

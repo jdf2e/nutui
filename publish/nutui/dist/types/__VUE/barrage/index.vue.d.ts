@@ -33,7 +33,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     dmBody: import("vue").Ref<HTMLDivElement>;
     dmContainer: import("vue").Ref<HTMLDivElement>;
     add: (word: string) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     danmu: {
         type: ArrayConstructor;
         default: () => never[];

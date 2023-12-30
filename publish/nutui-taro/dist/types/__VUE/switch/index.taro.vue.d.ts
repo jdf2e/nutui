@@ -48,7 +48,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     isActive: import("vue").ComputedRef<boolean>;
     onClick: (event: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "update:loading")[], "change" | "update:modelValue" | "update:loading", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "update:loading")[], "change" | "update:modelValue" | "update:loading", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
         default: boolean;

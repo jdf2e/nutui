@@ -50,7 +50,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handleClick: () => void;
     wrapperHeight: import("vue").Ref<string>;
     expanded: import("vue").ComputedRef<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;

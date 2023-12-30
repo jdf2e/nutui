@@ -28,7 +28,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     styles: import("vue").ComputedRef<CSSProperties>;
     avatarRef: import("vue").Ref<null>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     size: {
         type: PropType<string | number>;
         default: string;
@@ -46,8 +46,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    color: string;
     size: string | number;
+    color: string;
     shape: AvatarShape;
     bgColor: string;
 }, {}>>;

@@ -44,7 +44,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderTime: import("vue").ComputedRef<any>;
     translate: (keyPath: string, ...args: unknown[]) => any;
     reset: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused")[], "input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused")[], "input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ObjectConstructor;
         default: () => {};

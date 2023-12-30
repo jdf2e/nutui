@@ -20,7 +20,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     getChildList: (index: any) => void;
     checkIndex: import("vue").Ref<number>;
     categoryLeft: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;

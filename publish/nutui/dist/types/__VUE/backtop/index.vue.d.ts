@@ -49,7 +49,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         zIndex: number;
     }>;
     click: (e: MouseEvent) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     bottom: {
         type: NumberConstructor;
         default: number;

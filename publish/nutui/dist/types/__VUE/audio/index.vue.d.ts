@@ -67,7 +67,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onFastBack: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onChangeProgress: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onCanPlay: import("vue").Ref<((...args: any[]) => any) | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("fastBack" | "play" | "forward" | "ended" | "changeProgress" | "mute" | "canPlay")[], "fastBack" | "play" | "forward" | "ended" | "changeProgress" | "mute" | "canPlay", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("ended" | "play" | "fastBack" | "forward" | "changeProgress" | "mute" | "canPlay")[], "ended" | "play" | "fastBack" | "forward" | "changeProgress" | "mute" | "canPlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     url: {
         type: StringConstructor;
         default: string;

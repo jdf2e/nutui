@@ -22,7 +22,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     formRef: import("vue").Ref<any>;
     list: any;
     submitFun: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("onSubmit" | "submit" | "scrollBottom")[], "onSubmit" | "submit" | "scrollBottom", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("submit" | "onSubmit" | "scrollBottom")[], "submit" | "onSubmit" | "scrollBottom", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: ArrayConstructor;
         default: () => never[];

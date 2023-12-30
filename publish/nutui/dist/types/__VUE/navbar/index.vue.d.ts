@@ -58,7 +58,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handleCenter: () => void;
     handleCenterIcon: () => void;
     handleRight: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickBack" | "clickTitle" | "clickIcon" | "clickRight" | "onClickBack" | "onClickTitle" | "onClickIcon" | "onClickRight")[], "clickBack" | "clickTitle" | "clickIcon" | "clickRight" | "onClickBack" | "onClickTitle" | "onClickIcon" | "onClickRight", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickBack" | "clickTitle" | "clickIcon" | "clickRight" | "onClickBack" | "onClickTitle" | "onClickIcon" | "onClickRight")[], "clickBack" | "clickTitle" | "clickIcon" | "clickRight" | "onClickBack" | "onClickTitle" | "onClickIcon" | "onClickRight", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     leftShow: {
         type: BooleanConstructor;
         default: boolean;
@@ -110,9 +110,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onOnClickRight?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
+    fixed: boolean;
     desc: string;
     zIndex: string | number;
-    fixed: boolean;
     border: boolean;
     placeholder: boolean;
     leftShow: boolean;

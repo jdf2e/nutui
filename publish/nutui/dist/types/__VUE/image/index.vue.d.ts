@@ -63,7 +63,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     isError: import("vue").Ref<boolean>;
     slotLoding: import("vue").Ref<import("vue").Slot<any> | undefined>;
     slotError: import("vue").Ref<import("vue").Slot<any> | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "error" | "load")[], "click" | "error" | "load", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "error" | "load")[], "click" | "error" | "load", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     src: StringConstructor;
     fit: {
         type: PropType<ImageFit>;
@@ -104,8 +104,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
-    onLoad?: ((...args: any[]) => any) | undefined;
     onError?: ((...args: any[]) => any) | undefined;
+    onLoad?: ((...args: any[]) => any) | undefined;
 }, {
     round: boolean;
     position: string;

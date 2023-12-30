@@ -24,7 +24,7 @@ declare const _default: import("vue").DefineComponent<{
     getBtnDesc: (type: string) => string;
     clickBtnOperate: (btn: string) => void;
     getSlots: (name: string) => import("vue").Slot<any> | undefined;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "changeSku" | "changeBuyCount" | "clickBtnOperate")[], "click" | "changeSku" | "changeBuyCount" | "clickBtnOperate", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "changeSku" | "changeBuyCount" | "clickBtnOperate")[], "click" | "changeSku" | "changeBuyCount" | "clickBtnOperate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     btnOptions: {
         type: PropType<string[]>;
         default: () => string[];

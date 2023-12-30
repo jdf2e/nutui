@@ -68,8 +68,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     taro: import("vue").Ref<boolean>;
     value: import("vue").Ref<string | number | undefined>;
     columnsType: import("vue").Ref<string | undefined>;
-    onClick: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onChange: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onClick: import("vue").Ref<((...args: any[]) => any) | undefined>;
     touchParams: import("vue").Ref<{
         startY: number;
         endY: number;
@@ -82,7 +82,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     transformY: import("vue").Ref<number>;
     scrollDistance: import("vue").Ref<number>;
     rotation: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "change")[], "click" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "click")[], "change" | "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     value: (NumberConstructor | StringConstructor)[];
     columnsType: StringConstructor;
     column: {
@@ -114,8 +114,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         defualt: boolean;
     };
 }>> & {
-    onClick?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onClick?: ((...args: any[]) => any) | undefined;
 }, {
     column: PickerOption[];
     threeDimensional: boolean;

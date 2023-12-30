@@ -320,8 +320,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ref: "symbolContain",
       class: "nut-ellipsis__copy",
       style: { "display": "inline" }
-    }, toDisplayString(_ctx.symbolText), 9, _hoisted_6),
-    createTextVNode()
+    }, toDisplayString(_ctx.symbolText), 9, _hoisted_6)
   ]);
 }
 const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

@@ -40,7 +40,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         [x: string]: boolean | ButtonType | ButtonSize | ButtonShape;
     }>;
     getStyle: import("vue").ComputedRef<CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     color: StringConstructor;
     shape: {
         type: PropType<ButtonShape>;
@@ -73,9 +73,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
+    size: ButtonSize;
     type: ButtonType;
     block: boolean;
-    size: ButtonSize;
     disabled: boolean;
     loading: boolean;
     shape: ButtonShape;

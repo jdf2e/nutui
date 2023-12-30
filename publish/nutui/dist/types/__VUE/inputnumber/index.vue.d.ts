@@ -51,7 +51,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     reduce: (event: Event) => void;
     reduceAllow: (value?: number) => boolean;
     pxCheck: (value?: string | number | undefined) => string | undefined;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "add" | "change" | "update:modelValue" | "blur" | "focus" | "overlimit")[], "reduce" | "add" | "change" | "update:modelValue" | "blur" | "focus" | "overlimit", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "add" | "blur" | "change" | "focus" | "update:modelValue" | "overlimit")[], "reduce" | "add" | "blur" | "change" | "focus" | "update:modelValue" | "overlimit", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;
@@ -89,9 +89,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onFocus?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onAdd?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;

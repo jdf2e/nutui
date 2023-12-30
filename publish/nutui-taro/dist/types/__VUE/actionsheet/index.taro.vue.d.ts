@@ -137,7 +137,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     cancelActionSheet: () => void;
     chooseItem: (item: ActionSheetMenuItems, index: number) => void;
     close: (e: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "cancel" | "choose")[], "close" | "update:visible" | "cancel" | "choose", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "close" | "update:visible" | "choose")[], "cancel" | "close" | "update:visible" | "choose", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     cancelTxt: {
         type: StringConstructor;
         default: string;
@@ -258,9 +258,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     onCancel?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
 }, {
     style: Record<string, any>;

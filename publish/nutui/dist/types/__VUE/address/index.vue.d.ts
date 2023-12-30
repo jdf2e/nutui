@@ -168,7 +168,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
     initCustomSelected: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "type" | "change" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "close" | "update:visible" | "type" | "change" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -305,9 +305,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onType?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;

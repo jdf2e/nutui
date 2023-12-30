@@ -37,7 +37,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     click: (e: MouseEvent) => void;
     backTop: import("vue").Ref<boolean>;
     scrollTop: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     height: {
         type: StringConstructor;
         default: string;

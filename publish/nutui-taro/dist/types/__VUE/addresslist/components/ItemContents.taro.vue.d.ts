@@ -8,7 +8,7 @@ declare const _default: import("vue").DefineComponent<{
     editClick: (event: Event) => void;
     contentsClick: (event: Event) => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickItem" | "delIcon" | "editIcon")[], "clickItem" | "delIcon" | "editIcon", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickItem" | "delIcon" | "editIcon")[], "clickItem" | "delIcon" | "editIcon", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     item: {
         type: ObjectConstructor;
         default: {};

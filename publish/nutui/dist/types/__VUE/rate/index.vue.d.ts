@@ -115,7 +115,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     onTouchStart(event: TouchEvent): void;
     onTouchMove(event: TouchEvent): void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     count: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;

@@ -17,7 +17,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handleTime: (time: string) => void;
     currentKey: import("vue").Ref<unknown>;
     currentTime: import("vue").Ref<any[]>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "select"[], "select", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "select"[], "select", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     times: {
         type: PropType<any[]>;
         default: () => never[];

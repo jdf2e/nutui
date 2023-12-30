@@ -155,7 +155,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickOverlay: () => void;
     contentStyle: import("vue").ComputedRef<CSSProperties>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "opened" | "closed" | "cancel" | "update" | "ok")[], "update:visible" | "opened" | "closed" | "cancel" | "update" | "ok", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "update:visible" | "opened" | "closed" | "update" | "ok")[], "cancel" | "update:visible" | "opened" | "closed" | "update" | "ok", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     closeOnClickOverlay: {
         type: BooleanConstructor;
         default: boolean;
@@ -298,10 +298,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
+    onCancel?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onOpened?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
-    onCancel?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;
     onOk?: ((...args: any[]) => any) | undefined;
 }, {

@@ -40,7 +40,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     changeIndex: (index: number, active: number | string) => void;
     nutTabbarRef: import("vue").Ref<HTMLElement | null>;
     height: import("vue").Ref<string>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "tabSwitch")[], "update:modelValue" | "tabSwitch", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "tabSwitch")[], "update:modelValue" | "tabSwitch", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;
@@ -77,9 +77,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onTabSwitch?: ((...args: any[]) => any) | undefined;
 }, {
+    size: string;
     type: string;
     bottom: boolean;
-    size: string;
     safeAreaInsetBottom: boolean;
     modelValue: string | number;
     activeColor: string;

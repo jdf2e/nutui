@@ -115,7 +115,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onPathChange: (pathNodes: CascaderOption[]) => void;
     innerValue: Ref<CascaderValue>;
     innerVisible: import("vue").WritableComputedRef<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "change" | "update:modelValue" | "pathChange")[], "update:visible" | "change" | "update:modelValue" | "pathChange", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:visible" | "update:modelValue" | "pathChange")[], "change" | "update:visible" | "update:modelValue" | "pathChange", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: ArrayConstructor;
     visible: BooleanConstructor;
     title: StringConstructor;
@@ -222,8 +222,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onPathChange?: ((...args: any[]) => any) | undefined;
 }, {

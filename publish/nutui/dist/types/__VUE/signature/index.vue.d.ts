@@ -39,7 +39,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     ctx: import("vue").Ref<any>;
     isSupportTouch: import("vue").Ref<boolean>;
     events: import("vue").Ref<string[]>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("end" | "start" | "clear" | "confirm" | "signing")[], "end" | "start" | "clear" | "confirm" | "signing", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clear" | "end" | "start" | "confirm" | "signing")[], "clear" | "end" | "start" | "confirm" | "signing", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     customClass: {
         type: StringConstructor;
         default: string;

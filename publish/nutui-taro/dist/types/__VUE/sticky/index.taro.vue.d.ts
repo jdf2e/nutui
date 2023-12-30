@@ -21,7 +21,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     rootStyle: import("vue").ComputedRef<CSSProperties | undefined>;
     stickyStyle: import("vue").ComputedRef<CSSProperties>;
     refRandomId: string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     top: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;

@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, computed, toRefs, resolveComponent, openBlock, createElementBlock, createVNode, normalizeStyle, withCtx, renderSlot, createTextVNode, createElementVNode, normalizeClass, withModifiers } from "vue";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-4FrUcxMV.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Top } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";

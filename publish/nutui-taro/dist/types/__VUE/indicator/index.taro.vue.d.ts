@@ -32,7 +32,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         "nut-indicator--block": boolean;
     }>;
     padZero: (num: string | number, length?: number) => string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     size: {
         type: NumberConstructor;
         default: number;
@@ -54,8 +54,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>>, {
-    block: boolean;
     size: number;
+    block: boolean;
     current: number;
     align: IndicatorAlign;
     fillZero: boolean;

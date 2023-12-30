@@ -94,7 +94,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderIcon: (icon: Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | "";
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "closed")[], "update:visible" | "closed", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "closed")[], "update:visible" | "closed", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     msg: StringConstructor;
     duration: {
@@ -160,6 +160,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
 }, {
+    size: string | number;
     title: string;
     center: boolean;
     visible: boolean;
@@ -168,7 +169,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: string;
     cover: boolean;
     bottom: string;
-    size: string | number;
     icon: Component;
     bgColor: string;
     textAlignCenter: boolean;

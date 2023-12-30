@@ -39,7 +39,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         "nut-divider-dashed"?: undefined;
         "nut-divider-hairline"?: undefined;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     contentPosition: {
         type: PropType<DividerPosition>;
         default: string;

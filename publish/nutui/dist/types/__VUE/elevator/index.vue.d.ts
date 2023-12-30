@@ -57,7 +57,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     scrollY: Ref<number>;
     diff: Ref<number>;
     fixedTop: Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickItem" | "clickIndex" | "change")[], "clickItem" | "clickIndex" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "clickItem" | "clickIndex")[], "change" | "clickItem" | "clickIndex", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     height: {
         type: (NumberConstructor | StringConstructor)[];
         default: string;

@@ -34,7 +34,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     addAddress: (event: Event) => void;
     dataArray: any;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("add" | "clickItem" | "delIcon" | "editIcon" | "longCopy" | "longSet" | "longDel" | "swipeDel")[], "add" | "clickItem" | "delIcon" | "editIcon" | "longCopy" | "longSet" | "longDel" | "swipeDel", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("add" | "clickItem" | "delIcon" | "editIcon" | "longCopy" | "longSet" | "longDel" | "swipeDel")[], "add" | "clickItem" | "delIcon" | "editIcon" | "longCopy" | "longSet" | "longDel" | "swipeDel", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: ArrayConstructor;
         default: never[];

@@ -47,7 +47,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onAfterLeave: () => void;
     clickCover: () => void;
     isShowPopup: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:visible"[], "update:visible", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:visible"[], "update:visible", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     color: {
         type: StringConstructor;

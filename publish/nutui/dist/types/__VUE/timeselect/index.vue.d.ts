@@ -38,7 +38,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     close: () => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "update:visible")[], "select" | "update:visible", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "update:visible")[], "select" | "update:visible", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         defalut: boolean;
@@ -68,8 +68,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onSelect?: ((...args: any[]) => any) | undefined;
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
     visible: boolean;

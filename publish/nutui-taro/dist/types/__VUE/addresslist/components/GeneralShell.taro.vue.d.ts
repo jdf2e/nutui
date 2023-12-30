@@ -30,7 +30,7 @@ declare const _default: import("vue").DefineComponent<{
     swipeDelClick: (event: Event) => void;
     swipestart: () => void;
     swipemove: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickItem" | "delIcon" | "editIcon" | "longDown" | "longCopy" | "longSet" | "longDel" | "swipeDel")[], "clickItem" | "delIcon" | "editIcon" | "longDown" | "longCopy" | "longSet" | "longDel" | "swipeDel", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickItem" | "delIcon" | "editIcon" | "longDown" | "longCopy" | "longSet" | "longDel" | "swipeDel")[], "clickItem" | "delIcon" | "editIcon" | "longDown" | "longCopy" | "longSet" | "longDel" | "swipeDel", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     item: {
         type: ObjectConstructor;
         default: {};

@@ -92,7 +92,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onTouchStart: (event: TouchEvent) => void;
     onTouchMove: (event: TouchEvent) => void;
     onTouchEnd: (event: TouchEvent) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "dragEnd" | "dragStart")[], "change" | "update:modelValue" | "dragEnd" | "dragStart", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "dragEnd" | "dragStart")[], "change" | "update:modelValue" | "dragEnd" | "dragStart", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     range: {
         type: BooleanConstructor;
         default: boolean;

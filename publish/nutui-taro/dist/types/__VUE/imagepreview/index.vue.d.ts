@@ -84,7 +84,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     rootWidth: import("vue").Ref<number>;
     rootHeight: import("vue").Ref<number>;
     swipeRef: import("vue").Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "change")[], "close" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close")[], "change" | "close", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     images: {
         type: PropType<ImageInterface[]>;
         default: () => never[];

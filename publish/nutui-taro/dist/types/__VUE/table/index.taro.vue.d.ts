@@ -38,7 +38,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     stylehead: (item: TableColumns) => string;
     stylecolumn: (item: TableColumns) => string;
     curData: import("vue").Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "sorter"[], "sorter", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "sorter"[], "sorter", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     bordered: {
         type: BooleanConstructor;
         default: boolean;

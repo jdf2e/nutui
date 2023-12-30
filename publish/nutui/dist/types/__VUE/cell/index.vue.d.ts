@@ -54,7 +54,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         borderRadius: string | undefined;
     }>;
     descStyle: import("vue").ComputedRef<CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -99,11 +99,11 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
+    size: string;
     title: string;
+    replace: boolean;
     center: boolean;
     desc: string;
-    replace: boolean;
-    size: string;
     url: string;
     subTitle: string;
     descTextAlign: string;

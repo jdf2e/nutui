@@ -61,7 +61,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     imageRatio: import("vue").Ref<number>;
     displayWidth: import("vue").Ref<number>;
     displayHeight: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "scale")[], "close" | "scale", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "scale")[], "close" | "scale", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     image: {
         type: PropType<ImageInterface>;
         default: () => {};

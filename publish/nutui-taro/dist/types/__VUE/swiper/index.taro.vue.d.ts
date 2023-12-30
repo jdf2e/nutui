@@ -97,7 +97,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onTouchStart: (e: TouchEvent) => void;
     onTouchMove: (e: TouchEvent) => void;
     onTouchEnd: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     width: {
         type: (NumberConstructor | StringConstructor)[];
     };

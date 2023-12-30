@@ -32,7 +32,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         loop: boolean;
     }>;
     handleClick: (event: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("animate" | "click")[], "animate" | "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "animate")[], "click" | "animate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: PropType<AnimateType>;
         default: string;

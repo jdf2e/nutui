@@ -49,7 +49,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     widthRef: import("vue").Ref<string>;
     exceeded: import("vue").Ref<boolean>;
     expanded: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "change")[], "click" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "click")[], "change" | "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     content: {
         type: StringConstructor;
         default: string;
@@ -79,8 +79,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    onClick?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onClick?: ((...args: any[]) => any) | undefined;
 }, {
     symbol: string;
     content: string;

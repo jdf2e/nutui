@@ -139,7 +139,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     displayHeight: import("vue").Ref<number>;
     cropperWidth: import("vue").Ref<number>;
     cropperHeight: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "confirm")[], "cancel" | "confirm", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "confirm")[], "cancel" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     maxZoom: {
         type: NumberConstructor;
         default: number;

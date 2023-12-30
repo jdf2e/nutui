@@ -62,7 +62,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     isRequired: import("vue").ComputedRef<boolean>;
     labelPositionClass: import("vue").ComputedRef<string>;
     starPositionClass: import("vue").ComputedRef<string>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     prop: {
         type: StringConstructor;
         default: string;

@@ -49,7 +49,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     selected: (item: any, event: Event) => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
     current: import("vue").Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "selected")[], "update:visible" | "selected", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "selected")[], "update:visible" | "selected", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;

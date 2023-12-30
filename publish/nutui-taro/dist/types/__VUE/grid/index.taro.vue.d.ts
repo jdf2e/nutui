@@ -34,7 +34,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}, import("vue").RenderFunction, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, import("vue").EmitsOptions, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, import("vue").RenderFunction, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, import("vue").EmitsOptions, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     columnNum: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;

@@ -104,7 +104,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     select: () => void;
     onKeyup: (e: KeyboardEvent) => void;
     getModelValue: () => string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "clear" | "update:modelValue" | "blur" | "focus" | "keypress" | "confirm" | "clickInput")[], "click" | "clear" | "update:modelValue" | "blur" | "focus" | "keypress" | "confirm" | "clickInput", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "confirm" | "clickInput")[], "clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "confirm" | "clickInput", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: PropType<InputType>;
         default: string;
@@ -182,21 +182,21 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
+    onBlur?: ((...args: any[]) => any) | undefined;
     onClick?: ((...args: any[]) => any) | undefined;
     onFocus?: ((...args: any[]) => any) | undefined;
-    onBlur?: ((...args: any[]) => any) | undefined;
     onKeypress?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
     onClickInput?: ((...args: any[]) => any) | undefined;
 }, {
+    error: boolean;
     type: InputType;
     class: string;
     border: boolean;
     disabled: boolean;
     modelValue: string | number;
-    error: boolean;
     required: boolean;
     readonly: boolean;
     formatter: (value: string) => string;

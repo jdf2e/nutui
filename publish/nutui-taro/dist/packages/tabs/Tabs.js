@@ -40,7 +40,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import Taro from "@tarojs/taro";
 import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, normalizeStyle, withCtx, createElementVNode, renderSlot, Fragment, renderList, createCommentVNode, createTextVNode, toDisplayString } from "vue";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-4FrUcxMV.js";
 import { JoySmile } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
