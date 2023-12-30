@@ -112,7 +112,7 @@ importers:
         specifier: ^0.3.3
         version: 0.3.3(vitest@1.1.0)
       vue:
-        specifier: 3.3.11
+        specifier: ^3.3.11
         version: 3.3.11(typescript@5.3.3)
       vue-tsc:
         specifier: ^1.8.27
@@ -177,7 +177,7 @@ importers:
         specifier: ^5.0.10
         version: 5.0.10(@types/node@18.19.4)(sass@1.69.6)
       vue:
-        specifier: 3.3.11
+        specifier: ^3.3.11
         version: 3.3.11(typescript@5.3.3)
 
   packages/nutui-prettier-plugin:
@@ -240,7 +240,7 @@ importers:
         specifier: 3.6.21
         version: 3.6.21(postcss@8.4.32)(vue@3.3.11)
       vue:
-        specifier: 3.3.11
+        specifier: ^3.3.11
         version: 3.3.11(typescript@5.3.3)
     devDependencies:
       '@babel/core':
