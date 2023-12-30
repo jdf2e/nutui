@@ -3221,10 +3221,7 @@ const Qu = /* @__PURE__ */ K(Uu, [["render", Ju]]), { create: xu } = W("elevator
       scrollY: 0,
       diff: -1,
       fixedTop: 0
-    }), a = N(() => s.value.clientHeight), l = (c, $) => {
-      const h = "data-";
-      return c.getAttribute(h + $);
-    }, i = (c) => {
+    }), a = N(() => s.value.clientHeight), l = (c, $) => c.getAttribute("data-" + $), i = (c) => {
       Te(() => {
         !o.listGroup.includes(c) && c != null && o.listGroup.push(c);
       });
