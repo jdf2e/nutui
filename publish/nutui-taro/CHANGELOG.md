@@ -1,3 +1,34 @@
+## v4.2.6
+
+`2023-12-25`
+
+Bug Fixes
+
+- tabs: 修复 taro h5 下 placeholder 展示错误 (#2801) @eiinu
+- remove defualt font-family style (#2792) @eiinu
+
+Other Changes
+
+- collapse: remove unused prop (#2794) @eiinu
+
+## v4.2.5
+
+`2023-12-22`
+
+Features
+
+- watermark: 水印支持多行文字 (#2746), close #2742 @yi-boide
+- tabs: 开启 title-scroll 时不再需要设置 name (#2789) @eiinu
+
+Bug Fixes
+
+- textarea: 修复 taro h5 下双向绑定失效的问题 (#2768), close #2767 @Moonofweisheng
+- tabs: 修复 horizontal 方向占位元素宽度错误 (#2749) @yang1206
+- ellipsis: 修复 taro 下文本省略失效 (#2791) @yi-boide
+- tabs: 修复 iOS 下 smile 类型激活条展示问题 (#2774), close #2773 @eiinu
+- tabbar: 修复 useTaroRect 报错问题 (#2775) @eiinu
+- input-number: 修复 disabled 下未禁用点击问题 (#2783), close #2782 @eiinu
+
 ## v4.2.4
 
 `2023-12-15`

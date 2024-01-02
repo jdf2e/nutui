@@ -16,325 +16,47 @@ app.use(Range);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(40);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range basic
 
 ### Dual thumb
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range range v-model="value" @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref([20, 80]);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range range
 
 ### Range
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :max="10" :min="-10" @change="onChange" />
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(0);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range limit
 
 ### Step Size
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :step="5" @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(20);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range step
 
 ### Hidden Range
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" hidden-range @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(30);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range hidden-range
 
 ### Hidden Tag
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" :hidden-tag="true" @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(40);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range hidden-tag
 
 ### Disabled
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" disabled @change="onChange"></nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(50);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range disabled
 
 ### Custom Style
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range
-      v-model="value"
-      inactive-color="rgba(163,184,255,1)"
-      button-color="rgba(52,96,250,1)"
-      active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%"
-      @change="onChange"
-    >
-    </nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(40);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range color
 
 ### Custom Button
 
-:::demo
-
-```vue
-<style>
-.custom-button {
-  width: 26px;
-  color: #fff;
-  font-size: 10px;
-  line-height: 18px;
-  text-align: center;
-  background-color: #ee0a24;
-  border-radius: 100px;
-}
-</style>
-<template>
-  <nut-cell :style="{ padding: '40px 18px' }">
-    <nut-range v-model="value" @change="onChange">
-      <template #button>
-        <div class="custom-button">{{ value }}</div>
-      </template>
-    </nut-range>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(60);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range button
 
 ### Vertical
 
-:::demo
-
-```vue
-<style>
-.vertical_div {
-  height: 180px;
-  padding: 10px;
-}
-.div {
-  width: 150px;
-}
-.cell {
-  padding: 40px 18px;
-}
-</style>
-<template>
-  <nut-cell class="vertical_div cell">
-    <div class="div">
-      <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
-    </div>
-    <div class="div">
-      <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
-    </div>
-  </nut-cell>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value10 = ref(20);
-const value11 = ref([20, 80]);
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range vertical
 
 ### Marks
 
-:::demo
-
-```vue
-<style>
-.vertical_div {
-  height: 180px;
-  padding: 10px;
-}
-.div {
-  width: 150px;
-}
-.cell {
-  padding: 40px 18px;
-}
-</style>
-<template>
-  <div>
-    <nut-cell class="cell">
-      <nut-range v-model="state.value12" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
-    </nut-cell>
-    <nut-cell class="cell">
-      <nut-range range v-model="state.value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
-    </nut-cell>
-    <nut-cell class="vertical_div cell">
-      <div class="div">
-        <nut-range
-          v-model="state.value14"
-          @change="onChange"
-          :vertical="true"
-          :marks="marks"
-          :hiddenRange="true"
-        ></nut-range>
-      </div>
-      <div class="div">
-        <nut-range
-          range
-          v-model="state.value15"
-          @change="onChange"
-          :vertical="true"
-          :marks="marks"
-          :hiddenRange="true"
-        ></nut-range>
-      </div>
-    </nut-cell>
-  </div>
-</template>
-
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  value12: 60,
-  value13: [20, 80],
-  value14: 60,
-  value15: [20, 80]
-});
-const marks = ref({
-  0: 0,
-  20: 20,
-  40: 40,
-  60: 60,
-  80: 80,
-  100: 100
-});
-const onChange = (value) => showToast.text(value);
-</script>
-```
-
-:::
+> demo: range marks
 
 ## API
 

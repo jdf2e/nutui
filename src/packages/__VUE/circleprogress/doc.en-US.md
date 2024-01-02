@@ -16,94 +16,27 @@ app.use(CircleProgress);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="20" />
-</template>
-```
-
-:::
+> demo: circleprogress basic
 
 ### Custom Width
 
-:::demo
+> demo: circleprogress width
 
-```vue
-<template>
-  <nut-circle-progress progress="50" strokeWidth="10" />
-</template>
-```
+### Custom Color
 
-:::
-
-### Gradient
-
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" color="red" />
-  <nut-circle-progress progress="100" :color="gradientColor" />
-</template>
-<script setup>
-const gradientColor = {
-  '0%': '#FF5E5E',
-  '100%': '#FFA062'
-};
-</script>
-```
-
-:::
+> demo: circleprogress color
 
 ### Custom Size
 
-:::demo
+> demo: circleprogress size
 
-```vue
-<template>
-  <nut-circle-progress progress="50" radius="60" />
-</template>
-```
+### Custom Content
 
-:::
-
-### Custom content
-
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" radius="60">content</nut-circle-progress>
-</template>
-```
-
-:::
+> demo: circleprogress content
 
 ### Dynamic Change
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress :progress="percent"></nut-circle-progress>
-  <nut-button type="primary" @click="reduce">reduce</nut-button>
-  <nut-button type="primary" @click="add">add</nut-button>
-</template>
-<script setup>
-import { ref } from 'vue';
-const percent = ref(30);
-const add = () => {
-  percent.value = Math.min(100, percent.value + 10);
-};
-const reduce = () => {
-  percent.value = Math.max(0, percent.value - 10);
-};
-</script>
-```
-
-:::
+> demo: circleprogress change
 
 ## API
 

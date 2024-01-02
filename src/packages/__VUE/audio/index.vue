@@ -60,10 +60,11 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
+import { toRefs, ref, onMounted, reactive, watch, provide, type PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Service } from '@nutui/icons-vue';
 import NutRange from '../range/index.vue';
+import type { AudioType } from './types';
 const { create } = createComponent('audio');
 
 export default create({
@@ -102,7 +103,7 @@ export default create({
 
     // 展示的形式   controls 控制面板   progress 进度条  icon 图标 none 自定义
     type: {
-      type: String,
+      type: String as PropType<AudioType>,
       default: 'progress'
     }
   },

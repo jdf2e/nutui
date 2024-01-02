@@ -16,94 +16,27 @@ app.use(CircleProgress);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="20" />
-</template>
-```
-
-:::
+> demo: circleprogress basic
 
 ### 环形进度条自定义宽度
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" strokeWidth="10" />
-</template>
-```
-
-:::
+> demo: circleprogress width
 
 ### 环形进度条自定义颜色(支持渐变色)
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" color="red" />
-  <nut-circle-progress progress="100" :color="gradientColor" />
-</template>
-<script setup>
-const gradientColor = {
-  '0%': '#FF5E5E',
-  '100%': '#FFA062'
-};
-</script>
-```
-
-:::
+> demo: circleprogress color
 
 ### 环形进度条自定义大小
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" radius="60" />
-</template>
-```
-
-:::
+> demo: circleprogress size
 
 ### 环形进度条自定义内容
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress progress="50" radius="60">自定义</nut-circle-progress>
-</template>
-```
-
-:::
+> demo: circleprogress content
 
 ### 动态改变环形进度条的进度
 
-:::demo
-
-```vue
-<template>
-  <nut-circle-progress :progress="percent"></nut-circle-progress>
-  <nut-button type="primary" @click="reduce">减少</nut-button>
-  <nut-button type="primary" @click="add">增加</nut-button>
-</template>
-<script setup>
-import { ref } from 'vue';
-const percent = ref(30);
-const add = () => {
-  percent.value = Math.min(100, percent.value + 10);
-};
-const reduce = () => {
-  percent.value = Math.max(0, percent.value - 10);
-};
-</script>
-```
-
-:::
+> demo: circleprogress change
 
 ## API
 

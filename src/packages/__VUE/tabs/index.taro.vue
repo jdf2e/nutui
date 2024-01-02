@@ -1,7 +1,7 @@
 <template>
   <view ref="container" class="nut-tabs" :class="[direction]">
     <nut-scroll-view
-      :id="`nut-tabs__titles_${name}`"
+      :id="`nut-tabs__titles_${refRandomId}`"
       :scroll-x="getScrollX"
       :scroll-y="getScrollY"
       :scroll-with-animation="scrollWithAnimation"
@@ -29,7 +29,7 @@
             </view>
             <view class="nut-tabs__titles-item__text" :class="{ ellipsis: ellipsis }">{{ item.title }} </view>
           </view>
-          <view v-if="canShowLabel" class="nut-tabs__titles-item nut-tabs__titles-placeholder"></view>
+          <view v-if="canShowLabel && titleScroll" class="nut-tabs__titles-placeholder"></view>
         </template>
       </view>
     </nut-scroll-view>
@@ -48,17 +48,29 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import Taro from '@tarojs/taro';
+import {
+  onMounted,
+  provide,
+  VNode,
+  ref,
+  Ref,
+  computed,
+  onActivated,
+  watch,
+  nextTick,
+  CSSProperties,
+  PropType
+} from 'vue';
+import NutScrollView from '../scroll-view/index.taro.vue';
 import { JoySmile } from '@nutui/icons-vue-taro';
+import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { TypeOfFun } from '@/packages/utils/util';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, nextTick, CSSProperties } from 'vue';
 import raf from '@/packages/utils/raf';
-import Taro from '@tarojs/taro';
-import type { RectItem } from './types';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import NutScrollView from '../scroll-view/index.taro.vue';
+import type { RectItem, TabsDirection, TabsSize, TabsType } from './types';
 
 export class Title {
   title = '';
@@ -67,8 +79,9 @@ export class Title {
   disabled = false;
   constructor() {}
 }
-export type TabsSize = 'large' | 'normal' | 'small';
+
 const { create } = createComponent('tabs');
+
 export default create({
   components: {
     JoySmile,
@@ -84,16 +97,16 @@ export default create({
       default: ''
     },
     direction: {
-      type: String,
-      default: 'horizontal' //vertical
+      type: String as PropType<TabsDirection>,
+      default: 'horizontal'
     },
     size: {
-      type: String as import('vue').PropType<TabsSize>,
+      type: String as PropType<TabsSize>,
       default: 'normal'
     },
     type: {
-      type: String,
-      default: 'line' //card、line、smile
+      type: String as PropType<TabsType>,
+      default: 'line'
     },
     titleScroll: {
       type: Boolean,
@@ -130,15 +143,12 @@ export default create({
     top: {
       type: Number,
       default: 0
-    },
-    name: {
-      type: String,
-      default: ''
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const container = ref(null);
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),
@@ -218,27 +228,25 @@ export default create({
     const titleRectRef = ref<RectItem[]>([]);
     const canShowLabel = ref(false);
     const scrollIntoView = () => {
-      if (!props.name) return;
-
       raf(() => {
         Promise.all([
-          getRect(`#nut-tabs__titles_${props.name}`),
-          getAllRect(`#nut-tabs__titles_${props.name} .nut-tabs__titles-item`)
+          getRect(`#nut-tabs__titles_${refRandomId}`),
+          getAllRect(`#nut-tabs__titles_${refRandomId} .nut-tabs__titles-item`)
         ]).then(([navRect, titleRects]: any) => {
           navRectRef.value = navRect;
           titleRectRef.value = titleRects;
 
           if (navRectRef.value) {
             if (props.direction === 'vertical') {
-              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.height, 0);
-              if (titlesTotalHeight > navRectRef.value.height) {
+              const titlesTotalHeight = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.height, 0);
+              if (titlesTotalHeight > navRectRef.value?.height) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
               }
             } else {
-              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr.width, 0);
-              if (titlesTotalWidth > navRectRef.value.width) {
+              const titlesTotalWidth = titleRects.reduce((prev: number, curr: RectItem) => prev + curr?.width, 0);
+              if (titlesTotalWidth > navRectRef.value?.width) {
                 canShowLabel.value = true;
               } else {
                 canShowLabel.value = false;
@@ -253,14 +261,14 @@ export default create({
             const DEFAULT_PADDING = 11;
             const top = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.height + 0, DEFAULT_PADDING);
-            to = top - (navRectRef.value.height - titleRect.height) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.height + 0, DEFAULT_PADDING);
+            to = top - (navRectRef.value?.height - titleRect?.height) / 2;
           } else {
             const DEFAULT_PADDING = 31;
             const left = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr.width + 20, DEFAULT_PADDING);
-            to = left - (navRectRef.value.width - titleRect.width) / 2;
+              .reduce((prev: number, curr: RectItem) => prev + curr?.width + 20, DEFAULT_PADDING);
+            to = left - (navRectRef.value?.width - titleRect?.width) / 2;
           }
 
           nextTick(() => {
@@ -386,7 +394,6 @@ export default create({
       }
       return { marginLeft: px, marginRight: px };
     });
-    const refRandomId = Math.random().toString(36).slice(-8);
     return {
       titles,
       tabsContentRef,

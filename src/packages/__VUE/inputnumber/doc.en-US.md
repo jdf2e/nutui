@@ -18,175 +18,45 @@ app.use(InputNumber);
 
 Initialize a default value
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber basic
 
 ### Step size setting
 
 Set step `step` 5
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" step="5" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber step
 
 ### Limit input range
 
 `min` and `max` attributes represent the minimum and maximum values respectively
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" min="10" max="20" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(10);
-</script>
-```
-
-:::
+> demo: inputnumber limit
 
 ### Disabled state
 
 `disabled` When disabled, you cannot click the button or modify the input box.
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" disabled />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber disabled
 
 ### Read only disable input box
 
 `readonly` Set read-only disable input box input behavior
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" readonly />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber readonly
 
 ### Support decimal point
 
 Set step size `step` 0.1 `decimal places` keep 1 decimal place
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" step="0.1" decimal-places="1" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
-
-### Support asynchronous modification
-
-Asynchronous modification through `change` event and `model-value`
-
-:::demo
-
-```vue
-<template>
-  <nut-input-number :model-value="value" @change="onChange" />
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref(1);
-const onChange = (value) => {
-  showToast.loading('Asynchronous presentation changes in 2 seconds');
-  setTimeout(() => {
-    state.value = value;
-    showToast.hide();
-  }, 2000);
-};
-</script>
-```
-
-:::
+> demo: inputnumber decimal
 
 ### Custom button size
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value" button-size="30" input-width="50" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber size
 
 ### Custsom icon name
 
-:::demo
-
-```vue
-<template>
-  <nut-input-number v-model="value">
-    <template #left-icon>
-      <Left />
-    </template>
-    <template #right-icon>
-      <Right />
-    </template>
-  </nut-input-number>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Left, Right } from '@nutui/icons-vue';
-const value = ref(1);
-</script>
-```
-
-:::
+> demo: inputnumber icon
 
 ## API
 

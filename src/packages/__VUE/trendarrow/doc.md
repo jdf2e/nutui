@@ -16,137 +16,31 @@ app.use(TrendArrow);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow :sync-text-color="false" :rate="1" />
-    <nut-trend-arrow :sync-text-color="false" :rate="-0.2535" />
-  </nut-cell>
-</template>
-```
-
-:::
-
-### 改变文字颜色
-
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow :rate="10.2365" />
-    <nut-trend-arrow :rate="-0.2535" />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow basic
 
 ### 指定小数位
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow :digits="0" :rate="10.2365" />
-    <nut-trend-arrow :digits="0" :rate="-0.2535" />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow digits
 
 ### 箭头在前面
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow arrowLeft :rate="0.2535" />
-    <nut-trend-arrow arrowLeft :rate="-0.2535" />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow left
 
 ### 显示正负号
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow showSign :rate="1" />
-    <nut-trend-arrow showSign :rate="-0.2535" />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow sign
 
 ### 是否展示 0
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow showSign :rate="0" />
-    <nut-trend-arrow showSign showZero :rate="0" />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow zero
 
 ### 自定义颜色
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)" />
-    <nut-trend-arrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)" />
-    <nut-trend-arrow
-      :show-text-color="false"
-      showSign
-      :rate="-0.2535"
-      text-color="rgb(39,197,48)"
-      drop-color="rgb(255, 190, 13)"
-    />
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: trendarrow color
 
 ### 自定义图标
 
-::: demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-trend-arrow :rate="10.2365">
-      <template #up-icon><Success color="blue" width="18" height="18" /></template>
-    </nut-trend-arrow>
-    <nut-trend-arrow :rate="-10.2365">
-      <template #down-icon><Failure color="red" /></template>
-    </nut-trend-arrow>
-  </nut-cell>
-</template>
-<script setup>
-import { Success, Failure } from '@nutui/icons-vue';
-</script>
-```
-
-:::
+> demo: trendarrow icon
 
 ## API
 

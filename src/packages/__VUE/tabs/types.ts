@@ -8,3 +8,6 @@ export type RectItem = {
   top: number;
   width: number;
 };
+export type TabsDirection = 'horizontal' | 'vertical';
+export type TabsSize = 'large' | 'normal' | 'small';
+export type TabsType = 'line' | 'smile';
