@@ -23,7 +23,7 @@ app.use(TabPane);
 
 > demo: tabs smile
 
-### Title 左对齐
+### Title Align to Left v4.2.7
 
 > demo: tabs left-align
 
@@ -75,8 +75,7 @@ app.use(TabPane);
 | auto-height | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tab-pane`. | boolean | `false` |
 | sticky | Whether to use sticky mode | boolean | `false` |
 | top | Sticky offset top | number | `0` |
-| name | In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar. | string | '' |
-| align | Title alignment in the horizontal axis direction, optional values `left` `center` | string | `center` |
+| align `v4.2.7` | Title alignment in the horizontal axis direction, optional values `left` `center` | string | `center` |
 
 ### Tabs Slots
 
