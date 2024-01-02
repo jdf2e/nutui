@@ -12,7 +12,7 @@
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
-      <view class="nut-tabs__list" :class="{ 'nut-tabs__titles-left': alignment === 'left' }">
+      <view class="nut-tabs__list" :class="{ 'nut-tabs__titles-left': align === 'left' }">
         <slot v-if="$slots.titles" name="titles"></slot>
         <template v-else>
           <view
@@ -21,7 +21,7 @@
             class="nut-tabs__titles-item taro"
             :style="titleStyle"
             :class="{
-              'nut-tabs__titles-item-left': alignment === 'left',
+              'nut-tabs__titles-item-left': align === 'left',
               active: item.paneKey == modelValue,
               disabled: item.disabled
             }"
@@ -74,7 +74,7 @@ import { TypeOfFun } from '@/packages/utils/util';
 import raf from '@/packages/utils/raf';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import type { RectItem, TabsDirection, TabsSize, TabsType, Alignment } from './types';
+import type { RectItem, TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
 
 export class Title {
   title = '';
@@ -148,8 +148,8 @@ export default create({
       type: Number,
       default: 0
     },
-    alignment: {
-      type: String as PropType<Alignment>,
+    align: {
+      type: String as PropType<TabsAlign>,
       default: 'center'
     }
   },

@@ -6,7 +6,7 @@
           ref="navRef"
           class="nut-tabs__titles"
           :class="{
-            'nut-tabs__titles-left': alignment === 'left',
+            'nut-tabs__titles-left': align === 'left',
             [type]: type,
             scrollable: titleScroll,
             [size]: size
@@ -21,7 +21,7 @@
               class="nut-tabs__titles-item"
               :style="titleStyle"
               :class="{
-                'nut-tabs__titles-item-left': alignment === 'left',
+                'nut-tabs__titles-item-left': align === 'left',
                 active: item.paneKey == modelValue,
                 disabled: item.disabled
               }"
@@ -41,7 +41,7 @@
       <view
         ref="navRef"
         class="nut-tabs__titles"
-        :class="{ 'nut-tabs__titles-left': alignment === 'left', [type]: type, scrollable: titleScroll, [size]: size }"
+        :class="{ 'nut-tabs__titles-left': align === 'left', [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle"
       >
         <slot v-if="$slots.titles" name="titles"></slot>
@@ -53,7 +53,7 @@
             class="nut-tabs__titles-item"
             :style="titleStyle"
             :class="{
-              'nut-tabs__titles-item-left': alignment === 'left',
+              'nut-tabs__titles-item-left': align === 'left',
               active: item.paneKey == modelValue,
               disabled: item.disabled
             }"
@@ -103,7 +103,7 @@ import { TypeOfFun } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import raf from '@/packages/utils/raf';
 import { useTabContentTouch } from './hooks';
-import type { TabsDirection, TabsSize, TabsType, Alignment } from './types';
+import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
 
 export class Title {
   title = '';
@@ -174,8 +174,8 @@ export default create({
       type: Number,
       default: 0
     },
-    alignment: {
-      type: String as PropType<Alignment>,
+    align: {
+      type: String as PropType<TabsAlign>,
       default: 'center'
     }
   },

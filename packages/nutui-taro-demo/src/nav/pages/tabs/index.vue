@@ -6,6 +6,9 @@
     <h2>{{ t('smile') }}</h2>
     <Smile />
 
+    <h2>{{ t('leftAlign') }}</h2>
+    <LeftAlign />
+
     <h2>{{ t('autoHeight') }}</h2>
     <AutoHeight />
 
@@ -40,11 +43,13 @@ import Vertical from './vertical.vue';
 import VerticalSmile from './vertical-smile.vue';
 import Size from './size.vue';
 import Custom from './custom.vue';
+import LeftAlign from './left-align.vue';
 
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     smile: '微笑曲线',
+    leftAlign: 'Title 左对齐',
     autoHeight: '自动高度',
     swipeable: '手势滑动切换',
     scroll: '标题滚动（上下布局）',
@@ -56,6 +61,7 @@ const t = useTranslate({
   'en-US': {
     basic: 'Basic Usage',
     smile: 'Smile Type',
+    leftAlign: 'Title left align',
     autoHeight: 'Auto Height',
     swipeable: 'Swipeable',
     scroll: 'Title Scroll (horizontal)',

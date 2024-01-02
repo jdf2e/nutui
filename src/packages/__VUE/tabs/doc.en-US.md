@@ -23,6 +23,10 @@ app.use(TabPane);
 
 > demo: tabs smile
 
+### Title 左对齐
+
+> demo: tabs left-align
+
 ### Auto Height
 
 > demo: tabs auto-height
@@ -72,7 +76,7 @@ app.use(TabPane);
 | sticky | Whether to use sticky mode | boolean | `false` |
 | top | Sticky offset top | number | `0` |
 | name | In the `taro` environment, `name` must be set to enable the automatic scrolling function of the title bar. | string | '' |
-| alignment | Title alignment in the horizontal axis direction, optional values `left` `center` | string | `center` |
+| align | Title alignment in the horizontal axis direction, optional values `left` `center` | string | `center` |
 
 ### Tabs Slots
 
