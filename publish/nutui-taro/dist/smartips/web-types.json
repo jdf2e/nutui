@@ -5421,6 +5421,15 @@
               }
             },
             {
+              "name": "pagination-unselected-color",
+              "default": "`'#ddd'`",
+              "description": "分页指示器没有选中的颜色",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
               "name": "loop",
               "default": "`true`",
               "description": "是否循环轮播",

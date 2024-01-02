@@ -51,6 +51,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    paginationUnselectedColor: {
+        type: StringConstructor;
+        default: string;
+    };
 }, {
     state: {
         active: number;
@@ -144,6 +148,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    paginationUnselectedColor: {
+        type: StringConstructor;
+        default: string;
+    };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
 }, {
@@ -157,6 +165,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     touchable: boolean;
     isPreventDefault: boolean;
     isStopPropagation: boolean;
+    paginationUnselectedColor: string;
 }, {}>>;
 export default _default;
 

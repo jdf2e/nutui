@@ -11446,6 +11446,10 @@ const Dg = /* @__PURE__ */ K(gg, [["render", Ng]]), Co = Symbol("nut-swiper"), {
     isStopPropagation: {
       type: Boolean,
       default: !0
+    },
+    paginationUnselectedColor: {
+      type: String,
+      default: "#ddd"
     }
   },
   emits: ["change"],
@@ -11652,7 +11656,7 @@ function Bg(e, t, n, s, o, a) {
       (u(!0), d(ee, null, re(e.state.children.length, (l, i) => (u(), d("i", {
         key: i,
         style: L({
-          backgroundColor: e.activePagination === i ? e.paginationColor : "#ddd"
+          backgroundColor: e.activePagination === i ? e.paginationColor : e.paginationUnselectedColor
         }),
         class: B({ active: e.activePagination === i })
       }, null, 6))), 128))

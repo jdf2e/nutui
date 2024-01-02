@@ -12974,6 +12974,10 @@ var __async = (__this, __arguments, generator) => {
       isStopPropagation: {
         type: Boolean,
         default: true
+      },
+      paginationUnselectedColor: {
+        type: String,
+        default: "#ddd"
       }
     },
     emits: ["change"],
@@ -13336,7 +13340,7 @@ var __async = (__this, __arguments, generator) => {
           return vue.openBlock(), vue.createElementBlock("i", {
             key: index,
             style: vue.normalizeStyle({
-              backgroundColor: _ctx.activePagination === index ? _ctx.paginationColor : "#ddd"
+              backgroundColor: _ctx.activePagination === index ? _ctx.paginationColor : _ctx.paginationUnselectedColor
             }),
             class: vue.normalizeClass({ active: _ctx.activePagination === index })
           }, null, 6);

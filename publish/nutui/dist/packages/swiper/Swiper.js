@@ -54,6 +54,10 @@ const _sfc_main = create({
     isStopPropagation: {
       type: Boolean,
       default: true
+    },
+    paginationUnselectedColor: {
+      type: String,
+      default: "#ddd"
     }
   },
   emits: ["change"],
@@ -392,7 +396,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         return openBlock(), createElementBlock("i", {
           key: index,
           style: normalizeStyle({
-            backgroundColor: _ctx.activePagination === index ? _ctx.paginationColor : "#ddd"
+            backgroundColor: _ctx.activePagination === index ? _ctx.paginationColor : _ctx.paginationUnselectedColor
           }),
           class: normalizeClass({ active: _ctx.activePagination === index })
         }, null, 6);
