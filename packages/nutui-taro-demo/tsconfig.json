@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
