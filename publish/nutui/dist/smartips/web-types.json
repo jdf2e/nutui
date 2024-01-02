@@ -6225,9 +6225,9 @@
               }
             },
             {
-              "name": "name",
-              "default": "''",
-              "description": "在`taro`环境下，必须设置`name`以开启标题栏自动滚动功能。",
+              "name": "align ",
+              "default": "`center`",
+              "description": "横轴方向的标题对齐方式，可选值 left、center",
               "value": {
                 "type": "string",
                 "kind": "expression"

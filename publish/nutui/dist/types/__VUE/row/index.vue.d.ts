@@ -49,8 +49,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>>, {
     type: string;
     justify: string;
-    gutter: string | number;
     align: string;
+    gutter: string | number;
     flexWrap: string;
 }, {}>>;
 export default _default;

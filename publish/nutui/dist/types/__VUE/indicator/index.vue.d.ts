@@ -56,8 +56,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>>, {
     size: number;
     block: boolean;
-    current: number;
     align: IndicatorAlign;
+    current: number;
     fillZero: boolean;
 }, {}>>;
 export default _default;

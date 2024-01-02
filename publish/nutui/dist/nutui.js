@@ -3644,6 +3644,10 @@ const { create: Nc } = W("tabs"), Dc = Nc({
     top: {
       type: Number,
       default: 0
+    },
+    align: {
+      type: String,
+      default: "center"
     }
   },
   emits: ["update:modelValue", "click", "change"],
@@ -3804,12 +3808,21 @@ function Bc(e, t, n, s, o, a) {
       default: te(() => [
         m("view", {
           ref: "navRef",
-          class: B(["nut-tabs__titles", { [e.type]: e.type, scrollable: e.titleScroll, [e.size]: e.size }]),
+          class: B(["nut-tabs__titles", {
+            "nut-tabs__titles-left": e.align === "left",
+            [e.type]: e.type,
+            scrollable: e.titleScroll,
+            [e.size]: e.size
+          }]),
           style: L(e.tabsNavStyle)
         }, [
           e.$slots.titles ? D(e.$slots, "titles", { key: 0 }) : (u(!0), d(ee, { key: 1 }, re(e.titles, (r, p) => (u(), d("view", {
             key: r.paneKey,
-            class: B(["nut-tabs__titles-item", { active: r.paneKey == e.modelValue, disabled: r.disabled }]),
+            class: B(["nut-tabs__titles-item", {
+              "nut-tabs__titles-item-left": e.align === "left",
+              active: r.paneKey == e.modelValue,
+              disabled: r.disabled
+            }]),
             style: L(e.titleStyle),
             onClick: (f) => e.tabChange(r, p)
           }, [
@@ -3835,14 +3848,18 @@ function Bc(e, t, n, s, o, a) {
     }, 8, ["top", "container", "onScroll"])) : (u(), d("view", {
       key: 1,
       ref: "navRef",
-      class: B(["nut-tabs__titles", { [e.type]: e.type, scrollable: e.titleScroll, [e.size]: e.size }]),
+      class: B(["nut-tabs__titles", { "nut-tabs__titles-left": e.align === "left", [e.type]: e.type, scrollable: e.titleScroll, [e.size]: e.size }]),
       style: L(e.tabsNavStyle)
     }, [
       e.$slots.titles ? D(e.$slots, "titles", { key: 0 }) : (u(!0), d(ee, { key: 1 }, re(e.titles, (r, p) => (u(), d("view", {
         key: r.paneKey,
         ref_for: !0,
         ref: (f) => e.setTabItemRef(f, p),
-        class: B(["nut-tabs__titles-item", { active: r.paneKey == e.modelValue, disabled: r.disabled }]),
+        class: B(["nut-tabs__titles-item", {
+          "nut-tabs__titles-item-left": e.align === "left",
+          active: r.paneKey == e.modelValue,
+          disabled: r.disabled
+        }]),
         style: L(e.titleStyle),
         onClick: (f) => e.tabChange(r, p)
       }, [
@@ -12123,7 +12140,7 @@ function xg(e) {
   const t = Fe();
   t && Object.assign(t.proxy, e);
 }
-const { create: e0 } = W("countup"), t0 = e0({
+const { create: ey } = W("countup"), ty = ey({
   props: {
     initNum: {
       type: Number,
@@ -12385,9 +12402,9 @@ const { create: e0 } = W("countup"), t0 = e0({
       turnNumber: b
     });
   }
-}), n0 = { class: "nut-countup" }, o0 = ["turn-number"];
-function l0(e, t, n, s, o, a) {
-  return u(), d("view", n0, [
+}), ny = { class: "nut-countup" }, oy = ["turn-number"];
+function ly(e, t, n, s, o, a) {
+  return u(), d("view", ny, [
     e.customBgImg != "" ? (u(), d(ee, { key: 0 }, [
       e.type == "machine" ? (u(), d("view", {
         key: 0,
@@ -12464,7 +12481,7 @@ function l0(e, t, n, s, o, a) {
               lineHeight: e.numHeight + "px"
             })
           }, _(r), 5))), 128))
-        ], 12, o0))), 128)),
+        ], 12, oy))), 128)),
         e.pointNum > 0 ? (u(), d("view", {
           key: 0,
           class: "nut-countup-pointstyl",
@@ -12482,12 +12499,12 @@ function l0(e, t, n, s, o, a) {
     ], 64))
   ]);
 }
-const s0 = /* @__PURE__ */ K(t0, [["render", l0]]), a0 = (e) => {
+const sy = /* @__PURE__ */ K(ty, [["render", ly]]), ay = (e) => {
   if (!e)
     return Date.now();
   let t = e;
   return t = +t > 0 ? +t : t.toString().replace(/-/g, "/"), new Date(t).getTime();
-}, { create: i0 } = W("countdown"), r0 = "NutCountdown", u0 = i0({
+}, { create: iy } = W("countdown"), ry = "NutCountdown", uy = iy({
   props: {
     modelValue: {
       type: Object,
@@ -12542,7 +12559,7 @@ const s0 = /* @__PURE__ */ K(t0, [["render", l0]]), a0 = (e) => {
     "onPaused"
   ],
   setup(e, { emit: t, slots: n }) {
-    const s = ke(r0), o = ue({
+    const s = ke(ry), o = ue({
       restTime: 0,
       // 倒计时剩余时间时间
       timer: null,
@@ -12553,7 +12570,7 @@ const s0 = /* @__PURE__ */ K(t0, [["render", l0]]), a0 = (e) => {
       diffTime: 0
       // 设置了 startTime 时，与 date.now() 的差异
     }), a = N(() => r(o.restTime)), l = () => {
-      o.handleEndTime = e.endTime, o.diffTime = Date.now() - a0(e.startTime), o.counting || (o.counting = !0), i();
+      o.handleEndTime = e.endTime, o.diffTime = Date.now() - ay(e.startTime), o.counting || (o.counting = !0), i();
     }, i = () => {
       window !== void 0 && (o.timer = requestAnimationFrame(() => {
         if (o.counting) {
@@ -12618,17 +12635,17 @@ const s0 = /* @__PURE__ */ K(t0, [["render", l0]]), a0 = (e) => {
       reset: y
     });
   }
-}), c0 = { class: "nut-countdown" }, d0 = ["innerHTML"];
-function f0(e, t, n, s, o, a) {
-  return u(), d("view", c0, [
+}), cy = { class: "nut-countdown" }, dy = ["innerHTML"];
+function fy(e, t, n, s, o, a) {
+  return u(), d("view", cy, [
     e.slots.default ? D(e.$slots, "default", { key: 0 }) : (u(), d("view", {
       key: 1,
       class: "nut-countdown__content",
       innerHTML: e.renderTime
-    }, null, 8, d0))
+    }, null, 8, dy))
   ]);
 }
-const p0 = /* @__PURE__ */ K(u0, [["render", f0]]), { create: m0 } = W("tag"), h0 = m0({
+const py = /* @__PURE__ */ K(uy, [["render", fy]]), { create: my } = W("tag"), hy = my({
   props: {
     color: {
       type: String,
@@ -12689,7 +12706,7 @@ const p0 = /* @__PURE__ */ K(u0, [["render", f0]]), { create: m0 } = W("tag"), h
     };
   }
 });
-function g0(e, t, n, s, o, a) {
+function gy(e, t, n, s, o, a) {
   const l = j("Close");
   return u(), d("view", {
     class: B(e.classes),
@@ -12706,7 +12723,7 @@ function g0(e, t, n, s, o, a) {
     }, null, 8, ["onClick"])) : S("", !0)
   ], 6);
 }
-const To = /* @__PURE__ */ K(h0, [["render", g0]]), { create: y0 } = W("popover"), v0 = y0({
+const To = /* @__PURE__ */ K(hy, [["render", gy]]), { create: yy } = W("popover"), vy = yy({
   components: {
     NutPopup: Le
   },
@@ -12810,11 +12827,11 @@ const To = /* @__PURE__ */ K(h0, [["render", g0]]), { create: y0 } = W("popover"
       renderIcon: lt
     };
   }
-}), $0 = {
+}), $y = {
   ref: "popoverContentRef",
   class: "nut-popover-content-group"
-}, b0 = ["onClick"], k0 = { class: "nut-popover-menu-item-name" };
-function w0(e, t, n, s, o, a) {
+}, by = ["onClick"], ky = { class: "nut-popover-menu-item-name" };
+function wy(e, t, n, s, o, a) {
   const l = j("nut-popup");
   return u(), d(ee, null, [
     e.targetId ? S("", !0) : (u(), d("div", {
@@ -12843,7 +12860,7 @@ function w0(e, t, n, s, o, a) {
         "close-on-click-overlay": e.closeOnClickOverlay
       }, {
         default: te(() => [
-          m("view", $0, [
+          m("view", $y, [
             e.showArrow ? (u(), d("view", {
               key: 0,
               class: B(e.popoverArrow),
@@ -12859,8 +12876,8 @@ function w0(e, t, n, s, o, a) {
                 key: 0,
                 class: "nut-popover-item-img"
               })) : S("", !0),
-              m("view", k0, _(i.name), 1)
-            ], 10, b0))), 128))
+              m("view", ky, _(i.name), 1)
+            ], 10, by))), 128))
           ], 512)
         ]),
         _: 3
@@ -12868,7 +12885,7 @@ function w0(e, t, n, s, o, a) {
     ], 6)
   ], 64);
 }
-const No = /* @__PURE__ */ K(v0, [["render", w0]]), { create: C0 } = W("skeleton"), S0 = C0({
+const No = /* @__PURE__ */ K(vy, [["render", wy]]), { create: Cy } = W("skeleton"), Sy = Cy({
   components: {
     NutAvatar: xt
   },
@@ -12948,18 +12965,18 @@ const No = /* @__PURE__ */ K(v0, [["render", w0]]), { create: C0 } = W("skeleton
       }
     };
   }
-}), T0 = { key: 0 }, N0 = {
+}), Ty = { key: 0 }, Ny = {
   key: 1,
   class: "nut-skeleton"
-}, D0 = {
+}, Dy = {
   key: 0,
   class: "nut-skeleton-animation"
-}, I0 = { class: "nut-skeleton-content" };
-function _0(e, t, n, s, o, a) {
+}, Iy = { class: "nut-skeleton-content" };
+function _y(e, t, n, s, o, a) {
   const l = j("nut-avatar");
-  return e.loading ? (u(), d("view", N0, [
-    e.animated ? (u(), d("view", D0)) : S("", !0),
-    m("view", I0, [
+  return e.loading ? (u(), d("view", Ny, [
+    e.animated ? (u(), d("view", Dy)) : S("", !0),
+    m("view", Iy, [
       e.avatar ? (u(), x(l, {
         key: 0,
         class: B(e.avatarClass),
@@ -12982,11 +12999,11 @@ function _0(e, t, n, s, o, a) {
         }, null, 6))), 128))
       ], 4)
     ])
-  ])) : (u(), d("view", T0, [
+  ])) : (u(), d("view", Ty, [
     D(e.$slots, "default")
   ]));
 }
-const B0 = /* @__PURE__ */ K(S0, [["render", _0]]), Do = Symbol("nut-collapse"), { create: M0 } = W("collapse"), L0 = M0({
+const By = /* @__PURE__ */ K(Sy, [["render", _y]]), Do = Symbol("nut-collapse"), { create: My } = W("collapse"), Ly = My({
   props: {
     modelValue: {
       type: [String, Number, Array],
@@ -13027,16 +13044,16 @@ const B0 = /* @__PURE__ */ K(S0, [["render", _0]]), Do = Symbol("nut-collapse"),
       isExpanded: (i) => e.accordion ? s.value === i : Array.isArray(s.value) ? s.value.includes(i) : !1
     }), { nutCollapseRef: n };
   }
-}), E0 = {
+}), Ey = {
   ref: "nutCollapseRef",
   class: "nut-collapse"
 };
-function P0(e, t, n, s, o, a) {
-  return u(), d("view", E0, [
+function Py(e, t, n, s, o, a) {
+  return u(), d("view", Ey, [
     D(e.$slots, "default")
   ], 512);
 }
-const A0 = /* @__PURE__ */ K(L0, [["render", P0]]), { create: z0 } = W("collapse-item"), V0 = z0({
+const Ay = /* @__PURE__ */ K(Ly, [["render", Py]]), { create: zy } = W("collapse-item"), Vy = zy({
   props: {
     title: {
       type: String,
@@ -13114,20 +13131,20 @@ const A0 = /* @__PURE__ */ K(L0, [["render", P0]]), { create: z0 } = W("collapse
       onTransitionEnd: r
     };
   }
-}), O0 = { class: "nut-collapse-item__title-main" }, H0 = { class: "nut-collapse-item__title-main-value" }, R0 = ["innerHTML"], F0 = {
+}), Oy = { class: "nut-collapse-item__title-main" }, Hy = { class: "nut-collapse-item__title-main-value" }, Ry = ["innerHTML"], Fy = {
   key: 2,
   class: "nut-collapse-item__title-label"
-}, W0 = {
+}, Wy = {
   key: 0,
   class: "nut-collapse-item__title-sub"
-}, Y0 = ["innerHTML"], j0 = {
+}, Yy = ["innerHTML"], jy = {
   key: 0,
   class: "nut-collapse__item-extraWrapper"
-}, K0 = { class: "nut-collapse__item-extraWrapper__extraRender" }, U0 = {
+}, Ky = { class: "nut-collapse__item-extraWrapper__extraRender" }, Uy = {
   ref: "contentRef",
   class: "nut-collapse__item-wrapper__content"
 };
-function X0(e, t, n, s, o, a) {
+function Xy(e, t, n, s, o, a) {
   return u(), d("view", {
     class: B(e.classes)
   }, [
@@ -13135,23 +13152,23 @@ function X0(e, t, n, s, o, a) {
       class: B(["nut-collapse-item__title", { "nut-collapse-item__title--disabled": e.disabled }]),
       onClick: t[0] || (t[0] = (...l) => e.toggle && e.toggle(...l))
     }, [
-      m("view", O0, [
-        m("view", H0, [
+      m("view", Oy, [
+        m("view", Hy, [
           e.$slots.title ? D(e.$slots, "title", { key: 0 }) : (u(), d("view", {
             key: 1,
             class: "nut-collapse-item__title-mtitle",
             innerHTML: e.title
-          }, null, 8, R0)),
-          e.label ? (u(), d("view", F0, _(e.label), 1)) : S("", !0)
+          }, null, 8, Ry)),
+          e.label ? (u(), d("view", Fy, _(e.label), 1)) : S("", !0)
         ])
       ]),
-      e.$slots.value ? (u(), d("view", W0, [
+      e.$slots.value ? (u(), d("view", Wy, [
         D(e.$slots, "value")
       ])) : (u(), d("view", {
         key: 1,
         class: "nut-collapse-item__title-sub",
         innerHTML: e.value
-      }, null, 8, Y0)),
+      }, null, 8, Yy)),
       m("view", {
         class: B(["nut-collapse-item__title-icon", { "nut-collapse-item__title-icon--expanded": e.expanded }]),
         style: L({ transform: "rotate(" + (e.expanded ? e.rotate : 0) + "deg)" })
@@ -13159,8 +13176,8 @@ function X0(e, t, n, s, o, a) {
         e.$slots.icon ? D(e.$slots, "icon", { key: 0 }) : (u(), x(Ae(e.renderIcon(e.icon)), { key: 1 }))
       ], 6)
     ], 2),
-    e.$slots.extra ? (u(), d("view", j0, [
-      m("div", K0, [
+    e.$slots.extra ? (u(), d("view", jy, [
+      m("div", Ky, [
         D(e.$slots, "extra")
       ])
     ])) : S("", !0),
@@ -13173,13 +13190,13 @@ function X0(e, t, n, s, o, a) {
       }),
       onTransitionend: t[1] || (t[1] = (...l) => e.onTransitionEnd && e.onTransitionEnd(...l))
     }, [
-      m("view", U0, [
+      m("view", Uy, [
         D(e.$slots, "default")
       ], 512)
     ], 36)
   ], 2);
 }
-const q0 = /* @__PURE__ */ K(V0, [["render", X0]]), G0 = Dt({
+const qy = /* @__PURE__ */ K(Vy, [["render", Xy]]), Gy = Dt({
   props: {
     slots: {
       type: Array,
@@ -13193,9 +13210,9 @@ const q0 = /* @__PURE__ */ K(V0, [["render", X0]]), G0 = Dt({
   setup(e) {
     return () => we("view", {}, e.slots[0] ? e.slots[0](e.record) : e.slots[1](e.record));
   }
-}), { create: Z0 } = W("table"), J0 = "NutTable", Q0 = Z0({
+}), { create: Zy } = W("table"), Jy = "NutTable", Qy = Zy({
   components: {
-    RenderColumn: G0,
+    RenderColumn: Gy,
     DownArrow: Vn
   },
   props: {
@@ -13222,7 +13239,7 @@ const q0 = /* @__PURE__ */ K(V0, [["render", X0]]), G0 = Dt({
   },
   emits: ["sorter"],
   setup(e, { emit: t }) {
-    const n = ke(J0), s = ue({
+    const n = ke(Jy), s = ue({
       curData: e.data
     }), o = (v) => ({
       "nut-table__main__head__tr--border": e.bordered,
@@ -13249,24 +13266,24 @@ const q0 = /* @__PURE__ */ K(V0, [["render", X0]]), G0 = Dt({
       stylecolumn: l
     });
   }
-}), x0 = { class: "nut-table" }, ey = { class: "nut-table__main__head" }, ty = { class: "nut-table__main__head__tr" }, ny = ["onClick"], oy = { class: "nut-table__main__body" }, ly = { key: 1 }, sy = {
+}), xy = { class: "nut-table" }, e0 = { class: "nut-table__main__head" }, t0 = { class: "nut-table__main__head__tr" }, n0 = ["onClick"], o0 = { class: "nut-table__main__body" }, l0 = { key: 1 }, s0 = {
   key: 0,
   class: "nut-table__nodata"
-}, ay = {
+}, a0 = {
   key: 0,
   class: "nut-table__nodata__text"
-}, iy = {
+}, i0 = {
   key: 1,
   class: "nut-table__summary"
-}, ry = ["innerHTML"];
-function uy(e, t, n, s, o, a) {
+}, r0 = ["innerHTML"];
+function u0(e, t, n, s, o, a) {
   const l = j("DownArrow"), i = j("RenderColumn");
-  return u(), d("view", x0, [
+  return u(), d("view", xy, [
     m("view", {
       class: B(["nut-table__main", { "nut-table__main--striped": e.striped }])
     }, [
-      m("view", ey, [
-        m("view", ty, [
+      m("view", e0, [
+        m("view", t0, [
           (u(!0), d(ee, null, re(e.columns, (r) => (u(), d("span", {
             key: r.key,
             class: B(["nut-table__main__head__tr__th", e.cellClasses(r)]),
@@ -13280,10 +13297,10 @@ function uy(e, t, n, s, o, a) {
               width: "12px",
               height: "12px"
             })) : S("", !0)
-          ], 14, ny))), 128))
+          ], 14, n0))), 128))
         ])
       ]),
-      m("view", oy, [
+      m("view", o0, [
         (u(!0), d(ee, null, re(e.curData, (r) => (u(), d("view", {
           key: r,
           class: "nut-table__main__body__tr"
@@ -13297,28 +13314,28 @@ function uy(e, t, n, s, o, a) {
               key: 0,
               slots: [f, r[p]],
               record: r
-            }, null, 8, ["slots", "record"])) : (u(), d("view", ly, _(r[p]), 1))
+            }, null, 8, ["slots", "record"])) : (u(), d("view", l0, _(r[p]), 1))
           ], 6))), 128))
         ]))), 128))
       ])
     ], 2),
-    e.curData.length ? S("", !0) : (u(), d("view", sy, [
+    e.curData.length ? S("", !0) : (u(), d("view", s0, [
       m("div", {
         class: B(["nut-table__nodata", { "nut-table__nodata--border": e.bordered }])
       }, [
         D(e.$slots, "nodata"),
-        e.$slots.nodata ? S("", !0) : (u(), d("div", ay, _(e.translate("noData")), 1))
+        e.$slots.nodata ? S("", !0) : (u(), d("div", a0, _(e.translate("noData")), 1))
       ], 2)
     ])),
-    e.summary ? (u(), d("view", iy, [
+    e.summary ? (u(), d("view", i0, [
       m("span", {
         class: "nut-table__summary__text",
         innerHTML: e.summary().value
-      }, null, 8, ry)
+      }, null, 8, r0)
     ])) : S("", !0)
   ]);
 }
-const cy = /* @__PURE__ */ K(Q0, [["render", uy]]), { create: dy } = W("animate"), fy = dy({
+const c0 = /* @__PURE__ */ K(Qy, [["render", u0]]), { create: d0 } = W("animate"), f0 = d0({
   props: {
     type: {
       type: String,
@@ -13363,9 +13380,9 @@ const cy = /* @__PURE__ */ K(Q0, [["render", uy]]), { create: dy } = W("animate"
       }
     ), { classes: s, handleClick: a };
   }
-}), py = { class: "nut-animate" };
-function my(e, t, n, s, o, a) {
-  return u(), d("view", py, [
+}), p0 = { class: "nut-animate" };
+function m0(e, t, n, s, o, a) {
+  return u(), d("view", p0, [
     m("view", {
       class: B(e.classes),
       style: L({
@@ -13377,7 +13394,7 @@ function my(e, t, n, s, o, a) {
     ], 6)
   ]);
 }
-const hy = /* @__PURE__ */ K(fy, [["render", my]]), { create: gy } = W("ellipsis"), yy = gy({
+const h0 = /* @__PURE__ */ K(f0, [["render", m0]]), { create: g0 } = W("ellipsis"), y0 = g0({
   props: {
     content: {
       type: String,
@@ -13476,15 +13493,15 @@ const hy = /* @__PURE__ */ K(fy, [["render", my]]), { create: gy } = W("ellipsis
     };
     return ce(G({}, me(l)), { root: n, ellipsis: a, clickHandle: y, handleClick: g });
   }
-}), vy = { key: 0 }, $y = { key: 1 }, by = { key: 2 };
-function ky(e, t, n, s, o, a) {
+}), v0 = { key: 0 }, $0 = { key: 1 }, b0 = { key: 2 };
+function k0(e, t, n, s, o, a) {
   return u(), d("view", {
     ref: "root",
     class: "nut-ellipsis",
     onClick: t[2] || (t[2] = (...l) => e.handleClick && e.handleClick(...l))
   }, [
-    e.exceeded ? S("", !0) : (u(), d("view", vy, _(e.content), 1)),
-    e.exceeded && !e.expanded ? (u(), d("view", $y, [
+    e.exceeded ? S("", !0) : (u(), d("view", v0, _(e.content), 1)),
+    e.exceeded && !e.expanded ? (u(), d("view", $0, [
       ge(_(e.ellipsis && e.ellipsis.leading), 1),
       e.expandText ? (u(), d("span", {
         key: 0,
@@ -13493,7 +13510,7 @@ function ky(e, t, n, s, o, a) {
       }, _(e.expandText), 1)) : S("", !0),
       ge(_(e.ellipsis && e.ellipsis.tailing), 1)
     ])) : S("", !0),
-    e.exceeded && e.expanded ? (u(), d("view", by, [
+    e.exceeded && e.expanded ? (u(), d("view", b0, [
       ge(_(e.content) + " ", 1),
       e.expandText ? (u(), d("span", {
         key: 0,
@@ -13503,7 +13520,7 @@ function ky(e, t, n, s, o, a) {
     ])) : S("", !0)
   ], 512);
 }
-const wy = /* @__PURE__ */ K(yy, [["render", ky]]), { componentName: Cy, create: Sy } = W("watermark"), Ty = Sy({
+const w0 = /* @__PURE__ */ K(y0, [["render", k0]]), { componentName: C0, create: S0 } = W("watermark"), T0 = S0({
   props: {
     name: {
       type: String,
@@ -13642,7 +13659,7 @@ const wy = /* @__PURE__ */ K(yy, [["render", ky]]), { componentName: Cy, create:
       }
     );
     const h = N(() => {
-      const k = Cy;
+      const k = C0;
       return {
         [k]: !0,
         [`${k}-full-page`]: e.fullPage
@@ -13651,7 +13668,7 @@ const wy = /* @__PURE__ */ K(yy, [["render", ky]]), { componentName: Cy, create:
     return ce(G({}, me(t)), { classes: h });
   }
 });
-function Ny(e, t, n, s, o, a) {
+function N0(e, t, n, s, o, a) {
   return u(), d("view", {
     class: B(e.classes),
     style: L({
@@ -13661,7 +13678,7 @@ function Ny(e, t, n, s, o, a) {
     })
   }, null, 6);
 }
-const Dy = /* @__PURE__ */ K(Ty, [["render", Ny]]), { create: Iy } = W("trend-arrow"), _y = Iy({
+const D0 = /* @__PURE__ */ K(T0, [["render", N0]]), { create: I0 } = W("trend-arrow"), _0 = I0({
   components: { TriangleUp: Pi, TriangleDown: _i },
   props: {
     rate: {
@@ -13720,10 +13737,10 @@ const Dy = /* @__PURE__ */ K(Ty, [["render", Ny]]), { create: Iy } = W("trend-ar
     });
     return ce(G({}, me(t)), { calcRate: n, calcStyle: s });
   }
-}), By = { class: "nut-trend-arrow" };
-function My(e, t, n, s, o, a) {
+}), B0 = { class: "nut-trend-arrow" };
+function M0(e, t, n, s, o, a) {
   const l = j("TriangleUp"), i = j("TriangleDown");
-  return u(), d("view", By, [
+  return u(), d("view", B0, [
     e.arrowLeft ? S("", !0) : (u(), d("span", {
       key: 0,
       class: "nut-trend-arrow-icon-before nut-trend-arrow-rate",
@@ -13742,7 +13759,7 @@ function My(e, t, n, s, o, a) {
     }, _(e.calcRate), 5)) : S("", !0)
   ]);
 }
-const Ly = /* @__PURE__ */ K(_y, [["render", My]]), { create: Ey } = W("tour"), Py = Ey({
+const L0 = /* @__PURE__ */ K(_0, [["render", M0]]), { create: E0 } = W("tour"), P0 = E0({
   components: {
     NutPopover: No,
     Close: It
@@ -13855,17 +13872,17 @@ const Ly = /* @__PURE__ */ K(_y, [["render", My]]), { create: Ey } = W("tour"), 
       handleClickMask: p
     });
   }
-}), Ay = {
+}), A0 = {
   key: 0,
   class: "nut-tour-content"
-}, zy = {
+}, z0 = {
   key: 0,
   class: "nut-tour-content-top"
-}, Vy = { class: "nut-tour-content-inner" }, Oy = { class: "nut-tour-content-bottom" }, Hy = { class: "nut-tour-content-bottom-init" }, Ry = { class: "nut-tour-content-bottom-operate" }, Fy = {
+}, V0 = { class: "nut-tour-content-inner" }, O0 = { class: "nut-tour-content-bottom" }, H0 = { class: "nut-tour-content-bottom-init" }, R0 = { class: "nut-tour-content-bottom-operate" }, F0 = {
   key: 1,
   class: "nut-tour-content nut-tour-content-tile"
-}, Wy = { class: "nut-tour-content-inner" };
-function Yy(e, t, n, s, o, a) {
+}, W0 = { class: "nut-tour-content-inner" };
+function Y0(e, t, n, s, o, a) {
   const l = j("Close"), i = j("nut-popover");
   return u(), d("div", {
     class: B(e.classes)
@@ -13900,18 +13917,18 @@ function Yy(e, t, n, s, o, a) {
         }, {
           content: te(() => [
             D(e.$slots, "default", {}, () => [
-              e.type == "step" ? (u(), d("div", Ay, [
-                e.showTitleBar ? (u(), d("div", zy, [
+              e.type == "step" ? (u(), d("div", A0, [
+                e.showTitleBar ? (u(), d("div", z0, [
                   m("div", {
                     onClick: t[1] || (t[1] = (...f) => e.close && e.close(...f))
                   }, [
                     le(l, { class: "nut-tour-content-top-close" })
                   ])
                 ])) : S("", !0),
-                m("div", Vy, _(r.content), 1),
-                m("div", Oy, [
-                  m("div", Hy, _(e.active + 1) + "/" + _(e.steps.length), 1),
-                  m("div", Ry, [
+                m("div", V0, _(r.content), 1),
+                m("div", O0, [
+                  m("div", H0, _(e.active + 1) + "/" + _(e.steps.length), 1),
+                  m("div", R0, [
                     D(e.$slots, "prev-step", {}, () => [
                       e.active != 0 && e.showPrevStep ? (u(), d("div", {
                         key: 0,
@@ -13934,8 +13951,8 @@ function Yy(e, t, n, s, o, a) {
                   ])
                 ])
               ])) : S("", !0),
-              e.type == "tile" ? (u(), d("div", Fy, [
-                m("div", Wy, _(r.content), 1)
+              e.type == "tile" ? (u(), d("div", F0, [
+                m("div", W0, _(r.content), 1)
               ])) : S("", !0)
             ])
           ]),
@@ -13945,7 +13962,7 @@ function Yy(e, t, n, s, o, a) {
     ]))), 128))
   ], 2);
 }
-const jy = /* @__PURE__ */ K(Py, [["render", Yy]]), { create: Ky } = W("address"), Uy = "NutAddress", Xy = Ky({
+const j0 = /* @__PURE__ */ K(P0, [["render", Y0]]), { create: K0 } = W("address"), U0 = "NutAddress", X0 = K0({
   components: {
     NutPopup: Le,
     NutElevator: xn,
@@ -14015,7 +14032,7 @@ const jy = /* @__PURE__ */ K(Py, [["render", Yy]]), { create: Ky } = W("address"
   }),
   emits: ["update:visible", "update:modelValue", "type", "change", "selected", "close", "closeMask", "switchModule"],
   setup(e, { emit: t }) {
-    const n = ke(Uy), s = P(null), o = P(null), a = P(e.visible), l = P(e.type), i = P(0), r = P(0), p = P(["province", "city", "country", "town"]), f = P(null), v = P([0, 0, 0, 0]), y = ue([]), g = N(() => {
+    const n = ke(U0), s = P(null), o = P(null), a = P(e.visible), l = P(e.type), i = P(0), r = P(0), p = P(["province", "city", "country", "town"]), f = P(null), v = P([0, 0, 0, 0]), y = ue([]), g = N(() => {
       switch (i.value) {
         case 0:
           return e.province;
@@ -14158,13 +14175,13 @@ const jy = /* @__PURE__ */ K(Py, [["render", Yy]]), { create: Ky } = W("address"
       scrollDom: f
     });
   }
-}), qy = { class: "nut-address" }, Gy = { class: "nut-address__header" }, Zy = { class: "nut-address__header__title" }, Jy = {
+}), q0 = { class: "nut-address" }, G0 = { class: "nut-address__header" }, Z0 = { class: "nut-address__header__title" }, J0 = {
   key: 0,
   class: "nut-address__custom"
-}, Qy = {
+}, Q0 = {
   ref: "tabRegion",
   class: "nut-address__region"
-}, xy = ["onClick"], ev = {
+}, x0 = ["onClick"], ev = {
   key: 0,
   class: "active nut-address__region-item"
 }, tv = {
@@ -14202,8 +14219,8 @@ function mv(e, t, n, s, o, a) {
     onOpen: t[4] || (t[4] = (y) => e.closeWay = "self")
   }, {
     default: te(() => [
-      m("view", qy, [
-        m("view", Gy, [
+      m("view", q0, [
+        m("view", G0, [
           m("view", {
             class: "nut-address__header-back",
             onClick: t[0] || (t[0] = (...y) => e.switchModule && e.switchModule(...y))
@@ -14214,7 +14231,7 @@ function mv(e, t, n, s, o, a) {
               ])
             ])
           ]),
-          m("view", Zy, _(e.privateType == "custom" ? e.customAddressTitle || e.translate("selectRegion") : e.existAddressTitle || e.translate("deliveryTo")), 1),
+          m("view", Z0, _(e.privateType == "custom" ? e.customAddressTitle || e.translate("selectRegion") : e.existAddressTitle || e.translate("deliveryTo")), 1),
           m("view", {
             class: "nut-address__header-close",
             onClick: t[1] || (t[1] = (y) => e.handClose("cross"))
@@ -14227,15 +14244,15 @@ function mv(e, t, n, s, o, a) {
             ])
           ])
         ]),
-        ["custom", "custom2"].includes(e.privateType) ? (u(), d("view", Jy, [
-          m("view", Qy, [
+        ["custom", "custom2"].includes(e.privateType) ? (u(), d("view", J0, [
+          m("view", Q0, [
             (u(!0), d(ee, null, re(e.selectedRegion, (y, g) => (u(), d("view", {
               key: g,
               class: B(["nut-address__region-item", g == e.tabIndex ? "active" : ""]),
               onClick: (b) => e.changeRegionTab(y, g)
             }, [
               m("view", null, _(e.getTabName(y, g)), 1)
-            ], 10, xy))), 128)),
+            ], 10, x0))), 128)),
             e.tabIndex == e.selectedRegion.length ? (u(), d("view", ev, [
               m("view", null, _(e.getTabName(null, e.selectedRegion.length)), 1)
             ])) : S("", !0),
@@ -14317,7 +14334,7 @@ function mv(e, t, n, s, o, a) {
     _: 3
   }, 8, ["visible", "lock-scroll", "round", "teleport-disable", "teleport", "z-index", "onClose", "onClickOverlay"]);
 }
-const hv = /* @__PURE__ */ K(Xy, [["render", mv]]), { create: gv } = W("barrage"), yv = gv({
+const hv = /* @__PURE__ */ K(X0, [["render", mv]]), { create: gv } = W("barrage"), yv = gv({
   name: "barrage",
   props: {
     danmu: {
@@ -16593,7 +16610,7 @@ function n4(e, t, n, s, o, a) {
 }
 const o4 = /* @__PURE__ */ K(J5, [["render", n4]]);
 function l4(e) {
-  [qe, Rn, Fn, gt, Le, fr, br, wr, Nr, Br, Un, Rr, qr, eu, nu, cu, ku, _u, Au, Hu, Qu, xn, $c, eo, to, Hc, Uc, Qc, sd, no, Nd, Fd, df, pf, gf, Af, Jt, ep, ro, uo, co, lo, ao, kp, Ip, e1, v1, mo, ho, yo, P1, U1, J1, tm, Qt, km, Dm, _t, Vm, Bt, th, ih, xt, mh, $h, fo, _h, Hh, qh, en, pg, Dg, tn, nn, on, ln, s0, p0, Qn, To, No, B0, A0, q0, cy, hy, wy, Dy, Ly, jy, hv, bv, Iv, Rv, Kv, xv, H2, Q2, c3, E3, F3, s5, W5, G5, o4].forEach((n) => {
+  [qe, Rn, Fn, gt, Le, fr, br, wr, Nr, Br, Un, Rr, qr, eu, nu, cu, ku, _u, Au, Hu, Qu, xn, $c, eo, to, Hc, Uc, Qc, sd, no, Nd, Fd, df, pf, gf, Af, Jt, ep, ro, uo, co, lo, ao, kp, Ip, e1, v1, mo, ho, yo, P1, U1, J1, tm, Qt, km, Dm, _t, Vm, Bt, th, ih, xt, mh, $h, fo, _h, Hh, qh, en, pg, Dg, tn, nn, on, ln, sy, py, Qn, To, No, By, Ay, qy, c0, h0, w0, D0, L0, j0, hv, bv, Iv, Rv, Kv, xv, H2, Q2, c3, E3, F3, s5, W5, G5, o4].forEach((n) => {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
@@ -16602,7 +16619,7 @@ export {
   U1 as ActionSheet,
   hv as Address,
   E3 as AddressList,
-  hy as Animate,
+  h0 as Animate,
   th as Audio,
   ih as AudioOperate,
   xt as Avatar,
@@ -16624,19 +16641,19 @@ export {
   gf as CheckboxGroup,
   _h as CircleProgress,
   Nr as Col,
-  A0 as Collapse,
-  q0 as CollapseItem,
+  Ay as Collapse,
+  qy as CollapseItem,
   W5 as Comment,
   fr as ConfigProvider,
-  p0 as Countdown,
-  s0 as Countup,
+  py as Countdown,
+  sy as Countup,
   Af as DatePicker,
   Qt as Dialog,
   Rr as Divider,
   tm as Drag,
   c3 as Ecard,
   xn as Elevator,
-  wy as Ellipsis,
+  w0 as Ellipsis,
   qh as Empty,
   ku as FixedNav,
   mo as Form,
@@ -16677,7 +16694,7 @@ export {
   Uc as SideNavbar,
   Qc as SideNavbarItem,
   Iv as Signature,
-  B0 as Skeleton,
+  By as Skeleton,
   H2 as Sku,
   nu as Space,
   Dg as Step,
@@ -16692,7 +16709,7 @@ export {
   to as TabPane,
   Hu as Tabbar,
   Qu as TabbarItem,
-  cy as Table,
+  c0 as Table,
   eo as Tabs,
   To as Tag,
   Ip as Textarea,
@@ -16700,11 +16717,11 @@ export {
   Kv as TimePannel,
   Rv as TimeSelect,
   Bt as Toast,
-  jy as Tour,
-  Ly as TrendArrow,
+  j0 as Tour,
+  L0 as TrendArrow,
   e1 as Uploader,
   en as Video,
-  Dy as Watermark,
+  D0 as Watermark,
   d4 as default,
   l4 as install,
   cm as showDialog,

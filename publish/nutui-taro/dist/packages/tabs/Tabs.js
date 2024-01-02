@@ -225,6 +225,10 @@ const _sfc_main = create({
     top: {
       type: Number,
       default: 0
+    },
+    align: {
+      type: String,
+      default: "center"
     }
   },
   emits: ["update:modelValue", "click", "change"],
@@ -471,13 +475,12 @@ const _sfc_main = create({
     }, tabMethods), touchMethods);
   }
 });
-const _hoisted_1 = { class: "nut-tabs__list" };
-const _hoisted_2 = ["onClick"];
-const _hoisted_3 = {
+const _hoisted_1 = ["onClick"];
+const _hoisted_2 = {
   key: 0,
   class: "nut-tabs__titles-placeholder"
 };
-const _hoisted_4 = ["id"];
+const _hoisted_3 = ["id"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_JoySmile = resolveComponent("JoySmile");
   const _component_nut_scroll_view = resolveComponent("nut-scroll-view");
@@ -497,12 +500,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       style: normalizeStyle(_ctx.tabsNavStyle)
     }, {
       default: withCtx(() => [
-        createElementVNode("view", _hoisted_1, [
+        createElementVNode("view", {
+          class: normalizeClass(["nut-tabs__list", { "nut-tabs__titles-left": _ctx.align === "left" }])
+        }, [
           _ctx.$slots.titles ? renderSlot(_ctx.$slots, "titles", { key: 0 }) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.titles, (item, index) => {
               return openBlock(), createElementBlock("view", {
                 key: item.paneKey,
-                class: normalizeClass(["nut-tabs__titles-item taro", { active: item.paneKey == _ctx.modelValue, disabled: item.disabled }]),
+                class: normalizeClass(["nut-tabs__titles-item taro", {
+                  "nut-tabs__titles-item-left": _ctx.align === "left",
+                  active: item.paneKey == _ctx.modelValue,
+                  disabled: item.disabled
+                }]),
                 style: normalizeStyle(_ctx.titleStyle),
                 onClick: ($event) => _ctx.tabChange(item, index)
               }, [
@@ -523,12 +532,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 createElementVNode("view", {
                   class: normalizeClass(["nut-tabs__titles-item__text", { ellipsis: _ctx.ellipsis }])
                 }, toDisplayString(item.title), 3)
-              ], 14, _hoisted_2);
+              ], 14, _hoisted_1);
             }), 128)),
             createTextVNode(),
-            _ctx.canShowLabel && _ctx.titleScroll ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true)
+            _ctx.canShowLabel && _ctx.titleScroll ? (openBlock(), createElementBlock("view", _hoisted_2)) : createCommentVNode("", true)
           ], 64))
-        ])
+        ], 2)
       ]),
       _: 3
     }, 8, ["id", "scroll-x", "scroll-y", "scroll-with-animation", "scroll-left", "scroll-top", "class", "style"]),
@@ -544,7 +553,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       onTouchcancel: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
     }, [
       renderSlot(_ctx.$slots, "default")
-    ], 44, _hoisted_4)
+    ], 44, _hoisted_3)
   ], 2);
 }
 const NutTabs = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

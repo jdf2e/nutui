@@ -13,3 +13,4 @@ export type RectItem = {
 export type TabsDirection = 'horizontal' | 'vertical';
 export type TabsSize = 'large' | 'normal' | 'small';
 export type TabsType = 'line' | 'smile';
+export type TabsAlign = 'left' | 'center';

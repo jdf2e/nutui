@@ -5816,6 +5816,15 @@
                 "type": "string",
                 "kind": "expression"
               }
+            },
+            {
+              "name": "align ",
+              "default": "`center`",
+              "description": "横轴方向的标题对齐方式，可选值 left、center",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
             }
           ]
         },

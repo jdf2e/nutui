@@ -1,5 +1,5 @@
 import { VNode, Ref, CSSProperties, PropType } from 'vue';
-import type { TabsDirection, TabsSize, TabsType } from './types';
+import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
 export declare class Title {
     title: string;
     titleSlot?: VNode[];
@@ -67,6 +67,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     top: {
         type: NumberConstructor;
         default: number;
+    };
+    align: {
+        type: PropType<TabsAlign>;
+        default: string;
     };
 }, {
     onTouchStart(event: TouchEvent): void;
@@ -169,6 +173,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    align: {
+        type: PropType<TabsAlign>;
+        default: string;
+    };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
     onClick?: ((...args: any[]) => any) | undefined;
@@ -188,6 +196,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     autoHeight: boolean;
     animatedTime: string | number;
     titleGutter: string | number;
+    align: TabsAlign;
 }, {}>>;
 export default _default;
 
