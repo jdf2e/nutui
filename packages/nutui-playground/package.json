@@ -15,14 +15,14 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^18.19.3",
-    "@vitejs/plugin-vue": "^5.0.0",
+    "@types/node": "^18.19.4",
+    "@vitejs/plugin-vue": "^5.0.1",
     "rimraf": "^5.0.5",
-    "vite": "^5.0.7",
-    "vue": "^3.3.11"
+    "vite": "^5.0.10",
+    "vue": "^3.4.2"
   },
   "dependencies": {
-    "@vue/repl": "^3.0.0",
+    "@vue/repl": "^3.1.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1"
   }

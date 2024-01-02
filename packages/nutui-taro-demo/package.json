@@ -35,7 +35,7 @@
     "@tarojs/runtime": "3.6.21",
     "@tarojs/shared": "3.6.21",
     "@tarojs/taro": "3.6.21",
-    "vue": "^3.3.11"
+    "vue": "^3.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
@@ -50,7 +50,7 @@
     "style-loader": "^3.3.3",
     "stylelint": "^16.0.1",
     "typescript": "^5.3.3",
-    "vue-loader": "^17.3.1",
+    "vue-loader": "^17.4.1",
     "webpack": "^5.89.0"
   }
 }

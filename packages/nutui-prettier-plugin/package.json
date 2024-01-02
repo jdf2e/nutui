@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "linguist-languages": "^7.27.0",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.1"
   },
   "keywords": [],
   "author": "jdf2e",
