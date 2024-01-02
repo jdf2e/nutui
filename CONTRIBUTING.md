@@ -109,7 +109,7 @@ GitHub Action 将会自动进行以下 Job
   - 修改 `demo.vue` 时，需要手动更新 `doc.md`、`doc.en-US.md`
   - 修改 Taro demo 时，需要手动更新 `doc.taro.md`
 - 改造后：文档中的代码示例由 demo 源文件直接生成
-  - 中英文文档
+  - 中英文文档：需要指定【组件名称 示例名称】
   - `> demo: button plain` --> `src/packages/__VUE/button/demo/plain.vue`
-  - Taro 文档
+  - Taro 文档：需要指定【组件名称 示例名称 组件类别】
   - `> demo: button plain basic` --> `packages/nutui-taro-demo/src/basic/pages/button/plain.vue`
