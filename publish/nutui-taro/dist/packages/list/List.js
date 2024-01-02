@@ -40,7 +40,7 @@ var __async = (__this, __arguments, generator) => {
 import { ref, reactive, computed, watch, toRefs, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, createTextVNode, createElementBlock, Fragment, renderList, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import Taro from "@tarojs/taro";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-4FrUcxMV.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { u as useTaroRect } from "../index-Isui2_f6.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 var CompareResult = /* @__PURE__ */ ((CompareResult2) => {

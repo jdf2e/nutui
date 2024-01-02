@@ -21,7 +21,7 @@ import { reactive, computed, resolveComponent, withDirectives, openBlock, create
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { N as NutPopup } from "../index.taro-vH2b6ZpB.js";
 import { Check } from "@nutui/icons-vue-taro";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-4FrUcxMV.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { u as useParent } from "../useParent-KIxqkovs.js";
 import { M as MENU_KEY } from "../types-j71K23JP.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
