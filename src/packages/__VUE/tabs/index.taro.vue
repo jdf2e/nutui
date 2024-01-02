@@ -12,7 +12,7 @@
       :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
       :style="tabsNavStyle"
     >
-      <view class="nut-tabs__list">
+      <view class="nut-tabs__list" :class="{ 'nut-tabs__titles-left': align === 'left' }">
         <slot v-if="$slots.titles" name="titles"></slot>
         <template v-else>
           <view
@@ -20,7 +20,11 @@
             :key="item.paneKey"
             class="nut-tabs__titles-item taro"
             :style="titleStyle"
-            :class="{ active: item.paneKey == modelValue, disabled: item.disabled }"
+            :class="{
+              'nut-tabs__titles-item-left': align === 'left',
+              active: item.paneKey == modelValue,
+              disabled: item.disabled
+            }"
             @click="tabChange(item, index)"
           >
             <view v-if="type == 'line'" class="nut-tabs__titles-item__line" :style="tabsActiveStyle"></view>
@@ -70,7 +74,7 @@ import { TypeOfFun } from '@/packages/utils/util';
 import raf from '@/packages/utils/raf';
 import { useTabContentTouch } from './hooks';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-import type { RectItem, TabsDirection, TabsSize, TabsType } from './types';
+import type { RectItem, TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
 
 export class Title {
   title = '';
@@ -143,6 +147,10 @@ export default create({
     top: {
       type: Number,
       default: 0
+    },
+    align: {
+      type: String as PropType<TabsAlign>,
+      default: 'center'
     }
   },
   emits: ['update:modelValue', 'click', 'change'],
