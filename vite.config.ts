@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
 import autoprefixer from 'autoprefixer';
-import Inspect from 'vite-plugin-inspect';
+import VueDevTools from 'vite-plugin-vue-devtools';
 import { markdown } from '@nutui/vite-plugins';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
@@ -29,7 +29,7 @@ export default defineConfig({
     }
   },
   plugins: [
-    Inspect(),
+    VueDevTools(),
     vue({
       include: [/\.vue$/, /\.md$/]
     }),

@@ -8,7 +8,7 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { component } from './common';
-import NutCellGroup from '../cellgroup/index.vue';
+import NutCellGroup from '../cellgroup/index.taro.vue';
 const { create } = createComponent('form');
 export default create(
   component({

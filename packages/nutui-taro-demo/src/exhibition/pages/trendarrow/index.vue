@@ -1,69 +1,60 @@
 <template>
-  <Demo class="trendarrow-demo">
-    <h2>基础用法</h2>
-    <nut-cell>
-      <nut-trend-arrow :sync-text-color="false" :rate="1" />
-      <nut-trend-arrow :sync-text-color="false" :rate="-0.2535" />
-    </nut-cell>
-    <view class="title">改变文字颜色</view>
-    <nut-cell>
-      <nut-trend-arrow :rate="10.2365" />
-      <nut-trend-arrow :rate="-0.2535" />
-    </nut-cell>
-    <view class="title">指定小数位</view>
-    <nut-cell>
-      <nut-trend-arrow :digits="3" :rate="10.2365" />
-      <nut-trend-arrow :digits="1" :rate="-0.2535" />
-    </nut-cell>
-    <view class="title">箭头在前面</view>
-    <nut-cell>
-      <nut-trend-arrow arrow-left :rate="0.2535" />
-      <nut-trend-arrow arrow-left :rate="-0.2535" />
-    </nut-cell>
-    <view class="title">显示正负号</view>
-    <nut-cell>
-      <nut-trend-arrow show-sign :rate="1" />
-      <nut-trend-arrow show-sign :rate="-0.2535" />
-    </nut-cell>
-    <view class="title">是否展示0</view>
-    <nut-cell>
-      <nut-trend-arrow show-sign :rate="0" />
-      <nut-trend-arrow show-sign show-zero :rate="0" />
-    </nut-cell>
-    <view class="title">自定义颜色</view>
-    <nut-cell>
-      <nut-trend-arrow :rate="10.2365" rise-color="rgb(73,143,242)" />
-      <nut-trend-arrow :rate="-0.2535" show-sign drop-color="rgb(255, 190, 13)" />
-      <nut-trend-arrow
-        :sync-text-color="false"
-        show-sign
-        :rate="-0.2535"
-        text-color="rgb(39,197,48)"
-        drop-color="rgb(255, 190, 13)"
-      />
-    </nut-cell>
-    <view class="title">自定义图标</view>
-    <nut-cell>
-      <nut-trend-arrow :rate="10.2365">
-        <template #up-icon><Success color="blue" size="18px" /></template>
-      </nut-trend-arrow>
-      <nut-trend-arrow :rate="-10.2365">
-        <template #down-icon><Failure color="red" /></template>
-      </nut-trend-arrow>
-    </nut-cell>
+  <Demo class="trend-arrow-demo">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('digits') }}</h2>
+    <Digits />
+
+    <h2>{{ t('left') }}</h2>
+    <Left />
+
+    <h2>{{ t('sign') }}</h2>
+    <Sign />
+
+    <h2>{{ t('zero') }}</h2>
+    <Zero />
+
+    <h2>{{ t('color') }}</h2>
+    <Color />
+
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
   </Demo>
 </template>
 <script setup lang="ts">
-import { Success, Failure } from '@nutui/icons-vue-taro';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Digits from './digits.vue';
+import Left from './left.vue';
+import Sign from './sign.vue';
+import Zero from './zero.vue';
+import Color from './color.vue';
+import IconDemo from './icon.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    digits: '指定小数位',
+    left: '箭头在前面',
+    sign: '显示正负号',
+    zero: '是否展示0',
+    color: '自定义颜色',
+    icon: '自定义图标'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    digits: 'Specify decimal places',
+    left: 'Arrow ahead',
+    sign: 'show sign',
+    zero: 'Whether to show 0',
+    color: 'Custom color',
+    icon: 'Custom icon'
+  }
+});
 </script>
 <style lang="scss">
-.trendarrow-demo {
-  .title {
-    font-size: 14px;
-    color: rgb(144, 156, 164);
-    padding: 0 10px;
-    font-weight: normal;
-  }
+.trend-arrow-demo {
   .nut-trend-arrow {
     margin-right: 10px;
   }

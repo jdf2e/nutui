@@ -1,80 +1,62 @@
 <template>
   <Demo class="full">
-    <h2>基础用法</h2>
-    <nut-searchbar v-model="state.searchValue" />
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>设置搜索框形状</h2>
-    <nut-searchbar shape="square" />
+    <h2>{{ t('shape') }}</h2>
+    <Shape />
 
-    <h2>搜索事件监听</h2>
-    <nut-searchbar v-model="state.searchValue1" @search="search" />
+    <h2>{{ t('left') }}</h2>
+    <Left />
 
-    <h2>显示搜索 icon</h2>
-    <nut-searchbar v-model="state.searchValue2">
-      <template #leftin>
-        <Search2 />
-      </template>
-    </nut-searchbar>
+    <h2>{{ t('right') }}</h2>
+    <Right />
 
-    <h2>右侧添加搜索文字</h2>
-    <nut-searchbar v-model="state.searchValue3" :confirm-type="state.confirmType">
-      <template #rightout> 搜索 </template>
-    </nut-searchbar>
+    <h2>{{ t('background') }}</h2>
+    <Background />
 
-    <h2>更改输入框内部及外部的背景样式</h2>
-    <nut-searchbar
-      v-model="state.searchValue4"
-      background="linear-gradient(to right, #9866F0, #EB4D50)"
-      input-background="#fff"
-    >
-    </nut-searchbar>
+    <h2>{{ t('focus') }}</h2>
+    <Focus />
 
-    <h2>自定义清除按钮 icon</h2>
-    <nut-searchbar v-model="state.searchValue6">
-      <template #clear-icon>
-        <img :src="icon" style="width: 20px; height: 20px" />
-      </template>
-    </nut-searchbar>
+    <h2>{{ t('clear') }}</h2>
+    <Clear />
 
-    <h2>显示全部 icon</h2>
-    <nut-searchbar v-model="state.searchValue5">
-      <template #leftout>
-        <Left />
-      </template>
-      <template #leftin>
-        <Search2 />
-      </template>
-      <template #rightin>
-        <Photograph />
-      </template>
-      <template #rightout>
-        <Message />
-      </template>
-    </nut-searchbar>
+    <h2>{{ t('all') }}</h2>
+    <All />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { Search2, Left, Photograph, Message } from '@nutui/icons-vue-taro';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Shape from './shape.vue';
+import Left from './left.vue';
+import Right from './right.vue';
+import Background from './background.vue';
+import Focus from './focus.vue';
+import Clear from './clear.vue';
+import All from './all.vue';
 
-const icon =
-  'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
-
-const state = reactive({
-  searchValue: '',
-  searchValue1: '',
-  searchValue2: '',
-  searchValue3: '',
-  searchValue4: '',
-  searchValue5: '',
-  searchValue6: '',
-  confirmType: 'search'
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    shape: '设置搜索框形状',
+    left: '左侧插槽',
+    right: '右侧插槽',
+    background: '设置背景',
+    focus: 'Focus 样式',
+    clear: '自定义清除图标',
+    all: '完整展示'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    shape: 'Shape',
+    left: 'Left Slot',
+    right: 'Right Slot',
+    background: 'Background',
+    focus: 'Focus Style',
+    clear: 'Clear Icon',
+    all: 'Complete Display'
+  }
 });
-
-const search = function () {
-  console.log('搜索触发');
-};
 </script>
-
-<style lang="scss" scoped></style>

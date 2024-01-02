@@ -16,73 +16,27 @@ app.use(Indicator);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-indicator :size="3" :current="3">step1</nut-indicator>
-  </nut-cell>
-  <nut-cell>
-    <nut-row>
-      <nut-col :span="12">
-        <nut-button size="small" type="primary">Main button</nut-button>
-      </nut-col>
-      <nut-col :span="12">
-        <nut-indicator block align="right" :size="6" :current="5">step1</nut-indicator>
-      </nut-col>
-    </nut-row>
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: indicator basic
 
 ### Block usage
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-indicator block algin="center" :size="6" :current="5">step1</nut-indicator>
-  </nut-cell>
-  <nut-cell>
-    <nut-indicator block align="left" :size="6" :current="1">step1</nut-indicator>
-  </nut-cell>
-  <nut-cell>
-    <nut-indicator block align="right" :size="6" :current="5">step1</nut-indicator>
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: indicator block
 
 ### Do not make up 0
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: indicator zero
 
 ## API
 
 ### Props
 
-| Attribute | Description                                                                                         | Type    | Default |
-| --------- | --------------------------------------------------------------------------------------------------- | ------- | ------- |
-| current   | Current step                                                                                        | number  | `1`     |
-| size      | Step length                                                                                         | number  | `3`     |
-| block     | Enable block level layout                                                                           | boolean | `false` |
-| align     | Alignment, which takes effect only when `block` is `true`. optional value `left`, `right`, `center` | string  | `left`  |
-| fill-zero | Whether to add 0 before singular number                                                             | boolean | `true`  |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| current | Current step | number | `1` |
+| size | Step length | number | `3` |
+| block | Enable block level layout | boolean | `false` |
+| align | Alignment, which takes effect only when `block` is `true`. optional value `left`, `right`, `center` | string | `left` |
+| fill-zero | Whether to add 0 before singular number | boolean | `true` |
 
 ## Theming
 
@@ -90,12 +44,12 @@ app.use(Indicator);
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                             | Default Value                         |
-| -------------------------------- | ------------------------------------- |
-| --nut-indicator-bg-color         | _var(--nut-primary-color)_            |
-| --nut-indicator-dot-color        | _var(--nut-disable-color)_            |
-| --nut-indicator-color            | _var(--nut-white)_                    |
-| --nut-indicator-size             | _18px_                                |
-| --nut-indicator-dot-size         | _calc(var(--nut-indicator-size) / 3)_ |
-| --nut-indicator-border-size      | _calc(var(--nut-indicator-size)+ 2)_  |
-| --nut-indicator-number-font-size | _10px_                                |
+| Name | Default Value |
+| --- | --- |
+| --nut-indicator-bg-color | _var(--nut-primary-color)_ |
+| --nut-indicator-dot-color | _var(--nut-disable-color)_ |
+| --nut-indicator-color | _var(--nut-white)_ |
+| --nut-indicator-size | _18px_ |
+| --nut-indicator-dot-size | _calc(var(--nut-indicator-size) / 3)_ |
+| --nut-indicator-border-size | _calc(var(--nut-indicator-size)+ 2)_ |
+| --nut-indicator-number-font-size | _10px_ |

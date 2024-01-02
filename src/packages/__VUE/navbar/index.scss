@@ -18,7 +18,6 @@
   box-shadow: $navbar-box-shadow;
   font-size: $navbar-title-base-font;
   color: $navbar-color;
-  margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
   &:active::before {
     opacity: 0.1;
@@ -70,7 +69,7 @@
   }
 
   &__title {
-    min-width: 53%;
+    max-width: 60%;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -103,14 +102,6 @@
     .text__title {
       display: inline-block;
     }
-
-    .nut-tabs__titles {
-      background: $white;
-    }
-
-    .nut-tab-pane {
-      display: none;
-    }
   }
 
   &__title ::-webkit-scrollbar {
@@ -118,6 +109,8 @@
   }
 
   &__left {
+    position: absolute;
+    left: 0;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
     display: flex;
@@ -126,17 +119,13 @@
     padding: 0 16px;
   }
   &__right {
+    position: absolute;
+    right: 0;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
     display: flex;
     align-items: center;
     padding: 0 16px;
     cursor: pointer;
-    .rightIcon {
-      margin-left: 16px;
-    }
-    .leftIcon {
-      margin-left: 16px;
-    }
   }
 }

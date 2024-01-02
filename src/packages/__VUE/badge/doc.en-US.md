@@ -16,202 +16,23 @@ app.use(Badge);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge :value="8">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge :value="76">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge value="NEW">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge dot>
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-  </div>
-</template>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
+> demo: badge basic
 
 ### Max
 
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge :value="200" :max="9">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge :value="200" :max="20">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge :value="200" :max="99">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-  </div>
-</template>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
+> demo: badge max
 
 ### Custom Color
 
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge :value="8" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge :value="76" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge value="NEW" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge dot color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-  </div>
-</template>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
+> demo: badge color
 
 ### Custom Content
 
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge>
-      <template #icon>
-        <Check color="#ffffff" width="12px" height="12px"></Check>
-      </template>
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge>
-      <template #icon>
-        <Link color="#ffffff" width="12px" height="12px"></Link>
-      </template>
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge>
-      <template #icon>
-        <Download color="#ffffff" width="12px" height="12px"></Download>
-      </template>
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-  </div>
-</template>
-
-<script setup>
-import { Check, Link, Download } from '@nutui/icons-vue';
-</script>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
+> demo: badge icon
 
 ### Custom Position
 
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge :value="8" top="5" right="5">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge :value="76" top="10" right="10">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-    <nut-badge value="NEW">
-      <nut-avatar shape="square"></nut-avatar>
-    </nut-badge>
-  </div>
-</template>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
-
-### Standalone
-
-:::demo
-
-```vue
-<template>
-  <div class="demo">
-    <nut-badge :value="8"> </nut-badge>
-    <nut-badge :value="76"> </nut-badge>
-    <nut-badge value="NEW"> </nut-badge>
-  </div>
-</template>
-
-<style>
-.demo {
-  padding: 30px 17px 0 17px;
-}
-.nut-badge {
-  margin-right: 40px;
-}
-</style>
-```
-
-:::
+> demo: badge position
 
 ## API
 

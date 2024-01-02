@@ -17,12 +17,13 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onDeactivated, onActivated, reactive, ref } from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import requestAniFrame from '@/packages/utils/raf';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
-const { create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { DragDirection } from './types';
+const { create } = createComponent('drag');
 export default create({
   props: {
     attract: {
@@ -30,7 +31,7 @@ export default create({
       default: false
     },
     direction: {
-      type: String,
+      type: String as PropType<DragDirection>,
       default: 'all'
     },
     boundary: {

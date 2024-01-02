@@ -23,10 +23,11 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, useSlots, reactive, inject } from 'vue';
+import { toRefs, ref, useSlots, reactive, inject, type PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutButton from '../button';
 import { useLocale } from '@/packages/utils/useLocale';
+import type { AudioOperateType } from './types';
 
 const { create } = createComponent('audio-operate');
 const cN = 'NutAudioOperate';
@@ -35,7 +36,7 @@ export default create({
   props: {
     // 展示的形式   back 倒退   play 开始 or 暂停  forward 快进 mute 静音
     type: {
-      type: String,
+      type: String as PropType<AudioOperateType>,
       default: () => 'play'
     }
   },
