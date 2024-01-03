@@ -8,6 +8,14 @@
         </nut-avatar>
       </nut-avatar-cropper>
     </nut-cell>
+    <h2>裁剪圆形形状</h2>
+    <nut-cell>
+      <nut-avatar-cropper cut-shape="round" @confirm="cutImage">
+        <nut-avatar size="large">
+          <img :src="imageUrl" />
+        </nut-avatar>
+      </nut-avatar-cropper>
+    </nut-cell>
     <h2>裁剪区域toolbar插槽</h2>
     <nut-cell>
       <nut-avatar-cropper ref="avatarCropperRef" toolbar-position="top" edit-text="修改" @confirm="cutImage">

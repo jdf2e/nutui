@@ -41,6 +41,31 @@ const cutImage = (url) => {
 
 :::
 
+### Cut round shape
+
+:::demo
+
+```vue
+<template>
+  <nut-avatar-cropper cut-shape="round" @confirm="cutImage">
+    <nut-avatar size="large">
+      <img :src="imageUrl" />
+    </nut-avatar>
+  </nut-avatar-cropper>
+</template>
+<script setup>
+import { ref } from 'vue';
+const imageUrl = ref(
+  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+);
+const cutImage = (url) => {
+  imageUrl.value = url;
+};
+</script>
+```
+
+:::
+
 ### Clipping region toolbar slots
 
 Customize the clipping area toolbar, and toolbar-position controls the toolbar position
@@ -97,6 +122,7 @@ const cutImage = (url) => {
 | edit-text | The text content in the middle | string | 编辑 |
 | cancel-text | Cancel button text | string | 取消 |
 | cancel-confirm | Confirm button text | string | 确认 |
+| cut-shape | Cut round shape The optional value is：`square` `round` | string | square |
 
 ### AvatarCropper Slots
 

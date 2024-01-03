@@ -41,6 +41,31 @@ const cutImage = (url) => {
 
 :::
 
+### 裁剪圆形形状
+
+:::demo
+
+```vue
+<template>
+  <nut-avatar-cropper cut-shape="round" @confirm="cutImage">
+    <nut-avatar size="large">
+      <img :src="imageUrl" />
+    </nut-avatar>
+  </nut-avatar-cropper>
+</template>
+<script setup>
+import { ref } from 'vue';
+const imageUrl = ref(
+  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+);
+const cutImage = (url) => {
+  imageUrl.value = url;
+};
+</script>
+```
+
+:::
+
 ### 裁剪区域toolbar插槽
 
 自定义裁剪区域工具栏，toolbar-position控制工具栏位置
@@ -97,6 +122,7 @@ const cutImage = (url) => {
 | edit-text | 中间的文字内容 | string | 编辑 |
 | cancel-text | 取消按钮的文字 | string | 取消 |
 | cancel-confirm | 确认按钮的文字 | string | 确认 |
+| cut-shape | 裁剪形状,可选值为：`square` `round` | string | square |
 
 ### AvatarCropper Slots
 
