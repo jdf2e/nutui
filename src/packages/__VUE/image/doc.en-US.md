@@ -18,38 +18,13 @@ app.use();
 
 The basic usage is the same as that of the native IMG tag. You can set the native attributes such as SRC, width, height, and Alt.
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-  />
-</template>
-```
-
-:::
+> demo: image basic
 
 ### Object Fill
 
 The `fit` attribute is used to set the image filling mode, which is equivalent to the original `Object-fit` attribute.
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-    fit="contain"
-  />
-</template>
-```
-
-:::
+> demo: image fit
 
 ### Object Position
 

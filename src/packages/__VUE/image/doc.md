@@ -18,38 +18,13 @@ app.use();
 
 基础用法与原生 `img` 标签一致，可以设置 `src`、`width`、`height`、`alt` 等原生属性。
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-  />
-</template>
-```
-
-:::
+> demo: image basic
 
 ### 填充模式
 
 通过 `fit` 属性可以设置图片填充模式，等同于原生的 `object-fit` 属性，可选值见下方表格。
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-    fit="contain"
-  />
-</template>
-```
-
-:::
+> demo: image fit
 
 ### 图片位置
 

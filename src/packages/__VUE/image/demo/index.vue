@@ -1,17 +1,12 @@
 <template>
-  <div class="demo">
-    <h2>{{ translate('basic') }}</h2>
-    <nut-image :src="src" width="100" height="100"></nut-image>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>{{ translate('fill') }}</h2>
-    <nut-row :gutter="10" flex-wrap="wrap">
-      <nut-col v-for="fit in fits" :key="fit" :span="8">
-        <nut-image :src="src" width="100" height="100" :fit="fit"></nut-image>
-        <div class="text">{{ fit }}</div>
-      </nut-col>
-    </nut-row>
+    <h2>{{ t('fill') }}</h2>
+    <Fit />
 
-    <h2>{{ translate('position') }}</h2>
+    <h2>{{ t('position') }}</h2>
     <nut-row :gutter="10" flex-wrap="wrap">
       <nut-col v-for="pos in position2" :key="pos" :span="8">
         <nut-image :src="src" width="100" height="100" fit="contain" :position="pos"></nut-image>
@@ -26,7 +21,7 @@
       </nut-col>
     </nut-row>
 
-    <h2>{{ translate('circle') }}</h2>
+    <h2>{{ t('circle') }}</h2>
     <nut-row :gutter="10">
       <nut-col :span="8">
         <nut-image :src="src" width="100" height="100" fit="contain" round></nut-image>
@@ -42,7 +37,7 @@
       </nut-col>
     </nut-row>
 
-    <h2>{{ translate('loading') }}</h2>
+    <h2>{{ t('loading') }}</h2>
     <nut-cell>
       <nut-row :gutter="10">
         <nut-col :span="8">
@@ -60,7 +55,7 @@
       </nut-row>
     </nut-cell>
 
-    <h2>{{ translate('error') }}</h2>
+    <h2>{{ t('error') }}</h2>
     <nut-cell>
       <nut-row :gutter="10">
         <nut-col :span="8">
@@ -78,7 +73,7 @@
       </nut-row>
     </nut-cell>
 
-    <h2>{{ translate('lazy') }}</h2>
+    <h2>{{ t('lazy') }}</h2>
     <nut-cell>
       <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
     </nut-cell>
@@ -94,14 +89,16 @@
     <nut-cell>
       <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
     </nut-cell>
-  </div>
+  </Demo>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Loading, CircleClose } from '@nutui/icons-vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { ImageFit } from './type';
-const translate = useTranslate({
+import { useTranslate } from '@/sites/utils';
+import Basic from './basic.vue';
+import Fit from './fit.vue';
+
+const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     fill: '填充模式',
@@ -122,7 +119,6 @@ const translate = useTranslate({
   }
 });
 const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
-const fits = ref<ImageFit[]>(['contain', 'cover', 'fill', 'none', 'scale-down']);
 const position1 = ref(['left', 'center', 'right']);
 const position2 = ref(['top', 'center', 'bottom']);
 </script>
