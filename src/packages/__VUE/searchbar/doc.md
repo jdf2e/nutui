@@ -16,160 +16,35 @@ app.use(Searchbar);
 
 ### 基础用法
 
-:::demo
+> demo: searchbar basic
 
-```vue
-<template>
-  <nut-searchbar v-model="value"></nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
+### 输入框形状
 
-:::
+> demo: searchbar shape
 
-### 设置搜索框形状
+### 左侧插槽
 
-:::demo
+> demo: searchbar left
 
-```vue
-<template>
-  <nut-searchbar shape="square"></nut-searchbar>
-</template>
-```
+### 右侧插槽
 
-:::
+> demo: searchbar right
 
-### 搜索事件监听
+### 背景颜色
 
-:::demo
+> demo: searchbar background
 
-```vue
-<template>
-  <nut-searchbar v-model="value" @search="search"></nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref('');
+### Focus 样式
 
-const search = function () {
-  showToast.text('搜索触发');
-};
-</script>
-```
+> demo: searchbar focus
 
-:::
+### 清除图标
 
-### 显示搜索 icon
+> demo: searchbar clear
 
-:::demo
+### 完整展示
 
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #leftin>
-      <Search2 />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Search2 } from '@nutui/icons-vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### 右侧添加搜索文字
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #rightout> 搜索 </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### 更改输入框内部及外部的背景样式
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff">
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### 自定义清除按钮 icon
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #clear-icon>
-      <img :src="icon" style="width: 10px; height: 10px" />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-const icon =
-  'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
-</script>
-```
-
-:::
-
-### 显示全部 icon
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #leftout>
-      <Left />
-    </template>
-    <template #leftin>
-      <Search2 />
-    </template>
-    <template #rightin>
-      <Photograph />
-    </template>
-    <template #rightout>
-      <Message />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';=
-import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: searchbar all
 
 ## API
 

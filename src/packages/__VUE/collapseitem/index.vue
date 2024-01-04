@@ -52,9 +52,6 @@ const { create } = createComponent('collapse-item');
 
 export default create({
   props: {
-    collapseRef: {
-      type: Object
-    },
     title: {
       type: String,
       default: ''

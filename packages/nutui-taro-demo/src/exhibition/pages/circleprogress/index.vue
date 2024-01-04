@@ -1,70 +1,51 @@
 <template>
-  <Demo class="full">
-    <Header />
-    <h2>基础用法</h2>
-    <div class="demo__piece">
-      <nut-circle-progress progress="20" />
-    </div>
-    <h2>环形进度条自定义宽度</h2>
-    <div class="demo__piece">
-      <nut-circle-progress progress="50" stroke-width="10" />
-    </div>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>环形进度条自定义颜色(支持渐变色)</h2>
-    <div class="demo__piece">
-      <nut-circle-progress progress="50" color="red" />
-      <nut-circle-progress progress="100" :color="gradientColor" />
-    </div>
-    <h2>环形进度条自定义大小</h2>
-    <div class="demo__piece">
-      <nut-circle-progress progress="50" radius="60" />
-    </div>
-    <h2>环形进度条自定义内容</h2>
-    <div class="demo__piece">
-      <nut-circle-progress progress="50" radius="60">自定义</nut-circle-progress>
-    </div>
-    <h2>动态改变环形进度条的进度</h2>
-    <div class="demo__piece">
-      <nut-circle-progress :progress="percent" />
-    </div>
-    <div class="demo__btn">
-      <nut-button type="primary" @click="reduce">减少</nut-button>
-      <nut-button type="primary" @click="add">增加</nut-button>
-    </div>
+    <h2>{{ t('width') }}</h2>
+    <Width />
+
+    <h2>{{ t('color') }}</h2>
+    <Color />
+
+    <h2>{{ t('size') }}</h2>
+    <Size />
+
+    <h2>{{ t('content') }}</h2>
+    <Content />
+
+    <h2>{{ t('change') }}</h2>
+    <Change />
   </Demo>
 </template>
-
 <script setup lang="ts">
-import { ref } from 'vue';
-const gradientColor = {
-  '0%': '#FF5E5E',
-  '100%': '#FFA062'
-};
-const percent = ref(30);
-const add = () => {
-  percent.value = Math.min(100, percent.value + 10);
-};
-const reduce = () => {
-  percent.value = Math.max(0, percent.value - 10);
-};
-</script>
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Width from './width.vue';
+import Color from './color.vue';
+import Size from './size.vue';
+import Content from './content.vue';
+import Change from './change.vue';
 
-<style lang="scss">
-.demo__btn {
-  text-align: center;
-  width: 100%;
-  height: 50px;
-  border-top: 1px solid rgba(234, 240, 251, 1);
-  padding-top: 6px;
-  background: rgba(255, 255, 255, 1);
-  .nut-button {
-    margin-right: 10px;
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    width: '自定义宽度',
+    color: '自定义颜色',
+    size: '自定义尺寸',
+    content: '自定义内容',
+    custom: '自定义',
+    change: '动态改变'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    width: 'Custom Width',
+    color: 'Custom Color',
+    custom: 'custom',
+    size: 'Custom Size',
+    content: 'Custom Content',
+    change: 'Dynamic Change'
   }
-}
-
-.demo__piece {
-  display: flex;
-  justify-content: center;
-  background: rgba(255, 255, 255, 1);
-}
-</style>
+});
+</script>

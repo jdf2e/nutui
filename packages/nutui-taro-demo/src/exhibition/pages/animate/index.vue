@@ -1,108 +1,40 @@
 <template>
-  <Demo>
-    <h2>通过 show 控制动画</h2>
+  <Demo class="demo-animate">
+    <h2>{{ t('show') }}</h2>
+    <Show />
 
-    <div class="demo-animate">
-      <nut-animate type="slide-right" :show="show1">
-        <nut-button type="primary" @click="onClick1">单次动画</nut-button>
-      </nut-animate>
-    </div>
+    <h2>{{ t('loop') }}</h2>
+    <Loop />
 
-    <div class="demo-animate">
-      <nut-animate type="slide-right" :show="show2">
-        <nut-button type="primary" @click="onClick2">多次触发</nut-button>
-      </nut-animate>
-    </div>
-
-    <h2>循环动画</h2>
-
-    <div class="demo-animate">
-      <nut-animate type="shake" :loop="true">
-        <nut-button type="primary">shake-抖动</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="ripple" :loop="true">
-        <nut-button type="primary">ripple-心跳</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="breath" :loop="true">
-        <nut-button type="primary">breath-呼吸灯</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="twinkle" :loop="true">
-        <nut-button type="primary">twinkle-水波</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="flicker" :loop="true">
-        <nut-button type="primary">flicker-擦亮</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="jump" :loop="true">
-        <nut-button type="primary">jump-跳跃</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="float" :loop="true">
-        <nut-button type="primary">float-漂浮</nut-button>
-      </nut-animate>
-    </div>
-
-    <h2>点击触发</h2>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-right" action="click">
-        <nut-button type="primary">由右向左划入</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-left" action="click">
-        <nut-button type="primary">由左向右划入</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-top" action="click">
-        <nut-button type="primary">由上至下划入</nut-button>
-      </nut-animate>
-    </div>
-
-    <div class="demo-animate">
-      <nut-animate type="slide-bottom" action="click">
-        <nut-button type="primary">由下至上划入</nut-button>
-      </nut-animate>
-    </div>
+    <h2>{{ t('click') }}</h2>
+    <Click />
   </Demo>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const show1 = ref(false);
-const onClick1 = () => {
-  show1.value = true;
-};
-const show2 = ref(false);
-const onClick2 = () => {
-  show2.value = true;
-  setTimeout(() => {
-    show2.value = false;
-  }, 500);
-};
+import { useTranslate } from '../../../utils';
+import Show from './show.vue';
+import Loop from './loop.vue';
+import Click from './click.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    show: '通过 show 控制动画',
+    loop: '循环动画',
+    click: '点击触发'
+  },
+  'en-US': {
+    show: 'Trigger animation through show',
+    loop: 'Loop animation',
+    click: 'Click'
+  }
+});
 </script>
 <style lang="scss">
 .demo-animate {
-  margin-bottom: 10px;
-  display: inline-block;
-  width: 100%;
+  .nut-animate {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+  }
 }
 </style>

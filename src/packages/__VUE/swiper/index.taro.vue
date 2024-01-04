@@ -18,7 +18,7 @@
         v-for="(item, index) in state.children.length"
         :key="index"
         :style="{
-          backgroundColor: activePagination === index ? paginationColor : '#ddd'
+          backgroundColor: activePagination === index ? paginationColor : paginationUnselectedColor
         }"
         :class="{ active: activePagination === index }"
       />
@@ -94,6 +94,10 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
+    },
+    paginationUnselectedColor: {
+      type: String,
+      default: '#ddd'
     }
   },
   emits: ['change'],

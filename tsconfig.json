@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "sourceMap": false,
     "declaration": false,
     "removeComments": true,
@@ -16,6 +17,7 @@
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
     "types": ["vite/client", "vitest/globals"],
+    "allowJs": true,
     "paths": {
       "@/*": ["src/*"]
     }

@@ -87,6 +87,9 @@
         color: $disable-color;
       }
     }
+    &-left {
+      justify-content: flex-start;
+    }
   }
   &.horizontal {
     flex-direction: column;
@@ -114,6 +117,9 @@
             height: 100%;
             color: $tabs-tab-smile-color;
           }
+        }
+        &-left {
+          flex: 0 0 auto;
         }
       }
     }
@@ -196,10 +202,14 @@
 
     &.smile {
       .nut-tabs__titles-item {
+        .nut-tabs__titles-item__smile {
+          display: none;
+        }
         &.active {
           .nut-tabs__titles-item__smile {
             width: 36px;
             height: 10px;
+            display: block;
           }
         }
       }
@@ -212,13 +222,13 @@
 }
 .nut-tabs {
   .nut-tabs__titles-item {
-    &.nut-tabs__titles-placeholder {
-      width: auto;
-      min-width: 10px;
-    }
     .taro {
       height: 46px;
       line-height: 46px;
     }
+  }
+  .nut-tabs__titles-placeholder {
+    width: auto;
+    min-width: 10px;
   }
 }

@@ -38,14 +38,14 @@
         </view>
       </view>
     </view>
-    <view v-if="summary" class="nut-table__summary">
-      <span class="nut-table__summary__text" v-html="summary().value"></span>
-    </view>
     <view v-if="!curData.length" class="nut-table__nodata">
       <div class="nut-table__nodata" :class="{ 'nut-table__nodata--border': bordered }">
         <slot name="nodata"></slot>
         <div v-if="!$slots.nodata" class="nut-table__nodata__text"> {{ translate('noData') }} </div>
       </div>
+    </view>
+    <view v-if="summary" class="nut-table__summary">
+      <span class="nut-table__summary__text" v-html="summary().value"></span>
     </view>
   </view>
 </template>
@@ -123,8 +123,8 @@ export default create({
           typeof item.sorter === 'function'
             ? state.curData.sort(item.sorter)
             : item.sorter === 'default'
-            ? state.curData.sort()
-            : state.curData;
+              ? state.curData.sort()
+              : state.curData;
       }
     };
 

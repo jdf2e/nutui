@@ -58,7 +58,7 @@ export default create({
       default: 64
     },
     content: {
-      type: String,
+      type: [String, Array<string>],
       default: ''
     },
     fontColor: {
@@ -202,7 +202,13 @@ export default create({
       const markSize = Number(fontSize) * ratio;
       ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
       ctx.fillStyle = fontColor;
-      ctx.fillText(content, 0, 0);
+      if (Array.isArray(content)) {
+        content.map((item, index) => {
+          ctx.fillText(item, 0, (index - 1) * markSize);
+        });
+      } else {
+        ctx.fillText(content, 0, 0);
+      }
       ctx.restore();
       state.base64Url = canvas.toDataURL();
     };

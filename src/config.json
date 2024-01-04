@@ -15,6 +15,12 @@
         "show": true
       },
       {
+        "name": "advanced",
+        "cName": "进阶用法",
+        "eName": "Advanced Usage",
+        "show": true
+      },
+      {
         "name": "official-theme",
         "cName": "官方主题",
         "eName": "Official Theme",
@@ -45,23 +51,23 @@
         "show": true
       },
       {
-        "name": "ide",
-        "cName": "开发工具支持",
-        "eName": "IDE tool support",
-        "show": true
-      },
-      {
-        "name": "contributing",
+        "name": "https://github.com/jdf2e/nutui/issues/1671",
         "cName": "贡献指南",
         "eName": "Contributing",
-        "path": "#/contributing",
-        "show": true
+        "show": true,
+        "isLink": true
       },
-
       {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "eName": "Changelog",
+        "show": true,
+        "isLink": true
+      },
+      {
+        "name": "https://github.com/jdf2e/nutui/issues/2461",
+        "cName": "常见问题",
+        "eName": "QA",
         "show": true,
         "isLink": true
       }
