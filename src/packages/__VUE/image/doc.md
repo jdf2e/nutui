@@ -30,114 +30,31 @@ app.use();
 
 通过 `position` 属性可以设置图片位置，结合 `fit` 属性使用，等同于原生的 `object-position` 属性。
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-    fit="contain"
-    postion="left"
-  />
-</template>
-```
-
-:::
+> demo: image position
 
 ### 圆形图片
 
 通过 `round` 属性可以设置图片变圆，注意当图片宽高不相等且 `fit` 为 `contain` 或 `scale-down` 时，将无法填充一个完整的圆形。
 
-:::demo
-
-```vue
-<template>
-  <nut-image
-    src="//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
-    width="100"
-    height="100"
-    round
-  />
-</template>
-```
-
-:::
+> demo: image round
 
 ### 加载中图片
 
 Image 组件提供了默认的加载中提示，支持通过 `loading` 插槽自定义内容。
 
-:::demo
-
-```vue
-<template>
-  <nut-image width="100" height="100" show-loading>
-    <template #loading>
-      <Loading width="16px" height="16px" name="loading" />
-    </template>
-  </nut-image>
-</template>
-<script setup>
-import { Loading } from '@nutui/icons-vue';
-</script>
-```
-
-:::
+> demo: image loading
 
 ### 加载失败
 
 Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽自定义内容。
 
-:::demo
-
-```vue
-<template>
-  <nut-image src="https://x" width="100" height="100" show-error>
-    <template #error>
-      <CircleClose width="16px" height="16px" name="circleClose" />
-    </template>
-  </nut-image>
-</template>
-<script setup>
-import { CircleClose } from '@nutui/icons-vue';
-</script>
-```
-
-:::
+> demo: image error
 
 ### 懒加载
 
 刷新后滚动 Demo 页面，在控制台中查看图片请求时间。
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-image :src="src + '?t=1'" lazy-load height="200" width="100%"></nut-image>
-  </nut-cell>
-  <nut-cell>
-    <nut-image :src="src + '?t=2'" lazy-load height="200" width="100%"></nut-image>
-  </nut-cell>
-  <nut-cell>
-    <nut-image :src="src + '?t=3'" lazy-load height="200" width="100%"></nut-image>
-  </nut-cell>
-  <nut-cell>
-    <nut-image :src="src + '?t=4'" lazy-load height="200" width="100%"></nut-image>
-  </nut-cell>
-  <nut-cell>
-    <nut-image :src="src + '?t=5'" lazy-load height="200" width="100%"></nut-image>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const src = ref('https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
-</script>
-```
-
-:::
+> demo: image lazy
 
 ## API
 
