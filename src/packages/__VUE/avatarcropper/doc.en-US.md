@@ -14,7 +14,7 @@ const app = createApp();
 app.use(AvatarCropper);
 ```
 
-### 基础用法
+### Basic Usage
 
 Use the avatar component directly in the middle, and the image content will be replaced with the new one after cropping.
 
