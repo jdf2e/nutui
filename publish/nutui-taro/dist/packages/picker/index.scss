@@ -175,6 +175,7 @@
       linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
     background-repeat: no-repeat;
     background-position: top, bottom;
+    transform: translateZ(0);
     z-index: 1;
   }
 }
