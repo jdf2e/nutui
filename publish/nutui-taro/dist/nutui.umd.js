@@ -7563,7 +7563,7 @@ var __async = (__this, __arguments, generator) => {
         selectedValue,
         selectedOptions
       }) => {
-        if (["date", "datetime", "datehour", "month-day", "year-month"].includes(props.type)) {
+        if (["date", "datetime", "datehour", "month-day", "year-month", "hour-minute"].includes(props.type)) {
           let formatDate = [];
           selectedValue.forEach((item) => {
             formatDate.push(item);
@@ -7584,6 +7584,12 @@ var __async = (__this, __arguments, generator) => {
             date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
           } else if (props.type === "datehour") {
             date = new Date(year, month, day, Number(formatDate[3]));
+          } else if (props.type === "hour-minute") {
+            date = new Date(state.currentDate);
+            const year2 = date.getFullYear();
+            const month2 = date.getMonth();
+            const day2 = date.getDate();
+            date = new Date(year2, month2, day2, Number(formatDate[0]), Number(formatDate[1]));
           }
           state.currentDate = formatValue(date);
         }
