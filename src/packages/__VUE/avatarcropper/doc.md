@@ -41,14 +41,21 @@ const cutImage = (url) => {
 
 :::
 
-### 裁剪圆形形状
+### 形状
+
+支持两种形状：`square`、`round`
 
 :::demo
 
 ```vue
 <template>
-  <nut-avatar-cropper cut-shape="round" @confirm="cutImage">
-    <nut-avatar size="large">
+  <nut-avatar-cropper shape="round" @confirm="cutImage">
+    <nut-avatar shape="round" size="large">
+      <img :src="imageUrl" />
+    </nut-avatar>
+  </nut-avatar-cropper>
+  <nut-avatar-cropper shape="square" @confirm="cutImage">
+    <nut-avatar shape="square" size="large">
       <img :src="imageUrl" />
     </nut-avatar>
   </nut-avatar-cropper>
@@ -122,7 +129,7 @@ const cutImage = (url) => {
 | edit-text | 中间的文字内容 | string | 编辑 |
 | cancel-text | 取消按钮的文字 | string | 取消 |
 | cancel-confirm | 确认按钮的文字 | string | 确认 |
-| cut-shape | 裁剪形状,可选值为：`square` `round` | string | square |
+| shape | 头像的形状,可选值为：`square` `round` | string | square |
 
 ### AvatarCropper Slots
 

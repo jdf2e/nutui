@@ -8,10 +8,15 @@
         </nut-avatar>
       </nut-avatar-cropper>
     </nut-cell>
-    <h2>裁剪圆形形状</h2>
+    <h2>形状</h2>
     <nut-cell>
-      <nut-avatar-cropper cut-shape="round" @confirm="cutImage">
-        <nut-avatar size="large">
+      <nut-avatar-cropper shape="round" @confirm="cutImage">
+        <nut-avatar shape="round" size="large">
+          <img :src="imageUrl" />
+        </nut-avatar>
+      </nut-avatar-cropper>
+      <nut-avatar-cropper shape="square" @confirm="cutImage">
+        <nut-avatar shape="square" size="large">
           <img :src="imageUrl" />
         </nut-avatar>
       </nut-avatar-cropper>

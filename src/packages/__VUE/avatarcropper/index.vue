@@ -18,7 +18,7 @@
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <div class="highlight" :class="{ 'highlight-round': cutShape === 'round' }" :style="highlightStyle"></div>
+      <div class="highlight" :class="{ highlight__round: shape === 'round' }" :style="highlightStyle"></div>
     </div>
     <div class="nut-cropper-popup__toolbar" :class="[toolbarPosition]">
       <slot v-if="$slots.toolbar" name="toolbar"></slot>
@@ -44,7 +44,7 @@
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
 import NutButton from '../button/index.vue';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarCropperToolbarPosition, CutShapeType } from './types';
+import type { AvatarCropperToolbarPosition, AvatarCropperShape } from './types';
 const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -81,8 +81,8 @@ export default create({
       type: String,
       default: '确定'
     },
-    cutShape: {
-      type: String as PropType<CutShapeType>,
+    shape: {
+      type: String as PropType<AvatarCropperShape>,
       default: 'square'
     }
   },
@@ -384,17 +384,6 @@ export default create({
       // 设置新canvas的大小与裁剪区域相同
       croppedCanvas.width = width;
       croppedCanvas.height = height;
-
-      // 裁剪形状为圆形
-      if (props.cutShape === 'round') {
-        const circle = {
-          x: width / 2,
-          y: height / 2,
-          r: width / 2
-        };
-        croppedCtx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, false);
-        croppedCtx.clip();
-      }
 
       // 使用drawImage方法将原canvas中指定区域的内容绘制到新canvas上
       canvas && croppedCtx.drawImage(canvas, sx, sy, width, height, 0, 0, width, height);
