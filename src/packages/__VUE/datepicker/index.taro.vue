@@ -148,7 +148,7 @@ export default create({
         hour = 23;
         minute = 59;
       }
-      const seconds = minute;
+      let seconds = minute;
       if (value.getFullYear() === year) {
         month = boundary.getMonth() + 1;
         if (value.getMonth() + 1 === month) {
@@ -157,6 +157,9 @@ export default create({
             hour = boundary.getHours();
             if (value.getHours() === hour) {
               minute = boundary.getMinutes();
+              if (value.getMinutes() === minute) {
+                seconds = boundary.getSeconds();
+              }
             }
           }
         }
