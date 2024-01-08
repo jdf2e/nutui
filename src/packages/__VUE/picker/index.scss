@@ -86,6 +86,8 @@
     width: 0;
     flex-grow: 1;
     height: 100%;
+    user-select: none;
+    cursor: grab;
   }
 
   &__title {
