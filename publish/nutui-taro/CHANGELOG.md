@@ -1,3 +1,23 @@
+## v4.2.7
+
+`2024-01-05`
+
+Features
+
+- swiper: 新增 pagination-unselected-color 属性 (#2803), close #2688 @iCheng
+- tabs: 新增 align 属性，支持标题左对齐布局 (#2809), close #2471 @iCheng
+
+Bug Fixes
+
+- picker: 修复 Safari 下遮罩层级样式问题 (#2821) @eiinu
+- date-picker: 修复 hour-minute 类型下选项刷新问题 (#2784) @Robin-Wubin
+- cascader: 修复内部 tabs 标题样式对齐问题 (#2802) @eiinu
+- avatar-cropper: 文档修正 (#2820) @iCheng
+
+Other Changes
+
+- deps: bump to vue 3.4 (#2812) @eiinu
+
 ## v4.2.6
 
 `2023-12-25`
