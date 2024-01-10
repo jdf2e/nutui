@@ -28,6 +28,7 @@ import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { Formatter, Filter } from './type';
 import { padZero, isDate as isDateU } from '@/packages/utils/util';
+import { nextTick } from '@tarojs/taro';
 const { create } = createComponent('date-picker');
 
 const currentYear = new Date().getFullYear();
@@ -377,6 +378,9 @@ export default create({
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
         if (!isSameValue) {
           emit('update:modelValue', newValues);
+          nextTick(() => {
+            state.selectedValue = getSelectedValue(newValues);
+          });
         }
       }
     );
