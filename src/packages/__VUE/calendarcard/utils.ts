@@ -1,5 +1,5 @@
 import Utils from '@/packages/utils/date';
-import { CalendarCardDay } from './types';
+import { CalendarCardDay, CalendarCardMonth, CalendarCardValue } from './types';
 
 export const convertDateToDay = (date: Date) => {
   return date
@@ -13,6 +13,24 @@ export const convertDateToDay = (date: Date) => {
 
 export const convertDayToDate = (day: CalendarCardDay) => {
   return day ? new Date(day.year, day.month - 1, day.date) : null;
+};
+
+export const valueToRange = (val?: CalendarCardValue) => {
+  if (Array.isArray(val)) {
+    return val.map((date: Date) => {
+      return convertDateToDay(date);
+    });
+  }
+  return val ? [convertDateToDay(val)] : [];
+};
+
+export const rangeTovalue = (range?: CalendarCardDay[]) => {
+  if (Array.isArray(range)) {
+    return range.map((day: CalendarCardDay) => {
+      return convertDayToDate(day);
+    });
+  }
+  return range ? [convertDayToDate(range)] : [];
 };
 
 /**
@@ -68,4 +86,51 @@ export const getCurrentWeekDays = (day: CalendarCardDay, firstDayOfWeek: number)
     convertDateToDay(new Date(current.getTime() - 24 * 60 * 60 * 1000 * count)) as CalendarCardDay,
     convertDateToDay(new Date(current.getTime() + 24 * 60 * 60 * 1000 * (6 - count))) as CalendarCardDay
   ];
+};
+
+/**
+ * 获取 month 月份数据
+ * @param month
+ * @param firstDayOfWeek
+ * @returns
+ */
+export const getDays = (month: CalendarCardMonth, firstDayOfWeek: number) => {
+  const y = month.year;
+  const m = month.month;
+  const days = [...getPrevMonthDays(y, m, firstDayOfWeek), ...getCurrentMonthDays(y, m)] as CalendarCardDay[];
+  const size = days.length;
+  const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year;
+  const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1;
+  // 补全 6 行 7 列视图
+  for (let i = 1; i <= 42 - size; i++) {
+    days.push({
+      type: 'next',
+      year: yearOfNextMonth,
+      month: monthOfNextMonth,
+      date: i
+    });
+  }
+  return days;
+};
+
+/**
+ * 比较两个日期
+ * @param day1
+ * @param day2
+ * @returns
+ */
+export const compareDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
+  if (day1 && day2) {
+    if (day1.year === day2.year) {
+      if (day1.month === day2.month) {
+        return day1.date - day2.date;
+      }
+      return day1.month - day2.month;
+    }
+    return day1.year - day2.year;
+  }
+};
+
+export const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
+  return compareDay(day1, day2) === 0;
 };

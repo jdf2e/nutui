@@ -6,8 +6,7 @@
         <div class="left" @click="jump(-1)"> <Left />2 </div>
       </div>
       <div class="nut-calendarcard-header-title">
-        {{ month.year }} {{ month.month }}
-        <!-- {{ translate('monthTitle')(month.year, month.month) }} -->
+        {{ translate('monthTitle', month.year, month.month) }}
       </div>
       <div class="nut-calendarcard-header-right">
         <div class="right" @click="jump(1)"> <Right />3 </div>
@@ -52,12 +51,21 @@
 <script lang="ts">
 import { watchEffect, PropType, ref, computed } from 'vue';
 import { CalendarCardDay, CalendarCardMonth, CalendarCardType, CalendarCardValue } from './types';
-import { convertDateToDay, convertDayToDate, getCurrentMonthDays, getCurrentWeekDays, getPrevMonthDays } from './utils';
+import {
+  convertDateToDay,
+  convertDayToDate,
+  valueToRange,
+  rangeTovalue,
+  getDays,
+  getCurrentWeekDays,
+  compareDay,
+  isSameDay
+} from './utils';
 import { useLocale } from '@/packages/utils/useLocale';
 import { createComponent } from '@/packages/utils/create';
 
-const { create } = createComponent('calendar-card');
 const cN = 'NutCalendarCard';
+const { create } = createComponent('calendar-card');
 
 export default create({
   props: {
@@ -127,24 +135,6 @@ export default create({
       return [...weekdays.slice(props.firstDayOfWeek, 7), ...weekdays.slice(0, props.firstDayOfWeek)];
     });
 
-    const valueToRange = (val?: CalendarCardValue) => {
-      if (Array.isArray(val)) {
-        return val.map((date: Date) => {
-          return convertDateToDay(date);
-        });
-      }
-      return val ? [convertDateToDay(val)] : [];
-    };
-
-    const rangeTovalue = (range?: CalendarCardDay[]) => {
-      if (Array.isArray(range)) {
-        return range.map((day: CalendarCardDay) => {
-          return convertDayToDate(day);
-        });
-      }
-      return range ? [convertDayToDate(range)] : [];
-    };
-
     const innerValue = ref<any[]>(props.modelValue ? valueToRange(props.modelValue) : []);
 
     watchEffect(() => {
@@ -165,46 +155,11 @@ export default create({
       }
     };
 
-    const getDays = (month: CalendarCardMonth) => {
-      const y = month.year;
-      const m = month.month;
-      const days = [...getPrevMonthDays(y, m, props.firstDayOfWeek), ...getCurrentMonthDays(y, m)] as CalendarCardDay[];
-      const size = days.length;
-      const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year;
-      const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1;
-      // 补全 6 行 7 列视图
-      for (let i = 1; i <= 42 - size; i++) {
-        days.push({
-          type: 'next',
-          year: yearOfNextMonth,
-          month: monthOfNextMonth,
-          date: i
-        });
-      }
-      return days;
-    };
-
     watchEffect(() => {
-      const newDays = getDays(month.value);
+      const newDays = getDays(month.value, props.firstDayOfWeek);
       days.value = newDays;
       emit('pageChange', month.value);
     });
-
-    const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
-      return day1?.year === day2?.year && day1?.month === day2?.month && day1?.date === day2?.date;
-    };
-
-    const compareDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
-      if (day1 && day2) {
-        if (day1.year === day2.year) {
-          if (day1.month === day2.month) {
-            return day1.date - day2.date;
-          }
-          return day1.month - day2.month;
-        }
-        return day1.year - day2.year;
-      }
-    };
 
     const isDisable = (day: CalendarCardDay) => {
       if (props.disableDay && props.disableDay(day)) {
@@ -221,8 +176,8 @@ export default create({
 
     const isActive = (day: CalendarCardDay) => {
       if (props.type === 'single' || props.type === 'multiple') {
-        for (const val of innerValue.value) {
-          if (isSameDay(day, val)) {
+        for (const val in innerValue.value) {
+          if (isSameDay(day, innerValue.value[val])) {
             return true;
           }
         }
@@ -407,7 +362,8 @@ export default create({
       weekHeader,
       getClasses,
       handleDayClick,
-      jump
+      jump,
+      translate
     };
   }
 });
