@@ -519,7 +519,6 @@ export default create({
 
     // 初始化数据
     const initData = () => {
-      console.log('initData');
       // 初始化开始结束数据
       let propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
       let propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
