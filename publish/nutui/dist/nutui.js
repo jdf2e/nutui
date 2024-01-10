@@ -6518,8 +6518,8 @@ const Lf = {
       const h = c == "min" ? e.minDate : e.maxDate, k = h.getFullYear();
       let I = 1, T = 1, Y = 0, M = 0;
       c === "max" && (I = 12, T = o($.getFullYear(), $.getMonth() + 1), Y = 23, M = 59);
-      const A = M;
-      return $.getFullYear() === k && (I = h.getMonth() + 1, $.getMonth() + 1 === I && (T = h.getDate(), $.getDate() === T && (Y = h.getHours(), $.getHours() === Y && (M = h.getMinutes())))), {
+      let A = M;
+      return $.getFullYear() === k && (I = h.getMonth() + 1, $.getMonth() + 1 === I && (T = h.getDate(), $.getDate() === T && (Y = h.getHours(), $.getHours() === Y && (M = h.getMinutes(), $.getMinutes() === M && (A = h.getSeconds()))))), {
         [`${c}Year`]: k,
         [`${c}Month`]: I,
         [`${c}Date`]: T,
@@ -6560,27 +6560,24 @@ const Lf = {
       selectedValue: $,
       selectedOptions: h
     }) => {
-      if (["date", "datetime", "datehour", "month-day", "year-month", "hour-minute"].includes(e.type)) {
-        let k = [];
-        $.forEach((A) => {
-          k.push(A);
-        }), e.type == "month-day" && k.length < 3 && k.unshift(new Date(n.currentDate || e.minDate || e.maxDate).getFullYear()), e.type == "year-month" && k.length < 3 && k.push(new Date(n.currentDate || e.minDate || e.maxDate).getDate());
-        const I = Number(k[0]), T = Number(k[1]) - 1, Y = Math.min(Number(k[2]), o(Number(k[0]), Number(k[1])));
-        let M = null;
-        if (e.type === "date" || e.type === "month-day" || e.type === "year-month")
-          M = new Date(I, T, Y);
-        else if (e.type === "datetime")
-          M = new Date(I, T, Y, Number(k[3]), Number(k[4]));
-        else if (e.type === "datehour")
-          M = new Date(I, T, Y, Number(k[3]));
-        else if (e.type === "hour-minute") {
-          M = new Date(n.currentDate);
-          const A = M.getFullYear(), S = M.getMonth(), L = M.getDate();
-          M = new Date(A, S, L, Number(k[0]), Number(k[1]));
-        }
-        n.currentDate = s(M);
+      let k = [];
+      $.forEach((A) => {
+        k.push(A);
+      }), e.type == "month-day" && k.length < 3 && k.unshift(new Date(n.currentDate || e.minDate || e.maxDate).getFullYear()), e.type == "year-month" && k.length < 3 && k.push(new Date(n.currentDate || e.minDate || e.maxDate).getDate());
+      const I = Number(k[0]), T = Number(k[1]) - 1, Y = Math.min(Number(k[2]), o(Number(k[0]), Number(k[1])));
+      let M = null;
+      if (e.type === "date" || e.type === "month-day" || e.type === "year-month")
+        M = new Date(I, T, Y);
+      else if (e.type === "datetime")
+        M = new Date(I, T, Y, Number(k[3]), Number(k[4]));
+      else if (e.type === "datehour")
+        M = new Date(I, T, Y, Number(k[3]));
+      else if (e.type === "hour-minute" || e.type === "time") {
+        M = new Date(n.currentDate);
+        const A = M.getFullYear(), S = M.getMonth(), L = M.getDate();
+        M = new Date(A, S, L, Number(k[0]), Number(k[1]), Number(k[2] || 0));
       }
-      t("change", { columnIndex: c, selectedValue: $, selectedOptions: h });
+      n.currentDate = s(M), t("change", { columnIndex: c, selectedValue: $, selectedOptions: h });
     }, p = (c, $) => {
       const { formatter: h, isShowChinese: k } = e;
       let I = null;

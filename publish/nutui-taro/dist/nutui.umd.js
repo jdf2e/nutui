@@ -7522,7 +7522,7 @@ var __async = (__this, __arguments, generator) => {
           hour = 23;
           minute = 59;
         }
-        const seconds = minute;
+        let seconds = minute;
         if (value.getFullYear() === year) {
           month = boundary.getMonth() + 1;
           if (value.getMonth() + 1 === month) {
@@ -7531,6 +7531,9 @@ var __async = (__this, __arguments, generator) => {
               hour = boundary.getHours();
               if (value.getHours() === hour) {
                 minute = boundary.getMinutes();
+                if (value.getMinutes() === minute) {
+                  seconds = boundary.getSeconds();
+                }
               }
             }
           }
@@ -7586,36 +7589,34 @@ var __async = (__this, __arguments, generator) => {
         selectedValue,
         selectedOptions
       }) => {
-        if (["date", "datetime", "datehour", "month-day", "year-month", "hour-minute"].includes(props.type)) {
-          let formatDate = [];
-          selectedValue.forEach((item) => {
-            formatDate.push(item);
-          });
-          if (props.type == "month-day" && formatDate.length < 3) {
-            formatDate.unshift(new Date(state.currentDate || props.minDate || props.maxDate).getFullYear());
-          }
-          if (props.type == "year-month" && formatDate.length < 3) {
-            formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
-          }
-          const year = Number(formatDate[0]);
-          const month = Number(formatDate[1]) - 1;
-          const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
-          let date = null;
-          if (props.type === "date" || props.type === "month-day" || props.type === "year-month") {
-            date = new Date(year, month, day);
-          } else if (props.type === "datetime") {
-            date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
-          } else if (props.type === "datehour") {
-            date = new Date(year, month, day, Number(formatDate[3]));
-          } else if (props.type === "hour-minute") {
-            date = new Date(state.currentDate);
-            const year2 = date.getFullYear();
-            const month2 = date.getMonth();
-            const day2 = date.getDate();
-            date = new Date(year2, month2, day2, Number(formatDate[0]), Number(formatDate[1]));
-          }
-          state.currentDate = formatValue(date);
+        let formatDate = [];
+        selectedValue.forEach((item) => {
+          formatDate.push(item);
+        });
+        if (props.type == "month-day" && formatDate.length < 3) {
+          formatDate.unshift(new Date(state.currentDate || props.minDate || props.maxDate).getFullYear());
         }
+        if (props.type == "year-month" && formatDate.length < 3) {
+          formatDate.push(new Date(state.currentDate || props.minDate || props.maxDate).getDate());
+        }
+        const year = Number(formatDate[0]);
+        const month = Number(formatDate[1]) - 1;
+        const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
+        let date = null;
+        if (props.type === "date" || props.type === "month-day" || props.type === "year-month") {
+          date = new Date(year, month, day);
+        } else if (props.type === "datetime") {
+          date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
+        } else if (props.type === "datehour") {
+          date = new Date(year, month, day, Number(formatDate[3]));
+        } else if (props.type === "hour-minute" || props.type === "time") {
+          date = new Date(state.currentDate);
+          const year2 = date.getFullYear();
+          const month2 = date.getMonth();
+          const day2 = date.getDate();
+          date = new Date(year2, month2, day2, Number(formatDate[0]), Number(formatDate[1]), Number(formatDate[2] || 0));
+        }
+        state.currentDate = formatValue(date);
         emit("change", { columnIndex, selectedValue, selectedOptions });
       };
       const formatterOption = (type, value) => {
@@ -7640,7 +7641,7 @@ var __async = (__this, __arguments, generator) => {
           } else {
             min++;
           }
-          if (min <= +val) {
+          if (min <= Number(val)) {
             index++;
           }
         }
@@ -7726,6 +7727,9 @@ var __async = (__this, __arguments, generator) => {
           const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
           if (!isSameValue) {
             emit("update:modelValue", newValues);
+            Taro.nextTick(() => {
+              state.selectedValue = getSelectedValue(newValues);
+            });
           }
         }
       );
