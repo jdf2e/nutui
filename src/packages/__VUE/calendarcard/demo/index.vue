@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <Demo>
     <h2>{{ t('single') }}</h2>
     <Single />
 
@@ -29,21 +29,21 @@
 
     <h2>{{ t('ref') }}</h2>
     <Ref />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import Single from './demo/single.vue';
-import Multiple from './demo/multiple.vue';
-import Range from './demo/range.vue';
-import Week from './demo/week.vue';
-import Info from './demo/info.vue';
-import First from './demo/first.vue';
-import CustomRange from './demo/customRange.vue';
-import Disable from './demo/disable.vue';
-import Popup from './demo/popup.vue';
-import Ref from './demo/ref.vue';
+import { useTranslate } from '@/sites/utils';
+import Single from './single.vue';
+import Multiple from './multiple.vue';
+import Range from './range.vue';
+import Week from './week.vue';
+import Info from './info.vue';
+import First from './first.vue';
+import CustomRange from './customRange.vue';
+import Disable from './disable.vue';
+import Popup from './popup.vue';
+import Ref from './ref.vue';
 
 const t = useTranslate({
   'zh-CN': {
