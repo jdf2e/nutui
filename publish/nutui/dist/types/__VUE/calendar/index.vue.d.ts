@@ -74,7 +74,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     disabledDate: FunctionConstructor;
 }, {
+    visible: import("vue").WritableComputedRef<boolean>;
     closePopup: () => void;
+    opened: () => void;
     update: () => void;
     close: () => void;
     select: (param: any) => void;

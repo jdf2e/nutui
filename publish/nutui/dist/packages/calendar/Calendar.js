@@ -1,6 +1,6 @@
 import { computed, ref, resolveComponent, openBlock, createBlock, mergeProps, withCtx, createVNode, createSlots, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutCalendarItem, U as Utils } from "../index-NLe0VBkN.js";
+import { N as NutCalendarItem, U as Utils } from "../index-kWulbKuH.js";
 import { N as NutPopup } from "../index-rbZsBckW.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../raf-MQjoO-Ag.js";
@@ -88,6 +88,14 @@ const _sfc_main = create({
   },
   emits: ["choose", "close", "update:visible", "select"],
   setup(props, { emit, slots, expose }) {
+    const visible = computed({
+      get() {
+        return props.visible;
+      },
+      set(val) {
+        emit("update:visible", val);
+      }
+    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -133,8 +141,14 @@ const _sfc_main = create({
     const select = (param) => {
       emit("select", param);
     };
+    const opened = () => {
+      var _a;
+      (_a = calendarRef.value) == null ? void 0 : _a.initPosition();
+    };
     return {
+      visible,
       closePopup,
+      opened,
       update,
       close,
       select,
@@ -154,14 +168,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.poppable ? (openBlock(), createBlock(_component_nut_popup, mergeProps({
     key: 0,
     visible: _ctx.visible,
+    "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.visible = $event),
     position: "bottom",
     round: "",
     closeable: ""
   }, _ctx.$attrs, {
     style: { height: "85vh" },
     "lock-scroll": _ctx.lockScroll,
-    onClickOverlay: _ctx.closePopup,
-    onClickCloseIcon: _ctx.closePopup
+    onOpened: _ctx.opened
   }), {
     default: withCtx(() => [
       createVNode(_component_nut_calendar_item, {
@@ -233,7 +247,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]), 1032, ["type", "is-auto-back-fill", "poppable", "title", "default-value", "start-date", "end-date", "confirm-text", "start-text", "end-text", "show-today", "show-title", "show-sub-title", "to-date-animation", "first-day-of-week", "disabled-date", "onUpdate", "onClose", "onChoose", "onSelect"])
     ]),
     _: 3
-  }, 16, ["visible", "lock-scroll", "onClickOverlay", "onClickCloseIcon"])) : (openBlock(), createBlock(_component_nut_calendar_item, {
+  }, 16, ["visible", "lock-scroll", "onOpened"])) : (openBlock(), createBlock(_component_nut_calendar_item, {
     key: 1,
     ref: "calendarRef",
     type: _ctx.type,

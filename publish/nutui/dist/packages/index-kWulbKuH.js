@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { ref, computed, reactive, watch, toRefs, openBlock, createElementBlock, normalizeClass, createElementVNode, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode } from "vue";
+import { ref, computed, reactive, onMounted, watch, toRefs, openBlock, createElementBlock, normalizeClass, createElementVNode, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode } from "vue";
 import { c as createComponent } from "./component-TCzwHGVq.js";
 import { r as requestAniFrame } from "./raf-MQjoO-Ag.js";
 import { u as useLocale } from "./index-s3RgMhc7.js";
@@ -782,7 +782,9 @@ const _sfc_main = create({
       state.monthsData.splice(0);
       initData();
     };
-    initData();
+    onMounted(() => {
+      initData();
+    });
     watch(
       () => props.defaultValue,
       (val) => {

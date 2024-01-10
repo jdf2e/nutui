@@ -6274,6 +6274,14 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["choose", "close", "update:visible", "select"],
     setup(props, { emit, slots, expose }) {
+      const visible = vue.computed({
+        get() {
+          return props.visible;
+        },
+        set(val) {
+          emit("update:visible", val);
+        }
+      });
       const showTopBtn = vue.computed(() => {
         return slots.btn;
       });
@@ -6319,8 +6327,22 @@ var __async = (__this, __arguments, generator) => {
       const select = (param) => {
         emit("select", param);
       };
+      const opened = () => {
+        var _a, _b, _c, _d;
+        if (props.defaultValue) {
+          if (Array.isArray(props.defaultValue)) {
+            if ((_a = props.defaultValue) == null ? void 0 : _a.length) {
+              (_c = calendarRef.value) == null ? void 0 : _c.scrollToDate((_b = props.defaultValue) == null ? void 0 : _b[0]);
+            }
+          } else {
+            (_d = calendarRef.value) == null ? void 0 : _d.scrollToDate(props.defaultValue);
+          }
+        }
+      };
       return {
+        visible,
         closePopup,
+        opened,
         update,
         close,
         select,
@@ -6340,6 +6362,7 @@ var __async = (__this, __arguments, generator) => {
     return _ctx.poppable ? (vue.openBlock(), vue.createBlock(_component_nut_popup, vue.mergeProps({
       key: 0,
       visible: _ctx.visible,
+      "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.visible = $event),
       position: "bottom",
       round: "",
       closeable: ""
@@ -6347,8 +6370,8 @@ var __async = (__this, __arguments, generator) => {
       style: { height: "85vh" },
       "lock-scroll": _ctx.lockScroll,
       "catch-move": _ctx.lockScroll,
-      onClickOverlay: _ctx.closePopup,
-      onClickCloseIcon: _ctx.closePopup
+      "destroy-on-close": false,
+      onOpened: _ctx.opened
     }), {
       default: vue.withCtx(() => [
         vue.createVNode(_component_nut_calendar_item, {
@@ -6420,7 +6443,7 @@ var __async = (__this, __arguments, generator) => {
         ]), 1032, ["type", "is-auto-back-fill", "poppable", "title", "default-value", "start-date", "end-date", "confirm-text", "start-text", "end-text", "show-today", "show-title", "show-sub-title", "to-date-animation", "first-day-of-week", "disabled-date", "onUpdate", "onClose", "onChoose", "onSelect"])
       ]),
       _: 3
-    }, 16, ["visible", "lock-scroll", "catch-move", "onClickOverlay", "onClickCloseIcon"])) : (vue.openBlock(), vue.createBlock(_component_nut_calendar_item, {
+    }, 16, ["visible", "lock-scroll", "catch-move", "onOpened"])) : (vue.openBlock(), vue.createBlock(_component_nut_calendar_item, {
       key: 1,
       ref: "calendarRef",
       type: _ctx.type,

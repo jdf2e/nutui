@@ -1,3 +1,4 @@
+import { PropType } from 'vue';
 import { CalendarRef } from '../calendaritem/type';
 
 declare type Install<T> = T & {
@@ -53,7 +54,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     defaultValue: {
-        type: (ArrayConstructor | StringConstructor)[];
+        type: PropType<string | string[]>;
     };
     startDate: {
         type: StringConstructor;
@@ -74,7 +75,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     disabledDate: FunctionConstructor;
 }, {
+    visible: import("vue").WritableComputedRef<boolean>;
     closePopup: () => void;
+    opened: () => void;
     update: () => void;
     close: () => void;
     select: (param: any) => void;
@@ -135,7 +138,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     defaultValue: {
-        type: (ArrayConstructor | StringConstructor)[];
+        type: PropType<string | string[]>;
     };
     startDate: {
         type: StringConstructor;
