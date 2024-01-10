@@ -50,7 +50,7 @@
 </template>
 <script lang="ts">
 import { watchEffect, PropType, ref, computed } from 'vue';
-import { DoubleLeft, Left, Right, DoubleRight } from './icon';
+import { DoubleLeft, Left, Right, DoubleRight } from './icon.taro';
 import { CalendarCardDay, CalendarCardMonth, CalendarCardType, CalendarCardValue } from './types';
 import {
   convertDateToDay,
