@@ -47,6 +47,7 @@
     cursor: pointer;
     margin-bottom: 4px;
     text-align: center;
+    user-select: none;
 
     &.header {
       cursor: auto;
