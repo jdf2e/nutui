@@ -75,7 +75,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, toRefs, computed } from 'vue';
+import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
@@ -519,6 +519,7 @@ export default create({
 
     // 初始化数据
     const initData = () => {
+      console.log('initData');
       // 初始化开始结束数据
       let propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
       let propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
@@ -810,7 +811,9 @@ export default create({
     };
 
     // 初始化数据
-    initData();
+    onMounted(() => {
+      initData();
+    });
 
     //监听 默认值更改
     watch(
