@@ -2,8 +2,8 @@
   background: $white;
   border-radius: 12px;
   overflow: hidden;
-  font-size: 16px;
-  color: #262626;
+  font-size: $calendar-base-font;
+  color: $black;
 
   &-header {
     display: flex;
@@ -42,7 +42,7 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    width: 14.27%;
+    width: 14.28%;
     height: 48px;
     cursor: pointer;
     margin-bottom: 4px;
@@ -60,11 +60,15 @@
       line-height: 12px;
     }
 
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
     &.active,
     &.start,
     &.end {
       background-color: $primary-color;
-      color: $white !important;
+      color: $white;
       border-radius: $calendar-day-active-border-radius;
     }
 
@@ -81,16 +85,12 @@
     }
 
     &.mid {
-      background-color: red;
-      color: $calendar-choose-color;
-    }
-
-    &.weekend {
+      background-color: $calendar-choose-background-color;
       color: $calendar-choose-color;
     }
 
     .nut-calendar-day-info {
-      color: $primary-color;
+      color: $calendar-primary-color;
     }
 
     // 上个月、下个月
