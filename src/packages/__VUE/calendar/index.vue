@@ -1,15 +1,14 @@
 <template>
   <nut-popup
     v-if="poppable"
-    :visible="visible"
+    v-model:visible="visible"
     position="bottom"
     round
     closeable
     v-bind="$attrs"
     :style="{ height: '85vh' }"
     :lock-scroll="lockScroll"
-    @click-overlay="closePopup"
-    @click-close-icon="closePopup"
+    @opened="opened"
   >
     <nut-calendar-item
       ref="calendarRef"
@@ -176,6 +175,14 @@ export default create({
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
   setup(props, { emit, slots, expose }) {
+    const visible = computed({
+      get() {
+        return props.visible;
+      },
+      set(val) {
+        emit('update:visible', val);
+      }
+    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -226,8 +233,14 @@ export default create({
       emit('select', param);
     };
 
+    const opened = () => {
+      calendarRef.value?.initPosition();
+    };
+
     return {
+      visible,
       closePopup,
+      opened,
       update,
       close,
       select,
