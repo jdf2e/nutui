@@ -23,7 +23,7 @@ export abstract class BaseLang {
     end: string;
     start: string;
     title: string;
-    monthTitle: (...args: any[]) => any;
+    monthTitle: Function;
     today: string;
   };
   abstract calendarcard: {
@@ -31,7 +31,7 @@ export abstract class BaseLang {
     end: string;
     start: string;
     title: string;
-    monthTitle: (...args: any[]) => any;
+    monthTitle: Function;
     today: string;
   };
   abstract shortpassword: {
@@ -84,8 +84,8 @@ export abstract class BaseLang {
   };
   abstract comment: {
     complaintsText: string;
-    additionalReview: (...args: any[]) => any;
-    additionalImages: (...args: any[]) => any;
+    additionalReview: Function;
+    additionalImages: Function;
   };
   abstract infiniteloading: {
     loading: string;
