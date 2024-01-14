@@ -16,43 +16,43 @@ app.use(CalendarCard);
 
 ### 选择单个日期
 
-> demo: calendarcard single
+> demo: calendarcard single dentry
 
 ### 选择多个日期
 
-> demo: calendarcard multiple
+> demo: calendarcard multiple dentry
 
 ### 选择范围
 
-> demo: calendarcard range
+> demo: calendarcard range dentry
 
 ### 选择周
 
-> demo: calendarcard week
+> demo: calendarcard week dentry
 
 ### 自定义日期信息（插槽）
 
-> demo: calendarcard info
+> demo: calendarcard info dentry
 
 ### 自定义周起始日
 
-> demo: calendarcard first
+> demo: calendarcard first dentry
 
 ### 自定义选择范围
 
-> demo: calendarcard customRange
+> demo: calendarcard custom-range dentry
 
 ### 自定义禁止选择日期
 
-> demo: calendarcard disable
+> demo: calendarcard disable dentry
 
 ### 搭配 Popup 使用
 
-> demo: calendarcard popup
+> demo: calendarcard popup dentry
 
 ### 使用 Ref
 
-> demo: calendarcard ref
+> demo: calendarcard ref dentry
 
 ## API
 
@@ -60,19 +60,28 @@ app.use(CalendarCard);
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-
+| type | 类型，单个日期 `single`，多个日期 `multiple`，日期范围 `range`，周选择 `week` | `string` | `single` |
+| v-model | 当前选中值，单个日期 Date 格式，多个日期/范围选择 Date[] 格式 | `Date \| Date[]` | `-` |
+| startDate | 限制范围开始日期 | `Date` | `-` |
+| endDate | 限制范围结束日期 | `Date` | `-` |
+| firstDayOfWeek | 设置周起始日，0 为周日，1 为周一 | `0-6` | `1` |
+| disableDay | 设置不可选日期 | `(day: CalendarCardDay) => boolean` | `-` |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
-
+| change | 选择值发生变化时触发 | `(val: Date \| Date[]) => void` | `-` |
+| day-click | 点击后触发 | `(day: CalendarCardDay) => void` | `-` |
+| page-change | 切换月份时触发 | `(val: { year, month }) => void` | `-` |
 
 ### Slots
 
-| 名称 | 说明 |
-| --- | --- |
-
+| 名称 | 说明 | 参数 |
+| --- | --- | --- |
+| default | 日期信息 | `{ day: CalendarCardDay }` |
+| top | 日期顶部信息 | `{ day: CalendarCardDay }` |
+| bottom | 日期底部信息 | `{ day: CalendarCardDay }` |
 
 ### Methods
 
@@ -80,7 +89,8 @@ app.use(CalendarCard);
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
-
+| jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
+| jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
 ## 主题定制
 
@@ -90,4 +100,8 @@ app.use(CalendarCard);
 
 | 名称 | 默认值 |
 | --- | --- |
-
+| --nut-calendar-choose-background-color | _rgba(#fa2c19, 0.09)_ |
+| --nut-calendar-choose-color | _var(--nut-primary-color)_ |
+| --nut-calendar-disable-color | _#d1d0d0_ |
+| --nut-calendar-base-font | _var(--nut-font-size-3)_ |
+| --nut-calendar-day-active-border-radius | _0px_ |

@@ -60,7 +60,7 @@ import Range from './range.vue';
 import Week from './week.vue';
 import Info from './info.vue';
 import First from './first.vue';
-import CustomRange from './customRange.vue';
+import CustomRange from './custom-range.vue';
 import Disable from './disable.vue';
 import Popup from './popup.vue';
 import Ref from './ref.vue';

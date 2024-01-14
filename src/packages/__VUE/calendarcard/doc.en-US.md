@@ -40,7 +40,7 @@ app.use(CalendarCard);
 
 ### Custom selection range
 
-> demo: calendarcard customRange
+> demo: calendarcard custom-range
 
 ### Custom prohibition date selection
 
@@ -60,19 +60,28 @@ app.use(CalendarCard);
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-
+| type | Type, single date `single`, multiple dates `multiple`, date range `range`, week selection `week` | `string` | `single` |
+| v-model | Current value, choose string format for date, choose Array format for interval | `Date \| Date[]` | `-` |
+| startDate | Limit range start date | `Date` | `-` |
+| endDate | Limit range end date | `Date` | `-` |
+| firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `1` |
+| disableDay | Set disable date | `(day: CalendarCardDay) => boolean` | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-
+| change | Triggered when value update | `(val: Date | Date[]) => void` | `-` |
+| day-click | Triggered after click | `(day: CalendarCardDay) => void` | `-` |
+| page-change | Triggered when switching months | `(val: { year, month }) => void` | `-` |
 
 ### Slots
 
-| Name | Description |
-| --- | --- |
-
+| Name | Description | Props |
+| --- | --- | --- |
+| default | Date information | `{ day: CalendarCardDay }` |
+| top | Date top information | `{ day: CalendarCardDay }` |
+| bottom | Date bottom information | `{ day: CalendarCardDay }` |
 
 ### Methods
 
@@ -80,7 +89,8 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 
 | Name | Description | Arguments |
 | --- | --- | --- |
-
+| jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step: number` |
+| jumpTo | Jump to a specific year and month | `year: number, month: number` |
 
 ## Theming
 
@@ -90,4 +100,8 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-
+| --nut-calendar-choose-background-color | _rgba(#fa2c19, 0.09)_ |
+| --nut-calendar-choose-color | _var(--nut-primary-color)_ |
+| --nut-calendar-disable-color | _#d1d0d0_ |
+| --nut-calendar-base-font | _var(--nut-font-size-3)_ |
+| --nut-calendar-day-active-border-radius | _0px_ |
