@@ -135,20 +135,23 @@ test('CalendarCard: test ref methods', async () => {
   const wrapper = mount(() => (
     <CalendarCard ref="calendarCardRef" modelValue={new Date('2023-01-25')} onPageChange={onPageChange} />
   ));
-  const calendarCardRef: any = wrapper.findComponent(CalendarCard);
+  const calendarCard = wrapper.findComponent(CalendarCard).vm as unknown as {
+    jumpTo: (y: number, m: number) => void;
+    jump: (step: number) => void;
+  };
   expect(onPageChange).toHaveBeenCalledWith({
     year: 2023,
     month: 1
   });
 
-  calendarCardRef.vm.jumpTo(2023, 2);
+  calendarCard.jumpTo(2023, 2);
   await nextTick();
   expect(onPageChange).toHaveBeenLastCalledWith({
     year: 2023,
     month: 2
   });
 
-  calendarCardRef.vm.jump(-24);
+  calendarCard.jump(-24);
   await nextTick();
   expect(onPageChange).toHaveBeenLastCalledWith({
     year: 2021,
