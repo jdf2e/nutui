@@ -65,29 +65,16 @@
       color: $calendar-choose-color;
     }
 
+    &.mid {
+      background-color: $calendar-choose-background-color;
+      color: $calendar-choose-color;
+    }
+
     &.active,
     &.start,
     &.end {
       background-color: $primary-color;
       color: $white;
-      border-radius: $calendar-day-active-border-radius;
-    }
-
-    &.start {
-      border-radius: 0px;
-      border-top-left-radius: $calendar-day-active-border-radius;
-      border-bottom-left-radius: $calendar-day-active-border-radius;
-    }
-
-    &.end {
-      border-radius: 0px;
-      border-top-right-radius: $calendar-day-active-border-radius;
-      border-bottom-right-radius: $calendar-day-active-border-radius;
-    }
-
-    &.mid {
-      background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
     }
 
     .nut-calendar-day-info {

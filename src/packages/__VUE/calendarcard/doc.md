@@ -104,4 +104,3 @@ app.use(CalendarCard);
 | --nut-calendar-choose-color | _var(--nut-primary-color)_ |
 | --nut-calendar-disable-color | _#d1d0d0_ |
 | --nut-calendar-base-font | _var(--nut-font-size-3)_ |
-| --nut-calendar-day-active-border-radius | _0px_ |
