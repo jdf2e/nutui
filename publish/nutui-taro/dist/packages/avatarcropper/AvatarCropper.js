@@ -121,6 +121,10 @@ const _sfc_main = create({
       type: String,
       default: "确定"
     },
+    shape: {
+      type: String,
+      default: "square"
+    },
     sizeType: {
       type: Array,
       default: () => ["original", "compressed"]
@@ -604,9 +608,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onTouchcancel: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
       }, [
         createElementVNode("view", {
-          class: "highlight",
+          class: normalizeClass(["highlight", { highlight__round: _ctx.shape === "round" }]),
           style: normalizeStyle(_ctx.highlightStyle)
-        }, null, 4)
+        }, null, 6)
       ], 32),
       createTextVNode(),
       createElementVNode("view", {

@@ -458,6 +458,15 @@
               }
             },
             {
+              "name": "shape",
+              "default": "square",
+              "description": "头像的形状,可选值为：`square` `round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
+            {
               "name": "size-type",
               "default": "['original', 'compressed']",
               "description": "所选的图片的尺寸： 可选值：`original` `compressed`",

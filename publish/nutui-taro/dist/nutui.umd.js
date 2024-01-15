@@ -19879,6 +19879,10 @@ var __async = (__this, __arguments, generator) => {
         type: String,
         default: "确定"
       },
+      shape: {
+        type: String,
+        default: "square"
+      },
       sizeType: {
         type: Array,
         default: () => ["original", "compressed"]
@@ -20362,9 +20366,9 @@ var __async = (__this, __arguments, generator) => {
           onTouchcancel: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
         }, [
           vue.createElementVNode("view", {
-            class: "highlight",
+            class: vue.normalizeClass(["highlight", { highlight__round: _ctx.shape === "round" }]),
             style: vue.normalizeStyle(_ctx.highlightStyle)
-          }, null, 4)
+          }, null, 6)
         ], 32),
         vue.createTextVNode(),
         vue.createElementVNode("view", {

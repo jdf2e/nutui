@@ -1,5 +1,5 @@
 import { PropType } from 'vue';
-import type { AvatarCropperToolbarPosition, AvatarCropperSizeType, AvatarCropperSourceType } from './types';
+import type { AvatarCropperToolbarPosition, AvatarCropperSizeType, AvatarCropperSourceType, AvatarCropperShape } from './types';
 import Taro from '@tarojs/taro';
 
 declare type Install<T> = T & {
@@ -28,6 +28,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     confirmText: {
         type: StringConstructor;
+        default: string;
+    };
+    shape: {
+        type: PropType<AvatarCropperShape>;
         default: string;
     };
     sizeType: {
@@ -164,6 +168,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    shape: {
+        type: PropType<AvatarCropperShape>;
+        default: string;
+    };
     sizeType: {
         type: PropType<AvatarCropperSizeType[]>;
         default: () => string[];
@@ -177,6 +185,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onConfirm?: ((...args: any[]) => any) | undefined;
 }, {
     space: number;
+    shape: AvatarCropperShape;
     maxZoom: number;
     toolbarPosition: AvatarCropperToolbarPosition;
     editText: string;
