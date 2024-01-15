@@ -18,104 +18,19 @@ app.use(AvatarCropper);
 
 Use the avatar component directly in the middle, and the image content will be replaced with the new one after cropping.
 
-:::demo
-
-```vue
-<template>
-  <nut-avatar-cropper @confirm="cutImage">
-    <nut-avatar size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-  </nut-avatar-cropper>
-</template>
-<script setup>
-import { ref } from 'vue';
-const imageUrl = ref(
-  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-);
-const cutImage = (url) => {
-  imageUrl.value = url;
-};
-</script>
-```
-
-:::
+> demo: avatarcropper basic
 
 ### Shape v4.2.8
 
 shape: `square`, `round`
 
-:::demo
-
-```vue
-<template>
-  <nut-avatar-cropper shape="round" @confirm="cutImage">
-    <nut-avatar shape="round" size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-  </nut-avatar-cropper>
-  <nut-avatar-cropper shape="square" @confirm="cutImage">
-    <nut-avatar shape="square" size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-  </nut-avatar-cropper>
-</template>
-<script setup>
-import { ref } from 'vue';
-const imageUrl = ref(
-  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-);
-const cutImage = (url) => {
-  imageUrl.value = url;
-};
-</script>
-```
-
-:::
+> demo: avatarcropper shape
 
 ### Clipping region toolbar slots
 
 Customize the clipping area toolbar, and toolbar-position controls the toolbar position
 
-:::demo
-
-```vue
-<template>
-  <nut-avatar-cropper ref="avatarCropperRef" toolbar-position="top" edit-text="修改" @confirm="cutImage">
-    <nut-avatar size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-    <template #toolbar>
-      <div class="toolbar">
-        <nut-button type="primary" @click="avatarCropperRef.cancel()">cancel</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.reset()">reset</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.rotate()">spin</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.confirm()">confirm</nut-button>
-      </div>
-    </template>
-  </nut-avatar-cropper>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const imageUrl = ref(
-  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-);
-const avatarCropperRef = ref();
-const cutImage = (url) => {
-  imageUrl.value = url;
-};
-</script>
-
-<style>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-}
-</style>
-```
-
-:::
+> demo: avatarcropper toolbar
 
 ## API
 
