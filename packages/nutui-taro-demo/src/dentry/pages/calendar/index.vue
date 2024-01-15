@@ -1,31 +1,49 @@
 <template>
   <Demo class="calendar-demo">
     <h2>{{ t('single') }}</h2>
-    <Single />
+    <custom-wrapper>
+      <Single />
+    </custom-wrapper>
 
     <h2>{{ t('range') }}</h2>
-    <Range />
+    <custom-wrapper>
+      <Range />
+    </custom-wrapper>
 
     <h2>{{ t('multiple') }}</h2>
-    <Multiple />
+    <custom-wrapper>
+      <Multiple />
+    </custom-wrapper>
 
     <h2>{{ t('week') }}</h2>
-    <Week />
+    <custom-wrapper>
+      <Week />
+    </custom-wrapper>
 
     <h2>{{ t('disabled') }}</h2>
-    <Disabled />
+    <custom-wrapper>
+      <Disabled />
+    </custom-wrapper>
 
     <h2>{{ t('singleQuick') }}</h2>
-    <SingleQuick />
+    <custom-wrapper>
+      <SingleQuick />
+    </custom-wrapper>
 
     <h2>{{ t('rangeQuick') }}</h2>
-    <RangeQuick />
+    <custom-wrapper>
+      <RangeQuick />
+    </custom-wrapper>
 
     <h2>{{ t('custom') }}</h2>
-    <Custom />
+    <custom-wrapper>
+      <Custom />
+    </custom-wrapper>
 
     <h2>{{ t('tiled') }}</h2>
-    <Tiled />
+    <custom-wrapper>
+      <Tiled />
+    </custom-wrapper>
   </Demo>
 </template>
 
