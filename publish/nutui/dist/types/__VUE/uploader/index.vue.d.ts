@@ -3,7 +3,7 @@ import { FileItem } from './type';
 import { Interceptor } from '@/packages/utils/util';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     name: {
@@ -255,7 +255,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutUploader: typeof _default;
-  }
+    interface GlobalComponents {
+        NutUploader: typeof _default;
+    }
 }

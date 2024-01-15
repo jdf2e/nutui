@@ -2,7 +2,7 @@ import { PropType, CSSProperties } from 'vue';
 import { ImageFit } from './type';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     src: StringConstructor;
@@ -120,7 +120,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutImage: typeof _default;
-  }
+    interface GlobalComponents {
+        NutImage: typeof _default;
+    }
 }

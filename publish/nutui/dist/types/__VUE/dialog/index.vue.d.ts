@@ -3,7 +3,7 @@ import { Interceptor } from '@/packages/utils/util';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     closeOnClickOverlay: {
@@ -344,7 +344,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutDialog: typeof _default;
-  }
+    interface GlobalComponents {
+        NutDialog: typeof _default;
+    }
 }

@@ -2,7 +2,7 @@ import { Ref, PropType } from 'vue';
 import type { AvatarCropperToolbarPosition, AvatarCropperShape } from './types';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     maxZoom: {
@@ -103,7 +103,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutAvatarCropper: typeof _default;
-  }
+    interface GlobalComponents {
+        NutAvatarCropper: typeof _default;
+    }
 }

@@ -2,7 +2,7 @@ import { PropType } from 'vue';
 import { StepsDirection } from './types';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     direction: {
@@ -42,7 +42,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutSteps: typeof _default;
-  }
+    interface GlobalComponents {
+        NutSteps: typeof _default;
+    }
 }

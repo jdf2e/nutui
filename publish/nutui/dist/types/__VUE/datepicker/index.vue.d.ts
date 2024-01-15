@@ -4,7 +4,7 @@ import { Formatter, Filter } from './type';
 declare function isDate(val: Date): val is Date;
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     modelValue: null;
@@ -227,7 +227,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutDatePicker: typeof _default;
-  }
+    interface GlobalComponents {
+        NutDatePicker: typeof _default;
+    }
 }

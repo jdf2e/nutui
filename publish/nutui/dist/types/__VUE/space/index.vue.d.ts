@@ -2,7 +2,7 @@ import { PropType, type VNode } from 'vue';
 import { SpaceAlign, SpaceJustify, SpaceGutter } from './types';
 
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     align: PropType<SpaceAlign>;
@@ -34,7 +34,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 export default _default;
 
 declare module 'vue' {
-  interface GlobalComponents {
-      NutSpace: typeof _default;
-  }
+    interface GlobalComponents {
+        NutSpace: typeof _default;
+    }
 }
