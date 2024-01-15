@@ -71,8 +71,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onSelect?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string;
     height: string;
+    title: string;
     visible: boolean;
     lockScroll: boolean;
     teleportDisable: boolean;

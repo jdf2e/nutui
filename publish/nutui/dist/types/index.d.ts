@@ -1,6 +1,7 @@
 import { App } from 'vue';
 import Locale from './locale';
-import Button from './__VUE/button/index.vue';
+import Button from './__VUE/button/index';
+export * from './__VUE/button/index';
 import Cell from './__VUE/cell/index.vue';
 import CellGroup from './__VUE/cellgroup/index.vue';
 import Overlay from './__VUE/overlay/index.vue';

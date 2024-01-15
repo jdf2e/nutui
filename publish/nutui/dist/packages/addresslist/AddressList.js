@@ -4,7 +4,7 @@ import { l as floatData } from "../util-4Jkyw4BJ.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { Del, Edit } from "@nutui/icons-vue";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$3 } from "../button/Button.js";
 import NutSwipe from "../swipe/Swipe.js";
 import "@nutui/nutui/dist/packages/locale/lang";
 import "../index-084nl_oE.js";
@@ -109,7 +109,7 @@ const _sfc_main$1 = create$1({
   emits: ["delIcon", "editIcon", "clickItem", "longDown", "longCopy", "longSet", "longDel", "swipeDel"],
   components: {
     ItemContents,
-    NutButton,
+    NutButton: _sfc_main$3,
     NutSwipe
   },
   setup(props, { emit }) {
@@ -328,7 +328,7 @@ const _sfc_main = create({
   },
   components: {
     GeneralShell,
-    NutButton
+    NutButton: _sfc_main$3
   },
   emits: ["delIcon", "editIcon", "clickItem", "longCopy", "longSet", "longDel", "swipeDel", "add"],
   setup(props, { emit }) {

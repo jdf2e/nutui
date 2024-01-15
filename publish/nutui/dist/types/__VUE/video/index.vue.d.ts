@@ -74,13 +74,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     source: Ref<Record<string, any>>;
     options: Ref<Record<string, any>>;
     model: Ref<string>;
-    onPause: Ref<((...args: any[]) => any) | undefined>;
     onClick: Ref<((...args: any[]) => any) | undefined>;
+    onPause: Ref<((...args: any[]) => any) | undefined>;
     onPlay: Ref<((...args: any[]) => any) | undefined>;
     onTime: Ref<((...args: any[]) => any) | undefined>;
     onPlayend: Ref<((...args: any[]) => any) | undefined>;
     root: Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("time" | "click" | "pause" | "play" | "playend")[], "time" | "click" | "pause" | "play" | "playend", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "time" | "pause" | "play" | "playend")[], "click" | "time" | "pause" | "play" | "playend", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     source: {
         type: ObjectConstructor;
         default: {};
@@ -106,8 +106,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    onPause?: ((...args: any[]) => any) | undefined;
     onClick?: ((...args: any[]) => any) | undefined;
+    onPause?: ((...args: any[]) => any) | undefined;
     onPlay?: ((...args: any[]) => any) | undefined;
     onTime?: ((...args: any[]) => any) | undefined;
     onPlayend?: ((...args: any[]) => any) | undefined;

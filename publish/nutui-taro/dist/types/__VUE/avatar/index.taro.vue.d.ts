@@ -46,9 +46,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    size: string | number;
     color: string;
     shape: AvatarShape;
+    size: string | number;
     bgColor: string;
 }, {}>>;
 export default _default;

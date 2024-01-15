@@ -141,7 +141,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     title: import("vue").Ref<string>;
     selectedValue: import("vue").Ref<any[]>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "change" | "click" | "update:modelValue" | "confirm")[], "cancel" | "change" | "click" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "cancel" | "change" | "update:modelValue" | "confirm")[], "click" | "cancel" | "change" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: null;
     title: {
         type: StringConstructor;
@@ -203,14 +203,14 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
 }>> & {
-    onCancel?: ((...args: any[]) => any) | undefined;
-    onChange?: ((...args: any[]) => any) | undefined;
     onClick?: ((...args: any[]) => any) | undefined;
+    onChange?: ((...args: any[]) => any) | undefined;
+    onCancel?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string;
     type: string;
+    title: string;
     threeDimensional: boolean;
     swipeDuration: string | number;
     visibleOptionNum: string | number;

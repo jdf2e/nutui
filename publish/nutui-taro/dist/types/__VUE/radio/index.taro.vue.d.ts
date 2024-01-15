@@ -14,7 +14,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     label: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: string;
     };
     iconSize: {
@@ -37,7 +37,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     label: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: string;
     };
     iconSize: {
@@ -49,10 +49,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    size: RadioButtonSize;
-    label: string | number | boolean;
     shape: RadioShape;
     disabled: boolean;
+    size: RadioButtonSize;
+    label: string | number | boolean;
     iconSize: string | number;
 }, {}>>;
 export default _default;

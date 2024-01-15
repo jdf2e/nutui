@@ -149,9 +149,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     city: import("vue").Ref<HTMLElement | null>;
     country: import("vue").Ref<HTMLElement | null>;
     town: import("vue").Ref<HTMLElement | null>;
-    style: import("vue").Ref<Record<string, any>>;
     round: import("vue").Ref<boolean>;
     type: import("vue").Ref<string>;
+    style: import("vue").Ref<Record<string, any>>;
     transition: import("vue").Ref<string>;
     overlay: import("vue").Ref<boolean>;
     visible: import("vue").Ref<boolean>;
@@ -208,7 +208,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     clickOverlay: () => void;
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -354,9 +354,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onCloseMask?: ((...args: any[]) => any) | undefined;
     onSwitchModule?: ((...args: any[]) => any) | undefined;
 }, {
-    style: Record<string, any>;
     round: boolean;
     type: string;
+    style: Record<string, any>;
     transition: string;
     overlay: boolean;
     visible: boolean;

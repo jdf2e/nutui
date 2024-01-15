@@ -227,8 +227,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onPathChange?: ((...args: any[]) => any) | undefined;
 }, {
-    style: Record<string, any>;
     round: boolean;
+    style: Record<string, any>;
     transition: string;
     overlay: boolean;
     visible: boolean;

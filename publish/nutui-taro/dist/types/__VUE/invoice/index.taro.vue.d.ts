@@ -40,8 +40,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onScrollBottom?: ((...args: any[]) => any) | undefined;
     onOnSubmit?: ((...args: any[]) => any) | undefined;
 }, {
-    data: unknown[];
     submit: boolean;
+    data: unknown[];
     formValue: Record<string, any>;
 }, {}>>;
 export default _default;

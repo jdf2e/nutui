@@ -6,7 +6,7 @@ declare type Install<T> = T & {
 };
 declare const _default: Install< import("vue").DefineComponent<{
     modelValue: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: string;
     };
     direction: {
@@ -21,7 +21,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     [key: string]: any;
 }>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: string;
     };
     direction: {

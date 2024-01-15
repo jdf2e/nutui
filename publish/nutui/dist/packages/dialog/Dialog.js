@@ -25,7 +25,7 @@ import { ref, onMounted, watch, computed, resolveComponent, openBlock, createBlo
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { f as funInterceptor } from "../Interceptor-WYVtGbGC.js";
 import { N as NutPopup, p as popupProps } from "../index-rbZsBckW.js";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import NutOverlay from "../overlay/Overlay.js";
@@ -39,7 +39,7 @@ const _sfc_main = create({
   inheritAttrs: false,
   components: {
     NutPopup,
-    NutButton
+    NutButton: _sfc_main$1
   },
   props: __spreadProps(__spreadValues({}, popupProps), {
     closeOnClickOverlay: {
@@ -293,7 +293,7 @@ class DialogFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: "dialog",
-      components: [NutPopup, NutButton, NutOverlay],
+      components: [NutPopup, _sfc_main$1, NutOverlay],
       wrapper: (elWrap, root) => {
         return {
           setup() {

@@ -39,7 +39,7 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 import { reactive, ref, computed, onMounted, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, createTextVNode, withModifiers, toDisplayString, withDirectives, normalizeStyle, normalizeClass, createVNode, withCtx, vShow } from "vue";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { a as preventDefault, c as clamp } from "../util-WZB3Ltgx.js";
 import { IconFont } from "@nutui/icons-vue-taro";
@@ -93,7 +93,7 @@ function easySetFillStyle(systemInfo, canvasContext, color) {
 const { create } = createComponent("avatar-cropper");
 const _sfc_main = create({
   components: {
-    NutButton,
+    NutButton: _sfc_main$1,
     IconFont
   },
   props: {

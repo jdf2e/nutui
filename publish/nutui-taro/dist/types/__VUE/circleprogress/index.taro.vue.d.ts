@@ -73,8 +73,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>>, {
-    progress: string | number;
     color: string | Record<string, any>;
+    progress: string | number;
     strokeWidth: string | number;
     radius: string | number;
     strokeLinecap: CircleProgressStrokeLinecap;

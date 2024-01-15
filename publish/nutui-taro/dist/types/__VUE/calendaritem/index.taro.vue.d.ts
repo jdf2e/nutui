@@ -68,8 +68,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     translate: (keyPath: string, ...args: unknown[]) => any;
     scrollWithAnimation: import("vue").Ref<boolean>;
-    title: import("vue").Ref<string>;
     type: import("vue").Ref<string>;
+    title: import("vue").Ref<string>;
     poppable: import("vue").Ref<boolean>;
     isAutoBackFill: import("vue").Ref<boolean>;
     toDateAnimation: import("vue").Ref<boolean>;
@@ -193,8 +193,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChoose?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string;
     type: string;
+    title: string;
     poppable: boolean;
     isAutoBackFill: boolean;
     toDateAnimation: boolean;

@@ -440,30 +440,17 @@ var __async = (__this, __arguments, generator) => {
     }
   }
   __publicField(Locale, "currentLang", vue.ref("zh-CN"));
-  const camelize = (s) => s.replace(/-./g, (x) => x[1].toUpperCase());
-  function createComponent(name) {
-    const componentName2 = "nut-" + name;
-    return {
-      componentName: componentName2,
-      create: function(_component) {
-        _component.name = "Nut" + camelize("-" + name);
-        _component.install = (vue2) => {
-          vue2.component(_component.name, _component);
-        };
-        return vue.defineComponent(_component);
-      }
-    };
-  }
-  const renderIcon = (icon, props) => {
-    if (icon)
-      return vue.h(icon, props);
-    return "";
-  };
-  const { componentName: componentName$p, create: create$1J } = createComponent("button");
-  const _sfc_main$1K = create$1J({
-    components: { Loading: iconsVueTaro.Loading },
+  const _hoisted_1$1j = ["type", "formType"];
+  const _hoisted_2$11 = { class: "nut-button__wrap" };
+  const _sfc_main$1K = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
+    name: "NutButton"
+  }), {
+    __name: "button.taro",
     props: {
-      color: String,
+      color: {
+        type: String,
+        default: ""
+      },
       shape: {
         type: String,
         default: "round"
@@ -498,7 +485,9 @@ var __async = (__this, __arguments, generator) => {
       }
     },
     emits: ["click"],
-    setup(props, { emit }) {
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const emit = __emit;
       const { type, size, shape, disabled, loading, color, plain, block } = vue.toRefs(props);
       const handleClick = (event) => {
         if (!loading.value && !disabled.value) {
@@ -506,7 +495,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const classes = vue.computed(() => {
-        const prefixCls = componentName$p;
+        const prefixCls = "nut-button";
         return {
           [prefixCls]: true,
           [`${prefixCls}--${type.value}`]: type.value,
@@ -535,50 +524,108 @@ var __async = (__this, __arguments, generator) => {
         }
         return style;
       });
-      return {
-        handleClick,
-        classes,
-        getStyle,
-        Taro
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("button", {
+          class: vue.normalizeClass(classes.value),
+          style: vue.normalizeStyle(getStyle.value),
+          type: vue.unref(Taro).getEnv() === vue.unref(Taro).ENV_TYPE.WEB ? __props.formType : void 0,
+          formType: __props.formType === "button" ? void 0 : __props.formType,
+          onClick: handleClick
+        }, [
+          vue.createElementVNode("view", _hoisted_2$11, [
+            vue.unref(loading) ? (vue.openBlock(), vue.createBlock(vue.unref(iconsVueTaro.Loading), {
+              key: 0,
+              class: "nut-icon-loading"
+            })) : vue.createCommentVNode("", true),
+            vue.createTextVNode(),
+            _ctx.$slots.icon && !vue.unref(loading) ? vue.renderSlot(_ctx.$slots, "icon", { key: 1 }) : vue.createCommentVNode("", true),
+            vue.createTextVNode(),
+            _ctx.$slots.default ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 2,
+              class: vue.normalizeClass({ "nut-button__text": _ctx.$slots.icon || vue.unref(loading) })
+            }, [
+              vue.renderSlot(_ctx.$slots, "default")
+            ], 2)) : vue.createCommentVNode("", true)
+          ])
+        ], 14, _hoisted_1$1j);
       };
     }
-  });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
+  }));
+  const useChildren = (key) => {
+    const publicChildren = vue.reactive([]);
+    const internalChildren = vue.reactive([]);
+    const linkChildren = (value) => {
+      const link = (child) => {
+        if (child.proxy) {
+          internalChildren.push(child);
+          publicChildren.push(child.proxy);
+        }
+      };
+      const unlink = (child) => {
+        if (child.proxy) {
+          let internalIndex = internalChildren.indexOf(child);
+          if (internalIndex > -1) {
+            internalChildren.splice(internalIndex, 1);
+          }
+          let publicIndex = publicChildren.indexOf(child.proxy);
+          if (internalIndex > -1) {
+            publicChildren.splice(publicIndex, 1);
+          }
+        }
+      };
+      vue.provide(key, __spreadValues({
+        unlink,
+        link,
+        children: publicChildren,
+        internalChildren
+      }, value));
+    };
+    return {
+      children: publicChildren,
+      linkChildren
+    };
   };
-  const _hoisted_1$1j = ["type", "formType"];
-  const _hoisted_2$11 = { class: "nut-button__wrap" };
-  function _sfc_render$1A(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_Loading = vue.resolveComponent("Loading");
-    return vue.openBlock(), vue.createElementBlock("button", {
-      class: vue.normalizeClass(_ctx.classes),
-      style: vue.normalizeStyle(_ctx.getStyle),
-      type: _ctx.Taro.getEnv() === _ctx.Taro.ENV_TYPE.WEB ? _ctx.formType : void 0,
-      formType: _ctx.formType === "button" ? void 0 : _ctx.formType,
-      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
-    }, [
-      vue.createElementVNode("view", _hoisted_2$11, [
-        _ctx.loading ? (vue.openBlock(), vue.createBlock(_component_Loading, {
-          key: 0,
-          class: "nut-icon-loading"
-        })) : vue.createCommentVNode("", true),
-        vue.createTextVNode(),
-        _ctx.$slots.icon && !_ctx.loading ? vue.renderSlot(_ctx.$slots, "icon", { key: 1 }) : vue.createCommentVNode("", true),
-        vue.createTextVNode(),
-        _ctx.$slots.default ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 2,
-          class: vue.normalizeClass({ "nut-button__text": _ctx.$slots.icon || _ctx.loading })
-        }, [
-          vue.renderSlot(_ctx.$slots, "default")
-        ], 2)) : vue.createCommentVNode("", true)
-      ])
-    ], 14, _hoisted_1$1j);
+  const useParent = (key) => {
+    const parent = vue.inject(key, null);
+    if (parent) {
+      const instance = vue.getCurrentInstance();
+      const { link, unlink } = parent;
+      link(instance);
+      vue.onUnmounted(() => {
+        unlink(instance);
+      });
+    }
+    return { parent };
+  };
+  const withInstall = (comp) => {
+    const _comp = comp;
+    _comp.install = (vue2) => {
+      if (_comp.name) {
+        vue2.component(_comp.name, _comp);
+      }
+    };
+    return _comp;
+  };
+  withInstall(_sfc_main$1K);
+  const camelize = (s) => s.replace(/-./g, (x) => x[1].toUpperCase());
+  function createComponent(name) {
+    const componentName2 = "nut-" + name;
+    return {
+      componentName: componentName2,
+      create: function(_component) {
+        _component.name = "Nut" + camelize("-" + name);
+        _component.install = (vue2) => {
+          vue2.component(_component.name, _component);
+        };
+        return vue.defineComponent(_component);
+      }
+    };
   }
-  const Button = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["render", _sfc_render$1A]]);
+  const renderIcon = (icon, props) => {
+    if (icon)
+      return vue.h(icon, props);
+    return "";
+  };
   const pxCheck = (value) => {
     if (value !== void 0) {
       return isNaN(Number(value)) ? String(value) : `${value}px`;
@@ -633,6 +680,13 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _hoisted_1$1i = {
     key: 0,
     class: "nut-cell__icon"
@@ -2030,52 +2084,6 @@ var __async = (__this, __arguments, generator) => {
     ], 6);
   }
   const FixedNav = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["render", _sfc_render$1p]]);
-  const useChildren = (key) => {
-    const publicChildren = vue.reactive([]);
-    const internalChildren = vue.reactive([]);
-    const linkChildren = (value) => {
-      const link = (child) => {
-        if (child.proxy) {
-          internalChildren.push(child);
-          publicChildren.push(child.proxy);
-        }
-      };
-      const unlink = (child) => {
-        if (child.proxy) {
-          let internalIndex = internalChildren.indexOf(child);
-          if (internalIndex > -1) {
-            internalChildren.splice(internalIndex, 1);
-          }
-          let publicIndex = publicChildren.indexOf(child.proxy);
-          if (internalIndex > -1) {
-            publicChildren.splice(publicIndex, 1);
-          }
-        }
-      };
-      vue.provide(key, __spreadValues({
-        unlink,
-        link,
-        children: publicChildren,
-        internalChildren
-      }, value));
-    };
-    return {
-      children: publicChildren,
-      linkChildren
-    };
-  };
-  const useParent = (key) => {
-    const parent = vue.inject(key, null);
-    if (parent) {
-      const instance = vue.getCurrentInstance();
-      const { link, unlink } = parent;
-      link(instance);
-      vue.onUnmounted(() => {
-        unlink(instance);
-      });
-    }
-    return { parent };
-  };
   const MENU_KEY = Symbol("nut-menu");
   const { componentName: componentName$h, create: create$1t } = createComponent("menu");
   const _sfc_main$1u = create$1t({
@@ -9320,7 +9328,7 @@ var __async = (__this, __arguments, generator) => {
   const _sfc_main$Z = create$Z({
     components: {
       NutProgress: Progress,
-      NutButton: Button,
+      NutButton: _sfc_main$1K,
       Photograph: iconsVueTaro.Photograph,
       Failure: iconsVueTaro.Failure,
       Loading: iconsVueTaro.Loading,
@@ -11085,7 +11093,7 @@ var __async = (__this, __arguments, generator) => {
     inheritAttrs: false,
     components: {
       NutPopup: Popup,
-      NutButton: Button
+      NutButton: _sfc_main$1K
     },
     props: __spreadProps(__spreadValues({}, popupProps), {
       closeOnClickOverlay: {
@@ -17352,7 +17360,7 @@ var __async = (__this, __arguments, generator) => {
       }
     },
     components: {
-      NutButton: Button
+      NutButton: _sfc_main$1K
     },
     emits: ["start", "end", "signing", "confirm", "clear"],
     setup(props, { emit }) {
@@ -18676,7 +18684,7 @@ var __async = (__this, __arguments, generator) => {
     emits: ["delIcon", "editIcon", "clickItem", "longDown", "longCopy", "longSet", "longDel", "swipeDel"],
     components: {
       ItemContents,
-      NutButton: Button,
+      NutButton: _sfc_main$1K,
       NutSwipe: Swipe
     },
     setup(props, { emit }) {
@@ -18900,7 +18908,7 @@ var __async = (__this, __arguments, generator) => {
     },
     components: {
       GeneralShell,
-      NutButton: Button
+      NutButton: _sfc_main$1K
     },
     emits: ["delIcon", "editIcon", "clickItem", "longCopy", "longSet", "longDel", "swipeDel", "add"],
     setup(props, { emit }) {
@@ -19665,7 +19673,7 @@ var __async = (__this, __arguments, generator) => {
       NutFormItem: FormItem,
       NutRadio: _sfc_main$13,
       NutRadioGroup: _sfc_main$12,
-      NutButton: Button
+      NutButton: _sfc_main$1K
     },
     props: {
       data: {
@@ -19851,7 +19859,7 @@ var __async = (__this, __arguments, generator) => {
   const { create } = createComponent("avatar-cropper");
   const _sfc_main = create({
     components: {
-      NutButton: Button,
+      NutButton: _sfc_main$1K,
       IconFont: iconsVueTaro.IconFont
     },
     props: {
@@ -20427,7 +20435,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const AvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   function install(app) {
-    const packages = [Button, Cell, CellGroup, Overlay, Popup, _sfc_main$1F, _sfc_main$1E, Col, Row, Sticky, Divider, _sfc_main$1z, GridItem, _sfc_main$1x, Navbar, FixedNav, Menu, MenuItem, Tabbar, TabbarItem, Elevator, Pagination, Tabs, TabPane, Indicator, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1a, _sfc_main$19, DatePicker, InputNumber, Input, _sfc_main$13, _sfc_main$12, Rate, Picker, ShortPassword, Textarea, Uploader, NumberKeyboard, Form, FormItem, Swipe, SwipeGroup, ActionSheet, Backtop, Drag, Dialog, Notify, Switch, Toast, Avatar, AvatarGroup, List, Progress, CircleProgress, Noticebar, Empty, _sfc_main$G, Step, Swiper, SwiperItem, Price, ImagePreview, Countup, Countdown, Badge, Tag, Popover, Skeleton, Collapse, CollapseItem, Table, Animate, Ellipsis, Watermark, TrendArrow, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, Invoice, AvatarCropper];
+    const packages = [_sfc_main$1K, Cell, CellGroup, Overlay, Popup, _sfc_main$1F, _sfc_main$1E, Col, Row, Sticky, Divider, _sfc_main$1z, GridItem, _sfc_main$1x, Navbar, FixedNav, Menu, MenuItem, Tabbar, TabbarItem, Elevator, Pagination, Tabs, TabPane, Indicator, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1a, _sfc_main$19, DatePicker, InputNumber, Input, _sfc_main$13, _sfc_main$12, Rate, Picker, ShortPassword, Textarea, Uploader, NumberKeyboard, Form, FormItem, Swipe, SwipeGroup, ActionSheet, Backtop, Drag, Dialog, Notify, Switch, Toast, Avatar, AvatarGroup, List, Progress, CircleProgress, Noticebar, Empty, _sfc_main$G, Step, Swiper, SwiperItem, Price, ImagePreview, Countup, Countdown, Badge, Tag, Popover, Skeleton, Collapse, CollapseItem, Table, Animate, Ellipsis, Watermark, TrendArrow, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, Invoice, AvatarCropper];
     packages.forEach((item) => {
       if (item.install) {
         app.use(item);
@@ -20448,7 +20456,7 @@ var __async = (__this, __arguments, generator) => {
   exports2.Backtop = Backtop;
   exports2.Badge = Badge;
   exports2.Barrage = Barrage;
-  exports2.Button = Button;
+  exports2.Button = _sfc_main$1K;
   exports2.Calendar = Calendar;
   exports2.Card = Card;
   exports2.Cascader = Cascader;

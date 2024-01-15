@@ -66,9 +66,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
-    label: string;
     shape: string;
     disabled: boolean;
+    label: string;
     modelValue: boolean;
     textPosition: string;
     iconSize: string | number;

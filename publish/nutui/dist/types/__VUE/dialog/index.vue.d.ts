@@ -305,9 +305,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onUpdate?: ((...args: any[]) => any) | undefined;
     onOk?: ((...args: any[]) => any) | undefined;
 }, {
+    round: boolean;
     style: Record<string, any>;
     title: string;
-    round: boolean;
     transition: string;
     overlay: boolean;
     visible: boolean;

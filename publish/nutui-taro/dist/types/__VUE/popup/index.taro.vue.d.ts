@@ -198,8 +198,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClosed?: ((...args: any[]) => any) | undefined;
     onClickOverlay?: ((...args: any[]) => any) | undefined;
 }, {
-    style: Record<string, any>;
     round: boolean;
+    style: Record<string, any>;
     transition: string;
     overlay: boolean;
     visible: boolean;

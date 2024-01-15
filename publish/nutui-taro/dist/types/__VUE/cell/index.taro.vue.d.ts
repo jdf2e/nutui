@@ -107,9 +107,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     size: string;
     title: string;
-    replace: boolean;
-    center: boolean;
     desc: string;
+    center: boolean;
+    replace: boolean;
     subTitle: string;
     descTextAlign: string;
     isLink: boolean;

@@ -77,8 +77,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onTabSwitch?: ((...args: any[]) => any) | undefined;
 }, {
-    size: string;
     type: string;
+    size: string;
     bottom: boolean;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;

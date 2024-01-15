@@ -22,7 +22,7 @@ import { ref, watch, reactive, resolveComponent, openBlock, createElementBlock, 
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { f as funInterceptor } from "../Interceptor-CfVX2DIs.js";
 import NutProgress from "../progress/Progress.js";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$1 } from "../button/Button.js";
 import Taro from "@tarojs/taro";
 import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-DDx91B18.js";
@@ -157,7 +157,7 @@ const cN = "NutUploader";
 const _sfc_main = create({
   components: {
     NutProgress,
-    NutButton,
+    NutButton: _sfc_main$1,
     Photograph,
     Failure,
     Loading,

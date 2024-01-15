@@ -77,11 +77,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
 }, {
-    mark: boolean;
     round: boolean;
     color: string;
     plain: boolean;
     type: TagType;
+    mark: boolean;
     closeable: boolean;
     textColor: string;
 }, {}>>;

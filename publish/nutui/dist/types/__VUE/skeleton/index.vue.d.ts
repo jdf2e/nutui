@@ -97,11 +97,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>>, {
-    title: boolean;
     round: boolean;
+    loading: boolean;
     width: string;
     height: string;
-    loading: boolean;
+    title: boolean;
     row: string;
     avatar: boolean;
     animated: boolean;

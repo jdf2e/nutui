@@ -160,12 +160,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
 }, {
+    type: string;
     size: string | number;
     title: string;
-    center: boolean;
-    type: string;
     icon: Component;
     bottom: string;
+    center: boolean;
     visible: boolean;
     duration: number;
     closeOnClickOverlay: boolean;

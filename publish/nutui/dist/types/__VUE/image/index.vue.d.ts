@@ -104,8 +104,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
-    onError?: ((...args: any[]) => any) | undefined;
     onLoad?: ((...args: any[]) => any) | undefined;
+    onError?: ((...args: any[]) => any) | undefined;
 }, {
     round: boolean;
     width: string;

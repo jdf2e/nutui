@@ -121,7 +121,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderInput: () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "progress" | "change" | "success" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "delete" | "progress" | "change" | "success" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("success" | "progress" | "delete" | "change" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "success" | "progress" | "delete" | "change" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;
@@ -218,19 +218,19 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: FunctionConstructor;
     };
 }>> & {
-    onProgress?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onProgress?: ((...args: any[]) => any) | undefined;
     onStart?: ((...args: any[]) => any) | undefined;
     onFailure?: ((...args: any[]) => any) | undefined;
-    onDelete?: ((...args: any[]) => any) | undefined;
     onSuccess?: ((...args: any[]) => any) | undefined;
+    onDelete?: ((...args: any[]) => any) | undefined;
     onOversize?: ((...args: any[]) => any) | undefined;
     "onUpdate:fileList"?: ((...args: any[]) => any) | undefined;
     onFileItemClick?: ((...args: any[]) => any) | undefined;
 }, {
     name: string;
-    data: Record<string, any>;
     disabled: boolean;
+    data: Record<string, any>;
     url: string;
     maximum: string | number;
     multiple: boolean;

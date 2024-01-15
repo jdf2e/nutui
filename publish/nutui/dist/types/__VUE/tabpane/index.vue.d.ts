@@ -31,8 +31,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string | number;
     disabled: boolean;
+    title: string | number;
     paneKey: string | number;
 }, {}>>;
 export default _default;

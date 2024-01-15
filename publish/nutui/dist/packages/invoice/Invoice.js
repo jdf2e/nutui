@@ -23,7 +23,7 @@ import NutForm from "../form/Form.js";
 import NutFormItem from "../formitem/FormItem.js";
 import { _ as _sfc_main$1 } from "../index.vue_vue_type_script_lang-MJYVRFbp.js";
 import { _ as _sfc_main$2 } from "../index.vue_vue_type_script_lang-54PRh3YM.js";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$3 } from "../button/Button.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../util-4Jkyw4BJ.js";
 import "../types-Ynmct7na.js";
@@ -42,7 +42,7 @@ const _sfc_main = create({
     NutFormItem,
     NutRadio: _sfc_main$1,
     NutRadioGroup: _sfc_main$2,
-    NutButton
+    NutButton: _sfc_main$3
   },
   props: {
     data: {

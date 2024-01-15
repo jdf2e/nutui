@@ -23,7 +23,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     ellipsis: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     videos: {
@@ -66,7 +66,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     ellipsis: {
-        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
+        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     videos: {

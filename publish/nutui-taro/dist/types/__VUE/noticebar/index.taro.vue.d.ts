@@ -166,8 +166,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClose?: ((...args: any[]) => any) | undefined;
     onAcrossEnd?: ((...args: any[]) => any) | undefined;
 }, {
-    text: string;
     color: string;
+    text: string;
     height: number;
     direction: string;
     background: string;

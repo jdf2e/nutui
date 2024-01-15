@@ -175,9 +175,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
     name: string;
-    image: string;
     width: number;
     height: number;
+    image: string;
     zIndex: number;
     content: string | string[];
     fontSize: string | number;

@@ -86,9 +86,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>>, {
     name: string | number;
+    disabled: boolean;
     label: string;
     title: string;
-    disabled: boolean;
     icon: Record<string, any>;
     border: boolean;
     value: string;

@@ -64,7 +64,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     root: Ref<any>;
     show: Ref<boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "input" | "blur" | "close" | "update:visible" | "update:modelValue")[], "delete" | "input" | "blur" | "close" | "update:visible" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "blur" | "close" | "update:visible" | "update:modelValue")[], "input" | "delete" | "blur" | "close" | "update:visible" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     confirmText: {
         type: StringConstructor;
         default: string;
@@ -106,15 +106,15 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    onInput?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
+    onInput?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string;
     type: string;
+    title: string;
     visible: boolean;
     lockScroll: boolean;
     popClass: string;

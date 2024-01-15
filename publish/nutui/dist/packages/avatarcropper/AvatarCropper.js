@@ -39,7 +39,7 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, withDirectives, normalizeClass, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
-import NutButton from "../button/Button.js";
+import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { d as preventDefault, e as clamp } from "../util-4Jkyw4BJ.js";
 import { Refresh2, Retweet } from "@nutui/icons-vue";
@@ -49,7 +49,7 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("avatar-cropper");
 const _sfc_main = create({
   components: {
-    NutButton,
+    NutButton: _sfc_main$1,
     Refresh2,
     Retweet
   },

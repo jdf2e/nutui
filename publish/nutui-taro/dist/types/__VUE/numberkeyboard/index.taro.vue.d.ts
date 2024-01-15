@@ -68,7 +68,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     root: Ref<HTMLElement | undefined>;
     show: Ref<boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "input" | "close" | "update:visible" | "update:modelValue")[], "delete" | "input" | "close" | "update:visible" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "close" | "update:visible" | "update:modelValue")[], "input" | "delete" | "close" | "update:visible" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     confirmText: {
         type: StringConstructor;
         default: string;
@@ -120,8 +120,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
 }, {
-    title: string;
     type: string;
+    title: string;
     overlay: boolean;
     visible: boolean;
     lockScroll: boolean;

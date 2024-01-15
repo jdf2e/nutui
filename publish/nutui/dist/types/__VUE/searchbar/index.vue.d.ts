@@ -266,9 +266,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
+    onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
-    onFocus?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
     onSearch?: ((...args: any[]) => any) | undefined;
@@ -276,9 +276,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickLeftIcon?: ((...args: any[]) => any) | undefined;
     onClickRightIcon?: ((...args: any[]) => any) | undefined;
 }, {
-    label: string;
     shape: SearchbarShape;
     disabled: boolean;
+    label: string;
     safeAreaInsetBottom: boolean;
     placeholder: string;
     modelValue: string | number;

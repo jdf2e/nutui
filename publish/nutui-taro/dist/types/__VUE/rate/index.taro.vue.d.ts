@@ -100,8 +100,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
-    size: string | number;
     disabled: boolean;
+    size: string | number;
     activeColor: string;
     modelValue: string | number;
     count: string | number;

@@ -1,6 +1,7 @@
 import { App } from 'vue';
 import Locale from './locale';
-import Button from './__VUE/button/index.taro.vue';
+import Button from './__VUE/button/index.taro';
+export * from './__VUE/button/index.taro';
 import Cell from './__VUE/cell/index.taro.vue';
 import CellGroup from './__VUE/cellgroup/index.taro.vue';
 import Overlay from './__VUE/overlay/index.taro.vue';

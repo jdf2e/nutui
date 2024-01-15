@@ -137,12 +137,12 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClose?: ((...args: any[]) => any) | undefined;
 }, {
+    type: string;
     size: string | number;
     title: string;
-    center: boolean;
-    type: string;
     icon: Component;
     bottom: string;
+    center: boolean;
     duration: number;
     closeOnClickOverlay: boolean;
     cover: boolean;

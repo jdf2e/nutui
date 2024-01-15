@@ -263,10 +263,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
 }, {
-    style: Record<string, any>;
-    title: string;
     round: boolean;
     color: string;
+    style: Record<string, any>;
+    title: string;
     transition: string;
     overlay: boolean;
     visible: boolean;

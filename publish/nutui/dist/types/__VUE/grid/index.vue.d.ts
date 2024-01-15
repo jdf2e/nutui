@@ -67,9 +67,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>>, {
+    square: boolean;
     reverse: boolean;
     center: boolean;
-    square: boolean;
     border: boolean;
     gutter: string | number;
     columnNum: string | number;
