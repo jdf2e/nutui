@@ -55,3 +55,19 @@ test('should find nut-icon class of an svg tag when using icon slot', () => {
   expect(icons.length).toEqual(1);
   expect(icons[0].element.classList).toContain('nut-icon');
 });
+test('props color & plain', async () => {
+  const wrapper = mount(Button, {
+    props: {
+      color: 'blue'
+    }
+  });
+
+  const btn = wrapper.findComponent(Button);
+  expect(btn.html()).toContain('background: blue');
+
+  wrapper.setProps({
+    plain: true
+  });
+  await nextTick();
+  expect(btn.html()).toContain('border-color: blue');
+});
