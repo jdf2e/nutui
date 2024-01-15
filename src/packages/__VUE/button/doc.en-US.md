@@ -96,8 +96,13 @@ The color of the button can be customized through the color property.
 
 The component exports the following type definitions:
 
-```ts
-import type { ButtonType, ButtonSize, ButtonShape, ButtonFormType } from '@nutui/nutui';
+```js
+import type {
+  ButtonType,
+  ButtonSize,
+  ButtonShape,
+  ButtonFormType
+} from '@nutui/nutui';
 ```
 
 ## Theming
