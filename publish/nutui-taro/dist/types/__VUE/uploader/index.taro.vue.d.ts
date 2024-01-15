@@ -134,7 +134,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     fileItemClick: (fileItem: FileItem) => void;
     clearUploadQueue: (index?: number) => void;
     submit: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "progress" | "change" | "start" | "success" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "delete" | "progress" | "change" | "start" | "success" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("delete" | "progress" | "change" | "success" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "delete" | "progress" | "change" | "success" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;
@@ -249,9 +249,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onProgress?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
-    onDelete?: ((...args: any[]) => any) | undefined;
     onStart?: ((...args: any[]) => any) | undefined;
     onFailure?: ((...args: any[]) => any) | undefined;
+    onDelete?: ((...args: any[]) => any) | undefined;
     onSuccess?: ((...args: any[]) => any) | undefined;
     onOversize?: ((...args: any[]) => any) | undefined;
     "onUpdate:fileList"?: ((...args: any[]) => any) | undefined;
@@ -259,15 +259,15 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     name: string;
     data: Record<string, any>;
+    disabled: boolean;
+    url: string;
     maximum: string | number;
     multiple: boolean;
-    disabled: boolean;
+    mode: string;
+    timeout: string | number;
     camera: string;
     sizeType: SizeType[];
     sourceType: SourceType[];
-    mode: string;
-    url: string;
-    timeout: string | number;
     mediaType: MediaType[];
     fileList: any[];
     isPreview: boolean;

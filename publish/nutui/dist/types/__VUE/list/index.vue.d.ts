@@ -43,7 +43,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         dValue: number;
     }[]>;
     phantomHeight: Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollBottom" | "scrollUp" | "scrollDown")[], "scrollBottom" | "scrollUp" | "scrollDown", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollUp" | "scrollDown" | "scrollBottom")[], "scrollUp" | "scrollDown" | "scrollBottom", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     listData: {
         type: ArrayConstructor;
         default: () => never[];
@@ -65,9 +65,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
 }>> & {
-    onScrollBottom?: ((...args: any[]) => any) | undefined;
     onScrollUp?: ((...args: any[]) => any) | undefined;
     onScrollDown?: ((...args: any[]) => any) | undefined;
+    onScrollBottom?: ((...args: any[]) => any) | undefined;
 }, {
     height: number;
     listData: unknown[];

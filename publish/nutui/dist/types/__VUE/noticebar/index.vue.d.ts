@@ -167,9 +167,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     text: string;
     color: string;
     height: number;
-    background: string;
     direction: string;
-    speed: number;
+    background: string;
     list: any[];
     standTime: number;
     complexAm: boolean;
@@ -178,6 +177,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     leftIcon: boolean;
     delay: string | number;
     scrollable: boolean;
+    speed: number;
 }, {}>>;
 export default _default;
 

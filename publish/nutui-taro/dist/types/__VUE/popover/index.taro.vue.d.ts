@@ -86,9 +86,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     popoverArrowStyle: import("vue").ComputedRef<CSSProperties>;
     customStyle: import("vue").ComputedRef<CSSProperties>;
     getRootPosition: () => {} | undefined;
-    renderIcon: (icon: import("vue").Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
     popoverbox: import("vue").Ref<any>;
     popoverstyles: import("vue").Ref<any>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
@@ -171,11 +171,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     duration: string | number;
     overlayClass: string;
     closeOnClickOverlay: boolean;
-    offset: unknown[];
-    bgColor: string;
     theme: PopoverTheme;
-    customClass: string;
+    offset: unknown[];
     list: PopoverList[];
+    customClass: string;
+    bgColor: string;
     location: PopoverLocation;
     arrowOffset: number;
     showArrow: boolean;

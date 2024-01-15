@@ -72,9 +72,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
+    height: string;
     visible: boolean;
     lockScroll: boolean;
-    height: string;
     teleportDisable: boolean;
     currentKey: string | number;
     currentTime: unknown[];

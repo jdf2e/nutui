@@ -104,11 +104,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     replace: boolean;
     center: boolean;
     desc: string;
-    url: string;
     subTitle: string;
     descTextAlign: string;
     isLink: boolean;
     roundRadius: string | number;
+    url: string;
 }, {}>>;
 export default _default;
 

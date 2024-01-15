@@ -95,9 +95,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         [x: string]: boolean;
         "nut-collapse-item": boolean;
     }>;
-    renderIcon: (icon: import("vue").Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
     wrapperRef: any;
     contentRef: any;
     open: () => void;
@@ -197,9 +197,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     name: string | number;
     label: string;
     title: string;
+    disabled: boolean;
     icon: Record<string, any>;
     border: boolean;
-    disabled: boolean;
     value: string;
     rotate: string | number;
 }, {}>>;

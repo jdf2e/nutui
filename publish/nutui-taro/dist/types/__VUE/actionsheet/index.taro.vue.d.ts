@@ -265,6 +265,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     style: Record<string, any>;
     title: string;
+    round: boolean;
+    color: string;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -273,10 +276,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: boolean;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    color: string;
-    round: boolean;
     position: string;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;

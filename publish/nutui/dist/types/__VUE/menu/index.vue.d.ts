@@ -30,7 +30,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     scrollFixed: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     titleClass: {
@@ -73,7 +73,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     scrollFixed: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     titleClass: {
@@ -85,8 +85,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     duration: string | number;
     lockScroll: boolean;
     closeOnClickOverlay: boolean;
-    activeColor: string;
     direction: MenuDirection;
+    activeColor: string;
     scrollFixed: string | number | boolean;
     titleClass: string;
 }, {}>>;

@@ -125,8 +125,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClickCloseIcon?: ((...args: any[]) => any) | undefined;
     onClickOverlay?: ((...args: any[]) => any) | undefined;
-    onAdd?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;
+    onAdd?: ((...args: any[]) => any) | undefined;
     onSelectSku?: ((...args: any[]) => any) | undefined;
     onChangeStepper?: ((...args: any[]) => any) | undefined;
     onOverLimit?: ((...args: any[]) => any) | undefined;
@@ -135,8 +135,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     visible: boolean;
     lockScroll: boolean;
     confirmText: string;
-    sku: unknown[];
     goods: Record<string, any>;
+    sku: unknown[];
     stepperMax: string | number;
     stepperMin: string | number;
     stepperExtraText: boolean | Function;

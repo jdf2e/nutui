@@ -6,7 +6,7 @@ declare type Install<T> = T & {
 };
 declare const _default: Install< import("vue").DefineComponent<{
     modelValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: string;
     };
     direction: {
@@ -21,7 +21,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     [key: string]: any;
 }>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: string;
     };
     direction: {
@@ -36,8 +36,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
-    modelValue: string | number | boolean;
     direction: RadioGroupDirection;
+    modelValue: string | number | boolean;
     textPosition: RadioGroupTextPosition;
 }, {}>>;
 export default _default;

@@ -117,12 +117,12 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     title: string;
     modelValue: (string | number)[];
-    cancelText: string;
     threeDimensional: boolean;
     swipeDuration: string | number;
     visibleOptionNum: string | number;
     optionHeight: string | number;
     fieldNames: import("./types").PickerFieldNames;
+    cancelText: string;
     okText: string;
     columns: (import("./types").PickerOption | import("./types").PickerOption[])[];
     showToolbar: boolean;

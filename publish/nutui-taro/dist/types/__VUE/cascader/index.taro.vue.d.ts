@@ -228,6 +228,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onPathChange?: ((...args: any[]) => any) | undefined;
 }, {
     style: Record<string, any>;
+    round: boolean;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -236,9 +238,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: boolean;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    round: boolean;
     position: string;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;
@@ -247,12 +247,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: string | Element;
     teleportDisable: boolean;
     safeAreaInsetBottom: boolean;
-    poppable: boolean;
     options: unknown[];
     lazy: boolean;
     valueKey: string;
     textKey: string;
     childrenKey: string;
+    poppable: boolean;
 }, {}>>;
 export default _default;
 

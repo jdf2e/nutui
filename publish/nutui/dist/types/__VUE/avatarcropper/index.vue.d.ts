@@ -92,13 +92,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     onCancel?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
 }, {
-    space: number;
     shape: AvatarCropperShape;
+    space: number;
+    confirmText: string;
+    cancelText: string;
     maxZoom: number;
     toolbarPosition: AvatarCropperToolbarPosition;
     editText: string;
-    cancelText: string;
-    confirmText: string;
 }, {}>>;
 export default _default;
 

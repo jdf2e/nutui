@@ -41,8 +41,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
-    onAdd?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;
+    onAdd?: ((...args: any[]) => any) | undefined;
     onChangeSku?: ((...args: any[]) => any) | undefined;
     onChangeStepper?: ((...args: any[]) => any) | undefined;
     onClickBtnOptions?: ((...args: any[]) => any) | undefined;

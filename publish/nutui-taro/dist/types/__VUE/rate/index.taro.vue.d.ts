@@ -49,9 +49,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     pxCheck: (value?: string | number | undefined) => string | undefined;
     rateRefs: import("vue").Ref<HTMLElement[]>;
     refRandomId: string;
-    renderIcon: (icon: import("vue").Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
     slots: Readonly<{
         [name: string]: import("vue").Slot<any> | undefined;
     }>;
@@ -102,12 +102,12 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     size: string | number;
     disabled: boolean;
+    activeColor: string;
     modelValue: string | number;
     count: string | number;
-    customIcon: Record<string, any>;
-    activeColor: string;
-    voidColor: string;
     readonly: boolean;
+    customIcon: Record<string, any>;
+    voidColor: string;
     allowHalf: boolean;
     spacing: string | number;
 }, {}>>;

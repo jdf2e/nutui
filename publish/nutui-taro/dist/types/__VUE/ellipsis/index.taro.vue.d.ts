@@ -84,9 +84,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     symbol: string;
     content: string;
-    rows: string | number;
     direction: Direction;
     lineHeight: string | number;
+    rows: string | number;
     expandText: string;
     collapseText: string;
 }, {}>>;

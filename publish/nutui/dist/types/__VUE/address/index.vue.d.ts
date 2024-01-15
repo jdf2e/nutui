@@ -168,7 +168,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
     initCustomSelected: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -308,13 +308,17 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
-    onType?: ((...args: any[]) => any) | undefined;
-    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onType?: ((...args: any[]) => any) | undefined;
     onCloseMask?: ((...args: any[]) => any) | undefined;
     onSwitchModule?: ((...args: any[]) => any) | undefined;
 }, {
     style: Record<string, any>;
+    round: boolean;
+    height: string | number;
+    type: string;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -323,11 +327,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    type: string;
-    round: boolean;
     position: string;
-    height: string | number;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;

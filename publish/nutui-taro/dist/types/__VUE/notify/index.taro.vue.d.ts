@@ -82,10 +82,10 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
 }, {
+    color: string;
+    type: string;
     visible: boolean;
     duration: number;
-    type: string;
-    color: string;
     position: string;
     background: string;
     className: string;

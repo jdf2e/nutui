@@ -60,7 +60,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     inputValue: Ref<string | number | undefined>;
     money: Ref<string | number | undefined>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "inputChange" | "changeStep" | "inputClick")[], "change" | "update:modelValue" | "inputChange" | "changeStep" | "inputClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "changeStep" | "inputChange" | "inputClick")[], "change" | "update:modelValue" | "changeStep" | "inputChange" | "inputClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     chooseText: {
         type: StringConstructor;
         default: string;
@@ -104,10 +104,11 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-    onInputChange?: ((...args: any[]) => any) | undefined;
     onChangeStep?: ((...args: any[]) => any) | undefined;
+    onInputChange?: ((...args: any[]) => any) | undefined;
     onInputClick?: ((...args: any[]) => any) | undefined;
 }, {
+    placeholder: string;
     modelValue: string | number;
     chooseText: string;
     otherValueText: string;
@@ -116,7 +117,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     cardAmountMax: number;
     cardBuyMin: number;
     cardBuyMax: number;
-    placeholder: string;
     suffix: string;
 }, {}>>;
 export default _default;

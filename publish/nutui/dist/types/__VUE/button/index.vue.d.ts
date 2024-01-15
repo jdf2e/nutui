@@ -75,11 +75,11 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     size: ButtonSize;
     type: ButtonType;
-    block: boolean;
-    disabled: boolean;
-    loading: boolean;
     shape: ButtonShape;
     plain: boolean;
+    loading: boolean;
+    disabled: boolean;
+    block: boolean;
 }, {}>>;
 export default _default;
 

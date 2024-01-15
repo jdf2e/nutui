@@ -39,7 +39,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     autosize: {
-        type: (BooleanConstructor | ObjectConstructor)[];
+        type: (ObjectConstructor | BooleanConstructor)[];
         default: boolean;
     };
     autofocus: {
@@ -95,7 +95,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     autosize: {
-        type: (BooleanConstructor | ObjectConstructor)[];
+        type: (ObjectConstructor | BooleanConstructor)[];
         default: boolean;
     };
     autofocus: {
@@ -109,14 +109,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;
-    modelValue: string;
-    rows: string | number;
-    readonly: boolean;
-    textAlign: string;
     placeholder: string;
+    modelValue: string;
     maxLength: string | number;
     autofocus: boolean;
+    readonly: boolean;
+    textAlign: string;
     limitShow: boolean;
+    rows: string | number;
     autosize: boolean | Record<string, any>;
 }, {}>>;
 export default _default;

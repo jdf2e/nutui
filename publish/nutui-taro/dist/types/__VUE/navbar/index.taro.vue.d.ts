@@ -115,11 +115,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     desc: string;
     zIndex: string | number;
     border: boolean;
-    placeholder: boolean;
     leftShow: boolean;
     titleIcon: boolean;
     leftText: string;
     safeAreaInsetTop: boolean;
+    placeholder: boolean;
 }, {}>>;
 export default _default;
 

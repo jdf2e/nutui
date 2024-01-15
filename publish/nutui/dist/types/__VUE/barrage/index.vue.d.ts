@@ -60,11 +60,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>>, {
     top: number;
+    rows: number;
     loop: boolean;
     danmu: unknown[];
     frequency: number;
     speeds: number;
-    rows: number;
 }, {}>>;
 export default _default;
 

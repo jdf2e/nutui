@@ -80,8 +80,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>>, {
     color: string | Record<string, any>;
-    strokeWidth: string | number;
     radius: string | number;
+    strokeWidth: string | number;
     strokeLinecap: CircleProgressStrokeLinecap;
     pathColor: string;
     clockwise: boolean;

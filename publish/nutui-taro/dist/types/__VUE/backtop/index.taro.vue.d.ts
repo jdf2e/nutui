@@ -61,9 +61,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
-    zIndex: number;
-    right: number;
     bottom: number;
+    right: number;
+    zIndex: number;
     height: string;
     distance: number;
 }, {}>>;

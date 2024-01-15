@@ -156,10 +156,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
 }, {
     duration: string | number;
-    loop: boolean;
     direction: string;
     paginationVisible: boolean;
     paginationColor: string;
+    loop: boolean;
     autoPlay: string | number;
     initPage: string | number;
     touchable: boolean;

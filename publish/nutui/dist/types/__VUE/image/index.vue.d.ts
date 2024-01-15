@@ -108,14 +108,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     onLoad?: ((...args: any[]) => any) | undefined;
 }, {
     round: boolean;
-    position: string;
     width: string;
     height: string;
-    alt: string;
-    lazyLoad: boolean;
+    position: string;
     fit: ImageFit;
+    alt: string;
     showError: boolean;
     showLoading: boolean;
+    lazyLoad: boolean;
 }, {}>>;
 export default _default;
 

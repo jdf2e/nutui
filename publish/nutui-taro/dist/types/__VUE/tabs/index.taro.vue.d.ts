@@ -184,20 +184,20 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     size: TabsSize;
-    type: TabsType;
     color: string;
+    type: TabsType;
     top: number;
     ellipsis: boolean;
     sticky: boolean;
+    align: TabsAlign;
+    direction: TabsDirection;
     modelValue: string | number;
     background: string;
-    direction: TabsDirection;
     titleScroll: boolean;
     swipeable: boolean;
     autoHeight: boolean;
     animatedTime: string | number;
     titleGutter: string | number;
-    align: TabsAlign;
 }, {}>>;
 export default _default;
 

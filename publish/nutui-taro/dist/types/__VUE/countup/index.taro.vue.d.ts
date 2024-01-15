@@ -76,9 +76,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     turnNumber: (index: number) => string | number;
     toFixed: import("vue").Ref<number>;
     type: import("vue").Ref<string>;
+    speed: import("vue").Ref<number>;
     initNum: import("vue").Ref<number>;
     endNum: import("vue").Ref<number>;
-    speed: import("vue").Ref<number>;
     during: import("vue").Ref<number>;
     startFlag: import("vue").Ref<boolean>;
     numWidth: import("vue").Ref<number>;
@@ -188,9 +188,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     toFixed: number;
     type: string;
+    speed: number;
     initNum: number;
     endNum: number;
-    speed: number;
     during: number;
     startFlag: boolean;
     numWidth: number;

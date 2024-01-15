@@ -57,13 +57,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onClickItem?: ((...args: any[]) => any) | undefined;
+    onAdd?: ((...args: any[]) => any) | undefined;
     onDelIcon?: ((...args: any[]) => any) | undefined;
     onEditIcon?: ((...args: any[]) => any) | undefined;
     onLongCopy?: ((...args: any[]) => any) | undefined;
     onLongSet?: ((...args: any[]) => any) | undefined;
     onLongDel?: ((...args: any[]) => any) | undefined;
     onSwipeDel?: ((...args: any[]) => any) | undefined;
-    onAdd?: ((...args: any[]) => any) | undefined;
 }, {
     data: unknown[];
     longPress: boolean;

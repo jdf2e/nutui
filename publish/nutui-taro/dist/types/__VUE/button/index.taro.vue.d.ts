@@ -84,13 +84,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
     size: ButtonSize;
-    type: ButtonType;
-    block: boolean;
-    disabled: boolean;
-    loading: boolean;
     shape: ButtonShape;
     plain: boolean;
+    loading: boolean;
+    disabled: boolean;
+    type: ButtonType;
     formType: ButtonFormType;
+    block: boolean;
 }, {}>>;
 export default _default;
 

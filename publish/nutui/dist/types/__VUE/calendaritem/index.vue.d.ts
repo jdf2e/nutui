@@ -72,13 +72,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     viewArea: import("vue").Ref<HTMLElement | null>;
     title: import("vue").Ref<string>;
     type: import("vue").Ref<string>;
-    confirmText: import("vue").Ref<string>;
+    poppable: import("vue").Ref<boolean>;
     isAutoBackFill: import("vue").Ref<boolean>;
     toDateAnimation: import("vue").Ref<boolean>;
-    poppable: import("vue").Ref<boolean>;
     showTitle: import("vue").Ref<boolean>;
     showSubTitle: import("vue").Ref<boolean>;
     showToday: import("vue").Ref<boolean>;
+    confirmText: import("vue").Ref<string>;
     startText: import("vue").Ref<string>;
     endText: import("vue").Ref<string>;
     defaultValue: import("vue").Ref<string | unknown[]>;
@@ -195,13 +195,13 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     title: string;
     type: string;
-    confirmText: string;
+    poppable: boolean;
     isAutoBackFill: boolean;
     toDateAnimation: boolean;
-    poppable: boolean;
     showTitle: boolean;
     showSubTitle: boolean;
     showToday: boolean;
+    confirmText: string;
     startText: string;
     endText: string;
     defaultValue: string | unknown[];

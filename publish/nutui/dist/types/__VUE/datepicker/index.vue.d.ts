@@ -211,11 +211,11 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     title: string;
     type: string;
-    cancelText: string;
     threeDimensional: boolean;
     swipeDuration: string | number;
     visibleOptionNum: string | number;
     optionHeight: string | number;
+    cancelText: string;
     okText: string;
     showToolbar: boolean;
     isShowChinese: boolean;

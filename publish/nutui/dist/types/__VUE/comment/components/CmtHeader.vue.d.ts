@@ -29,8 +29,8 @@ declare const _default: import("vue").DefineComponent<{
 }>> & {
     onHandleClick?: ((...args: any[]) => any) | undefined;
 }, {
-    type: string;
     info: Record<string, any>;
+    type: string;
     labels: Function;
 }, {}>;
 export default _default;

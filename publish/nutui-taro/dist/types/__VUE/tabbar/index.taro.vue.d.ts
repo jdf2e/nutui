@@ -81,9 +81,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: string;
     bottom: boolean;
     safeAreaInsetBottom: boolean;
-    modelValue: string | number;
-    activeColor: string;
     placeholder: boolean;
+    activeColor: string;
+    modelValue: string | number;
     unactiveColor: string;
 }, {}>>;
 export default _default;

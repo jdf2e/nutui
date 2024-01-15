@@ -170,16 +170,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     mask: boolean;
-    closeOnClickOverlay: boolean;
     type: TourType;
-    modelValue: boolean;
-    offset: Number[];
-    bgColor: string;
+    closeOnClickOverlay: boolean;
     theme: PopoverTheme;
+    offset: Number[];
     current: number;
-    location: PopoverLocation;
+    modelValue: boolean;
     completeTxt: string;
+    bgColor: string;
     steps: StepOptions[];
+    location: PopoverLocation;
     nextStepTxt: string;
     prevStepTxt: string;
     maskWidth: string | number;

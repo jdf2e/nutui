@@ -93,14 +93,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     onFocus?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-    onAdd?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;
+    onAdd?: ((...args: any[]) => any) | undefined;
     onOverlimit?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;
     modelValue: string | number;
-    min: string | number;
     max: string | number;
+    min: string | number;
     step: string | number;
     readonly: boolean;
     inputWidth: string | number;

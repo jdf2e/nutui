@@ -89,12 +89,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;
 }, {
+    type: string;
     overlay: boolean;
     visible: boolean;
-    type: string;
     position: Record<string, any>;
-    activeColor: string;
     navList: any[];
+    activeColor: string;
     activeText: string;
     unActiveText: string;
 }, {}>>;

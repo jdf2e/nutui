@@ -309,6 +309,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     style: Record<string, any>;
     title: string;
+    round: boolean;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -317,12 +319,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: boolean;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    round: boolean;
     content: string | VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
     position: string;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;
@@ -331,6 +331,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: string | Element;
     teleportDisable: boolean;
     safeAreaInsetBottom: boolean;
+    textAlign: string;
     cancelText: string;
     okText: string;
     noFooter: boolean;
@@ -338,7 +339,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     noCancelBtn: boolean;
     cancelAutoClose: boolean;
     okAutoClose: boolean;
-    textAlign: string;
     closeOnPopstate: boolean;
     footerDirection: string;
     customClass: string;

@@ -58,9 +58,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>>, {
     dashed: boolean;
-    direction: DividerDirection;
     contentPosition: DividerPosition;
     hairline: boolean;
+    direction: DividerDirection;
 }, {}>>;
 export default _default;
 

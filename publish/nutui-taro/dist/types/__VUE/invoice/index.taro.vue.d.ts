@@ -37,8 +37,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onSubmit?: ((...args: any[]) => any) | undefined;
-    onOnSubmit?: ((...args: any[]) => any) | undefined;
     onScrollBottom?: ((...args: any[]) => any) | undefined;
+    onOnSubmit?: ((...args: any[]) => any) | undefined;
 }, {
     data: unknown[];
     submit: boolean;

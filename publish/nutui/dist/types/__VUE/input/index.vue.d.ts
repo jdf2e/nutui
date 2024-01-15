@@ -104,7 +104,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     select: () => void;
     onKeyup: (e: KeyboardEvent) => void;
     getModelValue: () => string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "confirm" | "clickInput")[], "clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "confirm" | "clickInput", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "clickInput" | "confirm")[], "clear" | "blur" | "click" | "focus" | "keypress" | "update:modelValue" | "clickInput" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: PropType<InputType>;
         default: string;
@@ -187,27 +187,27 @@ declare const _default: Install< import("vue").DefineComponent<{
     onFocus?: ((...args: any[]) => any) | undefined;
     onKeypress?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-    onConfirm?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
     onClickInput?: ((...args: any[]) => any) | undefined;
+    onConfirm?: ((...args: any[]) => any) | undefined;
 }, {
     error: boolean;
-    type: InputType;
     class: string;
-    border: boolean;
+    type: InputType;
     disabled: boolean;
-    modelValue: string | number;
-    required: boolean;
-    readonly: boolean;
-    formatter: (value: string) => string;
+    border: boolean;
     placeholder: string;
-    inputAlign: InputAlignType;
+    modelValue: string | number;
     maxLength: string | number;
     clearable: boolean;
+    autofocus: boolean;
+    readonly: boolean;
+    inputAlign: InputAlignType;
+    formatter: (value: string) => string;
+    required: boolean;
     clearSize: string | number;
     formatTrigger: InputFormatTrigger;
     showWordLimit: boolean;
-    autofocus: boolean;
     confirmType: ConfirmTextType;
     showClearIcon: boolean;
 }, {}>>;

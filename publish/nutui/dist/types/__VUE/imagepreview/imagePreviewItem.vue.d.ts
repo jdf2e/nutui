@@ -109,13 +109,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     video: Record<string, any>;
     image: ImageInterface;
     show: boolean;
-    maxZoom: number;
     rootWidth: number;
     rootHeight: number;
     contentClose: boolean;
     initNo: number;
     showIndex: boolean;
     minZoom: number;
+    maxZoom: number;
 }, {}>>;
 export default _default;
 

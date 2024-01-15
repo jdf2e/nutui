@@ -94,8 +94,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
-    modelValue: number;
     mode: PaginationMode;
+    modelValue: number;
     prevText: string;
     nextText: string;
     pageCount: string | number;

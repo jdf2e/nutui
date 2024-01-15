@@ -27,9 +27,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     active: import("vue").ComputedRef<boolean>;
     isHaveSlot: (slot: string) => import("vue").Slot<any> | undefined;
-    renderIcon: (icon: Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
     change: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     tabTitle: {

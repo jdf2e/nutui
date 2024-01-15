@@ -164,16 +164,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChoose?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
+    type: string;
     visible: boolean;
     lockScroll: boolean;
-    type: string;
-    confirmText: string;
+    poppable: boolean;
     isAutoBackFill: boolean;
     toDateAnimation: boolean;
-    poppable: boolean;
     showTitle: boolean;
     showSubTitle: boolean;
     showToday: boolean;
+    confirmText: string;
     startText: string;
     endText: string;
     startDate: string;

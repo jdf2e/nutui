@@ -87,9 +87,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         'nut-noticebar__page-wrap-content': boolean;
         'nut-ellipsis': boolean;
     }>;
-    renderIcon: (icon: import("vue").Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
     wrapWidth: import("vue").Ref<number>;
     firstRound: import("vue").Ref<boolean>;
     duration: import("vue").Ref<number>;
@@ -169,9 +169,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     text: string;
     color: string;
     height: number;
-    background: string;
     direction: string;
-    speed: number;
+    background: string;
     list: any[];
     standTime: number;
     complexAm: boolean;
@@ -180,6 +179,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     leftIcon: boolean;
     delay: string | number;
     scrollable: boolean;
+    speed: number;
 }, {}>>;
 export default _default;
 

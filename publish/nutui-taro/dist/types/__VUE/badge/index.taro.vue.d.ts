@@ -84,11 +84,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    zIndex: number;
-    hidden: boolean;
     color: string;
     right: string;
     top: string;
+    zIndex: number;
+    hidden: boolean;
     dot: boolean;
     max: number;
     bubble: boolean;

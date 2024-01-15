@@ -199,6 +199,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickOverlay?: ((...args: any[]) => any) | undefined;
 }, {
     style: Record<string, any>;
+    round: boolean;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -207,9 +209,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    round: boolean;
     position: string;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;

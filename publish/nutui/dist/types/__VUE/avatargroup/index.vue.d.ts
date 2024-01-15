@@ -79,8 +79,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>>, {
     size: string | number;
     span: string | number;
-    zIndex: AvatarZIndex;
     shape: AvatarShape;
+    zIndex: AvatarZIndex;
     maxContent: string;
     maxCount: string | number;
     maxBgColor: string;

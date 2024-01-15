@@ -31,9 +31,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    tag: string;
     theme: string;
     themeVars: Record<string, any>;
+    tag: string;
 }, {}>>;
 export default _default;
 

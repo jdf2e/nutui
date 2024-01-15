@@ -53,7 +53,7 @@ declare const _default: import("vue").DefineComponent<{
     onClickImages?: ((...args: any[]) => any) | undefined;
 }, {
     type: string;
-    videos: VideosType[];
     images: ImagesType[];
+    videos: VideosType[];
 }, {}>;
 export default _default;

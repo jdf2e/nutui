@@ -147,9 +147,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     show: boolean;
     closeable: boolean;
     closeIconPosition: string;
-    images: ImageInterface[];
     paginationVisible: boolean;
     paginationColor: string;
+    images: ImageInterface[];
     contentClose: boolean;
     initNo: number;
     autoplay: string | number;

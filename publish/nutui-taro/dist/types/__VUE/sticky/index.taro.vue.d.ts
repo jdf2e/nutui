@@ -37,8 +37,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
 }, {
-    zIndex: string | number;
     top: string | number;
+    zIndex: string | number;
 }, {}>>;
 export default _default;
 

@@ -114,13 +114,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     onDelete?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
+    type: string;
     visible: boolean;
     lockScroll: boolean;
-    type: string;
     popClass: string;
     modelValue: string;
-    confirmText: string;
     maxlength: string | number;
+    confirmText: string;
     customKey: string[];
     randomKeys: boolean;
 }, {}>>;

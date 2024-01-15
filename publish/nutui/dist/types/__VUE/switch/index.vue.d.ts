@@ -4,7 +4,7 @@ declare type Install<T> = T & {
 };
 declare const _default: Install< import("vue").DefineComponent<{
     modelValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     disable: {
@@ -28,11 +28,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     activeValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     inactiveValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     loading: {
@@ -50,7 +50,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick: (event: Event) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "update:loading")[], "change" | "update:modelValue" | "update:loading", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     disable: {
@@ -74,11 +74,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     activeValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     inactiveValue: {
-        type: (BooleanConstructor | NumberConstructor | StringConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     loading: {
@@ -90,12 +90,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     "onUpdate:loading"?: ((...args: any[]) => any) | undefined;
 }, {
-    disable: boolean;
     loading: boolean;
-    modelValue: string | number | boolean;
     activeColor: string;
-    inactiveColor: string;
     activeText: string;
+    modelValue: string | number | boolean;
+    inactiveColor: string;
+    disable: boolean;
     inactiveText: string;
     activeValue: string | number | boolean;
     inactiveValue: string | number | boolean;

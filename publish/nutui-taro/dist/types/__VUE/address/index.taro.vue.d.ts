@@ -150,6 +150,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     country: import("vue").Ref<HTMLElement | null>;
     town: import("vue").Ref<HTMLElement | null>;
     style: import("vue").Ref<Record<string, any>>;
+    round: import("vue").Ref<boolean>;
+    type: import("vue").Ref<string>;
+    transition: import("vue").Ref<string>;
     overlay: import("vue").Ref<boolean>;
     visible: import("vue").Ref<boolean>;
     zIndex: import("vue").Ref<string | number>;
@@ -158,10 +161,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: import("vue").Ref<boolean>;
     overlayStyle: import("vue").Ref<Record<string, any>>;
     closeOnClickOverlay: import("vue").Ref<boolean>;
-    type: import("vue").Ref<string>;
-    round: import("vue").Ref<boolean>;
     position: import("vue").Ref<string>;
-    transition: import("vue").Ref<string>;
     popClass: import("vue").Ref<string>;
     closeable: import("vue").Ref<boolean>;
     closeIconPosition: import("vue").Ref<string>;
@@ -181,9 +181,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onClose: import("vue").Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:visible": import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onType: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
     onSelected: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onType: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onCloseMask: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onSwitchModule: import("vue").Ref<((...args: any[]) => any) | undefined>;
     showPopup: import("vue").Ref<boolean>;
@@ -208,7 +208,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     clickOverlay: () => void;
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule")[], "change" | "close" | "update:visible" | "type" | "update:modelValue" | "selected" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "change" | "close" | "type" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -348,13 +348,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     onChange?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
-    onType?: ((...args: any[]) => any) | undefined;
-    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onType?: ((...args: any[]) => any) | undefined;
     onCloseMask?: ((...args: any[]) => any) | undefined;
     onSwitchModule?: ((...args: any[]) => any) | undefined;
 }, {
     style: Record<string, any>;
+    round: boolean;
+    type: string;
+    transition: string;
     overlay: boolean;
     visible: boolean;
     zIndex: string | number;
@@ -363,10 +366,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: boolean;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    type: string;
-    round: boolean;
     position: string;
-    transition: string;
     popClass: string;
     closeable: boolean;
     closeIconPosition: string;

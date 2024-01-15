@@ -179,9 +179,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     zIndex: number;
     content: string | string[];
     height: number;
-    rotate: number;
     width: number;
     fontSize: string | number;
+    rotate: number;
     gapY: number;
     gapX: number;
     imageWidth: number;

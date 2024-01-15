@@ -61,16 +61,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     marksList: import("vue").ComputedRef<number[]>;
     tickStyle: (mark: number) => CSSProperties;
     refRandomId: string;
+    disabled: import("vue").Ref<boolean>;
     vertical: import("vue").Ref<boolean>;
     range: import("vue").Ref<boolean>;
-    disabled: import("vue").Ref<boolean>;
     modelValue: import("vue").Ref<SliderValue>;
     max: import("vue").Ref<string | number>;
-    min: import("vue").Ref<string | number>;
-    step: import("vue").Ref<string | number>;
     marks: import("vue").Ref<Record<string, any>>;
     hiddenRange: import("vue").Ref<boolean>;
     hiddenTag: import("vue").Ref<boolean>;
+    min: import("vue").Ref<string | number>;
+    step: import("vue").Ref<string | number>;
     activeColor: import("vue").Ref<string | undefined>;
     inactiveColor: import("vue").Ref<string | undefined>;
     buttonColor: import("vue").Ref<string | undefined>;
@@ -139,16 +139,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     onDragEnd?: ((...args: any[]) => any) | undefined;
     onDragStart?: ((...args: any[]) => any) | undefined;
 }, {
+    disabled: boolean;
     vertical: boolean;
     range: boolean;
-    disabled: boolean;
     modelValue: SliderValue;
     max: string | number;
-    min: string | number;
-    step: string | number;
     marks: Record<string, any>;
     hiddenRange: boolean;
     hiddenTag: boolean;
+    min: string | number;
+    step: string | number;
 }, {}>>;
 export default _default;
 

@@ -73,9 +73,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         'nut-toast-icon-no-animation': boolean;
     })[]>;
     onAfterLeave: () => void;
-    renderIcon: (icon: Component, props?: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+    renderIcon: (icon: Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
-    }> | "";
+    }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "close"[], "close", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     msg: StringConstructor;
@@ -140,15 +140,15 @@ declare const _default: Install< import("vue").DefineComponent<{
     size: string | number;
     title: string;
     center: boolean;
+    type: string;
+    icon: Component;
+    bottom: string;
     duration: number;
     closeOnClickOverlay: boolean;
-    type: string;
     cover: boolean;
-    bottom: string;
-    icon: Component;
-    bgColor: string;
     textAlignCenter: boolean;
     loadingRotate: boolean;
+    bgColor: string;
     coverColor: string;
 }, {}>>;
 export default _default;

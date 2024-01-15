@@ -64,16 +64,16 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    onConfirm?: ((...args: any[]) => any) | undefined;
-    onEnd?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
+    onConfirm?: ((...args: any[]) => any) | undefined;
     onStart?: ((...args: any[]) => any) | undefined;
+    onEnd?: ((...args: any[]) => any) | undefined;
     onSigning?: ((...args: any[]) => any) | undefined;
 }, {
     type: string;
-    strokeStyle: string;
-    lineWidth: number;
     customClass: string;
+    lineWidth: number;
+    strokeStyle: string;
     unSupportTpl: string;
 }, {}>>;
 export default _default;

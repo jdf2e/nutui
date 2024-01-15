@@ -81,10 +81,10 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
+    bottom: number;
+    right: number;
     zIndex: number;
     duration: number;
-    right: number;
-    bottom: number;
     elId: string;
     distance: number;
     isAnimation: boolean;
