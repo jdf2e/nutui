@@ -38,7 +38,7 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, withDirectives, normalizeStyle, normalizeClass, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
+import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, withDirectives, normalizeClass, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
 import NutButton from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { d as preventDefault, e as clamp } from "../util-4Jkyw4BJ.js";
@@ -77,6 +77,10 @@ const _sfc_main = create({
     confirmText: {
       type: String,
       default: "确定"
+    },
+    shape: {
+      type: String,
+      default: "square"
     }
   },
   emits: ["confirm", "cancel"],
@@ -412,9 +416,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onTouchcancel: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
       }, [
         createElementVNode("div", {
-          class: "highlight",
+          class: normalizeClass(["highlight", { highlight__round: _ctx.shape === "round" }]),
           style: normalizeStyle(_ctx.highlightStyle)
-        }, null, 4)
+        }, null, 6)
       ], 32),
       createElementVNode("div", {
         class: normalizeClass(["nut-cropper-popup__toolbar", [_ctx.toolbarPosition]])

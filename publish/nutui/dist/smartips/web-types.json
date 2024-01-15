@@ -527,6 +527,15 @@
                 "type": "string",
                 "kind": "expression"
               }
+            },
+            {
+              "name": "shape",
+              "default": "square",
+              "description": "头像的形状,可选值为：`square` `round`",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
             }
           ]
         },
