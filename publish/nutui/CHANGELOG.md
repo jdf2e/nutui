@@ -1,3 +1,38 @@
+## v4.2.8
+
+`2024-01-15`
+
+Features
+
+- avatar-cropper: 新增 shape 属性，支持 round 类型 (#2818) @iCheng
+
+Bug Fixes
+
+- calendar: 修复初次打开默认值定位问题 (#2829) @eiinu
+- date-picker: 修复数据联动更新问题 (#2824) @eiinu
+- dialog: 修复 cancel 按钮的样式问题 (#2823) @eiinu
+- picker: 优化 select、cursor 样式 (#2826) @eiinu
+
+## v4.2.7
+
+`2024-01-05`
+
+Features
+
+- swiper: 新增 pagination-unselected-color 属性 (#2803), close #2688 @iCheng
+- tabs: 新增 align 属性，支持标题左对齐布局 (#2809), close #2471 @iCheng
+
+Bug Fixes
+
+- picker: 修复 Safari 下遮罩层级样式问题 (#2821) @eiinu
+- date-picker: 修复 hour-minute 类型下选项刷新问题 (#2784) @Robin-Wubin
+- cascader: 修复内部 tabs 标题样式对齐问题 (#2802) @eiinu
+- avatar-cropper: 文档修正 (#2820) @iCheng
+
+Other Changes
+
+- deps: bump to vue 3.4 (#2812) @eiinu
+
 ## v4.2.6
 
 `2023-12-25`

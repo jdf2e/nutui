@@ -18,7 +18,7 @@
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <view class="highlight" :style="highlightStyle"></view>
+      <view class="highlight" :class="{ highlight__round: shape === 'round' }" :style="highlightStyle"></view>
     </view>
     <view class="nut-cropper-popup__toolbar" :class="[toolbarPosition]">
       <slot v-if="$slots.toolbar" name="toolbar"></slot>
@@ -44,7 +44,12 @@
 import { watch, ref, reactive, toRefs, computed, PropType, onMounted } from 'vue';
 import NutButton from '../button/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarCropperToolbarPosition, AvatarCropperSizeType, AvatarCropperSourceType } from './types';
+import type {
+  AvatarCropperToolbarPosition,
+  AvatarCropperSizeType,
+  AvatarCropperSourceType,
+  AvatarCropperShape
+} from './types';
 const { create } = createComponent('avatar-cropper');
 import { IconFont } from '@nutui/icons-vue-taro';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -81,6 +86,10 @@ export default create({
     confirmText: {
       type: String,
       default: '确定'
+    },
+    shape: {
+      type: String as PropType<AvatarCropperShape>,
+      default: 'square'
     },
     sizeType: {
       type: Array as PropType<AvatarCropperSizeType[]>,
