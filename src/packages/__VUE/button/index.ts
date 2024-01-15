@@ -1,4 +1,4 @@
-import Button from './index.vue';
+import Button from './button.vue';
 import type { ComponentPublicInstance } from 'vue';
 import { withInstall } from '@/packages/utils';
 
