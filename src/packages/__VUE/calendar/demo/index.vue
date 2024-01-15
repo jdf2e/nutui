@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Single from './single.vue';
 import Range from './range.vue';
 import Multiple from './multiple.vue';
