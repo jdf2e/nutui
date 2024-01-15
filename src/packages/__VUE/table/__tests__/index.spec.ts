@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import Table from '../index.vue';
 import { nextTick, h } from 'vue';
-import Button from '../../button/index.vue';
+import Button from '../../button';
 import { Dongdong } from '@nutui/icons-vue';
 
 const columns = [

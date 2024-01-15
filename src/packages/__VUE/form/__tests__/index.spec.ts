@@ -3,7 +3,7 @@ import Form from '../index.vue';
 import NutCellGroup from '../../cellgroup/index.vue';
 import FormItem from '../../formitem/index.vue';
 import NutCell from '../../cell/index.vue';
-import NutButton from '../../button/index.vue';
+import NutButton from '../../button';
 import NutTextarea from '../../textarea/index.vue';
 import NutSwitch from '../../switch/index.vue';
 import NutCheckbox from '../../checkbox/index.vue';

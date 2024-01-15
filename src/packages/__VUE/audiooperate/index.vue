@@ -25,7 +25,7 @@
 <script lang="ts">
 import { toRefs, ref, useSlots, reactive, inject, type PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import NutButton from '../button/index.vue';
+import NutButton from '../button';
 import { useLocale } from '@/packages/utils/useLocale';
 import type { AudioOperateType } from './types';
 

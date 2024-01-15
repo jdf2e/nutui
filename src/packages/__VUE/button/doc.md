@@ -92,6 +92,20 @@ app.use(Button);
 | --- | --- | --- |
 | click | 点击按钮时触发 | `event: MouseEvent` |
 
+### 类型定义
+
+组件导出以下类型定义：
+
+```js
+import type {
+  ButtonType,
+  ButtonSize,
+  ButtonShape,
+  ButtonFormType,
+  ButtonInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量

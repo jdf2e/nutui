@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
-import NutButton from '../button/index.vue';
+import NutButton from '../button';
 import { createComponent } from '@/packages/utils/create';
 import type { AvatarCropperToolbarPosition, AvatarCropperShape } from './types';
 const { create } = createComponent('avatar-cropper');

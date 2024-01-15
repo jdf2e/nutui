@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import Steps from '../index.vue';
 import Step from '../../step/index.vue';
-import Button from '../../button/index.vue';
+import Button from '../../button';
 import { Service, People, Location2 } from '@nutui/icons-vue';
 import { nextTick, toRefs, reactive } from 'vue';
 

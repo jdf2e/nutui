@@ -52,7 +52,7 @@ import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.taro.vue';
-import NutButton from '../button/index.taro.vue';
+import NutButton from '../button/index.taro';
 import { isPromise } from '@/packages/utils/util';
 import { useLocale } from '@/packages/utils/useLocale';
 
