@@ -14,7 +14,7 @@ let packages = [];
 
 const preContent = `
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };\n`;
 const start = 'declare const _default:';
 const end = ';\nexport default _default;\n';
