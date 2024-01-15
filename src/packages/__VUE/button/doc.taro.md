@@ -102,7 +102,8 @@ import type {
   ButtonType,
   ButtonSize,
   ButtonShape,
-  ButtonFormType
+  ButtonFormType,
+  ButtonInstance
 } from '@nutui/nutui-taro';
 ```
 
