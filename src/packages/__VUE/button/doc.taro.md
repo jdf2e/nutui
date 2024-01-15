@@ -97,13 +97,8 @@ app.use(Button);
 
 组件导出以下类型定义：
 
-```js
-import type {
-  ButtonType,
-  ButtonSize,
-  ButtonShape,
-  ButtonFormType
-} from '@nutui/nutui-taro'
+```ts
+import type { ButtonType, ButtonSize, ButtonShape, ButtonFormType } from '@nutui/nutui-taro';
 ```
 
 ## 主题定制
