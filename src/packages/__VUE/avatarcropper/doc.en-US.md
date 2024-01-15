@@ -41,7 +41,7 @@ const cutImage = (url) => {
 
 :::
 
-### Shape
+### Shape v4.2.8
 
 shape: `square`, `round`
 
@@ -129,7 +129,7 @@ const cutImage = (url) => {
 | edit-text | The text content in the middle | string | 编辑 |
 | cancel-text | Cancel button text | string | 取消 |
 | cancel-confirm | Confirm button text | string | 确认 |
-| shape | Shape of avatar. The optional value is： `square`、`round ` | string | square |
+| shape`v4.2.8` | Shape of avatar. The optional value is： `square`、`round ` | string | square |
 
 ### AvatarCropper Slots
 

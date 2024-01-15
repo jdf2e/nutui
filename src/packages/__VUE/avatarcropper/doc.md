@@ -41,7 +41,7 @@ const cutImage = (url) => {
 
 :::
 
-### 形状
+### 形状 v4.2.8
 
 支持两种形状：`square`、`round`
 
@@ -129,7 +129,7 @@ const cutImage = (url) => {
 | edit-text | 中间的文字内容 | string | 编辑 |
 | cancel-text | 取消按钮的文字 | string | 取消 |
 | cancel-confirm | 确认按钮的文字 | string | 确认 |
-| shape | 头像的形状,可选值为：`square` `round` | string | square |
+| shape`v4.2.8` | 头像的形状,可选值为：`square` `round` | string | square |
 
 ### AvatarCropper Slots
 
