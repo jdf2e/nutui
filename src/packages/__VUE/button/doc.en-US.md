@@ -92,6 +92,19 @@ The color of the button can be customized through the color property.
 | --- | --- | --- |
 | click | Emitted when component is clicked | `event: MouseEvent` |
 
+### Types
+
+The component exports the following type definitions:
+
+```js
+import type {
+  ButtonType,
+  ButtonSize,
+  ButtonShape,
+  ButtonFormType
+} from '@nutui/nutui'
+```
+
 ## Theming
 
 ### CSS Variables
