@@ -22,8 +22,8 @@ app.use(AvatarCropper);
 
 ```vue
 <template>
-  <nut-avatar-cropper>
-    <nut-avatar size="large" @confirm="cutImage">
+  <nut-avatar-cropper @confirm="cutImage">
+    <nut-avatar size="large">
       <img :src="imageUrl" />
     </nut-avatar>
   </nut-avatar-cropper>
