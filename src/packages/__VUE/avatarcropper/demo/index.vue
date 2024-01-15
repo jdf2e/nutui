@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Shape from './shape.vue';
 import Toolbar from './toolbar.vue';
