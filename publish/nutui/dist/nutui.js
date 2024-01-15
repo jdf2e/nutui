@@ -16640,7 +16640,7 @@ function l4(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const s4 = "4.2.7", d4 = { install: l4, version: s4 };
+const s4 = "4.2.8", d4 = { install: l4, version: s4 };
 export {
   U1 as ActionSheet,
   hv as Address,
