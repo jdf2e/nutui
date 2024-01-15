@@ -14,7 +14,7 @@ let packages = [];
 
 const preContent = `
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };\n`;
 const start = 'declare const _default:';
 const end = ';\nexport default _default;\n';
@@ -105,9 +105,9 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
       if (componentName) {
         let remain = `
 declare module 'vue' {
-  interface GlobalComponents {
-      Nut${componentName}: typeof _default;
-  }
+    interface GlobalComponents {
+        Nut${componentName}: typeof _default;
+    }
 }`;
         let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`);
         fs.writeFileSync(item, changeContent);
