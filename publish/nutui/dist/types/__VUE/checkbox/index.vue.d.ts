@@ -1,3 +1,5 @@
+import type { PropType } from 'vue';
+import { CheckboxTextPosition, CheckboxShape } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
@@ -12,7 +14,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     textPosition: {
-        type: StringConstructor;
+        type: PropType<CheckboxTextPosition>;
         default: string;
     };
     iconSize: {
@@ -28,7 +30,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<CheckboxShape>;
         default: string;
     };
 }, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
@@ -43,7 +45,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     textPosition: {
-        type: StringConstructor;
+        type: PropType<CheckboxTextPosition>;
         default: string;
     };
     iconSize: {
@@ -59,18 +61,18 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     shape: {
-        type: StringConstructor;
+        type: PropType<CheckboxShape>;
         default: string;
     };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
-    shape: string;
+    shape: CheckboxShape;
     disabled: boolean;
     label: string;
     modelValue: boolean;
-    textPosition: string;
+    textPosition: CheckboxTextPosition;
     iconSize: string | number;
     indeterminate: boolean;
 }, {}>>;
