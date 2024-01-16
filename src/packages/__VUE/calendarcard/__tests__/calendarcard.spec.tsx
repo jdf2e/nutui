@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import CalendarCard from '../index.vue';
+import CalendarCard from '..';
 import { nextTick } from 'vue';
 import { CalendarCardDay } from '../types';
 

@@ -92,6 +92,20 @@ Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can ge
 | jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step: number` |
 | jumpTo | Jump to a specific year and month | `year: number, month: number` |
 
+### Types
+
+The component exports the following type definitions:
+
+```js
+import type {
+  CalendarCardType,
+  CalendarCardDay,
+  CalendarCardMonth,
+  CalendarCardValue,
+  CalendarCardInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

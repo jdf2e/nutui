@@ -92,6 +92,20 @@ app.use(CalendarCard);
 | jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
 | jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
+### 类型定义
+
+组件导出以下类型定义：
+
+```js
+import type {
+  CalendarCardType,
+  CalendarCardDay,
+  CalendarCardMonth,
+  CalendarCardValue,
+  CalendarCardInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量

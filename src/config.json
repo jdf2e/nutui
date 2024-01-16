@@ -494,6 +494,7 @@
           "cName": "日历卡片",
           "desc": "日历卡片组件",
           "sort": 5,
+          "setup": true,
           "show": true,
           "author": "eiinu"
         },
