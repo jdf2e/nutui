@@ -16,19 +16,19 @@ app.use(ActionSheet);
 
 ### 基础用法
 
-> demo: actionsheet basic
+> demo: actionsheet basic feedback
 
 ### 自定义信息
 
-> demo: actionsheet custom
+> demo: actionsheet custom feedback
 
 ### 选项状态
 
-> demo: actionsheet status
+> demo: actionsheet status feedback
 
 ### 自定义内容
 
-> demo: actionsheet content
+> demo: actionsheet content feedback
 
 ## API
 
