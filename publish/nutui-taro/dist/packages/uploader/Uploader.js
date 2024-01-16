@@ -28,6 +28,7 @@ import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-DDx91B18.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../util-WZB3Ltgx.js";
+import "../with-install-p59gYYU_.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 class UploadOptions {
   constructor() {

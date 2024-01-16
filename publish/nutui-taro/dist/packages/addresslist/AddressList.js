@@ -8,6 +8,7 @@ import { Button as _sfc_main$3 } from "../button/Button.js";
 import NutSwipe from "../swipe/Swipe.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 import "@tarojs/taro";
+import "../with-install-p59gYYU_.js";
 import "../index-084nl_oE.js";
 import "../index-Isui2_f6.js";
 import "../types-qOrhXtA_.js";

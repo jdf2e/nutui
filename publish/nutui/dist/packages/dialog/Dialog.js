@@ -32,6 +32,7 @@ import NutOverlay from "../overlay/Overlay.js";
 import { C as CreateComponent } from "../mountComponent-uInXoTMp.js";
 import "../util-4Jkyw4BJ.js";
 import "@nutui/icons-vue";
+import "../with-install-p59gYYU_.js";
 import "@nutui/nutui/dist/packages/locale/lang";
 const { create } = createComponent("dialog");
 const cN = "NutDialog";

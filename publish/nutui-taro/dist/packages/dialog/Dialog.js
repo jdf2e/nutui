@@ -27,6 +27,7 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue-taro";
 import "../overlay/Overlay.js";
 import "@tarojs/taro";
+import "../with-install-p59gYYU_.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 const { create } = createComponent("dialog");
 const cN = "NutDialog";

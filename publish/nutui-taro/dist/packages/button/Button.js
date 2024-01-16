@@ -20,6 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRefs, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, unref, createElementVNode, createBlock, createCommentVNode, createTextVNode, renderSlot } from "vue";
 import { Loading } from "@nutui/icons-vue-taro";
 import Taro from "@tarojs/taro";
+import { w as withInstall } from "../with-install-p59gYYU_.js";
 const _hoisted_1 = ["type", "formType"];
 const _hoisted_2 = { class: "nut-button__wrap" };
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
@@ -131,15 +132,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     };
   }
 }));
-const withInstall = (comp) => {
-  const _comp = comp;
-  _comp.install = (vue) => {
-    if (_comp.name) {
-      vue.component(_comp.name, _comp);
-    }
-  };
-  return _comp;
-};
 withInstall(_sfc_main);
 export {
   _sfc_main as Button,

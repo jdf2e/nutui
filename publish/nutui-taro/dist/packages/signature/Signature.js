@@ -25,6 +25,7 @@ import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-DDx91B18.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue-taro";
+import "../with-install-p59gYYU_.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 import "../util-WZB3Ltgx.js";
 const { create } = createComponent("signature");

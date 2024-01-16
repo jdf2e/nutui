@@ -23,6 +23,7 @@ import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue";
+import "../with-install-p59gYYU_.js";
 import "@nutui/nutui/dist/packages/locale/lang";
 import "../util-4Jkyw4BJ.js";
 const { create } = createComponent("signature");

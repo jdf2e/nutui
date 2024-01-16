@@ -35,6 +35,7 @@ import "@nutui/icons-vue-taro";
 import "../useParent-KIxqkovs.js";
 import "../types-odSRziQJ.js";
 import "@tarojs/taro";
+import "../with-install-p59gYYU_.js";
 const { componentName, create } = createComponent("invoice");
 const _sfc_main = create({
   components: {

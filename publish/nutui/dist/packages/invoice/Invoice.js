@@ -35,6 +35,7 @@ import "../index-Ii9XdkPy.js";
 import "@nutui/icons-vue";
 import "../useParent-KIxqkovs.js";
 import "../types-odSRziQJ.js";
+import "../with-install-p59gYYU_.js";
 const { componentName, create } = createComponent("invoice");
 const _sfc_main = create({
   components: {

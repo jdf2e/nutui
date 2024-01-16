@@ -46,6 +46,7 @@ import { Refresh2, Retweet } from "@nutui/icons-vue";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useRect } from "../index-rf29bejW.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import "../with-install-p59gYYU_.js";
 const { create } = createComponent("avatar-cropper");
 const _sfc_main = create({
   components: {
