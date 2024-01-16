@@ -72,7 +72,8 @@ app.use(Divider);
 ```js
 import type {
   DividerPosition,
-  DividerDirection
+  DividerDirection,
+  DividerInstance
 } from '@nutui/nutui-taro';
 ```
 

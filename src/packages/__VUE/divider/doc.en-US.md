@@ -72,7 +72,8 @@ The component exports the following type definitions:
 ```js
 import type {
   DividerPosition,
-  DividerDirection
+  DividerDirection,
+  DividerInstance
 } from '@nutui/nutui';
 ```
 
