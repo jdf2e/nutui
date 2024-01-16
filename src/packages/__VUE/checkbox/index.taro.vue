@@ -1,10 +1,10 @@
 <script lang="ts">
 import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
-import type { Component } from 'vue';
+import type { Component, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { CHECKBOX_KEY } from './types';
+import { CHECKBOX_KEY, CheckboxTextPosition, CheckboxShape } from './types';
 const { create, componentName } = createComponent('checkbox');
 
 export default create({
@@ -18,7 +18,7 @@ export default create({
       default: false
     },
     textPosition: {
-      type: String,
+      type: String as PropType<CheckboxTextPosition>,
       default: 'right'
     },
     iconSize: {
@@ -34,7 +34,7 @@ export default create({
       default: false
     },
     shape: {
-      type: String,
+      type: String as PropType<CheckboxShape>,
       default: 'round' // button
     }
   },
@@ -66,8 +66,8 @@ export default create({
         ? state.partialSelect
           ? 'nut-checkbox__icon--indeterminate'
           : !pValue.value
-          ? 'nut-checkbox__icon--unchecked'
-          : 'nut-checkbox__icon'
+            ? 'nut-checkbox__icon--unchecked'
+            : 'nut-checkbox__icon'
         : 'nut-checkbox__icon--disable';
     });
 
@@ -100,8 +100,8 @@ export default create({
       const iconNode: Component = state.partialSelect
         ? iconNodeMap.CheckDisabled
         : !pValue.value
-        ? iconNodeMap.CheckNormal
-        : iconNodeMap.Checked;
+          ? iconNodeMap.CheckNormal
+          : iconNodeMap.Checked;
       const size = pxCheck(iconSize);
       return h(iconNode, {
         width: size,
