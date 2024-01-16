@@ -15,8 +15,8 @@
 <script lang="ts">
 import { ref, reactive, toRefs, onMounted, PropType, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { EllipsisDirection } from './types';
 const { create } = createComponent('ellipsis');
-export type Direction = 'start' | 'end' | 'middle';
 
 type EllipsisedValue = {
   leading?: string;
@@ -30,7 +30,7 @@ export default create({
       default: ''
     },
     direction: {
-      type: String as PropType<Direction>,
+      type: String as PropType<EllipsisDirection>,
       default: 'end'
     },
     rows: {
