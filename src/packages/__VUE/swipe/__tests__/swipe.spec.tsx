@@ -2,7 +2,7 @@ import { DOMWrapper, mount } from '@vue/test-utils';
 import Swipe from '../index.vue';
 import SwipeGroup from '../../swipegroup/index.vue';
 import { nextTick } from 'vue';
-import Button from '../../button/index.vue';
+import Button from '../../button';
 import Cell from '../../cell/index.vue';
 import { triggerDrag, mockGetBoundingClientRect } from '@/packages/utils/unit';
 

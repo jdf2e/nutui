@@ -16,74 +16,21 @@ app.use(AvatarCropper);
 
 ### 基础用法
 
-中间直接使用avatar组件，裁剪后图片内容会被替换为新的。
+中间直接使用 avatar 组件，裁剪后图片内容会被替换为新的。
 
-:::demo
+> demo: avatarcropper basic business
 
-```vue
-<template>
-  <nut-avatar-cropper @confirm="cutImage">
-    <nut-avatar size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-  </nut-avatar-cropper>
-</template>
-<script setup>
-import { ref } from 'vue';
-const imageUrl = ref(
-  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-);
-const cutImage = (url) => {
-  imageUrl.value = url;
-};
-</script>
-```
+### 形状 v4.2.8
 
-:::
+支持两种形状：`square`、`round`
 
-### 裁剪区域toolbar插槽
+> demo: avatarcropper shape business
 
-自定义裁剪区域工具栏，toolbar-position控制工具栏位置
+### 裁剪区域 toolbar 插槽
 
-:::demo
+自定义裁剪区域工具栏，`toolbar-position` 控制工具栏位置
 
-```vue
-<template>
-  <nut-avatar-cropper ref="avatarCropperRef" toolbar-position="top" edit-text="修改" @confirm="cutImage">
-    <nut-avatar size="large">
-      <img :src="imageUrl" />
-    </nut-avatar>
-    <template #toolbar>
-      <div class="toolbar">
-        <nut-button type="primary" @click="avatarCropperRef.cancel()">取消</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.reset()">重置</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.rotate()">旋转</nut-button>
-        <nut-button type="primary" @click="avatarCropperRef.confirm()">确认</nut-button>
-      </div>
-    </template>
-  </nut-avatar-cropper>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const imageUrl = ref(
-  'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-);
-const avatarCropperRef = ref();
-const cutImage = (url) => {
-  imageUrl.value = url;
-};
-</script>
-
-<style>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-}
-</style>
-```
-
-:::
+> demo: avatarcropper toolbar business
 
 ## API
 
@@ -97,6 +44,7 @@ const cutImage = (url) => {
 | edit-text | 中间的文字内容 | string | 编辑 |
 | cancel-text | 取消按钮的文字 | string | 取消 |
 | cancel-confirm | 确认按钮的文字 | string | 确认 |
+| shape`v4.2.8` | 头像的形状,可选值为：`square` `round` | string | square |
 | size-type | 所选的图片的尺寸： 可选值：`original` `compressed` | Array | ['original', 'compressed'] |
 | source-type | 选择图片的来源： 可选值：`album` `camera` | Array | ['album', 'camera'] |
 

@@ -43,7 +43,7 @@ import NutForm from '../form/index.vue';
 import NutFormItem from '../formitem/index.vue';
 import NutRadio from '../radio/index.vue';
 import NutRadioGroup from '../radiogroup/index.vue';
-import NutButton from '../button/index.vue';
+import NutButton from '../button';
 const { componentName, create } = createComponent('invoice');
 export default create({
   components: {

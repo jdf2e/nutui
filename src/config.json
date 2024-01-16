@@ -86,6 +86,7 @@
           "cName": "按钮",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "按钮用于触发一个操作，如提交表单。",
           "author": "richard1015"
         },
