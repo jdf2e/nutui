@@ -79,20 +79,18 @@ const classes = computed(() => {
 });
 
 const getStyle = computed(() => {
-  const style: CSSProperties = {};
+  let style: CSSProperties = {};
   if (color?.value) {
-    if (plain.value) {
-      style.color = color.value;
-      style.background = '#fff';
-      if (!color.value?.includes('gradient')) {
-        style.borderColor = color.value;
-      }
+    style = {
+      color: plain.value ? color.value : '#fff',
+      background: plain.value ? '#fff' : color.value
+    };
+    if (color.value.includes('gradient')) {
+      style.border = 0;
     } else {
-      style.color = '#fff';
-      style.background = color.value;
+      style.borderColor = color.value;
     }
   }
-
   return style;
 });
 </script>
