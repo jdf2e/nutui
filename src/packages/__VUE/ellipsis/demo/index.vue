@@ -17,7 +17,7 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Start from './start.vue';
 import End from './end.vue';
 import Middle from './middle.vue';
