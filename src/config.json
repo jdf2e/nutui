@@ -232,6 +232,7 @@
           "cName": "分割线",
           "desc": "用于将内容分隔为多个区域。",
           "sort": 23,
+          "setup": true,
           "show": true,
           "author": "yangjinjun3"
         },
