@@ -32,8 +32,8 @@ import { ref, reactive, toRefs, computed, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
+import { EllipsisDirection } from './types';
 const { create } = createComponent('ellipsis');
-export type Direction = 'start' | 'end' | 'middle';
 
 type EllipsisedValue = {
   leading?: string;
@@ -47,7 +47,7 @@ export default create({
       default: ''
     },
     direction: {
-      type: String as PropType<Direction>,
+      type: String as PropType<EllipsisDirection>,
       default: 'end'
     },
     rows: {
