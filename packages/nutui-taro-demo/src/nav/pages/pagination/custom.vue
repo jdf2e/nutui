@@ -1,16 +1,16 @@
 <template>
   <nut-pagination v-model="page" :total-items="500" :show-page-size="5">
     <template #prev-text>
-      <Left width="10px" height="10px" />
+      <Left size="10" />
     </template>
     <template #next-text>
-      <Right width="10px" height="10px" />
+      <Right size="10" />
     </template>
     <template #page="{ item }"> {{ item.number == 3 ? 'hot' : item.text }} </template>
   </nut-pagination>
 </template>
 <script setup lang="ts">
-import { Left, Right } from '@nutui/icons-vue';
+import { Left, Right } from '@nutui/icons-vue-taro';
 import { ref } from 'vue';
 const page = ref(1);
 </script>
