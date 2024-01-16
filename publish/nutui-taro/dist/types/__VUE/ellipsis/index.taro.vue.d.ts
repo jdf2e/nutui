@@ -1,5 +1,5 @@
 import { PropType } from 'vue';
-export type Direction = 'start' | 'end' | 'middle';
+import { EllipsisDirection } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
@@ -10,7 +10,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     direction: {
-        type: PropType<Direction>;
+        type: PropType<EllipsisDirection>;
         default: string;
     };
     rows: {
@@ -55,7 +55,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     direction: {
-        type: PropType<Direction>;
+        type: PropType<EllipsisDirection>;
         default: string;
     };
     rows: {
@@ -84,7 +84,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     symbol: string;
     content: string;
-    direction: Direction;
+    direction: EllipsisDirection;
     lineHeight: string | number;
     rows: string | number;
     expandText: string;
