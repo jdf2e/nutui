@@ -65,6 +65,18 @@ app.use(Divider);
 | --- | --- |
 | default | 内容，仅在 `direction` 为 `horizontal` 时生效 |
 
+### 类型定义
+
+组件导出以下类型定义：
+
+```js
+import type {
+  DividerPosition,
+  DividerDirection,
+  DividerInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量

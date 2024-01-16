@@ -65,6 +65,7 @@
     "copy:h5": "node ./scripts/copyh5.cjs",
     "copy:taro": "node ./scripts/copytaro.cjs",
     "changelog": "node ./scripts/generate-changelog.cjs",
+    "gen:setup": "node ./scripts/generate-script-setup.cjs",
     "publish:h5:beta": "pnpm --dir ./publish/nutui publish:beta",
     "publish:taro:beta": "pnpm --dir ./publish/nutui-taro publish:beta"
   },
