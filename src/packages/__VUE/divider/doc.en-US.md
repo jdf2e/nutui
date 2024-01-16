@@ -65,6 +65,18 @@ User can custom divider style with style attribute.
 | --- | --- |
 | default | Default slot, when `direction` = `horizontal` |
 
+### Types
+
+The component exports the following type definitions:
+
+```js
+import type {
+  DividerPosition,
+  DividerDirection,
+  DividerInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

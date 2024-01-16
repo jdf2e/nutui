@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Divider from '../index.vue';
+import Divider from '../';
 
 test('Divider: default slot', () => {
   const wrapper = mount(Divider, {
