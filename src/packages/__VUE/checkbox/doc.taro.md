@@ -17,304 +17,55 @@ app.use(CheckboxGroup);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox1 = ref(false);
-const checkbox2 = ref(false);
-</script>
-<style>
-.nut-checkbox {
-  display: flex;
-  margin-right: 20px;
-}
-.nut-checkbox__label {
-  margin-left: 10px;
-}
-</style>
-```
-
-:::
+> demo: checkbox basic dentry
 
 ### 半选状态
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-checkbox v-model="value" :indeterminate="true" label="复选框">复选框</nut-checkbox>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(false);
-</script>
-```
-
-:::
+> demo: checkbox indeterminate dentry
 
 ### 禁用状态
 
-:::demo
-
-```vue
-<template>
-  <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
-  <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox3 = ref(false);
-const checkbox4 = ref(false);
-</script>
-```
-
-:::
+> demo: checkbox disabled dentry
 
 ### 自定义尺寸
 
-:::demo
-
-```vue
-<template>
-  <nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
-  <nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox5 = ref(false);
-const checkbox6 = ref(false);
-</script>
-```
-
-:::
+> demo: checkbox size dentry
 
 ### 自定义图标
 
-通过 slot 自定义图标，建议同时设置`icon`和`checkedIcon`两个插槽
+通过 slot 自定义图标，建议同时设置 `icon` 和 `checkedIcon` 两个插槽
 
-:::demo
+> demo: checkbox icon dentry
 
-```vue
-<template>
-  <nut-checkbox v-model="checkbox7">
-    自定义图标
-    <template #icon> <Checklist /> </template>
-    <template #checkedIcon> <Checklist color="red" /> </template>
-  </nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox7 = ref(false);
-</script>
-```
-
-:::
-
-### change 事件
+### Change 事件
 
 值发生变化时，将触发 `change` 事件
 
-:::demo
+> demo: checkbox event dentry
 
-```vue
-<template>
-  <nut-checkbox v-model="checkbox" @change="changeBox">change复选框</nut-checkbox>
-</template>
-<script setup>
-import { reactive, toRefs } from 'vue';
-const checkbox = ref(false);
-const changeBox = (state, label) => {
-  console.log(`${state ? '选中' : '取消'} ${label}`);
-};
-</script>
-```
+### CheckboxGroup
 
-:::
+> demo: checkbox group dentry
 
-### checkboxGroup 使用
+### CheckboxGroup 禁用
 
-:::demo
+> demo: checkbox group-disabled dentry
 
-```vue
-<template>
-  <nut-checkbox-group v-model="checkboxgroup1">
-    <nut-checkbox label="1">组合复选框</nut-checkbox>
-    <nut-checkbox label="2">组合复选框</nut-checkbox>
-    <nut-checkbox label="3">组合复选框</nut-checkbox>
-    <nut-checkbox label="4">组合复选框</nut-checkbox>
-  </nut-checkbox-group>
-  <nut-cell>
-    <div class="demo-check">当前选中值</div>
-    <div>{{ checkboxgroup1 }}</div>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2', '3']);
-</script>
-```
+### CheckboxGroup 方法
 
-:::
+> demo: checkbox methods dentry
 
-### checkboxGroup 禁用
+### CheckboxGroup 限制最大可选数
 
-:::demo
-
-```vue
-<template>
-  <nut-checkbox-group v-model="checkboxgroup1" disabled>
-    <nut-checkbox label="1">组合复选框</nut-checkbox>
-    <nut-checkbox label="2">组合复选框</nut-checkbox>
-    <nut-checkbox label="3">组合复选框</nut-checkbox>
-    <nut-checkbox label="4">组合复选框</nut-checkbox>
-  </nut-checkbox-group>
-  <nut-cell>
-    <div class="demo-check">当前选中值</div>
-    <div>{{ checkboxgroup1 }}</div>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2', '3']);
-</script>
-```
-
-:::
-
-### checkboxGroup 全选/取消
-
-:::demo
-
-```vue
-<template>
-  <nut-checkbox-group v-model="state.checkboxgroup3" ref="group" @change="changeBox4">
-    <nut-checkbox v-for="item in state.checkboxsource" :key="item.label" :label="item.label">{{
-      item.value
-    }}</nut-checkbox>
-  </nut-checkbox-group>
-  <span class="btn">
-    <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">全选</nut-button>
-    <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0">取消</nut-button>
-    <nut-button type="warning" @click="toggleReverse">反选</nut-button>
-  </span>
-</template>
-<script setup>
-import { reactive, toRefs, ref } from 'vue';
-const state = reactive({
-  checkboxgroup3: ['2'],
-  checkboxsource: [
-    { label: '1', value: '组合复选框' },
-    { label: '2', value: '组合复选框' },
-    { label: '3', value: '组合复选框' },
-    { label: '4', value: '组合复选框' },
-    { label: '5', value: '组合复选框' },
-    { label: '6', value: '组合复选框' }
-  ]
-});
-
-const group = ref(null);
-const changeBox4 = (label) => {
-  console.log(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`);
-};
-
-const toggleAll = (f) => {
-  group.value.toggleAll(f);
-};
-
-const toggleReverse = () => {
-  console.log(`反选`);
-  group.value.toggleReverse();
-};
-</script>
-```
-
-:::
-
-### checkboxGroup 使用，限制最大可选数（2 个）
-
-:::demo
-
-```vue
-<template>
-  <nut-cell-group title="checkboxGroup使用，限制最大可选数（2个）">
-    <nut-cell>
-      <nut-checkbox-group v-model="checkboxgroup4" :max="2">
-        <nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
-        <nut-checkbox label="2">组合复选框</nut-checkbox>
-        <nut-checkbox label="3" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
-        <nut-checkbox label="4">组合复选框</nut-checkbox>
-      </nut-checkbox-group>
-    </nut-cell>
-    <nut-cell>
-      <div class="demo-check">选中</div>
-      <div>{{ checkboxgroup4 }}</div>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2']);
-</script>
-```
-
-:::
+> demo: checkbox max dentry
 
 ### 全选/半选/取消
 
-:::demo
+> demo: checkbox methods2 dentry
 
-```vue
-<template>
-  <nut-cell-group title="全选/半选/取消">
-    <nut-cell>
-      <nut-checkbox :indeterminate="state.indeterminate" v-model="state.checkbox10" @change="changeBox5"
-        >全选</nut-checkbox
-      >
-    </nut-cell>
-    <nut-checkbox-group v-model="state.checkboxgroup5" ref="group2" @change="changeBox6">
-      <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="2">组合复选框</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="3">组合复选框</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="4">组合复选框</nut-checkbox></nut-cell>
-    </nut-checkbox-group>
-  </nut-cell-group>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const group2 = ref(null);
-const state = reactive({
-  indeterminate: false,
-  checkbox10: false,
-  checkboxgroup5: []
-});
+### 按钮形状
 
-const changeBox5 = (value) => {
-  group2.value.toggleAll(value);
-};
-
-const changeBox6 = (label) => {
-  if (label.length === 4) {
-    state.indeterminate = false;
-    state.checkbox10 = true;
-  } else if (label.length && label.length < 4) {
-    state.indeterminate = true;
-  } else {
-    data.indeterminate = false;
-    state.checkbox10 = false;
-  }
-};
-</script>
-```
-
-:::
+> demo: checkbox shape dentry
 
 ## API
 
