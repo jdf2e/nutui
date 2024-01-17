@@ -168,9 +168,9 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     color: string;
     text: string;
+    background: string;
     height: number;
     direction: string;
-    background: string;
     list: any[];
     standTime: number;
     complexAm: boolean;

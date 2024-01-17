@@ -279,10 +279,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     shape: SearchbarShape;
     disabled: boolean;
     label: string;
+    background: string;
     safeAreaInsetBottom: boolean;
     placeholder: string;
     modelValue: string | number;
-    background: string;
     inputType: string;
     maxLength: string | number;
     clearable: boolean;

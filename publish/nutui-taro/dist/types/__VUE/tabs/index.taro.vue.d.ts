@@ -187,12 +187,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: TabsType;
     size: TabsSize;
     top: number;
+    background: string;
     ellipsis: boolean;
     sticky: boolean;
     align: TabsAlign;
     direction: TabsDirection;
     modelValue: string | number;
-    background: string;
     titleScroll: boolean;
     swipeable: boolean;
     autoHeight: boolean;

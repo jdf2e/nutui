@@ -93,12 +93,12 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     color: string;
     type: string;
+    background: string;
     visible: boolean;
     duration: number;
     position: string;
     teleportDisable: boolean;
     className: string;
-    background: string;
     msg: string;
 }, {}>>;
 export default _default;

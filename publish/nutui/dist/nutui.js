@@ -1280,9 +1280,11 @@ const zi = { class: "nut-button__wrap" }, Ke = /* @__PURE__ */ st({
         [`${k}--loading`]: r.value
       };
     }), b = N(() => {
-      var c;
-      const k = {};
-      return p != null && p.value && (f.value ? (k.color = p.value, k.background = "#fff", (c = p.value) != null && c.includes("gradient") || (k.borderColor = p.value)) : (k.color = "#fff", k.background = p.value)), k;
+      let k = {};
+      return p != null && p.value && (k = {
+        color: f.value ? p.value : "#fff",
+        background: f.value ? "#fff" : `border-box ${p.value}`
+      }, p.value.includes("gradient") ? k.borderColor = "transparent" : k.borderColor = p.value), k;
     });
     return (k, c) => (u(), d("view", {
       class: _(v.value),

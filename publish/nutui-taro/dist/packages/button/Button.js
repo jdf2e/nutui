@@ -89,18 +89,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       };
     });
     const getStyle = computed(() => {
-      var _a;
-      const style = {};
+      let style = {};
       if (color == null ? void 0 : color.value) {
-        if (plain.value) {
-          style.color = color.value;
-          style.background = "#fff";
-          if (!((_a = color.value) == null ? void 0 : _a.includes("gradient"))) {
-            style.borderColor = color.value;
-          }
+        style = {
+          color: plain.value ? color.value : "#fff",
+          background: plain.value ? "#fff" : `border-box ${color.value}`
+        };
+        if (color.value.includes("gradient")) {
+          style.borderColor = "transparent";
         } else {
-          style.color = "#fff";
-          style.background = color.value;
+          style.borderColor = color.value;
         }
       }
       return style;
