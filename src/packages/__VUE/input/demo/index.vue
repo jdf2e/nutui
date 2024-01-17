@@ -13,7 +13,7 @@
     <Clear />
 
     <h2>{{ t('form') }}</h2>
-    <FormDemo />
+    <Form />
 
     <h2>{{ t('format') }}</h2>
     <Format />
@@ -36,12 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Type from './type.vue';
 import Status from './status.vue';
 import Clear from './clear.vue';
-import FormDemo from './form.vue';
+import Form from './form.vue';
 import Format from './format.vue';
 import Count from './count.vue';
 import Border from './border.vue';
