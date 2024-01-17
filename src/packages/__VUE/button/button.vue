@@ -83,10 +83,10 @@ const getStyle = computed(() => {
   if (color?.value) {
     style = {
       color: plain.value ? color.value : '#fff',
-      background: plain.value ? '#fff' : color.value
+      background: plain.value ? '#fff' : `border-box ${color.value}`
     };
     if (color.value.includes('gradient')) {
-      style.border = 0;
+      style.borderColor = 'transparent';
     } else {
       style.borderColor = color.value;
     }
