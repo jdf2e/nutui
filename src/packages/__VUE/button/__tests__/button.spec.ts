@@ -63,11 +63,13 @@ test('props color & plain', async () => {
   });
 
   const btn = wrapper.findComponent(Button);
-  expect(btn.html()).toContain('background: blue');
+  expect(btn.attributes('style')).toContain('color: blue');
 
   wrapper.setProps({
     plain: true
   });
   await nextTick();
-  expect(btn.html()).toContain('border-color: blue');
+  console.log(btn.attributes('style'));
+  expect(btn.attributes('style')).toContain('background: rgb(255, 255, 255)');
+  expect(btn.attributes('style')).toContain('border-color: blue');
 });

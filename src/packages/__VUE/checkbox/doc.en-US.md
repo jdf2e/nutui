@@ -17,300 +17,55 @@ app.use(CheckboxGroup);
 
 ### Basic Usage
 
-:::demo
+> demo: checkbox basic
 
-```vue
-<template>
-  <nut-checkbox v-model="checkbox1" label="check box">check box</nut-checkbox>
-  <nut-checkbox v-model="checkbox2" text-position="left">check box</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox1 = ref(false);
-const checkbox2 = ref(false);
-</script>
-<style>
-.nut-checkbox {
-  display: flex;
-  margin-right: 20px;
-}
-.nut-checkbox__label {
-  margin-left: 10px;
-}
-</style>
-```
+### Indeterminate
 
-:::
+> demo: checkbox indeterminate
 
-### Semi selective
+### Disabled
 
-:::demo
+> demo: checkbox disabled
 
-```vue
-<template>
-  <nut-cell>
-    <nut-checkbox v-model="value" :indeterminate="true" label="check box">check box</nut-checkbox>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(false);
-</script>
-```
+### Custom Size
 
-:::
+> demo: checkbox size
 
-### Disabled state
-
-:::demo
-
-```vue
-<template>
-  <nut-checkbox v-model="checkbox3" disabled>Disabled when not selected</nut-checkbox>
-  <nut-checkbox v-model="checkbox4" disabled>Disabled when selected</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox3 = ref(false);
-const checkbox4 = ref(false);
-</script>
-```
-
-:::
-
-### Custom size
-
-:::demo
-
-```vue
-<template>
-  <nut-checkbox v-model="checkbox5" icon-size="25">Custom size 25</nut-checkbox>
-  <nut-checkbox v-model="checkbox6" icon-size="10">Custom size 10</nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox5 = ref(false);
-const checkbox6 = ref(false);
-</script>
-```
-
-:::
-
-### Custom icon
+### Custom Icon
 
 Customize the icon through the slot, it is recommended to set the `icon` and `checkedIcon` two slots at the same time
 
-:::demo
+> demo: checkbox icon
 
-```vue
-<template>
-  <nut-checkbox v-model="checkbox7">
-    Custom icon
-    <template #icon> <Checklist /> </template>
-    <template #checkedIcon> <Checklist color="red" /> </template>
-  </nut-checkbox>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkbox7 = ref(false);
-</script>
-```
-
-:::
-
-### change Event
+### Change Event
 
 When the value changes, the `change` event will be triggered
 
-:::demo
+> demo: checkbox event
 
-```vue
-<template>
-  <nut-checkbox v-model="checkbox" @change="changeBox3">change check box</nut-checkbox>
-</template>
-<script setup>
-import { reactive, toRefs } from 'vue';
-const checkbox = ref(false);
-const changeBox = (state, label) => {
-  console.log(`${state ? 'select' : 'cancel'} ${label}`);
-};
-</script>
-```
+### CheckboxGroup
 
-:::
+> demo: checkbox group
 
-### use checkboxGroup
+### Disabled CheckboxGroup
 
-:::demo
+> demo: checkbox group-disabled
 
-```vue
-<template>
-  <nut-checkbox-group v-model="checkboxgroup1">
-    <nut-checkbox label="1">Combined check box</nut-checkbox>
-    <nut-checkbox label="2">Combined check box</nut-checkbox>
-    <nut-checkbox label="3">Combined check box</nut-checkbox>
-    <nut-checkbox label="4">Combined check box</nut-checkbox>
-  </nut-checkbox-group>
-  <nut-cell>
-    <div class="demo-check">Currently selected value</div>
-    <div>{{ checkboxgroup1 }}</div>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2', '3']);
-</script>
-```
+### CheckboxGroup Methods
 
-:::
+> demo: checkbox methods
 
-### checkboxGroup disabled
+### CheckboxGroup Limit the maximum number of options
 
-:::demo
-
-```vue
-<template>
-  <nut-checkbox-group v-model="checkboxgroup1" disabled>
-    <nut-checkbox label="1">Combined check box</nut-checkbox>
-    <nut-checkbox label="2">Combined check box</nut-checkbox>
-    <nut-checkbox label="3">Combined check box</nut-checkbox>
-    <nut-checkbox label="4">Combined check box</nut-checkbox>
-  </nut-checkbox-group>
-  <nut-cell>
-    <div class="demo-check">Currently selected value</div>
-    <div>{{ checkboxgroup1 }}</div>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2', '3']);
-</script>
-```
-
-:::
-
-### Checkboxgroup select all / cancel
-
-:::demo
-
-```vue
-<template>
-  <nut-checkbox-group v-model="checkboxgroup3" ref="group" @change="changeBox4">
-    <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{ item.value }}</nut-checkbox>
-  </nut-checkbox-group>
-  <span class="btn">
-    <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 20px 0 0">Select all</nut-button>
-    <nut-button type="primary" @click="toggleAll(false)" style="margin: 0 20px 0 0">cancel</nut-button>
-    <nut-button type="warning" @click="toggleReverse()">reverse selection</nut-button>
-  </span>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const state = reactive({
-  checkboxgroup3: ['2'],
-  checkboxsource: [
-    { label: '1', value: 'Combined check box' },
-    { label: '2', value: 'Combined check box' },
-    { label: '3', value: 'Combined check box' },
-    { label: '4', value: 'Combined check box' },
-    { label: '5', value: 'Combined check box' },
-    { label: '6', value: 'Combined check box' }
-  ]
-});
-
-const group = ref(null);
-const changeBox4 = (label) => {
-  console.log(`${label.length === state.checkboxsource.length ? 'Select all' : 'Cancel select all'}`);
-};
-
-const toggleAll = (f) => {
-  group.value.toggleAll(f);
-};
-
-const toggleReverse = () => {
-  console.log(`reverse selection`);
-  group.value.toggleReverse();
-};
-</script>
-```
-
-:::
-
-### use checkboxGroup, Limit the maximum number of options (2)
-
-:::demo
-
-```vue
-<template>
-  <nut-cell-group title="use checkboxGroup, Limit the maximum number of options (2)">
-    <nut-cell>
-      <nut-checkbox-group v-model="checkboxgroup4" :max="2">
-        <nut-checkbox label="1" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox>
-        <nut-checkbox label="2">Combined check box</nut-checkbox>
-        <nut-checkbox label="3" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox>
-        <nut-checkbox label="4">Combined check box</nut-checkbox>
-      </nut-checkbox-group>
-    </nut-cell>
-    <nut-cell>
-      <div class="demo-check">selected</div>
-      <div>{{ checkboxgroup4 }}</div>
-    </nut-cell>
-  </nut-cell-group>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkboxgroup1 = ref(['2']);
-</script>
-```
-
-:::
+> demo: checkbox max
 
 ### Select all / half / cancel
 
-:::demo
+> demo: checkbox methods
 
-```vue
-<template>
-  <nut-cell-group title="Select all / half / cancel">
-    <nut-cell>
-      <nut-checkbox :indeterminate="indeterminate" v-model="checkbox10" @change="changeBox5">selectAll</nut-checkbox>
-    </nut-cell>
-    <nut-checkbox-group v-model="checkboxgroup5" ref="group2" @change="changeBox6">
-      <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0">Combined check box</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="2">Combined check box</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="3">Combined check box</nut-checkbox></nut-cell>
-      <nut-cell><nut-checkbox label="4">Combined check box</nut-checkbox></nut-cell>
-    </nut-checkbox-group>
-  </nut-cell-group>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const group2 = ref(null);
-const state = reactive({
-  indeterminate: false,
-  checkbox10: false,
-  checkboxgroup5: []
-});
+### Button Shape
 
-const changeBox5 = (value) => {
-  group2.value.toggleAll(value);
-};
-
-const changeBox6 = (label) => {
-  if (label.length === 4) {
-    state.indeterminate = false;
-    state.checkbox10 = true;
-  } else if (label.length && label.length < 4) {
-    state.indeterminate = true;
-  } else {
-    data.indeterminate = false;
-    state.checkbox10 = false;
-  }
-};
-</script>
-```
-
-:::
+> demo: checkbox shape
 
 ## API
 
