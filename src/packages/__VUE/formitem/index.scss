@@ -69,7 +69,7 @@
     flex-direction: column;
     &__slots {
       text-align: $form-item-body-slots-text-align;
-      .nut-input-text {
+      .nut-input {
         font-size: $form-item-body-font-size;
         text-align: $form-item-body-input-text-align;
         color: $black;
@@ -78,8 +78,6 @@
         border: 0;
         text-decoration: none;
         background: transparent;
-        padding: 0;
-        margin: 0;
       }
       .nut-range-container {
         min-height: 24px;
