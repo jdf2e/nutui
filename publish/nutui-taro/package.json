@@ -60,5 +60,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui.git"
-  }
+  },
+  "homepage": "https://nutui.jd.com/"
 }
