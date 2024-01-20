@@ -26,7 +26,13 @@ app.use(SwiperItem);
 
 ```vue
 <template>
-  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+  <nut-swiper
+    :init-page="page"
+    :pagination-visible="true"
+    pagination-color="#426543"
+    pagination-unselected-color="#808080"
+    auto-play="3000"
+  >
     <nut-swiper-item>
       <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
     </nut-swiper-item>
@@ -444,11 +450,12 @@ const page = ref(2);
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| width | Width of rotation card | number \| string | `window.innerWidth ` |
-| height | Height of rotation card | number \| string | `0` |
+| width | Width of rotation card | number \| string | - |
+| height | Height of rotation card | number \| string | - |
 | direction | Rotation direction, optional value：`horizontal`,`vertical` | string | `'horizontal'` |
 | pagination-visible | Is the paging indicator displayed | boolean | `false` |
 | pagination-color | The color selected by the pagination indicator | string | `'#fff'` |
+| pagination-unselected-color | The color unselected by the pagination indicator | string | `'#ddd'` |
 | loop | Whether to rotate | boolean | `true` |
 | duration | Animation duration（Unit ms） | number \| string | `500` |
 | auto-play | Automatic rotation duration, 0 means no automatic rotation | number \| string | `0` |

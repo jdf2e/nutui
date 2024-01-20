@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view :id="'root' + refRandomId" ref="root" class="nut-ellipsis ell" @click="handleClick">
+    <view :id="rootId" class="nut-ellipsis ell" @click="handleClick">
       <view v-if="!exceeded" class="nut-ellipsis__wordbreak">{{ content }}</view>
 
       <view v-if="exceeded && !expanded" class="nut-ellipsis__wordbreak">
@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, computed, onMounted, PropType, unref } from 'vue';
+import { ref, reactive, toRefs, computed, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
+import { EllipsisDirection } from './types';
 const { create } = createComponent('ellipsis');
-export type Direction = 'start' | 'end' | 'middle';
 
 type EllipsisedValue = {
   leading?: string;
@@ -47,7 +47,7 @@ export default create({
       default: ''
     },
     direction: {
-      type: String as PropType<Direction>,
+      type: String as PropType<EllipsisDirection>,
       default: 'end'
     },
     rows: {
@@ -74,7 +74,6 @@ export default create({
   emits: ['click', 'change'],
 
   setup(props, { emit }) {
-    const root = ref(null);
     const rootContain = ref(null);
     const symbolContain = ref(null);
     let contantCopy = ref(props.content);
@@ -83,6 +82,7 @@ export default create({
     let originHeight = 0; // 原始高度
     const ellipsis = reactive<EllipsisedValue>({});
     const refRandomId = Math.random().toString(36).slice(-8);
+    const rootId = ref('root' + refRandomId);
     let widthRef = ref('auto');
     const state = reactive({
       exceeded: false, //是否超出
@@ -120,12 +120,10 @@ export default create({
     };
 
     const getReference = async () => {
-      let element = unref(root);
-
       const query = Taro.createSelectorQuery();
-      query.select(`#${(element as any).id}`) &&
+      query.select(`#${rootId.value}`) &&
         query
-          .select(`#${(element as any).id}`)
+          .select(`#${rootId.value}`)
           .fields(
             {
               computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom', 'fontSize']
@@ -287,7 +285,7 @@ export default create({
 
     return {
       ...toRefs(state),
-      root,
+      rootId,
       rootContain,
       symbolContain,
       ellipsis,

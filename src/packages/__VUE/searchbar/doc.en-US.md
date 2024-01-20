@@ -16,160 +16,35 @@ app.use(Searchbar);
 
 ### Basic Usage
 
-:::demo
+> demo: searchbar basic
 
-```vue
-<template>
-  <nut-searchbar v-model="value"></nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
+### Shape
 
-:::
+> demo: searchbar shape
 
-### Search input shape
+### Left Slot
 
-:::demo
+> demo: searchbar left
 
-```vue
-<template>
-  <nut-searchbar shape="square"></nut-searchbar>
-</template>
-```
+### Right Slot
 
-:::
+> demo: searchbar right
 
-### Search event listening
+### Background
 
-:::demo
+> demo: searchbar background
 
-```vue
-<template>
-  <nut-searchbar v-model="value" @search="search"></nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const value = ref('');
+### Focus Style
 
-const search = function () {
-  showToast.text('Search trigger');
-};
-</script>
-```
+> demo: searchbar focus
 
-:::
+### Clear Icon
 
-### Display search Icon
+> demo: searchbar clear
 
-:::demo
+### All Slots
 
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #leftin>
-      <Search2 />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Search2 } from '@nutui/icons-vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### Add search text to the right
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #rightout> Search </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### Change the background style inside and outside the input box
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff">
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
-
-### Custom Clear Button icon
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #clear-icon>
-      <img :src="icon" style="width: 10px; height: 10px" />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-const icon =
-  'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
-</script>
-```
-
-:::
-
-### Show all icons
-
-:::demo
-
-```vue
-<template>
-  <nut-searchbar v-model="value">
-    <template #leftout>
-      <Left />
-    </template>
-    <template #leftin>
-      <Search2 />
-    </template>
-    <template #rightin>
-      <Photograph />
-    </template>
-    <template #rightout>
-      <Message />
-    </template>
-  </nut-searchbar>
-</template>
-<script setup>
-import { ref } from 'vue';=
-import { Search2, Left, Photograph, Message } from '@nutui/icons-vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: searchbar all
 
 ## API
 

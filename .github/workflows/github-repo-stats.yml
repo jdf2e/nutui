@@ -7,6 +7,7 @@ on:
 jobs:
   j1:
     name: github-repo-stats
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     steps:
       - name: GHRS

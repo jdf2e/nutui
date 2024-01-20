@@ -1,15 +1,14 @@
 <template>
   <nut-popup
     v-if="poppable"
-    :visible="visible"
+    v-model:visible="visible"
     position="bottom"
     round
     closeable
     v-bind="$attrs"
     :style="{ height: '85vh' }"
     :lock-scroll="lockScroll"
-    @click-overlay="closePopup"
-    @click-close-icon="closePopup"
+    @opened="opened"
   >
     <nut-calendar-item
       ref="calendarRef"
@@ -96,7 +95,6 @@ const { create } = createComponent('calendar');
 import NutCalendarItem from '../calendaritem/index.vue';
 import NutPopup from '../popup/index.vue';
 import Utils from '@/packages/utils/date';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
@@ -176,7 +174,15 @@ export default create({
     disabledDate: Function
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
+    const visible = computed({
+      get() {
+        return props.visible;
+      },
+      set(val) {
+        emit('update:visible', val);
+      }
+    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -200,7 +206,7 @@ export default create({
     const initPosition = () => {
       calendarRef.value?.initPosition();
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });
@@ -227,8 +233,14 @@ export default create({
       emit('select', param);
     };
 
+    const opened = () => {
+      calendarRef.value?.initPosition();
+    };
+
     return {
+      visible,
       closePopup,
+      opened,
       update,
       close,
       select,

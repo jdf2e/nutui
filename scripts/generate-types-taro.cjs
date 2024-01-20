@@ -14,7 +14,7 @@ let packages = [];
 
 const preContent = `
 declare type Install<T> = T & {
-  install(app: import('vue').App): void;
+    install(app: import('vue').App): void;
 };\n`;
 const start = 'declare const _default:';
 const end = ';\nexport default _default;\n';
@@ -44,7 +44,13 @@ const getCompName = (name) => {
     });
   }
   const packageName = packages.find((item) => item.name.toLowerCase() === name.toLowerCase());
-  return packageName ? packageName.name : '';
+  if (packageName) {
+    if (packageName?.setup === true) {
+      return [packageName.name, true]
+    }
+    return [packageName.name, false]
+  }
+  return ''
 };
 
 const getLocale = () => {
@@ -101,16 +107,23 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
     if (inputs && inputs.length) {
       let name = item.substring(0, item.lastIndexOf('/'));
       name = name.substring(name.lastIndexOf('/') + 1);
-      const componentName = getCompName(name);
-      if (componentName) {
+      const _ComponentName = getCompName(name);
+      if (_ComponentName) {
+        const [componentName, setup] = _ComponentName;
         let remain = `
 declare module 'vue' {
-  interface GlobalComponents {
-      Nut${componentName}: typeof _default;
-  }
+    interface GlobalComponents {
+        Nut${componentName}: typeof _default;
+    }
 }`;
-        let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`);
-        fs.writeFileSync(item, changeContent);
+        if (setup) {
+          let changeContent = content.replace('export default _default;', `declare const _nut_default: WithInstall<typeof _default>;\nexport default _nut_default;\n${remain}`);
+          changeContent = `import type { WithInstall } from '../../utils';\n` + changeContent
+          fs.writeFileSync(item, changeContent);
+        } else {
+          let changeContent = content.replace(regex, `${preContent}${start} Install<${inputs[1]}>${end}${remain}`);
+          fs.writeFileSync(item, changeContent);
+        }
       }
     }
   });

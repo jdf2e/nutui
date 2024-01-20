@@ -18,253 +18,71 @@ app.use(Input);
 
 可以通过 `v-model` 双向绑定输入框的值，通过 `placeholder` 设置占位提示文字。
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="val" placeholder="请输入文本" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input basic dentry
 
 ### 自定义类型
-
-根据 `type` 属性定义不同类型的输入框，默认值为 `text`。
 
 > NutUI < 4.2.0 时，number 类型为小数，digit 类型为整数。
 >
 > NutUI >= 4.2.0 时，调整为与小程序原生 input 的类型字段保持一致（如下示例），同时支持调用原生整数键盘、带小数点键盘。
 
-:::demo
+- `text`: 默认值，文本类型
+- `password`: 密码类型
+- `digit`: 数字类型，支持小数
+- `number`: 整数类型
 
-```vue
-<template>
-  <nut-input placeholder="请输入文本" v-model="state.text" />
-  <nut-input placeholder="请输入密码" v-model="state.password" type="password" />
-  <nut-input placeholder="请输入数字（支持小数）" v-model="state.digit" type="digit" />
-  <nut-input placeholder="请输入整数" v-model="state.number" type="number" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  text: '',
-  password: '',
-  number: '',
-  digit: ''
-});
-</script>
-```
-
-:::
+> demo: input type dentry
 
 ### 禁用和只读
 
-通过 `readonly` 将输入框设置为只读状态，通过 `disabled` 将输入框设置为禁用状态。
+- `readonly`: 只读状态
+- `disabled`: 禁用状态
 
-:::demo
-
-```vue
-<template>
-  <nut-input placeholder="输入框只读" v-model="state.readonly" readonly />
-  <nut-input placeholder="输入框已禁用" v-model="state.disabled" disabled />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  readonly: '',
-  disabled: ''
-});
-</script>
-```
-
-:::
+> demo: input status dentry
 
 ### 显示清除图标
 
-通过设置 `clearable` 在输入过程中展示清除图标。清除按钮，在失去焦点后将隐藏,可通过 `showClearIcon` 设置失去焦点后继续展示清除按钮。
+开启 `clearable` 后，在输入过程中会展示清除图标，在失去焦点后将隐藏。
 
-:::demo
+开启 `show-clear-icon` 后，失去焦点时仍会继续展示清除按钮。
 
-```vue
-<template>
-  <nut-input v-model="state.clear" placeholder="显示清除图标" clearable clearSize="14" />
-  <nut-input
-    v-model="state.clear2"
-    placeholder="自定义清除图标"
-    clearable
-    clearSize="14"
-    show-word-limit
-    max-length="50"
-    :showClearIcon="true"
-  >
-    <template #clear>
-      <Close width="12" height="12" size="12" @click="clearValue"></Close>
-    </template>
-  </nut-input>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { Close } from '@nutui/icons-vue-taro';
-const state = reactive({
-  clear: '',
-  clear2: ''
-});
-const clearValue = () => {
-  state.clear2 = '';
-};
-</script>
-```
-
-:::
+> demo: input clear dentry
 
 ### 配合表单使用
 
 结合 `nut-form` 与 `nut-form-item` 使用
 
-:::demo
-
-```vue
-<template>
-  <nut-form :model-value="state">
-    <nut-form-item label="文本" label-align="center">
-      <nut-input v-model="state.val1" placeholder="请输入文本" :border="false" />
-    </nut-form-item>
-  </nut-form>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  val1: ''
-});
-</script>
-```
-
-:::
+> demo: input form dentry
 
 ### 格式化输入内容
 
 通过 `formatter` 属性可以对输入的内容进行格式化，通过 `format-trigger` 属性可以指定执行格式化的时机。例如只允许输入非数字的字符：
 
-:::demo
-
-```vue
-<template>
-  <nut-input
-    v-model="state.format1"
-    placeholder="在输入时执行格式化"
-    :formatter="formatter"
-    format-trigger="onChange"
-  />
-  <nut-input v-model="state.format2" placeholder="在失焦时执行格式化" :formatter="formatter" format-trigger="onBlur" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  format1: '',
-  format2: ''
-});
-const formatter = (value) => value.replace(/\d/g, '');
-</script>
-```
-
-:::
+> demo: input format dentry
 
 ### 显示字数统计
 
 设置 `maxlength` 和 `show-word-limit` 属性后会在底部显示字数统计。
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="val" type="text" show-word-limit rows="2" max-length="50" placeholder="请输入留言" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input count dentry
 
 ### 无边框
 
 通过 `border` 属性可以设置输入框的边框。
 
-:::demo
+> demo: input border dentry
 
-```vue
-<template>
-  <nut-input v-model="state.val1" :border="false" placeholder="输入框无边框" />
-  <nut-input v-model="state.val2" :border="false" placeholder="输入框无边框" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  val1: '',
-  val2: ''
-});
-</script>
-```
+### 对齐方式
 
-:::
+> demo: input border dentry
 
 ### 事件演示
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="state.val" clearable placeholder="事件演示" @clear="clear" @click-input="clickInput" />
-  <nut-toast :msg="state.msg" v-model:visible="state.show" type="text" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { Toast } from '@nutui/nutui-taro';
-const state = reactive({
-  val: '',
-  show: false,
-  msg: ''
-});
-const showToast = (msg) => {
-  state.show = true;
-  state.msg = msg;
-};
-const clear = () => {
-  showToast('clear');
-};
-const clickInput = () => {
-  showToast('clickInput');
-};
-</script>
-```
-
-:::
+> demo: input event dentry
 
 ### 插槽演示
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="val" placeholder="插槽演示" clearable>
-    <template #left> <Ask></Ask> </template>
-    <template #right> <nut-button type="primary" size="small">获取验证码</nut-button> </template>
-  </nut-input>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { Ask } from '@nutui/icons-vue-taro';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input slot dentry
 
 ## API
 

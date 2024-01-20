@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Button from '../index.vue';
+import Button from '../';
 import { nextTick } from 'vue';
 import { StarFill } from '@nutui/icons-vue';
 test('emit click event', () => {
@@ -53,5 +53,23 @@ test('should find nut-icon class of an svg tag when using icon slot', () => {
 
   const icons = wrapper.findAll('svg');
   expect(icons.length).toEqual(1);
-  expect(icons[0].element.classList).toContain(['nut-icon']);
+  expect(icons[0].element.classList).toContain('nut-icon');
+});
+test('props color & plain', async () => {
+  const wrapper = mount(Button, {
+    props: {
+      color: 'blue'
+    }
+  });
+
+  const btn = wrapper.findComponent(Button);
+  expect(btn.attributes('style')).toContain('color: blue');
+
+  wrapper.setProps({
+    plain: true
+  });
+  await nextTick();
+  console.log(btn.attributes('style'));
+  expect(btn.attributes('style')).toContain('background: rgb(255, 255, 255)');
+  expect(btn.attributes('style')).toContain('border-color: blue');
 });

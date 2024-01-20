@@ -11,14 +11,20 @@ declare module 'vue' {
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, exclude, taro } = element;
+    let { name, exclude, taro, setup } = element;
     if (taro == true) {
-      dts += `    Nut${name}: typeof import('@/packages/__VUE/${name.toLowerCase()}/index.taro.vue')['default']\n`
-      const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-      if (name !== 'Icon') {
-        importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
-          fs.existsSync(filePath) ? '.taro' : ''
-        }.vue';\n`;
+      if (setup === true) {
+        dts += `    Nut${name}: typeof import('@/packages/__VUE/${name.toLowerCase()}/index.taro')['default']\n`
+        importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.taro';\n`;
+        importStr += `export * from './__VUE/${name.toLowerCase()}/index.taro';\n`;
+      } else {
+        dts += `    Nut${name}: typeof import('@/packages/__VUE/${name.toLowerCase()}/index.taro.vue')['default']\n`
+        const filePath = path.join(`src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+        if (name !== 'Icon') {
+          importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
+            fs.existsSync(filePath) ? '.taro' : ''
+          }.vue';\n`;
+        }
       }
       importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
       if (exclude != true) {

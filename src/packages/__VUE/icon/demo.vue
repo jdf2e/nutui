@@ -68,8 +68,6 @@
 </template>
 
 <script setup lang="ts">
-import NutCell from '../cell/index.vue';
-import NutCellGroup from '../cellgroup/index.vue';
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {

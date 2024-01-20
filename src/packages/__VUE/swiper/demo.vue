@@ -2,7 +2,13 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <view class="demo-box">
-      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+      <nut-swiper
+        :init-page="state.page"
+        :pagination-visible="true"
+        pagination-color="#426543"
+        pagination-unselected-color="#808080"
+        auto-play="2000"
+      >
         <nut-swiper-item v-for="item in state.list" :key="item"> <img :src="item" alt="" /> </nut-swiper-item>
       </nut-swiper>
     </view>

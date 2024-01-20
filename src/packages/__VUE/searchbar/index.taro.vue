@@ -56,10 +56,9 @@
 import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
-import { TextAlign } from './type';
+import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types';
 import { useLocale } from '@/packages/utils/useLocale';
 const { create } = createComponent('searchbar');
-export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 const cN = 'NutSearchbar';
 
@@ -74,7 +73,7 @@ export default create({
       default: 'text'
     },
     shape: {
-      type: String,
+      type: String as PropType<SearchbarShape>,
       default: 'round'
     },
     maxLength: {
@@ -118,11 +117,11 @@ export default create({
       default: false
     },
     inputAlign: {
-      type: String,
+      type: String as PropType<SearchbarInputAlign>,
       default: 'left'
     },
     confirmType: {
-      type: String as PropType<confirmTextType>,
+      type: String as PropType<SearchbarConfirmType>,
       default: 'done'
     },
     safeAreaInsetBottom: {
@@ -222,7 +221,7 @@ export default create({
 
     const styleSearchbar = computed(() => {
       const style: CSSProperties = {
-        textAlign: props.inputAlign as TextAlign
+        textAlign: props.inputAlign
       };
       return style;
     });

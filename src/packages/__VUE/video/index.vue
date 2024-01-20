@@ -333,7 +333,6 @@ export default create({
     };
 
     const retry = () => {
-      // console.log('error');
       state.state.isError = false;
       init();
     };

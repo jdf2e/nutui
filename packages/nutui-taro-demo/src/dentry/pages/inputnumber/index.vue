@@ -1,61 +1,62 @@
 <template>
-  <Demo>
-    <h2>基础用法</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val1" />
-    </nut-cell>
-    <h2>步长设置</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val2" step="5" />
-    </nut-cell>
-    <h2>限制输入范围</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val3" min="10" max="20" @overlimit="overlimit" />
-    </nut-cell>
-    <h2>禁用操作</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val4" disabled />
-    </nut-cell>
-    <h2>只读禁用输入框</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val5" readonly />
-    </nut-cell>
-    <h2>支持小数</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val6" step="0.1" decimal-places="1" readonly />
-    </nut-cell>
-    <h2>支持异步修改</h2>
-    <nut-cell>
-      <nut-input-number :model-value="state.val8" @change="onChange" />
-    </nut-cell>
-    <h2>自定义按钮大小</h2>
-    <nut-cell>
-      <nut-input-number v-model="state.val7" button-size="30" input-width="50" />
-    </nut-cell>
+  <Demo class="bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('step') }}</h2>
+    <Step />
+
+    <h2>{{ t('limit') }}</h2>
+    <Limit />
+
+    <h2>{{ t('disabled') }}</h2>
+    <Disabled />
+
+    <h2>{{ t('readonly') }}</h2>
+    <Readonly />
+
+    <h2>{{ t('decimal') }}</h2>
+    <Decimal />
+
+    <h2>{{ t('size') }}</h2>
+    <Size />
+
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-const state = reactive({
-  val1: 1,
-  val2: 0,
-  val3: 10,
-  val4: 0,
-  val5: 1,
-  val6: 5.5,
-  val7: 1,
-  val8: 1,
-  step: 1.1
-});
-const onChange = (value: number) => {
-  console.log('异步演示 2 秒后更改');
-  setTimeout(() => {
-    state.val8 = value;
-  }, 2000);
-};
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Step from './step.vue';
+import Limit from './limit.vue';
+import Disabled from './disabled.vue';
+import Readonly from './readonly.vue';
+import Decimal from './decimal.vue';
+import Size from './size.vue';
+import IconDemo from './icon.vue';
 
-const overlimit = () => {
-  console.log('超出限制事件触发');
-};
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    step: '步长设置',
+    limit: '限制输入范围',
+    disabled: '禁用操作',
+    readonly: '只读禁用输入框',
+    decimal: '支持小数',
+    size: '自定义按钮大小',
+    icon: '自定义图标'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    step: 'Step size setting',
+    limit: 'Limit input range',
+    disabled: 'Disable operation',
+    readonly: 'Read only disabled input box',
+    decimal: 'Support decimal',
+    size: 'Custom button size',
+    icon: 'Custom icon name'
+  }
+});
 </script>

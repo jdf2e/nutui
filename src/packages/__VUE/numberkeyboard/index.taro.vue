@@ -12,7 +12,7 @@
     <div ref="root" class="nut-number-keyboard">
       <div v-if="title" class="nut-number-keyboard__header">
         <h3 class="nut-number-keyboard__title">{{ title }}</h3>
-        <span v-if="type == 'default'" class="van-number-keyboard__close" @click="closeBoard()">{{
+        <span v-if="type == 'default'" class="nut-number-keyboard__close" @click="closeBoard()">{{
           translate('done')
         }}</span>
       </div>

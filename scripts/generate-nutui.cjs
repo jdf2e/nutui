@@ -12,14 +12,20 @@ const packages = [];
 const methods = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, type, exclude } = element;
-    dts += `    Nut${name}: typeof import('./__VUE/${name.toLowerCase()}/index.vue')['default']\n`
-    if (name !== 'Icon') {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
-    }
-    if (type === 'methods') {
-      importStr += `import { show${name} } from './__VUE/${name.toLowerCase()}/index';\n`;
-      methods.push(`show${name}`);
+    let { name, type, exclude, setup } = element;
+    if (setup === true) {
+      dts += `    Nut${name}: typeof import('./__VUE/${name.toLowerCase()}/index')['default']\n`
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index';\n`;
+      importStr += `export * from './__VUE/${name.toLowerCase()}/index';\n`;
+    } else {
+      dts += `    Nut${name}: typeof import('./__VUE/${name.toLowerCase()}/index.vue')['default']\n`
+      if (name !== 'Icon') {
+        importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
+      }
+      if (type === 'methods') {
+        importStr += `import { show${name} } from './__VUE/${name.toLowerCase()}/index';\n`;
+        methods.push(`show${name}`);
+      }
     }
     importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
     if (exclude != true) {

@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```js
 import { createApp } from 'vue';
 import { Space } from '@nutui/nutui';
 
@@ -18,18 +18,7 @@ app.use(Space);
 
 Space 组件会在各个子组件之间设置一定的间距，默认间距为 8px。
 
-:::demo
-
-```html
-<template>
-  <nut-space>
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-  </nut-space>
-</template>
-```
+> demo: space basic
 
 :::
 
@@ -37,73 +26,21 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 将 direction 属性设置为 vertical，可以设置垂直方向排列的间距。
 
-:::demo
-
-```html
-<template>
-  <nut-space direction="vertical" fill>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-  </nut-space>
-</template>
-```
-
-:::
+> demo: space direction
 
 ### 自定义间距
 
 通过调整 gutter 的值来控制间距的大小。传入 number 类型时，会默认使用 px 单位；也可以传入 string 类型，比如 2rem 或 5vw 等带有单位的值。
-也可以设置css变量--nut-space-gap控制，优先级：gutter>css变量>默认样式
 
-:::demo
+也可以设置 css 变量 `--nut-space-gap` 控制，优先级：属性 > css 变量 > 默认样式。
 
-```html
-<template>
-  <!-- gutter控制 -->
-  <nut-space :gutter="20">
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-    <nut-button type="primary">按钮</nut-button>
-  </nut-space>
-  <!-- css变量控制 -->
-  <nut-cell :style="{ '--nut-space-gap': '30px' }">
-    <nut-space>
-      <nut-button type="primary">按钮</nut-button>
-      <nut-button type="primary">按钮</nut-button>
-      <nut-button type="primary">按钮</nut-button>
-      <nut-button type="primary">按钮</nut-button>
-    </nut-space>
-  </nut-cell>
-</template>
-```
-
-:::
+> demo: space gutter
 
 ### 自动换行
 
 在水平模式下, 通过 wrap 属性来控制子元素是否自动换行。
 
-:::demo
-
-```html
-<template>
-  <nut-space wrap>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-    <nut-button type="primary" block>按钮</nut-button>
-  </nut-space>
-</template>
-```
-
-:::
+> demo: space wrap
 
 ### Props
 
@@ -130,4 +67,4 @@ Space 组件会在各个子组件之间设置一定的间距，默认间距为 8
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |
-| \--nutui-space-gap | `8px` | 间距大小 |
+| \--nut-space-gap | `8px` | 间距大小 |

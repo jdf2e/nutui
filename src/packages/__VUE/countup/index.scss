@@ -10,7 +10,6 @@
   padding: 5px 20px;
   color: #000;
   font-weight: bold;
-  font-family: PingFangSC-Regular;
   .nut-countup__number {
     display: inline-block;
     width: 100%;
@@ -25,7 +24,6 @@
       list-style: none;
       .nut-countup__number-item__span {
         display: block;
-        font-family: PingFangSC-Regular;
       }
     }
   }
@@ -53,7 +51,6 @@
       display: inline-block;
       background-position: 0 0;
       background-repeat: no-repeat;
-      font-family: PingFangSC-Regular;
     }
   }
 }

@@ -348,12 +348,11 @@ export default create({
       // 删除右边已选择数据
       selectedRegion.value.splice(tab + 1, selectedRegion.value.length - (tab + 1));
 
+      callBackParams.value = item;
+
       if (regionData[tab + 1]?.length > 0) {
         tabIndex.value = tab + 1;
-
         callBackParams.next = tabName.value[tabIndex.value];
-        callBackParams.value = item;
-
         scrollTo();
       } else {
         handClose();

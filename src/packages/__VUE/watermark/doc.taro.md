@@ -16,86 +16,17 @@ app.use(Watermark);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-cell class="wrap">
-    <nut-button @click="showTextMark">文字水印</nut-button>
-    <nut-button @click="showImageMark">图片水印</nut-button>
-    <nut-watermark v-if="!flag" class="mark1" :z-index="1" content="nut-ui-water-mark"></nut-watermark>
-    <nut-watermark
-      v-if="flag"
-      class="mark1"
-      :image-width="60"
-      :image-height="23"
-      :z-index="1"
-      :image="imgSrc"
-    ></nut-watermark>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const imgSrc = ref('//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png');
-const flag = ref(false);
-const showTextMark = () => {
-  flag.value = false;
-};
-const showImageMark = () => {
-  flag.value = true;
-};
-</script>
-<style>
-.wrap {
-  width: 100%;
-  height: 240px;
-  display: block;
-  background: #fff;
-}
-.wrap > img {
-  width: 100%;
-}
-.mark1 {
-  width: 100%;
-  top: 50px;
-}
-.nut-button {
-  margin-right: 10px;
-}
-</style>
-```
-
-:::
+> demo: watermark basic exhibition
 
 ### 局部用法
 
-:::demo
+> demo: watermark part exhibition
 
-```vue
-<template>
-  <nut-cell class="wrap">
-    <img :src="src" alt="" />
-    <nut-watermark :fullPage="false" font-color="#fa2c19" content="nut-ui"></nut-watermark>
-  </nut-cell>
-</template>
-<script setup>
-import { ref } from 'vue';
-const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
-</script>
-<style>
-.wrap {
-  width: 100%;
-  height: 240px;
-  display: block;
-  background: #fff;
-}
-.wrap > img {
-  width: 100%;
-}
-</style>
-```
+### 多行水印 v4.2.5
 
-:::
+`content` 属性支持传入 `string[]` 类型，展示多行水印
+
+> demo: watermark multi exhibition
 
 ## API
 
@@ -110,7 +41,7 @@ const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d0497
 | image-width | 图片宽度 | number | `120` |
 | image-height | 图片高度 | number | `64` |
 | z-index | 追加的水印元素的 z-index | number | `2000` |
-| content | 水印文字内容 | string | - |
+| content | 水印文字内容 | string \| string[] | - |
 | font-color | 水印文字颜色 | string | `rgba(0, 0, 0, .15)` |
 | font-size | 文字大小 | string \| number | `16` |
 | gap-x | 水印之间的水平间距 | number | `24` |

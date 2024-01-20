@@ -1,7 +1,8 @@
 <template>
-  <view :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height: height + 'px' }">
+  <view :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height }">
     <view
-      ref="nutTabbar"
+      :id="`nut-tabbar-${refRandomId}`"
+      ref="nutTabbarRef"
       class="nut-tabbar"
       :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }"
     >
@@ -14,6 +15,8 @@
 import { onMounted, provide, reactive, ref, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
+import { TABBAR_KEY } from './types';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { create } = createComponent('tabbar');
 export default create({
   props: {
@@ -52,18 +55,20 @@ export default create({
   },
   emits: ['tabSwitch', 'update:modelValue'],
   setup(props, { emit }) {
+    const refRandomId = Math.random().toString(36).slice(-8);
     const { bottom, placeholder } = toRefs(props);
+    const height = ref('auto');
     const mdValue = reactive({
       val: props.modelValue,
       children: []
     });
-    const height = ref();
+    const nutTabbarRef = ref<HTMLElement | null>(null);
     function changeIndex(index: number, active: number | string) {
       emit('update:modelValue', active);
       parentData.modelValue = active;
       emit('tabSwitch', parentData.children[index], active);
     }
-    let parentData = reactive({
+    const parentData = reactive({
       children: mdValue.children,
       size: props.size,
       modelValue: mdValue.val,
@@ -71,7 +76,7 @@ export default create({
       activeColor: props.activeColor,
       changeIndex
     });
-    provide('parent', parentData);
+    provide(TABBAR_KEY, parentData);
     watch(
       () => props.modelValue,
       (value) => {
@@ -80,17 +85,21 @@ export default create({
     );
     onMounted(() => {
       if (bottom.value && placeholder.value) {
-        setTimeout(() => {
-          const query = Taro.createSelectorQuery();
-          query.select('.nut-tabbar').boundingClientRect();
-          query.exec((res) => {
-            height.value = res[0].height;
-          });
-        }, 500);
+        Taro.nextTick(() => {
+          useTaroRect(nutTabbarRef).then(
+            (rect: any) => {
+              height.value = `${rect.height}px`;
+            },
+            () => {}
+          );
+        });
       }
     });
+
     return {
+      refRandomId,
       changeIndex,
+      nutTabbarRef,
       height
     };
   }

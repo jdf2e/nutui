@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Space from '../index.vue';
-import NutButton from '../../button/index.vue';
+import NutButton from '../../button';
 import { h } from 'vue';
 
 const prefixCls = 'nut-space';

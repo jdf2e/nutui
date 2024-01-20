@@ -140,7 +140,6 @@ const defaultFileList = reactive([
 <script setup>
 import { ref } from 'vue';
 import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
 const uploadUrl = 'https://xxxxx';
 const progressPercentage = (ref < string) | (number > 0);
 const onProgress = ({ event, options, percentage }) => {
@@ -187,7 +186,6 @@ const onProgress = ({ event, options, percentage }) => {
 <script setup>
 import { ref } from 'vue';
 import { showToast } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/toast/style';
 const uploadUrl = 'https://xxxxx';
 const onOversize = (files) => {
   showToast.text('oversize 触发 文件大小不能超过 50kb');

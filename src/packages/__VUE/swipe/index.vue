@@ -24,6 +24,7 @@
 import { useTouch } from '@/packages/utils/useTouch';
 import { computed, inject, reactive, watch, Ref, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { SWIPE_KEY } from './types';
 const { create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
 export default create({
@@ -63,7 +64,7 @@ export default create({
         return getRefWidth(rightRef);
       });
 
-    const parent = inject('swipeGroup', null) as any;
+    const parent = inject(SWIPE_KEY, null) as any;
 
     watch(
       () => parent?.name?.value,

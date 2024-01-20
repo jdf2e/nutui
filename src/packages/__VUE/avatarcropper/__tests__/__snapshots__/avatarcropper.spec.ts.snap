@@ -1,34 +1,34 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`layout default slot 1`] = `
-"<div class=\\"nut-avatar-cropper\\" data-edit-text=\\"编辑\\"><img src=\\"https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png\\"><input type=\\"file\\" accept=\\"image/*\\" class=\\"nut-avatar-cropper__input\\"></div>
-<div class=\\"nut-cropper-popup\\" style=\\"display: none;\\"><canvas class=\\"nut-cropper-popup__canvas\\"></canvas>
-  <div class=\\"nut-cropper-popup__highlight\\">
-    <div class=\\"highlight\\" style=\\"width: 0px; height: 0px;\\"></div>
+"<div class="nut-avatar-cropper" data-edit-text="编辑"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"><input type="file" accept="image/*" class="nut-avatar-cropper__input"></div>
+<div class="nut-cropper-popup" style="display: none;"><canvas class="nut-cropper-popup__canvas"></canvas>
+  <div class="nut-cropper-popup__highlight">
+    <div class="highlight" style="width: 0px; height: 0px;"></div>
   </div>
-  <div class=\\"nut-cropper-popup__toolbar bottom\\">
-    <div class=\\"flex-sb\\">
-      <div class=\\"nut-cropper-popup__toolbar-item\\">
-        <view class=\\"nut-button nut-button--danger nut-button--normal nut-button--round\\">
-          <view class=\\"nut-button__wrap\\">
+  <div class="nut-cropper-popup__toolbar bottom">
+    <div class="flex-sb">
+      <div class="nut-cropper-popup__toolbar-item">
+        <view class="nut-button nut-button--danger nut-button--normal nut-button--round">
+          <view class="nut-button__wrap">
             <!--v-if-->
             <!--v-if-->
-            <view class=\\"\\">取消</view>
+            <view class="">取消</view>
           </view>
         </view>
       </div>
-      <div class=\\"nut-cropper-popup__toolbar-item\\"><svg class=\\"nut-icon nut-icon-refresh2\\" style=\\"color: rgb(255, 255, 255);\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-          <path d=\\"M771.938 315.077h199.55L958.358 469.99 758.81 364.964c-13.128-7.877-18.38-23.63-10.502-36.759 2.625-7.877 13.128-13.128 23.63-13.128zm-535.63 393.846H44.636L57.764 554.01l191.672 105.026c13.128 7.877 18.38 23.63 10.502 36.759-5.25 7.877-15.753 13.128-23.63 13.128zM509.374 1024C257.313 1024 44.636 845.456 5.251 596.02 0 575.016 15.754 556.637 36.76 551.386c21.005-2.626 42.01 10.502 44.636 31.507 34.133 210.052 215.302 362.339 427.98 362.339 191.671 0 362.338-128.657 417.476-312.452 5.252-21.005 28.882-34.133 49.887-26.256 21.006 5.251 34.134 28.882 26.257 49.887C937.354 871.713 735.179 1024 509.375 1024zm467.364-551.385c-18.379 0-36.759-13.128-39.384-34.133C903.22 231.056 722.05 78.77 509.374 78.77c-191.671 0-362.338 128.657-414.85 312.452-5.252 21.005-28.883 34.133-49.888 26.256-21.005-5.251-34.133-28.882-26.257-49.887C81.395 152.287 283.57 0 509.374 0c252.062 0 464.739 178.544 504.123 427.98 2.626 21.005-10.502 42.01-31.507 44.635h-5.252z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <div class="nut-cropper-popup__toolbar-item"><svg class="nut-icon nut-icon-refresh2" style="color: rgb(255, 255, 255);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+          <path d="M771.938 315.077h199.55L958.358 469.99 758.81 364.964c-13.128-7.877-18.38-23.63-10.502-36.759 2.625-7.877 13.128-13.128 23.63-13.128zm-535.63 393.846H44.636L57.764 554.01l191.672 105.026c13.128 7.877 18.38 23.63 10.502 36.759-5.25 7.877-15.753 13.128-23.63 13.128zM509.374 1024C257.313 1024 44.636 845.456 5.251 596.02 0 575.016 15.754 556.637 36.76 551.386c21.005-2.626 42.01 10.502 44.636 31.507 34.133 210.052 215.302 362.339 427.98 362.339 191.671 0 362.338-128.657 417.476-312.452 5.252-21.005 28.882-34.133 49.887-26.256 21.006 5.251 34.134 28.882 26.257 49.887C937.354 871.713 735.179 1024 509.375 1024zm467.364-551.385c-18.379 0-36.759-13.128-39.384-34.133C903.22 231.056 722.05 78.77 509.374 78.77c-191.671 0-362.338 128.657-414.85 312.452-5.252 21.005-28.883 34.133-49.888 26.256-21.005-5.251-34.133-28.882-26.257-49.887C81.395 152.287 283.57 0 509.374 0c252.062 0 464.739 178.544 504.123 427.98 2.626 21.005-10.502 42.01-31.507 44.635h-5.252z" fill="currentColor" fill-opacity="0.9"></path>
         </svg></div>
-      <div class=\\"nut-cropper-popup__toolbar-item\\"><svg class=\\"nut-icon nut-icon-retweet\\" style=\\"color: rgb(255, 255, 255);\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 1024 1024\\" role=\\"presentation\\">
-          <path d=\\"M136 552h63.6c4.4 0 8-3.6 8-8V288.7h528.6v72.6c0 1.9.6 3.7 1.8 5.2 2.9 3.6 8.1 4.3 11.7 1.4L893 255.4c4.3-5 3.6-10.3 0-13.2L749.7 129.8c-1.5-1.2-3.3-1.8-5.2-1.8-4.6 0-8.4 3.8-8.4 8.4V209H199.7c-39.5 0-71.7 32.2-71.7 71.8V544c0 4.4 3.6 8 8 8zm752-80h-63.6c-4.4 0-8 3.6-8 8v255.3H287.8v-72.6c0-1.9-.6-3.7-1.8-5.2-2.9-3.6-8.1-4.3-11.7-1.4L131 768.6c-4.3 5-3.6 10.3 0 13.2l143.3 112.4c1.5 1.2 3.3 1.8 5.2 1.8 4.6 0 8.4-3.8 8.4-8.4V815h536.6c39.5 0 71.7-32.2 71.7-71.8V480c-.2-4.4-3.8-8-8.2-8z\\" fill=\\"currentColor\\" fill-opacity=\\"0.9\\"></path>
+      <div class="nut-cropper-popup__toolbar-item"><svg class="nut-icon nut-icon-retweet" style="color: rgb(255, 255, 255);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
+          <path d="M136 552h63.6c4.4 0 8-3.6 8-8V288.7h528.6v72.6c0 1.9.6 3.7 1.8 5.2 2.9 3.6 8.1 4.3 11.7 1.4L893 255.4c4.3-5 3.6-10.3 0-13.2L749.7 129.8c-1.5-1.2-3.3-1.8-5.2-1.8-4.6 0-8.4 3.8-8.4 8.4V209H199.7c-39.5 0-71.7 32.2-71.7 71.8V544c0 4.4 3.6 8 8 8zm752-80h-63.6c-4.4 0-8 3.6-8 8v255.3H287.8v-72.6c0-1.9-.6-3.7-1.8-5.2-2.9-3.6-8.1-4.3-11.7-1.4L131 768.6c-4.3 5-3.6 10.3 0 13.2l143.3 112.4c1.5 1.2 3.3 1.8 5.2 1.8 4.6 0 8.4-3.8 8.4-8.4V815h536.6c39.5 0 71.7-32.2 71.7-71.8V480c-.2-4.4-3.8-8-8.2-8z" fill="currentColor" fill-opacity="0.9"></path>
         </svg></div>
-      <div class=\\"nut-cropper-popup__toolbar-item\\">
-        <view class=\\"nut-button nut-button--success nut-button--normal nut-button--round\\">
-          <view class=\\"nut-button__wrap\\">
+      <div class="nut-cropper-popup__toolbar-item">
+        <view class="nut-button nut-button--success nut-button--normal nut-button--round">
+          <view class="nut-button__wrap">
             <!--v-if-->
             <!--v-if-->
-            <view class=\\"\\">确定</view>
+            <view class="">确定</view>
           </view>
         </view>
       </div>

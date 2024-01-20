@@ -18,233 +18,55 @@ app.use(Input);
 
 The value of field is bound with `v-model`.
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="val" placeholder="Text" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input basic
 
 ### Custom Type
 
-Use `type` prop to custom different type fields.
-
-:::demo
-
-```vue
-<template>
-  <nut-input placeholder="Text" v-model="state.text" />
-  <nut-input placeholder="Password" v-model="state.password" type="password" />
-  <nut-input placeholder="Number" v-model="state.number" type="number" />
-  <nut-input placeholder="Digit" v-model="state.digit" type="digit" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  text: '',
-  password: '',
-  number: '',
-  digit: ''
-});
-</script>
-```
-
-:::
+> demo: input type
 
 ### Readonly And Disabled
 
-Use `readonly` to set the input box to read-only status, and use `disabled` to set the input box to disabled status.
-
-:::demo
-
-```vue
-<template>
-  <nut-input placeholder="Readonly" v-model="state.readonly" readonly />
-  <nut-input placeholder="Disabled" v-model="state.disabled" disabled />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  readonly: '',
-  disabled: ''
-});
-</script>
-```
-
-:::
+> demo: input status
 
 ### Show Clear Icon
 
 Display the clear icon during input by setting 'clearable'. The clear button will be hidden after losing focus. You can set the clear button to continue to display after losing focus through 'showClearIcon'.
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="state.clear" placeholder="Show Clear Icon" clearable clearSize="14" />
-  <nut-input
-    v-model="state.clear2"
-    placeholder="Custom Clear Icon"
-    clearable
-    clearSize="14"
-    show-word-limit
-    max-length="50"
-    :showClearIcon="true"
-  >
-    <template #clear>
-      <Close width="12" height="12" @click="clearValue"></Close>
-    </template>
-  </nut-input>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { Close } from '@nutui/icons-vue';
-const state = reactive({
-  clear: '',
-  clear2: ''
-});
-const clearValue = () => {
-  state.clear2 = '';
-};
-</script>
-```
-
-:::
+> demo: input clear
 
 ### Use With Form
 
 Use in combination with `nut-form` and `nut-form-item`
 
-:::demo
-
-```vue
-<template>
-  <nut-form :model-value="state">
-    <nut-form-item label="Text" label-align="center">
-      <nut-input v-model="state.val1" placeholder="Text" :border="false" />
-    </nut-form-item>
-  </nut-form>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  val1: ''
-});
-</script>
-```
-
-:::
+> demo: input form
 
 ### Format Value
 
 Use `formatter` prop to format the input value.
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="state.format1" placeholder="Format On Change" :formatter="formatter" format-trigger="onChange" />
-  <nut-input v-model="state.format2" placeholder="Format On Blur" :formatter="formatter" format-trigger="onBlur" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  format1: '',
-  format2: ''
-});
-const formatter = (value) => value.replace(/\d/g, '');
-</script>
-```
-
-:::
+> demo: input format
 
 ### Show Word Limit
 
 After setting the `maxlength` and `show-word-limit` attributes, word count will be displayed at the bottom.
 
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="state.text" type="text" show-word-limit rows="2" max-length="50" placeholder="Message" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input count
 
 ### No Border
 
-:::demo
+> demo: input border
 
-```vue
-<template>
-  <nut-input v-model="state.val1" :border="false" placeholder="No Border" />
-  <nut-input v-model="state.val2" :border="false" placeholder="No Border" />
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  val1: '',
-  val2: ''
-});
-</script>
-```
+### Input Align
 
-:::
+> demo: input align
 
-### Event Demo
+### Event
 
-:::demo
+> demo: input event
 
-```vue
-<template>
-  <nut-input v-model="val" clearable placeholder="Event" @clear="clear" @click-input="clickInput" />
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const val = ref('');
-const clear = () => {
-  showToast.text('clear');
-};
-const clickInput = () => {
-  showToast.text('clickInput');
-};
-</script>
-```
+### Slot
 
-:::
-
-### Slots Demo
-
-:::demo
-
-```vue
-<template>
-  <nut-input v-model="val" placeholder="Slots Demo" clearable>
-    <template #left> <Ask></Ask> </template>
-    <template #right> <nut-button type="primary" size="small">Verification Code</nut-button> </template>
-  </nut-input>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { Ask } from '@nutui/icons-vue';
-const val = ref('');
-</script>
-```
-
-:::
+> demo: input slot
 
 ## API
 

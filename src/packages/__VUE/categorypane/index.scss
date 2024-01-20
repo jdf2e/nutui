@@ -17,7 +17,6 @@
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 13px;
-    font-family: PingFangSC;
     font-weight: 500;
     color: $category-pane-title-color;
   }
@@ -45,7 +44,6 @@
     border: 1px solid $category-pane-border-color;
     border-radius: 5px;
     font-size: 12px;
-    font-family: PingFangSC;
     font-weight: normal;
     color: $category-pane-gray-color;
     display: flex;
@@ -62,7 +60,6 @@
 
   &__skuImg {
     font-size: 12px;
-    font-family: PingFangSC;
     font-weight: normal;
     color: $category-pane-gray-color;
     margin-top: 10px;

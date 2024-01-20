@@ -1,9 +1,10 @@
 <script lang="ts">
-import { computed, h, inject } from 'vue';
+import { computed, h, inject, PropType, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { RADIO_KEY, RadioShape, RadioButtonSize } from './types';
 
 export default create({
   components: {
@@ -16,8 +17,8 @@ export default create({
       default: false
     },
     shape: {
-      type: String,
-      default: 'round' // button
+      type: String as PropType<RadioShape>,
+      default: 'round'
     },
     label: {
       type: [String, Number, Boolean],
@@ -26,10 +27,15 @@ export default create({
     iconSize: {
       type: [String, Number],
       default: ''
+    },
+    size: {
+      type: String as PropType<RadioButtonSize>,
+      default: 'normal'
     }
   },
   setup(props, { slots }) {
-    let parent: any = inject('parent', null);
+    const { size } = toRefs(props);
+    let parent: any = inject(RADIO_KEY, null);
 
     const isCurValue = computed(() => {
       return parent.label.value === props.label;
@@ -72,9 +78,9 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
-            props.disabled ? `${componentName}__button--disabled` : ''
-          }`
+          class: `${componentName}__button ${
+            isCurValue.value && `${componentName}__button--active`
+          } ${componentName}__button--${size.value} ${props.disabled ? `${componentName}__button--disabled` : ''}`
         },
         slots.default?.()
       );

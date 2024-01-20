@@ -183,6 +183,18 @@
         ></nut-address>
       </nut-form-item>
     </nut-form>
+    <h2>{{ translate('customLabelPosition') }}</h2>
+    <nut-form label-position="top" star-position="right">
+      <nut-form-item :label="translate('name')" required>
+        <nut-input v-model="basicData.name" class="nut-input-text" :placeholder="translate('nameTip')" type="text" />
+      </nut-form-item>
+      <nut-form-item :label="translate('age')" required>
+        <nut-input v-model="basicData.age" class="nut-input-text" :placeholder="translate('ageTip')" type="text" />
+      </nut-form-item>
+      <nut-form-item :label="translate('remarks')" label-position="left">
+        <nut-textarea :placeholder="translate('remarksTip')" type="text" />
+      </nut-form-item>
+    </nut-form>
   </div>
 </template>
 
@@ -229,7 +241,8 @@ const translate = useTranslate({
     uploader: '文件上传',
     success: '上传成功',
     uploading: '上传中...',
-    asyncValidator: '模拟异步验证中'
+    asyncValidator: '模拟异步验证中',
+    customLabelPosition: '自定义 label 位置'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -268,7 +281,8 @@ const translate = useTranslate({
     uploader: 'Upload file',
     success: 'Upload successful',
     uploading: 'Uploading',
-    asyncValidator: 'Simulating asynchronous verification'
+    asyncValidator: 'Simulating asynchronous verification',
+    customLabelPosition: 'Customize the label location'
   }
 });
 const formData = reactive({

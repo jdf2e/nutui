@@ -6,7 +6,8 @@
 <script lang="ts">
 import { computed, inject } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('col');
+import { LAYOUT_KEY } from '../layout/types';
+const { create } = createComponent('col');
 
 export default create({
   props: {
@@ -21,8 +22,8 @@ export default create({
   },
   emits: [],
   setup(props) {
-    const prefixCls = componentName;
-    const gutter = inject('gutter') as number;
+    const prefixCls = 'nut-col';
+    const gutter = inject(LAYOUT_KEY) as number;
     const classes = computed(() => {
       return {
         [prefixCls]: true,

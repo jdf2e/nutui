@@ -77,7 +77,7 @@ import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import NutProgress from '../progress/index.taro.vue';
-import NutButton from '../button/index.taro.vue';
+import NutButton from '../button/index.taro';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 import { useLocale } from '@/packages/utils/useLocale';
@@ -117,7 +117,7 @@ export default create({
 
     timeout: { type: [Number, String], default: 1000 * 30 },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
-    fileList: { type: Array<any>, default: () => [] },
+    fileList: { type: Array as PropType<any[]>, default: () => [] },
     isPreview: { type: Boolean, default: true },
     // picture、list
     listType: { type: String, default: 'picture' },

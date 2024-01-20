@@ -1,139 +1,80 @@
 <template>
   <Demo class="full">
-    <h2>基础用法</h2>
-    <nut-input v-model="state.val1" placeholder="文本" />
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>自定义类型</h2>
-    <nut-input v-model="state.text" placeholder="文本" />
-    <nut-input v-model="state.password" type="password" placeholder="密码" />
-    <nut-input v-model="state.digit" type="digit" placeholder="数字（支持小数）" />
-    <nut-input v-model="state.number" type="number" placeholder="整数" />
+    <h2>{{ t('type') }}</h2>
+    <Type />
 
-    <h2>禁用和只读</h2>
-    <nut-input v-model="state.readonly" readonly placeholder="只读" />
-    <nut-input v-model="state.disabled" disabled placeholder="禁用" />
+    <h2>{{ t('status') }}</h2>
+    <Status />
 
-    <h2>显示清除图标</h2>
-    <nut-input v-model="state.clear" clearable clear-size="14" placeholder="显示清除图标" />
-    <nut-input
-      v-model="state.clear2"
-      placeholder="自定义清除图标"
-      clearable
-      clear-size="14"
-      show-word-limit
-      max-length="50"
-      :show-clear-icon="true"
-    >
-      <template #clear>
-        <Close width="12" height="12" size="12" @click="clearValue"></Close>
-      </template>
-    </nut-input>
-    <h2>配合表单使用</h2>
-    <nut-form :model-value="state">
-      <nut-form-item label-align="center" label="文本">
-        <nut-input v-model="state.val2" placeholder="请输入文本" :border="false" />
-      </nut-form-item>
-    </nut-form>
+    <h2>{{ t('clear') }}</h2>
+    <Clear />
 
-    <h2>格式化输入内容</h2>
-    <nut-input v-model="state.format1" :formatter="formatter" placeholder="在输入时执行格式化" />
-    <nut-input
-      v-model="state.format2"
-      :formatter="formatter"
-      format-trigger="onBlur"
-      placeholder="在失焦时执行格式化"
-    />
+    <h2>{{ t('form') }}</h2>
+    <FormDemo />
 
-    <h2>显示字数统计</h2>
-    <nut-input
-      v-model="state.textarea"
-      type="text"
-      show-word-limit
-      rows="2"
-      max-length="50"
-      placeholder="留言"
-      :adjust-position="state.adjustPosition"
-    />
+    <h2>{{ t('format') }}</h2>
+    <Format />
 
-    <h2>无边框</h2>
-    <nut-input v-model="state.disabled" :border="false" placeholder="无边框" />
-    <nut-input v-model="state.showIcon" :border="false" placeholder="无边框" />
+    <h2>{{ t('count') }}</h2>
+    <Count />
 
-    <h2>事件演示</h2>
-    <nut-input
-      v-model="state.event"
-      placeholder="事件演示"
-      clearable
-      :adjust-position="state.adjustPosition"
-      @clear="clear"
-      @click-input="clickInput"
-    />
-    <nut-toast v-model:visible="state.show" :msg="state.msg" type="text" />
-    <h2>插槽演示</h2>
-    <nut-input v-model="state.slotsValue" placeholder="插槽演示" clearable :adjust-position="state.adjustPosition">
-      <template #left> <Ask></Ask> </template>
-      <template #right>
-        <nut-button type="primary" size="small">获取验证码</nut-button>
-      </template>
-    </nut-input>
+    <h2>{{ t('border') }}</h2>
+    <Border />
+
+    <h2>{{ t('align') }}</h2>
+    <Align />
+
+    <h2>{{ t('event') }}</h2>
+    <Event />
+
+    <h2>{{ t('slot') }}</h2>
+    <SlotDemo />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { Close, Ask } from '@nutui/icons-vue-taro';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Type from './type.vue';
+import Status from './status.vue';
+import Clear from './clear.vue';
+import FormDemo from './form.vue';
+import Format from './format.vue';
+import Count from './count.vue';
+import Border from './border.vue';
+import Align from './align.vue';
+import Event from './event.vue';
+import SlotDemo from './slot.vue';
 
-const state = reactive({
-  val1: '',
-  val2: '',
-  text: '',
-  password: '',
-  number: '',
-  digit: '',
-  tel: '',
-  readonly: '',
-  disabled: '禁用',
-  showIcon: '',
-  required: '',
-  error1: '',
-  error2: '',
-  buttonVal: '',
-  format1: '',
-  format2: '',
-  textarea: '',
-  align1: '',
-  align2: '',
-  event: '',
-  slotsValue: '',
-  clear: '',
-  clear2: '',
-  adjustPosition: false,
-  show: false,
-  msg: ''
-});
-
-const clear = (value: string | number, event: Event) => {
-  console.log('clear:', value, event);
-  showToast('clear');
-};
-const showToast = (msg: string) => {
-  state.show = true;
-  state.msg = msg;
-};
-const clickInput = (value: string | number) => {
-  console.log('clickInput:', value);
-  showToast('clickInput');
-};
-const formatter = (value: string) => value.replace(/\d/g, '');
-const clearValue = () => {
-  state.clear2 = '';
-};
-</script>
-
-<style lang="scss" scoped>
-.demo {
-  .nut-placeholder {
-    color: #ccc;
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    type: '自定义类型',
+    status: '禁用和只读',
+    clear: '显示清除图标',
+    form: '配合表单使用',
+    format: '格式化输入内容',
+    count: '显示字数统计',
+    border: '无边框',
+    align: '对齐方式',
+    event: '事件演示',
+    slot: '插槽演示'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    type: 'Custom Type',
+    status: 'Disabled & Readonly',
+    clear: 'Show Clear Icon',
+    form: 'Use Form',
+    format: 'Format Value',
+    count: 'Show Word Limit',
+    border: 'No Border',
+    align: 'Input Align',
+    event: 'Event',
+    slot: 'Slot'
   }
-}
-</style>
+});
+</script>

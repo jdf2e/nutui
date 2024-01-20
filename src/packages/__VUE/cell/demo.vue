@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { useTranslate } from '@/sites/utils';
 import Basic from './demo/basic.vue';
 import Size from './demo/size.vue';
 import SlotDemo from './demo/slot.vue';

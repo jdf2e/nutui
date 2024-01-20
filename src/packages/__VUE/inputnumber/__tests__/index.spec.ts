@@ -148,7 +148,6 @@ test('InputNumber: should update input value when inputValue overlimit', async (
 
   const input = wrapper.find('input');
   input.element.value = '200';
-  await input.trigger('change');
   await input.trigger('blur');
 
   expect((wrapper.emitted('update:modelValue')![0] as any[])[0]).toEqual('100');
