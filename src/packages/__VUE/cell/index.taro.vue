@@ -28,18 +28,19 @@
         </slot>
       </view>
       <slot name="link">
-        <Right v-if="isLink || to" class="nut-cell__link"></Right>
+        <Right v-if="isLink" class="nut-cell__link"></Right>
       </slot>
     </slot>
   </view>
 </template>
 
 <script lang="ts">
-import type { CSSProperties } from 'vue';
+import type { PropType, CSSProperties } from 'vue';
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Right } from '@nutui/icons-vue-taro';
+import { CellSize } from './types';
 const { componentName, create } = createComponent('cell');
 export default create({
   components: { Right },
@@ -47,14 +48,17 @@ export default create({
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },
     desc: { type: String, default: '' },
-    descTextAlign: { type: String, default: 'right' },
+    descTextAlign: {
+      type: String,
+      default: 'right'
+    },
     isLink: { type: Boolean, default: false },
-    to: { type: String, default: '' },
-    replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: '' },
-    url: { type: String, default: '' },
     center: { type: Boolean, default: false },
-    size: { type: String, default: '' } // large
+    size: {
+      type: String as PropType<CellSize>,
+      default: 'normal'
+    }
   },
   emits: ['click'],
   setup(props, { emit }) {
@@ -62,9 +66,9 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--clickable`]: props.isLink || props.to,
+        [`${prefixCls}--clickable`]: props.isLink,
         [`${prefixCls}--center`]: props.center,
-        [`${prefixCls}--large`]: props.size == 'large'
+        [`${prefixCls}--large`]: props.size === 'large'
       };
     });
 
