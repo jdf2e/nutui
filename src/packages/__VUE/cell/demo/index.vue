@@ -1,51 +1,51 @@
 <template>
-  <div class="demo">
-    <h2>{{ translate('basic') }}</h2>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
     <Basic />
 
-    <h2>{{ translate('size') }}</h2>
+    <h2>{{ t('size') }}</h2>
     <Size />
 
-    <h2>{{ translate('slot') }}</h2>
+    <h2>{{ t('slot') }}</h2>
     <SlotDemo />
 
-    <h2>{{ translate('desc') }}</h2>
+    <h2>{{ t('desc') }}</h2>
     <Desc />
 
-    <h2>{{ translate('title') }}</h2>
+    <h2>{{ t('title') }}</h2>
     <Title />
 
-    <h2>{{ translate('group') }}</h2>
+    <h2>{{ t('group') }}</h2>
     <Group />
 
-    <h2>{{ translate('link') }}</h2>
+    <h2>{{ t('link') }}</h2>
     <Link />
 
-    <h2>{{ translate('icon') }}</h2>
-    <Icon />
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
 
-    <h2>{{ translate('align') }}</h2>
+    <h2>{{ t('align') }}</h2>
     <Align />
 
-    <h2>{{ translate('center') }}</h2>
+    <h2>{{ t('center') }}</h2>
     <Center />
-  </div>
+  </Demo>
 </template>
 
 <script setup lang="ts">
 import { useTranslate } from '@/sites/utils';
-import Basic from './demo/basic.vue';
-import Size from './demo/size.vue';
-import SlotDemo from './demo/slot.vue';
-import Desc from './demo/desc.vue';
-import Title from './demo/title.vue';
-import Group from './demo/group.vue';
-import Link from './demo/link.vue';
-import Icon from './demo/icon.vue';
-import Align from './demo/align.vue';
-import Center from './demo/center.vue';
+import Basic from './basic.vue';
+import Size from './size.vue';
+import SlotDemo from './slot.vue';
+import Desc from './desc.vue';
+import Title from './title.vue';
+import Group from './group.vue';
+import Link from './link.vue';
+import IconDemo from './icon.vue';
+import Align from './align.vue';
+import Center from './center.vue';
 
-const translate = useTranslate({
+const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     size: '尺寸设置 large',
