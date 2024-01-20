@@ -260,10 +260,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     name: string;
     disabled: boolean;
     data: Record<string, any>;
-    url: string;
     maximum: string | number;
     multiple: boolean;
     mode: string;
+    url: string;
     timeout: string | number;
     camera: string;
     sizeType: SizeType[];

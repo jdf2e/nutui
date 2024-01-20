@@ -10,15 +10,17 @@ const _sfc_main = create({
     title: { type: String, default: "" },
     subTitle: { type: String, default: "" },
     desc: { type: String, default: "" },
-    descTextAlign: { type: String, default: "right" },
+    descTextAlign: {
+      type: String,
+      default: "right"
+    },
     isLink: { type: Boolean, default: false },
-    to: { type: String, default: "" },
-    replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: "" },
-    url: { type: String, default: "" },
     center: { type: Boolean, default: false },
-    size: { type: String, default: "" }
-    // large
+    size: {
+      type: String,
+      default: "normal"
+    }
   },
   emits: ["click"],
   setup(props, { emit }) {
@@ -26,9 +28,9 @@ const _sfc_main = create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--clickable`]: props.isLink || props.to,
+        [`${prefixCls}--clickable`]: props.isLink,
         [`${prefixCls}--center`]: props.center,
-        [`${prefixCls}--large`]: props.size == "large"
+        [`${prefixCls}--large`]: props.size === "large"
       };
     });
     const baseStyle = computed(() => {
@@ -97,7 +99,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ], 6)) : createCommentVNode("", true),
       createTextVNode(),
       renderSlot(_ctx.$slots, "link", {}, () => [
-        _ctx.isLink || _ctx.to ? (openBlock(), createBlock(_component_Right, {
+        _ctx.isLink ? (openBlock(), createBlock(_component_Right, {
           key: 0,
           class: "nut-cell__link"
         })) : createCommentVNode("", true)

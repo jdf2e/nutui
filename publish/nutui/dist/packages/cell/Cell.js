@@ -11,15 +11,20 @@ const _sfc_main = create({
     title: { type: String, default: "" },
     subTitle: { type: String, default: "" },
     desc: { type: String, default: "" },
-    descTextAlign: { type: String, default: "right" },
+    descTextAlign: {
+      type: String,
+      default: "right"
+    },
     isLink: { type: Boolean, default: false },
     to: [String, Object],
     replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: "" },
     url: { type: String, default: "" },
     center: { type: Boolean, default: false },
-    size: { type: String, default: "" }
-    // large
+    size: {
+      type: String,
+      default: "normal"
+    }
   },
   emits: ["click"],
   setup(props, { emit }) {
@@ -29,7 +34,7 @@ const _sfc_main = create({
         [prefixCls]: true,
         [`${prefixCls}--clickable`]: props.isLink || props.to,
         [`${prefixCls}--center`]: props.center,
-        [`${prefixCls}--large`]: props.size == "large"
+        [`${prefixCls}--large`]: props.size === "large"
       };
     });
     const router = useRouter();

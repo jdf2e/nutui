@@ -1385,15 +1385,20 @@ const _e = (e) => {
     title: { type: String, default: "" },
     subTitle: { type: String, default: "" },
     desc: { type: String, default: "" },
-    descTextAlign: { type: String, default: "right" },
+    descTextAlign: {
+      type: String,
+      default: "right"
+    },
     isLink: { type: Boolean, default: !1 },
     to: [String, Object],
     replace: { type: Boolean, default: !1 },
     roundRadius: { type: [String, Number], default: "" },
     url: { type: String, default: "" },
     center: { type: Boolean, default: !1 },
-    size: { type: String, default: "" }
-    // large
+    size: {
+      type: String,
+      default: "normal"
+    }
   },
   emits: ["click"],
   setup(e, { emit: t }) {
@@ -1403,7 +1408,7 @@ const _e = (e) => {
         [i]: !0,
         [`${i}--clickable`]: e.isLink || e.to,
         [`${i}--center`]: e.center,
-        [`${i}--large`]: e.size == "large"
+        [`${i}--large`]: e.size === "large"
       };
     }), a = Jt(), o = N(() => ({
       borderRadius: _e(e.roundRadius)

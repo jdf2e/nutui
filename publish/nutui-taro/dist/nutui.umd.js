@@ -636,15 +636,17 @@ var __async = (__this, __arguments, generator) => {
       title: { type: String, default: "" },
       subTitle: { type: String, default: "" },
       desc: { type: String, default: "" },
-      descTextAlign: { type: String, default: "right" },
+      descTextAlign: {
+        type: String,
+        default: "right"
+      },
       isLink: { type: Boolean, default: false },
-      to: { type: String, default: "" },
-      replace: { type: Boolean, default: false },
       roundRadius: { type: [String, Number], default: "" },
-      url: { type: String, default: "" },
       center: { type: Boolean, default: false },
-      size: { type: String, default: "" }
-      // large
+      size: {
+        type: String,
+        default: "normal"
+      }
     },
     emits: ["click"],
     setup(props, { emit }) {
@@ -652,9 +654,9 @@ var __async = (__this, __arguments, generator) => {
         const prefixCls = componentName$o;
         return {
           [prefixCls]: true,
-          [`${prefixCls}--clickable`]: props.isLink || props.to,
+          [`${prefixCls}--clickable`]: props.isLink,
           [`${prefixCls}--center`]: props.center,
-          [`${prefixCls}--large`]: props.size == "large"
+          [`${prefixCls}--large`]: props.size === "large"
         };
       });
       const baseStyle = vue.computed(() => {
@@ -730,7 +732,7 @@ var __async = (__this, __arguments, generator) => {
         ], 6)) : vue.createCommentVNode("", true),
         vue.createTextVNode(),
         vue.renderSlot(_ctx.$slots, "link", {}, () => [
-          _ctx.isLink || _ctx.to ? (vue.openBlock(), vue.createBlock(_component_Right, {
+          _ctx.isLink ? (vue.openBlock(), vue.createBlock(_component_Right, {
             key: 0,
             class: "nut-cell__link"
           })) : vue.createCommentVNode("", true)

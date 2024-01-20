@@ -1,4 +1,5 @@
-import type { CSSProperties } from 'vue';
+import type { PropType, CSSProperties } from 'vue';
+import { CellSize } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
@@ -42,7 +43,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     size: {
-        type: StringConstructor;
+        type: PropType<CellSize>;
         default: string;
     };
 }, {
@@ -93,13 +94,13 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     size: {
-        type: StringConstructor;
+        type: PropType<CellSize>;
         default: string;
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
-    size: string;
+    size: CellSize;
     title: string;
     desc: string;
     center: boolean;
