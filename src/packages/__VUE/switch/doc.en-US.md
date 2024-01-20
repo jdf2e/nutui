@@ -16,143 +16,35 @@ app.use(Switch);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch basic
 
 ### Disable State
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" disable />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch disabled
 
 ### Loading State
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" loading active-color="red" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch loading
 
 ### Change event
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" @change="change" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-const change = (value, event) => {
-  console.log(`value：${value}`);
-};
-</script>
-```
-
-:::
+> demo: switch event
 
 ### Change Async
 
-:::demo
-
-```vue
-<template>
-  <nut-switch :model-value="checkedAsync" @change="changeAsync" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checkedAsync = ref(true);
-const changeAsync = (value, event) => {
-  console.log(`2s ${value}`);
-  setTimeout(() => {
-    checkedAsync.value = value;
-  }, 2000);
-};
-</script>
-```
-
-:::
+> demo: switch async
 
 ### Custom Color
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" active-color="blue" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch color
 
 ### Use Text
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" active-text="open" inactive-text="close" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch text
 
 ### Custom loading icon
 
-:::demo
-
-```vue
-<template>
-  <nut-switch v-model="checked" loading>
-    <template #icon><Loading name="loading" /></template>
-  </nut-switch>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Loading } from '@nutui/icons-vue';
-const checked = ref(true);
-</script>
-```
-
-:::
+> demo: switch icon
 
 ## API
 
