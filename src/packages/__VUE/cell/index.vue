@@ -41,8 +41,8 @@ import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Right } from '@nutui/icons-vue';
+import { CellSize } from './types';
 const { componentName, create } = createComponent('cell');
-export type CellSize = 'normal' | 'large';
 export default create({
   components: { Right },
   props: {

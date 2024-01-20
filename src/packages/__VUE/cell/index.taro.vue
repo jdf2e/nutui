@@ -40,8 +40,8 @@ import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Right } from '@nutui/icons-vue-taro';
+import { CellSize } from './types';
 const { componentName, create } = createComponent('cell');
-export type CellSize = 'normal' | 'large';
 export default create({
   components: { Right },
   props: {
