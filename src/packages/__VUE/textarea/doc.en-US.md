@@ -14,66 +14,25 @@ const app = createApp();
 app.use(Textarea);
 ```
 
-### Basic usage
+### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea basic
 
 ### Display word count
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" limit-show max-length="20" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea limit
 
 ### Height customization, stretching
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" :rows="1" autosize />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea row
 
 ### read-only，disabled
 
-:::demo
+> demo: textarea status
 
-```vue
-<template>
-  <nut-textarea readonly model-value="Textarea read only status" />
-  <nut-textarea disabled model-value="Textarea disabled" />
-</template>
-```
+### Autofocus
 
-:::
+> demo: textarea focus
 
 ## API
 
