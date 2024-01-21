@@ -1,88 +1,32 @@
 <template>
-  <Demo>
-    <h2>基础用法</h2>
-    <nut-cell @click="handleClick1">
-      <span><label>右侧</label></span>
-    </nut-cell>
-    <nut-popup v-model:visible="show1" position="right" style="width: 80%; height: 100%">
-      <nut-side-navbar>
-        <nut-sub-side-navbar title="智能城市AI" ikey="6">
-          <nut-sub-side-navbar title="人体识别1" ikey="9">
-            <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
-            <nut-side-navbar-item ikey="11" title="细粒度人像分割1"></nut-side-navbar-item>
-          </nut-sub-side-navbar>
-          <nut-sub-side-navbar title="人体识别2" ikey="12">
-            <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
-            <nut-side-navbar-item ikey="14" title="细粒度人像分割2"></nut-side-navbar-item>
-          </nut-sub-side-navbar>
-        </nut-sub-side-navbar>
-      </nut-side-navbar>
-    </nut-popup>
-    <nut-cell @click="handleClick2">
-      <span><label>左侧</label></span>
-    </nut-cell>
-    <nut-popup v-model:visible="show2" position="left" style="width: 80%; height: 100%">
-      <nut-side-navbar>
-        <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
-          <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="5" title="拍照购"></nut-side-navbar-item>
-        </nut-sub-side-navbar>
-        <nut-sub-side-navbar title="自然语言处理" ikey="12">
-          <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
-        </nut-sub-side-navbar>
-      </nut-side-navbar>
-    </nut-popup>
-    <h2>导航嵌套（建议最多三层）,点击第一条回调</h2>
-    <div>
-      <nut-cell @click="handleClick3">
-        <span><label>显示</label></span>
-      </nut-cell>
-      <nut-popup v-model:visible="show3" position="right" style="width: 80%; height: 100%">
-        <nut-side-navbar :show="show3">
-          <nut-side-navbar-item ikey="1" title="人脸识别" @click="handleClick4('人脸识别')"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="2" title="云存自然语言处理"></nut-side-navbar-item>
-          <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
-            <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
-            <nut-side-navbar-item ikey="5" title="拍照购"></nut-side-navbar-item>
-          </nut-sub-side-navbar>
-          <nut-sub-side-navbar title="智能城市AI" ikey="6">
-            <nut-side-navbar-item ikey="7" title="企业风险预警模型"></nut-side-navbar-item>
-            <nut-side-navbar-item ikey="8" title="水质量检测"></nut-side-navbar-item>
-            <nut-sub-side-navbar title="人体识别" ikey="9">
-              <nut-side-navbar-item ikey="10" title="人体检测"></nut-side-navbar-item>
-              <nut-side-navbar-item ikey="11" title="细粒度人像分割"></nut-side-navbar-item>
-            </nut-sub-side-navbar>
-          </nut-sub-side-navbar>
-          <nut-sub-side-navbar title="自然语言处理" ikey="12">
-            <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
-            <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
-          </nut-sub-side-navbar>
-        </nut-side-navbar>
-      </nut-popup>
-    </div>
+  <Demo class="bg-w">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('popup') }}</h2>
+    <Popup />
+
+    <h2>{{ t('nest') }}</h2>
+    <Nest />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const show1 = ref(false);
-const show2 = ref(false);
-const show3 = ref(false);
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Popup from './popup.vue';
+import Nest from './nest.vue';
 
-const handleClick1 = () => {
-  show1.value = true;
-};
-
-const handleClick2 = () => {
-  show2.value = true;
-};
-
-const handleClick3 = () => {
-  show3.value = true;
-};
-
-const handleClick4 = (msg: string) => {
-  console.log(msg);
-};
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    popup: '搭配 Popup',
+    nest: '导航嵌套（建议最多三层）'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    popup: 'Popup',
+    nest: 'Navigation nesting (up to three layers are recommended)'
+  }
+});
 </script>

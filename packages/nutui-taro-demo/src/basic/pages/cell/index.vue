@@ -1,82 +1,74 @@
 <template>
   <Demo>
-    <h2>基础用法</h2>
-    <nut-cell title="我是标题" desc="描述文字"></nut-cell>
-    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
-    <nut-cell title="点击测试" @click="click"></nut-cell>
-    <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <h2>尺寸设置 large</h2>
-    <nut-cell size="large" title="我是标题" desc="描述文字"></nut-cell>
-    <nut-cell size="large" title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <h2>{{ t('size') }}</h2>
+    <Size />
 
-    <h2>直接使用插槽(slot)</h2>
+    <h2>{{ t('slot') }}</h2>
+    <SlotDemo />
 
-    <nut-cell>
-      <div>自定义内容</div>
-    </nut-cell>
+    <h2>{{ t('desc') }}</h2>
+    <Desc />
 
-    <h2>直接使用插槽(slot title)</h2>
-    <nut-cell desc="描述文字">
-      <template #title>
-        <span>Title <b style="color: red">1</b></span>
-      </template>
-    </nut-cell>
+    <h2>{{ t('title') }}</h2>
+    <Title />
 
-    <h2>直接使用插槽(slot desc)</h2>
-    <nut-cell title="我是标题">
-      <template #desc>
-        <span>描述文字 <b style="color: red">2</b></span>
-      </template>
-    </nut-cell>
+    <h2>{{ t('group') }}</h2>
+    <Group />
 
-    <!-- <nut-cell-group title="链接 | 分组用法">
-      <nut-cell title="链接" is-link></nut-cell>
-      <nut-cell
-        title="URL 跳转"
-        desc="https://jd.com"
-        is-link
-        url="https://jd.com"
-      ></nut-cell>
-      <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
-    </nut-cell-group> -->
-    <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
-      <nut-cell title="Switch">
-        <template #link>
-          <nut-switch v-model="checked" />
-        </template>
-      </nut-cell>
-    </nut-cell-group>
+    <h2>{{ t('link') }}</h2>
+    <Link />
 
-    <nut-cell-group title="自定义左侧 Icon 区域">
-      <nut-cell title="图片">
-        <template #icon>
-          <img
-            class="nut-icon"
-            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          />
-        </template>
-      </nut-cell>
-    </nut-cell-group>
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
 
-    <h2>展示图标</h2>
-    <nut-cell title="姓名" icon="my" desc="张三" is-link>
-      <template #icon>
-        <My />
-      </template>
-    </nut-cell>
-    <h2>只展示 desc ，可通过 desc-text-align 调整内容位置</h2>
-    <nut-cell desc-text-align="left" desc="张三"></nut-cell>
-    <h2>垂直居中</h2>
-    <nut-cell center title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <h2>{{ t('align') }}</h2>
+    <Align />
+
+    <h2>{{ t('center') }}</h2>
+    <Center />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { My } from '@nutui/icons-vue-taro';
-const click = () => {
-  console.log('点击事件');
-};
-const checked = ref(true);
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Size from './size.vue';
+import SlotDemo from './slot.vue';
+import Desc from './desc.vue';
+import Title from './title.vue';
+import Group from './group.vue';
+import Link from './link.vue';
+import IconDemo from './icon.vue';
+import Align from './align.vue';
+import Center from './center.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    size: '尺寸设置 large',
+    slot: '默认插槽',
+    title: '左侧 title 插槽',
+    desc: '右侧 desc 插槽',
+    group: 'CellGroup 分组用法',
+    link: '右侧 link 插槽',
+    icon: '左侧 icon 插槽',
+    align: '设置 align',
+    center: '垂直居中'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    size: 'Size Large',
+    slot: 'Default Slot',
+    title: 'Title Slot',
+    desc: 'Desc Slot',
+    group: 'CellGroup',
+    link: 'Link Slot',
+    icon: 'Icon Slot',
+    align: 'Align Left',
+    center: 'Vertical Center'
+  }
+});
 </script>

@@ -39,12 +39,6 @@
       top: 50%;
       right: 20px;
       transform: translateY(-50%);
-      i {
-        transition: transform 0.5s ease-in-out;
-        &.up {
-          transform: rotate(-180deg);
-        }
-      }
     }
   }
   &__list {

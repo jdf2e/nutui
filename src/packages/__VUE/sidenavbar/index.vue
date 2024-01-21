@@ -40,7 +40,7 @@ export default create({
 
     const handleSlots = () => {
       let childNodes = list.value.childNodes;
-      if (childNodes.length) {
+      if (childNodes?.length) {
         childNodes = Array.from(childNodes)
           .filter((item: any) => item.nodeType !== 3)
           .map((item: any) => {
