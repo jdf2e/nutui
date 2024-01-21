@@ -6330,7 +6330,7 @@
             },
             {
               "name": "placeholder",
-              "default": "`'请输入'`",
+              "default": "`请输入`",
               "description": "设置占位提示文字",
               "value": {
                 "type": "string",
