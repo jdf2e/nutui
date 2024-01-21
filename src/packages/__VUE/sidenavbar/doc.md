@@ -18,101 +18,15 @@ app.use(SideNavbarItem);
 
 ### 基础用法
 
-可以通过设置 `position` 来控制左右展示
+> demo: sidenavbar basic
 
-:::demo
+### 搭配 Popup
 
-```vue
-<template>
-  <nut-cell @click="handleClick">
-    <span><label>右侧</label></span>
-  </nut-cell>
-  <nut-popup position="right" v-model:visible="show" style="width: 80%; height: 100%">
-    <nut-side-navbar>
-      <nut-sub-side-navbar title="智能城市AI" ikey="6">
-        <nut-sub-side-navbar title="人体识别1" ikey="9">
-          <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="11" title="细粒度人像分割1"></nut-side-navbar-item>
-        </nut-sub-side-navbar>
-        <nut-sub-side-navbar title="人体识别2" ikey="12">
-          <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="14" title="细粒度人像分割2"></nut-side-navbar-item>
-        </nut-sub-side-navbar>
-      </nut-sub-side-navbar>
-    </nut-side-navbar>
-  </nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const handleClick = () => {
-  show.value = true;
-};
-</script>
-```
-
-:::
+> demo: sidenavbar popup
 
 ### 嵌套（建议最多三层）
 
-:::demo
-
-```vue
-<template>
-  <nut-cell @click="handleClick">
-    <span><label>显示</label></span>
-  </nut-cell>
-  <nut-popup position="right" v-model:visible="show" style="width: 80%; height: 100%">
-    <nut-side-navbar :show="show">
-      <nut-side-navbar-item ikey="1" title="人脸识别"></nut-side-navbar-item>
-      <nut-side-navbar-item ikey="2" title="自然语言处理"></nut-side-navbar-item>
-      <nut-sub-side-navbar title="图像理解" ikey="3" :open="false">
-        <nut-side-navbar-item ikey="4" title="菜品识别"></nut-side-navbar-item>
-        <nut-side-navbar-item ikey="5" title="拍照购"></nut-side-navbar-item>
-      </nut-sub-side-navbar>
-      <nut-sub-side-navbar title="智能城市AI" ikey="6">
-        <nut-side-navbar-item ikey="7" title="企业风险预警模型"></nut-side-navbar-item>
-        <nut-side-navbar-item ikey="8" title="水质量检测"></nut-side-navbar-item>
-        <nut-sub-side-navbar title="人体识别" ikey="9">
-          <nut-side-navbar-item ikey="10" title="人体检测"></nut-side-navbar-item>
-          <nut-side-navbar-item ikey="11" title="细粒度人像分割"></nut-side-navbar-item>
-        </nut-sub-side-navbar>
-      </nut-sub-side-navbar>
-      <nut-sub-side-navbar title="自然语言处理" ikey="12">
-        <nut-side-navbar-item ikey="13" title="词法分析"></nut-side-navbar-item>
-        <nut-side-navbar-item ikey="14" title="句法分析"></nut-side-navbar-item>
-      </nut-sub-side-navbar>
-      <nut-sub-side-navbar v-for="item in navs" :key="item.id" :title="item.name" :ikey="item.id">
-        <nut-side-navbar-item v-for="citem in item.arr" :key="citem.id" :title="citem.name"></nut-side-navbar-item>
-      </nut-sub-side-navbar>
-    </nut-side-navbar>
-  </nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const navs = ref([]);
-const handleClick = () => {
-  show.value = true;
-  setTimeout(() => {
-    navs.value = [
-      {
-        id: 16,
-        name: '异步加载1',
-        arr: [{ pid: 16, id: 17, name: '异步加载-id17' }]
-      },
-      {
-        id: 17,
-        name: '异步加载2',
-        arr: [{ pid: 17, id: 18, name: '异步加载-id18' }]
-      }
-    ];
-  }, 2000);
-};
-</script>
-```
-
-:::
+> demo: sidenavbar nest
 
 ## API
 

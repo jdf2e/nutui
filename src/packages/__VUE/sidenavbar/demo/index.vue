@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Popup from './popup.vue';
 import Nest from './nest.vue';
