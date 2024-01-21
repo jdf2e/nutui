@@ -6,14 +6,14 @@ import { nextTick } from 'vue';
 
 const template = `
 <nut-side-navbar offset="30">
-  <nut-sub-side-navbar title="智能城市AI" ikey="6">
-    <nut-sub-side-navbar title="人体识别1" ikey="9" :open="false">
-      <nut-side-navbar-item ikey="10" title="人体检测1"></nut-side-navbar-item>
-      <nut-side-navbar-item ikey="11" title="细粒度人像分割1"></nut-side-navbar-item>
+  <nut-sub-side-navbar title="智能城市AI">
+    <nut-sub-side-navbar title="人体识别1" :open="false">
+      <nut-side-navbar-item title="人体检测1"></nut-side-navbar-item>
+      <nut-side-navbar-item title="细粒度人像分割1"></nut-side-navbar-item>
     </nut-sub-side-navbar>
-    <nut-sub-side-navbar title="人体识别2" ikey="12">
-      <nut-side-navbar-item ikey="13" title="人体检测2"></nut-side-navbar-item>
-      <nut-side-navbar-item ikey="14" title="细粒度人像分割2"></nut-side-navbar-item>
+    <nut-sub-side-navbar title="人体识别2">
+      <nut-side-navbar-item title="人体检测2"></nut-side-navbar-item>
+      <nut-side-navbar-item title="细粒度人像分割2"></nut-side-navbar-item>
     </nut-sub-side-navbar>
   </nut-sub-side-navbar>
 </nut-side-navbar>

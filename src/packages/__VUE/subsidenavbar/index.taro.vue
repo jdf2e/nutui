@@ -1,10 +1,10 @@
 <template>
-  <view class="nut-sub-side-navbar" :ikey="ikey">
+  <view class="nut-sub-side-navbar">
     <view class="nut-sub-side-navbar__title" @click.stop="handleClick">
       <span class="nut-sub-side-navbar__title__text">{{ title }}</span>
       <span class="nut-sub-side-navbar__title__icon">
-        <ArrowDown2 v-if="!direction" size="12px"></ArrowDown2>
-        <ArrowUp2 v-else size="12px"></ArrowUp2>
+        <ArrowDown2 v-if="!direction" size="10"></ArrowDown2>
+        <ArrowUp2 v-else size="10"></ArrowUp2>
       </span>
     </view>
     <view
@@ -26,10 +26,6 @@ export default create({
   props: {
     title: {
       type: String,
-      default: ''
-    },
-    ikey: {
-      type: [String, Number],
       default: ''
     },
     open: {
