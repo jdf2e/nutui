@@ -49,7 +49,7 @@ const _sfc_main = create({
     };
     const handleSlots = () => {
       let childNodes = list.value.childNodes;
-      if (childNodes.length) {
+      if (childNodes == null ? void 0 : childNodes.length) {
         childNodes = Array.from(childNodes).filter((item) => item.nodeType !== 3).map((item) => {
           return item;
         });

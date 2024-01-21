@@ -7,26 +7,13 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    ikey: {
-        type: StringConstructor;
-        default: string;
-    };
-}, {
-    handleClick: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
     };
-    ikey: {
-        type: StringConstructor;
-        default: string;
-    };
-}>> & {
-    onClick?: ((...args: any[]) => any) | undefined;
-}, {
+}>>, {
     title: string;
-    ikey: string;
 }, {}>>;
 export default _default;
 

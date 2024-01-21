@@ -3883,32 +3883,15 @@ var __async = (__this, __arguments, generator) => {
       title: {
         type: String,
         default: ""
-      },
-      ikey: {
-        type: String,
-        default: ""
       }
-    },
-    emits: ["click"],
-    setup: (props, { emit }) => {
-      const handleClick = () => {
-        emit("click");
-      };
-      return {
-        handleClick
-      };
     }
   });
-  const _hoisted_1$11 = ["ikey"];
+  const _hoisted_1$11 = { class: "nut-side-navbar-item" };
   const _hoisted_2$P = { class: "nut-side-navbar-item__title" };
   function _sfc_render$1d(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "nut-side-navbar-item",
-      ikey: _ctx.ikey,
-      onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => _ctx.handleClick && _ctx.handleClick(...args), ["stop"]))
-    }, [
+    return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$11, [
       vue.createElementVNode("span", _hoisted_2$P, vue.toDisplayString(_ctx.title), 1)
-    ], 8, _hoisted_1$11);
+    ]);
   }
   const SideNavbarItem = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$1d]]);
   const { create: create$1h } = createComponent("sub-side-navbar");
@@ -3916,10 +3899,6 @@ var __async = (__this, __arguments, generator) => {
     props: {
       title: {
         type: String,
-        default: ""
-      },
-      ikey: {
-        type: [String, Number],
         default: ""
       },
       open: {
@@ -3951,16 +3930,13 @@ var __async = (__this, __arguments, generator) => {
       });
     }
   });
-  const _hoisted_1$10 = ["ikey"];
+  const _hoisted_1$10 = { class: "nut-sub-side-navbar" };
   const _hoisted_2$O = { class: "nut-sub-side-navbar__title__text" };
   const _hoisted_3$D = { class: "nut-sub-side-navbar__title__icon" };
   function _sfc_render$1c(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_ArrowDown2 = vue.resolveComponent("ArrowDown2");
     const _component_ArrowUp2 = vue.resolveComponent("ArrowUp2");
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "nut-sub-side-navbar",
-      ikey: _ctx.ikey
-    }, [
+    return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$10, [
       vue.createElementVNode("view", {
         class: "nut-sub-side-navbar__title",
         onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => _ctx.handleClick && _ctx.handleClick(...args), ["stop"]))
@@ -3970,10 +3946,10 @@ var __async = (__this, __arguments, generator) => {
         vue.createElementVNode("span", _hoisted_3$D, [
           !_ctx.direction ? (vue.openBlock(), vue.createBlock(_component_ArrowDown2, {
             key: 0,
-            size: "12px"
+            size: "10"
           })) : (vue.openBlock(), vue.createBlock(_component_ArrowUp2, {
             key: 1,
-            size: "12px"
+            size: "10"
           }))
         ])
       ]),
@@ -3986,7 +3962,7 @@ var __async = (__this, __arguments, generator) => {
       ], 6), [
         [vue.vShow, !_ctx.direction]
       ])
-    ], 8, _hoisted_1$10);
+    ]);
   }
   const SubSideNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$1c]]);
   const { componentName: componentName$g, create: create$1g } = createComponent("range");

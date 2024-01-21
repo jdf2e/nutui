@@ -28,10 +28,6 @@ const _sfc_main = create({
       type: String,
       default: ""
     },
-    ikey: {
-      type: [String, Number],
-      default: ""
-    },
     open: {
       type: Boolean,
       default: true
@@ -61,16 +57,13 @@ const _sfc_main = create({
     });
   }
 });
-const _hoisted_1 = ["ikey"];
+const _hoisted_1 = { class: "nut-sub-side-navbar" };
 const _hoisted_2 = { class: "nut-sub-side-navbar__title__text" };
 const _hoisted_3 = { class: "nut-sub-side-navbar__title__icon" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ArrowDown2 = resolveComponent("ArrowDown2");
   const _component_ArrowUp2 = resolveComponent("ArrowUp2");
-  return openBlock(), createElementBlock("view", {
-    class: "nut-sub-side-navbar",
-    ikey: _ctx.ikey
-  }, [
+  return openBlock(), createElementBlock("view", _hoisted_1, [
     createElementVNode("view", {
       class: "nut-sub-side-navbar__title",
       onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.handleClick && _ctx.handleClick(...args), ["stop"]))
@@ -80,10 +73,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       createElementVNode("span", _hoisted_3, [
         !_ctx.direction ? (openBlock(), createBlock(_component_ArrowDown2, {
           key: 0,
-          size: "12px"
+          size: "10"
         })) : (openBlock(), createBlock(_component_ArrowUp2, {
           key: 1,
-          size: "12px"
+          size: "10"
         }))
       ])
     ]),
@@ -96,7 +89,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 6), [
       [vShow, !_ctx.direction]
     ])
-  ], 8, _hoisted_1);
+  ]);
 }
 const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {

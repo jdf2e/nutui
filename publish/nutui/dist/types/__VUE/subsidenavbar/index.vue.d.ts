@@ -7,10 +7,6 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    ikey: {
-        type: (NumberConstructor | StringConstructor)[];
-        default: string;
-    };
     open: {
         type: BooleanConstructor;
         default: boolean;
@@ -26,10 +22,6 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    ikey: {
-        type: (NumberConstructor | StringConstructor)[];
-        default: string;
-    };
     open: {
         type: BooleanConstructor;
         default: boolean;
@@ -39,7 +31,6 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     title: string;
     open: boolean;
-    ikey: string | number;
 }, {}>>;
 export default _default;
 
