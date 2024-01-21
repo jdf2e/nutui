@@ -18,64 +18,23 @@ app.use(Textarea);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea basic dentry
 
 ### 显示字数统计
 
-:::demo
+> demo: textarea limit dentry
 
-```vue
-<template>
-  <nut-textarea v-model="value" limit-show max-length="20" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
+### 高度自动拉伸
 
-:::
-
-### 高度自定义，拉伸
-
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" autosize />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea row dentry
 
 ### 只读、禁用
 
-:::demo
+> demo: textarea status dentry
 
-```vue
-<template>
-  <nut-textarea readonly model-value="textarea 只读状态" />
-  <nut-textarea disabled model-value="textarea 禁用状态" />
-</template>
-```
+### 自动获取焦点
 
-:::
+> demo: textarea focus dentry
 
 ## API
 

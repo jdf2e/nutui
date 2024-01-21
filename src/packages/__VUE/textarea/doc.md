@@ -16,64 +16,23 @@ app.use(Textarea);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea basic
 
 ### 显示字数统计
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" limit-show max-length="20" />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea limit
 
 ### 高度自定义，拉伸
 
-:::demo
-
-```vue
-<template>
-  <nut-textarea v-model="value" :rows="1" autosize />
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref('');
-</script>
-```
-
-:::
+> demo: textarea row
 
 ### 只读、禁用
 
-:::demo
+> demo: textarea status
 
-```vue
-<template>
-  <nut-textarea readonly model-value="textarea 只读状态" />
-  <nut-textarea disabled model-value="textarea 禁用状态" />
-</template>
-```
+### 自动获取焦点
 
-:::
+> demo: textarea focus
 
 ## API
 
@@ -82,7 +41,7 @@ const value = ref('');
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | v-model | 输入值，支持双向绑定 | string | - |
-| placeholder | 设置占位提示文字 | string | `'请输入'` |
+| placeholder | 设置占位提示文字 | string | `请输入` |
 | max-length | 限制最长输入字符 | string \| number | - |
 | rows | textarea 的高度，优先级高于 autosize 属性 `仅支持 H5` | string \| number | `2` |
 | limit-show | textarea 是否展示输入字符。须配合`max-length`使用 | boolean | `false` |

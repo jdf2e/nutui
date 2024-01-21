@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Limit from './limit.vue';
 import Row from './row.vue';
@@ -29,7 +29,7 @@ const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     limit: '显示字数统计',
-    row: '高度自动拉伸',
+    row: '高度自定义，拉伸',
     status: '只读、禁用',
     focus: '自动获取焦点'
   },
