@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-sub-side-navbar" :ikey="ikey">
+  <view class="nut-sub-side-navbar">
     <view class="nut-sub-side-navbar__title" @click.stop="handleClick">
       <span class="nut-sub-side-navbar__title__text">{{ title }}</span>
       <span class="nut-sub-side-navbar__title__icon">
@@ -26,10 +26,6 @@ export default create({
   props: {
     title: {
       type: String,
-      default: ''
-    },
-    ikey: {
-      type: [String, Number],
       default: ''
     },
     open: {

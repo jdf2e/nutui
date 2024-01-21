@@ -41,7 +41,6 @@ app.use(SideNavbarItem);
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | title | Navigation title | string | `` |
-| ikey | Navigation unique identifier | number \| string | `` |
 | open | Whether navigation is expanded by default | boolean | `true` |
 
 ### SideNavbarItem Props
@@ -49,7 +48,6 @@ app.use(SideNavbarItem);
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | title | Navigation title | string | `15` |
-| ikey | Navigation unique identifier | number \| string | `` |
 
 ### SubSideNavbar Events
 

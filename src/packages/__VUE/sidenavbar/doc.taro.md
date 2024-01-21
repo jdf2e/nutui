@@ -41,7 +41,6 @@ app.use(SideNavbarItem);
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 导航标题 | string | `` |
-| ikey | 导航唯一标识 | number \| string | `` |
 | open | 导航是否默认展开 | boolean | `true` |
 
 ### SideNavbarItem Props
@@ -49,7 +48,6 @@ app.use(SideNavbarItem);
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 导航标题 | string | `15` |
-| ikey | 导航唯一标识 | number \| string | `` |
 
 ### SubSideNavbar Events
 
