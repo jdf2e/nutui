@@ -2,7 +2,7 @@
 
 ### Intro
 
-CalendarCard
+CalendarCard. Available in `NutUI` >= 4.3.0.
 
 ### Install
 
