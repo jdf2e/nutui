@@ -1,3 +1,24 @@
+## v4.2.9
+
+`2024-01-22`
+
+Bug Fixes
+
+- button: 修复自定义 color 时的 border 样式 (#2843) @subordon
+- form: 修复搭配 input 使用时的样式问题 (#2851) @eiinu
+- list: 优化 containerHeight 获取逻辑 (#2860) @eiinu
+
+Refactors
+
+- button: use script setup (#2713) @eiinu
+- divider: use script setup (#2840) @eiinu
+
+Other Changes
+
+- checkbox: improve type def (#2845) @eiinu
+- ellipsis: improve type def (#2848) @eiinu
+- side-navbar: remove unnecessary props (#2858) @eiinu
+
 ## v4.2.8
 
 `2024-01-15`
