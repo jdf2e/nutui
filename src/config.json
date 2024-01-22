@@ -487,6 +487,18 @@
           "author": "songchenglin1"
         },
         {
+          "version": "4.3.0",
+          "taro": true,
+          "name": "CalendarCard",
+          "type": "component",
+          "cName": "日历卡片",
+          "desc": "日历卡片组件",
+          "sort": 5,
+          "setup": true,
+          "show": true,
+          "author": "eiinu"
+        },
+        {
           "version": "3.0.0",
           "name": "Checkbox",
           "taro": true,

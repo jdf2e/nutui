@@ -27,6 +27,14 @@ class Lang extends BaseLang {
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Hari ini'
   };
+  calendarcard = {
+    weekdays: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
+    end: 'Selesai',
+    start: 'Mulai',
+    title: 'Kalender',
+    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    today: 'Hari ini'
+  };
   shortpassword = {
     title: 'SIlakan masukan kata sandi',
     desc: 'Anda telah menggunakan aset virtual, mohon lakukan verifikasi.',

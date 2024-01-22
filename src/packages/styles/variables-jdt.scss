@@ -309,6 +309,7 @@ $backtop-border-color: var(--nut-backtop-border-color, #e0e0e0) !default;
 // calendar
 $calendar-primary-color: var(--nut-calendar-primary-color, $primary-color) !default;
 $calendar-choose-color: var(--nut-calendar-choose-color, rgba($primary-color, 0.09)) !default;
+$calendar-choose-background-color: var(--nut-calendar-choose-background-color, rgba($primary-color, 0.09)) !default;
 $calendar-choose-font-color: var(--nut-calendar-choose-font-color, $primary-color) !default;
 $calendar-base-color: var(--nut-calendar-base-color, #323233) !default;
 $calendar-disable-color: var(--nut-calendar-disable-color, #d1d0d0) !default;
