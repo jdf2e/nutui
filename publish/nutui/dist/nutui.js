@@ -16627,7 +16627,7 @@ function J5(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const Q5 = "4.2.8", l4 = { install: J5, version: Q5 };
+const Q5 = "4.2.9", l4 = { install: J5, version: Q5 };
 export {
   H1 as ActionSheet,
   rv as Address,
