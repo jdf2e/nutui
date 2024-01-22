@@ -2779,7 +2779,7 @@ var __async = (__this, __arguments, generator) => {
         currentKey: "",
         scrollY: 0
       });
-      const clientHeight2 = vue.computed(() => {
+      const clientHeight = vue.computed(() => {
         return listview.value.clientHeight;
       });
       const fixedStyle = vue.computed(() => {
@@ -2880,7 +2880,7 @@ var __async = (__this, __arguments, generator) => {
         }
       );
       return __spreadProps(__spreadValues({}, vue.toRefs(state)), {
-        clientHeight: clientHeight2,
+        clientHeight,
         fixedStyle,
         setListGroup,
         listview,
@@ -11926,7 +11926,6 @@ var __async = (__this, __arguments, generator) => {
     return tempIndex;
   }
   const { create: create$K } = createComponent("list");
-  const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
   const _sfc_main$K = create$K({
     components: {
       NutScrollView: _sfc_main$1t
@@ -11947,8 +11946,7 @@ var __async = (__this, __arguments, generator) => {
         default: 5
       },
       containerHeight: {
-        type: [Number],
-        default: clientHeight
+        type: Number
       },
       estimateRowHeight: {
         type: Number,
@@ -11961,6 +11959,8 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["scrollUp", "scrollDown", "scrollBottom"],
     setup(props, { emit }) {
+      var _a, _b;
+      const clientHeight = ((_b = (_a = Taro.getSystemInfoSync) == null ? void 0 : _a.call(Taro)) == null ? void 0 : _b.windowHeight) || 667;
       const list = vue.ref(null);
       const phantom = vue.ref(null);
       const actualContent = vue.ref(null);
@@ -11974,7 +11974,10 @@ var __async = (__this, __arguments, generator) => {
         phantomHeight: props.estimateRowHeight * props.listData.length
       });
       const getContainerHeight = vue.computed(() => {
-        return Math.min(props.containerHeight, clientHeight);
+        if (props.containerHeight) {
+          return Math.min(props.containerHeight, clientHeight);
+        }
+        return clientHeight;
       });
       const visibleCount = vue.computed(() => {
         return Math.ceil(getContainerHeight.value / props.estimateRowHeight);

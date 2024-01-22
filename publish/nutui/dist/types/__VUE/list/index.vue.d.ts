@@ -13,8 +13,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     containerHeight: {
-        type: NumberConstructor[];
-        default: number;
+        type: NumberConstructor;
     };
     height: {
         type: NumberConstructor;
@@ -53,8 +52,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     containerHeight: {
-        type: NumberConstructor[];
-        default: number;
+        type: NumberConstructor;
     };
     height: {
         type: NumberConstructor;
@@ -72,7 +70,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     height: number;
     listData: unknown[];
     bufferSize: number;
-    containerHeight: number;
     margin: number;
 }, {}>>;
 export default _default;

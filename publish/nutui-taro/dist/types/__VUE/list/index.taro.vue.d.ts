@@ -17,8 +17,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     containerHeight: {
-        type: NumberConstructor[];
-        default: number;
+        type: NumberConstructor;
     };
     estimateRowHeight: {
         type: NumberConstructor;
@@ -62,8 +61,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: number;
     };
     containerHeight: {
-        type: NumberConstructor[];
-        default: number;
+        type: NumberConstructor;
     };
     estimateRowHeight: {
         type: NumberConstructor;
@@ -79,7 +77,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     onScrollBottom?: ((...args: any[]) => any) | undefined;
 }, {
     height: number;
-    containerHeight: number;
     listData: unknown[];
     bufferSize: number;
     estimateRowHeight: number;

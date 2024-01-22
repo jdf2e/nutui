@@ -47,7 +47,6 @@ function binarySearch(list, value, compareFunc) {
   return tempIndex;
 }
 const { create } = createComponent("list");
-const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
 const _sfc_main = create({
   props: {
     listData: {
@@ -61,8 +60,7 @@ const _sfc_main = create({
       default: 5
     },
     containerHeight: {
-      type: [Number],
-      default: clientHeight
+      type: Number
     },
     height: {
       type: Number,
@@ -75,6 +73,7 @@ const _sfc_main = create({
   },
   emits: ["scrollUp", "scrollDown", "scrollBottom"],
   setup(props, { emit }) {
+    const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
     const list = ref(null);
     const phantom = ref(null);
     const actualContent = ref(null);
@@ -87,7 +86,10 @@ const _sfc_main = create({
       phantomHeight: props.height * props.listData.length
     });
     const getContainerHeight = computed(() => {
-      return Math.min(props.containerHeight, clientHeight);
+      if (props.containerHeight) {
+        return Math.min(props.containerHeight, clientHeight);
+      }
+      return clientHeight;
     });
     const visibleCount = computed(() => {
       return Math.ceil(getContainerHeight.value / props.height);
