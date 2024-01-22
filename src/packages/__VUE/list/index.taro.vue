@@ -39,7 +39,6 @@ import NutScrollView from '../scroll-view/index.taro.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 const { create } = createComponent('list');
-const clientHeight = Taro.getSystemInfoSync().windowHeight || 667;
 
 export default create({
   components: {
@@ -61,8 +60,7 @@ export default create({
       default: 5
     },
     containerHeight: {
-      type: [Number],
-      default: clientHeight
+      type: Number
     },
     estimateRowHeight: {
       type: Number,
@@ -76,6 +74,7 @@ export default create({
   emits: ['scrollUp', 'scrollDown', 'scrollBottom'],
 
   setup(props, { emit }) {
+    const clientHeight = Taro.getSystemInfoSync?.()?.windowHeight || 667;
     const list = ref(null) as Ref;
     const phantom = ref(null) as Ref;
     const actualContent = ref(null) as Ref;
@@ -90,7 +89,10 @@ export default create({
     });
 
     const getContainerHeight = computed(() => {
-      return Math.min(props.containerHeight, clientHeight);
+      if (props.containerHeight) {
+        return Math.min(props.containerHeight, clientHeight);
+      }
+      return clientHeight;
     });
 
     const visibleCount = computed(() => {
