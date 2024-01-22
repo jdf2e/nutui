@@ -110,7 +110,7 @@
     "vue-tsc": "^1.8.27"
   },
   "engines": {
-    "pnpm": ">= 8.14.1"
+    "node": "^18.0.0 || >=20.0.0"
   },
   "nano-staged": {
     "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
