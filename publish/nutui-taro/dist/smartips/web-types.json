@@ -936,6 +936,67 @@
           ]
         },
         {
+          "name": "nut-calendar-card",
+          "slots": [],
+          "events": [],
+          "attributes": [
+            {
+              "name": "type",
+              "default": "`single`",
+              "description": "类型，单个日期 `single`，多个日期 `multiple`，日期范围 `range`，周选择 `week`",
+              "value": {
+                "type": "`string`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "v-model",
+              "default": "`-`",
+              "description": "当前选中值，单个日期 Date 格式，多个日期/范围选择 Date[] 格式",
+              "value": {
+                "type": "`date | date[]`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "startDate",
+              "default": "`-`",
+              "description": "限制范围开始日期",
+              "value": {
+                "type": "`date`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "endDate",
+              "default": "`-`",
+              "description": "限制范围结束日期",
+              "value": {
+                "type": "`date`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "firstDayOfWeek",
+              "default": "`1`",
+              "description": "设置周起始日，0 为周日，1 为周一",
+              "value": {
+                "type": "`0-6`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disableDay",
+              "default": "`-`",
+              "description": "设置不可选日期",
+              "value": {
+                "type": "`(day: calendarcardday) => boolean`",
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
           "name": "nut-card",
           "slots": [],
           "events": [],

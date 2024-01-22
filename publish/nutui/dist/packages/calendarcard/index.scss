@@ -1,0 +1,92 @@
+.nut-calendarcard {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: $calendar-base-font;
+  color: $black;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: normal;
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      margin: 16px;
+      line-height: 1;
+
+      .left {
+        margin-left: 8px;
+      }
+      .right {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 14.28%;
+    height: 48px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    text-align: center;
+    user-select: none;
+
+    &.header {
+      cursor: auto;
+    }
+
+    &-top,
+    &-bottom {
+      width: 100%;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
+    &.mid {
+      background-color: $calendar-choose-background-color;
+      color: $calendar-choose-color;
+    }
+
+    &.active,
+    &.start,
+    &.end {
+      background-color: $primary-color;
+      color: $white;
+    }
+
+    .nut-calendar-day-info {
+      color: $calendar-primary-color;
+    }
+
+    // 上个月、下个月
+    &.prev,
+    &.next,
+    &.disabled {
+      color: $calendar-disable-color;
+      cursor: not-allowed;
+    }
+  }
+}

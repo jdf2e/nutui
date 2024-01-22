@@ -35,6 +35,14 @@ class Lang extends BaseLang {
       monthTitle: (year, month) => `${year}年${month}月`,
       today: "今天"
     });
+    __publicField(this, "calendarcard", {
+      weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+      end: "結束",
+      start: "開始",
+      title: "行事曆選擇",
+      monthTitle: (year, month) => `${year}年${month}月`,
+      today: "今天"
+    });
     __publicField(this, "shortpassword", {
       title: "請輸入密碼",
       desc: "您使用了虛擬資產,請進行驗證",

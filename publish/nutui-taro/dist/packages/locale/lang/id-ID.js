@@ -35,6 +35,14 @@ class Lang extends BaseLang {
       monthTitle: (year, month) => `${year}/${month}`,
       today: "Hari ini"
     });
+    __publicField(this, "calendarcard", {
+      weekdays: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+      end: "Selesai",
+      start: "Mulai",
+      title: "Kalender",
+      monthTitle: (year, month) => `${year}/${month}`,
+      today: "Hari ini"
+    });
     __publicField(this, "shortpassword", {
       title: "SIlakan masukan kata sandi",
       desc: "Anda telah menggunakan aset virtual, mohon lakukan verifikasi.",

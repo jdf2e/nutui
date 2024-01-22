@@ -35,6 +35,14 @@ class Lang extends BaseLang {
       monthTitle: (year, month) => `${year}/${month}`,
       today: "Today"
     });
+    __publicField(this, "calendarcard", {
+      weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      end: "End",
+      start: "Start",
+      title: "Calendar",
+      monthTitle: (year, month) => `${year}/${month}`,
+      today: "Today"
+    });
     __publicField(this, "shortpassword", {
       title: "Please input a password",
       desc: "Verify",

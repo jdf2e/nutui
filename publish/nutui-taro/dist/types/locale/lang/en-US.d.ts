@@ -27,6 +27,14 @@ declare class Lang extends BaseLang {
         monthTitle: (year: number, month: number) => string;
         today: string;
     };
+    calendarcard: {
+        weekdays: string[];
+        end: string;
+        start: string;
+        title: string;
+        monthTitle: (year: number, month: number) => string;
+        today: string;
+    };
     shortpassword: {
         title: string;
         desc: string;

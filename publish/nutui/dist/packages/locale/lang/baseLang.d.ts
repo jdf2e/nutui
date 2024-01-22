@@ -26,6 +26,14 @@ export declare abstract class BaseLang {
         monthTitle: Function;
         today: string;
     };
+    abstract calendarcard: {
+        weekdays: Array<string>;
+        end: string;
+        start: string;
+        title: string;
+        monthTitle: Function;
+        today: string;
+    };
     abstract shortpassword: {
         title: string;
         desc: string;
