@@ -1,4 +1,5 @@
 import { Ref, PropType } from 'vue';
+import { NumberKeyboardType } from './types';
 export interface keys {
     id: number | string;
     type: string;
@@ -21,7 +22,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<NumberKeyboardType>;
         default: string;
     };
     customKey: {
@@ -78,7 +79,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<NumberKeyboardType>;
         default: string;
     };
     customKey: {
@@ -113,7 +114,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
 }, {
-    type: string;
+    type: NumberKeyboardType;
     title: string;
     visible: boolean;
     lockScroll: boolean;
