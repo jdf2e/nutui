@@ -49,13 +49,13 @@ const version = '${packageConfig.version}';
 export { install, version, Locale, ${packages.join(',')} };
 export default { install, version, Locale};`;
 
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.build.ts'), fileStrBuild, 'utf8');
+fs.outputFile(path.resolve(__dirname, '../src/packages/taro.build.ts'), fileStrBuild, 'utf8');
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
 export { install, Locale, ${packages.join(',')}  };
 export default { install, version:'${packageConfig.version}', Locale};`;
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.taro.vue.ts'), fileStrDev, 'utf8');
+fs.outputFile(path.resolve(__dirname, '../src/packages/taro.ts'), fileStrDev, 'utf8');
 
 dts += `  }
 }`
