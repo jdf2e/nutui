@@ -36,7 +36,7 @@ jobs:
           NPM_CONFIG_PROVENANCE: true
 
       - name: Build NutUI Vue Taro
-        run: pnpm build:taro:vue
+        run: pnpm build:taro
 
       - name: Publish NutUI Vue Taro
         run: pnpm --dir ./publish/nutui-taro publish:beta --access public --no-git-checks
