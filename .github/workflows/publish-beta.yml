@@ -26,7 +26,7 @@ jobs:
         run: pnpm build
 
       - name: Publish NutUI Vue
-        run: pnpm --dir ./publish/nutui publish --tag=beta --access=public --no-git-checks
+        run: pnpm --dir ./publish/nutui publish:beta --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -35,7 +35,7 @@ jobs:
         run: pnpm build:taro:vue
 
       - name: Publish NutUI Vue Taro
-        run: pnpm --dir ./publish/nutui-taro publish --tag=beta --access=public --no-git-checks
+        run: pnpm --dir ./publish/nutui-taro publish:beta --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
