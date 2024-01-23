@@ -20914,8 +20914,8 @@ var __async = (__this, __arguments, generator) => {
       }
     });
   }
-  const version = "4.2.9";
-  const nutui_taro_vue_build = { install, version, Locale };
+  const version = "4.3.0-beta.5";
+  const taro_build = { install, version, Locale };
   exports2.ActionSheet = ActionSheet;
   exports2.Address = Address;
   exports2.AddressList = AddressList;
@@ -21016,7 +21016,7 @@ var __async = (__this, __arguments, generator) => {
   exports2.TrendArrow = TrendArrow;
   exports2.Uploader = Uploader;
   exports2.Watermark = Watermark;
-  exports2.default = nutui_taro_vue_build;
+  exports2.default = taro_build;
   exports2.install = install;
   exports2.version = version;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
