@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import './app.scss';
-import NutUI from '@/packages/nutui.taro.vue';
+import NutUI from '@/packages/taro';
 import Demo from './components/demo.vue';
 // import NutUI from '@nutui/nutui-taro';
 // import '@nutui/nutui-taro/dist/style.css';

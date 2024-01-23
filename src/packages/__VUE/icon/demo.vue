@@ -87,7 +87,7 @@ const translate = useTranslate({
     copyToast: 'Copied successfully'
   }
 });
-import { showToast } from '@/packages/nutui.vue';
+import { showToast } from '@nutui/nutui';
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
 const copyTag = (name: string) => {
   const text = `<IconFont name="${name}"></IconFont>`;

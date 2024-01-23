@@ -10,7 +10,10 @@ const resolve = path.resolve;
 export default defineConfig({
   base: '/',
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
+    alias: [
+      { find: '@', replacement: resolve(__dirname, './src') },
+      { find: '@nutui/nutui', replacement: resolve(__dirname, './src/packages/index.ts') }
+    ]
   },
   css: {
     preprocessorOptions: {
