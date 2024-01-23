@@ -30,6 +30,12 @@
     cursor: pointer;
     z-index: 2;
   }
+  &.round {
+    &::after,
+    .nut-avatar-cropper__edit-text {
+      border-radius: 50%;
+    }
+  }
 }
 
 .nut-cropper-popup {
