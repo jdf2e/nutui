@@ -1,5 +1,5 @@
 <template>
-  <Demo class="demo-tabbar">
+  <Demo class="full">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
