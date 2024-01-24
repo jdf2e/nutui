@@ -89,7 +89,7 @@ fs.cp(sourceDir, toDir, { recursive: true }, (err) => {
     return;
   }
 
-  const oldName = path.join(toDir, 'nutui.taro.vue.build.d.ts');
+  const oldName = path.join(toDir, 'taro.build.d.ts');
   const newName = path.join(toDir, 'index.d.ts');
 
   fs.rename(oldName, newName, (err) => {

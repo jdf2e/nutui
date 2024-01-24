@@ -49,14 +49,14 @@ const version = '${packageConfig.version}';
 export { install, version, Locale, ${packages.join(',')}, ${methods.join(',')}};
 export default { install, version};`;
 
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fileStrBuild, 'utf8');
+fs.outputFile(path.resolve(__dirname, '../src/packages/index.build.ts'), fileStrBuild, 'utf8');
 
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
 export { install, Locale, ${packages.join(',')}, ${methods.join(',')}  };
 export default { install, version:'${packageConfig.version}'};`;
-fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8');
+fs.outputFile(path.resolve(__dirname, '../src/packages/index.ts'), fileStrDev, 'utf8');
 
 dts += `  }
 }`
