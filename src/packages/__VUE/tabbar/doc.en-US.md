@@ -17,340 +17,41 @@ app.use(TabbarItem);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <Category></Category>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <Find></Find>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <Cart></Cart>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <My></My>
-      </template>
-    </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const tabSwitch = (item, index) => {
-  console.log(item, index);
-};
-</script>
-```
-
-:::
+> demo: tabbar basic
 
 ### Match by name
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar v-model="activeName" @tab-switch="tabSwitch">
-    <nut-tabbar-item v-for="(item, index) in List" :name="item.name" :tab-title="item.title" :icon="item.icon">
-    </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const activeName = ref('category');
-const List = [
-  {
-    title: 'tab',
-    icon: h(Home),
-    name: 'home'
-  },
-  {
-    title: 'tab',
-    icon: h(Category),
-    name: 'category'
-  },
-  {
-    title: 'tab',
-    icon: h(Find),
-    name: 'find'
-  },
-  {
-    title: 'tab',
-    icon: h(Cart),
-    name: 'cart'
-  },
-  {
-    title: 'tab',
-    icon: h(My),
-    name: 'my'
-  }
-];
-const tabSwitch = (item, index) => {
-  console.log(item, index);
-};
-</script>
-```
-
-:::
+> demo: tabbar by-name
 
 ### Custom Icon
 
 Use icon slot to custom icon.
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar @tab-switch="tabSwitch">
-    <nut-tabbar-item tab-title="tab">
-      <template #icon="props">
-        <img :src="props.active ? icon.active : icon.unactive" alt="" />
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon="props">
-        <img :src="props.active ? icon.active : icon.unactive" alt="" />
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon="props">
-        <img :src="props.active ? icon.active : icon.unactive" alt="" />
-      </template>
-    </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-const tabSwitch = (item, index) => {
-  console.log(item, index);
-};
-const icon = {
-  active: 'https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png',
-  unactive: 'https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png'
-};
-</script>
-```
-
-:::
+> demo: tabbar custom-icon
 
 ### Custom Check
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar v-model="active">
-    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const active = ref(2);
-const List = [
-  {
-    title: 'tab',
-    icon: h(Home),
-    name: 'home'
-  },
-  {
-    title: 'tab',
-    icon: h(Category),
-    name: 'category'
-  },
-  {
-    title: 'tab',
-    icon: h(Find),
-    name: 'find'
-  },
-  {
-    title: 'tab',
-    icon: h(Cart),
-    name: 'cart'
-  },
-  {
-    title: 'tab',
-    icon: h(My),
-    name: 'my'
-  }
-];
-const tabSwitch = (item, index) => {
-  console.log(item, index);
-};
-</script>
-```
-
-:::
+> demo: tabbar custom-check
 
 ### Show Badge
 
-:::demo
+After setting the dot property, a small red dot appears in the upper right corner of the icon; When the value property is set, the corresponding logo is displayed in the upper right corner of the icon.
 
-```vue
-<template>
-  <nut-tabbar>
-    <nut-tabbar-item tab-title="tab" :value="11">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" :dot="true">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" :value="110">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-</script>
-```
+The bardge logo component is used internally and its properties can be applied directly to the TabbarItem props.
 
-:::
+> demo: tabbar show-badge
 
 ### Custom Color
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const List = [
-  {
-    title: 'tab',
-    icon: h(Home),
-    name: 'home'
-  },
-  {
-    title: 'tab',
-    icon: h(Category),
-    name: 'category'
-  },
-  {
-    title: 'tab',
-    icon: h(Find),
-    name: 'find'
-  },
-  {
-    title: 'tab',
-    icon: h(Cart),
-    name: 'cart'
-  },
-  {
-    title: 'tab',
-    icon: h(My),
-    name: 'my'
-  }
-];
-</script>
-```
-
-:::
+> demo: tabbar custom-color
 
 ### Custom Quantity
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="tab" :value="11">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" :dot="true">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" :value="110">
-      <template #icon>
-        <Home></Home>
-      </template>
-    </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script>
-import { Home } from '@nutui/icons-vue';
-export default {
-  components: { Home }
-};
-</script>
-```
-
-:::
+> demo: tabbar custom-quantity
 
 ### Fixed Bottom
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar bottom safe-area-inset-bottom placeholder>
-    <nut-tabbar-item v-for="(item, index) in List" :tab-title="item.title" :icon="item.icon"> </nut-tabbar-item>
-  </nut-tabbar>
-</template>
-<script setup>
-import { h } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
-const List = [
-  {
-    title: 'tab',
-    icon: h(Home)
-  },
-  {
-    title: 'tab',
-    icon: h(Category)
-  },
-  {
-    title: 'tab',
-    icon: h(Find)
-  },
-  {
-    title: 'tab',
-    icon: h(Cart)
-  },
-  {
-    title: 'tab',
-    icon: h(My)
-  }
-];
-</script>
-```
-
-:::
+> demo: tabbar fixed-bottom
 
 ## API
 

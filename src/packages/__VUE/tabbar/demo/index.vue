@@ -1,5 +1,5 @@
 <template>
-  <Demo class="full">
+  <Demo class="demo-tabbar">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
@@ -26,8 +26,8 @@
   </Demo>
 </template>
 
-<script setup lang="ts">
-import { useTranslate } from '../../../utils';
+<script lang="ts" setup>
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import ByName from './by-name.vue';
 import CustomIcon from './custom-icon.vue';
