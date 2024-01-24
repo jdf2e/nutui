@@ -1,5 +1,5 @@
 <template>
-  <nut-cell title="Forget password" is-link @click="visible = true"></nut-cell>
+  <nut-cell title="Forget Password" is-link @click="visible = true"></nut-cell>
   <nut-short-password
     v-model="value"
     v-model:visible="visible"
@@ -20,6 +20,6 @@ const complete = (value) => {
   console.log(value);
 };
 const onTips = () => {
-  console.log('Execute forgotten password logic');
+  console.log('Click Tip');
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <nut-cell title="Custom Password Length" is-link @click="visible = true"></nut-cell>
+  <nut-cell title="Length" is-link @click="visible = true"></nut-cell>
   <nut-short-password
     v-model="value"
     v-model:visible="visible"

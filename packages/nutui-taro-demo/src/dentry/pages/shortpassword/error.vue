@@ -17,11 +17,11 @@ import { ref } from 'vue';
 const visible = ref(false);
 const showKeyboard = ref(false);
 const value = ref('');
-const errorMsg = ref('Please enter correct password');
+const errorMsg = ref('请输入正确的密码');
 const complete = (value) => {
   console.log(value);
 };
 const onTips = () => {
-  console.log('Execute forgotten password logic');
+  console.log('Click Tip');
 };
 </script>
