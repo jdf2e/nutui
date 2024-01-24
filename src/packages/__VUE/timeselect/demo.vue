@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue';
-import { showToast } from '@/packages/nutui.vue';
+import { showToast } from '@nutui/nutui';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const translate = useTranslate({
   'zh-CN': {

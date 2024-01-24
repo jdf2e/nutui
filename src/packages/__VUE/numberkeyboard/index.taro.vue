@@ -81,6 +81,7 @@ import { computed, ref, watch, Ref, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import NutPopup from '../popup/index.taro.vue';
 import { useLocale } from '@/packages/utils/useLocale';
+import { NumberKeyboardType } from './types';
 const { create } = createComponent('number-keyboard');
 export interface keys {
   id: number | string;
@@ -105,7 +106,7 @@ export default create({
       default: false
     },
     type: {
-      type: String,
+      type: String as PropType<NumberKeyboardType>,
       default: 'default'
     },
     customKey: {

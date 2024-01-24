@@ -6,7 +6,7 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/packages/nutui.taro.vue.build.ts",
+    "src/packages/taro.build.ts",
     "src/packages/locale",
     "src/packages/utils",
     "src/packages/resolver"
