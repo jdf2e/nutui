@@ -1,12 +1,3 @@
-<!--
- * @Author: Marvin
- * @Date: 2024-01-24 16:52:56
- * @LastEditors: Marvin 454846659@qq.com
- * @LastEditTime: 2024-01-24 17:06:37
- * @FilePath: /nutui/packages/nutui-taro-demo/src/dentry/pages/cascader/async-loading.vue
- * @Description:
- * Copyright (c) 2024 by Marvin, All Rights Reserved.
--->
 <template>
   <nut-cell title="选择地址" :desc="value.toString() || '请选择地址'" @click="visible = true"> </nut-cell>
   <nut-cascader
