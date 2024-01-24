@@ -6,7 +6,7 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/packages/nutui.vue.build.ts",
+    "src/packages/index.build.ts",
     "src/packages/locale",
     "src/packages/utils",
     "src/packages/resolver"

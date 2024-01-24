@@ -40,7 +40,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/packages/nutui.vue.build.ts',
+      entry: 'src/packages/index.build.ts',
       name: 'nutui',
       fileName: (type) => {
         return type === 'umd' ? 'nutui.umd.js' : 'nutui.js';
