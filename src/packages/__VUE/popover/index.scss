@@ -5,7 +5,7 @@
   display: inline-block;
   word-break: normal;
 
-  &-arrow {
+  .nut-popover-arrow {
     position: absolute;
     width: 0;
     height: 0;
@@ -85,7 +85,7 @@
     }
   }
 
-  &-content {
+  .nut-popover-content {
     position: absolute;
     z-index: 9999;
     background: #fff;
