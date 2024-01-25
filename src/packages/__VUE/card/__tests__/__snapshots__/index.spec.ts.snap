@@ -25,12 +25,12 @@ exports[`Card: normal props 1`] = `
       <view class="nut-tag nut-tag--danger">自营
         <!--v-if-->
       </view>
-      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: rgb(255, 255, 255);">厂商配送
+      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: #fff;">厂商配送
         <!--v-if-->
       </view>
     </div>
     <div class="nut-card__right__shop">
-      <div class="nut-card__right__shop__name">阳澄湖大闸蟹自营店&gt;</div>
+      <div class="nut-card__right__shop__name">阳澄湖大闸蟹自营店></div>
     </div>
   </div>
 </div>"
@@ -45,7 +45,7 @@ exports[`Card: render prolist , price and origin slot correctly 1`] = `
       <view class="nut-tag nut-tag--danger">
         <!--v-if-->
       </view>
-      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: rgb(255, 255, 255);">
+      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: #fff;">
         <!--v-if-->
       </view>
     </div>
@@ -81,7 +81,7 @@ exports[`Card: render shop-tag and footer slot correctly 1`] = `
       <view class="nut-tag nut-tag--danger">
         <!--v-if-->
       </view>
-      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: rgb(255, 255, 255);">
+      <view class="nut-tag nut-tag--default nut-tag--plain" style="background: #fff;">
         <!--v-if-->
       </view>
     </div>
