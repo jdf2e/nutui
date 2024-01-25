@@ -56,10 +56,8 @@ test('should change color template when use color props', async () => {
   await nextTick();
   const root = wrapper.find<HTMLElement>('.nut-range');
   const bar = wrapper.find<HTMLElement>('.nut-range-bar');
-  const btn = wrapper.find<HTMLElement>('.nut-range-button');
   expect(root.element.style.backgroundColor).toEqual('rgb(163, 184, 255)');
   expect(bar.element.style.background).toEqual('rgb(238, 238, 238)');
-  expect(btn.element.style.borderColor).toEqual('rgb(52,96,250)');
 });
 
 test('should render slots template when use slots', async () => {

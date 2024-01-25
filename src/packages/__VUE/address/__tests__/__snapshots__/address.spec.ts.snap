@@ -13,7 +13,7 @@ exports[`Address: choose address item 1`] = `
               <path d="M642.973 1005.542 321.912 587.098a123.278 123.278 0 0 1 0-150.17l321.06-418.443a47.182 47.182 0 0 1 74.83 57.422l-321.088 418.47a28.994 28.994 0 0 0 0 35.3l321.088 418.47a47.155 47.155 0 0 1-74.83 57.395" fill="currentColor" fill-opacity="0.9"></path>
             </svg></view>
           <view class="nut-address__header__title">请选择所在地区</view>
-          <view class="nut-address__header-close"><svg class="nut-icon nut-icon-close" style="color: rgb(204, 204, 204);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1026 1024" role="presentation" size="14px">
+          <view class="nut-address__header-close"><svg class="nut-icon nut-icon-close" style="color: #cccccc;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1026 1024" role="presentation" size="14px">
               <path d="M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z" fill="currentColor" fill-opacity="0.9"></path>
             </svg></view>
         </view><!-- 请选择 -->

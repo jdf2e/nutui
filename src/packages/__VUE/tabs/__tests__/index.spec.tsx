@@ -41,7 +41,7 @@ test('base tabs props', async () => {
   });
   await nextTick();
   const stepItem = wrapper.find('.nut-tabs__titles');
-  expect((stepItem.element as HTMLElement).style.background).toEqual('rgb(245, 245, 245)');
+  expect((stepItem.element as HTMLElement).style.background).toEqual('#f5f5f5');
   const _stepItem = wrapper.findAll('.horizontal');
   expect(_stepItem.length).toBe(1);
   const _stepItem1 = wrapper.findAll('.nut-tabs__titles')[0];
