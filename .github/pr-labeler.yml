@@ -1,0 +1,5 @@
+pr-feat: '/^(feat|style)/'
+pr-fix: '^fix'
+pr-perf: '^perf'
+pr-docs: '^docs'
+pr-test: '^test'
