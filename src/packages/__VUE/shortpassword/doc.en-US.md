@@ -17,144 +17,19 @@ app.use(NumberKeyboard);
 
 ### Basic Usage
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="Basic Usage" is-link @click="state.visible1 = true"></nut-cell>
-  <nut-short-password v-model="state.value1" v-model:visible="state.visible1" @focus="state.showKeyboard1 = true">
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value1" v-model:visible="state.showKeyboard1" @blur="state.showKeyboard1 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  visible1: false,
-  showKeyboard1: false,
-  value1: ''
-});
-</script>
-```
-
-:::
+> demo: shortpassword basic
 
 ### Custom Password Length
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="Custom Password Length" is-link @click="state.visible2 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value2"
-    v-model:visible="state.visible2"
-    @focus="state.showKeyboard2 = true"
-    :length="state.length"
-    @complete="methods.complete"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value2" v-model:visible="state.showKeyboard2" @blur="state.showKeyboard2 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible2: false,
-  showKeyboard2: false,
-  value2: '',
-  length: 4
-});
-const methods = {
-  complete(value) {
-    showToast.text(value);
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword length
 
 ### Forget password
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="Forget password" is-link @click="state.visible3 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value3"
-    v-model:visible="state.visible3"
-    @focus="state.showKeyboard3 = true"
-    @complete="methods.complete"
-    @tips="methods.onTips"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value3" v-model:visible="state.showKeyboard3" @blur="state.showKeyboard3 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible3: false,
-  showKeyboard3: false,
-  value3: ''
-});
-const methods = {
-  complete(value) {
-    showToast.text(value);
-  },
-  onTips() {
-    showToast.text('Execute forgotten password logic');
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword forget
 
 ### Error Message
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="Error Message" is-link @click="state.visible4 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value4"
-    v-model:visible="state.visible4"
-    @focus="state.showKeyboard4 = true"
-    :error-msg="state.errorMsg"
-    @complete="methods.complete"
-    @tips="methods.onTips"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value4" v-model:visible="state.showKeyboard4" @blur="state.showKeyboard4 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible4: false,
-  showKeyboard4: false,
-  value4: '',
-  errorMsg: 'Please enter correct password'
-});
-const methods = {
-  complete(value) {
-    showToast.text(value);
-  },
-  onTips() {
-    showToast.text('Execute forgotten password logic');
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword error
 
 ## API
 

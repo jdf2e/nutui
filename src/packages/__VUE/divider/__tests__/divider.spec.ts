@@ -45,7 +45,7 @@ test('Divider: custom style', () => {
     }
   });
   const _html = wrapper.find('.nut-divider');
-  expect((_html.element as HTMLElement).style.color).toBe('rgb(25, 137, 250)');
+  expect((_html.element as HTMLElement).style.color).toBe('#1989fa');
   expect((_html.element as HTMLElement).style.borderColor).toBe('#1989fa');
   expect((_html.element as HTMLElement).style.padding).toBe('0px 16px');
 });

@@ -1,5 +1,7 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import config from './package.json';
 import autoprefixer from 'autoprefixer';
@@ -36,6 +38,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
+    vueJsx(),
     markdown({
       docRoot: path.resolve(__dirname, './src/packages/__VUE'),
       docTaroRoot: path.resolve(__dirname, './packages/nutui-taro-demo/src')
@@ -59,5 +62,15 @@ export default defineConfig({
         plugins: []
       }
     }
+  },
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    coverage: {
+      all: false,
+      provider: 'v8'
+    },
+    include: ['src/packages/__VUE/**/*.(test|spec).(ts|tsx)'],
+    reporters: ['default', 'html']
   }
 });

@@ -7,7 +7,7 @@ exports[`should sticky to bottom after scroll 1`] = `
 `;
 
 exports[`should sticky to top after scroll 1`] = `
-"<div class="nut-sticky">
+"<div class="nut-sticky" style="">
   <div class="nut-sticky__box" style="top: 0px; position: fixed; z-index: 99;"></div>
 </div>"
 `;

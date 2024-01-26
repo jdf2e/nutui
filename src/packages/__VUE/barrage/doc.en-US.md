@@ -16,47 +16,7 @@ app.use(Barrage);
 
 ### Basic usage
 
-`Icon's' name 'attribute supports the incoming icon name or picture link.
-:::demo
-
-```vue
-<template>
-  <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
-  <div class="test">
-    <button @click="addDanmu" class="add nut-button--primary">add randomly</button>
-  </div>
-</template>
-<script setup>
-import { ref } from 'vue';
-const danmu = ref();
-let list = ref(['aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff']);
-function addDanmu() {
-  let n = Math.random();
-  danmu.value.add('randomly——' + String(n).substr(2, 10));
-}
-</script>
-```
-
-:::
-
-### slot usage
-
-> Using the slot requires putting the scrolling content inside the html tag, the applet environment is not currently supported
-
-:::demo
-
-```vue
-<template>
-  <nut-barrage>
-    <span>aaa</span>
-    <span>bbb</span>
-    <span>ccc</span>
-    <span>ddd</span>
-  </nut-barrage>
-</template>
-```
-
-:::
+> demo: barrage basic
 
 ## API
 

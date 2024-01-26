@@ -10,8 +10,8 @@ describe('function notify', () => {
     });
     const textNotify = document.querySelector('.nut-notify') as HTMLElement;
     expect(textNotify.innerHTML).toContain('基础用法');
-    expect(textNotify.style.color).toEqual('rgb(173, 0, 0)');
-    expect(textNotify.style.background).toEqual('rgb(255, 225, 225)');
+    expect(textNotify.style.color).toEqual('#ad0000');
+    expect(textNotify.style.background).toEqual('#ffe1e1');
     await sleep(50);
     expect(textNotify.style.display).toEqual('');
   });

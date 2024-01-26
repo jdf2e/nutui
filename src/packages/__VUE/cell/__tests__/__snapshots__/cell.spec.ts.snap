@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`prop desc-text-align left 1`] = `
-"<view class="nut-cell" style="border-radius: px;">
+"<view class="nut-cell" style="">
   <!--v-if-->
   <!--v-if-->
   <view class="nut-cell__value nut-cell__value--alone" style="text-align: left;">张三</view>
@@ -10,7 +10,7 @@ exports[`prop desc-text-align left 1`] = `
 `;
 
 exports[`prop isLink  1`] = `
-"<view class="nut-cell nut-cell--clickable" style="border-radius: px;">
+"<view class="nut-cell nut-cell--clickable" style="">
   <!--v-if-->
   <!--v-if-->
   <!--v-if--><svg class="nut-cell__link nut-icon nut-icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
@@ -20,7 +20,7 @@ exports[`prop isLink  1`] = `
 `;
 
 exports[`prop title desc subtitle 1`] = `
-"<view class="nut-cell" style="border-radius: px;">
+"<view class="nut-cell" style="">
   <!--v-if-->
   <view class="nut-cell__title">
     <view class="title">标题1</view>
@@ -31,10 +31,10 @@ exports[`prop title desc subtitle 1`] = `
 </view>"
 `;
 
-exports[`slot default test 1`] = `"<view class="nut-cell" style="border-radius: px;">Custom Content</view>"`;
+exports[`slot default test 1`] = `"<view class="nut-cell" style="">Custom Content</view>"`;
 
 exports[`slot link、icon test 1`] = `
-"<view class="nut-cell" style="border-radius: px;">
+"<view class="nut-cell" style="">
   <view class="nut-cell__icon">Custom Icon</view>
   <view class="nut-cell__title">
     <view class="title">标题1</view>

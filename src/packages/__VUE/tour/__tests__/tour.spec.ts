@@ -83,7 +83,7 @@ test('custom style', async () => {
   expect(arrow.html()).toContain('border-bottom-color: #f00');
 
   const popover = wrapper.find('.nut-popover-content');
-  expect(popover.html()).toContain('background: rgb(255, 0, 0)');
+  expect(popover.html()).toContain('background: #f00');
 });
 
 test('custom offset', async () => {
