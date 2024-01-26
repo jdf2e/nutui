@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-avatar-cropper" :data-edit-text="editText">
+  <div class="nut-avatar-cropper" :data-edit-text="editText" :class="{ round: shape === 'round' }">
     <slot></slot>
     <input
       ref="inputImageRef"
