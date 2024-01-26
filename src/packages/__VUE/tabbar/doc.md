@@ -21,17 +21,17 @@ app.use(TabbarItem);
 
 ### 通过名称匹配
 
-> demo: tabbar by-name
+> demo: tabbar name
 
 ### 自定义图标
 
 通过 icon 插槽自定义图标，可以通过 slot-scope 判断标签是否选中
 
-> demo: tabbar custom-icon
+> demo: tabbar icon
 
 ### 自定义选中
 
-> demo: tabbar custom-check
+> demo: tabbar check
 
 ### 徽标提示
 
@@ -39,19 +39,19 @@ app.use(TabbarItem);
 
 内部使用了 bardge 徽标组件，可将其属性直接作用于 TabbarItem props。
 
-> demo: tabbar show-badge
+> demo: tabbar badge
 
 ### 自定义颜色
 
-> demo: tabbar custom-color
+> demo: tabbar color
 
 ### 自定义数量
 
-> demo: tabbar custom-quantity
+> demo: tabbar quantity
 
 ### 固定底部，可自由跳转
 
-> demo: tabbar fixed-bottom
+> demo: tabbar fixed
 
 ## API
 

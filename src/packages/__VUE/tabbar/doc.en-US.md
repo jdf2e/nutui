@@ -21,17 +21,17 @@ app.use(TabbarItem);
 
 ### Match by name
 
-> demo: tabbar by-name
+> demo: tabbar name
 
 ### Custom Icon
 
 Use icon slot to custom icon.
 
-> demo: tabbar custom-icon
+> demo: tabbar icon
 
 ### Custom Check
 
-> demo: tabbar custom-check
+> demo: tabbar check
 
 ### Show Badge
 
@@ -39,19 +39,19 @@ After setting the dot property, a small red dot appears in the upper right corne
 
 The bardge logo component is used internally and its properties can be applied directly to the TabbarItem props.
 
-> demo: tabbar show-badge
+> demo: tabbar badge
 
 ### Custom Color
 
-> demo: tabbar custom-color
+> demo: tabbar color
 
 ### Custom Quantity
 
-> demo: tabbar custom-quantity
+> demo: tabbar quantity
 
 ### Fixed Bottom
 
-> demo: tabbar fixed-bottom
+> demo: tabbar fixed
 
 ## API
 

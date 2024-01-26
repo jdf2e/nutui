@@ -3,59 +3,59 @@
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
-    <h2>{{ t('byName') }}</h2>
-    <ByName />
+    <h2>{{ t('name') }}</h2>
+    <Name />
 
-    <h2>{{ t('customIcon') }}</h2>
-    <CustomIcon />
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
 
-    <h2>{{ t('customCheck') }}</h2>
-    <CustomCheck />
+    <h2>{{ t('check') }}</h2>
+    <Check />
 
-    <h2>{{ t('showBadge') }}</h2>
-    <ShowBadge />
+    <h2>{{ t('badge') }}</h2>
+    <Badge />
 
-    <h2>{{ t('customColor') }}</h2>
-    <CustomColor />
+    <h2>{{ t('color') }}</h2>
+    <Color />
 
-    <h2>{{ t('customQuantity') }}</h2>
-    <CustomQuantity />
+    <h2>{{ t('quantity') }}</h2>
+    <Quantity />
 
-    <h2>{{ t('fixedBottom') }}</h2>
-    <FixedBottom />
+    <h2>{{ t('fixed') }}</h2>
+    <Fixed />
   </Demo>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useTranslate } from '../../../utils';
 import Basic from './basic.vue';
-import ByName from './by-name.vue';
-import CustomIcon from './custom-icon.vue';
-import CustomCheck from './custom-check.vue';
-import ShowBadge from './show-badge.vue';
-import CustomColor from './custom-color.vue';
-import CustomQuantity from './custom-quantity.vue';
-import FixedBottom from './fixed-bottom.vue';
+import Name from './name.vue';
+import IconDemo from './icon.vue';
+import Check from './check.vue';
+import Badge from './badge.vue';
+import Color from './color.vue';
+import Quantity from './quantity.vue';
+import Fixed from './fixed.vue';
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
-    byName: '通过名称匹配',
-    customIcon: '自定义图标',
-    customCheck: '自定义选中',
-    showBadge: '徽标提示',
-    customColor: '自定义颜色',
-    customQuantity: '自定义数量',
-    fixedBottom: '固定底部'
+    name: '通过名称匹配',
+    icon: '自定义图标',
+    check: '自定义选中',
+    badge: '徽标提示',
+    color: '自定义颜色',
+    quantity: '自定义数量',
+    fixed: '固定底部'
   },
   'en-US': {
     basic: 'Basic Usage',
-    byName: 'Match by name',
-    customIcon: 'Custom Icon',
-    customCheck: 'Custom Check',
-    showBadge: 'Show Badge',
-    customColor: 'Custom Color',
-    customQuantity: 'Custom Quantity',
-    fixedBottom: 'Fixed Bottom'
+    name: 'Match by name',
+    icon: 'Custom Icon',
+    check: 'Custom Check',
+    badge: 'Show Badge',
+    color: 'Custom Color',
+    quantity: 'Custom Quantity',
+    fixed: 'Fixed Bottom'
   }
 });
 </script>
