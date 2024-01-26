@@ -24,23 +24,23 @@ app.use(Cascader);
 
 可通过`textKey`、`valueKey`、`childrenKey`指定属性名。
 
-> demo: cascader custom-attribute-name dentry
+> demo: cascader custom dentry
 
 ### 动态加载
 
 使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`lazyLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`lazyLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
 
-> demo: cascader async-loading dentry
+> demo: cascader lazy dentry
 
 ### 部分数据动态加载
 
-> demo: cascader async-loading-partial dentry
+> demo: cascader partial dentry
 
 ### 自动转换
 
 如果你的数据为可转换为树形结构的扁平结构时，可以通过`convertConfig`告诉组件需要进行自动转换，`convertConfig`接受 4 个参数，`topId`为顶层节点的父级 id，`idKey`为节点唯一 id，`pidKey`为指向父节点 id 的属性名，存在`sortKey`将根据指定字段调用 Array.prototype.sort()进行同层排序。
 
-> demo: cascader automatic-transfer dentry
+> demo: cascader convert dentry
 
 ## API
 

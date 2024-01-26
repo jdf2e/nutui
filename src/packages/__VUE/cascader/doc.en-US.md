@@ -24,23 +24,23 @@ Pass in the `options` list.
 
 use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 
-> demo: cascader custom-attribute-name
+> demo: cascader custom
 
 ### Async loading
 
 Use `lazy` to identify whether data needs to be obtained dynamically. At this time, not transmitting `options` means that all data needs to be loaded through `lazyload` . The first loading is distinguished by the `root` attribute. When a non leaf node is encountered, the `lazyload` method will be called. The parameters are the current node and the `resolve` method. Note that the `resolve` method must be called. If it is not transmitted to a child node, it will be treated as a leaf node.
 
-> demo: cascader async-loading
+> demo: cascader lazy
 
 ### Async loading of partial data
 
-> demo: cascader async-loading-partial
+> demo: cascader partial
 
 ### Automatic data conversion
 
 If your data is a flat structure that can be converted into a tree structure, you can tell the component that automatic conversion is required through `convertConfig`, ` convertConfig` accepts four parameters, `topid` is the parent ID of the top-level node, `idkey` is the unique ID of the node, `pidkey` is the attribute name pointing to the parent node ID, and if there is a `sortkey`, `Array.prototype.sort()` to sort at the same level.
 
-> demo: cascader automatic-transfer
+> demo: cascader convert
 
 ## API
 
