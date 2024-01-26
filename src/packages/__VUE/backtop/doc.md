@@ -16,73 +16,15 @@ app.use(Backtop);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <div class="demo" id="elId">
-    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
-    <nut-backtop @click="handleClick"></nut-backtop>
-  </div>
-</template>
-<script setup>
-const handleClick = () => {
-  console.log('back to top');
-};
-</script>
-<style>
-.test {
-  padding: 12px 0 12px 20px;
-  border-top: 1px solid #eee;
-}
-</style>
-```
-
-:::
+> demo: backtop basic
 
 ### 设置出现位置
 
-:::demo
-
-```vue
-<template>
-  <div class="demo" id="elId">
-    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
-    <nut-backtop :distance="200"></nut-backtop>
-  </div>
-</template>
-
-<style>
-.test {
-  padding: 12px 0 12px 20px;
-  border-top: 1px solid #eee;
-}
-</style>
-```
-
-:::
+> demo: backtop distance
 
 ### 自定义样式
 
-:::demo
-
-```vue
-<template>
-  <div class="demo" id="elId">
-    <div v-for="(item, index) in 24" class="test">{{ index }}</div>
-    <nut-backtop :distance="100" :bottom="90"><div>无</div></nut-backtop>
-  </div>
-</template>
-
-<style>
-.test {
-  padding: 12px 0 12px 20px;
-  border-top: 1px solid #eee;
-}
-</style>
-```
-
-:::
+> demo: backtop custom
 
 ### API
 
