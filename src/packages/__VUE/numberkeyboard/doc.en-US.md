@@ -14,193 +14,29 @@ const app = createApp();
 app.use(NumberKeyboard);
 ```
 
-### Default Keyboard
+### Basic Usage
 
-For online debugging, please change the browser to mobile mode
-:::demo
+> demo: numberkeyboard basic
 
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="Default Keyboard"></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`enter：${number}`);
-}
-function onDelete() {
-  showToast.text('delete');
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
+### RightColumn
 
-:::
+> demo: numberkeyboard right
 
-### Keyboard With Sidebar
+### Random
 
-:::demo
+> demo: numberkeyboard random
 
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="Keyboard With Sidebar"></nut-cell>
-  <nut-number-keyboard
-    type="rightColumn"
-    v-model:visible="visible"
-    :custom-key="customKey"
-    confirm-text="pay"
-    @input="input"
-    @close="close"
-  >
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`enter${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
+### Title
 
-:::
+> demo: numberkeyboard title
 
-### Random Key Order
+### Idcard
 
-:::demo
+> demo: numberkeyboard idcard
 
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="Random Key Order"></nut-cell>
-  <nut-number-keyboard
-    type="rightColumn"
-    v-model:visible="visible"
-    :randomKeys="true"
-    :custom-key="customKey"
-    @input="input"
-    @close="close"
-  >
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`enter：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
+### v-model
 
-:::
-
-### Show Keyboard With Title
-
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" title="Show Keyboard With Title"></nut-cell>
-  <nut-number-keyboard title="title" v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`enter：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
-
-### Show IdNumber Keyboard
-
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" title="IdNumber Keyboard"></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['X']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`enter：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
-
-### Bind Value
-
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" desc-text-align="left" @click="showKeyBoard" :desc="value" title="Bind Value"></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" v-model:value="value" maxlength="6" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const visible = ref(false);
-const value = ref('');
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard value
 
 ## API
 

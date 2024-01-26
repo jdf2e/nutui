@@ -1,106 +1,37 @@
 <template>
   <Demo>
-    <nut-cell title="基础用法" is-link @click="state.visible1 = true"></nut-cell>
-    <nut-short-password
-      v-model="state.value1"
-      v-model:visible="state.visible1"
-      @focus="state.showKeyboard1 = !state.showKeyboard1"
-      @close="state.showKeyboard1 = false"
-    >
-    </nut-short-password>
-    <nut-number-keyboard v-model="state.value1" v-model:visible="state.showKeyboard1"> </nut-number-keyboard>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <nut-cell
-      title="自定义密码长度4"
-      is-link
-      @click="
-        state.visible2 = true;
-        state.length = 4;
-      "
-    ></nut-cell>
-    <nut-short-password
-      v-model="state.value2"
-      v-model:visible="state.visible2"
-      :length="state.length"
-      @focus="state.showKeyboard2 = !state.showKeyboard2"
-      @close="state.showKeyboard2 = false"
-      @complete="methods.complete"
-    >
-    </nut-short-password>
-    <nut-number-keyboard v-model="state.value2" v-model:visible="state.showKeyboard2" maxlength="4">
-    </nut-number-keyboard>
-    <nut-cell
-      title="忘记密码提示语事件回调"
-      is-link
-      @click="
-        state.visible3 = true;
-        state.length = 6;
-        state.errorMsg = '';
-      "
-    ></nut-cell>
-    <nut-short-password
-      v-model="state.value3"
-      v-model:visible="state.visible3"
-      @focus="state.showKeyboard3 = !state.showKeyboard3"
-      @close="state.showKeyboard3 = false"
-      @tips="methods.onTips"
-    >
-    </nut-short-password>
-    <nut-number-keyboard v-model="state.value3" v-model:visible="state.showKeyboard3"> </nut-number-keyboard>
+    <h2>{{ t('length') }}</h2>
+    <Length />
 
-    <nut-cell
-      title="错误提示语"
-      is-link
-      @click="
-        state.visible4 = true;
-        state.length = 6;
-        state.errorMsg = '请输入正确密码';
-      "
-    ></nut-cell>
-    <nut-toast v-model:visible="state.show" msg="忘记密码" type="text" :cover="state.cover" />
-    <nut-short-password
-      v-model="state.value4"
-      v-model:visible="state.visible4"
-      :error-msg="state.errorMsg"
-      @focus="state.showKeyboard4 = !state.showKeyboard4"
-      @close="state.showKeyboard4 = false"
-      @tips="methods.onTips"
-    >
-    </nut-short-password>
-    <nut-number-keyboard v-model="state.value4" v-model:visible="state.showKeyboard4"> </nut-number-keyboard>
+    <h2>{{ t('forget') }}</h2>
+    <Forget />
+
+    <h2>{{ t('error') }}</h2>
+    <Error />
   </Demo>
 </template>
-
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Length from './length.vue';
+import Forget from './forget.vue';
+import Error from './error.vue';
 
-const state = reactive({
-  visible1: false,
-  visible2: false,
-  visible3: false,
-  visible4: false,
-  showKeyboard1: false,
-  showKeyboard2: false,
-  showKeyboard3: false,
-  showKeyboard4: false,
-  value1: '',
-  value2: '',
-  value3: '',
-  value4: '',
-  errorMsg: '',
-  length: 6,
-  show: false,
-  cover: false
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    length: '自定义密码长度',
+    forget: '忘记密码',
+    error: '错误提示语'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    length: 'Custom Password Length',
+    forget: 'Forget Password',
+    error: 'Error Message'
+  }
 });
-const methods = {
-  complete(value) {
-    console.log(value);
-  },
-  onTips() {
-    state.show = true;
-    state.cover = false;
-  },
-  close() {},
-  cancel() {}
-};
 </script>

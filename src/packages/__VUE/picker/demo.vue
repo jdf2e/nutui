@@ -70,7 +70,7 @@ import { ref, onMounted, computed } from 'vue';
 import { PickerOption } from './types';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
-import { showToast } from '@/packages/nutui.vue';
+import { showToast } from '@nutui/nutui';
 
 const translate = useTranslate(Internation);
 

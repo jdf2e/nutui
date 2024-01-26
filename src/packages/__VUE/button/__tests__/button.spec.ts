@@ -69,6 +69,6 @@ test('props color & plain', async () => {
     plain: true
   });
   await nextTick();
-  expect(btn.attributes('style')).toContain('background: rgb(255, 255, 255)');
+  expect(btn.attributes('style')).toContain('background: #fff');
   expect(btn.attributes('style')).toContain('border-color: blue');
 });

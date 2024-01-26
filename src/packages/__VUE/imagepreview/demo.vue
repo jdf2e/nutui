@@ -35,7 +35,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showImagePreview } from '@/packages/nutui.vue';
+import { showImagePreview } from '@nutui/nutui';
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',

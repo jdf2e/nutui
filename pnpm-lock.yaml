@@ -72,6 +72,9 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
+      happy-dom:
+        specifier: ^13.3.1
+        version: 13.3.1
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -107,7 +110,7 @@ importers:
         version: 7.0.11(vite@5.0.12)
       vitest:
         specifier: ^1.2.1
-        version: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(sass@1.70.0)
+        version: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(happy-dom@13.3.1)(sass@1.70.0)
       vitest-canvas-mock:
         specifier: ^0.3.3
         version: 0.3.3(vitest@1.2.1)
@@ -3963,7 +3966,7 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(sass@1.70.0)
+      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(happy-dom@13.3.1)(sass@1.70.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4010,7 +4013,7 @@ packages:
       pathe: 1.1.2
       picocolors: 1.0.0
       sirv: 2.0.4
-      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(sass@1.70.0)
+      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(happy-dom@13.3.1)(sass@1.70.0)
     dev: true
 
   /@vitest/utils@1.2.1:
@@ -8642,6 +8645,15 @@ packages:
 
   /handle-thing@2.0.1:
     resolution: {integrity: sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==}
+    dev: true
+
+  /happy-dom@13.3.1:
+    resolution: {integrity: sha512-KIlztn+nRWstprUyI3Wzy1UJrg72uOaoo4SaBLNrV6xrn2Rq86eQruKOL7ZyDhkfou3nEZX6rgRYtvsqwMInvQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      entities: 4.5.0
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
     dev: true
 
   /har-schema@2.0.0:
@@ -14868,10 +14880,10 @@ packages:
       vitest: '*'
     dependencies:
       jest-canvas-mock: 2.5.2
-      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(sass@1.70.0)
+      vitest: 1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(happy-dom@13.3.1)(sass@1.70.0)
     dev: true
 
-  /vitest@1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(sass@1.70.0):
+  /vitest@1.2.1(@types/node@18.19.8)(@vitest/ui@1.2.1)(happy-dom@13.3.1)(sass@1.70.0):
     resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -14908,6 +14920,7 @@ packages:
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
+      happy-dom: 13.3.1
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.2
