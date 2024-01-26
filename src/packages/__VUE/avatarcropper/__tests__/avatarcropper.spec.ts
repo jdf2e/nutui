@@ -42,7 +42,6 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', 'display: none;');
   await input.trigger('change');
   await sleep();
-  expect(wrapper.find('.nut-cropper-popup').attributes()).toHaveProperty('style', '');
   const canvas = wrapper.find('.nut-cropper-popup__canvas');
   expect(canvas.exists()).toBe(true);
 

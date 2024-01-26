@@ -65,7 +65,7 @@ test('should render sure choose when use choose-tag-value', async () => {
     }
   });
   const item = wrapper.findAll<HTMLElement>('.nut-action-sheet__item');
-  expect(item[0].element.style.color).toContain('238, 10, 36');
+  expect(item[0].element.style.color).toContain('#ee0a24');
 });
 
 test('should render sure color when use color', async () => {

@@ -1,203 +1,56 @@
 <template>
   <Demo>
-    <h2>基础用法</h2>
-    <view class="demo-box">
-      <nut-swiper
-        :init-page="state.page"
-        :pagination-visible="true"
-        pagination-color="#426543"
-        pagination-unselected-color="#808080"
-        auto-play="2000"
-      >
-        <nut-swiper-item v-for="item in state.list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
-    <h2>异步加载(3s)</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in state.list1" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
-    <h2>动态加载</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
-        <nut-swiper-item v-for="item in state.list2" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
-    <h2>自定义大小</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="state.page2" :loop="false" width="300">
-        <nut-swiper-item v-for="item in state.list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
-    <h2>自定义指示器</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="state.page3" :loop="true" @change="change">
-        <nut-swiper-item v-for="item in state.list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-        <template #page>
-          <div class="page"> {{ state.current }}/4 </div>
-        </template>
-      </nut-swiper>
-    </view>
-    <h2>自定义指示器(异步加载3s)</h2>
-    <view class="demo-box">
-      <nut-swiper :init-page="state.page" :loop="true" auto-play="2000" @change="change1">
-        <nut-swiper-item v-for="item in state.list1" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-        <template #page>
-          <div class="page"> {{ state.current1 }}/4 </div>
-        </template>
-      </nut-swiper>
-    </view>
-    <h2>手动切换</h2>
-    <view class="demo-box">
-      <nut-swiper ref="swiper" :init-page="state.page" :loop="true">
-        <nut-swiper-item v-for="item in state.list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-      <view class="nut-swiper-btns">
-        <span class="nut-swiper-btns__left" @click="handlePrev">
-          <Left></Left>
-        </span>
-        <span class="nut-swiper-btns__left" @click="handleNext">
-          <Right></Right>
-        </span>
-      </view>
-    </view>
-    <h2>垂直方向</h2>
-    <view class="demo-box">
-      <nut-swiper
-        :init-page="state.page4"
-        :loop="true"
-        auto-play="3000"
-        direction="vertical"
-        height="150"
-        :pagination-visible="true"
-        style="height: 150px"
-      >
-        <nut-swiper-item v-for="item in state.list" :key="item">
-          <img :src="item" alt="" />
-        </nut-swiper-item>
-      </nut-swiper>
-    </view>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('async') }}</h2>
+    <Async />
+
+    <h2>{{ t('dynamic') }}</h2>
+    <Dynamic />
+
+    <h2>{{ t('width') }}</h2>
+    <Width />
+
+    <h2>{{ t('page') }}</h2>
+    <Page />
+
+    <h2>{{ t('methods') }}</h2>
+    <Methods />
+
+    <h2>{{ t('vertical') }}</h2>
+    <Vertical />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref, Ref } from 'vue';
-import { Left, Right } from '@nutui/icons-vue-taro';
-const swiper = ref(null) as Ref;
-const state = reactive({
-  page: 2,
-  page2: 0,
-  page3: 0,
-  page4: 0,
-  current: 1,
-  current1: 3,
-  list: [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-  ],
-  list2: [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-  ],
-  list1: [] as string[]
-});
-const change = (index: number) => {
-  state.current = index + 1;
-};
-const change1 = (index: number) => {
-  state.current1 = index + 1;
-};
-const handlePrev = () => {
-  swiper.value.prev();
-};
-const handleNext = () => {
-  swiper.value.next();
-};
-onMounted(() => {
-  setTimeout(() => {
-    state.list1 = state.list.slice();
-    state.list2.splice(1, 1);
-  }, 3000);
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Async from './async.vue';
+import Dynamic from './dynamic.vue';
+import Width from './width.vue';
+import Page from './page.vue';
+import Methods from './methods.vue';
+import Vertical from './vertical.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    async: '异步加载(3s)',
+    dynamic: '动态加载',
+    width: '自定义大小',
+    page: '自定义指示器',
+    methods: '手动切换',
+    vertical: '垂直方向'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    async: 'Asynchronous loading(3s)',
+    dynamic: 'Dynamic loading',
+    width: 'Custom width',
+    page: 'Custom page',
+    methods: 'Manual switching',
+    vertical: 'Vertical direction'
+  }
 });
 </script>
-
-<style lang="scss">
-.demo-box {
-  position: relative;
-  .nut-swiper-item {
-    height: 150px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  &.vertical-center {
-    .nut-swiper-item {
-      height: 300px;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  .nut-swiper-pagination-vertical {
-    i {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      &.active {
-        height: 18px;
-        border-radius: 5px;
-      }
-    }
-  }
-  .page {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 46px;
-    height: 22px;
-    background: rgba(0, 0, 0, 0.33);
-    border-radius: 22px;
-    text-align: center;
-    color: #fff;
-    font-size: 14px;
-  }
-  .nut-swiper-btns {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 30px;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-  }
-}
-</style>

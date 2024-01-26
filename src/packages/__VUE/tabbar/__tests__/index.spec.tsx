@@ -106,7 +106,6 @@ test('should match active tabbar by clcik', async () => {
   expect(tabbarItem[2].element.style.color).toEqual('blue');
 });
 
-// jsdom: Not implemented: navigation
 test('should show sure emitted when click', async () => {
   const tabSwitch = vi.fn();
   const wrapper = mount(() => {

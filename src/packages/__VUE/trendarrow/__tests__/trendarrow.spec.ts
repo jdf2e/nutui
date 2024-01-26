@@ -89,7 +89,7 @@ test('should render sync text color when syncTextColor is true', async () => {
     }
   });
   const span = wrapper.find<HTMLElement>('.nut-trend-arrow-rate');
-  expect(span.element.style.color).toContain('250, 44, 25');
+  expect(span.element.style.color).toContain('#fa2c19');
 });
 
 test('should render text color when textColor used', async () => {
