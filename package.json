@@ -94,7 +94,7 @@
     "eslint": "^8.56.0",
     "fs-extra": "^11.2.0",
     "happy-dom": "^13.3.1",
-    "husky": "^8.0.3",
+    "husky": "^9.0.6",
     "inquirer": "^9.2.12",
     "lzutf8": "^0.6.3",
     "markdown-it": "^14.0.0",

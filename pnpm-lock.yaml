@@ -76,8 +76,8 @@ importers:
         specifier: ^13.3.1
         version: 13.3.1
       husky:
-        specifier: ^8.0.3
-        version: 8.0.3
+        specifier: ^9.0.6
+        version: 9.0.6
       inquirer:
         specifier: ^9.2.12
         version: 9.2.12
@@ -9029,9 +9029,9 @@ packages:
     resolution: {integrity: sha512-E0eIbrFWUhwfXJmsbdjRQFQPrl5pTEoKlz163j1mTqqUnU9PgR4AgB8AIITzuB3vLBdxZXyZ9TDIrwB2OASz4g==}
     dev: true
 
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
+  /husky@9.0.6:
+    resolution: {integrity: sha512-EEuw/rfTiMjOfuL7pGO/i9otg1u36TXxqjIA6D9qxVjd/UXoDOsLor/BSFf5hTK50shwzCU3aVVwdXDp/lp7RA==}
+    engines: {node: '>=18'}
     hasBin: true
     dev: true
 
