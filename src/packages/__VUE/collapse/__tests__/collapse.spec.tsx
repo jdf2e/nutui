@@ -3,7 +3,6 @@ import { nextTick } from 'vue';
 import { Heart } from '@nutui/icons-vue';
 import Collapse from '../index.vue';
 import CollapseItem from '../../collapseitem/index.vue';
-import { sleep } from '@/packages/utils/unit';
 
 test('Collapse: should props active', async () => {
   const wrapper = mount(() => {
@@ -25,7 +24,7 @@ test('Collapse: should props active', async () => {
   expect(items.length).toEqual(2);
   await nextTick();
   expect(wrapper.html()).toMatchSnapshot();
-  await sleep(1000);
+  await nextTick();
   const icons = wrapper.findAll('.nut-collapse-item__title-icon--expanded');
   expect(icons.length).toEqual(2);
 });
@@ -43,11 +42,11 @@ test('Collapse: should props accordion', async () => {
       </Collapse>
     );
   });
-  await sleep(1000);
+  await nextTick();
   expect(wrapper.findAll('.nut-collapse-item__title-icon--expanded')).toHaveLength(1);
   const collapseWrapper = wrapper.findAll('.nut-collapse-item');
   collapseWrapper[0].trigger('click');
-  await sleep(1000);
+  await nextTick();
   expect(wrapper.findAll('.nut-collapse-item__title-icon--expanded')).toHaveLength(1);
 });
 
@@ -109,7 +108,7 @@ test('Collapse: should event change', async () => {
   const collapseWrapper = wrapper.findAll('.nut-collapse-item__title');
   expect(collapseWrapper.length).toBe(2);
   collapseWrapper[1].trigger('click');
-  await sleep(1000);
+  await nextTick();
   expect(wrapper.emitted).toMatchSnapshot();
 });
 
@@ -135,9 +134,7 @@ test('Collapse: v-model is undefined', async () => {
   expect(onChange).toBeCalledWith([222222], 222222, true);
 
   // collapse-item can expand
-  await sleep(1000);
-  const collapseWrappers = wrapper.findAll('.nut-collapse__item-wrapper');
-  expect(collapseWrappers.length).toBe(2);
-  expect(collapseWrappers[0].html()).includes('height: 0px;');
-  expect(collapseWrappers[1].html()).includes('height: auto;');
+  const items = wrapper.findAllComponents(CollapseItem);
+  expect(items[0].vm.expanded).toBe(false);
+  expect(items[1].vm.expanded).toBe(true);
 });
