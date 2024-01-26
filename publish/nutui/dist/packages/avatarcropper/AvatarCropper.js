@@ -38,7 +38,7 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, renderSlot, withDirectives, normalizeClass, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
+import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, renderSlot, withDirectives, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { d as preventDefault, e as clamp } from "../util-4Jkyw4BJ.js";
@@ -395,7 +395,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Retweet = resolveComponent("Retweet");
   return openBlock(), createElementBlock(Fragment, null, [
     createElementVNode("div", {
-      class: "nut-avatar-cropper",
+      class: normalizeClass(["nut-avatar-cropper", { round: _ctx.shape === "round" }]),
       "data-edit-text": _ctx.editText
     }, [
       renderSlot(_ctx.$slots, "default"),
@@ -406,7 +406,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: "nut-avatar-cropper__input",
         onChange: _cache[0] || (_cache[0] = (...args) => _ctx.inputImageChange && _ctx.inputImageChange(...args))
       }, null, 544)
-    ], 8, _hoisted_1),
+    ], 10, _hoisted_1),
     withDirectives(createElementVNode("div", _hoisted_2, [
       createElementVNode("canvas", _hoisted_3, null, 512),
       createElementVNode("div", {
