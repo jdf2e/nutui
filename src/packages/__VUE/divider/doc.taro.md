@@ -65,7 +65,7 @@ app.use(Divider);
 | --- | --- |
 | default | 内容，仅在 `direction` 为 `horizontal` 时生效 |
 
-### 类型定义
+### 类型定义 v4.2.9
 
 组件导出以下类型定义：
 

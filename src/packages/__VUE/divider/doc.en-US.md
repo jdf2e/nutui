@@ -65,7 +65,7 @@ User can custom divider style with style attribute.
 | --- | --- |
 | default | Default slot, when `direction` = `horizontal` |
 
-### Types
+### Types v4.2.9
 
 The component exports the following type definitions:
 

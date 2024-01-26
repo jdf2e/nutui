@@ -92,7 +92,7 @@ The color of the button can be customized through the color property.
 | --- | --- | --- |
 | click | Emitted when component is clicked | `event: MouseEvent` |
 
-### Types
+### Types v4.2.9
 
 The component exports the following type definitions:
 
