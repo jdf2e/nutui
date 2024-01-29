@@ -9,6 +9,9 @@
     <h2>{{ t('popup') }}</h2>
     <Popup />
 
+    <h2>{{ t('threeD') }}</h2>
+    <ThreeD />
+
     <h2>{{ t('columns') }}</h2>
     <Columns />
 
@@ -23,10 +26,11 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Vmodel from './vmodel.vue';
 import Popup from './popup.vue';
+import ThreeD from './three-d.vue';
 import Columns from './columns.vue';
 import Cascader from './cascader.vue';
 import Async from './async.vue';
@@ -37,6 +41,7 @@ const t = useTranslate({
     basic: '基础用法',
     vmodel: 'v-model',
     popup: '搭配 Popup 使用',
+    threeD: '3D 展示',
     columns: '多列样式',
     cascader: '多级联动',
     async: '异步获取',
@@ -46,6 +51,7 @@ const t = useTranslate({
     basic: 'Basic Usage',
     vmodel: 'v-model',
     popup: 'With Popup',
+    threeD: '3D',
     columns: 'Multiple Columns',
     cascader: 'Cascader',
     async: 'Async',

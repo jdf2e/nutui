@@ -16,330 +16,43 @@ app.use(Picker);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-picker :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const columns = ref([
-  { text: '南京', value: 'NanJing' },
-  { text: '无锡', value: 'WuXi' },
-  { text: '海北', value: 'ZangZu' },
-  { text: '北京', value: 'BeiJing' },
-  { text: '连云港', value: 'LianYunGang' },
-  { text: '浙江', value: 'ZheJiang' },
-  { text: '江苏', value: 'JiangSu' }
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
-
-:::
-
-### 搭配 Popup 使用
-
-Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
-
-:::demo
-
-```vue
-<template>
-  <nut-cell title="请选择城市" :desc="desc" @click="show = true"></nut-cell>
-  <nut-popup position="bottom" v-model:visible="show">
-    <nut-picker v-model="value" :columns="columns" title="请选择城市" @confirm="confirm" @cancel="show = false">
-      <nut-button block type="primary">底部按钮</nut-button>
-    </nut-picker>
-  </nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const desc = ref();
-const value = ref();
-const columns = ref([
-  { text: '南京', value: 'NanJing' },
-  { text: '无锡', value: 'WuXi' },
-  { text: '海北', value: 'ZangZu' },
-  { text: '北京', value: 'BeiJing' },
-  { text: '连云港', value: 'LianYunGang' },
-  { text: '浙江', value: 'ZheJiang' },
-  { text: '江苏', value: 'JiangSu' }
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  desc.value = selectedOptions.map((val) => val.text).join(',');
-  show.value = false;
-};
-</script>
-```
-
-:::
+> demo: picker basic dentry
 
 ### 默认选中项
 
 通过设置 `v-model` 实现默认选中项，`v-model` 是一个包含每项配置 value 值的数组。
 
-:::demo
+> demo: picker vmodel dentry
 
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"> </nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(['ZheJiang']);
-const columns = ref([
-  { text: '南京', value: 'NanJing' },
-  { text: '无锡', value: 'WuXi' },
-  { text: '海北', value: 'ZangZu' },
-  { text: '北京', value: 'BeiJing' },
-  { text: '连云港', value: 'LianYunGang' },
-  { text: '浙江', value: 'ZheJiang' },
-  { text: '江苏', value: 'JiangSu' }
-]);
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
+### 搭配 Popup 使用
 
-:::
+Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
-### 3D 展示
-
-属性 `three-dimensional` 可用于开启 3D 滚动效果。开启后可能会影响性能。
-
-:::demo
-
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" title="城市选择" :threeDimensional="false" @confirm="confirm">
-  </nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(['ZheJiang']);
-const columns = ref([
-  { text: '南京', value: 'NanJing' },
-  { text: '无锡', value: 'WuXi' },
-  { text: '海北', value: 'ZangZu' },
-  { text: '北京', value: 'BeiJing' },
-  { text: '连云港', value: 'LianYunGang' },
-  { text: '浙江', value: 'ZheJiang' },
-  { text: '江苏', value: 'JiangSu' }
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
-
-:::
+> demo: picker popup dentry
 
 ### 多列展示
 
 `columns` 属性可以通过二维数组的形式配置多列选择。
 
-:::demo
-
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm" @change="change"> </nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(['Wednesday', 'Afternoon']);
-const columns = ref([
-  [
-    { text: '周一', value: 'Monday' },
-    { text: '周二', value: 'Tuesday' },
-    { text: '周三', value: 'Wednesday' },
-    { text: '周四', value: 'Thursday' },
-    { text: '周五', value: 'Friday' }
-  ],
-  [
-    { text: '上午', value: 'Morning' },
-    { text: '下午', value: 'Afternoon' },
-    { text: '晚上', value: 'Evening' }
-  ]
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-const change = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue);
-};
-</script>
-```
-
-:::
+> demo: picker columns dentry
 
 ### 多级联动
 
 使用 `columns` 属性的 `children` 字段可以实现选项级联的效果。
 
-:::demo
-
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref(['FuJian', 'FuZhou', 'TaiJiang']);
-const columns = ref([
-  {
-    text: '浙江',
-    value: 'ZheJiang',
-    children: [
-      {
-        text: '杭州',
-        value: 'HangZhou',
-        children: [
-          { text: '西湖区', value: 'XiHu' },
-          { text: '余杭区', value: 'YuHang' }
-        ]
-      },
-      {
-        text: '温州',
-        value: 'WenZhou',
-        children: [
-          { text: '鹿城区', value: 'LuCheng' },
-          { text: '瓯海区', value: 'OuHai' }
-        ]
-      }
-    ]
-  },
-  {
-    text: '福建',
-    value: 'FuJian',
-    children: [
-      {
-        text: '福州',
-        value: 'FuZhou',
-        children: [
-          { text: '鼓楼区', value: 'GuLou' },
-          { text: '台江区', value: 'TaiJiang' }
-        ]
-      },
-      {
-        text: '厦门',
-        value: 'XiaMen',
-        children: [
-          { text: '思明区', value: 'SiMing' },
-          { text: '海沧区', value: 'HaiCang' }
-        ]
-      }
-    ]
-  }
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
-
-:::
+> demo: picker cascader dentry
 
 ### 异步获取
 
 在实际开发中，大部分情况 `Columns` 属性的数据是通过异步方式获取的。
 
-:::demo
-
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
-</template>
-<script lang="ts">
-import { ref, onMounted } from 'vue';
-const columns = ref([]);
-const value = ref<string[]>([]);
-onMounted(() => {
-  // 用于模拟接口请求
-  setTimeout(() => {
-    columns.value = [
-      { text: '南京', value: 'NanJing' },
-      { text: '无锡', value: 'WuXi' },
-      { text: '海北', value: 'ZangZu' },
-      { text: '北京', value: 'BeiJing' },
-      { text: '连云港', value: 'LianYunGang' },
-      { text: '浙江', value: 'ZheJiang' },
-      { text: '江苏', value: 'JiangSu' }
-    ];
-
-    value.value = ['ZangZu'];
-  }, 500);
-});
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
-
-:::
+> demo: picker async dentry
 
 ### 自定义字段名 v4.1.4
 
 可以使用 `field-names` 属性自定义 `columns` 中数据的格式。
 
-:::demo
-
-```vue
-<template>
-  <nut-picker v-model="value" :columns="columns" :field-names="fieldNames" title="城市选择" @confirm="confirm">
-  </nut-picker>
-</template>
-<script setup>
-import { ref } from 'vue';
-const value = ref([]);
-const fieldNames = ref({
-  text: 'name',
-  value: 'code',
-  children: 'list'
-});
-const columns = ref([
-  {
-    name: '浙江',
-    code: 'ZheJiang',
-    list: [
-      {
-        name: '杭州',
-        code: 'HangZhou',
-        list: [
-          { name: '西湖', code: 'XiHu' },
-          { name: '余杭区', code: 'YuHang' }
-        ]
-      },
-      {
-        name: '温州',
-        code: 'WenZhou',
-        list: [
-          { name: '鹿城区', code: 'LuCheng' },
-          { name: '瓯海区', code: 'OuHai' }
-        ]
-      }
-    ]
-  }
-]);
-
-const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedOptions.map((val) => val.text).join(','));
-};
-</script>
-```
-
-:::
+> demo: picker field dentry
 
 ## API
 
@@ -353,7 +66,6 @@ const confirm = ({ selectedValue, selectedOptions }) => {
 | title | 设置标题 | string | - |
 | cancel-text | 取消按钮文案 | string | `取消` |
 | ok-text | 确定按钮文案 | string | `确定` |
-| three-dimensional | 是否开启 3D 效果 | boolean | `false` |
 | swipe-duration | 惯性滚动时长 | number \| string | `1000` |
 | visible-option-num | 可见的选项个数 | number \| string | `7` |
 | option-height | 选项高度 | number \| string | `36` |
