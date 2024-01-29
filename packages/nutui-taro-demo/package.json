@@ -19,7 +19,7 @@
   ],
   "author": "",
   "dependencies": {
-    "@babel/runtime": "^7.23.8",
+    "@babel/runtime": "^7.23.9",
     "@nutui/icons-vue-taro": "^0.0.9",
     "@tarojs/components": "3.6.21",
     "@tarojs/helper": "3.6.21",
@@ -38,7 +38,7 @@
     "vue": "^3.4.15"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.7",
+    "@babel/core": "^7.23.9",
     "@tarojs/cli": "3.6.21",
     "@tarojs/webpack5-runner": "3.6.21",
     "@types/webpack-env": "^1.18.4",
@@ -51,6 +51,6 @@
     "stylelint": "^16.2.0",
     "typescript": "^5.3.3",
     "vue-loader": "^17.4.2",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.0"
   }
 }
