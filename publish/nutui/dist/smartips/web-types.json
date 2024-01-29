@@ -6696,7 +6696,7 @@
             },
             {
               "name": "location",
-              "default": "'bottom'",
+              "default": "`bottom`",
               "description": "弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/#/zh-CN/component/popover)",
               "value": {
                 "type": "string",
@@ -6705,7 +6705,7 @@
             },
             {
               "name": "next-step-Txt",
-              "default": "`'下一步'`",
+              "default": "`下一步`",
               "description": "下一步按钮文案",
               "value": {
                 "type": "string",
@@ -6714,7 +6714,7 @@
             },
             {
               "name": "prev-step-Txt",
-              "default": "`'上一步' `",
+              "default": "`上一步`",
               "description": "上一步按钮文案",
               "value": {
                 "type": "string",
@@ -6741,7 +6741,7 @@
             },
             {
               "name": "bg-color",
-              "default": "`''`",
+              "default": "-",
               "description": "自定义背景色",
               "value": {
                 "type": "boolean",
