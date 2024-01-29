@@ -3928,15 +3928,6 @@
               }
             },
             {
-              "name": "three-dimensional",
-              "default": "`false`",
-              "description": "是否开启 3D 效果",
-              "value": {
-                "type": "boolean",
-                "kind": "expression"
-              }
-            },
-            {
               "name": "swipe-duration",
               "default": "`1000`",
               "description": "惯性滚动时长",
