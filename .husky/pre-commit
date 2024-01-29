@@ -1,5 +1,2 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 node ./scripts/verifymail.js
 npx --no-install nano-staged

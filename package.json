@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install && node scripts/generate-nutui.cjs && node scripts/generate-nutui-taro-vue.cjs && node ./scripts/generate-taro-route.cjs",
+    "prepare": "husky && node scripts/generate-nutui.cjs && node scripts/generate-nutui-taro-vue.cjs && node ./scripts/generate-taro-route.cjs",
     "dev": "vite --open --force",
     "dev:h5": "pnpm --dir ./packages/nutui-taro-demo dev h5",
     "dev:weapp": "pnpm --dir ./packages/nutui-taro-demo dev weapp",
