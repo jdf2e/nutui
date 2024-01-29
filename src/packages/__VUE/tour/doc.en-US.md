@@ -18,265 +18,29 @@ app.use(Tour);
 
 At each step, set the id of the target element, and the Tour component looks up the set id value
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="try click">
-    <template #link>
-      <nut-switch id="target7" v-model="state.switchValue" @click="state.showTour3 = true" />
-    </template>
-  </nut-cell>
-  <nut-tour v-model="state.showTour3" :steps="state.steps3" type="tile" location="bottom-end"></nut-tour>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  switchValue: false,
-  showTour3: false,
-  steps3: [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target7'
-    }
-  ]
-});
-</script>
-<style>
-.nut-tour-content-inner {
-  white-space: nowrap;
-}
-</style>
-```
-
-:::
+> demo: tour basic
 
 ### Custom Style
 
-Through 'maskWidth', 'maskHeight', 'bgColor' can be configured hollow mask size, bubble shell layer background color
+Through 'mask-width', 'mask-height', 'bg-color' can be configured hollow mask size, bubble shell layer background color
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="try click">
-    <template #link>
-      <nut-switch id="target5" v-model="state.switchValue" @click="state.showTour1 = true" />
-    </template>
-  </nut-cell>
-
-  <nut-tour
-    class="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-    v-model="state.showTour1"
-    :steps="state.steps1"
-    location="bottom-end"
-    type="tile"
-    bgColor="#f00"
-    theme="dark"
-    :offset="[0, 0]"
-    maskWidth="50"
-    maskHeight="50"
-  ></nut-tour>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  switchValue: false,
-  showTour1: false,
-  steps1: [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target5'
-    }
-  ]
-});
-</script>
-<style>
-.nut-tour-content-inner {
-  white-space: nowrap;
-}
-</style>
-```
-
-:::
+> demo: tour custom
 
 ### Custom Offset
 
 'offset' sets the distance of the hollow mask relative to the target element, 'popoverOffset' sets the offset of the bubble layer
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="点击试试" @click="state.showTour2 = true">
-    <template #link>
-      <div class="tour-demo-img" v-for="i in [1, 2, 3]">
-        <img
-          style="width:20px;margin-right:10px"
-          id="target6"
-          src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-        />
-      </div>
-    </template>
-  </nut-cell>
-
-  <nut-tour
-    v-model="state.showTour2"
-    :steps="state.steps2"
-    type="tile"
-    bgColor="#f00"
-    theme="dark"
-    location="bottom-end"
-    :offset="[8, 8]"
-  ></nut-tour>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  showTour2: false,
-  steps2: [
-    {
-      content: '支持一套代码同时开发多端小程序+H5',
-      target: 'target6',
-      popoverOffset: [40, 12],
-      arrowOffset: -36
-    }
-  ]
-});
-</script>
-
-<style>
-.nut-tour-content-inner {
-  white-space: nowrap;
-}
-</style>
-```
-
-:::
+> demo: tour position
 
 ### Custom Content
 
 Can customize the bubble layer through the slot slot
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="点击试试">
-    <template #link>
-      <nut-switch id="target8" v-model="state.switchValue" @click="state.showTour4 = true" />
-    </template>
-  </nut-cell>
-
-  <nut-tour
-    v-model="state.showTour4"
-    :steps="state.steps4"
-    type="tile"
-    theme="dark"
-    location="bottom-end"
-    :offset="[8, 8]"
-    :closeOnClickOverlay="false"
-  >
-    <div class="tour-demo-custom-content">
-      <div>nutui 4.x 即将发布，敬请期待</div>
-      <nut-divider direction="vertical" />
-      <div @click="state.showTour4 = false">知道了</div>
-    </div>
-  </nut-tour>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  switchValue: false,
-  showTour4: false,
-  steps4: [
-    {
-      target: 'target8'
-    }
-  ]
-});
-</script>
-
-<style>
-.tour-demo-custom-content {
-  padding: 8px;
-  display: flex;
-  width: max-content;
-  align-items: center;
-}
-.nut-divider {
-  border-color: #fff;
-}
-</style>
-```
-
-:::
+> demo: tour content
 
 ### Steps
 
-:::demo
-
-```vue
-<template>
-  <nut-tabbar :bottom="true">
-    <nut-tabbar-item id="target1" tab-title="首页"></nut-tabbar-item>
-    <nut-tabbar-item id="target2" tab-title="分类"></nut-tabbar-item>
-    <nut-tabbar-item id="target3" tab-title="购物车"></nut-tabbar-item>
-    <nut-tabbar-item id="target4" tab-title="我的"></nut-tabbar-item>
-  </nut-tabbar>
-  <nut-cell title="点击试试" @click="state.showTour = true"></nut-cell>
-  <nut-tour
-    class="nut-custom-tour"
-    v-model="state.showTour"
-    :steps="state.steps"
-    location="top-start"
-    :offset="[0, 0]"
-    maskWidth="60"
-    maskHeight="50"
-  ></nut-tour>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  showTour: false,
-  steps: [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target1'
-    },
-    {
-      content: '支持一套代码同时开发多端小程序+H5',
-      target: 'target2'
-    },
-    {
-      content: '基于京东APP 10.0 视觉规范',
-      target: 'target3',
-      location: 'top-end'
-    },
-    {
-      content: '支持定制主题，内置 700+ 个主题变量',
-      target: 'target4',
-      location: 'top-end'
-    }
-  ]
-});
-</script>
-
-<style>
-#app {
-  padding-top: 200px;
-}
-.nut-tabbar-item_icon-box_nav-word {
-  font-size: 14px;
-}
-</style>
-```
-
-:::
+> demo: tour step
 
 ## API
 
