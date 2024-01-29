@@ -1,7 +1,7 @@
 <template>
   <nut-form ref="formRef" :model-value="formData">
     <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-      <nut-input v-model="formData.name" class="nut-input-text" placeholder="请输入姓名" type="text" />
+      <nut-input v-model="formData.name" placeholder="请输入姓名" type="text" />
     </nut-form-item>
     <nut-form-item
       v-for="(item, index) in formData.tels"
@@ -11,7 +11,7 @@
       required
       :rules="[{ required: true, message: '请填写字段 ' + index }]"
     >
-      <nut-input v-model="item.value" class="nut-input-text" :placeholder="'请输入字段 ' + index" type="text" />
+      <nut-input v-model="item.value" :placeholder="'请输入字段 ' + index" type="text" />
     </nut-form-item>
     <nut-space style="margin: 10px">
       <nut-button size="small" @click="add">添加</nut-button>

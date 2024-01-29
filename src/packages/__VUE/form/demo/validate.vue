@@ -15,7 +15,6 @@
     <nut-form-item label="姓名" prop="name">
       <nut-input
         v-model="formData.name"
-        class="nut-input-text"
         placeholder="请输入姓名，blur 事件校验"
         type="text"
         @blur="customBlurValidate('name')"
@@ -32,12 +31,7 @@
         { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
       ]"
     >
-      <nut-input
-        v-model="formData.age"
-        class="nut-input-text"
-        placeholder="请输入年龄，必须数字且0-200区间"
-        type="text"
-      />
+      <nut-input v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
     </nut-form-item>
     <nut-form-item
       label="联系电话"
@@ -48,15 +42,10 @@
         { validator: asyncValidator, message: '电话格式不正确' }
       ]"
     >
-      <nut-input
-        v-model="formData.tel"
-        class="nut-input-text"
-        placeholder="请输入联系电话，异步校验电话格式"
-        type="text"
-      />
+      <nut-input v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
     </nut-form-item>
     <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-      <nut-input v-model="formData.address" class="nut-input-text" placeholder="请输入地址" type="text" />
+      <nut-input v-model="formData.address" placeholder="请输入地址" type="text" />
     </nut-form-item>
     <nut-space style="margin: 10px">
       <nut-button type="primary" size="small" @click="submit">提交</nut-button>
@@ -82,7 +71,7 @@ const reset = () => {
 const submit = () => {
   formRef.value?.validate().then(({ valid, errors }) => {
     if (valid) {
-      console.log('success:', formData);
+      console.log('success:', formData.value);
     } else {
       console.warn('error:', errors);
     }
@@ -92,7 +81,7 @@ const submit = () => {
 const customBlurValidate = (prop) => {
   formRef.value?.validate(prop).then(({ valid, errors }) => {
     if (valid) {
-      console.log('success:', formData);
+      console.log('success:', formData.value);
     } else {
       console.warn('error:', errors);
     }
