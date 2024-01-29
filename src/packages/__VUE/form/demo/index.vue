@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Dynamic from './dynamic.vue';
 import Validate from './validate.vue';
