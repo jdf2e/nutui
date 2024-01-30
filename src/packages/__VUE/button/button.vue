@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, CSSProperties, toRefs, computed } from 'vue';
+import { CSSProperties, toRefs, computed } from 'vue';
 import type { ButtonShape, ButtonType, ButtonSize } from './types';
 import { Loading } from '@nutui/icons-vue';
 
@@ -19,39 +19,26 @@ defineOptions({
   name: 'NutButton'
 });
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: ''
-  },
-  shape: {
-    type: String as PropType<ButtonShape>,
-    default: 'round'
-  },
-  plain: {
-    type: Boolean,
-    default: false
-  },
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'default'
-  },
-  size: {
-    type: String as PropType<ButtonSize>,
-    default: 'normal'
-  },
-  block: {
-    type: Boolean,
-    default: false
-  }
+export type ButtonProps = Partial<{
+  color: string;
+  shape: ButtonShape;
+  plain: boolean;
+  loading: boolean;
+  disabled: boolean;
+  type: ButtonType;
+  size: ButtonSize;
+  block: boolean;
+}>;
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  color: '',
+  shape: 'round',
+  plain: false,
+  loading: false,
+  disabled: false,
+  type: 'default',
+  size: 'normal',
+  block: false
 });
 
 const emit = defineEmits(['click']);
