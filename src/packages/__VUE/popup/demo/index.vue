@@ -14,16 +14,20 @@
 
     <h2>{{ t('muti') }}</h2>
     <Multi />
+
+    <h2>{{ t('port') }}</h2>
+    <Port />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
+import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Position from './position.vue';
 import Close from './close.vue';
 import Round from './round.vue';
 import Multi from './multi.vue';
+import Port from './port.vue';
 
 const t = useTranslate({
   'zh-CN': {
@@ -32,7 +36,7 @@ const t = useTranslate({
     close: '关闭图标',
     round: '圆角弹框',
     muti: '多层堆叠',
-    teleport: '指定挂载节点'
+    port: '指定挂载节点'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -40,7 +44,7 @@ const t = useTranslate({
     close: 'Close Icon',
     round: 'Round Popup',
     muti: 'Multi Layers',
-    teleport: 'Teleport'
+    port: 'Teleport'
   }
 });
 </script>

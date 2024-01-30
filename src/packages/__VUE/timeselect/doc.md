@@ -40,7 +40,6 @@ app.use(TimeDetail);
 | current-key | 唯一标识 | string \| number | `0` |
 | current-time | 当前选择的时间，数组元素包含:key: string; list: string[] | Array | `[]` |
 | lock-scroll | 背景是否锁定 | boolean | `true` |
-| teleport-disable | 是否允许挂载节点 | boolean | `false` |
 
 ### Slots
 
