@@ -1,3 +1,6 @@
+import { PropType } from 'vue';
+import { PopupCloseIconPosition, PopupPosition } from './types';
+
 export const popupProps = {
   visible: {
     type: Boolean,
@@ -20,7 +23,7 @@ export const popupProps = {
     default: true
   },
   position: {
-    type: String,
+    type: String as PropType<PopupPosition>,
     default: 'center'
   },
   transition: {
@@ -40,12 +43,8 @@ export const popupProps = {
     default: false
   },
   closeIconPosition: {
-    type: String,
+    type: String as PropType<PopupCloseIconPosition>,
     default: 'top-right'
-  },
-  closeIcon: {
-    type: String,
-    default: 'close'
   },
   destroyOnClose: {
     type: Boolean,
