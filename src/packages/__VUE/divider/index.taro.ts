@@ -4,6 +4,8 @@ import { withInstall } from '@/packages/utils';
 
 withInstall(Divider);
 
+export type { DividerProps } from './divider.taro.vue';
+
 export type { DividerPosition, DividerDirection } from './types';
 
 export type DividerInstance = ComponentPublicInstance & InstanceType<typeof Divider>;

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, CSSProperties, toRefs, computed } from 'vue';
+import { CSSProperties, toRefs, computed } from 'vue';
 import { Loading } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import type { ButtonShape, ButtonType, ButtonSize, ButtonFormType } from './types';
@@ -26,43 +26,28 @@ defineOptions({
   name: 'NutButton'
 });
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: ''
-  },
-  shape: {
-    type: String as PropType<ButtonShape>,
-    default: 'round'
-  },
-  plain: {
-    type: Boolean,
-    default: false
-  },
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'default'
-  },
-  formType: {
-    type: String as PropType<ButtonFormType>,
-    default: 'button'
-  },
-  size: {
-    type: String as PropType<ButtonSize>,
-    default: 'normal'
-  },
-  block: {
-    type: Boolean,
-    default: false
-  }
+export type ButtonProps = Partial<{
+  color: string;
+  shape: ButtonShape;
+  plain: boolean;
+  loading: boolean;
+  disabled: boolean;
+  type: ButtonType;
+  size: ButtonSize;
+  block: boolean;
+  formType: ButtonFormType;
+}>;
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  color: '',
+  shape: 'round',
+  plain: false,
+  loading: false,
+  disabled: false,
+  type: 'default',
+  size: 'normal',
+  block: false,
+  formType: 'button'
 });
 
 const emit = defineEmits(['click']);

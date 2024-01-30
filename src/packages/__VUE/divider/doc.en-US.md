@@ -65,7 +65,7 @@ User can custom divider style with style attribute.
 | --- | --- |
 | default | Default slot, when `direction` = `horizontal` |
 
-### Types v4.2.9
+### Types v4.3.0
 
 The component exports the following type definitions:
 
@@ -73,6 +73,7 @@ The component exports the following type definitions:
 import type {
   DividerPosition,
   DividerDirection,
+  DividerProps,
   DividerInstance
 } from '@nutui/nutui';
 ```
