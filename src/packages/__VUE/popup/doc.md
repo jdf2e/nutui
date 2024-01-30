@@ -18,149 +18,35 @@ app.use(Popup);
 
 通过设置 `visible` 控制显示/隐藏
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="展示弹出层" is-link @click="show = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="show">正文</nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-</script>
-```
-
-:::
+> demo: popup basic
 
 ### 弹出位置
 
 通过设置 `position` 的值来控制弹出位置
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="顶部弹出" is-link @click="showTop = true"></nut-cell>
-  <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="showTop"></nut-popup>
-  <nut-cell title="底部弹出" is-link @click="showBottom = true"></nut-cell>
-  <nut-popup position="bottom" :style="{ height: '20%' }" v-model:visible="showBottom"></nut-popup>
-  <nut-cell title="左侧弹出" is-link @click="showLeft = true"></nut-cell>
-  <nut-popup position="left" :style="{ width: '20%', height: '100%' }" v-model:visible="showLeft"></nut-popup>
-  <nut-cell title="右侧弹出" is-link @click="showRight = true"></nut-cell>
-  <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="showRight"></nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const showTop = ref(false);
-const showBottom = ref(false);
-const showLeft = ref(false);
-const showRight = ref(false);
-</script>
-```
-
-:::
+> demo: popup position
 
 ### 图标
 
-通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 来自定义显示图标
+通过 `closeable` 控制图标是否可关闭，`close-icon-position` 来设置图标的位置，`close-icon` 插槽自定义显示图标
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="关闭图标" is-link @click="showIcon = true"></nut-cell>
-  <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="showIcon"></nut-popup>
-  <nut-cell title="图标位置" is-link @click="showIconPosition = true"></nut-cell>
-  <nut-popup
-    position="bottom"
-    closeable
-    close-icon-position="top-left"
-    :style="{ height: '20%' }"
-    v-model:visible="showIconPosition"
-  ></nut-popup>
-  <nut-cell title="自定义图标" is-link @click="showCloseIcon = true"></nut-cell>
-  <nut-popup
-    position="bottom"
-    closeable
-    close-icon-position="top-left"
-    :style="{ height: '20%' }"
-    v-model:visible="showCloseIcon"
-  >
-    <template #close-icon>
-      <Heart></Heart>
-    </template>
-  </nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { Heart } from '@nutui/icons-vue';
-const showIcon = ref(false);
-const showIconPosition = ref(false);
-const showCloseIcon = ref(false);
-</script>
-```
-
-:::
+> demo: popup close
 
 ### 圆角弹框
 
 通过设置 `round` 来控制是否显示圆角
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="圆角弹框" is-link @click="show = true"></nut-cell>
-  <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="show"></nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-</script>
-```
-
-:::
-
-### 指定挂载节点
-
-通过 `teleport` 来指定挂载节点
-
-:::demo
-
-```vue
-<template>
-  <nut-cell title="指定挂载节点" is-link @click="show = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" teleport-disable v-model:visible="show"> app </nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const show = ref(false);
-</script>
-```
-
-:::
+> demo: popup round
 
 ### 多层堆叠
 
-:::demo
+> demo: popup multi
 
-```vue
-<template>
-  <nut-cell title="多层堆叠" is-link @click="showPop1 = true"></nut-cell>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop1">
-    <div @click="showPop2 = true">点击它</div>
-  </nut-popup>
-  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="showPop2">正文</nut-popup>
-</template>
-<script setup>
-import { ref } from 'vue';
-const showPop1 = ref(false);
-const showPop2 = ref(false);
-</script>
-```
+### 指定挂载节点
 
-:::
+使用 Vue 提供的 [Teleport](https://cn.vuejs.org/guide/built-ins/teleport.html) 组件实现指定节点挂载。
+
+> demo: popup port
 
 ## API
 
@@ -182,11 +68,11 @@ const showPop2 = ref(false);
 | close-icon-position | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | string | `"top-right"` |
 | destroy-on-close | 弹层关闭后 `slot`内容会不会清空 | boolean | `true` |
 | round | 是否显示圆角 | boolean | `false` |
-| teleport | 指定挂载节点 | string | `"body"` |
-| teleport-disable | 是否挂载节点，false 不挂载，true 挂载 | boolean | `false` |
 | overlay-class | 自定义遮罩层类名 | string | '' |
 | overlay-style | 自定义遮罩层样式 | string | '' |
-| safe-area-inset-bottom | 是否开启 `iphone` 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 | boolean | `false` |
+| safe-area-inset-bottom | 是否开启全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效 | boolean | `false` |
+| teleport | 指定挂载节点 | string | `"body"` |
+| teleport-disable | 是否挂载节点，false 不挂载，true 挂载 | boolean | `false` |
 
 ### Events
 
