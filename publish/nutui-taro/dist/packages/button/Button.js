@@ -28,42 +28,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
 }), {
   __name: "button.taro",
   props: {
-    color: {
-      type: String,
-      default: ""
-    },
-    shape: {
-      type: String,
-      default: "round"
-    },
-    plain: {
-      type: Boolean,
-      default: false
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: "default"
-    },
-    formType: {
-      type: String,
-      default: "button"
-    },
-    size: {
-      type: String,
-      default: "normal"
-    },
-    block: {
-      type: Boolean,
-      default: false
-    }
+    color: { default: "" },
+    shape: { default: "round" },
+    plain: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    type: { default: "default" },
+    size: { default: "normal" },
+    block: { type: Boolean, default: false },
+    formType: { default: "button" }
   },
   emits: ["click"],
   setup(__props, { emit: __emit }) {
@@ -107,8 +80,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       return openBlock(), createElementBlock("button", {
         class: normalizeClass(classes.value),
         style: normalizeStyle(getStyle.value),
-        type: unref(Taro).getEnv() === unref(Taro).ENV_TYPE.WEB ? __props.formType : void 0,
-        formType: __props.formType === "button" ? void 0 : __props.formType,
+        type: unref(Taro).getEnv() === unref(Taro).ENV_TYPE.WEB ? _ctx.formType : void 0,
+        formType: _ctx.formType === "button" ? void 0 : _ctx.formType,
         onClick: handleClick
       }, [
         createElementVNode("view", _hoisted_2, [

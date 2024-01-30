@@ -1246,38 +1246,14 @@ const Wr = { class: "nut-button__wrap" }, Ke = /* @__PURE__ */ nt({
   name: "NutButton",
   __name: "button",
   props: {
-    color: {
-      type: String,
-      default: ""
-    },
-    shape: {
-      type: String,
-      default: "round"
-    },
-    plain: {
-      type: Boolean,
-      default: !1
-    },
-    loading: {
-      type: Boolean,
-      default: !1
-    },
-    disabled: {
-      type: Boolean,
-      default: !1
-    },
-    type: {
-      type: String,
-      default: "default"
-    },
-    size: {
-      type: String,
-      default: "normal"
-    },
-    block: {
-      type: Boolean,
-      default: !1
-    }
+    color: { default: "" },
+    shape: { default: "round" },
+    plain: { type: Boolean, default: !1 },
+    loading: { type: Boolean, default: !1 },
+    disabled: { type: Boolean, default: !1 },
+    type: { default: "default" },
+    size: { default: "normal" },
+    block: { type: Boolean, default: !1 }
   },
   emits: ["click"],
   setup(e, { emit: t }) {
@@ -2171,22 +2147,10 @@ const eo = /* @__PURE__ */ U(Hi, [["render", Ri]]), to = /* @__PURE__ */ nt({
   name: "NutDivider",
   __name: "divider",
   props: {
-    contentPosition: {
-      type: String,
-      default: "center"
-    },
-    dashed: {
-      type: Boolean,
-      default: !1
-    },
-    hairline: {
-      type: Boolean,
-      default: !0
-    },
-    direction: {
-      type: String,
-      default: "horizontal"
-    }
+    contentPosition: { default: "center" },
+    dashed: { type: Boolean, default: !1 },
+    hairline: { type: Boolean, default: !0 },
+    direction: { default: "horizontal" }
   },
   setup(e) {
     const t = e, n = et(), s = D(() => {
@@ -2206,7 +2170,7 @@ const eo = /* @__PURE__ */ U(Hi, [["render", Ri]]), to = /* @__PURE__ */ nt({
     return (l, a) => (u(), d("view", {
       class: M(s.value)
     }, [
-      e.direction === "horizontal" ? I(l.$slots, "default", { key: 0 }) : T("", !0)
+      l.direction === "horizontal" ? I(l.$slots, "default", { key: 0 }) : T("", !0)
     ], 2));
   }
 });

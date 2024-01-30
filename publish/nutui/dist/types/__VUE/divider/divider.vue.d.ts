@@ -1,41 +1,32 @@
 import type { WithInstall } from '../../utils';
-import { PropType } from 'vue';
 import { DividerDirection, DividerPosition } from './types';
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    contentPosition: {
-        type: PropType<DividerPosition>;
-        default: string;
-    };
-    dashed: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    hairline: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    direction: {
-        type: PropType<DividerDirection>;
-        default: string;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
-    contentPosition: {
-        type: PropType<DividerPosition>;
-        default: string;
-    };
-    dashed: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    hairline: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    direction: {
-        type: PropType<DividerDirection>;
-        default: string;
-    };
+export type DividerProps = Partial<{
+    contentPosition: DividerPosition;
+    dashed: boolean;
+    hairline: boolean;
+    direction: DividerDirection;
+}>;
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+    contentPosition: DividerPosition;
+    dashed: boolean;
+    hairline: boolean;
+    direction: DividerDirection;
 }>>, {
+    contentPosition: string;
+    dashed: boolean;
+    hairline: boolean;
+    direction: string;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+    contentPosition: DividerPosition;
+    dashed: boolean;
+    hairline: boolean;
+    direction: DividerDirection;
+}>>, {
+    contentPosition: string;
+    dashed: boolean;
+    hairline: boolean;
+    direction: string;
+}>>>, {
     dashed: boolean;
     contentPosition: DividerPosition;
     hairline: boolean;
@@ -49,6 +40,23 @@ declare module 'vue' {
         NutDivider: typeof _default;
     }
 }
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToRuntimeProps<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
+    };
+};
+type __VLS_WithDefaults<P, D> = {
+    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
+        default: D[K];
+    }> : P[K];
+};
+type __VLS_Prettify<T> = {
+    [K in keyof T]: T[K];
+} & {};
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;

@@ -26,38 +26,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
 }), {
   __name: "button",
   props: {
-    color: {
-      type: String,
-      default: ""
-    },
-    shape: {
-      type: String,
-      default: "round"
-    },
-    plain: {
-      type: Boolean,
-      default: false
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: "default"
-    },
-    size: {
-      type: String,
-      default: "normal"
-    },
-    block: {
-      type: Boolean,
-      default: false
-    }
+    color: { default: "" },
+    shape: { default: "round" },
+    plain: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    type: { default: "default" },
+    size: { default: "normal" },
+    block: { type: Boolean, default: false }
   },
   emits: ["click"],
   setup(__props, { emit: __emit }) {

@@ -14,7 +14,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     label: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: string;
     };
     iconSize: {
@@ -37,7 +37,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     label: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: string;
     };
     iconSize: {

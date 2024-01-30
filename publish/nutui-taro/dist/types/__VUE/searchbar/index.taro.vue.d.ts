@@ -97,7 +97,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         [key: string]: any;
     }>;
     inputsearch: Ref<HTMLElement | null>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clear" | "search" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon")[], "clear" | "search" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("search" | "clear" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon")[], "search" | "clear" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: string;
@@ -171,8 +171,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-    onClear?: ((...args: any[]) => any) | undefined;
     onSearch?: ((...args: any[]) => any) | undefined;
+    onClear?: ((...args: any[]) => any) | undefined;
     onClickInput?: ((...args: any[]) => any) | undefined;
     onClickLeftIcon?: ((...args: any[]) => any) | undefined;
     onClickRightIcon?: ((...args: any[]) => any) | undefined;

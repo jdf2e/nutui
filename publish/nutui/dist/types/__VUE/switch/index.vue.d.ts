@@ -4,7 +4,7 @@ declare type Install<T> = T & {
 };
 declare const _default: Install< import("vue").DefineComponent<{
     modelValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     disable: {
@@ -28,11 +28,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     activeValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     inactiveValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     loading: {
@@ -50,7 +50,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick: (event: Event) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "update:loading")[], "change" | "update:modelValue" | "update:loading", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     disable: {
@@ -74,11 +74,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     activeValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     inactiveValue: {
-        type: (NumberConstructor | StringConstructor | BooleanConstructor)[];
+        type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
     loading: {

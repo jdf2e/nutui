@@ -103,8 +103,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     size: CellSize;
     title: string;
     desc: string;
-    center: boolean;
     replace: boolean;
+    center: boolean;
     subTitle: string;
     descTextAlign: string;
     isLink: boolean;

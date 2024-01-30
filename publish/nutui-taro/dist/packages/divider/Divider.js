@@ -24,22 +24,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
 }), {
   __name: "divider.taro",
   props: {
-    contentPosition: {
-      type: String,
-      default: "center"
-    },
-    dashed: {
-      type: Boolean,
-      default: false
-    },
-    hairline: {
-      type: Boolean,
-      default: true
-    },
-    direction: {
-      type: String,
-      default: "horizontal"
-    }
+    contentPosition: { default: "center" },
+    dashed: { type: Boolean, default: false },
+    hairline: { type: Boolean, default: true },
+    direction: { default: "horizontal" }
   },
   setup(__props) {
     const props = __props;
@@ -66,7 +54,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       return openBlock(), createElementBlock("view", {
         class: normalizeClass(classes.value)
       }, [
-        __props.direction === "horizontal" ? renderSlot(_ctx.$slots, "default", { key: 0 }) : createCommentVNode("", true)
+        _ctx.direction === "horizontal" ? renderSlot(_ctx.$slots, "default", { key: 0 }) : createCommentVNode("", true)
       ], 2);
     };
   }

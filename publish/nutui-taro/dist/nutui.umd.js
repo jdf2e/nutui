@@ -463,42 +463,15 @@ var __async = (__this, __arguments, generator) => {
   }), {
     __name: "button.taro",
     props: {
-      color: {
-        type: String,
-        default: ""
-      },
-      shape: {
-        type: String,
-        default: "round"
-      },
-      plain: {
-        type: Boolean,
-        default: false
-      },
-      loading: {
-        type: Boolean,
-        default: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      type: {
-        type: String,
-        default: "default"
-      },
-      formType: {
-        type: String,
-        default: "button"
-      },
-      size: {
-        type: String,
-        default: "normal"
-      },
-      block: {
-        type: Boolean,
-        default: false
-      }
+      color: { default: "" },
+      shape: { default: "round" },
+      plain: { type: Boolean, default: false },
+      loading: { type: Boolean, default: false },
+      disabled: { type: Boolean, default: false },
+      type: { default: "default" },
+      size: { default: "normal" },
+      block: { type: Boolean, default: false },
+      formType: { default: "button" }
     },
     emits: ["click"],
     setup(__props, { emit: __emit }) {
@@ -542,8 +515,8 @@ var __async = (__this, __arguments, generator) => {
         return vue.openBlock(), vue.createElementBlock("button", {
           class: vue.normalizeClass(classes.value),
           style: vue.normalizeStyle(getStyle.value),
-          type: vue.unref(Taro).getEnv() === vue.unref(Taro).ENV_TYPE.WEB ? __props.formType : void 0,
-          formType: __props.formType === "button" ? void 0 : __props.formType,
+          type: vue.unref(Taro).getEnv() === vue.unref(Taro).ENV_TYPE.WEB ? _ctx.formType : void 0,
+          formType: _ctx.formType === "button" ? void 0 : _ctx.formType,
           onClick: handleClick
         }, [
           vue.createElementVNode("view", _hoisted_2$12, [
@@ -1391,22 +1364,10 @@ var __async = (__this, __arguments, generator) => {
   }), {
     __name: "divider.taro",
     props: {
-      contentPosition: {
-        type: String,
-        default: "center"
-      },
-      dashed: {
-        type: Boolean,
-        default: false
-      },
-      hairline: {
-        type: Boolean,
-        default: true
-      },
-      direction: {
-        type: String,
-        default: "horizontal"
-      }
+      contentPosition: { default: "center" },
+      dashed: { type: Boolean, default: false },
+      hairline: { type: Boolean, default: true },
+      direction: { default: "horizontal" }
     },
     setup(__props) {
       const props = __props;
@@ -1433,7 +1394,7 @@ var __async = (__this, __arguments, generator) => {
         return vue.openBlock(), vue.createElementBlock("view", {
           class: vue.normalizeClass(classes.value)
         }, [
-          __props.direction === "horizontal" ? vue.renderSlot(_ctx.$slots, "default", { key: 0 }) : vue.createCommentVNode("", true)
+          _ctx.direction === "horizontal" ? vue.renderSlot(_ctx.$slots, "default", { key: 0 }) : vue.createCommentVNode("", true)
         ], 2);
       };
     }
