@@ -69,7 +69,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     position: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupPosition>;
         default: string;
     };
     transition: {
@@ -89,11 +89,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     closeIconPosition: {
-        type: StringConstructor;
-        default: string;
-    };
-    closeIcon: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupCloseIconPosition>;
         default: string;
     };
     destroyOnClose: {
@@ -195,7 +191,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     position: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupPosition>;
         default: string;
     };
     transition: {
@@ -215,11 +211,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     closeIconPosition: {
-        type: StringConstructor;
-        default: string;
-    };
-    closeIcon: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupCloseIconPosition>;
         default: string;
     };
     destroyOnClose: {
@@ -276,11 +268,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     lockScroll: boolean;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
-    position: string;
+    position: import("../popup/types").PopupPosition;
     popClass: string;
     closeable: boolean;
-    closeIconPosition: string;
-    closeIcon: string;
+    closeIconPosition: import("../popup/types").PopupCloseIconPosition;
     destroyOnClose: boolean;
     teleport: string | Element;
     teleportDisable: boolean;

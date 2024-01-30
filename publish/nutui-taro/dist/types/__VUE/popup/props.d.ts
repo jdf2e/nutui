@@ -1,3 +1,5 @@
+import type { PropType } from 'vue';
+import type { PopupCloseIconPosition, PopupPosition } from './types';
 export declare const popupProps: {
     visible: {
         type: BooleanConstructor;
@@ -20,7 +22,7 @@ export declare const popupProps: {
         default: boolean;
     };
     position: {
-        type: StringConstructor;
+        type: PropType<PopupPosition>;
         default: string;
     };
     transition: {
@@ -40,11 +42,7 @@ export declare const popupProps: {
         default: boolean;
     };
     closeIconPosition: {
-        type: StringConstructor;
-        default: string;
-    };
-    closeIcon: {
-        type: StringConstructor;
+        type: PropType<PopupCloseIconPosition>;
         default: string;
     };
     destroyOnClose: {

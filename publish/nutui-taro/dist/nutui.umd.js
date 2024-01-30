@@ -905,10 +905,6 @@ var __async = (__this, __arguments, generator) => {
       type: String,
       default: "top-right"
     },
-    closeIcon: {
-      type: String,
-      default: "close"
-    },
     destroyOnClose: {
       type: Boolean,
       default: true
@@ -5210,7 +5206,6 @@ var __async = (__this, __arguments, generator) => {
       "pop-class": "nut-cascader__popup",
       round: "",
       closeable: _ctx.closeable,
-      "close-icon": _ctx.closeIcon,
       "destroy-on-close": false,
       "close-icon-position": _ctx.closeIconPosition,
       "lock-scroll": _ctx.lockScroll,
@@ -5239,7 +5234,7 @@ var __async = (__this, __arguments, generator) => {
         }, null, 8, ["model-value", "options", "lazy", "lazy-load", "value-key", "text-key", "children-key", "convert-config", "visible", "onChange", "onPathChange"])
       ]),
       _: 1
-    }, 8, ["visible", "closeable", "close-icon", "close-icon-position", "lock-scroll", "catch-move", "z-index"])) : (vue.openBlock(), vue.createBlock(_component_nut_cascader_item, {
+    }, 8, ["visible", "closeable", "close-icon-position", "lock-scroll", "catch-move", "z-index"])) : (vue.openBlock(), vue.createBlock(_component_nut_cascader_item, {
       key: 1,
       "model-value": _ctx.innerValue,
       options: _ctx.options,
@@ -11790,14 +11785,26 @@ var __async = (__this, __arguments, generator) => {
     },
     props: {
       id: String,
-      color: { type: String, default: "" },
-      msg: { type: String, default: "" },
-      duration: { type: Number, default: 3e3 },
+      color: {
+        type: String,
+        default: ""
+      },
+      msg: {
+        type: String,
+        default: ""
+      },
+      duration: {
+        type: Number,
+        default: 3e3
+      },
       className: {
         type: String,
         default: ""
       },
-      background: { type: String, default: "" },
+      background: {
+        type: String,
+        default: ""
+      },
       type: {
         type: String,
         default: "danger"

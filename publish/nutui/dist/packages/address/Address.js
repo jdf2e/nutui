@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, reactive, computed, watch, toRefs, nextTick, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, renderSlot, withDirectives, createVNode, vShow, toDisplayString, createElementBlock, Fragment, renderList, normalizeClass, createCommentVNode, normalizeStyle, createTextVNode } from "vue";
 import { Location, Location2, Check, Close, Left } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutPopup, p as popupProps } from "../index-rbZsBckW.js";
+import { N as NutPopup, p as popupProps } from "../index-wY4t0zYt.js";
 import NutElevator from "../elevator/Elevator.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";

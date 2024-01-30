@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, watch, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createElementBlock, Fragment, createTextVNode, toDisplayString, createVNode, render, onMounted, h } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutPopup } from "../index-rbZsBckW.js";
+import { N as NutPopup } from "../index-wY4t0zYt.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue";
 import "../overlay/Overlay.js";
@@ -31,14 +31,26 @@ const _sfc_main = create({
   },
   props: {
     id: String,
-    color: { type: String, default: "" },
-    msg: { type: String, default: "" },
-    duration: { type: Number, default: 3e3 },
+    color: {
+      type: String,
+      default: ""
+    },
+    msg: {
+      type: String,
+      default: ""
+    },
+    duration: {
+      type: Number,
+      default: 3e3
+    },
     className: {
       type: String,
       default: ""
     },
-    background: { type: String, default: "" },
+    background: {
+      type: String,
+      default: ""
+    },
     type: {
       type: String,
       default: "danger"

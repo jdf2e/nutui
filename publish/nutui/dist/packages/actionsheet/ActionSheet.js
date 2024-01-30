@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { useSlots, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, createElementBlock, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeClass, normalizeStyle } from "vue";
-import { N as NutPopup, p as popupProps } from "../index-rbZsBckW.js";
+import { N as NutPopup, p as popupProps } from "../index-wY4t0zYt.js";
 import { Loading } from "@nutui/icons-vue";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../overlay/Overlay.js";

@@ -1,3 +1,5 @@
+import { type PropType } from 'vue';
+import type { NotifyType } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
@@ -25,7 +27,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<NotifyType>;
         default: string;
     };
     visible: {
@@ -33,7 +35,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     position: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupPosition>;
         default: string;
     };
     teleportDisable: {
@@ -70,7 +72,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     type: {
-        type: StringConstructor;
+        type: PropType<NotifyType>;
         default: string;
     };
     visible: {
@@ -78,7 +80,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
     position: {
-        type: StringConstructor;
+        type: PropType<import("../popup/types").PopupPosition>;
         default: string;
     };
     teleportDisable: {
@@ -92,11 +94,11 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
 }, {
     color: string;
-    type: string;
+    type: NotifyType;
     background: string;
     visible: boolean;
     duration: number;
-    position: string;
+    position: import("../popup/types").PopupPosition;
     teleportDisable: boolean;
     className: string;
     msg: string;

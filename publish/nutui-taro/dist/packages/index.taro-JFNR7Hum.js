@@ -17,8 +17,8 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, computed, watch, watchEffect, toRefs, resolveComponent, openBlock, createBlock, Teleport, mergeProps, createCommentVNode, createVNode, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createElementBlock, vShow } from "vue";
-import { Close } from "@nutui/icons-vue";
+import { reactive, computed, watch, watchEffect, toRefs, resolveComponent, openBlock, createElementBlock, createBlock, mergeProps, createCommentVNode, createTextVNode, createVNode, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, renderSlot, vShow } from "vue";
+import { Close } from "@nutui/icons-vue-taro";
 import NutOverlay from "./overlay/Overlay.js";
 import { c as createComponent } from "./component-TCzwHGVq.js";
 import { _ as _export_sfc } from "./_plugin-vue_export-helper-yVxbj29m.js";
@@ -66,10 +66,6 @@ const popupProps = {
   closeIconPosition: {
     type: String,
     default: "top-right"
-  },
-  closeIcon: {
-    type: String,
-    default: "close"
   },
   destroyOnClose: {
     type: Boolean,
@@ -203,10 +199,7 @@ const _sfc_main = create({
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_overlay = resolveComponent("nut-overlay");
   const _component_Close = resolveComponent("Close");
-  return openBlock(), createBlock(Teleport, {
-    to: _ctx.teleport,
-    disabled: !_ctx.teleportDisable
-  }, [
+  return openBlock(), createElementBlock("view", null, [
     _ctx.overlay ? (openBlock(), createBlock(_component_nut_overlay, mergeProps({
       key: 0,
       visible: _ctx.visible,
@@ -217,6 +210,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       "overlay-class": _ctx.overlayClass,
       "overlay-style": _ctx.overlayStyle
     }, _ctx.$attrs, { onClick: _ctx.onClickOverlay }), null, 16, ["visible", "close-on-click-overlay", "z-index", "lock-scroll", "duration", "overlay-class", "overlay-style", "onClick"])) : createCommentVNode("", true),
+    createTextVNode(),
     createVNode(Transition, {
       name: _ctx.transitionName,
       onAfterEnter: _ctx.onOpened,
@@ -229,6 +223,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClick && _ctx.onClick(...args))
         }, [
           _ctx.showSlot ? renderSlot(_ctx.$slots, "default", { key: 0 }) : createCommentVNode("", true),
+          createTextVNode(),
           _ctx.closed ? (openBlock(), createElementBlock("view", {
             key: 1,
             class: normalizeClass(["nut-popup__close-icon", "nut-popup__close-icon--" + _ctx.closeIconPosition]),
@@ -244,7 +239,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     }, 8, ["name", "onAfterEnter", "onAfterLeave"])
-  ], 8, ["to", "disabled"]);
+  ]);
 }
 const NutPopup = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {

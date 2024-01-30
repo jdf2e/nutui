@@ -31,7 +31,7 @@ import NutVideo from "../video/Video.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { CircleClose } from "@nutui/icons-vue";
-import { N as NutPopup } from "../index-rbZsBckW.js";
+import { N as NutPopup } from "../index-wY4t0zYt.js";
 import NutSwiper from "../swiper/Swiper.js";
 import { f as funInterceptor } from "../Interceptor-WYVtGbGC.js";
 import { C as CreateComponent } from "../mountComponent-uInXoTMp.js";

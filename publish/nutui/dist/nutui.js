@@ -1635,10 +1635,6 @@ const kt = /* @__PURE__ */ U(ii, [["render", ui]]), Ct = {
     type: String,
     default: "top-right"
   },
-  closeIcon: {
-    type: String,
-    default: "close"
-  },
   destroyOnClose: {
     type: Boolean,
     default: !0
@@ -9801,14 +9797,26 @@ const qm = /* @__PURE__ */ U(Um, [["render", Xm]]), { create: Zm } = Y("notify")
   },
   props: {
     id: String,
-    color: { type: String, default: "" },
-    msg: { type: String, default: "" },
-    duration: { type: Number, default: 3e3 },
+    color: {
+      type: String,
+      default: ""
+    },
+    msg: {
+      type: String,
+      default: ""
+    },
+    duration: {
+      type: Number,
+      default: 3e3
+    },
     className: {
       type: String,
       default: ""
     },
-    background: { type: String, default: "" },
+    background: {
+      type: String,
+      default: ""
+    },
     type: {
       type: String,
       default: "danger"

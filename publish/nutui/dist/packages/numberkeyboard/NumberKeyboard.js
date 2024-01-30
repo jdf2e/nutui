@@ -1,6 +1,6 @@
 import { ref, computed, watch, resolveComponent, openBlock, createElementBlock, createVNode, withCtx, createElementVNode, toDisplayString, createCommentVNode, Fragment, renderList, normalizeClass, createTextVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutPopup } from "../index-rbZsBckW.js";
+import { N as NutPopup } from "../index-wY4t0zYt.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue";

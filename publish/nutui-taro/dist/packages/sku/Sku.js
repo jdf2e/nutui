@@ -5,7 +5,7 @@ import { u as useLocale } from "../index-DDx91B18.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
-import { N as NutPopup } from "../index.taro-vH2b6ZpB.js";
+import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { _ as _sfc_main$5 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 import "../pxCheck-OnXlN1NC.js";

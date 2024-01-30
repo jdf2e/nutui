@@ -1,6 +1,6 @@
 import { ref, watch, onUnmounted, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createElementBlock, Fragment, createTextVNode, toDisplayString } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutPopup } from "../index.taro-vH2b6ZpB.js";
+import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/icons-vue-taro";
 import "../overlay/Overlay.js";
@@ -11,14 +11,26 @@ const _sfc_main = create({
   },
   props: {
     id: String,
-    color: { type: String, default: "" },
-    msg: { type: String, default: "" },
-    duration: { type: Number, default: 3e3 },
+    color: {
+      type: String,
+      default: ""
+    },
+    msg: {
+      type: String,
+      default: ""
+    },
+    duration: {
+      type: Number,
+      default: 3e3
+    },
     className: {
       type: String,
       default: ""
     },
-    background: { type: String, default: "" },
+    background: {
+      type: String,
+      default: ""
+    },
     type: {
       type: String,
       default: "danger"

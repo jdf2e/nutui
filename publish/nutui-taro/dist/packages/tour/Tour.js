@@ -46,7 +46,7 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@tarojs/taro";
 import "../renderIcon--EgZu5_5.js";
 import "../util-WZB3Ltgx.js";
-import "../index.taro-vH2b6ZpB.js";
+import "../index.taro-JFNR7Hum.js";
 import "../overlay/Overlay.js";
 const { create } = createComponent("tour");
 const _sfc_main = create({

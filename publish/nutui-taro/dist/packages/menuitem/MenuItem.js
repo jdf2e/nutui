@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, computed, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeStyle, createElementVNode, vShow, createTextVNode, createVNode, mergeProps, withCtx, Fragment, renderList, normalizeClass, renderSlot, createCommentVNode, toDisplayString } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { N as NutPopup } from "../index.taro-vH2b6ZpB.js";
+import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { Check } from "@nutui/icons-vue-taro";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { u as useParent } from "../useParent-KIxqkovs.js";
