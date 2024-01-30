@@ -4277,7 +4277,7 @@
             {
               "name": "safe-area-inset-bottom",
               "default": "`false`",
-              "description": "是否开启 iphone 系列全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效",
+              "description": "是否开启全面屏底部安全区适配,仅当 `position` 为 `bottom` 时有效",
               "value": {
                 "type": "boolean",
                 "kind": "expression"
