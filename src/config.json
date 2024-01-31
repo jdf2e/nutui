@@ -15,6 +15,12 @@
         "show": true
       },
       {
+        "name": "advanced",
+        "cName": "进阶用法",
+        "eName": "Advanced Usage",
+        "show": true
+      },
+      {
         "name": "official-theme",
         "cName": "官方主题",
         "eName": "Official Theme",
@@ -45,23 +51,23 @@
         "show": true
       },
       {
-        "name": "ide",
-        "cName": "开发工具支持",
-        "eName": "IDE tool support",
-        "show": true
-      },
-      {
-        "name": "contributing",
+        "name": "https://github.com/jdf2e/nutui/issues/1671",
         "cName": "贡献指南",
         "eName": "Contributing",
-        "path": "#/contributing",
-        "show": true
+        "show": true,
+        "isLink": true
       },
-
       {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "eName": "Changelog",
+        "show": true,
+        "isLink": true
+      },
+      {
+        "name": "https://github.com/jdf2e/nutui/issues/2461",
+        "cName": "常见问题",
+        "eName": "QA",
         "show": true,
         "isLink": true
       }
@@ -80,6 +86,7 @@
           "cName": "按钮",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "按钮用于触发一个操作，如提交表单。",
           "author": "richard1015"
         },
@@ -225,6 +232,7 @@
           "cName": "分割线",
           "desc": "用于将内容分隔为多个区域。",
           "sort": 23,
+          "setup": true,
           "show": true,
           "author": "yangjinjun3"
         },
@@ -477,6 +485,18 @@
           "sort": 5,
           "show": true,
           "author": "songchenglin1"
+        },
+        {
+          "version": "4.3.0",
+          "taro": true,
+          "name": "CalendarCard",
+          "type": "component",
+          "cName": "日历卡片",
+          "desc": "日历卡片组件",
+          "sort": 5,
+          "setup": true,
+          "show": true,
+          "author": "eiinu"
         },
         {
           "version": "3.0.0",

@@ -52,7 +52,7 @@ import { createComponent } from '@/packages/utils/create';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import { popupProps } from '../popup/props';
 import NutPopup from '../popup/index.vue';
-import NutButton from '../button/index.vue';
+import NutButton from '../button';
 import { useLocale } from '@/packages/utils/useLocale';
 export type TextAlign = 'left' | 'center' | 'right' | 'top';
 

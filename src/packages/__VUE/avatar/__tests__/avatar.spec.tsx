@@ -34,7 +34,7 @@ test('Avatar: bgColor props', () => {
     }
   });
   const avatar: any = wrapper.find('.nut-avatar');
-  expect(avatar.element.style.backgroundColor).toBe('rgb(0, 0, 0)');
+  expect(avatar.element.style.backgroundColor).toBe('#000000');
 });
 
 test('Avatar: color props', async () => {

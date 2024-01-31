@@ -1,0 +1,56 @@
+name: Release v4
+
+on:
+  push:
+    tags:
+      - 'v4*'
+
+jobs:
+  release-v4:
+    if: github.repository == 'jdf2e/nutui'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build NutUI Vue
+        run: pnpm build
+
+      - name: Publish NutUI Vue
+        run: pnpm --dir ./publish/nutui publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Build NutUI Vue Taro
+        run: pnpm build:taro
+
+      - name: Publish NutUI Vue Taro
+        run: pnpm --dir ./publish/nutui-taro publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Generate Changlog
+        run: pnpm changelog
+
+      - name: Create Release Tag
+        id: release_tag
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: '.github/changelog.md'

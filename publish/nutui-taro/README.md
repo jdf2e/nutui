@@ -1,30 +1,46 @@
 
 <p align="center">
-    <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
+  <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
 <p align="center">京东风格的轻量级 Vue 组件库，支持移动端 H5 和 小程序开发</p>
 
 <p align="center">
-    <a href="http://makeapullrequest.com">
+  <a href="https://github.com/jdf2e/nutui/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
   </a>
+  <a href="https://app.codecov.io/gh/jdf2e/nutui">
     <img src="https://img.shields.io/codecov/c/github/jdf2e/nutui" alt="coverage"/>
+  </a>
+  <a href="https://github.com/jdf2e/nutui/blob/v4/LICENSE">
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
+  </a>
+  <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
-    </a>
-    <a href="https://www.npmjs.com/package/@nutui/nutui">
+  </a>
+  <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
-    </a>
+  </a>
 </p>
 <p align="center">
+  <a href="https://github.com/jdf2e/nutui/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/commits">
     <img src="https://img.shields.io/github/commit-activity/m/jdf2e/nutui" alt="GitHub commit activity">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/issues">
     <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/commits">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/v4" alt="GitHub commits since latest release (by date)">
+  </a>
+  <a href="https://github.com/jdf2e/nutui/releases">
     <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
+  </a>
+  <a href="https://www.jsdelivr.com/package/npm/@nutui/nutui">
     <img src="https://data.jsdelivr.com/v1/package/npm/@nutui/nutui/badge" alt="jsdelivr">
+  </a>
 </p>
 
 <p align="center">
@@ -71,15 +87,16 @@
 
 由 NutUI 官方团队维护的项目如下：
 
-| 项目 | 描述 |
-| --- | --- |
-| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI 移动端 H5 版本 |
-| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro 多端版本 |
-| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui` 使用的图标库 |
-| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui-taro` 使用的图标库 |
-| [@nutui/touch-emulator](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-touch-emulator) | 在桌面端使用 NutUI 的辅助库 |
-| [@nutui/playground](https://github.com/jdf2e/nutui/tree/v4/packages/nutui-playground) | NutUI 在线 Playground |
-| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI 官方示例合集 |
+| 项目 | 描述 | 版本 |
+| --- | --- | --- |
+| [@nutui/nutui](https://github.com/jdf2e/nutui) | NutUI 移动端 H5 版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui.svg?label=%20) |
+| [@nutui/nutui-taro](https://github.com/jdf2e/nutui) | NutUI Taro 多端版本 | ![nutui](https://img.shields.io/npm/v/@nutui/nutui-taro.svg?label=%20) |
+| [@nutui/icons-vue](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue.svg?label=%20) |
+| [@nutui/icons-vue-taro](https://github.com/jdf2e/nutui-icons) | `@nutui/nutui-taro` 使用的图标库 | ![nutui](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?label=%20) |
+| [@nutui/touch-emulator](packages/nutui-touch-emulator) | 在桌面端使用 NutUI 的辅助库 | ![nutui](https://img.shields.io/npm/v/@nutui/touch-emulator.svg?label=%20) |
+| [@nutui/auto-import-resolver](packages/nutui-auto-import-resolver) | `unplugin-auto-import` 插件的 reolver 配置 | ![nutui](https://img.shields.io/npm/v/@nutui/auto-import-resolver.svg?label=%20) |
+| [@nutui/playground](packages/nutui-playground) | NutUI 在线 Playground | - |
+| [nutui-demo](https://github.com/jdf2e/nutui-demo) | NutUI 官方示例合集 | - |
 
 ### 社区生态
 
@@ -142,13 +159,9 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
 
 查阅 [Release](https://github.com/jdf2e/nutui/releases)。
 
-## Star
+## License
 
-[![Stargazers repo roster for @jdf2e/nutui](https://reporoster.com/stars/jdf2e/nutui)](https://github.com/jdf2e/nutui/stargazers)
-
-## Fork
-
-[![Forkers repo roster for @jdf2e/nutui](https://reporoster.com/forks/jdf2e/nutui)](https://github.com/jdf2e/nutui/network/members)
+[MIT](https://github.com/jdf2e/nutui/blob/v4/LICENSE)
 
 ## GitHub Stargazaers
 

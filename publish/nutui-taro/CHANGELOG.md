@@ -1,3 +1,123 @@
+## v4.2.9
+
+`2024-01-22`
+
+Bug Fixes
+
+- button: 修复自定义 color 时的 border 样式 (#2843) @subordon
+- form: 修复搭配 input 使用时的样式问题 (#2851) @eiinu
+- list: 优化 containerHeight 获取逻辑 (#2860) @eiinu
+
+Refactors
+
+- button: use script setup (#2713) @eiinu
+- divider: use script setup (#2840) @eiinu
+
+Other Changes
+
+- checkbox: improve type def (#2845) @eiinu
+- ellipsis: improve type def (#2848) @eiinu
+- side-navbar: remove unnecessary props (#2858) @eiinu
+
+## v4.2.8
+
+`2024-01-15`
+
+Features
+
+- avatar-cropper: 新增 shape 属性，支持 round 类型 (#2818) @iCheng
+
+Bug Fixes
+
+- calendar: 修复初次打开默认值定位问题 (#2829) @eiinu
+- date-picker: 修复数据联动更新问题 (#2824) @eiinu
+- dialog: 修复 cancel 按钮的样式问题 (#2823) @eiinu
+- picker: 优化 select、cursor 样式 (#2826) @eiinu
+
+## v4.2.7
+
+`2024-01-05`
+
+Features
+
+- swiper: 新增 pagination-unselected-color 属性 (#2803), close #2688 @iCheng
+- tabs: 新增 align 属性，支持标题左对齐布局 (#2809), close #2471 @iCheng
+
+Bug Fixes
+
+- picker: 修复 Safari 下遮罩层级样式问题 (#2821) @eiinu
+- date-picker: 修复 hour-minute 类型下选项刷新问题 (#2784) @Robin-Wubin
+- cascader: 修复内部 tabs 标题样式对齐问题 (#2802) @eiinu
+- avatar-cropper: 文档修正 (#2820) @iCheng
+
+Other Changes
+
+- deps: bump to vue 3.4 (#2812) @eiinu
+
+## v4.2.6
+
+`2023-12-25`
+
+Bug Fixes
+
+- tabs: 修复 taro h5 下 placeholder 展示错误 (#2801) @eiinu
+- remove defualt font-family style (#2792) @eiinu
+
+Other Changes
+
+- collapse: remove unused prop (#2794) @eiinu
+
+## v4.2.5
+
+`2023-12-22`
+
+Features
+
+- watermark: 水印支持多行文字 (#2746), close #2742 @yi-boide
+- tabs: 开启 title-scroll 时不再需要设置 name (#2789) @eiinu
+
+Bug Fixes
+
+- textarea: 修复 taro h5 下双向绑定失效的问题 (#2768), close #2767 @Moonofweisheng
+- tabs: 修复 horizontal 方向占位元素宽度错误 (#2749) @yang1206
+- ellipsis: 修复 taro 下文本省略失效 (#2791) @yi-boide
+- tabs: 修复 iOS 下 smile 类型激活条展示问题 (#2774), close #2773 @eiinu
+- tabbar: 修复 useTaroRect 报错问题 (#2775) @eiinu
+- input-number: 修复 disabled 下未禁用点击问题 (#2783), close #2782 @eiinu
+
+## v4.2.4
+
+`2023-12-15`
+
+Features
+
+- form: 新增 label-position & star-position (#2659) (#2663) @yi-boide
+- radio: 组件设置 button 形状时支持改变大小 (#2701) @iCheng
+
+Bug Fixes
+
+- input-number: 修复 iOS 下输入小数点后清空输入框的问题 (#2704) @Formulaaa
+- range: 优化滑动事件处理逻辑 (#2712) @eiinu
+- textarea: 调整 readonly & maxlength 实现逻辑 (#2710) @eiinu
+- tabs: 修复 vertical 方式下标题样式错误 (#2727) @eiinu
+- tabs: 修复嵌套使用时的样式错乱问题 (#2728) @eiinu
+- sku: 修复小程序下内容的滚动问题 (#2737) @eiinu
+- navbar: 修复标题居中等样式问题 (#2739) @eiinu
+
+## v4.2.3
+
+`2023-11-30`
+
+Bug Fixes
+
+- ellipsis: 修复 taro 组件导出问题 @eiinu
+- number-keyboard: 修复标题栏完成按钮样式丢失的问题 (#2696) @Moonofweisheng
+
+Other Changes
+
+- refactor: 优化组件间 provide & inject (#2681) @eiinu
+- deps: bump vite to v5 (#2689) @eiinu
+
 ## v4.2.2
 
 `2023-11-24`

@@ -1,17 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Navbar: should render placeholder element when using placeholder prop 1`] = `
-"<view class=\\"nut-navbar--placeholder\\" style=\\"height: auto;\\">
-  <view class=\\"nut-navbar nut-navbar--fixed\\" style=\\"z-index: 10;\\">
-    <view class=\\"nut-navbar__left\\">
+"<view class="nut-navbar--placeholder" style="height: auto;">
+  <view class="nut-navbar nut-navbar--fixed" style="z-index: 10;">
+    <view class="nut-navbar__left">
       <!--v-if-->
       <!--v-if-->
     </view>
-    <view class=\\"nut-navbar__title\\">
+    <view class="nut-navbar__title">
       <!--v-if-->
       <!--v-if-->
     </view>
-    <view class=\\"nut-navbar__right\\">
+    <view class="nut-navbar__right">
       <!--v-if-->
     </view>
   </view>

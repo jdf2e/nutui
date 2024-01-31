@@ -12,6 +12,7 @@ function compressText(str: string): any {
 }
 
 interface MarkdownOptions {
+  docTaroRoot: string;
   docRoot: string;
 }
 
@@ -24,14 +25,16 @@ const TransformMarkdownDemo = (options: MarkdownOptions): Plugin => {
     transform(src, id) {
       if (fileRegex.test(id)) {
         return {
-          code: src.replace(/> demo: ([0-9a-z .]*)[\n|\r\n]/g, (_match, $1: string) => {
-            const [left, right] = $1.split(' ');
+          code: src.replace(/> demo: ([-0-9a-z .]*)[\n|\r\n]/g, (_match, $1: string) => {
+            const [comp, demo, type] = $1.split(' ');
+            const docPath = type
+              ? path.resolve(options.docTaroRoot, type, 'pages', comp, `${demo}.vue`)
+              : path.resolve(options.docRoot, comp, 'demo', `${demo}.vue`);
             let code = '';
             try {
-              code = fs.readFileSync(path.resolve(options.docRoot, left, 'demo', `${right}.vue`), 'utf-8');
+              code = fs.readFileSync(docPath, 'utf-8');
             } catch (err) {
-              code =
-                '[@nutui/vite-plugins] File not found: ' + path.resolve(options.docRoot, left, 'demo', `${right}.vue`);
+              code = '[@nutui/vite-plugins] File not found: ' + docPath;
               console.warn(code);
             }
             return code

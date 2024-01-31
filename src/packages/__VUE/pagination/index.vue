@@ -34,9 +34,10 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watchEffect, computed } from 'vue';
+import { toRefs, watchEffect, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useLocale } from '@/packages/utils/useLocale';
+import { PaginationMode } from './types';
 const { create } = createComponent('pagination');
 
 const cN = 'NutPagination';
@@ -48,7 +49,7 @@ export default create({
       default: 1
     },
     mode: {
-      type: String,
+      type: String as PropType<PaginationMode>,
       default: 'multi'
     },
     prevText: {

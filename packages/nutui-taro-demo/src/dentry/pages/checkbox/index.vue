@@ -1,209 +1,85 @@
 <template>
   <Demo>
-    <nut-cell-group title="基础用法-左右">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox2" text-position="left" @change="changeBox2">复选框</nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="半选状态">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox9" :indeterminate="true" label="复选框">复选框</nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="禁用状态">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox3" disabled>未选时禁用状态</nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox4" disabled>选中时禁用状态</nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="自定义尺寸">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
-      </nut-cell>
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="自定义图标">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox7"
-          >自定义图标
-          <template #icon> <Checklist /> </template>
-          <template #checkedIcon> <Checklist color="red" /> </template>
-        </nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="点击触发change事件">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox8" @change="changeBox3">change复选框</nut-checkbox>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="checkboxGroup使用">
-      <nut-cell>
-        <nut-checkbox-group v-model="data.checkboxgroup1">
-          <nut-checkbox label="1">组合复选框</nut-checkbox>
-          <nut-checkbox label="2">组合复选框</nut-checkbox>
-          <nut-checkbox label="3">组合复选框</nut-checkbox>
-          <nut-checkbox label="4">组合复选框</nut-checkbox>
-        </nut-checkbox-group>
-      </nut-cell>
-      <nut-cell>
-        <div class="demo-check">当前选中值</div>
-        <div>{{ data.checkboxgroup1 }}</div>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="checkboxGroup禁用">
-      <nut-cell>
-        <nut-checkbox-group v-model="data.checkboxgroup2" disabled>
-          <nut-checkbox label="1">组合复选框</nut-checkbox>
-          <nut-checkbox label="2">组合复选框</nut-checkbox>
-          <nut-checkbox label="3">组合复选框</nut-checkbox>
-          <nut-checkbox label="4">组合复选框</nut-checkbox>
-        </nut-checkbox-group>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="checkboxGroup 全选/取消">
-      <nut-cell>
-        <nut-checkbox-group ref="group" v-model="data.checkboxgroup3" @change="changeBox4">
-          <nut-checkbox v-for="item in data.checkboxsource" :key="item.label" :label="item.label">{{
-            item.value
-          }}</nut-checkbox>
-        </nut-checkbox-group>
-      </nut-cell>
-      <nut-cell>
-        <nut-button type="primary" style="margin: 0 10px 0 0" @click="toggleAll(true)">全选</nut-button>
-        <nut-button type="info" style="margin: 0 10px 0 0" @click="toggleAll(false)">取消</nut-button>
-        <nut-button type="warning" @click="toggleReverse()">反选</nut-button>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="checkboxGroup使用，限制最大可选数（2个）">
-      <nut-cell>
-        <nut-checkbox-group v-model="data.checkboxgroup4" :max="2">
-          <nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
-          <nut-checkbox label="2">组合复选框</nut-checkbox>
-          <nut-checkbox label="3" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox>
-          <nut-checkbox label="4">组合复选框</nut-checkbox>
-        </nut-checkbox-group>
-      </nut-cell>
-      <nut-cell>
-        <div class="demo-check">当前选中值</div>
-        <div>{{ data.checkboxgroup4 }}</div>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group title="全选/半选/取消">
-      <nut-cell>
-        <nut-checkbox v-model="data.checkbox10" :indeterminate="data.indeterminate" @change="changeBox5"
-          >全选</nut-checkbox
-        >
-      </nut-cell>
-      <nut-checkbox-group ref="group2" v-model="data.checkboxgroup5" @change="changeBox6">
-        <nut-cell><nut-checkbox label="1" style="margin: 2px 20px 0 0">组合复选框</nut-checkbox></nut-cell>
-        <nut-cell><nut-checkbox label="2">组合复选框</nut-checkbox></nut-cell>
-        <nut-cell><nut-checkbox label="3">组合复选框</nut-checkbox></nut-cell>
-        <nut-cell><nut-checkbox label="4">组合复选框</nut-checkbox></nut-cell>
-      </nut-checkbox-group>
-    </nut-cell-group>
-    <nut-cell-group title="按钮形状">
-      <nut-cell>
-        <nut-checkbox-group v-model="data.checkboxgroup6">
-          <nut-checkbox label="1" shape="button">按钮形状</nut-checkbox>
-          <nut-checkbox label="2" shape="button">按钮形状</nut-checkbox>
-        </nut-checkbox-group>
-      </nut-cell>
-    </nut-cell-group>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('indeterminate') }}</h2>
+    <Indeterminate />
+
+    <h2>{{ t('disabled') }}</h2>
+    <Disabled />
+
+    <h2>{{ t('size') }}</h2>
+    <Size />
+
+    <h2>{{ t('icon') }}</h2>
+    <IconDemo />
+
+    <h2>{{ t('event') }}</h2>
+    <Event />
+
+    <h2>{{ t('group') }}</h2>
+    <Group />
+
+    <h2>{{ t('groupDisabled') }}</h2>
+    <GroupDisabled />
+
+    <h2>{{ t('methods') }}</h2>
+    <Methods />
+
+    <h2>{{ t('max') }}</h2>
+    <Max />
+
+    <h2>{{ t('methods2') }}</h2>
+    <Methods2 />
+
+    <h2>{{ t('shape') }}</h2>
+    <Shape />
   </Demo>
 </template>
 <script setup lang="ts">
-import { reactive, ref, Ref } from 'vue';
-import { Checklist } from '@nutui/icons-vue-taro';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Indeterminate from './indeterminate.vue';
+import Disabled from './disabled.vue';
+import Size from './size.vue';
+import IconDemo from './icon.vue';
+import Event from './event.vue';
+import Group from './group.vue';
+import GroupDisabled from './group-disabled.vue';
+import Methods from './methods.vue';
+import Max from './max.vue';
+import Methods2 from './methods2.vue';
+import Shape from './shape.vue';
 
-const group = ref(null) as Ref;
-const group2 = ref(null) as Ref;
-const data = reactive({
-  checkbox1: true,
-  checkbox2: false,
-  checkbox3: false,
-  checkbox4: true,
-  checkbox5: false,
-  checkbox6: false,
-  checkbox7: false,
-  checkbox8: false,
-  checkbox9: true,
-  checkbox10: false,
-  checkboxgroup1: ['2', '3'],
-  checkboxgroup2: ['2'],
-  checkboxgroup3: ['2'],
-  checkboxgroup4: ['2'],
-  checkboxgroup5: [],
-  checkboxgroup6: [],
-  checkboxsource: [
-    { label: '1', value: '组合复选框' },
-    { label: '2', value: '组合复选框' },
-    { label: '3', value: '组合复选框' },
-    { label: '4', value: '组合复选框' },
-    { label: '5', value: '组合复选框' },
-    { label: '6', value: '组合复选框' }
-  ],
-  indeterminate: false
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    indeterminate: '半选状态',
+    disabled: '禁用状态',
+    size: '自定义尺寸',
+    icon: '自定义图标',
+    event: 'Change 事件',
+    group: 'CheckboxGroup',
+    groupDisabled: 'CheckboxGroup 禁用',
+    methods: 'CheckboxGroup 方法',
+    max: 'CheckboxGroup 限制最大可选数',
+    methods2: '全选/半选/取消',
+    shape: '按钮形状'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    indeterminate: 'Indeterminate',
+    disabled: 'Disabled',
+    size: 'Custom Size',
+    icon: 'Custom Icon',
+    event: 'Change Event',
+    group: 'CheckboxGroup',
+    groupDisabled: 'Disabled CheckboxGroup',
+    methods: 'Checkboxgroup Methods',
+    max: 'CheckboxGroup Limit the maximum number of options',
+    methods2: 'Select all / half / cancel',
+    shape: 'Button Shape'
+  }
 });
-const changeBox1 = (state: boolean, label: string) => {
-  console.log(state, label);
-};
-
-const changeBox2 = (state: boolean, label: string) => {
-  console.log(state, label);
-};
-
-const changeBox3 = (state: boolean, label: string) => {
-  console.log(`${state ? '选中' : '取消'} ${label}`);
-};
-
-const changeBox4 = (label: any[]) => {
-  console.log(label);
-};
-
-const changeBox5 = (value: boolean) => {
-  group2.value.toggleAll(value);
-};
-
-const changeBox6 = (label: string[]) => {
-  if (label.length === 4) {
-    data.indeterminate = false;
-    data.checkbox10 = true;
-  } else if (label.length && label.length < 4) {
-    data.indeterminate = true;
-  } else {
-    data.indeterminate = false;
-    data.checkbox10 = false;
-  }
-};
-
-const toggleAll = (f: boolean) => {
-  console.log(`${f ? '全选' : '取消'}`);
-  group.value.toggleAll(f);
-};
-
-const toggleReverse = () => {
-  console.log(`反选`);
-  group.value.toggleReverse();
-};
 </script>
-<style lang="scss">
-.demo-check {
-  margin-right: 10px;
-}
-.nut-checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
-}
-.nut-checkbox {
-  .nut-checkbox__label {
-    margin-left: 10px;
-  }
-}
-</style>

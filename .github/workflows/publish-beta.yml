@@ -5,7 +5,11 @@ on:
 
 jobs:
   publish-beta:
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -17,6 +21,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'pnpm'
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install
@@ -25,16 +30,16 @@ jobs:
         run: pnpm build
 
       - name: Publish NutUI Vue
-        run: pnpm --dir ./publish/nutui publish --tag=beta --access=public --no-git-checks
+        run: pnpm --dir ./publish/nutui publish:beta --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
 
       - name: Build NutUI Vue Taro
-        run: pnpm build:taro:vue
+        run: pnpm build:taro
 
       - name: Publish NutUI Vue Taro
-        run: pnpm --dir ./publish/nutui-taro publish --tag=beta --access=public --no-git-checks
+        run: pnpm --dir ./publish/nutui-taro publish:beta --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

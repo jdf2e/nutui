@@ -14,7 +14,6 @@ import { createComponent } from '@/packages/utils/create';
 import { CachedPosition, CompareResult, binarySearch } from './type';
 import { useRect } from '@/packages/utils/useRect';
 const { create } = createComponent('list');
-const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
 
 export default create({
   props: {
@@ -29,8 +28,7 @@ export default create({
       default: 5
     },
     containerHeight: {
-      type: [Number],
-      default: clientHeight
+      type: Number
     },
     height: {
       type: Number,
@@ -44,6 +42,7 @@ export default create({
   emits: ['scrollUp', 'scrollDown', 'scrollBottom'],
 
   setup(props, { emit }) {
+    const clientHeight = document.documentElement.clientHeight || document.body.clientHeight || 667;
     const list = ref(null) as Ref;
     const phantom = ref(null) as Ref;
     const actualContent = ref(null) as Ref;
@@ -57,7 +56,10 @@ export default create({
     });
 
     const getContainerHeight = computed(() => {
-      return Math.min(props.containerHeight, clientHeight);
+      if (props.containerHeight) {
+        return Math.min(props.containerHeight, clientHeight);
+      }
+      return clientHeight;
     });
 
     const visibleCount = computed(() => {

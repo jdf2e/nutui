@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "sourceMap": false,
     "declaration": false,
     "removeComments": true,
@@ -16,8 +17,11 @@
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
     "types": ["vite/client", "vitest/globals"],
+    "allowJs": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@nutui/nutui": ["src/packages/index.ts"],
+      "@nutui/nutui-taro": ["src/packages/taro.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

@@ -1,144 +1,31 @@
 <template>
-  <Demo class="full layout-demo">
-    <h2>基础布局</h2>
-    <div class="box-item">
-      <nut-row>
-        <nut-col :span="24">
-          <div class="flex-content">span:24</div>
-        </nut-col>
-      </nut-row>
-      <nut-row>
-        <nut-col :span="12">
-          <div class="flex-content">span:12</div>
-        </nut-col>
-        <nut-col :span="12">
-          <div class="flex-content flex-content-light">span:12</div>
-        </nut-col>
-      </nut-row>
-      <nut-row>
-        <nut-col :span="8">
-          <div class="flex-content">span:8</div>
-        </nut-col>
-        <nut-col :span="8">
-          <div class="flex-content flex-content-light">span:8</div>
-        </nut-col>
-        <nut-col :span="8">
-          <div class="flex-content">span:8</div>
-        </nut-col>
-      </nut-row>
-      <nut-row>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-    </div>
-    <h2>分栏间隔</h2>
-    <div class="box-item">
-      <nut-row :gutter="10">
-        <nut-col :span="8">
-          <div class="flex-content">span:8</div>
-        </nut-col>
-        <nut-col :span="8">
-          <div class="flex-content flex-content-light">span:8</div>
-        </nut-col>
-        <nut-col :span="8">
-          <div class="flex-content">span:8</div>
-        </nut-col>
-      </nut-row>
-    </div>
-    <h2>Flex布局</h2>
-    <div class="box-item">
-      <nut-row type="flex" wrap="nowrap">
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-      <nut-row type="flex" justify="center">
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-      <nut-row type="flex" justify="end">
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-      <nut-row type="flex" justify="space-between">
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-      <nut-row type="flex" justify="space-around">
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
-        </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content">span:6</div>
-        </nut-col>
-      </nut-row>
-    </div>
+  <Demo class="demo full">
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('gap') }}</h2>
+    <Gap />
+
+    <h2>{{ t('flex') }}</h2>
+    <Flex />
   </Demo>
 </template>
 
-<style lang="scss">
-.box-item {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px 0;
-}
-.layout-demo .nut-row {
-  overflow: hidden;
-  &:not(:last-child) .nut-col {
-    margin-bottom: 15px;
+<script setup lang="ts">
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Gap from './gap.vue';
+import Flex from './flex.vue';
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    gap: '分栏间隔',
+    flex: 'Flex 布局'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    gap: 'Column spacing',
+    flex: 'Flex layout'
   }
-}
-.flex-content {
-  line-height: 40px;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  background: #ff8881;
-  &.flex-content-light {
-    background: #ffc7c4;
-  }
-  &.flex-content-height {
-    height: 50px;
-  }
-}
-</style>
+});
+</script>

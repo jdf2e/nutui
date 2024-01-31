@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`render ok 1`] = `
-"<view class=\\"nut-switch nut-switch-close nut-switch-base\\">
-  <view class=\\"nut-switch-button\\">
+"<view class="nut-switch nut-switch-close nut-switch-base">
+  <view class="nut-switch-button">
     <!--v-if-->
     <!--v-if-->
   </view>

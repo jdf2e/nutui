@@ -24,14 +24,14 @@
     "url": "https://github.com/jdf2e/nutui/issues"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-vue": "^9.17.0",
-    "vue-eslint-parser": "^9.3.2"
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.20.1",
+    "vue-eslint-parser": "^9.4.2"
   },
   "devDependencies": {
-    "eslint": "^8.51.0"
+    "eslint": "^8.56.0"
   },
   "peerDependencies": {
     "eslint": "^7.32.0 || ^8.44.0"

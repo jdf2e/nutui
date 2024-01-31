@@ -1,77 +1,50 @@
 <template>
   <Demo>
-    <nut-cell :is-link="true" title="默认键盘" @click="showKeyBoard(1)"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible1" overlay @input="input" @delete="onDelete" @close="close(1)">
-    </nut-number-keyboard>
-    <nut-cell :is-link="true" title="带右侧栏键盘" @click="showKeyBoard(2)"></nut-cell>
-    <nut-number-keyboard
-      v-model:visible="visible2"
-      type="rightColumn"
-      overlay
-      :custom-key="customKey1"
-      @input="input"
-      @close="close(2)"
-    >
-    </nut-number-keyboard>
-    <nut-cell :is-link="true" title="随机数键盘" @click="showKeyBoard(3)"></nut-cell>
-    <nut-number-keyboard
-      v-model:visible="visible3"
-      type="rightColumn"
-      overlay
-      :random-keys="true"
-      :custom-key="customKey1"
-      @input="input"
-      @close="close(3)"
-    >
-    </nut-number-keyboard>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <nut-cell :is-link="true" title="带标题栏键盘" @click="showKeyBoard(4)"></nut-cell>
-    <nut-number-keyboard
-      v-model:visible="visible4"
-      title="默认键盘"
-      overlay
-      :custom-key="customKey2"
-      @input="input"
-      @close="close(4)"
-    >
-    </nut-number-keyboard>
-    <nut-cell :is-link="true" title="身份证键盘" @click="showKeyBoard(6)"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible6" overlay :custom-key="customKey3" @input="input" @close="close(6)">
-    </nut-number-keyboard>
-    <nut-cell :is-link="true" :desc="value" title="双向绑定" @click="showKeyBoard(5)"></nut-cell>
-    <nut-number-keyboard v-model:visible="visible5" v-model="value" overlay maxlength="6" @close="close(5)">
-    </nut-number-keyboard>
+    <h2>{{ t('right') }}</h2>
+    <Right />
+
+    <h2>{{ t('random') }}</h2>
+    <Random />
+
+    <h2>{{ t('title') }}</h2>
+    <Title />
+
+    <h2>{{ t('idcard') }}</h2>
+    <Idcard />
+
+    <h2>{{ t('value') }}</h2>
+    <Value />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Right from './right.vue';
+import Random from './random.vue';
+import Title from './title.vue';
+import Idcard from './idcard.vue';
+import Value from './value.vue';
 
-const visible1 = ref(false);
-const visible2 = ref(false);
-const visible3 = ref(false);
-const visible4 = ref(false);
-const visible5 = ref(false);
-const visible6 = ref(false);
-const value = ref('');
-const customKey1 = reactive(['.']);
-const customKey2 = reactive(['.', 'x']);
-const customKey3 = reactive(['X']);
-const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
-function input(number: any) {
-  console.log(number);
-}
-function showKeyBoard(index: number) {
-  visibleArr[index - 1].value = true;
-}
-function onDelete() {}
-function close(index: number) {
-  visibleArr[index - 1].value = false;
-}
+const t = useTranslate({
+  'zh-CN': {
+    basic: '默认键盘',
+    right: '带右侧栏键盘',
+    random: '随机数键盘',
+    title: '带标题栏键盘',
+    idcard: '身份证键盘',
+    value: '双向绑定：'
+  },
+  'en-US': {
+    basic: 'Default',
+    right: 'RightColumn',
+    random: 'Random',
+    title: 'Title',
+    idcard: 'Idcard',
+    value: 'v-model'
+  }
+});
 </script>
-
-<style lang="scss" scoped>
-.nut-button {
-  margin-right: 10px;
-}
-</style>

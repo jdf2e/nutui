@@ -4,4 +4,4 @@
 
 用于音频播放
 
-#### 直接使用 Taro 现有的 Taro.createInnerAudioContext 接口开发 [参考文档](https://taro-docs.jd.com/taro/docs/apis/media/audio/createInnerAudioContext)
+#### 直接使用 Taro 现有的 Taro.createInnerAudioContext 接口开发 [参考文档](https://taro-docs.jd.com/docs/apis/media/audio/createInnerAudioContext)

@@ -44,15 +44,12 @@ export const component = (tag: string) => {
         // 为了处理一些组件的rgba透明颜色
         if (primaryColor) {
           const primaryColorRgb = hexToRgb(primaryColor);
-          cssVars[
-            '--nut-address-region-tab-line'
-          ] = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
-          cssVars[
-            '--nut-tabs-horizontal-tab-line-color'
-          ] = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
-          cssVars[
-            '--nut-tabs-vertical-tab-line-color'
-          ] = `linear-gradient(180deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
+          cssVars['--nut-address-region-tab-line'] =
+            `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
+          cssVars['--nut-tabs-horizontal-tab-line-color'] =
+            `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
+          cssVars['--nut-tabs-vertical-tab-line-color'] =
+            `linear-gradient(180deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`;
         }
 
         Object.keys(themeVars).forEach((key) => {

@@ -4,14 +4,14 @@
   </view>
 </template>
 <script lang="ts">
-import { provide, ref, watch } from 'vue';
+import { PropType, provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { COLLAPSE_KEY } from './types';
 const { create } = createComponent('collapse');
 export default create({
   props: {
     modelValue: {
-      type: [String, Number, Array<string | number>],
+      type: [String, Number, Array] as PropType<string | number | (string | number)[]>,
       default: ''
     },
     accordion: {

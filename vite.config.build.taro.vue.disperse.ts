@@ -8,11 +8,15 @@ const input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, exclude, taro } = element;
+    const { name, exclude, taro, setup } = element;
     if (taro === false) return; // 排除非 Taro 组件
     if (exclude != true) {
-      const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+      if (setup === true) {
+        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index.taro.ts`;
+      } else {
+        const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+      }
     }
     // }
   });

@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-avatar-cropper" :data-edit-text="editText">
+  <div class="nut-avatar-cropper" :data-edit-text="editText" :class="{ round: shape === 'round' }">
     <slot></slot>
     <input
       ref="inputImageRef"
@@ -18,7 +18,7 @@
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
     >
-      <div class="highlight" :style="highlightStyle"></div>
+      <div class="highlight" :class="{ highlight__round: shape === 'round' }" :style="highlightStyle"></div>
     </div>
     <div class="nut-cropper-popup__toolbar" :class="[toolbarPosition]">
       <slot v-if="$slots.toolbar" name="toolbar"></slot>
@@ -42,9 +42,9 @@
 
 <script lang="ts">
 import { watch, ref, reactive, toRefs, computed, Ref, PropType } from 'vue';
-import NutButton from '../button/index.vue';
+import NutButton from '../button';
 import { createComponent } from '@/packages/utils/create';
-import type { AvatarCropperToolbarPosition } from './types';
+import type { AvatarCropperToolbarPosition, AvatarCropperShape } from './types';
 const { create } = createComponent('avatar-cropper');
 import { Refresh2, Retweet } from '@nutui/icons-vue';
 import { useTouch } from '@/packages/utils/useTouch';
@@ -80,6 +80,10 @@ export default create({
     confirmText: {
       type: String,
       default: '确定'
+    },
+    shape: {
+      type: String as PropType<AvatarCropperShape>,
+      default: 'square'
     }
   },
   emits: ['confirm', 'cancel'],
@@ -380,6 +384,7 @@ export default create({
       // 设置新canvas的大小与裁剪区域相同
       croppedCanvas.width = width;
       croppedCanvas.height = height;
+
       // 使用drawImage方法将原canvas中指定区域的内容绘制到新canvas上
       canvas && croppedCtx.drawImage(canvas, sx, sy, width, height, 0, 0, width, height);
 

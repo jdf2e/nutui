@@ -30,6 +30,12 @@
     cursor: pointer;
     z-index: 2;
   }
+  &.round {
+    &::after,
+    .nut-avatar-cropper__edit-text {
+      border-radius: 50%;
+    }
+  }
 }
 
 .nut-cropper-popup {
@@ -93,6 +99,9 @@
       z-index: 1;
       background-color: transparent;
       box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.6);
+      &__round {
+        border-radius: 50%;
+      }
     }
   }
 }

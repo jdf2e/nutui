@@ -19,7 +19,7 @@ describe('function Dialog', () => {
       `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer`
     ) as HTMLDivElement;
     expect(footer.children.length).toEqual(2);
-    let cancelBtn = footer.querySelector(`#dialog-${dialog.options.id} .nut-dialog__footer-cancel`) as HTMLDivElement;
+    let cancelBtn = document.querySelector(`#dialog-${dialog.options.id} .nut-dialog__footer-cancel`) as HTMLDivElement;
     cancelBtn.click();
     cancelBtn = document.querySelector(`#dialog-${dialog.options.id}`) as HTMLDivElement;
     expect(cancelBtn).toBeNull();
@@ -43,7 +43,7 @@ describe('function Dialog', () => {
       `#dialog-${dialog.options.id} .nut-dialog .nut-dialog__footer`
     ) as HTMLDivElement;
     expect(footer.children.length).toEqual(2);
-    let okBtn = footer.querySelector(`#dialog-${dialog.options.id} .nut-dialog__footer-ok`) as HTMLDivElement;
+    let okBtn = document.querySelector(`#dialog-${dialog.options.id} .nut-dialog__footer-ok`) as HTMLDivElement;
     okBtn.click();
     okBtn = document.querySelector(`#dialog-${dialog.options.id}`) as HTMLDivElement;
     expect(okBtn).toBeNull();

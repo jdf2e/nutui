@@ -75,12 +75,11 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, toRefs, computed } from 'vue';
+import { reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarState } from './type';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('calendar-item');
@@ -159,7 +158,7 @@ export default create({
   },
   emits: ['choose', 'update', 'close', 'select'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const translate = useLocale(cN);
     // 新增：自定义周起始日
     const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
@@ -705,7 +704,7 @@ export default create({
         months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
       }
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });
@@ -811,7 +810,9 @@ export default create({
     };
 
     // 初始化数据
-    initData();
+    onMounted(() => {
+      initData();
+    });
 
     //监听 默认值更改
     watch(

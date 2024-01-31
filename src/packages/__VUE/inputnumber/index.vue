@@ -94,7 +94,7 @@ export default create({
     };
     const change = (event: Event) => {
       const input = event.target as HTMLInputElement;
-      emit('update:modelValue', input.valueAsNumber, event);
+      emit('update:modelValue', input.value, event);
     };
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);

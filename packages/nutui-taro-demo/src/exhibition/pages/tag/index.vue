@@ -1,80 +1,32 @@
 <template>
   <Demo>
-    <nut-cell-group title="基础用法">
-      <nut-cell title="default 类型">
-        <template #link>
-          <nut-tag>标签</nut-tag>
-        </template>
-      </nut-cell>
-      <nut-cell title="primary 类型">
-        <template #link>
-          <nut-tag type="primary">标签</nut-tag>
-        </template>
-      </nut-cell>
-      <nut-cell title="success 类型">
-        <template #link>
-          <nut-tag type="success">标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="danger 类型">
-        <template #link>
-          <nut-tag type="danger">标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="warning 类型">
-        <template #link>
-          <nut-tag type="warning">标签</nut-tag>
-        </template>
-      </nut-cell>
-    </nut-cell-group>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
 
-    <nut-cell-group title="样式风格">
-      <nut-cell title="空心样式">
-        <template #link>
-          <nut-tag plain>标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="圆角样式">
-        <template #link>
-          <nut-tag round type="primary">标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="标记样式">
-        <template #link>
-          <nut-tag mark type="primary">标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="可关闭标签">
-        <template #link>
-          <nut-tag v-if="show" closeable type="primary" @close="close">标签</nut-tag>
-        </template></nut-cell
-      >
-    </nut-cell-group>
+    <h2>{{ t('custom') }}</h2>
+    <Custom />
 
-    <nut-cell-group title="颜色自定义">
-      <nut-cell title="背景颜色">
-        <template #link>
-          <nut-tag color="#FA685D">标签</nut-tag>
-        </template></nut-cell
-      >
-      <nut-cell title="文字颜色">
-        <template #link>
-          <nut-tag color="#E9E9E9" text-color="#999999">标签</nut-tag>
-        </template>
-      </nut-cell>
-      <nut-cell title="空心颜色">
-        <template #link>
-          <nut-tag color="#FA2400" plain>标签</nut-tag>
-        </template>
-      </nut-cell>
-    </nut-cell-group>
+    <h2>{{ t('color') }}</h2>
+    <Color />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(true);
-const close = () => {
-  show.value = false;
-};
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Custom from './custom.vue';
+import Color from './color.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    custom: '样式风格',
+    color: '颜色自定义'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    custom: 'Style',
+    color: 'Custom Color'
+  }
+});
 </script>

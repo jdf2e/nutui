@@ -3,6 +3,7 @@
   "extends": [
     "config:base", "schedule:weekly", "group:allNonMajor"
   ],
+  "rangeStrategy": "bump",
   "labels": ["dependencies"],
   "ignorePaths": [
     "src/**",

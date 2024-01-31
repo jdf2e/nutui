@@ -9,11 +9,6 @@ beforeEach(() => {
   document.body.appendChild(el);
 });
 
-afterEach(() => {
-  // clean up
-  document.body.outerHTML = '';
-});
-
 test('Dialog: basic props', async () => {
   const wrapper = mount(Dialog, {
     props: {

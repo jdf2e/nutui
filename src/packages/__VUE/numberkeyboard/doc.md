@@ -16,190 +16,27 @@ app.use(NumberKeyboard);
 
 ### 默认键盘
 
-在线调试请将浏览器变为手机模式
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="默认键盘"></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`输入：${number}`);
-}
-function onDelete() {
-  showToast.text('删除');
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard basic
 
 ### 带右侧栏键盘
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="带右侧栏键盘"></nut-cell>
-  <nut-number-keyboard
-    type="rightColumn"
-    v-model:visible="visible"
-    :custom-key="customKey"
-    confirm-text="支付"
-    @input="input"
-    @close="close"
-  >
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`输入：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard right
 
 ### 随机数键盘
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard" title="随机数键盘"></nut-cell>
-  <nut-number-keyboard
-    type="rightColumn"
-    v-model:visible="visible"
-    :randomKeys="true"
-    :custom-key="customKey"
-    @input="input"
-    @close="close"
-  >
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`输入：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard random
 
 ### 带标题栏键盘
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" title="带标题栏键盘"></nut-cell>
-  <nut-number-keyboard title="默认键盘" v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`输入：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard title
 
 ### 身份证键盘
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" @click="showKeyBoard(4)" title="身份证键盘"></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" :custom-key="customKey" @input="input" @close="close">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const visible = ref(false);
-const customKey = reactive(['X']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function input(number) {
-  showToast.text(`输入：${number}`);
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard idcard
 
 ### 双向绑定
 
-:::demo
-
-```vue
-<template>
-  <nut-cell :isLink="true" desc-text-align="left" @click="showKeyBoard" :desc="value" title="双向绑定："></nut-cell>
-  <nut-number-keyboard v-model:visible="visible" v-model="value" maxlength="6" @close="close"> </nut-number-keyboard>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const visible = ref(false);
-const value = ref('');
-const customKey = reactive(['.']);
-function showKeyBoard() {
-  visible.value = true;
-}
-function close() {
-  visible.value = false;
-}
-</script>
-```
-
-:::
+> demo: numberkeyboard value
 
 ## API
 

@@ -1,32 +1,21 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import config from './package.json';
 import autoprefixer from 'autoprefixer';
-import Inspect from 'vite-plugin-inspect';
+import VueDevTools from 'vite-plugin-vue-devtools';
 import { markdown } from '@nutui/vite-plugins';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/h5/vue/4x/',
-  server: {
-    port: 2023,
-    host: '0.0.0.0',
-    proxy: {
-      '/devServer': {
-        target: 'https://nutui.jd.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/devServer/, '')
-      },
-      '/devTheme': {
-        target: 'https://nutui.jd.com/theme/source',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/devTheme/, '')
-      }
-    }
-  },
+  base: '/',
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
+    alias: [
+      { find: '@', replacement: resolve(__dirname, './src') },
+      { find: '@nutui/nutui', replacement: resolve(__dirname, './src/packages/index.ts') }
+    ]
   },
   css: {
     preprocessorOptions: {
@@ -45,12 +34,14 @@ export default defineConfig({
     }
   },
   plugins: [
-    Inspect(),
+    VueDevTools(),
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
+    vueJsx(),
     markdown({
-      docRoot: path.resolve(__dirname, './src/packages/__VUE')
+      docRoot: path.resolve(__dirname, './src/packages/__VUE'),
+      docTaroRoot: path.resolve(__dirname, './packages/nutui-taro-demo/src')
     })
   ],
   build: {
@@ -71,5 +62,15 @@ export default defineConfig({
         plugins: []
       }
     }
+  },
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    coverage: {
+      all: false,
+      provider: 'v8'
+    },
+    include: ['src/packages/__VUE/**/*.(test|spec).(ts|tsx)'],
+    reporters: ['default', 'html']
   }
 });

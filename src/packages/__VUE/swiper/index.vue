@@ -16,7 +16,7 @@
         v-for="(item, index) in state.children.length"
         :key="index"
         :style="{
-          backgroundColor: activePagination === index ? paginationColor : '#ddd'
+          backgroundColor: activePagination === index ? paginationColor : paginationUnselectedColor
         }"
         :class="{ active: activePagination === index }"
       />
@@ -40,7 +40,6 @@ import {
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch/index';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { clamp } from '@/packages/utils/util';
 import requestAniFrame from '@/packages/utils/raf';
 import { SWIPER_KEY } from './types';
@@ -92,11 +91,15 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
+    },
+    paginationUnselectedColor: {
+      type: String,
+      default: '#ddd'
     }
   },
   emits: ['change'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const container = ref();
     const state = reactive({
       active: 0,
@@ -391,7 +394,7 @@ export default create({
       relation
     });
 
-    useExpose({
+    expose({
       prev,
       next,
       to

@@ -89,7 +89,6 @@ import NutScrollView from '../scroll-view/index.taro.vue';
 import Utils from '@/packages/utils/date';
 import requestAniFrame from '@/packages/utils/raf';
 import { MonthInfo, Day, CalendarTaroState } from './type';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { useLocale } from '@/packages/utils/useLocale';
 
 const { create } = createComponent('calendar-item');
@@ -172,7 +171,7 @@ export default create({
   },
   emits: ['choose', 'update', 'close', 'select'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const translate = useLocale(cN);
     // 新增：自定义周起始日
     const weekdays = (translate('weekdays') as any).map((day: string, index: number) => ({
@@ -711,7 +710,7 @@ export default create({
     const initPosition = () => {
       state.scrollTop = Math.ceil(state.monthsData[state.currentIndex].cssScrollHeight);
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });

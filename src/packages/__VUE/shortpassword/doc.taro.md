@@ -17,144 +17,19 @@ app.use(NumberKeyboard);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="基础用法" is-link @click="state.visible1 = true"></nut-cell>
-  <nut-short-password v-model="state.value1" v-model:visible="state.visible1" @focus="state.showKeyboard1 = true">
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value1" v-model:visible="state.showKeyboard1" @blur="state.showKeyboard1 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  visible1: false,
-  showKeyboard1: false,
-  value1: ''
-});
-</script>
-```
-
-:::
+> demo: shortpassword basic dentry
 
 ### 自定义密码长度 4
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="自定义密码长度4" is-link @click="state.visible2 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value2"
-    v-model:visible="state.visible2"
-    @focus="state.showKeyboard2 = true"
-    :length="state.length"
-    @complete="methods.complete"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value2" v-model:visible="state.showKeyboard2" @blur="state.showKeyboard2 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible2: false,
-  showKeyboard2: false,
-  value2: '',
-  length: 4
-});
-const methods = {
-  complete(value) {
-    console.log(value);
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword length dentry
 
 ### 忘记密码提示语事件回调
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="忘记密码提示语" is-link @click="state.visible3 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value3"
-    v-model:visible="state.visible3"
-    @focus="state.showKeyboard3 = true"
-    @complete="methods.complete"
-    @tips="methods.onTips"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value3" v-model:visible="state.showKeyboard3" @blur="state.showKeyboard3 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible3: false,
-  showKeyboard3: false,
-  value3: ''
-});
-const methods = {
-  complete(value) {
-    console.log(value);
-  },
-  onTips() {
-    console.log('执行忘记密码逻辑');
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword forget dentry
 
 ### 错误提示语
 
-:::demo
-
-```vue
-<template>
-  <nut-cell title="错误提示语" is-link @click="state.visible4 = true"></nut-cell>
-  <nut-short-password
-    v-model="state.value4"
-    v-model:visible="state.visible4"
-    @focus="state.showKeyboard4 = true"
-    :error-msg="state.errorMsg"
-    @complete="methods.complete"
-    @tips="methods.onTips"
-  >
-  </nut-short-password>
-  <nut-number-keyboard v-model="state.value4" v-model:visible="state.showKeyboard4" @blur="state.showKeyboard4 = false">
-  </nut-number-keyboard>
-</template>
-<script setup>
-import { reactive } from 'vue';
-import { showToast } from '@nutui/nutui';
-const state = reactive({
-  visible4: false,
-  showKeyboard4: false,
-  value4: '',
-  errorMsg: '请输入正确密码'
-});
-const methods = {
-  complete(value) {
-    console.log(value);
-  },
-  onTips() {
-    console.log('执行忘记密码逻辑');
-  }
-};
-</script>
-```
-
-:::
+> demo: shortpassword error dentry
 
 ## API
 

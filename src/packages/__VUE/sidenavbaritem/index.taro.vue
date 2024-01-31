@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-side-navbar-item" :ikey="ikey" @click.stop="handleClick">
+  <view class="nut-side-navbar-item">
     <span class="nut-side-navbar-item__title">
       {{ title }}
     </span>
@@ -13,21 +13,7 @@ export default create({
     title: {
       type: String,
       default: ''
-    },
-    ikey: {
-      type: String,
-      default: ''
     }
-  },
-  emits: ['click'],
-  setup: (props, { emit }) => {
-    const handleClick = () => {
-      emit('click');
-    };
-
-    return {
-      handleClick
-    };
   }
 });
 </script>

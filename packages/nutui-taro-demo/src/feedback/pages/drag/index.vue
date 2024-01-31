@@ -1,22 +1,26 @@
 <template>
-  <Demo class="full">
-    <h2>基础用法</h2>
-    <nut-drag class="dragDemo">
-      <nut-button type="primary">触摸移动</nut-button>
-    </nut-drag>
-    <h2>y轴方向移动</h2>
-    <nut-drag class="dragDemo" direction="y">
-      <nut-button type="primary">Y轴移动</nut-button>
-    </nut-drag>
-    <h2>x轴方向移动</h2>
-    <nut-drag class="dragDemo" direction="x">
-      <nut-button type="primary">X轴移动</nut-button>
-    </nut-drag>
+  <Demo>
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2 style="margin-top: 60px">{{ t('direction') }}</h2>
+    <Direction />
   </Demo>
 </template>
 
-<style lang="scss">
-.dragDemo {
-  margin-left: 20px;
-}
-</style>
+<script setup lang="ts">
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Direction from './direction.vue';
+
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    direction: '限制拖拽方向'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    direction: 'Limit Direction'
+  }
+});
+</script>

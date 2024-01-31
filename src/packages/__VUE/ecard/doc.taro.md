@@ -16,51 +16,7 @@ app.use(Ecard);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-cell>
-    <nut-ecard
-      v-model="money"
-      @input-change="inputChange"
-      @change="change"
-      @change-step="changeStep"
-      :data-list="dataList"
-    ></nut-ecard>
-  </nut-cell>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const dataList = reactive([
-  {
-    price: 10
-  },
-  {
-    price: 20
-  },
-  {
-    price: 30
-  },
-  {
-    price: 40
-  }
-]);
-const money = ref(10);
-const inputChange = (val) => {
-  money.value = val;
-};
-const change = (item) => {
-  money.value = item.price;
-};
-const changeStep = (num, price) => {
-  const val = price * num;
-  money.value = val;
-};
-</script>
-```
-
-:::
+> demo: ecard basic business
 
 ## API
 
@@ -68,7 +24,7 @@ const changeStep = (num, price) => {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| modelValue | 购买电子卡所需价钱 | number | `0` |
+| model-value | 购买电子卡所需价钱 | number | `0` |
 | choose-text | 选择面值文案 | string | `请选择电子卡面值` |
 | other-value-text | 其他面值文案 | string | `其他面值` |
 | data-list | 电子卡面值列表 | Array | `DataList[]` |

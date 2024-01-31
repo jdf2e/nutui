@@ -1,33 +1,44 @@
 <template>
   <Demo class="full">
-    <h2>基础用法</h2>
-    <nut-textarea v-model="value" />
-    <h2>显示字数统计</h2>
-    <nut-textarea v-model="value2" limit-show max-length="20" />
-    <h2>高度自定义，拉伸</h2>
-    <nut-textarea v-model="value3" autosize />
-    <h2>只读、禁用</h2>
-    <nut-textarea readonly model-value="textarea 只读状态" />
-    <nut-textarea disabled model-value="textarea 禁用状态" />
+    <h2>{{ t('basic') }}</h2>
+    <Basic />
+
+    <h2>{{ t('limit') }}</h2>
+    <Limit />
+
+    <h2>{{ t('row') }}</h2>
+    <Row />
+
+    <h2>{{ t('status') }}</h2>
+    <Status />
+
+    <h2>{{ t('focus') }}</h2>
+    <Focus />
   </Demo>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const value = ref('');
-const value2 = ref('');
-const value3 = ref('');
-</script>
+import { useTranslate } from '../../../utils';
+import Basic from './basic.vue';
+import Limit from './limit.vue';
+import Row from './row.vue';
+import Status from './status.vue';
+import Focus from './focus.vue';
 
-<style lang="scss">
-.nut-textarea__textarea__readonly {
-  background-color: #f9f9f9;
-}
-.nut-textarea--disabled {
-  textarea {
-    padding: 5px 10px;
-    height: 30px;
-    background-color: #f9f9f9;
+const t = useTranslate({
+  'zh-CN': {
+    basic: '基础用法',
+    limit: '显示字数统计',
+    row: '高度自动拉伸',
+    status: '只读、禁用',
+    focus: '自动获取焦点'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    limit: 'Display word count',
+    row: 'Height customization, stretching',
+    status: 'Readonly & Disabled',
+    focus: 'Autofocus'
   }
-}
-</style>
+});
+</script>

@@ -8,10 +8,10 @@ package-lock.json
 /cache
 /src/nutui.ts
 /src/packages/components.d.ts
-/src/packages/nutui.vue.ts
-/src/packages/nutui.vue.build.ts
-/src/packages/nutui.taro.vue.ts
-/src/packages/nutui.taro.vue.build.ts
+/src/packages/index.ts
+/src/packages/index.build.ts
+/src/packages/taro.ts
+/src/packages/taro.build.ts
 src/packages/vscode-extension/*.vsix
 /.nyc_output
 /coverage

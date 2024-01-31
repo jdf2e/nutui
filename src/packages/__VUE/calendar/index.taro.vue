@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    :visible="visible"
+    v-model:visible="visible"
     position="bottom"
     round
     closeable
@@ -9,8 +9,8 @@
     :style="{ height: '85vh' }"
     :lock-scroll="lockScroll"
     :catch-move="lockScroll"
-    @click-overlay="closePopup"
-    @click-close-icon="closePopup"
+    :destroy-on-close="false"
+    @opened="opened"
   >
     <nut-calendar-item
       ref="calendarRef"
@@ -90,13 +90,12 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import NutCalendarItem from '../calendaritem/index.taro.vue';
 import NutPopup from '../popup/index.taro.vue';
 import Utils from '@/packages/utils/date';
-import { useExpose } from '@/packages/utils/useExpose/index';
 import { CalendarRef } from '../calendaritem/type';
 
 export default create({
@@ -154,7 +153,7 @@ export default create({
       default: ''
     },
     defaultValue: {
-      type: [String, Array]
+      type: [String, Array] as PropType<string | string[]>
     },
     startDate: {
       type: String,
@@ -176,7 +175,15 @@ export default create({
     disabledDate: Function
   },
   emits: ['choose', 'close', 'update:visible', 'select'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
+    const visible = computed({
+      get() {
+        return props.visible;
+      },
+      set(val) {
+        emit('update:visible', val);
+      }
+    });
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -200,7 +207,7 @@ export default create({
     const initPosition = () => {
       calendarRef.value?.initPosition();
     };
-    useExpose({
+    expose({
       scrollToDate,
       initPosition
     });
@@ -227,8 +234,22 @@ export default create({
       emit('select', param);
     };
 
+    const opened = () => {
+      if (props.defaultValue) {
+        if (Array.isArray(props.defaultValue)) {
+          if (props.defaultValue?.length) {
+            calendarRef.value?.scrollToDate(props.defaultValue?.[0]);
+          }
+        } else {
+          calendarRef.value?.scrollToDate(props.defaultValue);
+        }
+      }
+    };
+
     return {
+      visible,
       closePopup,
+      opened,
       update,
       close,
       select,

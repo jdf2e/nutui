@@ -1,0 +1,3 @@
+<template>
+  <nut-divider />
+</template>

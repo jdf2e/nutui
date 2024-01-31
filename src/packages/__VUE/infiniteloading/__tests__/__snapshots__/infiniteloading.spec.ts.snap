@@ -1,10 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`infiniteloading base 1`] = `
-"<div class=\\"box\\" style=\\"height: 300px; overflow: auto;\\">
-  <view class=\\"nut-infinite-loading\\">
-    <view class=\\"nut-infinite__container\\"></view>
-    <view class=\\"nut-infinite__bottom\\">
+"<div class="box" style="height: 300px; overflow: auto;">
+  <view class="nut-infinite-loading">
+    <view class="nut-infinite__container"></view>
+    <view class="nut-infinite__bottom">
       <!--v-if-->
     </view>
   </view>

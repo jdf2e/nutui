@@ -20,30 +20,7 @@ Dark mode can be enabled by setting the `theme` property of the ConfigProvider c
 
 Dark mode takes effect globally, making all NutUI components on the page dark.
 
-:::demo
-
-```vue
-<template>
-  <nut-config-provider :theme="theme">
-    <nut-cell title="Switch Dark Mode">
-      <template #link>
-        <nut-switch v-model="checked" @change="change" />
-      </template>
-    </nut-cell>
-    <nut-cell title="Title" sub-title="Subtitle Description" desc="Description"></nut-cell>
-  </nut-config-provider>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(false);
-const theme = ref('');
-const change = (v) => {
-  theme.value = v ? 'dark' : '';
-};
-</script>
-```
-
-:::
+> demo: configprovider basic
 
 ### Dynamic Theme
 
@@ -75,35 +52,8 @@ You can directly override these CSS variables in the code, and the style of the 
 #### Override by ConfigProvider
 
 The ConfigProvider component provides the ability to override CSS variables. You need to wrap a ConfigProvider component at the root node and configure some CSS variables through the theme-vars property.
-:::demo
 
-```vue
-<template>
-  <nut-config-provider :theme-vars="themeVars">
-    <nut-form>
-      <nut-form-item label="Range">
-        <nut-range hidden-tag v-model="range"></nut-range>
-      </nut-form-item>
-    </nut-form>
-  </nut-config-provider>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const range = ref(30);
-const themeVars = reactive({
-  primaryColor: '#008000',
-  primaryColorEnd: '#008000'
-});
-// Of course, you can also choose to use component variables to replace. If both basic variables and component variables are set, the component variables will overwrite the basic variables
-//  const themeVars = {
-//   rangeBgColor: 'rgba(25,137,250,0.15)',
-//   rangeBarBgColor: '#0289fa',
-//   rangeBarBtnBorder: '1px solid #0289fa'
-// }
-</script>
-```
-
-:::
+> demo: configprovider theme
 
 ## Style Variables
 
@@ -157,8 +107,8 @@ Here are all the base variables:
 
 ### Props
 
-| Attribute  | Description                                                          | Type   | Default |
-| ---------- | -------------------------------------------------------------------- | ------ | ------- |
-| theme      | Theme style, set to `dark` to enable dark mode, take effect globally | string | -       |
-| theme-vars | Customized theme variable                                            | object | -       |
-| tag        | HTML Tag of root element                                             | string | `div`   |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| theme | Theme style, set to `dark` to enable dark mode, take effect globally | string | - |
+| theme-vars | Customized theme variable | object | - |
+| tag | HTML Tag of root element | string | `div` |

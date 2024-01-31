@@ -5,7 +5,7 @@ import { useChildren, useParent } from '@/packages/utils';
 import { FORM_KEY } from './types';
 import type { MaybeRef, PropType } from 'vue';
 import type { FormItemRule } from '../formitem/types';
-import type { ErrorMessage, FormRule, FormRules } from './types';
+import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
   const disabled = useProp<boolean>('disabled');
@@ -28,6 +28,14 @@ export const component = (components: any) => {
       disabled: {
         type: Boolean,
         default: false
+      },
+      labelPosition: {
+        type: String as PropType<FormLabelPosition>,
+        default: 'left'
+      },
+      starPosition: {
+        type: String as PropType<FormStarPosition>,
+        default: 'left'
       }
     },
     components,
