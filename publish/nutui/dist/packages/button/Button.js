@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { defineComponent, toRefs, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, unref, createBlock, createCommentVNode, renderSlot } from "vue";
+import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, createBlock, unref, createCommentVNode, renderSlot } from "vue";
 import { Loading } from "@nutui/icons-vue";
 import { w as withInstall } from "../with-install-p59gYYU_.js";
 const _hoisted_1 = { class: "nut-button__wrap" };
@@ -39,9 +39,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
   setup(__props, { emit: __emit }) {
     const props = __props;
     const emit = __emit;
-    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
     const handleClick = (event) => {
-      if (!loading.value && !disabled.value) {
+      if (!props.loading && !props.disabled) {
         emit("click", event);
       }
     };
@@ -49,26 +48,26 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       const prefixCls = "nut-button";
       return {
         [prefixCls]: true,
-        [`${prefixCls}--${type.value}`]: type.value,
-        [`${prefixCls}--${size.value}`]: size.value,
-        [`${prefixCls}--${shape.value}`]: shape.value,
-        [`${prefixCls}--plain`]: plain.value,
-        [`${prefixCls}--block`]: block.value,
-        [`${prefixCls}--disabled`]: disabled.value,
-        [`${prefixCls}--loading`]: loading.value
+        [`${prefixCls}--${props.type}`]: props.type,
+        [`${prefixCls}--${props.size}`]: props.size,
+        [`${prefixCls}--${props.shape}`]: props.shape,
+        [`${prefixCls}--plain`]: props.plain,
+        [`${prefixCls}--block`]: props.block,
+        [`${prefixCls}--disabled`]: props.disabled,
+        [`${prefixCls}--loading`]: props.loading
       };
     });
     const getStyle = computed(() => {
       let style = {};
-      if (color == null ? void 0 : color.value) {
+      if (props.color) {
         style = {
-          color: plain.value ? color.value : "#fff",
-          background: plain.value ? "#fff" : `border-box ${color.value}`
+          color: props.plain ? props.color : "#fff",
+          background: props.plain ? "#fff" : `border-box ${props.color}`
         };
-        if (color.value.includes("gradient")) {
+        if (props.color.includes("gradient")) {
           style.borderColor = "transparent";
         } else {
-          style.borderColor = color.value;
+          style.borderColor = props.color;
         }
       }
       return style;
@@ -80,14 +79,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         onClick: handleClick
       }, [
         createElementVNode("view", _hoisted_1, [
-          unref(loading) ? (openBlock(), createBlock(unref(Loading), {
+          _ctx.loading ? (openBlock(), createBlock(unref(Loading), {
             key: 0,
             class: "nut-icon-loading"
           })) : createCommentVNode("", true),
-          _ctx.$slots.icon && !unref(loading) ? renderSlot(_ctx.$slots, "icon", { key: 1 }) : createCommentVNode("", true),
+          _ctx.$slots.icon && !_ctx.loading ? renderSlot(_ctx.$slots, "icon", { key: 1 }) : createCommentVNode("", true),
           _ctx.$slots.default ? (openBlock(), createElementBlock("view", {
             key: 2,
-            class: normalizeClass({ "nut-button__text": _ctx.$slots.icon || unref(loading) })
+            class: normalizeClass({ "nut-button__text": _ctx.$slots.icon || _ctx.loading })
           }, [
             renderSlot(_ctx.$slots, "default")
           ], 2)) : createCommentVNode("", true)

@@ -477,9 +477,8 @@ var __async = (__this, __arguments, generator) => {
     setup(__props, { emit: __emit }) {
       const props = __props;
       const emit = __emit;
-      const { type, size, shape, disabled, loading, color, plain, block } = vue.toRefs(props);
       const handleClick = (event) => {
-        if (!loading.value && !disabled.value) {
+        if (!props.loading && !props.disabled) {
           emit("click", event);
         }
       };
@@ -487,26 +486,26 @@ var __async = (__this, __arguments, generator) => {
         const prefixCls = "nut-button";
         return {
           [prefixCls]: true,
-          [`${prefixCls}--${type.value}`]: type.value,
-          [`${prefixCls}--${size.value}`]: size.value,
-          [`${prefixCls}--${shape.value}`]: shape.value,
-          [`${prefixCls}--plain`]: plain.value,
-          [`${prefixCls}--block`]: block.value,
-          [`${prefixCls}--disabled`]: disabled.value,
-          [`${prefixCls}--loading`]: loading.value
+          [`${prefixCls}--${props.type}`]: props.type,
+          [`${prefixCls}--${props.size}`]: props.size,
+          [`${prefixCls}--${props.shape}`]: props.shape,
+          [`${prefixCls}--plain`]: props.plain,
+          [`${prefixCls}--block`]: props.block,
+          [`${prefixCls}--disabled`]: props.disabled,
+          [`${prefixCls}--loading`]: props.loading
         };
       });
       const getStyle = vue.computed(() => {
         let style = {};
-        if (color == null ? void 0 : color.value) {
+        if (props.color) {
           style = {
-            color: plain.value ? color.value : "#fff",
-            background: plain.value ? "#fff" : `border-box ${color.value}`
+            color: props.plain ? props.color : "#fff",
+            background: props.plain ? "#fff" : `border-box ${props.color}`
           };
-          if (color.value.includes("gradient")) {
+          if (props.color.includes("gradient")) {
             style.borderColor = "transparent";
           } else {
-            style.borderColor = color.value;
+            style.borderColor = props.color;
           }
         }
         return style;
@@ -520,16 +519,16 @@ var __async = (__this, __arguments, generator) => {
           onClick: handleClick
         }, [
           vue.createElementVNode("view", _hoisted_2$12, [
-            vue.unref(loading) ? (vue.openBlock(), vue.createBlock(vue.unref(iconsVueTaro.Loading), {
+            _ctx.loading ? (vue.openBlock(), vue.createBlock(vue.unref(iconsVueTaro.Loading), {
               key: 0,
               class: "nut-icon-loading"
             })) : vue.createCommentVNode("", true),
             vue.createTextVNode(),
-            _ctx.$slots.icon && !vue.unref(loading) ? vue.renderSlot(_ctx.$slots, "icon", { key: 1 }) : vue.createCommentVNode("", true),
+            _ctx.$slots.icon && !_ctx.loading ? vue.renderSlot(_ctx.$slots, "icon", { key: 1 }) : vue.createCommentVNode("", true),
             vue.createTextVNode(),
             _ctx.$slots.default ? (vue.openBlock(), vue.createElementBlock("view", {
               key: 2,
-              class: vue.normalizeClass({ "nut-button__text": _ctx.$slots.icon || vue.unref(loading) })
+              class: vue.normalizeClass({ "nut-button__text": _ctx.$slots.icon || _ctx.loading })
             }, [
               vue.renderSlot(_ctx.$slots, "default")
             ], 2)) : vue.createCommentVNode("", true)
