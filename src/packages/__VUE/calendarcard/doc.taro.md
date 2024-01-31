@@ -102,6 +102,7 @@ import type {
   CalendarCardDay,
   CalendarCardMonth,
   CalendarCardValue,
+  CalendarCardProps,
   CalendarCardInstance
 } from '@nutui/nutui-taro';
 ```
