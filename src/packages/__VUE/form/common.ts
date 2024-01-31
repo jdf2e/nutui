@@ -7,8 +7,6 @@ import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
 export const useFormDisabled = (disabled: boolean) => {
-  // const disabled = useProp<boolean>('disabled');
-  // const disable = useProp<boolean>('disable');
   const { parent } = useParent(FORM_KEY);
   return computed(() => disabled || parent?.props?.disabled || false);
 };
