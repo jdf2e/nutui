@@ -84,7 +84,7 @@ export const component = (components: any) => {
       };
 
       const checkRule = async (item: FormRule): Promise<ErrorMessage | boolean> => {
-        const { rules, prop } = item;
+        const { rules = [], prop } = item;
 
         const _Promise = (errorMsg: ErrorMessage): Promise<ErrorMessage> => {
           return new Promise((resolve, reject) => {
