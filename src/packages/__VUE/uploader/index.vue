@@ -144,7 +144,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<Uploader>[]>([]);

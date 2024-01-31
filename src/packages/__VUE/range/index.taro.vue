@@ -135,7 +135,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const refRandomId = Math.random().toString(36).slice(-8);
     const state = ref({
       width: 0,

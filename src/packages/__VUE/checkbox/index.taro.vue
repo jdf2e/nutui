@@ -41,7 +41,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const parent: any = inject(CHECKBOX_KEY, null);
     const state = reactive({
       partialSelect: props.indeterminate

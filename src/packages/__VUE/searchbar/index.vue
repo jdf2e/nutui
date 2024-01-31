@@ -146,7 +146,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const translate = useLocale(cN);
     const state = reactive({
       active: false

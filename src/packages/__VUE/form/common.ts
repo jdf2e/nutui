@@ -1,17 +1,16 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
-import { computed, provide, reactive, unref, watch } from 'vue';
-import { useProp } from '@/packages/utils/useProp';
+import { computed, provide, reactive, watch } from 'vue';
 import { useChildren, useParent } from '@/packages/utils';
 import { FORM_KEY } from './types';
-import type { MaybeRef, PropType } from 'vue';
+import type { PropType } from 'vue';
 import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
-export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
-  const disabled = useProp<boolean>('disabled');
-  const disable = useProp<boolean>('disable');
+export const useFormDisabled = (disabled: boolean) => {
+  // const disabled = useProp<boolean>('disabled');
+  // const disable = useProp<boolean>('disable');
   const { parent } = useParent(FORM_KEY);
-  return computed(() => disabled.value || disable.value || unref(fallback) || parent?.props?.disabled || false);
+  return computed(() => disabled || parent?.props?.disabled || false);
 };
 
 export const component = (components: any) => {

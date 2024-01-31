@@ -81,7 +81,7 @@ export default create({
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {

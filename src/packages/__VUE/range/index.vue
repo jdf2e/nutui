@@ -131,7 +131,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;

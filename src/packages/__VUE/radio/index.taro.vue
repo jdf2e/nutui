@@ -34,7 +34,7 @@ export default create({
     }
   },
   setup(props, { slots }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const { size } = toRefs(props);
     let parent: any = inject(RADIO_KEY, null);
 

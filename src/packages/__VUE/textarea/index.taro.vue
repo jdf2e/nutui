@@ -85,7 +85,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const translate = useLocale(cN);
     const classes = computed(() => {
       const prefixCls = 'nut-textarea';

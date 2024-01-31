@@ -61,7 +61,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disable);
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;

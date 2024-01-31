@@ -107,7 +107,7 @@ export default create({
   components: { StarFillN },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const rateRefs = ref<HTMLElement[]>([]);
     const updateVal = (value: number) => {
       emit('update:modelValue', value);

@@ -160,7 +160,7 @@ export default create({
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const active = ref(false);
 
     const inputRef = ref();

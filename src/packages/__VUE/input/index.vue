@@ -147,7 +147,7 @@ export default create({
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled();
+    const disabled = useFormDisabled(props.disabled);
     const active = ref(false);
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');
