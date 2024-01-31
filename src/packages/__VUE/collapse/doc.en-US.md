@@ -84,6 +84,20 @@ Set a custom icon through the `slots.icon` or `props.icon` property.
 | --- | --- | --- |
 | change | Triggered when switching panels | `(modelValue, currName, status)` |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  CollapseValue,
+  CollapseProps,
+  CollapseInstance,
+  CollapseItemProps,
+  CollapseItemInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量

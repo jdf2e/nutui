@@ -1,8 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { Heart } from '@nutui/icons-vue';
-import Collapse from '../index.vue';
-import CollapseItem from '../../collapseitem/index.vue';
+import { Collapse, CollapseItem } from '@nutui/nutui';
 
 test('Collapse: should props active', async () => {
   const wrapper = mount(() => {
@@ -135,6 +134,8 @@ test('Collapse: v-model is undefined', async () => {
 
   // collapse-item can expand
   const items = wrapper.findAllComponents(CollapseItem);
+  // @ts-ignore
   expect(items[0].vm.expanded).toBe(false);
+  // @ts-ignore
   expect(items[1].vm.expanded).toBe(true);
 });

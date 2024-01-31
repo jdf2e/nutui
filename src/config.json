@@ -1082,6 +1082,7 @@
           "cName": "折叠面板",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "折叠面板",
           "author": "Ymm0008"
         },
@@ -1095,6 +1096,7 @@
           "show": false,
           "exportEmpty": true,
           "exportEmptyTaro": true,
+          "setup": true,
           "desc": "折叠面板-item",
           "author": "Ymm0008"
         },
