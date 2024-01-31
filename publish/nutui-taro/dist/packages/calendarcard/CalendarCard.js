@@ -168,30 +168,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
 }), {
   __name: "calendar-card.taro",
   props: {
-    type: {
-      type: String,
-      default: "single"
-    },
-    firstDayOfWeek: {
-      type: Number,
-      default: 0
-    },
-    modelValue: {
-      type: [Object, Array],
-      default: () => []
-    },
-    startDate: {
-      type: Date,
-      default: null
-    },
-    endDate: {
-      type: Date,
-      default: null
-    },
-    disableDay: {
-      type: Function,
-      default: () => false
-    }
+    type: { default: "single" },
+    firstDayOfWeek: { default: 0 },
+    modelValue: { default: null },
+    startDate: { default: null },
+    endDate: { default: null },
+    disableDay: { type: Function, default: () => false }
   },
   emits: ["update:modelValue", "change", "dayClick", "pageChange"],
   setup(__props, { expose: __expose, emit: __emit }) {

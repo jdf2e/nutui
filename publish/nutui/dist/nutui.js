@@ -5886,30 +5886,12 @@ const df = /* @__PURE__ */ U(uf, [["render", cf]]), ff = () => be(
   name: Tn,
   __name: "calendar-card",
   props: {
-    type: {
-      type: String,
-      default: "single"
-    },
-    firstDayOfWeek: {
-      type: Number,
-      default: 0
-    },
-    modelValue: {
-      type: [Object, Array],
-      default: () => []
-    },
-    startDate: {
-      type: Date,
-      default: null
-    },
-    endDate: {
-      type: Date,
-      default: null
-    },
-    disableDay: {
-      type: Function,
-      default: () => !1
-    }
+    type: { default: "single" },
+    firstDayOfWeek: { default: 0 },
+    modelValue: { default: null },
+    startDate: { default: null },
+    endDate: { default: null },
+    disableDay: { type: Function, default: () => !1 }
   },
   emits: ["update:modelValue", "change", "dayClick", "pageChange"],
   setup(e, { expose: t, emit: n }) {
