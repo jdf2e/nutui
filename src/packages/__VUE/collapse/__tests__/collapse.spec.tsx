@@ -1,7 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { Heart } from '@nutui/icons-vue';
-import { Collapse, CollapseItem } from '@nutui/nutui';
+import Collapse from '../';
+import CollapseItem from '../../collapseitem';
 
 test('Collapse: should props active', async () => {
   const wrapper = mount(() => {
