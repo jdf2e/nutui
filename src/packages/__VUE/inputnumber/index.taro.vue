@@ -114,7 +114,7 @@ export default create({
       return value > Number(props.min) && !disabled.value;
     };
     const reduce = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       emit('reduce', event);
       let output_value = Number(props.modelValue) - Number(props.step);
       if (reduceAllow() && output_value >= Number(props.min)) {
@@ -125,7 +125,7 @@ export default create({
       }
     };
     const add = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       emit('add', event);
       let output_value = Number(props.modelValue) + Number(props.step);
       if (addAllow() && output_value <= Number(props.max)) {
