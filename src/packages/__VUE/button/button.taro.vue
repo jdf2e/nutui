@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { CSSProperties, toRefs, computed } from 'vue';
+import { type CSSProperties, computed } from 'vue';
 import { Loading } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
 import type { ButtonShape, ButtonType, ButtonSize, ButtonFormType } from './types';
@@ -52,10 +52,8 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const emit = defineEmits(['click']);
 
-const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
-
 const handleClick = (event: MouseEvent) => {
-  if (!loading.value && !disabled.value) {
+  if (!props.loading && !props.disabled) {
     emit('click', event);
   }
 };
@@ -64,27 +62,27 @@ const classes = computed(() => {
   const prefixCls = 'nut-button';
   return {
     [prefixCls]: true,
-    [`${prefixCls}--${type.value}`]: type.value,
-    [`${prefixCls}--${size.value}`]: size.value,
-    [`${prefixCls}--${shape.value}`]: shape.value,
-    [`${prefixCls}--plain`]: plain.value,
-    [`${prefixCls}--block`]: block.value,
-    [`${prefixCls}--disabled`]: disabled.value,
-    [`${prefixCls}--loading`]: loading.value
+    [`${prefixCls}--${props.type}`]: props.type,
+    [`${prefixCls}--${props.size}`]: props.size,
+    [`${prefixCls}--${props.shape}`]: props.shape,
+    [`${prefixCls}--plain`]: props.plain,
+    [`${prefixCls}--block`]: props.block,
+    [`${prefixCls}--disabled`]: props.disabled,
+    [`${prefixCls}--loading`]: props.loading
   };
 });
 
 const getStyle = computed(() => {
   let style: CSSProperties = {};
-  if (color?.value) {
+  if (props.color) {
     style = {
-      color: plain.value ? color.value : '#fff',
-      background: plain.value ? '#fff' : `border-box ${color.value}`
+      color: props.plain ? props.color : '#fff',
+      background: props.plain ? '#fff' : `border-box ${props.color}`
     };
-    if (color.value.includes('gradient')) {
+    if (props.color.includes('gradient')) {
       style.borderColor = 'transparent';
     } else {
-      style.borderColor = color.value;
+      style.borderColor = props.color;
     }
   }
   return style;
