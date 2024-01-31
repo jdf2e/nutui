@@ -8244,6 +8244,7 @@ var __async = (__this, __arguments, generator) => {
       const change = (event) => {
         const input = event.target;
         emit("update:modelValue", input.value, event);
+        emit("change", input.value, event);
       };
       const emitChange = (value, event) => {
         let output_value = fixedDecimalPlaces(value);

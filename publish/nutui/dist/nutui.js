@@ -7001,7 +7001,7 @@ const np = /* @__PURE__ */ U(ep, [["render", tp]]), { componentName: op, create:
       };
     }), s = ($) => Number($).toFixed(Number(e.decimalPlaces)), l = ($) => {
       const b = $.target;
-      t("update:modelValue", b.value, $);
+      t("update:modelValue", b.value, $), t("change", b.value, $);
     }, a = ($, b) => {
       let k = s($);
       t("update:modelValue", k, b), Number(e.modelValue) !== Number(k) && t("change", k, b);
