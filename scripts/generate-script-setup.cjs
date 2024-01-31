@@ -19,6 +19,8 @@ import { withInstall } from '@/packages/utils';
 
 withInstall(${pascal});
 
+export type { ${pascal}Props } from './${kebab}.vue';
+
 export type {  } from './types';
 
 export type ${pascal}Instance = ComponentPublicInstance & InstanceType<typeof ${pascal}>;
@@ -31,6 +33,8 @@ import type { ComponentPublicInstance } from 'vue';
 import { withInstall } from '@/packages/utils';
 
 withInstall(${pascal});
+
+export type { ${pascal}Props } from './${kebab}.taro.vue';
 
 export type {  } from './types';
 

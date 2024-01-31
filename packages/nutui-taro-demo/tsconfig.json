@@ -21,7 +21,8 @@
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@/packages/*": ["../../src/packages/*"]
+      "@/packages/*": ["../../src/packages/*"],
+      "@nutui/nutui-taro": ["../../src/packages/taro.ts"],
     }
   },
   "include": ["./src", "./types", "components.d.ts"],

@@ -49,9 +49,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { watchEffect, PropType, ref, computed } from 'vue';
+import { watchEffect, ref, computed } from 'vue';
 import { DoubleLeft, Left, Right, DoubleRight } from './icon';
-import { CalendarCardDay, CalendarCardMonth, CalendarCardType, CalendarCardValue } from './types';
+import type { CalendarCardDay, CalendarCardMonth, CalendarCardType, CalendarCardValue } from './types';
 import {
   convertDateToDay,
   convertDayToDate,
@@ -70,31 +70,22 @@ defineOptions({
   name: cN
 });
 
-const props = defineProps({
-  type: {
-    type: String as PropType<CalendarCardType>,
-    default: 'single'
-  },
-  firstDayOfWeek: {
-    type: Number,
-    default: 0
-  },
-  modelValue: {
-    type: [Object, Array] as PropType<CalendarCardValue>,
-    default: () => []
-  },
-  startDate: {
-    type: Date,
-    default: null
-  },
-  endDate: {
-    type: Date,
-    default: null
-  },
-  disableDay: {
-    type: Function,
-    default: () => false
-  }
+export type CalendarCardProps = Partial<{
+  type: CalendarCardType;
+  firstDayOfWeek: number;
+  modelValue: CalendarCardValue;
+  startDate: Date | null;
+  endDate: Date | null;
+  disableDay: (day: CalendarCardDay) => boolean;
+}>;
+
+const props = withDefaults(defineProps<CalendarCardProps>(), {
+  type: 'single',
+  firstDayOfWeek: 0,
+  modelValue: null,
+  startDate: null,
+  endDate: null,
+  disableDay: () => false
 });
 
 const emit = defineEmits(['update:modelValue', 'change', 'dayClick', 'pageChange']);
