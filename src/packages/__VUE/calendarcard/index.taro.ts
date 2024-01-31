@@ -4,6 +4,8 @@ import { withInstall } from '@/packages/utils';
 
 withInstall(CalendarCard);
 
+export type { CalendarCardProps } from './calendar-card.taro.vue';
+
 export type { CalendarCardType, CalendarCardDay, CalendarCardMonth, CalendarCardValue } from './types';
 
 export type CalendarCardInstance = ComponentPublicInstance & InstanceType<typeof CalendarCard>;

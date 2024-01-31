@@ -26,7 +26,8 @@ const config = {
     ]
   ],
   alias: {
-    '@/packages': path.resolve(__dirname, '../../../src/packages')
+    '@/packages': path.resolve(__dirname, '../../../src/packages'),
+    '@nutui/nutui-taro': path.resolve(__dirname, '../../../src/packages/taro')
   },
   sass: {
     resource: [path.resolve(__dirname, '../../../src/packages/styles/variables.scss')]
