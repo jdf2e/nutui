@@ -10,7 +10,7 @@
 import Taro from '@tarojs/taro';
 import { Ref, unref } from 'vue';
 function isWindow(val: unknown): val is Window {
-  return val === window;
+  return typeof window !== 'undefined' && val === window;
 }
 
 export interface rectTaro {
