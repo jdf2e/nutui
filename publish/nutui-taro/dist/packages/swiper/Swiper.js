@@ -22,7 +22,7 @@ import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { c as clamp } from "../util-WZB3Ltgx.js";
 import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { r as requestAniFrame } from "../raf-9SbwNmt2.js";
 import Taro, { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { S as SWIPER_KEY } from "../types-9wCQwtH3.js";

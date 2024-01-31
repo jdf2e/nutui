@@ -1,6 +1,6 @@
 import { unref } from "vue";
 function isWindow(val) {
-  return val === window;
+  return typeof window !== "undefined" && val === window;
 }
 const useRect = (elementRef) => {
   const element = unref(elementRef);

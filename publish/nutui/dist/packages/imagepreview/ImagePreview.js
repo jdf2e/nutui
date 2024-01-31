@@ -25,7 +25,7 @@ var __publicField = (obj, key, value) => {
 import { reactive, computed, watch, toRefs, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, normalizeStyle, createElementBlock, createCommentVNode, ref, nextTick, onMounted, Fragment, renderList, toDisplayString, normalizeClass, renderSlot, createVNode, h } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { e as clamp, d as preventDefault, a as isArray } from "../util-4Jkyw4BJ.js";
-import { u as useRect } from "../index-rf29bejW.js";
+import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import NutVideo from "../video/Video.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";

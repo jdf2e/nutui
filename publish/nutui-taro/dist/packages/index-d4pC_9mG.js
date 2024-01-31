@@ -1,7 +1,7 @@
 import Taro from "@tarojs/taro";
 import { unref } from "vue";
 function isWindow(val) {
-  return val === window;
+  return typeof window !== "undefined" && val === window;
 }
 const useTaroRectById = (id) => {
   return new Promise((resolve, reject) => {

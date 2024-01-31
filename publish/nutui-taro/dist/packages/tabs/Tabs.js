@@ -47,7 +47,7 @@ import { T as TypeOfFun } from "../util-WZB3Ltgx.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { r as requestAniFrame } from "../raf-9SbwNmt2.js";
 import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const useTabContentTouch = (props, tabMethods, taro, useTaroRect2) => {
   const tabsContentRef = ref();

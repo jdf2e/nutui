@@ -2028,7 +2028,7 @@ function xn(e, t = Qn) {
   }), n;
 }
 function Vi(e) {
-  return e === window;
+  return typeof window != "undefined" && e === window;
 }
 const Oe = (e) => {
   const t = Qe(e);

@@ -42,7 +42,7 @@ import { ref, computed, onMounted, toRefs, openBlock, createElementBlock, normal
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { a as preventDefault } from "../util-WZB3Ltgx.js";
 import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({

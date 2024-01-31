@@ -1212,7 +1212,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Row = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["render", _sfc_render$1t]]);
   function isWindow(val) {
-    return val === window;
+    return typeof window !== "undefined" && val === window;
   }
   const useTaroRectById = (id) => {
     return new Promise((resolve, reject) => {

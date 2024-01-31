@@ -1,7 +1,7 @@
 import { ref, reactive, onMounted, onActivated, onDeactivated, openBlock, createElementBlock, normalizeStyle, withModifiers, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as requestAniFrame } from "../raf-9SbwNmt2.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import Taro, { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("drag");

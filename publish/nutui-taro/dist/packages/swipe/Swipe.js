@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { u as useTouch } from "../index-084nl_oE.js";
 import { ref, inject, watch, onMounted, reactive, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, renderSlot, createTextVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { S as SWIPE_KEY } from "../types-qOrhXtA_.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@tarojs/taro";

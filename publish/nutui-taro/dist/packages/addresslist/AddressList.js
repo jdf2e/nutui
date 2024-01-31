@@ -10,7 +10,7 @@ import "@nutui/nutui-taro/dist/packages/locale/lang";
 import "@tarojs/taro";
 import "../with-install-p59gYYU_.js";
 import "../index-084nl_oE.js";
-import "../index-Isui2_f6.js";
+import "../index-d4pC_9mG.js";
 import "../types-qOrhXtA_.js";
 const { create: create$2 } = createComponent("address-list-item");
 const cN$1 = "NutAddressList";

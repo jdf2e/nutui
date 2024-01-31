@@ -29,7 +29,7 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../util-WZB3Ltgx.js";
 import "../overlay/Overlay.js";
 import "../index-084nl_oE.js";
-import "../index-Isui2_f6.js";
+import "../index-d4pC_9mG.js";
 import "../raf-9SbwNmt2.js";
 import "../types-9wCQwtH3.js";
 const { create } = createComponent("image-preview");

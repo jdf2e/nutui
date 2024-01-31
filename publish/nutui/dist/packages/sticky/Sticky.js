@@ -1,7 +1,7 @@
 import { ref, reactive, computed, watch, onMounted, onUnmounted, openBlock, createElementBlock, normalizeStyle, createElementVNode, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { g as getScrollParent } from "../index-xDfQLRen.js";
-import { u as useRect } from "../index-rf29bejW.js";
+import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("sticky");
 const _sfc_main = create({

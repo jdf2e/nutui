@@ -39,7 +39,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import { ref, reactive, computed, onMounted, toRefs, openBlock, createElementBlock, createElementVNode, toDisplayString, createCommentVNode, createTextVNode, withModifiers, normalizeStyle } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("ellipsis");

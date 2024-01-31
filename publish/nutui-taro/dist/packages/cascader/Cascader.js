@@ -69,7 +69,7 @@ import "../util-WZB3Ltgx.js";
 import "../pxCheck-OnXlN1NC.js";
 import "../raf-9SbwNmt2.js";
 import "../index-084nl_oE.js";
-import "../index-Isui2_f6.js";
+import "../index-d4pC_9mG.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
 const formatTree = (tree, parent, config) => tree.map((node) => {
   const { value: valueKey = "value", text: textKey = "text", children: childrenKey = "children" } = config;

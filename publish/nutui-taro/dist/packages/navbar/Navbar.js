@@ -1,7 +1,7 @@
 import { toRefs, ref, computed, onMounted, resolveComponent, openBlock, createElementBlock, normalizeStyle, createElementVNode, normalizeClass, renderSlot, createVNode, createCommentVNode, createTextVNode, toDisplayString } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Left } from "@nutui/icons-vue-taro";
-import { u as useTaroRect } from "../index-Isui2_f6.js";
+import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@tarojs/taro";
 const { componentName, create } = createComponent("navbar");
