@@ -10,7 +10,7 @@ import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosi
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
   const disabled = useProp<boolean>('disabled');
   const disable = useProp<boolean>('disable');
-  const { parent } = useParent(FORM_KEY) as any;
+  const { parent } = useParent(FORM_KEY);
   return computed(() => disabled.value || disable.value || unref(fallback) || parent?.props?.disabled || false);
 };
 
