@@ -1,44 +1,49 @@
 <template>
-  <div v-if="!targetId" ref="popoverRef" class="nut-popover-wrapper" @click="openPopover"
-    ><slot name="reference"></slot
-  ></div>
-  <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
-    <nut-popup
-      v-model:visible="showPopup"
-      :pop-class="`nut-popover-content nut-popover-content--${location}`"
-      :style="customStyle"
-      position=""
-      transition="nut-popover"
-      :overlay="overlay"
-      :duration="duration"
-      :overlay-style="overlayStyle"
-      :overlay-class="overlayClass"
-      :close-on-click-overlay="closeOnClickOverlay"
-    >
-      <view ref="popoverContentRef" class="nut-popover-content-group">
-        <view v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </view>
-        <slot name="content"></slot>
-        <view
-          v-for="(item, index) in list"
-          :key="index"
-          :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
-          @click.stop="chooseItem(item, index)"
-        >
-          <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
+  <div v-if="!targetId" ref="popoverRef" class="nut-popover-wrapper" @click="openPopover">
+    <slot name="reference"></slot>
+  </div>
+  <Teleport to="body">
+    <div :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
+      <nut-popup
+        v-model:visible="showPopup"
+        :pop-class="`nut-popover-content nut-popover-content--${location}`"
+        :style="{
+          background: bgColor
+        }"
+        position=""
+        transition="nut-popover"
+        :overlay="overlay"
+        :duration="duration"
+        :overlay-style="overlayStyle"
+        :overlay-class="overlayClass"
+        :close-on-click-overlay="closeOnClickOverlay"
+      >
+        <div ref="popoverContentRef" class="nut-popover-content-group">
+          <div v-if="showArrow" :class="popoverArrow" :style="popoverArrowStyle"> </div>
+          <slot name="content"></slot>
+          <div
+            v-for="(item, index) in list"
+            :key="index"
+            :class="[item.className, item.disabled && 'nut-popover-menu-disabled', 'nut-popover-menu-item']"
+            @click.stop="chooseItem(item, index)"
+          >
+            <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
 
-          <view class="nut-popover-menu-item-name">{{ item.name }}</view>
-        </view>
-      </view>
-    </nut-popup>
-  </view>
+            <div class="nut-popover-menu-item-name">{{ item.name }}</div>
+          </div>
+        </div>
+      </nut-popup>
+    </div>
+  </Teleport>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, onMounted } from 'vue';
+import { computed, watch, ref, PropType, CSSProperties, onMounted, nextTick } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { isArray } from '@/packages/utils/util';
-import { useRect, rect } from '@/packages/utils/useRect';
+import { useRect } from '@/packages/utils/useRect';
 import NutPopup from '../popup/index.vue';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
+// import { getAllScrollableParents } from '@/packages/utils/useScrollParent';
 const { create } = createComponent('popover');
 export default create({
   components: {
@@ -69,11 +74,12 @@ export default create({
     const popoverContentRef = ref();
     const showPopup = ref(props.visible);
 
-    let rootRect = ref<rect>();
-
-    let conentRootRect = ref<{
-      height: number;
+    const rootPosition = ref<{
       width: number;
+      height: number;
+      left: number;
+      top: number;
+      right: number;
     }>();
 
     const popoverArrow = computed(() => {
@@ -129,40 +135,40 @@ export default create({
     };
 
     const getRootPosition = computed(() => {
-      let styles: CSSProperties = {};
+      const styles: CSSProperties = {};
 
-      if (!rootRect.value || !conentRootRect.value) return {};
+      if (!rootPosition.value) return {};
 
-      const conentWidth = conentRootRect.value.width;
-      const conentHeight = conentRootRect.value.height;
-      const { width, height, left, top } = rootRect.value;
+      const conentWidth = popoverContentRef.value?.clientWidth;
+      const conentHeight = popoverContentRef.value?.clientHeight;
+      const { width, height, left, top, right } = rootPosition.value;
 
       const { location, offset } = props;
-      const direction = location.split('-')[0];
-      const skew = location.split('-')[1];
+      const direction = location?.split('-')[0];
+      const skew = location?.split('-')[1];
       let cross = 0;
       let parallel = 0;
-      if (isArray(offset) && offset.length == 2) {
+      if (isArray(offset) && offset?.length === 2) {
         cross += Number(offset[1]);
         parallel += Number(offset[0]);
       }
       if (width) {
         if (['bottom', 'top'].includes(direction)) {
-          const h = direction == 'bottom' ? height + cross : -(conentHeight + cross);
+          const h = direction === 'bottom' ? height + cross : -(conentHeight + cross);
           styles.top = `${top + h}px`;
 
           if (!skew) {
             styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
           }
-          if (skew == 'start') {
+          if (skew === 'start') {
             styles.left = `${left + parallel}px`;
           }
-          if (skew == 'end') {
-            styles.left = `${rootRect.value.right + parallel}px`;
+          if (skew === 'end') {
+            styles.left = `${right + parallel}px`;
           }
         }
         if (['left', 'right'].includes(direction)) {
-          const contentW = direction == 'left' ? -(conentWidth + cross) : width + cross;
+          const contentW = direction === 'left' ? -(conentWidth + cross) : width + cross;
           styles.left = `${left + contentW}px`;
           if (!skew) {
             styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
@@ -179,33 +185,24 @@ export default create({
       return styles;
     });
 
-    const customStyle = computed(() => {
-      const styles: CSSProperties = {};
-      if (props.bgColor) {
-        styles.background = props.bgColor;
-      }
-
-      return styles;
-    });
     // 获取宽度
     const getContentWidth = () => {
-      let rect = useRect(popoverRef.value);
-      if (props.targetId) {
-        rect = useRect(document.querySelector(`#${props.targetId}`) as Element);
-      }
-      rootRect.value = rect;
-      setTimeout(() => {
-        conentRootRect.value = {
-          height: popoverContentRef.value?.clientHeight,
-          width: popoverContentRef.value?.clientWidth
-        };
-      }, 0);
+      const rect = useRect(
+        props.targetId ? (document.querySelector(`#${props.targetId}`) as Element) : popoverRef.value
+      );
+      rootPosition.value = {
+        width: rect.width,
+        height: rect.height,
+        left: rect.left,
+        top: rect.top + Math.max(document.documentElement.scrollTop, document.body.scrollTop),
+        right: rect.right
+      };
     };
 
     onMounted(() => {
-      setTimeout(() => {
+      nextTick(() => {
         getContentWidth();
-      }, 200);
+      });
     });
 
     watch(
@@ -214,7 +211,9 @@ export default create({
         showPopup.value = value;
         if (value) {
           window.addEventListener('touchstart', clickAway, true);
-          getContentWidth();
+          setTimeout(() => {
+            getContentWidth();
+          }, 0);
         } else {
           window.removeEventListener('touchstart', clickAway, true);
         }
@@ -262,7 +261,6 @@ export default create({
       popoverRef,
       popoverContentRef,
       getRootPosition,
-      customStyle,
       popoverArrowStyle,
       renderIcon
     };
