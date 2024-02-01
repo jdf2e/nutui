@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, watch } from 'vue';
+import { computed, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading1 } from '@nutui/icons-vue';
 import { useFormDisabled } from '../form/common';
@@ -61,7 +61,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disable);
+    const disabled = useFormDisabled(toRef(props, 'disable'));
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;

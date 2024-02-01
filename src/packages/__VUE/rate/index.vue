@@ -48,7 +48,7 @@
   </view>
 </template>
 <script lang="ts">
-import { Ref, ref } from 'vue';
+import { Ref, ref, toRef } from 'vue';
 import { StarFillN } from '@nutui/icons-vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
@@ -107,7 +107,7 @@ export default create({
   components: { StarFillN },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const rateRefs = ref<HTMLElement[]>([]);
     const updateVal = (value: number) => {
       emit('update:modelValue', value);

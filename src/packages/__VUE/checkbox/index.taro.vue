@@ -1,5 +1,5 @@
 <script lang="ts">
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
+import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount, toRef } from 'vue';
 import type { Component, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue-taro';
@@ -41,7 +41,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const parent: any = inject(CHECKBOX_KEY, null);
     const state = reactive({
       partialSelect: props.indeterminate

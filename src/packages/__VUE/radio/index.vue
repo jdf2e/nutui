@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Component, computed, h, inject, PropType, toRefs } from 'vue';
+import { Component, computed, h, inject, PropType, toRef, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue';
@@ -35,7 +35,7 @@ export default create({
     }
   },
   setup(props, { slots }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const { size } = toRefs(props);
     let parent: any = inject(RADIO_KEY, null);
 

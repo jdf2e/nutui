@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
+import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties, toRef } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
 import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types';
@@ -148,7 +148,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const state = reactive({
       active: false

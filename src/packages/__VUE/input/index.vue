@@ -52,7 +52,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h } from 'vue';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h, toRef } from 'vue';
 import { MaskClose } from '@nutui/icons-vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber, mapInputType } from './util';
@@ -147,7 +147,7 @@ export default create({
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const active = ref(false);
     const inputRef = ref();
     const getModelValue = () => String(props.modelValue ?? '');

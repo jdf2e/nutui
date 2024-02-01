@@ -23,7 +23,7 @@
 </template>
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
-import { watch, ref, computed, onMounted, nextTick } from 'vue';
+import { watch, ref, computed, onMounted, nextTick, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useLocale } from '@/packages/utils/useLocale';
 import { useFormDisabled } from '../form/common';
@@ -82,7 +82,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const textareaRef = ref();
     const classes = computed(() => {

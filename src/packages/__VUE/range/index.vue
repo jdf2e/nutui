@@ -74,7 +74,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
+import { ref, toRefs, computed, PropType, CSSProperties, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
@@ -131,7 +131,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;

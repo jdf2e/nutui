@@ -58,7 +58,7 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { MaskClose } from '@nutui/icons-vue-taro';
-import { ref, reactive, computed, onMounted, watch, h } from 'vue';
+import { ref, reactive, computed, onMounted, watch, h, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 import { useFormDisabled } from '../form/common';
@@ -160,7 +160,7 @@ export default create({
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const active = ref(false);
 
     const inputRef = ref();

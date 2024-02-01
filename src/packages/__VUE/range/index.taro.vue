@@ -79,7 +79,7 @@
 </template>
 <script lang="ts">
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-import { ref, toRefs, computed, PropType, CSSProperties, onMounted } from 'vue';
+import { ref, toRefs, computed, PropType, CSSProperties, onMounted, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
@@ -135,7 +135,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const refRandomId = Math.random().toString(36).slice(-8);
     const state = ref({
       width: 0,

@@ -33,7 +33,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch } from 'vue';
+import { computed, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { Minus, Plus } from '@nutui/icons-vue';
@@ -81,7 +81,7 @@ export default create({
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const classes = computed(() => {
       const prefixCls = componentName;
       return {

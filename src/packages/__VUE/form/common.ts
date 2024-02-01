@@ -2,13 +2,13 @@ import { getPropByPath, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, watch } from 'vue';
 import { useChildren, useParent } from '@/packages/utils';
 import { FORM_KEY } from './types';
-import type { PropType } from 'vue';
+import type { ComputedRef, PropType, Ref } from 'vue';
 import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
 
-export const useFormDisabled = (disabled: boolean) => {
+export const useFormDisabled = (disabled: Ref<boolean>): ComputedRef<boolean> => {
   const { parent } = useParent(FORM_KEY);
-  return computed(() => disabled || parent?.props?.disabled || false);
+  return computed(() => disabled.value || parent?.props?.disabled || false);
 };
 
 export const component = (components: any) => {

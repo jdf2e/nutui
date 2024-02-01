@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, reactive, ref, watch } from 'vue';
+import { PropType, reactive, ref, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
@@ -164,7 +164,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<UploaderTaro>[]>([]);

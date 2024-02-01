@@ -24,7 +24,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, ref, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 import { useLocale } from '@/packages/utils/useLocale';
@@ -85,7 +85,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(props.disabled);
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const classes = computed(() => {
       const prefixCls = 'nut-textarea';
