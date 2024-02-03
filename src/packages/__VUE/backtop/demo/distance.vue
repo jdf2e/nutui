@@ -12,8 +12,5 @@
   line-height: 46px;
   padding: 0px 20px;
   margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 </style>
