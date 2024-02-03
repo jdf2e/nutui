@@ -93,7 +93,7 @@ app.use(Button);
 | --- | --- | --- |
 | click | 点击按钮时触发 | `event: MouseEvent` |
 
-### 类型定义
+### 类型定义 v4.3.0
 
 组件导出以下类型定义：
 
@@ -103,6 +103,7 @@ import type {
   ButtonSize,
   ButtonShape,
   ButtonFormType,
+  ButtonProps,
   ButtonInstance
 } from '@nutui/nutui-taro';
 ```

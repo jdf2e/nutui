@@ -20,30 +20,7 @@ app.use(ConfigProvider);
 
 深色模式会全局生效，使页面上的所有 NutUI 组件变为深色风格。
 
-:::demo
-
-```vue
-<template>
-  <nut-config-provider :theme="theme">
-    <nut-cell title="切换暗黑">
-      <template #link>
-        <nut-switch v-model="checked" @change="change" />
-      </template>
-    </nut-cell>
-    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
-  </nut-config-provider>
-</template>
-<script setup>
-import { ref } from 'vue';
-const checked = ref(false);
-const theme = ref('');
-const change = (v) => {
-  theme.value = v ? 'dark' : '';
-};
-</script>
-```
-
-:::
+> demo: configprovider basic basic
 
 ### 主题定制
 
@@ -77,35 +54,8 @@ page {
 #### 通过 ConfigProvider 覆盖
 
 `ConfigProvider` 组件提供了覆盖 `CSS` 变量的能力，你需要在根节点包裹一个 `ConfigProvider` 组件，并通过 `theme-vars` 属性来配置一些主题变量
-:::demo
 
-```vue
-<template>
-  <nut-config-provider :theme-vars="themeVars">
-    <nut-form>
-      <nut-form-item label="滑块">
-        <nut-range hidden-tag v-model="range"></nut-range>
-      </nut-form-item>
-    </nut-form>
-  </nut-config-provider>
-</template>
-<script setup>
-import { ref, reactive } from 'vue';
-const range = ref(30);
-const themeVars = reactive({
-  primaryColor: '#008000',
-  primaryColorEnd: '#008000'
-});
-// 当然，你也可以选择使用组件变量去替换，如果同时设置了基础变量和组件变量，组件变量会覆盖基础变量。
-//  const themeVars = {
-//   rangeBgColor: 'rgba(25,137,250,0.15)',
-//   rangeBarBgColor: '#0289fa',
-//   rangeBarBtnBorder: '1px solid #0289fa'
-// }
-</script>
-```
-
-:::
+> demo: configprovider theme basic
 
 ### 主题变量
 

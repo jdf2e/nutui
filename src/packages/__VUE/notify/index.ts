@@ -1,7 +1,8 @@
 import { createVNode, render, h, onMounted, VNode, ComponentInternalInstance } from 'vue';
 import Notify from './index.vue';
+import type { NotifyType } from './types';
 const defaultOptions = {
-  type: 'base',
+  type: 'base' as NotifyType,
   visible: true,
   msg: '',
   color: undefined,

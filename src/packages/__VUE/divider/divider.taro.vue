@@ -4,30 +4,25 @@
   </view>
 </template>
 <script setup lang="ts">
-import { PropType, computed } from 'vue';
+import { computed } from 'vue';
 import { DividerDirection, DividerPosition } from './types';
 
 defineOptions({
   name: 'NutDivider'
 });
 
-const props = defineProps({
-  contentPosition: {
-    type: String as PropType<DividerPosition>,
-    default: 'center'
-  },
-  dashed: {
-    type: Boolean,
-    default: false
-  },
-  hairline: {
-    type: Boolean,
-    default: true
-  },
-  direction: {
-    type: String as PropType<DividerDirection>,
-    default: 'horizontal'
-  }
+export type DividerProps = Partial<{
+  contentPosition: DividerPosition;
+  dashed: boolean;
+  hairline: boolean;
+  direction: DividerDirection;
+}>;
+
+const props = withDefaults(defineProps<DividerProps>(), {
+  contentPosition: 'center',
+  dashed: false,
+  hairline: true,
+  direction: 'horizontal'
 });
 
 const slots = defineSlots();

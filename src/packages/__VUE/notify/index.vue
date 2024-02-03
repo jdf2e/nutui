@@ -13,9 +13,10 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, type PropType } from 'vue';
 import { createComponent } from '../../utils/create';
 import NutPopup from '../popup/index.vue';
+import type { NotifyPosition, NotifyType } from './types';
 const { create } = createComponent('notify');
 
 export default create({
@@ -24,16 +25,28 @@ export default create({
   },
   props: {
     id: String,
-    color: { type: String, default: '' },
-    msg: { type: String, default: '' },
-    duration: { type: Number, default: 3000 },
+    color: {
+      type: String,
+      default: ''
+    },
+    msg: {
+      type: String,
+      default: ''
+    },
+    duration: {
+      type: Number,
+      default: 3000
+    },
     className: {
       type: String,
       default: ''
     },
-    background: { type: String, default: '' },
-    type: {
+    background: {
       type: String,
+      default: ''
+    },
+    type: {
+      type: String as PropType<NotifyType>,
       default: 'danger'
     },
     visible: {
@@ -41,7 +54,7 @@ export default create({
       default: false
     },
     position: {
-      type: String,
+      type: String as PropType<NotifyPosition>,
       default: 'top'
     },
     teleportDisable: {

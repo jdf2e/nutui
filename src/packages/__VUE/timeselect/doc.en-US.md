@@ -40,7 +40,6 @@ app.use(TimeDetail);
 | current-key | Unique identification | string \| number | `0` |
 | current-time | The currently selected time, the array element contains:key: string; list: string[] | Array | `[]` |
 | lock-scroll | Whether the background is locked | boolean | `true` |
-| teleport-disable | Whether the node is allowed to be mounted | boolean | `false` |
 
 ### Slots
 

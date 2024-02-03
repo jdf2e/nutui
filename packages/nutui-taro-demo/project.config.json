@@ -45,7 +45,6 @@
   "compileType": "miniprogram",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "libVersion": "3.2.1",
   "srcMiniprogramRoot": "dist/",
   "packOptions": {
     "ignore": [],

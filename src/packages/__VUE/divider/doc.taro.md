@@ -65,7 +65,7 @@ app.use(Divider);
 | --- | --- |
 | default | 内容，仅在 `direction` 为 `horizontal` 时生效 |
 
-### 类型定义
+### 类型定义 v4.3.0
 
 组件导出以下类型定义：
 
@@ -73,6 +73,7 @@ app.use(Divider);
 import type {
   DividerPosition,
   DividerDirection,
+  DividerProps,
   DividerInstance
 } from '@nutui/nutui-taro';
 ```

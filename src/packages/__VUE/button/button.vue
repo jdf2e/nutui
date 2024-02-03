@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, CSSProperties, toRefs, computed } from 'vue';
+import { type CSSProperties, computed } from 'vue';
 import type { ButtonShape, ButtonType, ButtonSize } from './types';
 import { Loading } from '@nutui/icons-vue';
 
@@ -19,47 +19,32 @@ defineOptions({
   name: 'NutButton'
 });
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: ''
-  },
-  shape: {
-    type: String as PropType<ButtonShape>,
-    default: 'round'
-  },
-  plain: {
-    type: Boolean,
-    default: false
-  },
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'default'
-  },
-  size: {
-    type: String as PropType<ButtonSize>,
-    default: 'normal'
-  },
-  block: {
-    type: Boolean,
-    default: false
-  }
+export type ButtonProps = Partial<{
+  color: string;
+  shape: ButtonShape;
+  plain: boolean;
+  loading: boolean;
+  disabled: boolean;
+  type: ButtonType;
+  size: ButtonSize;
+  block: boolean;
+}>;
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  color: '',
+  shape: 'round',
+  plain: false,
+  loading: false,
+  disabled: false,
+  type: 'default',
+  size: 'normal',
+  block: false
 });
 
 const emit = defineEmits(['click']);
 
-const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
-
 const handleClick = (event: MouseEvent) => {
-  if (!loading.value && !disabled.value) {
+  if (!props.loading && !props.disabled) {
     emit('click', event);
   }
 };
@@ -68,27 +53,27 @@ const classes = computed(() => {
   const prefixCls = 'nut-button';
   return {
     [prefixCls]: true,
-    [`${prefixCls}--${type.value}`]: type.value,
-    [`${prefixCls}--${size.value}`]: size.value,
-    [`${prefixCls}--${shape.value}`]: shape.value,
-    [`${prefixCls}--plain`]: plain.value,
-    [`${prefixCls}--block`]: block.value,
-    [`${prefixCls}--disabled`]: disabled.value,
-    [`${prefixCls}--loading`]: loading.value
+    [`${prefixCls}--${props.type}`]: props.type,
+    [`${prefixCls}--${props.size}`]: props.size,
+    [`${prefixCls}--${props.shape}`]: props.shape,
+    [`${prefixCls}--plain`]: props.plain,
+    [`${prefixCls}--block`]: props.block,
+    [`${prefixCls}--disabled`]: props.disabled,
+    [`${prefixCls}--loading`]: props.loading
   };
 });
 
 const getStyle = computed(() => {
   let style: CSSProperties = {};
-  if (color?.value) {
+  if (props.color) {
     style = {
-      color: plain.value ? color.value : '#fff',
-      background: plain.value ? '#fff' : `border-box ${color.value}`
+      color: props.plain ? props.color : '#fff',
+      background: props.plain ? '#fff' : `border-box ${props.color}`
     };
-    if (color.value.includes('gradient')) {
+    if (props.color.includes('gradient')) {
       style.borderColor = 'transparent';
     } else {
-      style.borderColor = color.value;
+      style.borderColor = props.color;
     }
   }
   return style;
