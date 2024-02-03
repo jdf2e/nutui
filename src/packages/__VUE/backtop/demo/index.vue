@@ -1,5 +1,5 @@
 <template>
-  <Demo class="custom-demo">
+  <Demo class="full custom-demo">
     <nut-tabs v-model="value" :animated-time="0">
       <nut-tab-pane :title="t('basic')" pane-key="1">
         <Basic />
@@ -37,18 +37,9 @@ const t = useTranslate({
 
 <style lang="scss" scoped>
 .custom-demo {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-bottom: 0 !important;
   :deep(.nut-tabs) {
     .nut-tabs__content {
       height: calc(100vh - 57px - 46px);
-      .nut-tab-pane {
-        & > div {
-          height: 100%;
-          overflow: auto;
-        }
-      }
     }
   }
 }

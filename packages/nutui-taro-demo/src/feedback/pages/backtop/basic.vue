@@ -1,8 +1,8 @@
 <template>
-  <view class="demo-box">
-    <nut-backtop @click="click">
+  <view class="backtop-demo">
+    <nut-backtop height="calc(100vh - 100px)" @click="click">
       <template #content>
-        <div v-for="index in 24" :key="index" class="test">{{ index }}</div>
+        <view v-for="index in 24" :key="index" class="item">{{ index }}</view>
       </template>
     </nut-backtop>
   </view>
@@ -15,11 +15,14 @@ const click = () => {
 </script>
 
 <style>
-.test {
+.backtop-demo .item {
   height: 46px;
   background: #efefef;
   line-height: 46px;
   padding: 0px 20px;
   margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>

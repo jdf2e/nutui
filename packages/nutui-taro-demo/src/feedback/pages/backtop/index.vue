@@ -1,43 +1,10 @@
 <template>
-  <Demo class="custom-demo">
-    <nut-tabs v-model="value" :animated-time="0">
-      <nut-tab-pane :title="t('basic')" pane-key="1">
-        <Basic />
-      </nut-tab-pane>
-    </nut-tabs>
+  <Demo class="bg-w">
+    <view style="height: 20px"></view>
+    <Basic />
   </Demo>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useTranslate } from '../../../utils';
 import Basic from './basic.vue';
-const value = ref('1');
-const t = useTranslate({
-  'zh-CN': {
-    basic: '基础用法'
-  },
-  'en-US': {
-    basic: 'Basic Usage'
-  }
-});
 </script>
-
-<style lang="scss" scoped>
-.custom-demo {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-bottom: 0 !important;
-  :deep(.nut-tabs) {
-    .nut-tabs__content {
-      height: calc(100vh - 57px - 46px);
-      .nut-tab-pane {
-        & > .demo-box {
-          height: 100%;
-          overflow: auto;
-        }
-      }
-    }
-  }
-}
-</style>
