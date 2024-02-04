@@ -61,11 +61,11 @@ import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_l
 import { Loading, Checklist } from "@nutui/icons-vue-taro";
 import NutTabs from "../tabs/Tabs.js";
 import NutTabPane from "../tabpane/TabPane.js";
-import { u as useLocale } from "../index-DDx91B18.js";
+import { u as useLocale } from "../index-xXrovSQL.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../overlay/Overlay.js";
 import "@tarojs/taro";
-import "../util-WZB3Ltgx.js";
+import "../util-Bt8WDYya.js";
 import "../pxCheck-OnXlN1NC.js";
 import "../raf-9SbwNmt2.js";
 import "../index-084nl_oE.js";

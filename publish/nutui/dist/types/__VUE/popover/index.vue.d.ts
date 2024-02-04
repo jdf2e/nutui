@@ -81,7 +81,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     popoverRef: import("vue").Ref<any>;
     popoverContentRef: import("vue").Ref<any>;
     getRootPosition: import("vue").ComputedRef<CSSProperties>;
-    customStyle: import("vue").ComputedRef<CSSProperties>;
     popoverArrowStyle: import("vue").ComputedRef<CSSProperties>;
     renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;

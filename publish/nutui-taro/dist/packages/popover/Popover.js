@@ -18,19 +18,17 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { ref, computed, watch, onMounted, resolveComponent, openBlock, createElementBlock, Fragment, renderSlot, createCommentVNode, createTextVNode, createElementVNode, normalizeClass, normalizeStyle, createVNode, withCtx, renderList, withModifiers, createBlock, resolveDynamicComponent, toDisplayString } from "vue";
+import { ref, computed, onMounted, watch, resolveComponent, openBlock, createElementBlock, Fragment, renderSlot, createCommentVNode, createTextVNode, createElementVNode, normalizeClass, normalizeStyle, createVNode, withCtx, renderList, withModifiers, createBlock, resolveDynamicComponent, toDisplayString } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
-import { e as isArray } from "../util-WZB3Ltgx.js";
 import { a as useTaroRectById, u as useTaroRect } from "../index-d4pC_9mG.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
+import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@tarojs/taro";
 import "@nutui/icons-vue-taro";
 import "../overlay/Overlay.js";
 const { create } = createComponent("popover");
 const _sfc_main = create({
-  inheritAttrs: false,
   components: {
     NutPopup
   },
@@ -43,7 +41,7 @@ const _sfc_main = create({
     arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: "" },
     showArrow: { type: Boolean, default: true },
-    duration: { type: [Number, String], default: 0.2 },
+    duration: { type: [Number, String], default: 0.3 },
     overlay: { type: Boolean, default: false },
     overlayClass: { type: String, default: "" },
     overlayStyle: { type: Object },
@@ -57,12 +55,12 @@ const _sfc_main = create({
   setup(props, { emit }) {
     const popoverRef = ref();
     const popoverContentRef = ref();
-    const popoverContentRefCopy = ref();
-    const popoverbox = ref();
     const showPopup = ref(props.visible);
-    const popoverstyles = ref({});
-    let rootRect = ref();
-    let conentRootRect;
+    const rootPosition = ref();
+    const elRect = ref({
+      width: 0,
+      height: 0
+    });
     const popoverArrow = computed(() => {
       const prefixCls = "nut-popover-arrow";
       const loca = props.location;
@@ -109,115 +107,128 @@ const _sfc_main = create({
       str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1));
       return str;
     };
-    const getRootPosition = () => {
-      if (!rootRect.value || !conentRootRect)
-        return {};
-      const conentWidth = conentRootRect.width;
-      const conentHeight = conentRootRect.height;
-      const { width, height, left, top } = rootRect.value;
+    const getRootPosition = computed(() => {
+      const styles = {};
+      if (!rootPosition.value) {
+        styles.visibility = "hidden";
+        return styles;
+      }
+      const contentWidth = elRect.value.width;
+      const contentHeight = elRect.value.height;
+      const { width, height, left, top, right } = rootPosition.value;
       const { location, offset } = props;
-      const direction = location.split("-")[0];
-      const skew = location.split("-")[1];
+      const direction = location == null ? void 0 : location.split("-")[0];
+      const skew = location == null ? void 0 : location.split("-")[1];
       let cross = 0;
       let parallel = 0;
-      if (isArray(offset) && offset.length == 2) {
+      if (Array.isArray(offset) && (offset == null ? void 0 : offset.length) === 2) {
         cross += Number(offset[1]);
         parallel += Number(offset[0]);
       }
       if (width) {
         if (["bottom", "top"].includes(direction)) {
-          const h = direction == "bottom" ? height + cross : -(conentHeight + cross);
-          popoverstyles.value.top = `${top + h}px`;
+          const h = direction === "bottom" ? height + cross : -(contentHeight + cross);
+          styles.top = `${top + h}px`;
           if (!skew) {
-            popoverstyles.value.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
+            styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`;
           }
-          if (skew == "start") {
-            popoverstyles.value.left = `${left + parallel}px`;
+          if (skew === "start") {
+            styles.left = `${left + parallel}px`;
           }
-          if (skew == "end") {
-            popoverstyles.value.left = `${rootRect.value.right + parallel}px`;
+          if (skew === "end") {
+            styles.left = `${right + parallel}px`;
           }
         }
         if (["left", "right"].includes(direction)) {
-          const contentW = direction == "left" ? -(conentWidth + cross) : width + cross;
-          popoverstyles.value.left = `${left + contentW}px`;
+          const contentW = direction === "left" ? -(contentWidth + cross) : width + cross;
+          styles.left = `${left + contentW}px`;
           if (!skew) {
-            popoverstyles.value.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
+            styles.top = `${top - contentHeight / 2 + height / 2 - 4 + parallel}px`;
           }
-          if (skew == "start") {
-            popoverstyles.value.top = `${top + parallel}px`;
+          if (skew === "start") {
+            styles.top = `${top + parallel}px`;
           }
-          if (skew == "end") {
-            popoverstyles.value.top = `${top + height + parallel}px`;
+          if (skew === "end") {
+            styles.top = `${top + height + parallel}px`;
           }
         }
       }
-    };
-    const customStyle = computed(() => {
-      const styles = {};
-      if (props.bgColor) {
-        styles.background = props.bgColor;
+      if (elRect.value.width === 0) {
+        styles.visibility = "hidden";
+      } else {
+        styles.visibility = "initial";
       }
       return styles;
     });
-    const getContentWidth = () => __async(this, null, function* () {
-      const solve = (rect) => {
-        if (!(rootRect.value && rect.top == rootRect.value.top && rect.width == rootRect.value.width)) {
-          setTimeout(() => {
-            getContentWidth();
-          }, 100);
-        }
-        rootRect.value = rect;
-        getRootPosition();
-      };
-      if (props.targetId) {
-        useTaroRectById(props.targetId).then(
-          (rect) => {
-            solve(rect);
-          },
-          () => {
-          }
-        );
-      } else {
-        useTaroRect(popoverRef).then(
-          (rect) => {
-            solve(rect);
-          },
-          () => {
-          }
-        );
-      }
-    });
-    const getPopoverContentW = (type = 1) => __async(this, null, function* () {
-      const el = type == 1 ? popoverContentRef : popoverContentRefCopy;
-      useTaroRect(el).then(
+    const getPopoverContentW = () => __async(this, null, function* () {
+      useTaroRect(popoverContentRef).then(
         (rect) => {
-          conentRootRect = {
-            height: rect.height || 0,
-            width: rect.width || 0
+          elRect.value = {
+            height: rect.height,
+            width: rect.width
           };
-          getRootPosition();
         },
         () => {
         }
       );
+    });
+    const getContentWidth = () => {
+      Taro.createSelectorQuery().selectViewport().scrollOffset((res) => {
+        const distance = res.scrollTop;
+        if (props.targetId) {
+          useTaroRectById(props.targetId).then(
+            (rect) => {
+              rootPosition.value = {
+                width: rect == null ? void 0 : rect.width,
+                height: rect == null ? void 0 : rect.height,
+                left: rect == null ? void 0 : rect.left,
+                top: (rect == null ? void 0 : rect.top) + distance,
+                right: rect == null ? void 0 : rect.right
+              };
+            },
+            () => {
+            }
+          );
+        } else {
+          useTaroRect(popoverRef).then(
+            (rect) => {
+              rootPosition.value = {
+                width: rect == null ? void 0 : rect.width,
+                height: rect == null ? void 0 : rect.height,
+                left: rect == null ? void 0 : rect.left,
+                top: (rect == null ? void 0 : rect.top) + distance,
+                right: rect == null ? void 0 : rect.right
+              };
+            },
+            () => {
+            }
+          );
+        }
+      }).exec();
+      setTimeout(() => {
+        getPopoverContentW();
+      }, 300);
+    };
+    onMounted(() => {
+      setTimeout(() => {
+        getContentWidth();
+      }, 300);
     });
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
         if (value) {
-          getContentWidth();
-          setTimeout(() => {
-            getPopoverContentW();
-          }, 300);
+          Taro.nextTick(() => {
+            getContentWidth();
+          });
         }
       }
     );
     watch(
       () => props.location,
       () => {
-        getRootPosition();
+        getContentWidth();
       }
     );
     const update = (val) => {
@@ -233,7 +244,7 @@ const _sfc_main = create({
       emit("close");
     };
     const chooseItem = (item, index) => {
-      emit("choose", item, index);
+      !item.disabled && emit("choose", item, index);
       if (props.closeOnClickAction) {
         closePopover();
       }
@@ -241,12 +252,6 @@ const _sfc_main = create({
     const clickAway = () => {
       props.closeOnClickOutside && closePopover();
     };
-    onMounted(() => {
-      setTimeout(() => {
-        getContentWidth();
-        getPopoverContentW(0);
-      }, 600);
-    });
     const refRandomId = Math.random().toString(36).slice(-8);
     return {
       showPopup,
@@ -256,15 +261,11 @@ const _sfc_main = create({
       chooseItem,
       popoverRef,
       popoverContentRef,
-      popoverContentRefCopy,
-      refRandomId,
-      clickAway,
-      popoverArrowStyle,
-      customStyle,
       getRootPosition,
+      popoverArrowStyle,
       renderIcon,
-      popoverbox,
-      popoverstyles
+      refRandomId,
+      clickAway
     };
   }
 });
@@ -272,11 +273,6 @@ const _hoisted_1 = ["id"];
 const _hoisted_2 = ["id"];
 const _hoisted_3 = ["onClick"];
 const _hoisted_4 = { class: "nut-popover-menu-item-name" };
-const _hoisted_5 = {
-  class: /* @__PURE__ */ normalizeClass(`nut-popover-content nut-popover-content-copy`)
-};
-const _hoisted_6 = ["id"];
-const _hoisted_7 = { class: "nut-popover-menu-item-name" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_popup = resolveComponent("nut-popup");
   return openBlock(), createElementBlock(Fragment, null, [
@@ -291,15 +287,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 8, _hoisted_1)) : createCommentVNode("", true),
     createTextVNode(),
     createElementVNode("view", {
-      ref: "popoverbox",
       class: normalizeClass(["nut-popover", `nut-popover--${_ctx.theme}`, `${_ctx.customClass}`]),
-      style: normalizeStyle(_ctx.popoverstyles)
+      style: normalizeStyle(_ctx.getRootPosition)
     }, [
       createVNode(_component_nut_popup, {
         visible: _ctx.showPopup,
         "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => _ctx.showPopup = $event),
         "pop-class": `nut-popover-content nut-popover-content--${_ctx.location}`,
-        style: normalizeStyle(_ctx.customStyle),
+        style: normalizeStyle({ background: _ctx.bgColor }),
         position: "",
         transition: "nut-popover",
         overlay: _ctx.overlay,
@@ -325,12 +320,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.list, (item, index) => {
               return openBlock(), createElementBlock("view", {
                 key: index,
-                class: normalizeClass([
-                  item.className,
-                  item.disabled && "nut-popover-menu-disabled",
-                  "nut-popover-menu-item",
-                  "nut-popover-menu-taroitem"
-                ]),
+                class: normalizeClass([item.className, item.disabled && "nut-popover-menu-disabled", "nut-popover-menu-item"]),
                 onClick: withModifiers(($event) => _ctx.chooseItem(item, index), ["stop"])
               }, [
                 item.icon ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.renderIcon(item.icon)), {
@@ -352,42 +342,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onTouchmove: _cache[2] || (_cache[2] = (...args) => _ctx.clickAway && _ctx.clickAway(...args)),
         onClick: _cache[3] || (_cache[3] = (...args) => _ctx.clickAway && _ctx.clickAway(...args))
       }, null, 32)) : createCommentVNode("", true)
-    ], 6),
-    createTextVNode(),
-    createElementVNode("view", _hoisted_5, [
-      createElementVNode("view", {
-        id: "popoverContentRefCopy" + _ctx.refRandomId,
-        ref: "popoverContentRefCopy",
-        class: "nut-popover-content-group"
-      }, [
-        _ctx.showArrow ? (openBlock(), createElementBlock("view", {
-          key: 0,
-          class: normalizeClass(_ctx.popoverArrow),
-          style: normalizeStyle(_ctx.popoverArrowStyle)
-        }, null, 6)) : createCommentVNode("", true),
-        createTextVNode(),
-        renderSlot(_ctx.$slots, "content"),
-        createTextVNode(),
-        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.list, (item, index) => {
-          return openBlock(), createElementBlock("view", {
-            key: index,
-            class: normalizeClass([
-              item.className,
-              item.disabled && "nut-popover-menu-disabled",
-              "nut-popover-menu-item",
-              "nut-popover-menu-taroitem"
-            ])
-          }, [
-            item.icon ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.renderIcon(item.icon)), {
-              key: 0,
-              class: "nut-popover-item-img"
-            })) : createCommentVNode("", true),
-            createTextVNode(),
-            createElementVNode("view", _hoisted_7, toDisplayString(item.name), 1)
-          ], 2);
-        }), 128))
-      ], 8, _hoisted_6)
-    ])
+    ], 6)
   ], 64);
 }
 const NutPopover = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

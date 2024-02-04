@@ -34,7 +34,6 @@ const TypeOfFun = (value) => {
       return "unknow";
   }
 };
-const isArray = Array.isArray;
 const isDate = (val) => val instanceof Date;
 const isFunction = (val) => typeof val === "function";
 const isObject = (val) => val !== null && typeof val === "object";
@@ -99,7 +98,6 @@ export {
   isDate as b,
   clamp as c,
   isPromise as d,
-  isArray as e,
   floatData as f,
   getPropByPath as g,
   isFunction as i,

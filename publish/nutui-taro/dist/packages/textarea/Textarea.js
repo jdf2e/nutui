@@ -1,10 +1,10 @@
 import { computed, ref, watch, nextTick, onMounted, openBlock, createElementBlock, normalizeClass, createElementVNode, mergeProps, createTextVNode, toDisplayString, createCommentVNode, normalizeStyle } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import Taro from "@tarojs/taro";
-import { u as useLocale } from "../index-DDx91B18.js";
+import { u as useLocale } from "../index-xXrovSQL.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../util-WZB3Ltgx.js";
+import "../util-Bt8WDYya.js";
 const { create } = createComponent("textarea");
 const cN = "NutTextarea";
 const _sfc_main = create({

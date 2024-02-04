@@ -80,17 +80,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     chooseItem: (item: any, index: number) => void;
     popoverRef: import("vue").Ref<any>;
     popoverContentRef: import("vue").Ref<any>;
-    popoverContentRefCopy: import("vue").Ref<any>;
-    refRandomId: string;
-    clickAway: () => void;
+    getRootPosition: import("vue").ComputedRef<CSSProperties>;
     popoverArrowStyle: import("vue").ComputedRef<CSSProperties>;
-    customStyle: import("vue").ComputedRef<CSSProperties>;
-    getRootPosition: () => {} | undefined;
     renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-    popoverbox: import("vue").Ref<any>;
-    popoverstyles: import("vue").Ref<any>;
+    refRandomId: string;
+    clickAway: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
