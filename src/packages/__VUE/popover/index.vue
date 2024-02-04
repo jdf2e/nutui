@@ -187,7 +187,7 @@ export default create({
         width: rect.width,
         height: rect.height,
         left: rect.left,
-        top: rect.top + Math.max(document.documentElement.scrollTop, document.body.scrollTop),
+        top: rect.top + Math.max(document.documentElement?.scrollTop || 0, document.body?.scrollTop || 0),
         right: rect.right
       };
     };
