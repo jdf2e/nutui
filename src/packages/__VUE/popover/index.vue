@@ -43,7 +43,6 @@ import { isArray } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import NutPopup from '../popup/index.vue';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
-// import { getAllScrollableParents } from '@/packages/utils/useScrollParent';
 const { create } = createComponent('popover');
 export default create({
   components: {
@@ -200,9 +199,9 @@ export default create({
     };
 
     onMounted(() => {
-      nextTick(() => {
+      setTimeout(() => {
         getContentWidth();
-      });
+      }, 300);
     });
 
     watch(
@@ -211,9 +210,9 @@ export default create({
         showPopup.value = value;
         if (value) {
           window.addEventListener('touchstart', clickAway, true);
-          setTimeout(() => {
+          nextTick(() => {
             getContentWidth();
-          }, 0);
+          });
         } else {
           window.removeEventListener('touchstart', clickAway, true);
         }

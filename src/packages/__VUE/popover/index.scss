@@ -109,8 +109,8 @@
     }
 
     .nut-popover-menu-item {
-      display: block;
-      // padding-bottom: 8px;
+      display: flex;
+      align-items: center;
       padding: 8px;
       border-bottom: 1px solid $popover-border-bottom-color;
 
@@ -130,6 +130,7 @@
 
       .nut-popover-menu-item-name {
         width: 100%;
+        text-align: center;
         word-break: keep-all;
       }
 
