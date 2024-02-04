@@ -12737,7 +12737,6 @@ var __async = (__this, __arguments, generator) => {
   const { create: create$I } = createComponent("noticebar");
   const _sfc_main$I = create$I({
     props: {
-      // 滚动方向  across 横向 vertical 纵向
       direction: {
         type: String,
         default: "across"
@@ -13049,7 +13048,10 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const _hoisted_1$D = { class: "nut-noticebar" };
-  const _hoisted_2$w = { class: "nut-noticebar__page-lefticon" };
+  const _hoisted_2$w = {
+    key: 0,
+    class: "nut-noticebar__page-lefticon"
+  };
   const _hoisted_3$p = { class: "showNotica" };
   const _hoisted_4$n = { class: "nut-noticebar-custom-item" };
   const _hoisted_5$d = ["onClick"];
@@ -13068,14 +13070,11 @@ var __async = (__this, __arguments, generator) => {
         style: vue.normalizeStyle(_ctx.barStyle),
         onClick: _cache[3] || (_cache[3] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
       }, [
-        vue.createElementVNode("view", _hoisted_2$w, [
+        _ctx.leftIcon ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_2$w, [
           vue.renderSlot(_ctx.$slots, "left-icon", {}, () => [
-            _ctx.leftIcon ? (vue.openBlock(), vue.createBlock(_component_Notice, {
-              key: 0,
-              size: "16px"
-            })) : vue.createCommentVNode("", true)
+            vue.createVNode(_component_Notice, { size: "16px" })
           ])
-        ]),
+        ])) : vue.createCommentVNode("", true),
         vue.createTextVNode(),
         vue.createElementVNode("view", {
           ref: "wrap",
@@ -13095,7 +13094,7 @@ var __async = (__this, __arguments, generator) => {
         ], 2),
         vue.createTextVNode(),
         _ctx.closeMode || _ctx.$slots["right-icon"] ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
+          key: 1,
           class: "nut-noticebar__page-righticon",
           onClick: _cache[2] || (_cache[2] = vue.withModifiers((...args) => _ctx.onClickIcon && _ctx.onClickIcon(...args), ["stop"]))
         }, [

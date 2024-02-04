@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createBlock, createCommentVNode, createTextVNode, toDisplayString, withModifiers, vShow, Fragment, renderList } from "vue";
+import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, renderSlot, createVNode, createCommentVNode, createElementVNode, createTextVNode, toDisplayString, withModifiers, createBlock, vShow, Fragment, renderList } from "vue";
 import { Notice, CircleClose } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
@@ -25,7 +25,6 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("noticebar");
 const _sfc_main = create({
   props: {
-    // 滚动方向  across 横向 vertical 纵向
     direction: {
       type: String,
       default: "across"
@@ -318,7 +317,10 @@ const _sfc_main = create({
   }
 });
 const _hoisted_1 = { class: "nut-noticebar" };
-const _hoisted_2 = { class: "nut-noticebar__page-lefticon" };
+const _hoisted_2 = {
+  key: 0,
+  class: "nut-noticebar__page-lefticon"
+};
 const _hoisted_3 = {
   ref: "wrap",
   class: "nut-noticebar__page-wrap"
@@ -341,14 +343,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       style: normalizeStyle(_ctx.barStyle),
       onClick: _cache[3] || (_cache[3] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
     }, [
-      createElementVNode("view", _hoisted_2, [
+      _ctx.leftIcon ? (openBlock(), createElementBlock("view", _hoisted_2, [
         renderSlot(_ctx.$slots, "left-icon", {}, () => [
-          _ctx.leftIcon ? (openBlock(), createBlock(_component_Notice, {
-            key: 0,
-            size: "16px"
-          })) : createCommentVNode("", true)
+          createVNode(_component_Notice, { size: "16px" })
         ])
-      ]),
+      ])) : createCommentVNode("", true),
       createElementVNode("view", _hoisted_3, [
         createElementVNode("view", {
           ref: "content",
@@ -363,7 +362,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 38)
       ], 512),
       _ctx.closeMode || _ctx.$slots["right-icon"] ? (openBlock(), createElementBlock("view", {
-        key: 0,
+        key: 1,
         class: "nut-noticebar__page-righticon",
         onClick: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.onClickIcon && _ctx.onClickIcon(...args), ["stop"]))
       }, [

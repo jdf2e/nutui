@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createBlock, createCommentVNode, createTextVNode, toDisplayString, withModifiers, createVNode, vShow, Fragment, renderList } from "vue";
+import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, renderSlot, createVNode, createCommentVNode, createTextVNode, createElementVNode, toDisplayString, withModifiers, vShow, Fragment, renderList, createBlock } from "vue";
 import { Notice, CircleClose } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
@@ -27,7 +27,6 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("noticebar");
 const _sfc_main = create({
   props: {
-    // 滚动方向  across 横向 vertical 纵向
     direction: {
       type: String,
       default: "across"
@@ -339,7 +338,10 @@ const _sfc_main = create({
   }
 });
 const _hoisted_1 = { class: "nut-noticebar" };
-const _hoisted_2 = { class: "nut-noticebar__page-lefticon" };
+const _hoisted_2 = {
+  key: 0,
+  class: "nut-noticebar__page-lefticon"
+};
 const _hoisted_3 = { class: "showNotica" };
 const _hoisted_4 = { class: "nut-noticebar-custom-item" };
 const _hoisted_5 = ["onClick"];
@@ -358,14 +360,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       style: normalizeStyle(_ctx.barStyle),
       onClick: _cache[3] || (_cache[3] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
     }, [
-      createElementVNode("view", _hoisted_2, [
+      _ctx.leftIcon ? (openBlock(), createElementBlock("view", _hoisted_2, [
         renderSlot(_ctx.$slots, "left-icon", {}, () => [
-          _ctx.leftIcon ? (openBlock(), createBlock(_component_Notice, {
-            key: 0,
-            size: "16px"
-          })) : createCommentVNode("", true)
+          createVNode(_component_Notice, { size: "16px" })
         ])
-      ]),
+      ])) : createCommentVNode("", true),
       createTextVNode(),
       createElementVNode("view", {
         ref: "wrap",
@@ -385,7 +384,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ], 2),
       createTextVNode(),
       _ctx.closeMode || _ctx.$slots["right-icon"] ? (openBlock(), createElementBlock("view", {
-        key: 0,
+        key: 1,
         class: "nut-noticebar__page-righticon",
         onClick: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.onClickIcon && _ctx.onClickIcon(...args), ["stop"]))
       }, [

@@ -1,11 +1,12 @@
 import { PropType } from 'vue';
+import { NoticebarDirection } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
 declare const _default: Install< import("vue").DefineComponent<{
     direction: {
-        type: StringConstructor;
+        type: PropType<NoticebarDirection>;
         default: string;
     };
     list: {
@@ -104,7 +105,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     showNotica: import("vue").Ref<boolean>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "acrossEnd")[], "click" | "close" | "acrossEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     direction: {
-        type: StringConstructor;
+        type: PropType<NoticebarDirection>;
         default: string;
     };
     list: {
@@ -168,7 +169,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     height: number;
     text: string;
     background: string;
-    direction: string;
+    direction: NoticebarDirection;
     list: any[];
     standTime: number;
     complexAm: boolean;
