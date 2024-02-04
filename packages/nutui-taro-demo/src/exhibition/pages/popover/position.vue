@@ -1,9 +1,9 @@
 <template>
   <nut-cell title="Position" @click="handlePicker"></nut-cell>
-  <nut-popup v-model:visible="showPopup" position="bottom">
-    <nut-picker :columns="columns" @change="change" @confirm="close" @close="close">
+  <nut-popup v-model:visible="showPopup" position="bottom" @opened="handleOpened">
+    <nut-picker :columns="columns" @change="change" @confirm="close" @cancel="close">
       <template #top>
-        <div class="brickBox">
+        <div class="brick-box">
           <div id="popover-target" class="brick"></div>
         </div>
       </template>
@@ -11,21 +11,20 @@
   </nut-popup>
 
   <nut-popover
-    v-model:visible="customPositon"
+    v-model:visible="showPopover"
     target-id="popover-target"
     :location="curPostion"
     theme="dark"
     :list="positionList"
-  >
-  </nut-popover>
+  />
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 const showPopup = ref(false);
-const customPositon = ref(false);
+const showPopover = ref(false);
 const curPostion = ref('top');
-const positionList = reactive([
+const positionList = ref([
   {
     name: 'option1'
   },
@@ -34,20 +33,21 @@ const positionList = reactive([
   }
 ]);
 const close = () => {
-  customPositon.value = false;
+  showPopover.value = false;
   showPopup.value = false;
 };
 
 const change = ({ selectedValue }) => {
   curPostion.value = selectedValue[0];
-  if (showPopup.value) customPositon.value = true;
+  if (showPopup.value) showPopover.value = true;
 };
 
 const handlePicker = () => {
   showPopup.value = true;
-  setTimeout(() => {
-    customPositon.value = true;
-  }, 0);
+};
+
+const handleOpened = () => {
+  showPopover.value = true;
 };
 
 const columns = ref([
@@ -67,7 +67,11 @@ const columns = ref([
 </script>
 
 <style>
-.brickBox {
+.nut-popover-content {
+  width: 100px;
+}
+
+.brick-box {
   margin: 80px 0;
   display: flex;
   justify-content: center;
@@ -77,11 +81,5 @@ const columns = ref([
   height: 60px;
   background: #fa2c19;
   border-radius: 10px;
-}
-</style>
-
-<style>
-.nut-popover-content {
-  width: 100px;
 }
 </style>

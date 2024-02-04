@@ -1,5 +1,5 @@
 <template>
-  <Demo>
+  <Demo style="padding-bottom: 50px">
     <h2>{{ t('basic') }}</h2>
     <Basic />
 
