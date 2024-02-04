@@ -12,9 +12,9 @@
       :style="barStyle"
       @click="handleClick"
     >
-      <view class="nut-noticebar__page-lefticon">
+      <view v-if="leftIcon" class="nut-noticebar__page-lefticon">
         <slot name="left-icon">
-          <Notice v-if="leftIcon" size="16px"></Notice>
+          <Notice size="16px"></Notice>
         </slot>
       </view>
       <view ref="wrap" class="nut-noticebar__page-wrap">
@@ -95,6 +95,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('noticebar');
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { PropType } from 'vue';
+import { NoticebarDirection } from './types';
 
 interface StateProps {
   wrapWidth: number;
@@ -114,9 +115,8 @@ interface StateProps {
 }
 export default create({
   props: {
-    // 滚动方向  across 横向 vertical 纵向
     direction: {
-      type: String,
+      type: String as PropType<NoticebarDirection>,
       default: 'across'
     },
     list: {
