@@ -16,172 +16,39 @@ app.use(Noticebar);
 
 ### Basic Usage
 
-:::demo
+> demo: noticebar basic
 
-```vue
-<template>
-  <nut-noticebar
-    text="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience."
-    :background="`rgba(251, 248, 220, 1)`"
-    :color="`#D9500B`"
-  ></nut-noticebar>
-</template>
-```
+### Custom Style
 
-:::
+> demo: noticebar custom
 
 ### Scrollable
 
 Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
 
-:::demo
+> demo: noticebar scrollable
 
-```vue
-<template>
-  <nut-noticebar text="Nutui is a mobile terminal component library." :scrollable="true"></nut-noticebar>
+### Close Mode
 
-  <nut-noticebar
-    text="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience."
-    :scrollable="false"
-    :background="`rgba(251, 248, 220, 1)`"
-    :color="`#D9500B`"
-  ></nut-noticebar>
-</template>
-```
-
-:::
-
-### Mode
-
-:::demo
-
-```vue
-<template>
-  <nut-noticebar :close-mode="true">
-    Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be
-    used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
-  </nut-noticebar>
-
-  <nut-noticebar :close-mode="true" right-icon="circle-close">
-    Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be
-    used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
-  </nut-noticebar>
-
-  <nut-noticebar :scrollable="false">
-    <template #left-icon>
-      <img
-        src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-        style="width: 20px; height: 20px"
-      />
-    </template>
-    <a href="https://www.jd.com">Jingdong</a>
-  </nut-noticebar>
-</template>
-```
-
-:::
+> demo: noticebar close
 
 ### Wrapable
 
 When text is long, you can enable multi-line display by setting the wrapable property.
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar
-    text="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience."
-    wrapable
-  ></nut-noticebar>
-</template>
-```
-
-:::
+> demo: noticebar wrap
 
 ### Vertical Scroll
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000" @click="go" :close-mode="true">
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp1 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
-const go = (item) => {
-  console.log(item);
-};
-</script>
-```
-
-:::
-
-### Vertical Scroll Complex Animation
-
-:::demo
-
-```vue
-<template>
-  <nut-noticebar
-    direction="vertical"
-    :list="horseLamp2"
-    :speed="10"
-    :standTime="2000"
-    :complexAm="true"
-  ></nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp2 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
-</script>
-```
-
-:::
+> demo: noticebar vertical
 
 ### Vertical Scroll Custom Style
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :height="50" :speed="10" :standTime="1000" :list="[]">
-    <div class="custom-item" :data-index="index" v-for="(item, index) in horseLamp3" :key="index">{{ item }}</div>
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp3 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
-</script>
-```
-
-:::
+> demo: noticebar vertical-content
 
 ### Vertical Scroll Custom Right Icon
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
-    <template #right-icon>
-      <Fabulous />
-    </template>
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { Fabulous } from '@nutui/icons-vue';
-const horseLamp1 = ref(['Noticebar', 'Cascader', 'DatePicker', 'CheckBox']);
-</script>
-```
-
-:::
+> demo: noticebar right
 
 ## API
 

@@ -16,180 +16,43 @@ app.use(Noticebar);
 
 ### 基础用法
 
-:::demo
+> demo: noticebar basic
 
-```vue
-<template>
-  <nut-noticebar
-    text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
-    :background="`rgba(251, 248, 220, 1)`"
-    :color="`#D9500B`"
-  ></nut-noticebar>
-</template>
-```
+### 自定义样式
 
-:::
+> demo: noticebar custom
 
 ### 滚动播放
 
 通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
 
-:::demo
+> demo: noticebar scrollable
 
-```vue
-<template>
-  <nut-noticebar text="华为畅享9新品即将上市" :scrollable="true"></nut-noticebar>
+### 关闭模式
 
-  <nut-noticebar
-    text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
-    :scrollable="false"
-  ></nut-noticebar>
-</template>
-```
+> demo: noticebar close
 
-:::
+### 自定义内容
 
-### 通告栏模式--关闭模式
-
-:::demo
-
-```vue
-<template>
-  <nut-noticebar :close-mode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
-    NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
-    H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
-  </nut-noticebar>
-
-  <nut-noticebar :close-mode="true">
-    NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在
-    H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
-  </nut-noticebar>
-</template>
-```
-
-:::
-
-### 通告栏模式--链接模式
-
-:::demo
-
-```vue
-<template>
-  <nut-noticebar :scrollable="false">
-    <template #left-icon>
-      <img
-        src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-        style="width: 20px; height: 20px"
-      />
-    </template>
-    <a href="https://www.jd.com">京东商城</a>
-  </nut-noticebar>
-</template>
-```
-
-:::
+> demo: noticebar content
 
 ### 多行展示
 
-文字较长时，可以通过设置 wrapable 属性来开启多行展示。默认为不滚动，可以通过设置 scrollable 控制为滚动。
+文字较长时，可以通过设置 `wrapable` 属性来开启多行展示。默认为不滚动，可以通过设置 scrollable 控制为滚动。
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar
-    text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
-    wrapable
-  ></nut-noticebar>
-</template>
-```
-
-:::
+> demo: noticebar wrap
 
 ### 纵向滚动
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000" @click="go" :close-mode="true">
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
-const go = (item) => {
-  console.log(item);
-};
-</script>
-```
-
-:::
-
-### 复杂滚动动画
-
-:::demo
-
-```vue
-<template>
-  <nut-noticebar
-    direction="vertical"
-    :list="horseLamp2"
-    :speed="10"
-    :standTime="2000"
-    :complexAm="true"
-  ></nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp2 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
-</script>
-```
-
-:::
+> demo: noticebar vertical
 
 ### 自定义滚动内容
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :height="50" :speed="10" :standTime="1000" :list="[]">
-    <div class="custom-item" :data-index="index" v-for="(item, index) in horseLamp3" :key="index">{{ item }}</div>
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const horseLamp3 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
-</script>
-```
-
-:::
+> demo: noticebar vertical-content
 
 ### 纵向自定义右侧图标
 
-:::demo
-
-```vue
-<template>
-  <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
-    <template #right-icon>
-      <Fabulous />
-    </template>
-  </nut-noticebar>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { Fabulous } from '@nutui/icons-vue';
-const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
-</script>
-```
-
-:::
+> demo: noticebar right
 
 ## API
 
@@ -204,7 +67,7 @@ const horseLamp1 = ref(['Noticebar 公告栏', 'Cascader 级联选择', 'DatePic
 | color | 导航栏的文字颜色 | string | - |
 | background | 导航栏的背景颜色 | string | - |
 | delay | 延时多少秒 | string \| number | `1` |
-| scrollable | 是否可以滚动 | boolean | `true` |
+| scrollable | 是否可以滚动 | boolean | - |
 | speed | 滚动速率 (px/s) | number | `50` |
 | wrapable | 是否开启文本换行，`scrollable` 会设置为 `false` | boolean | `false` |
 
