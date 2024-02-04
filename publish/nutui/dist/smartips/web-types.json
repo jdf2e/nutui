@@ -3787,7 +3787,7 @@
             },
             {
               "name": "scrollable",
-              "default": "`true`",
+              "default": "-",
               "description": "是否可以滚动",
               "value": {
                 "type": "boolean",
