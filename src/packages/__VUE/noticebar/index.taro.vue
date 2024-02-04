@@ -12,9 +12,9 @@
       :style="barStyle"
       @click="handleClick"
     >
-      <view class="nut-noticebar__page-lefticon">
+      <view v-if="leftIcon" class="nut-noticebar__page-lefticon">
         <slot name="left-icon">
-          <Notice v-if="leftIcon" size="16px"></Notice>
+          <Notice size="16px"></Notice>
         </slot>
       </view>
       <view ref="wrap" :class="`nut-noticebar__page-wrap wrap${id}`">
@@ -94,8 +94,10 @@ import {
 import { Notice, CircleClose } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
-const { create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
+import { NoticebarDirection } from './types';
+
+const { create } = createComponent('noticebar');
 
 interface stateProps {
   wrapWidth: number;
@@ -116,9 +118,8 @@ interface stateProps {
 
 export default create({
   props: {
-    // 滚动方向  across 横向 vertical 纵向
     direction: {
-      type: String,
+      type: String as PropType<NoticebarDirection>,
       default: 'across'
     },
     list: {
