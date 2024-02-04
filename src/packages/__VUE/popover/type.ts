@@ -1,5 +1,13 @@
 import { Component } from 'vue';
 
+export interface PopoverRootPosition {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+  right: number;
+}
+
 export type PopoverTheme = 'light' | 'dark';
 
 export type PopoverLocation =
