@@ -38,7 +38,7 @@ import { computed, watch, ref, PropType, CSSProperties, onMounted, nextTick } fr
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 import NutPopup from '../popup/index.vue';
-import { PopoverList, PopoverTheme, PopoverLocation } from './type';
+import { PopoverList, PopoverTheme, PopoverLocation, PopoverRootPosition } from './type';
 const { create } = createComponent('popover');
 export default create({
   components: {
@@ -69,13 +69,12 @@ export default create({
     const popoverContentRef = ref();
     const showPopup = ref(props.visible);
 
-    const rootPosition = ref<{
-      width: number;
-      height: number;
-      left: number;
-      top: number;
-      right: number;
-    }>();
+    const rootPosition = ref<PopoverRootPosition>();
+
+    const elRect = ref({
+      width: 0,
+      height: 0
+    });
 
     const popoverArrow = computed(() => {
       const prefixCls = 'nut-popover-arrow';
@@ -133,8 +132,8 @@ export default create({
       const styles: CSSProperties = {};
       if (!rootPosition.value) return {};
 
-      const contentWidth = popoverContentRef.value?.clientWidth;
-      const contentHeight = popoverContentRef.value?.clientHeight;
+      const contentWidth = elRect.value.width;
+      const contentHeight = elRect.value.height;
       const { width, height, left, top, right } = rootPosition.value;
       const { location, offset } = props;
       const direction = location?.split('-')[0];
@@ -189,6 +188,10 @@ export default create({
         left: rect.left,
         top: rect.top + Math.max(document.documentElement?.scrollTop || 0, document.body?.scrollTop || 0),
         right: rect.right
+      };
+      elRect.value = {
+        height: popoverContentRef.value?.clientHeight,
+        width: popoverContentRef.value?.clientWidth
       };
     };
 

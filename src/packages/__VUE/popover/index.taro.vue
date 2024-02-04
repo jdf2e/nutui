@@ -41,22 +41,12 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-const { create } = createComponent('popover');
 import { useTaroRect, useTaroRectById } from '@/packages/utils/useTaroRect';
-import { PopoverList, PopoverTheme, PopoverLocation } from './type';
+import { PopoverList, PopoverTheme, PopoverLocation, PopoverRootPosition } from './type';
 import NutPopup from '../popup/index.taro.vue';
 import Taro from '@tarojs/taro';
-
-interface RootPosition {
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-  right: number;
-}
-
+const { create } = createComponent('popover');
 export default create({
-  inheritAttrs: false,
   components: {
     NutPopup
   },
@@ -69,7 +59,7 @@ export default create({
     arrowOffset: { type: Number, default: 0 },
     customClass: { type: String, default: '' },
     showArrow: { type: Boolean, default: true },
-    duration: { type: [Number, String], default: 0.2 },
+    duration: { type: [Number, String], default: 0.3 },
     overlay: { type: Boolean, default: false },
     overlayClass: { type: String, default: '' },
     overlayStyle: { type: Object as PropType<CSSProperties> },
@@ -85,7 +75,7 @@ export default create({
     const popoverContentRef = ref();
     const showPopup = ref(props.visible);
 
-    const rootPosition = ref<RootPosition>();
+    const rootPosition = ref<PopoverRootPosition>();
 
     const elRect = ref({
       width: 0,
