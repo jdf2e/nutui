@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref, shallowRef, h } from 'vue';
-import { Location, Cart2, My2 } from '@nutui/icons-vue';
+import { Location, Cart2, My2 } from '@nutui/icons-vue-taro';
 const show1 = ref(false);
 const show2 = ref(false);
 const list1 = ref([

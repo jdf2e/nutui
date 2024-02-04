@@ -7,9 +7,7 @@
       <nut-popup
         v-model:visible="showPopup"
         :pop-class="`nut-popover-content nut-popover-content--${location}`"
-        :style="{
-          background: bgColor
-        }"
+        :style="{ background: bgColor }"
         position=""
         transition="nut-popover"
         :overlay="overlay"
@@ -28,7 +26,6 @@
             @click.stop="chooseItem(item, index)"
           >
             <component :is="renderIcon(item.icon)" v-if="item.icon" class="nut-popover-item-img"></component>
-
             <div class="nut-popover-menu-item-name">{{ item.name }}</div>
           </div>
         </div>
@@ -39,7 +36,6 @@
 <script lang="ts">
 import { computed, watch, ref, PropType, CSSProperties, onMounted, nextTick } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
-import { isArray } from '@/packages/utils/util';
 import { useRect } from '@/packages/utils/useRect';
 import NutPopup from '../popup/index.vue';
 import { PopoverList, PopoverTheme, PopoverLocation } from './type';
@@ -135,29 +131,27 @@ export default create({
 
     const getRootPosition = computed(() => {
       const styles: CSSProperties = {};
-
       if (!rootPosition.value) return {};
 
-      const conentWidth = popoverContentRef.value?.clientWidth;
-      const conentHeight = popoverContentRef.value?.clientHeight;
+      const contentWidth = popoverContentRef.value?.clientWidth;
+      const contentHeight = popoverContentRef.value?.clientHeight;
       const { width, height, left, top, right } = rootPosition.value;
-
       const { location, offset } = props;
       const direction = location?.split('-')[0];
       const skew = location?.split('-')[1];
       let cross = 0;
       let parallel = 0;
-      if (isArray(offset) && offset?.length === 2) {
+      if (Array.isArray(offset) && offset?.length === 2) {
         cross += Number(offset[1]);
         parallel += Number(offset[0]);
       }
       if (width) {
         if (['bottom', 'top'].includes(direction)) {
-          const h = direction === 'bottom' ? height + cross : -(conentHeight + cross);
+          const h = direction === 'bottom' ? height + cross : -(contentHeight + cross);
           styles.top = `${top + h}px`;
 
           if (!skew) {
-            styles.left = `${-(conentWidth - width) / 2 + left + parallel}px`;
+            styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`;
           }
           if (skew === 'start') {
             styles.left = `${left + parallel}px`;
@@ -167,15 +161,15 @@ export default create({
           }
         }
         if (['left', 'right'].includes(direction)) {
-          const contentW = direction === 'left' ? -(conentWidth + cross) : width + cross;
+          const contentW = direction === 'left' ? -(contentWidth + cross) : width + cross;
           styles.left = `${left + contentW}px`;
           if (!skew) {
-            styles.top = `${top - conentHeight / 2 + height / 2 - 4 + parallel}px`;
+            styles.top = `${top - contentHeight / 2 + height / 2 - 4 + parallel}px`;
           }
-          if (skew == 'start') {
+          if (skew === 'start') {
             styles.top = `${top + parallel}px`;
           }
-          if (skew == 'end') {
+          if (skew === 'end') {
             styles.top = `${top + height + parallel}px`;
           }
         }

@@ -138,10 +138,6 @@
         color: $popover-disable-color;
         cursor: not-allowed;
       }
-
-      &.nut-popover-menu-taroitem {
-        display: flex;
-      }
     }
 
     &--top {
@@ -256,10 +252,4 @@
 
 .nut-popover-wrapper {
   display: inline-block;
-}
-
-// Taro
-.nut-popover-content-copy {
-  position: absolute;
-  top: -99999px;
 }
