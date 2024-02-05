@@ -1,3 +1,29 @@
+## v4.3.0
+
+`2024-02-05`
+
+New Components
+
+- 新增 CalendarCard 日历卡片组件 (#2694) @eiinu
+
+Bug Fixes
+
+- avatar-cropper: 修复微信真机调试 canvas 层级错误 (#2865) @yi-boide
+- input-number: 修复输入时未触发 change 事件问题 (#2903) @yi-boide
+- input: 修复 slot 字体样式问题 (#2863) @eiinu
+- popover: 修复内部 popup 样式问题 (#2878) @eiinu
+- popover: 修复滑动后定位错乱问题 (#2913) @eiinu
+- noticebar: 移除 left-icon 空白占位元素 (#2916) @eiinu
+
+Refactors
+
+- popover: 重构代码逻辑 (#2913) @eiinu
+
+Other Changes
+
+- demo: 拆分演示代码 short-password, tabbar, cascader, backtop @yi-boide
+- test: 测试环境由 jsdom 迁移至 happy-dom (#2881) @eiinu
+
 ## v4.2.9
 
 `2024-01-22`

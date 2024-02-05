@@ -20815,7 +20815,7 @@ var __async = (__this, __arguments, generator) => {
       }
     });
   }
-  const version = "4.3.0-beta.5";
+  const version = "4.3.0";
   const taro_build = { install, version, Locale };
   exports2.ActionSheet = ActionSheet;
   exports2.Address = Address;

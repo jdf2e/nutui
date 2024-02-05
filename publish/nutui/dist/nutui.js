@@ -16921,7 +16921,7 @@ function T5(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const N5 = "4.3.0-beta.5", L5 = { install: T5, version: N5 };
+const N5 = "4.3.0", L5 = { install: T5, version: N5 };
 export {
   pm as ActionSheet,
   zv as Address,
