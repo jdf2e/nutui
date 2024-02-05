@@ -10,7 +10,7 @@ jobs:
     if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
     steps:
       - name: Checkout code
