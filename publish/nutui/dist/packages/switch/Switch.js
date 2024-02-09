@@ -1,7 +1,12 @@
-import { computed, watch, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createVNode, createCommentVNode, Fragment, withDirectives, toDisplayString, vShow } from "vue";
+import { toRef, computed, watch, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createVNode, createCommentVNode, Fragment, withDirectives, toDisplayString, vShow } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Loading1 } from "@nutui/icons-vue";
+import { u as useFormDisabled } from "../common-0CWYGsDn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import "../util-GcrnocDq.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 const { componentName, create } = createComponent("switch");
 const _sfc_main = create({
   components: { Loading1 },
@@ -45,13 +50,14 @@ const _sfc_main = create({
   },
   emits: ["change", "update:modelValue", "update:loading"],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, "disable"));
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
         [isActive.value ? "nut-switch-open" : "nut-switch-close"]: true,
-        [`${prefixCls}-disable`]: props.disable,
+        [`${prefixCls}-disable`]: disabled.value,
         [`${prefixCls}-base`]: true
       };
     });
@@ -62,7 +68,7 @@ const _sfc_main = create({
     });
     let updateType = "";
     const onClick = (event) => {
-      if (props.disable || props.loading)
+      if (props.loading || disabled.value)
         return;
       const value = isActive.value ? props.inactiveValue : props.activeValue;
       updateType = "click";

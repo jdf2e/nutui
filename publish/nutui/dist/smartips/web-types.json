@@ -2653,6 +2653,15 @@
               }
             },
             {
+              "name": "disabled",
+              "default": "`false`",
+              "description": "禁用表单下的所有数据录入组件",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
               "name": "label-position",
               "default": "`left`",
               "description": "表单项 label 的位置",

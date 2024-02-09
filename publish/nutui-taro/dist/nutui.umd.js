@@ -3936,6 +3936,161 @@ var __async = (__this, __arguments, generator) => {
     ]);
   }
   const SubSideNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$1c]]);
+  const FORM_KEY = Symbol("nut-form");
+  const useFormDisabled = (disabled) => {
+    const { parent } = useParent(FORM_KEY);
+    return vue.computed(() => {
+      var _a;
+      return disabled.value || ((_a = parent == null ? void 0 : parent.props) == null ? void 0 : _a.disabled) || false;
+    });
+  };
+  const component = (components) => {
+    return {
+      props: {
+        modelValue: {
+          type: Object,
+          default: () => ({})
+        },
+        rules: {
+          type: Object,
+          default: () => ({})
+        },
+        disabled: {
+          type: Boolean,
+          default: false
+        },
+        labelPosition: {
+          type: String,
+          default: "left"
+        },
+        starPosition: {
+          type: String,
+          default: "left"
+        }
+      },
+      components,
+      emits: ["validate"],
+      setup(props, { emit }) {
+        const { children, linkChildren } = useChildren(FORM_KEY);
+        linkChildren({ props });
+        const formErrorTip = vue.computed(() => vue.reactive({}));
+        vue.provide("formErrorTip", formErrorTip);
+        const clearErrorTips = () => {
+          Object.keys(formErrorTip.value).forEach((item) => {
+            formErrorTip.value[item] = "";
+          });
+        };
+        const reset = () => {
+          clearErrorTips();
+        };
+        vue.watch(
+          () => props.modelValue,
+          () => {
+            clearErrorTips();
+          },
+          { immediate: true }
+        );
+        const getTaskFromChildren = () => {
+          const task = [];
+          children.forEach((item) => {
+            task.push({
+              prop: item == null ? void 0 : item["prop"],
+              rules: (item == null ? void 0 : item["rules"]) || []
+            });
+          });
+          return task;
+        };
+        const tipMessage = (errorMsg) => {
+          if (errorMsg.message) {
+            emit("validate", errorMsg);
+          }
+          formErrorTip.value[errorMsg.prop] = errorMsg.message;
+        };
+        const checkRule = (item) => __async(this, null, function* () {
+          const { rules = [], prop } = item;
+          const _Promise = (errorMsg) => {
+            return new Promise((resolve, reject) => {
+              try {
+                tipMessage(errorMsg);
+                resolve(errorMsg);
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          if (!prop) {
+            console.warn("[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数");
+          }
+          const value = getPropByPath(props.modelValue, prop || "");
+          tipMessage({ prop, message: "" });
+          const formRules = props.rules || {};
+          const _rules = [...(formRules == null ? void 0 : formRules[prop]) || [], ...rules];
+          while (_rules.length) {
+            const rule = _rules.shift();
+            const _a = rule, { validator } = _a, ruleWithoutValidator = __objRest(_a, ["validator"]);
+            const { required, regex, message } = ruleWithoutValidator;
+            const errorMsg = { prop, message: message || "" };
+            if (required) {
+              if (!value && value !== 0) {
+                return _Promise(errorMsg);
+              }
+            }
+            if (regex && !regex.test(String(value))) {
+              return _Promise(errorMsg);
+            }
+            if (validator) {
+              const result = validator(value, ruleWithoutValidator);
+              if (isPromise(result)) {
+                try {
+                  const value2 = yield result;
+                  if (value2 === false) {
+                    return _Promise(errorMsg);
+                  }
+                } catch (error) {
+                  const validateErrorMsg = { prop, message: error };
+                  return _Promise(validateErrorMsg);
+                }
+              } else {
+                if (!result) {
+                  return _Promise(errorMsg);
+                }
+              }
+            }
+          }
+          return Promise.resolve(true);
+        });
+        const validate = (customProp = "") => {
+          return new Promise((resolve, reject) => {
+            try {
+              const task = getTaskFromChildren();
+              const errors = task.map((item) => {
+                if (customProp && customProp !== item.prop) {
+                  return Promise.resolve(true);
+                }
+                return checkRule(item);
+              });
+              Promise.all(errors).then((errorRes) => {
+                errorRes = errorRes.filter((item) => item !== true);
+                const res = { valid: true, errors: [] };
+                if (errorRes.length) {
+                  res.valid = false;
+                  res.errors = errorRes;
+                }
+                resolve(res);
+              });
+            } catch (error) {
+              reject(error);
+            }
+          });
+        };
+        const submit = () => {
+          validate();
+          return false;
+        };
+        return { validate, reset, submit, formErrorTip };
+      }
+    };
+  };
   const { componentName: componentName$g, create: create$1g } = createComponent("range");
   const _sfc_main$1h = create$1g({
     props: {
@@ -3982,6 +4137,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["change", "dragEnd", "dragStart", "update:modelValue"],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const refRandomId = Math.random().toString(36).slice(-8);
       const state = vue.ref({
         width: 0,
@@ -4004,7 +4160,7 @@ var __async = (__this, __arguments, generator) => {
         const prefixCls = componentName$g;
         return {
           [prefixCls]: true,
-          [`${prefixCls}-disabled`]: props.disabled,
+          [`${prefixCls}-disabled`]: disabled.value,
           [`${prefixCls}-vertical`]: props.vertical,
           [`${prefixCls}-show-number`]: !props.hiddenRange
         };
@@ -4129,7 +4285,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const onClick = (event) => __async(this, null, function* () {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         const { min, modelValue } = props;
@@ -4169,7 +4325,7 @@ var __async = (__this, __arguments, generator) => {
         );
       });
       const onTouchStart = (event) => {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         touch.start(event);
@@ -4193,7 +4349,7 @@ var __async = (__this, __arguments, generator) => {
         );
       };
       const onTouchMove = (event) => {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         preventDefault(event, true);
@@ -4218,7 +4374,7 @@ var __async = (__this, __arguments, generator) => {
         updateValue(currentValue);
       };
       const onTouchEnd = (event) => {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         if (dragStatus.value === "draging") {
@@ -4260,7 +4416,8 @@ var __async = (__this, __arguments, generator) => {
         marksStyle,
         marksList,
         tickStyle,
-        refRandomId
+        refRandomId,
+        disabled
       });
     }
   });
@@ -4468,6 +4625,7 @@ var __async = (__this, __arguments, generator) => {
       "clickRightIcon"
     ],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const translate = useLocale(cN$l);
       const state = vue.reactive({
         active: false
@@ -4556,7 +4714,8 @@ var __async = (__this, __arguments, generator) => {
         clickInput,
         leftIconClick,
         rightIconClick,
-        styleSearchbar
+        styleSearchbar,
+        disabled
       });
     }
   });
@@ -6950,6 +7109,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["change", "update:modelValue"],
     setup(props, { emit, slots }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const parent = vue.inject(CHECKBOX_KEY, null);
       const state = vue.reactive({
         partialSelect: props.indeterminate
@@ -6963,7 +7123,7 @@ var __async = (__this, __arguments, generator) => {
         }
       });
       const pDisabled = vue.computed(() => {
-        return hasParent.value ? parent.disabled.value ? parent.disabled.value : props.disabled : props.disabled;
+        return hasParent.value ? parent.disabled.value ? parent.disabled.value : disabled.value : disabled.value;
       });
       const checked = vue.computed(() => !!props.modelValue);
       const color = vue.computed(() => {
@@ -8230,11 +8390,12 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["update:modelValue", "change", "blur", "focus", "reduce", "add", "overlimit"],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const classes = vue.computed(() => {
         const prefixCls = componentName$d;
         return {
           [prefixCls]: true,
-          [`${prefixCls}--disabled`]: props.disabled
+          [`${prefixCls}--disabled`]: disabled.value
         };
       });
       const fixedDecimalPlaces = (v) => {
@@ -8252,13 +8413,13 @@ var __async = (__this, __arguments, generator) => {
           emit("change", output_value, event);
       };
       const addAllow = (value = Number(props.modelValue)) => {
-        return value < Number(props.max) && !props.disabled;
+        return value < Number(props.max) && !disabled.value;
       };
       const reduceAllow = (value = Number(props.modelValue)) => {
-        return value > Number(props.min) && !props.disabled;
+        return value > Number(props.min) && !disabled.value;
       };
       const reduce = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         emit("reduce", event);
         let output_value = Number(props.modelValue) - Number(props.step);
@@ -8270,7 +8431,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const add = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         emit("add", event);
         let output_value = Number(props.modelValue) + Number(props.step);
@@ -8282,7 +8443,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const focus = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         if (props.readonly) {
           blur(event);
@@ -8291,7 +8452,7 @@ var __async = (__this, __arguments, generator) => {
         emit("focus", event);
       };
       const blur = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         if (props.readonly)
           return;
@@ -8328,6 +8489,7 @@ var __async = (__this, __arguments, generator) => {
       );
       return {
         classes,
+        disabled,
         change,
         blur,
         focus,
@@ -8505,6 +8667,7 @@ var __async = (__this, __arguments, generator) => {
     components: { MaskClose: iconsVueTaro.MaskClose },
     emits: ["update:modelValue", "blur", "focus", "clear", "keypress", "click", "clickInput", "confirm"],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const active = vue.ref(false);
       const inputRef = vue.ref();
       const getModelValue = () => {
@@ -8540,7 +8703,7 @@ var __async = (__this, __arguments, generator) => {
         const prefixCls = componentName$c;
         return {
           [prefixCls]: true,
-          [`${prefixCls}--disabled`]: props.disabled,
+          [`${prefixCls}--disabled`]: disabled.value,
           [`${prefixCls}--required`]: props.required,
           [`${prefixCls}--error`]: props.error,
           [`${prefixCls}--border`]: props.border,
@@ -8583,14 +8746,14 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const onFocus = (event) => {
-        if (props.disabled || props.readonly) {
+        if (disabled.value || props.readonly) {
           return;
         }
         active.value = true;
         emit("focus", event);
       };
       const onBlur = (event) => {
-        if (props.disabled || props.readonly) {
+        if (disabled.value || props.readonly) {
           return;
         }
         setTimeout(() => {
@@ -8606,7 +8769,7 @@ var __async = (__this, __arguments, generator) => {
       };
       const clear = (event) => {
         event.stopPropagation();
-        if (props.disabled)
+        if (disabled.value)
           return;
         emit("update:modelValue", "", event);
         emit("clear", "", event);
@@ -8618,7 +8781,7 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const onClickInput = (event) => {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         emit("clickInput", event);
@@ -8666,6 +8829,7 @@ var __async = (__this, __arguments, generator) => {
         active,
         classes,
         styles,
+        disabled,
         onInput,
         onFocus,
         onBlur,
@@ -8798,13 +8962,14 @@ var __async = (__this, __arguments, generator) => {
       }
     },
     setup(props, { slots }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const { size } = vue.toRefs(props);
       let parent = vue.inject(RADIO_KEY, null);
       const isCurValue = vue.computed(() => {
         return parent.label.value === props.label;
       });
       const color = vue.computed(() => {
-        return !props.disabled ? isCurValue.value ? "nut-radio__icon" : "nut-radio__icon--unchecked" : "nut-radio__icon--disable";
+        return !disabled.value ? isCurValue.value ? "nut-radio__icon" : "nut-radio__icon--unchecked" : "nut-radio__icon--disable";
       });
       const renderIcon2 = () => {
         const { iconSize } = props;
@@ -8826,7 +8991,7 @@ var __async = (__this, __arguments, generator) => {
         return vue.h(
           "view",
           {
-            class: `${componentName$b}__label ${props.disabled ? `${componentName$b}__label--disabled` : ""}`
+            class: `${componentName$b}__label ${disabled.value ? `${componentName$b}__label--disabled` : ""}`
           },
           (_a = slots.default) == null ? void 0 : _a.call(slots)
         );
@@ -8842,7 +9007,7 @@ var __async = (__this, __arguments, generator) => {
         );
       };
       const handleClick = () => {
-        if (isCurValue.value || props.disabled)
+        if (isCurValue.value || disabled.value)
           return;
         parent.updateValue(props.label);
       };
@@ -8948,13 +9113,14 @@ var __async = (__this, __arguments, generator) => {
     components: { StarFillN: iconsVueTaro.StarFillN },
     emits: ["update:modelValue", "change"],
     setup(props, { emit, slots }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const rateRefs = vue.ref([]);
       const updateVal = (value) => {
         emit("update:modelValue", value);
         emit("change", value);
       };
       const onClick = (e, index) => {
-        if (props.disabled || props.readonly)
+        if (disabled.value || props.readonly)
           return;
         let value = 0;
         if (index === 1 && props.modelValue === index) {
@@ -8974,7 +9140,8 @@ var __async = (__this, __arguments, generator) => {
         rateRefs,
         refRandomId,
         renderIcon,
-        slots
+        slots,
+        disabled
       };
     }
   });
@@ -9255,12 +9422,13 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["update:modelValue", "change", "blur", "focus"],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const translate = useLocale(cN$g);
       const classes = vue.computed(() => {
         const prefixCls = "nut-textarea";
         return {
           [prefixCls]: true,
-          [`${prefixCls}--disabled`]: props.disabled
+          [`${prefixCls}--disabled`]: disabled.value
         };
       });
       const styles = vue.computed(() => {
@@ -9300,14 +9468,14 @@ var __async = (__this, __arguments, generator) => {
         emitChange(value, event);
       };
       const focus = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         if (props.readonly)
           return;
         emit("focus", event);
       };
       const blur = (event) => {
-        if (props.disabled)
+        if (disabled.value)
           return;
         if (props.readonly)
           return;
@@ -9419,6 +9587,7 @@ var __async = (__this, __arguments, generator) => {
         textareaRef,
         classes,
         styles,
+        disabled,
         change,
         focus,
         blur,
@@ -9806,6 +9975,7 @@ var __async = (__this, __arguments, generator) => {
       "fileItemClick"
     ],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disabled"));
       const translate = useLocale(cN$f);
       const fileList = vue.ref(props.fileList);
       const uploadQueue = vue.ref([]);
@@ -9816,7 +9986,7 @@ var __async = (__this, __arguments, generator) => {
         }
       );
       const chooseImage = () => {
-        if (props.disabled) {
+        if (disabled.value) {
           return;
         }
         if (Taro.getEnv() == "WEB") {
@@ -10026,6 +10196,8 @@ var __async = (__this, __arguments, generator) => {
         });
       };
       const onDelete = (file, index) => {
+        if (disabled.value)
+          return;
         clearUploadQueue(index);
         funInterceptor(props.beforeDelete, {
           args: [file, fileList.value],
@@ -10035,6 +10207,7 @@ var __async = (__this, __arguments, generator) => {
       return {
         onDelete,
         fileList,
+        disabled,
         chooseImage,
         fileItemClick,
         clearUploadQueue,
@@ -10460,150 +10633,6 @@ var __async = (__this, __arguments, generator) => {
     }, 8, ["visible", "pop-class", "overlay", "lock-scroll", "catch-move"]);
   }
   const NumberKeyboard = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$X]]);
-  const FORM_KEY = Symbol("nut-form");
-  const component = (components) => {
-    return {
-      props: {
-        modelValue: {
-          type: Object,
-          default: () => ({})
-        },
-        rules: {
-          type: Object,
-          default: () => ({})
-        },
-        labelPosition: {
-          type: String,
-          default: "left"
-        },
-        starPosition: {
-          type: String,
-          default: "left"
-        }
-      },
-      components,
-      emits: ["validate"],
-      setup(props, { emit }) {
-        const { children, linkChildren } = useChildren(FORM_KEY);
-        linkChildren({ props });
-        const formErrorTip = vue.computed(() => vue.reactive({}));
-        vue.provide("formErrorTip", formErrorTip);
-        const clearErrorTips = () => {
-          Object.keys(formErrorTip.value).forEach((item) => {
-            formErrorTip.value[item] = "";
-          });
-        };
-        const reset = () => {
-          clearErrorTips();
-        };
-        vue.watch(
-          () => props.modelValue,
-          () => {
-            clearErrorTips();
-          },
-          { immediate: true }
-        );
-        const getTaskFromChildren = () => {
-          const task = [];
-          children.forEach((item) => {
-            task.push({
-              prop: item == null ? void 0 : item["prop"],
-              rules: (item == null ? void 0 : item["rules"]) || []
-            });
-          });
-          return task;
-        };
-        const tipMessage = (errorMsg) => {
-          if (errorMsg.message) {
-            emit("validate", errorMsg);
-          }
-          formErrorTip.value[errorMsg.prop] = errorMsg.message;
-        };
-        const checkRule = (item) => __async(this, null, function* () {
-          const { rules, prop } = item;
-          const _Promise = (errorMsg) => {
-            return new Promise((resolve, reject) => {
-              try {
-                tipMessage(errorMsg);
-                resolve(errorMsg);
-              } catch (error) {
-                reject(error);
-              }
-            });
-          };
-          if (!prop) {
-            console.warn("[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数");
-          }
-          const value = getPropByPath(props.modelValue, prop || "");
-          tipMessage({ prop, message: "" });
-          const formRules = props.rules || {};
-          const _rules = [...(formRules == null ? void 0 : formRules[prop]) || [], ...rules];
-          while (_rules.length) {
-            const rule = _rules.shift();
-            const _a = rule, { validator } = _a, ruleWithoutValidator = __objRest(_a, ["validator"]);
-            const { required, regex, message } = ruleWithoutValidator;
-            const errorMsg = { prop, message: message || "" };
-            if (required) {
-              if (!value && value !== 0) {
-                return _Promise(errorMsg);
-              }
-            }
-            if (regex && !regex.test(String(value))) {
-              return _Promise(errorMsg);
-            }
-            if (validator) {
-              const result = validator(value, ruleWithoutValidator);
-              if (isPromise(result)) {
-                try {
-                  const value2 = yield result;
-                  if (value2 === false) {
-                    return _Promise(errorMsg);
-                  }
-                } catch (error) {
-                  const validateErrorMsg = { prop, message: error };
-                  return _Promise(validateErrorMsg);
-                }
-              } else {
-                if (!result) {
-                  return _Promise(errorMsg);
-                }
-              }
-            }
-          }
-          return Promise.resolve(true);
-        });
-        const validate = (customProp = "") => {
-          return new Promise((resolve, reject) => {
-            try {
-              const task = getTaskFromChildren();
-              const errors = task.map((item) => {
-                if (customProp && customProp !== item.prop) {
-                  return Promise.resolve(true);
-                }
-                return checkRule(item);
-              });
-              Promise.all(errors).then((errorRes) => {
-                errorRes = errorRes.filter((item) => item !== true);
-                const res = { valid: true, errors: [] };
-                if (errorRes.length) {
-                  res.valid = false;
-                  res.errors = errorRes;
-                }
-                resolve(res);
-              });
-            } catch (error) {
-              reject(error);
-            }
-          });
-        };
-        const submit = () => {
-          validate();
-          return false;
-        };
-        return { validate, reset, submit, formErrorTip };
-      }
-    };
-  };
   const { create: create$X } = createComponent("form");
   const _sfc_main$X = create$X(
     component({
@@ -11862,13 +11891,14 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["change", "update:modelValue", "update:loading"],
     setup(props, { emit }) {
+      const disabled = useFormDisabled(vue.toRef(props, "disable"));
       const isActive = vue.computed(() => props.modelValue === props.activeValue);
       const classes = vue.computed(() => {
         const prefixCls = componentName$8;
         return {
           [prefixCls]: true,
           [isActive.value ? "nut-switch-open" : "nut-switch-close"]: true,
-          [`${prefixCls}-disable`]: props.disable,
+          [`${prefixCls}-disable`]: disabled.value,
           [`${prefixCls}-base`]: true
         };
       });
@@ -11879,7 +11909,7 @@ var __async = (__this, __arguments, generator) => {
       });
       let updateType = "";
       const onClick = (event) => {
-        if (props.disable || props.loading)
+        if (props.loading || disabled.value)
           return;
         const value = isActive.value ? props.inactiveValue : props.activeValue;
         updateType = "click";

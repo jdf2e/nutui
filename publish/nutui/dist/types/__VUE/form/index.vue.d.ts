@@ -11,6 +11,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: import("vue").PropType<import("./types").FormRules>;
         default: () => {};
     };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     labelPosition: {
         type: import("vue").PropType<import("../formitem/types").FormItemLabelPosition>;
         default: string;
@@ -33,6 +37,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: import("vue").PropType<import("./types").FormRules>;
         default: () => {};
     };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     labelPosition: {
         type: import("vue").PropType<import("../formitem/types").FormItemLabelPosition>;
         default: string;
@@ -44,6 +52,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
 }, {
+    disabled: boolean;
     modelValue: Record<string, any>;
     rules: import("./types").FormRules;
     labelPosition: import("../formitem/types").FormItemLabelPosition;

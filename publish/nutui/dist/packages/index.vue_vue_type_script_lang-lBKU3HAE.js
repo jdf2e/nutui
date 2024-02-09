@@ -1,8 +1,9 @@
-import { toRefs, inject, computed, h } from "vue";
+import { toRef, toRefs, inject, computed, h } from "vue";
 import { c as createComponent } from "./component-TCzwHGVq.js";
 import { CheckNormal, CheckChecked } from "@nutui/icons-vue";
 import { p as pxCheck } from "./pxCheck-OnXlN1NC.js";
 import { R as RADIO_KEY } from "./types-odSRziQJ.js";
+import { u as useFormDisabled } from "./common-0CWYGsDn.js";
 const { componentName, create } = createComponent("radio");
 const _sfc_main = create({
   components: {
@@ -32,13 +33,14 @@ const _sfc_main = create({
     }
   },
   setup(props, { slots }) {
+    const disabled = useFormDisabled(toRef(props, "disabled"));
     const { size } = toRefs(props);
     let parent = inject(RADIO_KEY, null);
     const isCurValue = computed(() => {
       return parent.label.value === props.label;
     });
     const color = computed(() => {
-      return !props.disabled ? isCurValue.value ? "nut-radio__icon" : "nut-radio__icon--unchecked" : "nut-radio__icon--disable";
+      return !disabled.value ? isCurValue.value ? "nut-radio__icon" : "nut-radio__icon--unchecked" : "nut-radio__icon--disable";
     });
     const renderIcon = () => {
       const { iconSize } = props;
@@ -59,7 +61,7 @@ const _sfc_main = create({
       return h(
         "view",
         {
-          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ""}`
+          class: `${componentName}__label ${disabled.value ? `${componentName}__label--disabled` : ""}`
         },
         (_a = slots.default) == null ? void 0 : _a.call(slots)
       );
@@ -75,7 +77,7 @@ const _sfc_main = create({
       );
     };
     const handleClick = () => {
-      if (isCurValue.value || props.disabled)
+      if (isCurValue.value || disabled.value)
         return;
       parent.updateValue(props.label);
     };

@@ -1,9 +1,14 @@
-import { ref, openBlock, createElementBlock, Fragment, renderList, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createTextVNode, createCommentVNode } from "vue";
+import { toRef, ref, openBlock, createElementBlock, Fragment, renderList, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createTextVNode, createCommentVNode } from "vue";
 import { StarFillN } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
+import { u as useFormDisabled } from "../common-a7MQyVOH.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import "../util-iEg-WSfL.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 const { create } = createComponent("rate");
 const _sfc_main = create({
   props: {
@@ -53,13 +58,14 @@ const _sfc_main = create({
   components: { StarFillN },
   emits: ["update:modelValue", "change"],
   setup(props, { emit, slots }) {
+    const disabled = useFormDisabled(toRef(props, "disabled"));
     const rateRefs = ref([]);
     const updateVal = (value) => {
       emit("update:modelValue", value);
       emit("change", value);
     };
     const onClick = (e, index) => {
-      if (props.disabled || props.readonly)
+      if (disabled.value || props.readonly)
         return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
@@ -79,7 +85,8 @@ const _sfc_main = create({
       rateRefs,
       refRandomId,
       renderIcon,
-      slots
+      slots,
+      disabled
     };
   }
 });

@@ -54,6 +54,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         "nut-textarea--disabled": boolean;
     }>;
     styles: import("vue").ComputedRef<any>;
+    disabled: import("vue").ComputedRef<boolean>;
     change: (event: Event) => void;
     focus: (event: Event) => void;
     blur: (event: Event) => void;

@@ -43,6 +43,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     classes: import("vue").ComputedRef<{
         [x: string]: boolean;
     }>;
+    disabled: import("vue").ComputedRef<boolean>;
     change: (event: Event) => void;
     blur: (event: Event) => void;
     focus: (event: Event) => void;

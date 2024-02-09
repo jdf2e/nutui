@@ -17,14 +17,18 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, computed, ref, onMounted, toRefs, openBlock, createElementBlock, normalizeClass, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, createElementVNode, withModifiers, withDirectives, createBlock, resolveDynamicComponent, vShow } from "vue";
+import { toRef, reactive, computed, ref, onMounted, toRefs, openBlock, createElementBlock, normalizeClass, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, createElementVNode, withModifiers, withDirectives, createBlock, resolveDynamicComponent, vShow } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
 import { CircleClose } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-s3RgMhc7.js";
+import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useFormDisabled } from "../common-0CWYGsDn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/nutui/dist/packages/locale/lang";
-import "../util-4Jkyw4BJ.js";
+import "../util-GcrnocDq.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 const { create } = createComponent("searchbar");
 const cN = "NutSearchbar";
 const _sfc_main = create({
@@ -106,6 +110,7 @@ const _sfc_main = create({
     "clickRightIcon"
   ],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, "disabled"));
     const translate = useLocale(cN);
     const state = reactive({
       active: false
@@ -194,7 +199,8 @@ const _sfc_main = create({
       clickInput,
       leftIconClick,
       rightIconClick,
-      styleSearchbar
+      styleSearchbar,
+      disabled
     });
   }
 });

@@ -1,4 +1,4 @@
-import { PropType, ComputedRef } from 'vue';
+import type { PropType, ComputedRef } from 'vue';
 import type { InputType, InputAlignType, InputFormatTrigger, ConfirmTextType, InputEvent } from './type';
 
 declare type Install<T> = T & {
@@ -99,6 +99,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         [x: string]: boolean;
     }>;
     styles: ComputedRef<any>;
+    disabled: ComputedRef<boolean>;
     onInput: (event: Event) => void;
     onFocus: (event: Event) => void;
     onBlur: (event: Event) => void;
@@ -212,6 +213,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     border: boolean;
     placeholder: string;
     modelValue: string | number;
+    required: boolean;
     maxLength: string | number;
     clearable: boolean;
     autofocus: boolean;
@@ -219,7 +221,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     inputAlign: InputAlignType;
     confirmType: ConfirmTextType;
     formatter: (value: string) => string;
-    required: boolean;
     clearSize: string | number;
     formatTrigger: InputFormatTrigger;
     showWordLimit: boolean;

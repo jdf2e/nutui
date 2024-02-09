@@ -3,11 +3,15 @@ import { Right, Fabulous, Comment, MoreX } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import NutRate from "../rate/Rate.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import { u as useLocale } from "../index-xXrovSQL.js";
+import { u as useLocale } from "../index-8Pdv9exg.js";
 import "../renderIcon--EgZu5_5.js";
 import "../pxCheck-OnXlN1NC.js";
+import "../common-a7MQyVOH.js";
+import "../util-iEg-WSfL.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../util-Bt8WDYya.js";
 const { create: create$3 } = createComponent("comment-header");
 const _sfc_main$3 = create$3({
   components: {

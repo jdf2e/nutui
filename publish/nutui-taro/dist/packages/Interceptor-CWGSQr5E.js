@@ -1,4 +1,4 @@
-import { f as isPromise } from "./util-4Jkyw4BJ.js";
+import { b as isPromise } from "./util-iEg-WSfL.js";
 const funInterceptor = (interceptor, {
   args = [],
   done,

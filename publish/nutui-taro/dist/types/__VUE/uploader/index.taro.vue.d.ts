@@ -130,6 +130,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         percentage: string | number;
         formData: any;
     }[]>;
+    disabled: import("vue").ComputedRef<boolean>;
     chooseImage: () => void;
     fileItemClick: (fileItem: FileItem) => void;
     clearUploadQueue: (index?: number) => void;

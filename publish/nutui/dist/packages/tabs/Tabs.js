@@ -42,7 +42,7 @@ import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTi
 import NutSticky from "../sticky/Sticky.js";
 import { JoySmile } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { T as TypeOfFun } from "../util-4Jkyw4BJ.js";
+import { T as TypeOfFun } from "../util-GcrnocDq.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";

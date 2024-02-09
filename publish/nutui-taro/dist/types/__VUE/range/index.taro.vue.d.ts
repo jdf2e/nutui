@@ -61,7 +61,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     marksList: import("vue").ComputedRef<number[]>;
     tickStyle: (mark: number) => CSSProperties;
     refRandomId: string;
-    disabled: import("vue").Ref<boolean>;
+    disabled: import("vue").ComputedRef<boolean>;
     vertical: import("vue").Ref<boolean>;
     range: import("vue").Ref<boolean>;
     modelValue: import("vue").Ref<SliderValue>;

@@ -113,6 +113,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     slots: Readonly<{
         [name: string]: import("vue").Slot<any> | undefined;
     }>;
+    disabled: import("vue").ComputedRef<boolean>;
     onTouchStart(event: TouchEvent): void;
     onTouchMove(event: TouchEvent): void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{

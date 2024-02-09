@@ -17,12 +17,16 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { ref, computed, toRefs, openBlock, createElementBlock, normalizeClass, toDisplayString, createCommentVNode, createElementVNode, normalizeStyle, withModifiers, Fragment, renderList, createTextVNode, renderSlot } from "vue";
+import { toRef, ref, computed, toRefs, openBlock, createElementBlock, normalizeClass, toDisplayString, createCommentVNode, createElementVNode, normalizeStyle, withModifiers, Fragment, renderList, createTextVNode, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { a as isArray } from "../util-4Jkyw4BJ.js";
+import { a as isArray } from "../util-GcrnocDq.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useRect } from "../index-cp6Ms_Qe.js";
+import { u as useFormDisabled } from "../common-0CWYGsDn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({
   props: {
@@ -69,6 +73,7 @@ const _sfc_main = create({
   },
   emits: ["change", "dragEnd", "dragStart", "update:modelValue"],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, "disabled"));
     const buttonIndex = ref(0);
     let startValue;
     let currentValue;
@@ -86,7 +91,7 @@ const _sfc_main = create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
       };
@@ -211,7 +216,7 @@ const _sfc_main = create({
       }
     };
     const onClick = (event) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       const { min, modelValue } = props;
@@ -236,7 +241,7 @@ const _sfc_main = create({
       }
     };
     const onTouchStart = (event) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       touch.start(event);
@@ -249,7 +254,7 @@ const _sfc_main = create({
       dragStatus.value = "start";
     };
     const onTouchMove = (event) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       if (dragStatus.value === "start") {
@@ -274,7 +279,7 @@ const _sfc_main = create({
       updateValue(currentValue);
     };
     const onTouchEnd = () => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       if (dragStatus.value === "draging") {
@@ -304,7 +309,8 @@ const _sfc_main = create({
       markClassName,
       marksStyle,
       marksList,
-      tickStyle
+      tickStyle,
+      disabled
     });
   }
 });

@@ -25,7 +25,7 @@ import { u as useParent } from "../useParent-KIxqkovs.js";
 import { M as MENU_KEY } from "../types-j71K23JP.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "../overlay/Overlay.js";
-import "../util-4Jkyw4BJ.js";
+import "../util-GcrnocDq.js";
 const { create } = createComponent("menu-item");
 const _sfc_main = create({
   props: {

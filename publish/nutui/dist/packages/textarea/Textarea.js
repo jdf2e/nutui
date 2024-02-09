@@ -1,9 +1,13 @@
-import { ref, computed, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, toDisplayString, createCommentVNode } from "vue";
+import { toRef, ref, computed, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, toDisplayString, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { u as useLocale } from "../index-s3RgMhc7.js";
+import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useFormDisabled } from "../common-0CWYGsDn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import "@nutui/nutui/dist/packages/locale/lang";
-import "../util-4Jkyw4BJ.js";
+import "../util-GcrnocDq.js";
+import "../useChildren-GU_NVfD8.js";
+import "../useParent-KIxqkovs.js";
+import "../types-Ynmct7na.js";
 const { create } = createComponent("textarea");
 const cN = "NutTextarea";
 const _sfc_main = create({
@@ -51,13 +55,14 @@ const _sfc_main = create({
   },
   emits: ["update:modelValue", "change", "blur", "focus"],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, "disabled"));
     const translate = useLocale(cN);
     const textareaRef = ref();
     const classes = computed(() => {
       const prefixCls = "nut-textarea";
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled
+        [`${prefixCls}--disabled`]: disabled.value
       };
     });
     onMounted(() => {
@@ -117,14 +122,14 @@ const _sfc_main = create({
       }
     };
     const focus = (event) => {
-      if (props.disabled)
+      if (disabled.value)
         return;
       if (props.readonly)
         return;
       emit("focus", event);
     };
     const blur = (event) => {
-      if (props.disabled)
+      if (disabled.value)
         return;
       if (props.readonly)
         return;
@@ -146,6 +151,7 @@ const _sfc_main = create({
       textareaRef,
       classes,
       styles,
+      disabled,
       change,
       focus,
       blur,

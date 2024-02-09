@@ -141,6 +141,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     leftIconClick: (event: Event) => void;
     rightIconClick: (event: Event) => void;
     styleSearchbar: import("vue").ComputedRef<CSSProperties>;
+    disabled: import("vue").ComputedRef<boolean>;
     active: Ref<boolean>;
     renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
