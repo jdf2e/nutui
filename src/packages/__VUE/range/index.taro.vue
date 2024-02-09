@@ -79,11 +79,12 @@
 </template>
 <script lang="ts">
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-import { ref, toRefs, computed, PropType, CSSProperties, onMounted } from 'vue';
+import { ref, toRefs, computed, PropType, CSSProperties, onMounted, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { SliderValue } from './type';
+import { useFormDisabled } from '../form/common';
 import { preventDefault } from '@/packages/utils/util';
 const { componentName, create } = createComponent('range');
 
@@ -134,6 +135,7 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const refRandomId = Math.random().toString(36).slice(-8);
     const state = ref({
       width: 0,
@@ -162,7 +164,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
       };
@@ -300,7 +302,7 @@ export default create({
     };
 
     const onClick = async (event: any) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       const { min, modelValue } = props;
@@ -340,7 +342,7 @@ export default create({
     };
 
     const onTouchStart = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -369,7 +371,7 @@ export default create({
     };
 
     const onTouchMove = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       preventDefault(event, true);
@@ -396,7 +398,7 @@ export default create({
     };
 
     const onTouchEnd = (event: TouchEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       if (dragStatus.value === 'draging') {
@@ -441,7 +443,8 @@ export default create({
       marksStyle,
       marksList,
       tickStyle,
-      refRandomId
+      refRandomId,
+      disabled
     };
   }
 });

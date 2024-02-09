@@ -48,10 +48,11 @@
   </view>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, toRef } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { useFormDisabled } from '../form/common';
 const { create } = createComponent('rate');
 export default create({
   props: {
@@ -101,13 +102,14 @@ export default create({
   components: { StarFillN },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const rateRefs = ref<HTMLElement[]>([]);
     const updateVal = (value: number) => {
       emit('update:modelValue', value);
       emit('change', value);
     };
     const onClick = (e: number, index: number) => {
-      if (props.disabled || props.readonly) return;
+      if (disabled.value || props.readonly) return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
         value = 0;
@@ -126,7 +128,8 @@ export default create({
       rateRefs,
       refRandomId,
       renderIcon,
-      slots
+      slots,
+      disabled
     };
   }
 });

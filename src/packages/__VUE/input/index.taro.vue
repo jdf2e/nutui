@@ -56,12 +56,14 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h } from 'vue';
+import Taro from '@tarojs/taro';
+import { MaskClose } from '@nutui/icons-vue-taro';
+import { ref, reactive, computed, onMounted, watch, h, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
-import { MaskClose } from '@nutui/icons-vue-taro';
-import Taro from '@tarojs/taro';
+import { useFormDisabled } from '../form/common';
 
+import type { PropType, ComputedRef } from 'vue';
 import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType, InputEvent } from './type';
 
 const { componentName, create } = createComponent('input');
@@ -158,6 +160,7 @@ export default create({
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const active = ref(false);
 
     const inputRef = ref();
@@ -193,7 +196,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled,
+        [`${prefixCls}--disabled`]: disabled.value,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
         [`${prefixCls}--border`]: props.border,
@@ -243,7 +246,7 @@ export default create({
     };
 
     const onFocus = (event: Event) => {
-      if (props.disabled || props.readonly) {
+      if (disabled.value || props.readonly) {
         return;
       }
       active.value = true;
@@ -252,7 +255,7 @@ export default create({
     };
 
     const onBlur = (event: Event) => {
-      if (props.disabled || props.readonly) {
+      if (disabled.value || props.readonly) {
         return;
       }
       setTimeout(() => {
@@ -271,7 +274,7 @@ export default create({
 
     const clear = (event: Event) => {
       event.stopPropagation();
-      if (props.disabled) return;
+      if (disabled.value) return;
       emit('update:modelValue', '', event);
       // emit('change', '', event);
       emit('clear', '', event);
@@ -285,7 +288,7 @@ export default create({
     };
 
     const onClickInput = (event: MouseEvent) => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
       emit('clickInput', event);
@@ -341,6 +344,7 @@ export default create({
       active,
       classes,
       styles,
+      disabled,
       onInput,
       onFocus,
       onBlur,

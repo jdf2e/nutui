@@ -13,9 +13,10 @@
 </template>
 
 <script lang="ts">
-import { computed, watch } from 'vue';
+import { computed, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading1 } from '@nutui/icons-vue';
+import { useFormDisabled } from '../form/common';
 const { componentName, create } = createComponent('switch');
 
 export default create({
@@ -60,13 +61,14 @@ export default create({
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disable'));
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
         [isActive.value ? 'nut-switch-open' : 'nut-switch-close']: true,
-        [`${prefixCls}-disable`]: props.disable,
+        [`${prefixCls}-disable`]: disabled.value,
         [`${prefixCls}-base`]: true
       };
     });
@@ -80,7 +82,7 @@ export default create({
     let updateType = '';
 
     const onClick = (event: Event) => {
-      if (props.disable || props.loading) return;
+      if (props.loading || disabled.value) return;
       const value = isActive.value ? props.inactiveValue : props.activeValue;
       updateType = 'click';
       emit('update:modelValue', value);

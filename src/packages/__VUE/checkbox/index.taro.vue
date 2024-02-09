@@ -1,10 +1,11 @@
 <script lang="ts">
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
+import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch, onBeforeUnmount, toRef } from 'vue';
 import type { Component, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { CheckNormal, Checked, CheckDisabled } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { CHECKBOX_KEY, CheckboxTextPosition, CheckboxShape } from './types';
+import { useFormDisabled } from '../form/common';
 const { create, componentName } = createComponent('checkbox');
 
 export default create({
@@ -40,6 +41,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const parent: any = inject(CHECKBOX_KEY, null);
     const state = reactive({
       partialSelect: props.indeterminate
@@ -56,7 +58,7 @@ export default create({
     });
 
     const pDisabled = computed(() => {
-      return hasParent.value ? (parent.disabled.value ? parent.disabled.value : props.disabled) : props.disabled;
+      return hasParent.value ? (parent.disabled.value ? parent.disabled.value : disabled.value) : disabled.value;
     });
 
     const checked = computed(() => !!props.modelValue);
