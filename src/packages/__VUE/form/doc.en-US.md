@@ -47,6 +47,7 @@ app.use(FormItem);
 | --- | --- | --- | --- |
 | model-value | Form data object (required when using form verification) | object |  |
 | rules | Unified configuration FormItem attr rules | { prop: FormItemRule[] } | `{}` |
+| disabled | Disable all data entry components under the form | boolean | `false` |
 | label-position`v4.2.4` | The location of the form item label | `top` \| `left` \| `right` | `left` |
 | star-position`v4.2.4` | The red star position of the single label is required | `left` \| `right` | `left` |
 

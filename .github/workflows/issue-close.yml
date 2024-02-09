@@ -7,6 +7,7 @@ on:
 
 jobs:
   issue-to-be-closed:
+    if: github.repository == 'jdf2e/nutui'
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
@@ -16,3 +17,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: 'to be closed'
           inactive-day: 7
+          close-reason: 'completed'

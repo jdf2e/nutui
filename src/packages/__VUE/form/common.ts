@@ -1,9 +1,15 @@
 import { getPropByPath, isPromise } from '@/packages/utils/util';
-import { computed, PropType, provide, reactive, watch } from 'vue';
+import { computed, provide, reactive, watch } from 'vue';
+import { useChildren, useParent } from '@/packages/utils';
 import { FORM_KEY } from './types';
-import { useChildren } from '@/packages/utils';
+import type { ComputedRef, PropType, Ref } from 'vue';
 import type { FormItemRule } from '../formitem/types';
 import type { ErrorMessage, FormRule, FormRules, FormLabelPosition, FormStarPosition } from './types';
+
+export const useFormDisabled = (disabled: Ref<boolean>): ComputedRef<boolean> => {
+  const { parent } = useParent(FORM_KEY);
+  return computed(() => disabled.value || parent?.props?.disabled || false);
+};
 
 export const component = (components: any) => {
   return {
@@ -15,6 +21,10 @@ export const component = (components: any) => {
       rules: {
         type: Object as PropType<FormRules>,
         default: () => ({})
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       },
       labelPosition: {
         type: String as PropType<FormLabelPosition>,
@@ -71,7 +81,7 @@ export const component = (components: any) => {
       };
 
       const checkRule = async (item: FormRule): Promise<ErrorMessage | boolean> => {
-        const { rules, prop } = item;
+        const { rules = [], prop } = item;
 
         const _Promise = (errorMsg: ErrorMessage): Promise<ErrorMessage> => {
           return new Promise((resolve, reject) => {

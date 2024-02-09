@@ -34,7 +34,7 @@
     "highlight.js": "^11.9.0",
     "lzutf8": "^0.6.3",
     "markdown-it-container": "^4.0.0",
-    "unplugin-vue-markdown": "^0.25.2"
+    "unplugin-vue-markdown": "^0.26.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

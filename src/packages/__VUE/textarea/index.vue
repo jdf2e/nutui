@@ -23,9 +23,10 @@
 </template>
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
-import { watch, ref, computed, onMounted, nextTick } from 'vue';
+import { watch, ref, computed, onMounted, nextTick, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 export interface InputTarget extends HTMLInputElement {
   composing: boolean;
@@ -81,13 +82,14 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const textareaRef = ref();
     const classes = computed(() => {
       const prefixCls = 'nut-textarea';
       return {
         [prefixCls]: true,
-        [`${prefixCls}--disabled`]: props.disabled
+        [`${prefixCls}--disabled`]: disabled.value
       };
     });
 
@@ -156,13 +158,13 @@ export default create({
     };
 
     const focus = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) return;
       emit('focus', event);
     };
 
     const blur = (event: Event) => {
-      if (props.disabled) return;
+      if (disabled.value) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
 
@@ -187,6 +189,7 @@ export default create({
       textareaRef,
       classes,
       styles,
+      disabled,
       change,
       focus,
       blur,

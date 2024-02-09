@@ -61,7 +61,7 @@
 
 ## Features
 
-* 🚀 70+ High Quality Components
+* 🚀 80+ High Quality Components
 * 💪 Write Once, Multi-End Use
 * 📖 Based on JD APP 10.0 Visual Specifications
 * 🍭 Support Tree Shaking

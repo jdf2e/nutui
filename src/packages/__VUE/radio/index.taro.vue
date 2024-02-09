@@ -1,11 +1,11 @@
 <script lang="ts">
-import { computed, h, inject, PropType, toRefs } from 'vue';
+import { computed, h, inject, PropType, toRef, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('radio');
 import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { RADIO_KEY, RadioShape, RadioButtonSize } from './types';
-
+import { useFormDisabled } from '../form/common';
 export default create({
   components: {
     CheckNormal,
@@ -34,6 +34,7 @@ export default create({
     }
   },
   setup(props, { slots }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const { size } = toRefs(props);
     let parent: any = inject(RADIO_KEY, null);
 
@@ -42,7 +43,7 @@ export default create({
     });
 
     const color = computed(() => {
-      return !props.disabled
+      return !disabled.value
         ? isCurValue.value
           ? 'nut-radio__icon'
           : 'nut-radio__icon--unchecked'
@@ -69,7 +70,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
+          class: `${componentName}__label ${disabled.value ? `${componentName}__label--disabled` : ''}`
         },
         slots.default?.()
       );
@@ -87,7 +88,7 @@ export default create({
     };
 
     const handleClick = () => {
-      if (isCurValue.value || props.disabled) return;
+      if (isCurValue.value || disabled.value) return;
       parent.updateValue(props.label);
     };
 

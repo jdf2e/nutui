@@ -53,11 +53,12 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
+import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties, toRef } from 'vue';
 import { createComponent, renderIcon } from '@/packages/utils/create';
 import { CircleClose } from '@nutui/icons-vue-taro';
 import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 const { create } = createComponent('searchbar');
 
 const cN = 'NutSearchbar';
@@ -147,6 +148,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const state = reactive({
       active: false
@@ -248,7 +250,8 @@ export default create({
       clickInput,
       leftIconClick,
       rightIconClick,
-      styleSearchbar
+      styleSearchbar,
+      disabled
     };
   }
 });

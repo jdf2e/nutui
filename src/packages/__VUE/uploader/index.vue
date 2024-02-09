@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, h, PropType, ref, watch } from 'vue';
+import { reactive, h, PropType, ref, watch, toRef } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
@@ -79,6 +79,7 @@ import { funInterceptor, Interceptor } from '@/packages/utils/util';
 import NutProgress from '../progress/index.vue';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';
@@ -143,6 +144,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<Uploader>[]>([]);
@@ -161,7 +163,7 @@ export default create({
         accept: props.accept,
         multiple: props.multiple,
         name: props.name,
-        disabled: props.disabled
+        disabled: disabled.value
       };
 
       if (props.capture) {
@@ -317,6 +319,7 @@ export default create({
     };
 
     const onDelete = (file: FileItem, index: number) => {
+      if (disabled.value) return;
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList.value],
@@ -325,7 +328,7 @@ export default create({
     };
 
     const onChange = (event: InputEvent) => {
-      if (props.disabled) {
+      if (props.disabled || disabled.value) {
         return;
       }
       const $el = event.target as HTMLInputElement;

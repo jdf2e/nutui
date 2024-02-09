@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, reactive, ref, watch } from 'vue';
+import { PropType, reactive, ref, toRef, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
@@ -81,6 +81,7 @@ import NutButton from '../button/index.taro';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';
 import { useLocale } from '@/packages/utils/useLocale';
+import { useFormDisabled } from '../form/common';
 
 const { create } = createComponent('uploader');
 const cN = 'NutUploader';
@@ -163,6 +164,7 @@ export default create({
     'fileItemClick'
   ],
   setup(props, { emit }) {
+    const disabled = useFormDisabled(toRef(props, 'disabled'));
     const translate = useLocale(cN);
     const fileList = ref(props.fileList as Array<FileItem>);
     const uploadQueue = ref<Promise<UploaderTaro>[]>([]);
@@ -175,7 +177,7 @@ export default create({
     );
 
     const chooseImage = () => {
-      if (props.disabled) {
+      if (disabled.value) {
         return;
       }
 
@@ -406,6 +408,7 @@ export default create({
     };
 
     const onDelete = (file: FileItem, index: number) => {
+      if (disabled.value) return;
       clearUploadQueue(index);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList.value],
@@ -416,6 +419,7 @@ export default create({
     return {
       onDelete,
       fileList,
+      disabled,
       chooseImage,
       fileItemClick,
       clearUploadQueue,
