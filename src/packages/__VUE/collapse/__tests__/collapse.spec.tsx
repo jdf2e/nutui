@@ -131,7 +131,8 @@ test('Collapse: v-model is undefined', async () => {
   const collapseTitles = wrapper.findAll('.nut-collapse-item__title');
   expect(collapseTitles.length).toBe(2);
   collapseTitles[1].trigger('click');
-  expect(onChange).toBeCalledWith([222222], 222222, true);
+  expect(onChange).toBeCalledTimes(1);
+  expect(onChange).toHaveBeenLastCalledWith([222222], 222222, true);
 
   // collapse-item can expand
   const items = wrapper.findAllComponents(CollapseItem);
@@ -139,4 +140,8 @@ test('Collapse: v-model is undefined', async () => {
   expect(items[0].vm.expanded).toBe(false);
   // @ts-ignore
   expect(items[1].vm.expanded).toBe(true);
+
+  collapseTitles[1].trigger('click');
+  expect(onChange).toBeCalledTimes(2);
+  expect(onChange).toHaveBeenLastCalledWith([], 222222, false);
 });
