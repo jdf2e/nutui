@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { Heart } from '@nutui/icons-vue';
-import Collapse from '../index.vue';
-import CollapseItem from '../../collapseitem/index.vue';
+import Collapse from '../';
+import CollapseItem from '../../collapseitem';
 
 test('Collapse: should props active', async () => {
   const wrapper = mount(() => {
@@ -131,10 +131,17 @@ test('Collapse: v-model is undefined', async () => {
   const collapseTitles = wrapper.findAll('.nut-collapse-item__title');
   expect(collapseTitles.length).toBe(2);
   collapseTitles[1].trigger('click');
-  expect(onChange).toBeCalledWith([222222], 222222, true);
+  expect(onChange).toBeCalledTimes(1);
+  expect(onChange).toHaveBeenLastCalledWith([222222], 222222, true);
 
   // collapse-item can expand
   const items = wrapper.findAllComponents(CollapseItem);
+  // @ts-ignore
   expect(items[0].vm.expanded).toBe(false);
+  // @ts-ignore
   expect(items[1].vm.expanded).toBe(true);
+
+  collapseTitles[1].trigger('click');
+  expect(onChange).toBeCalledTimes(2);
+  expect(onChange).toHaveBeenLastCalledWith([], 222222, false);
 });

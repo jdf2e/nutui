@@ -84,6 +84,20 @@ CollapseItem 组件必须设置 name 属性作为唯一标识符。
 | --- | --- | --- |
 | change | 切换面板时触发 | `(modelValue, currName, status)` |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  CollapseValue,
+  CollapseProps,
+  CollapseInstance,
+  CollapseItemProps,
+  CollapseItemInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量
