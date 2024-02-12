@@ -21,9 +21,6 @@ import { ref, watch, resolveComponent, openBlock, createBlock, withCtx, createEl
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { N as NutPopup } from "../index-wY4t0zYt.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue";
-import "../overlay/Overlay.js";
-import "../util-GcrnocDq.js";
 const { create } = createComponent("notify");
 const _sfc_main = create({
   components: {

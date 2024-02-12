@@ -45,9 +45,6 @@ import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { u as useFormDisabled } from "../common-a7MQyVOH.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({
   props: {

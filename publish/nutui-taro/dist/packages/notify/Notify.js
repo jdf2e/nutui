@@ -2,8 +2,6 @@ import { ref, watch, onUnmounted, resolveComponent, openBlock, createBlock, with
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue-taro";
-import "../overlay/Overlay.js";
 const { create } = createComponent("notify");
 const _sfc_main = create({
   components: {

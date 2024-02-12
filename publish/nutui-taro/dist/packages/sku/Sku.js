@@ -7,15 +7,6 @@ import { T as TypeOfFun } from "../util-iEg-WSfL.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { _ as _sfc_main$5 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../pxCheck-OnXlN1NC.js";
-import "@nutui/icons-vue-taro";
-import "../common-a7MQyVOH.js";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
-import "../overlay/Overlay.js";
-import "@tarojs/taro";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";
 const _sfc_main$4 = create$4({

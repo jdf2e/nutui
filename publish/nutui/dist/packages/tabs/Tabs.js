@@ -48,7 +48,6 @@ import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../index-xDfQLRen.js";
 const useTabContentTouch = (props, tabMethods, taro, useTaroRect) => {
   const tabsContentRef = ref();
   const tabsContentRefRect = ref({ width: 0, height: 0 });

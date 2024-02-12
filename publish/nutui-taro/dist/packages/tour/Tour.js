@@ -43,10 +43,6 @@ import { a as useTaroRectById } from "../index-d4pC_9mG.js";
 import { Close } from "@nutui/icons-vue-taro";
 import NutPopover from "../popover/Popover.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@tarojs/taro";
-import "../renderIcon--EgZu5_5.js";
-import "../index.taro-JFNR7Hum.js";
-import "../overlay/Overlay.js";
 const { create } = createComponent("tour");
 const _sfc_main = create({
   components: {

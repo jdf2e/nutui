@@ -4,14 +4,6 @@ import NutCalendarItem from "../calendaritem/CalendarItem.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { U as Utils } from "../date-djiVNSnJ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@tarojs/taro";
-import "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
-import "../raf-9SbwNmt2.js";
-import "../index-8Pdv9exg.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../util-iEg-WSfL.js";
-import "@nutui/icons-vue-taro";
-import "../overlay/Overlay.js";
 const { create } = createComponent("calendar");
 const _sfc_main = create({
   components: {

@@ -28,12 +28,6 @@ import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-8Pdv9exg.js";
 import { u as useFormDisabled } from "../common-a7MQyVOH.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../util-iEg-WSfL.js";
-import "../with-install-p59gYYU_.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
 class UploadOptions {
   constructor() {
     __publicField(this, "url", "");

@@ -22,10 +22,6 @@ import NutPicker from "../picker/Picker.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { d as isDate$1, p as padZero } from "../util-GcrnocDq.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../pxCheck-OnXlN1NC.js";
-import "../index-084nl_oE.js";
-import "../index-xvLk9IM-.js";
-import "@nutui/nutui/dist/packages/locale/lang";
 const { create } = createComponent("date-picker");
 const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
 function isDate(val) {

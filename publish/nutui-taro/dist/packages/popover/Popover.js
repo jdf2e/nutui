@@ -25,8 +25,6 @@ import { a as useTaroRectById, u as useTaroRect } from "../index-d4pC_9mG.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue-taro";
-import "../overlay/Overlay.js";
 const { create } = createComponent("popover");
 const _sfc_main = create({
   components: {

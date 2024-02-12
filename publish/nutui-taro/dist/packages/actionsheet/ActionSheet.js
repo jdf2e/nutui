@@ -22,7 +22,6 @@ import { useSlots, resolveComponent, openBlock, createBlock, withCtx, createElem
 import { N as NutPopup, p as popupProps } from "../index.taro-JFNR7Hum.js";
 import { Loading } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../overlay/Overlay.js";
 const { create } = createComponent("action-sheet");
 const _sfc_main = create({
   components: {

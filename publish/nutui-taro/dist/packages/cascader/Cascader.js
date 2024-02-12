@@ -63,14 +63,6 @@ import NutTabs from "../tabs/Tabs.js";
 import NutTabPane from "../tabpane/TabPane.js";
 import { u as useLocale } from "../index-8Pdv9exg.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../overlay/Overlay.js";
-import "@tarojs/taro";
-import "../util-iEg-WSfL.js";
-import "../pxCheck-OnXlN1NC.js";
-import "../raf-9SbwNmt2.js";
-import "../index-084nl_oE.js";
-import "../index-d4pC_9mG.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
 const formatTree = (tree, parent, config) => tree.map((node) => {
   const { value: valueKey = "value", text: textKey = "text", children: childrenKey = "children" } = config;
   const _a = node, { [valueKey]: value, [textKey]: text, [childrenKey]: children } = _a, others = __objRest(_a, [__restKey(valueKey), __restKey(textKey), __restKey(childrenKey)]);

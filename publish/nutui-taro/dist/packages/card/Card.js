@@ -3,7 +3,6 @@ import { resolveComponent, openBlock, createElementBlock, createElementVNode, cr
 import NutPrice from "../price/Price.js";
 import NutTag from "../tag/Tag.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue-taro";
 const { create } = createComponent("card");
 const _sfc_main = create({
   components: {

@@ -26,12 +26,6 @@ import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import NutSwiper from "../swiper/Swiper.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../util-iEg-WSfL.js";
-import "../overlay/Overlay.js";
-import "../index-084nl_oE.js";
-import "../index-d4pC_9mG.js";
-import "../raf-9SbwNmt2.js";
-import "../types-9wCQwtH3.js";
 const { create } = createComponent("image-preview");
 const _sfc_main = create({
   props: {

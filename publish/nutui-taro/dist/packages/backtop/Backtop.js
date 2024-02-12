@@ -22,7 +22,6 @@ import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_l
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Top } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@tarojs/taro";
 const { componentName, create } = createComponent("backtop");
 const _sfc_main = create({
   components: {

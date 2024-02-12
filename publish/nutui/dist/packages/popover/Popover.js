@@ -4,9 +4,6 @@ import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
 import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { N as NutPopup } from "../index-wY4t0zYt.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue";
-import "../overlay/Overlay.js";
-import "../util-GcrnocDq.js";
 const { create } = createComponent("popover");
 const _sfc_main = create({
   components: {

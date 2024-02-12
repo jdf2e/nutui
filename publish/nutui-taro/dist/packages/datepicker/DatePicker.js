@@ -23,10 +23,6 @@ import { c as createComponent } from "../component-TCzwHGVq.js";
 import { c as isDate$1, p as padZero } from "../util-iEg-WSfL.js";
 import { nextTick } from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../pxCheck-OnXlN1NC.js";
-import "../index-084nl_oE.js";
-import "../index-8Pdv9exg.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
 const { create } = createComponent("date-picker");
 const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
 function isDate(val) {

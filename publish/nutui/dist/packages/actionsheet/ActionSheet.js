@@ -22,8 +22,6 @@ import { useSlots, resolveComponent, openBlock, createBlock, withCtx, createElem
 import { N as NutPopup, p as popupProps } from "../index-wY4t0zYt.js";
 import { Loading } from "@nutui/icons-vue";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../overlay/Overlay.js";
-import "../util-GcrnocDq.js";
 const { create } = createComponent("action-sheet");
 const _sfc_main = create({
   components: {

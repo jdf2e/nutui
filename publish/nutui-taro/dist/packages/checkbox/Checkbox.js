@@ -4,10 +4,6 @@ import { CheckNormal, Checked, CheckDisabled } from "@nutui/icons-vue-taro";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { C as CHECKBOX_KEY } from "../types-zeKkNDAq.js";
 import { u as useFormDisabled } from "../common-a7MQyVOH.js";
-import "../util-iEg-WSfL.js";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
 const { create, componentName } = createComponent("checkbox");
 const _sfc_main = create({
   props: {

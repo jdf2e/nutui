@@ -3,14 +3,6 @@ import { c as createComponent } from "../component-TCzwHGVq.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { u as useLocale } from "../index-xvLk9IM-.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../pxCheck-OnXlN1NC.js";
-import "@nutui/icons-vue";
-import "../common-0CWYGsDn.js";
-import "../util-GcrnocDq.js";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
-import "@nutui/nutui/dist/packages/locale/lang";
 const { create } = createComponent("ecard");
 const cN = "NutEcard";
 const _sfc_main = create({

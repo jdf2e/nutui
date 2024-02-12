@@ -7,7 +7,6 @@ var __publicField = (obj, key, value) => {
 import { reactive, ref } from "vue";
 import Lang from "./zh-CN.js";
 import Lang$1 from "./en-US.js";
-import "./baseLang-7uiEiO-2.js";
 const isObject = (val) => val !== null && typeof val === "object";
 const deepMerge = (target, newObj) => {
   Object.keys(newObj).forEach((key) => {

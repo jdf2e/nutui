@@ -23,10 +23,6 @@ import { u as useRect } from "../index-cp6Ms_Qe.js";
 import { Close } from "@nutui/icons-vue";
 import NutPopover from "../popover/Popover.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../renderIcon--EgZu5_5.js";
-import "../index-wY4t0zYt.js";
-import "../overlay/Overlay.js";
-import "../util-GcrnocDq.js";
 const { create } = createComponent("tour");
 const _sfc_main = create({
   components: {

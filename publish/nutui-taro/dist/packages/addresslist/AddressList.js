@@ -6,12 +6,6 @@ import { Del, Edit } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { Button as _sfc_main$3 } from "../button/Button.js";
 import NutSwipe from "../swipe/Swipe.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "@tarojs/taro";
-import "../with-install-p59gYYU_.js";
-import "../index-084nl_oE.js";
-import "../index-d4pC_9mG.js";
-import "../types-qOrhXtA_.js";
 const { create: create$2 } = createComponent("address-list-item");
 const cN$1 = "NutAddressList";
 const _sfc_main$2 = create$2({

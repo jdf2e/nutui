@@ -23,7 +23,6 @@ import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { S as SWIPE_KEY } from "../types-qOrhXtA_.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@tarojs/taro";
 const { create } = createComponent("swipe");
 const _sfc_main = create({
   props: {

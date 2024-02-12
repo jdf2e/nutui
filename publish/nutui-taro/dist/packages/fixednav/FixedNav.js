@@ -4,8 +4,6 @@ import NutOverlay from "../overlay/Overlay.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-8Pdv9exg.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../util-iEg-WSfL.js";
 const { create } = createComponent("fixed-nav");
 const cN = "NutFixedNav";
 const _sfc_main = create({

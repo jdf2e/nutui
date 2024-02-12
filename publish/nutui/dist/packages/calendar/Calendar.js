@@ -4,12 +4,6 @@ import NutCalendarItem from "../calendaritem/CalendarItem.js";
 import { N as NutPopup } from "../index-wY4t0zYt.js";
 import { U as Utils } from "../date-djiVNSnJ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../raf-MQjoO-Ag.js";
-import "../index-xvLk9IM-.js";
-import "@nutui/nutui/dist/packages/locale/lang";
-import "../util-GcrnocDq.js";
-import "@nutui/icons-vue";
-import "../overlay/Overlay.js";
 const { create } = createComponent("calendar");
 const _sfc_main = create({
   components: {

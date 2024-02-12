@@ -2,8 +2,6 @@ import { toRefs, computed, watchEffect, openBlock, createElementBlock, createEle
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-xvLk9IM-.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/nutui/dist/packages/locale/lang";
-import "../util-GcrnocDq.js";
 const { create } = createComponent("pagination");
 const cN = "NutPagination";
 const _sfc_main = create({

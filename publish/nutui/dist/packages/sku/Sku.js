@@ -6,14 +6,6 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { T as TypeOfFun } from "../util-GcrnocDq.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index-wY4t0zYt.js";
-import "@nutui/nutui/dist/packages/locale/lang";
-import "../pxCheck-OnXlN1NC.js";
-import "@nutui/icons-vue";
-import "../common-0CWYGsDn.js";
-import "../useChildren-GU_NVfD8.js";
-import "../useParent-KIxqkovs.js";
-import "../types-Ynmct7na.js";
-import "../overlay/Overlay.js";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";
 const _sfc_main$4 = create$4({

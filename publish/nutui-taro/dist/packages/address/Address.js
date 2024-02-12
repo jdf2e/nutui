@@ -25,10 +25,6 @@ import NutElevator from "../elevator/Elevator.js";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 import { u as useLocale } from "../index-8Pdv9exg.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../overlay/Overlay.js";
-import "@tarojs/taro";
-import "@nutui/nutui-taro/dist/packages/locale/lang";
-import "../util-iEg-WSfL.js";
 const cN = "NutAddress";
 const { create } = createComponent("address");
 const _sfc_main = create({

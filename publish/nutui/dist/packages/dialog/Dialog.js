@@ -30,10 +30,6 @@ import { u as useLocale } from "../index-xvLk9IM-.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import NutOverlay from "../overlay/Overlay.js";
 import { C as CreateComponent } from "../mountComponent-J_eevgo-.js";
-import "../util-GcrnocDq.js";
-import "@nutui/icons-vue";
-import "../with-install-p59gYYU_.js";
-import "@nutui/nutui/dist/packages/locale/lang";
 const { create } = createComponent("dialog");
 const cN = "NutDialog";
 const _sfc_main = create({

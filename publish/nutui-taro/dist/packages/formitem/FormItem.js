@@ -5,7 +5,6 @@ import NutCell from "../cell/Cell.js";
 import { F as FORM_KEY } from "../types-Ynmct7na.js";
 import { u as useParent } from "../useParent-KIxqkovs.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "@nutui/icons-vue-taro";
 const { create } = createComponent("form-item");
 const _sfc_main = create({
   inheritAttrs: false,

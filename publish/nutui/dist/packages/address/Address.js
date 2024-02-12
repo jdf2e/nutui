@@ -24,9 +24,6 @@ import { N as NutPopup, p as popupProps } from "../index-wY4t0zYt.js";
 import NutElevator from "../elevator/Elevator.js";
 import { u as useLocale } from "../index-xvLk9IM-.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import "../overlay/Overlay.js";
-import "../util-GcrnocDq.js";
-import "@nutui/nutui/dist/packages/locale/lang";
 const { create } = createComponent("address");
 const cN = "NutAddress";
 const _sfc_main = create({
