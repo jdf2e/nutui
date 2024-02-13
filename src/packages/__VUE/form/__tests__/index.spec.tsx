@@ -2,7 +2,7 @@ import { DOMWrapper, mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
 import Form from '../';
 import FormItem from '../../formitem';
-import Cell from '../../cell/index.vue';
+import Textarea from '../../textarea/index.vue';
 import Button from '../../button';
 import Switch from '../../switch/index.vue';
 import Checkbox from '../../checkbox/index.vue';
@@ -36,7 +36,7 @@ test('base Form usage', async () => {
           <input placeholder="请输入地址" type="text" />
         </FormItem>
         <FormItem label="备注">
-          <nut-textarea placeholder="请输入备注" type="text" />
+          <Textarea placeholder="请输入备注" />
         </FormItem>
       </Form>
     );
@@ -84,7 +84,7 @@ test('base Dynamic Form', async () => {
         <FormItem
           label="姓名"
           showErrorMessage={false}
-          show-error-line={false}
+          showErrorLine={false}
           errorMessageAlign="center"
           bodyAlign="center"
           labelWidth="90px"
@@ -107,25 +107,15 @@ test('base Dynamic Form', async () => {
             </FormItem>
           );
         })}
-        <Cell>
-          <Button class="add" onClick={add}>
-            添加
-          </Button>
-          <Button class="remove" onClick={remove}>
-            删除
-          </Button>
-          <Button class="submit" onClick={submit}>
-            提交
-          </Button>
-          <Button class="reset" onClick={reset}>
-            重置提示状态
-          </Button>
-        </Cell>
+        <Button class="add" onClick={add} />
+        <Button class="remove" onClick={remove} />
+        <Button class="submit" onClick={submit} />
+        <Button class="reset" onClick={reset} />
       </Form>
     );
   });
   await nextTick();
-  const formItems = wrapper.findAll('.nut-form-item');
+  let formItems = wrapper.findAll('.nut-form-item');
   expect(formItems.length).toBe(2);
 
   const form1 = wrapper.find('.nut-cell__title');
@@ -136,26 +126,29 @@ test('base Dynamic Form', async () => {
   const form2 = wrapper.find('.nut-form-item__body__slots');
   expect((form2.element as HTMLElement).style.textAlign).toEqual('center');
 
-  const form4 = wrapper.find('.submit');
-  form4.trigger('click');
+  const submitBtn = wrapper.find('.submit');
+  submitBtn.trigger('click');
 
   await nextTick();
   const form3 = wrapper.find('.nut-form-item__body__tips');
   expect(form3.exists()).toBe(true);
   const form5 = wrapper.find('.nut-form-item.error.line::before');
   expect(form5.exists()).toBe(false);
-  const form6 = wrapper.find('.add');
-  form6.trigger('click');
+
+  const addBtn = wrapper.find('.add');
+  addBtn.trigger('click');
   await nextTick();
-  const formItem2 = wrapper.findAll('.nut-form-item');
-  expect(formItem2.length).toBe(3);
-  const form7 = wrapper.find('.remove');
-  form7.trigger('click');
+  formItems = wrapper.findAll('.nut-form-item');
+  expect(formItems.length).toBe(3);
+
+  const removeBtn = wrapper.find('.remove');
+  removeBtn.trigger('click');
   await nextTick();
-  const formItem3 = wrapper.findAll('.nut-form-item');
-  expect(formItem3.length).toBe(2);
-  const form8 = wrapper.find('.reset');
-  form8.trigger('click');
+  formItems = wrapper.findAll('.nut-form-item');
+  expect(formItems.length).toBe(2);
+
+  const resetBtn = wrapper.find('.reset');
+  resetBtn.trigger('click');
   await nextTick();
   const form9 = wrapper.find('.nut-form-item__body__tips');
   expect(form9.exists()).toBe(false);
@@ -163,7 +156,7 @@ test('base Dynamic Form', async () => {
 
 test('base Form verification', async () => {
   const formData = ref({
-    name: ''
+    name: '1234'
   });
   const formRef = ref();
   const submit = () => {
@@ -178,20 +171,37 @@ test('base Form verification', async () => {
   const reset = () => {
     formRef.value.reset();
   };
+  const customValidator = (val: string) => {
+    if (/^\d+$/.test(val)) {
+      return Promise.resolve();
+    } else {
+      return Promise.reject('必须输入数字');
+    }
+  };
+  const customRulePropValidator = (val: string, rule: any) => {
+    if (rule.reg.test(val)) {
+      return Promise.resolve();
+    } else {
+      return Promise.reject('必须输入数字');
+    }
+  };
   const wrapper = mount(() => {
     return (
       <Form modelValue={formData.value} ref={formRef} rules={{ name: [{ required: true, message: '请填写姓名' }] }}>
-        <FormItem label="姓名" prop="name">
+        <FormItem
+          label="姓名"
+          prop="name"
+          rules={[
+            { required: true, message: '请填写年龄' },
+            { validator: customValidator, message: '必须输入数字' },
+            { validator: customRulePropValidator, message: '必须输入数字', reg: /^\d+$/ },
+            { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
+          ]}
+        >
           <input v-model={formData.value.name} placeholder="请输入姓名，blur 事件校验" type="text" />
         </FormItem>
-        <Cell>
-          <Button class="submit" onClick={submit}>
-            提交
-          </Button>
-          <Button class="resets" onClick={reset}>
-            重置提示状态
-          </Button>
-        </Cell>
+        <Button class="submit" onClick={submit} />
+        <Button class="reset" onClick={reset} />
       </Form>
     );
   });
@@ -199,13 +209,14 @@ test('base Form verification', async () => {
   const form1 = wrapper.find('.nut-cell__title');
   expect(form1.classes()).toContain('required');
   const formItem2: DOMWrapper<Element> = wrapper.find('.nut-form-item__body__tips');
-  const formItem3: DOMWrapper<Element> = wrapper.find('.submit');
-  formItem3.trigger('click');
-  await nextTick();
-  expect(formItem3.exists()).toBe(true);
-  const formItem1: DOMWrapper<Element> = wrapper.find('.resets');
 
-  formItem1.trigger('click');
+  const submitBtn = wrapper.find('.submit');
+  submitBtn.trigger('click');
+  await nextTick();
+  expect(submitBtn.exists()).toBe(true);
+
+  const resetBtn = wrapper.find('.reset');
+  resetBtn.trigger('click');
   expect(formItem2.exists()).toBe(false);
 });
 
