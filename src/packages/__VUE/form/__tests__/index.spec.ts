@@ -1,7 +1,7 @@
 import { config, DOMWrapper, mount } from '@vue/test-utils';
-import Form from '../index.vue';
+import Form from '../';
 import NutCellGroup from '../../cellgroup/index.vue';
-import FormItem from '../../formitem/index.vue';
+import FormItem from '../../formitem';
 import NutCell from '../../cell/index.vue';
 import NutButton from '../../button';
 import NutTextarea from '../../textarea/index.vue';

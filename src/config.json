@@ -663,6 +663,7 @@
           "sort": 21,
           "show": true,
           "taro": true,
+          "setup": true,
           "author": "richard1015"
         },
         {
@@ -674,6 +675,7 @@
           "sort": 22,
           "show": false,
           "taro": true,
+          "setup": true,
           "exportEmpty": true,
           "author": "richard1015"
         }

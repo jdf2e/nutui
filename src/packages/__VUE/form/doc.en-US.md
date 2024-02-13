@@ -64,7 +64,7 @@ app.use(FormItem);
 | required | Whether to display the red asterisk next to the label of the required field | boolean | `false` |
 | prop | The v-model field of the form field is required when the form verification function is used | string | - |
 | rules | Define validation rules | FormItemRule [] | [] |
-| label-width | The width of the form item label. The default unit is `px` | number \| string | `90` |
+| label-width | The width of the form item label. The default unit is `px` | number \| string | - |
 | label-align | Form item label alignment. The optional values are `center` `right` | string | `left` |
 | body-align | Default Solt box alignment. The optional values are `center` `right` | string | `left` |
 | error-message-align | Error prompt text alignment. The optional values are `center` and `right` | string | `left` |
@@ -91,13 +91,6 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 | default | Default slot |
 | label | Custom `label` slot |
 
-```vue
-use slot
-<nut-form-item>
-  <template #label>slot label</template>
-</nut-form-item>
-```
-
 ### Methods
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Form instance and call instance methods.
@@ -107,6 +100,23 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 | submit | Method of submitting form for verification | - | - |
 | reset | Clear verification results | - | - |
 | validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | - |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  FormErrorMessage,
+  FormLabelPosition,
+  FormStarPosition,
+  FormItemRule,
+  FormProps,
+  FormInstance,
+  FormItemProps,
+  FormItemInstance
+} from '@nutui/nutui';
+```
 
 ## Theming
 

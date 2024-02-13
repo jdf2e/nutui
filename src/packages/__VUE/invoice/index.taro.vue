@@ -39,8 +39,8 @@
 <script lang="ts">
 import { reactive, toRefs, computed, ref, onMounted, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import NutForm from '../form/index.taro.vue';
-import NutFormItem from '../formitem/index.taro.vue';
+import NutForm from '../form/index.taro';
+import NutFormItem from '../formitem/index.taro';
 import NutRadio from '../radio/index.taro.vue';
 import NutRadioGroup from '../radiogroup/index.taro.vue';
 import NutButton from '../button/index.taro';
