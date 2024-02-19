@@ -4,7 +4,8 @@ import { PickerOption, PickerFieldNames } from './types';
 const DEFAULT_FILED_NAMES = {
   text: 'text',
   value: 'value',
-  children: 'children'
+  children: 'children',
+  className: 'className'
 };
 
 export const usePicker = (props: any, emit: any) => {

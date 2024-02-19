@@ -11,7 +11,10 @@
         <view
           v-if="item && item[fieldNames.text] && threeDimensional"
           class="nut-picker-roller-item"
-          :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
+          :class="{
+            'nut-picker-roller-item-hidden': isHidden(index + 1),
+            [item[fieldNames.className]]: item[fieldNames.className]
+          }"
           :style="setRollerStyle(index + 1)"
         >
           {{ item[fieldNames.text] }}
@@ -20,6 +23,9 @@
         <view
           v-if="item && item[fieldNames.text] && !threeDimensional"
           class="nut-picker-roller-item-tile"
+          :class="{
+            [item[fieldNames.className]]: item[fieldNames.className]
+          }"
           :style="{ height: pxCheck(optionHeight), lineHeight: pxCheck(optionHeight) }"
         >
           {{ item[fieldNames.text] }}
