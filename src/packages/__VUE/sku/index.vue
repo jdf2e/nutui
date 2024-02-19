@@ -170,7 +170,7 @@ export default create({
     NutPopup
   },
 
-  setup(props: any, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const translate = useLocale(cN);
 
     const showPopup = ref(props.visible);

@@ -79,7 +79,7 @@ export default create({
     'onPaused'
   ],
 
-  setup(props: any, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const translate = useLocale(cN);
     const state = reactive({
       restTime: 0, // 倒计时剩余时间时间
@@ -95,7 +95,7 @@ export default create({
 
     // 倒计时 interval
     const initTime = () => {
-      state.handleEndTime = props.endTime;
+      state.handleEndTime = Number(props.endTime);
       state.diffTime = Date.now() - getTimeStamp(props.startTime); // 时间差
       if (!state.counting) state.counting = true;
       tick();
@@ -216,7 +216,7 @@ export default create({
     const reset = () => {
       if (!props.autoStart) {
         pause();
-        state.restTime = props.time;
+        state.restTime = Number(props.time);
       }
     };
 
@@ -224,7 +224,7 @@ export default create({
       if (props.autoStart) {
         initTime();
       } else {
-        state.restTime = props.time;
+        state.restTime = Number(props.time);
       }
     });
 

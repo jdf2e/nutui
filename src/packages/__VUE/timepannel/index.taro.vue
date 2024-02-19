@@ -19,7 +19,7 @@ export default create({
     }
   },
   emits: ['change'],
-  setup: (props: any, context: any) => {
+  setup: (props, { emit }) => {
     const currentKey = inject('currentKey');
 
     const state = reactive({
@@ -35,7 +35,7 @@ export default create({
     });
 
     const handlePannel = (pannelKey: number | string) => {
-      context.emit('change', pannelKey);
+      emit('change', pannelKey);
     };
 
     return {

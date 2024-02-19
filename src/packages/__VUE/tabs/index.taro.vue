@@ -155,7 +155,7 @@ export default create({
   },
   emits: ['update:modelValue', 'click', 'change'],
 
-  setup(props: any, { emit, slots }: any) {
+  setup(props, { emit, slots }: any) {
     const refRandomId = Math.random().toString(36).slice(-8);
     const container = ref(null);
     provide('tabsOpiton', {

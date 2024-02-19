@@ -17,7 +17,6 @@
 </template>
 <script lang="ts">
 import { ref, onMounted } from 'vue';
-import { TypeOfFun } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
 import NutInputNumber from '../../inputnumber/index.vue';
 const { create } = createComponent('sku-stepper');
@@ -53,7 +52,7 @@ export default create({
     NutInputNumber
   },
 
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const goodsCount = ref(props.stepperMin);
 
     onMounted(() => {
@@ -63,10 +62,11 @@ export default create({
     const getExtraText = () => {
       const { stepperExtraText } = props;
 
-      if (stepperExtraText && TypeOfFun(stepperExtraText) == 'function') {
-        return stepperExtraText();
-      } else {
-        return '';
+      if (stepperExtraText) {
+        if (stepperExtraText === true) {
+          return '';
+        }
+        return stepperExtraText?.();
       }
     };
 

@@ -88,7 +88,7 @@ export default create({
     }
   },
   emits: ['sorter'],
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const translate = useLocale(cN);
 
     const state = reactive({
@@ -131,7 +131,7 @@ export default create({
     const sortDataItem = () => {
       return props.columns.map((columns: TableColumns) => {
         return [columns.key, columns.render];
-      });
+      }) as [string, any][];
     };
 
     watch(
