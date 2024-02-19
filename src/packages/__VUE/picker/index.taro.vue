@@ -32,6 +32,9 @@
           v-for="(item, index) in column"
           :key="item[columnFieldNames.value] ?? index"
           class="nut-picker-roller-item-tarotile"
+          :class="{
+            [item[columnFieldNames.className]]: item[columnFieldNames.className]
+          }"
           :style="{
             lineHeight: pxCheck(optionHeight)
           }"

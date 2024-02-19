@@ -60,7 +60,7 @@ Use the children field of the Columns attribute to cascade options
 | --- | --- | --- | --- |
 | v-model:value | Default Index | Array | `[]` |
 | columns | Columns data | PickerOption[] \| PickerOption[][] | - |
-| field-names`v4.1.4` | custom columns field | object | `{ text: 'text', value: 'value', children: 'children' }` |
+| field-names`v4.1.4` | custom columns field | object | `{ text: 'text', value: 'value', children: 'children', className: 'className' }` |
 | title | Toolbar title | string | - |
 | cancel-text | Text of cancel button | string | `cancel` |
 | ok-text | Text of confirm button | string | `confirm` |
