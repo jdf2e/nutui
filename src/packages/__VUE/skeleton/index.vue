@@ -80,7 +80,7 @@ export default create({
     }
   },
 
-  setup(props: any) {
+  setup(props) {
     const { avatarShape, round, avatarSize } = toRefs(props);
 
     const avatarClass = computed(() => {

@@ -93,8 +93,8 @@ export default create({
     }
   },
   emits: ['close'],
-  setup(props: any, { emit }) {
-    let timer: NodeJS.Timeout | null | undefined;
+  setup(props, { emit }) {
+    let timer: null | number | undefined;
     const state = reactive({
       mounted: false
     });
@@ -113,7 +113,7 @@ export default create({
     const show = () => {
       clearTimer();
       if (props.duration) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           hide();
         }, props.duration);
       }
@@ -161,7 +161,7 @@ export default create({
     });
     const onAfterLeave = () => {
       clearTimer();
-      props.unmount(props.id);
+      props.unmount?.(props.id);
       props.onClose && props.onClose();
     };
 

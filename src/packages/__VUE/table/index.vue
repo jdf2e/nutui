@@ -88,7 +88,7 @@ export default create({
     }
   },
   emits: ['sorter'],
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const translate = useLocale(cN);
 
     const state = reactive({
@@ -123,15 +123,15 @@ export default create({
           typeof item.sorter === 'function'
             ? state.curData.sort(item.sorter)
             : item.sorter === 'default'
-            ? state.curData.sort()
-            : state.curData;
+              ? state.curData.sort()
+              : state.curData;
       }
     };
 
     const sortDataItem = () => {
       return props.columns.map((columns: TableColumns) => {
         return [columns.key, columns.render];
-      });
+      }) as [string, any][];
     };
 
     watch(

@@ -82,7 +82,7 @@ export default create({
   },
   emits: ['update:visible', 'selected'],
 
-  setup(props: any, { emit }: any) {
+  setup(props, { emit }) {
     const translate = useLocale(cN);
     const classes = computed(() => {
       const prefixCls = 'nut-fixed-nav';

@@ -51,7 +51,7 @@ export default create({
   },
   emits: ['click', 'changeSku', 'changeBuyCount', 'clickBtnOperate'],
 
-  setup(props: any, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const getBtnDesc = (type: string) => {
       let mapD: { [props: string]: string } = {
         confirm: props.confirmText,

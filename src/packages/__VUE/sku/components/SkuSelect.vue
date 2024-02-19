@@ -37,7 +37,7 @@ export default create({
   },
   emits: ['selectSku'],
 
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const skuInfo = ref<SkuInfo[]>([]);
 
     watch(

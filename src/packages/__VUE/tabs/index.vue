@@ -181,7 +181,7 @@ export default create({
   },
   emits: ['update:modelValue', 'click', 'change'],
 
-  setup(props: any, { emit, slots }: any) {
+  setup(props, { emit, slots }: any) {
     const container = ref<any>(null);
     let stickyFixed: boolean;
     provide('tabsOpiton', {

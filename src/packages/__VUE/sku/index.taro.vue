@@ -172,7 +172,7 @@ export default create({
     NutScrollView
   },
 
-  setup(props: any, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const translate = useLocale(cN);
 
     const showPopup = ref(props.visible);

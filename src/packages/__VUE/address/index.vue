@@ -201,7 +201,7 @@ export default create({
   },
   emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'closeMask', 'switchModule'],
 
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const translate = useLocale(cN);
     const regionLine = ref<null | HTMLElement>(null);
     const tabRegion: Ref<any> = ref(null);
