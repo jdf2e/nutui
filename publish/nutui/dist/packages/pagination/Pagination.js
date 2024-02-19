@@ -1,6 +1,6 @@
 import { toRefs, computed, watchEffect, openBlock, createElementBlock, createElementVNode, normalizeClass, renderSlot, createTextVNode, toDisplayString, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("pagination");
 const cN = "NutPagination";

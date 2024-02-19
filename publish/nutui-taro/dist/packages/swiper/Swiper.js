@@ -20,7 +20,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createTextVNode, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { d as clamp } from "../util-iEg-WSfL.js";
+import { c as clamp } from "../util-Bt8WDYya.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { r as requestAniFrame } from "../raf-9SbwNmt2.js";

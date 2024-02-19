@@ -95,9 +95,9 @@ const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 export {
   TypeOfFun as T,
   preventDefault as a,
-  isPromise as b,
-  isDate as c,
-  clamp as d,
+  isDate as b,
+  clamp as c,
+  isPromise as d,
   floatData as f,
   getPropByPath as g,
   isFunction as i,

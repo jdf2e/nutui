@@ -1,7 +1,7 @@
 import { ref, watch, resolveComponent, openBlock, createElementBlock, createElementVNode, toDisplayString, Fragment, renderList, normalizeClass, withDirectives, vModelText, createTextVNode, createVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
-import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("ecard");
 const cN = "NutEcard";

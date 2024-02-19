@@ -1,6 +1,6 @@
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, nextTick, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { f as clamp } from "../util-GcrnocDq.js";
+import { e as clamp } from "../util-4Jkyw4BJ.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";
 import { S as SWIPER_KEY } from "../types-9wCQwtH3.js";

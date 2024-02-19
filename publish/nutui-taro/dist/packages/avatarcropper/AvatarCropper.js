@@ -41,7 +41,7 @@ var __async = (__this, __arguments, generator) => {
 import { reactive, ref, computed, onMounted, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, renderSlot, createTextVNode, withModifiers, toDisplayString, withDirectives, normalizeStyle, createVNode, withCtx, vShow } from "vue";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { a as preventDefault, d as clamp } from "../util-iEg-WSfL.js";
+import { a as preventDefault, c as clamp } from "../util-Bt8WDYya.js";
 import { IconFont } from "@nutui/icons-vue-taro";
 import { u as useTouch } from "../index-084nl_oE.js";
 import Taro, { useReady } from "@tarojs/taro";

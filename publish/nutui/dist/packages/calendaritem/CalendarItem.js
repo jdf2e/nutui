@@ -21,7 +21,7 @@ import { ref, computed, reactive, onMounted, watch, toRefs, openBlock, createEle
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { U as Utils } from "../date-djiVNSnJ.js";
 import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";
-import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("calendar-item");
 const cN = "NutCalendarItem";

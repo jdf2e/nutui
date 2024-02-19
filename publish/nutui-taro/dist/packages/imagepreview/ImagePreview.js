@@ -21,7 +21,7 @@ import { reactive, computed, watch, onMounted, toRefs, resolveComponent, openBlo
 import Taro from "@tarojs/taro";
 import { CircleClose } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { f as funInterceptor } from "../Interceptor-CWGSQr5E.js";
+import { f as funInterceptor } from "../Interceptor-xNdrCqtu.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import NutSwiper from "../swiper/Swiper.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";

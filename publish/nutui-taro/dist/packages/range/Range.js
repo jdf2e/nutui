@@ -40,10 +40,10 @@ var __async = (__this, __arguments, generator) => {
 import Taro, { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { toRef, ref, computed, onMounted, toRefs, openBlock, createElementBlock, normalizeClass, toDisplayString, createCommentVNode, createTextVNode, createElementVNode, normalizeStyle, withModifiers, Fragment, renderList, renderSlot } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
-import { a as preventDefault } from "../util-iEg-WSfL.js";
+import { a as preventDefault } from "../util-Bt8WDYya.js";
 import { u as useTouch } from "../index-084nl_oE.js";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
-import { u as useFormDisabled } from "../common-a7MQyVOH.js";
+import { u as useFormDisabled } from "../common-LvGbU-A3.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({

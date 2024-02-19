@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, h, reactive, watch, toRefs, resolveComponent, openBlock, createElementBlock, createElementVNode, normalizeClass, Fragment, renderList, normalizeStyle, createTextVNode, toDisplayString, renderSlot, createBlock, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { DownArrow } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-xvLk9IM-.js";
+import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const RenderColumn = defineComponent({
   props: {
