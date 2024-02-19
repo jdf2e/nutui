@@ -3,7 +3,6 @@ import NutPrice from "../price/Price.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-xXrovSQL.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import { T as TypeOfFun } from "../util-Bt8WDYya.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
 import { _ as _sfc_main$5 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
@@ -159,10 +158,11 @@ const _sfc_main$2 = create$2({
     });
     const getExtraText = () => {
       const { stepperExtraText } = props;
-      if (stepperExtraText && TypeOfFun(stepperExtraText) == "function") {
-        return stepperExtraText();
-      } else {
-        return "";
+      if (stepperExtraText) {
+        if (stepperExtraText === true) {
+          return "";
+        }
+        return stepperExtraText == null ? void 0 : stepperExtraText();
       }
     };
     const add = (value) => {

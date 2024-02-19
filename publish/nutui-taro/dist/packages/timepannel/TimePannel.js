@@ -34,7 +34,7 @@ const _sfc_main = create({
     }
   },
   emits: ["change"],
-  setup: (props, context) => {
+  setup: (props, { emit }) => {
     const currentKey = inject("currentKey");
     const state = reactive({
       currentKey
@@ -47,7 +47,7 @@ const _sfc_main = create({
       };
     });
     const handlePannel = (pannelKey) => {
-      context.emit("change", pannelKey);
+      emit("change", pannelKey);
     };
     return __spreadProps(__spreadValues({}, toRefs(state)), {
       classes,

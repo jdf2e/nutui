@@ -106,7 +106,7 @@ const _sfc_main = create({
       return formatRemainTime(state.restTime);
     });
     const initTime = () => {
-      state.handleEndTime = props.endTime;
+      state.handleEndTime = Number(props.endTime);
       state.diffTime = Date.now() - getTimeStamp(props.startTime);
       if (!state.counting)
         state.counting = true;
@@ -207,14 +207,14 @@ const _sfc_main = create({
     const reset = () => {
       if (!props.autoStart) {
         pause();
-        state.restTime = props.time;
+        state.restTime = Number(props.time);
       }
     };
     onBeforeMount(() => {
       if (props.autoStart) {
         initTime();
       } else {
-        state.restTime = props.time;
+        state.restTime = Number(props.time);
       }
     });
     watch(

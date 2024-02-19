@@ -68,7 +68,27 @@ declare const _default: Install< import("vue").DefineComponent<{
     hide: () => void;
     clickCover: () => void;
     hasIcon: import("vue").ComputedRef<boolean>;
-    toastBodyClass: import("vue").ComputedRef<any[]>;
+    toastBodyClass: import("vue").ComputedRef<(string | {
+        'nut-toast-center': boolean;
+        'nut-toast-has-icon'?: undefined;
+        'nut-toast-cover'?: undefined;
+        'nut-toast-loading'?: undefined;
+    } | {
+        'nut-toast-has-icon': boolean;
+        'nut-toast-center'?: undefined;
+        'nut-toast-cover'?: undefined;
+        'nut-toast-loading'?: undefined;
+    } | {
+        'nut-toast-cover': boolean;
+        'nut-toast-center'?: undefined;
+        'nut-toast-has-icon'?: undefined;
+        'nut-toast-loading'?: undefined;
+    } | {
+        'nut-toast-loading': boolean;
+        'nut-toast-center'?: undefined;
+        'nut-toast-has-icon'?: undefined;
+        'nut-toast-cover'?: undefined;
+    } | undefined)[]>;
     toastIconWrapperClass: import("vue").ComputedRef<(string | {
         'nut-toast-icon-no-animation': boolean;
     })[]>;

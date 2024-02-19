@@ -16,7 +16,7 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
 }, {
-    goodsCount: import("vue").Ref<any>;
+    goodsCount: import("vue").Ref<string | number>;
     add: (value: number) => void;
     reduce: (value: number) => void;
     overlimit: (e: Event, action: string) => void;

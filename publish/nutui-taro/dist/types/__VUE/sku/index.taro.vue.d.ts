@@ -57,7 +57,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }, {
-    showPopup: import("vue").Ref<any>;
+    showPopup: import("vue").Ref<boolean>;
     closePopup: (type: string) => void;
     selectSku: (skus: any) => void;
     changeStepper: (value: number) => void;

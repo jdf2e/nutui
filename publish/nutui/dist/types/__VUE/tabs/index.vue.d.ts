@@ -88,7 +88,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     titles: Ref<Title[]>;
     contentStyle: import("vue").ComputedRef<CSSProperties>;
     tabsNavStyle: import("vue").ComputedRef<{
-        background: any;
+        background: string;
     }>;
     titleStyle: import("vue").ComputedRef<{
         marginTop?: undefined;
@@ -107,11 +107,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         marginBottom?: undefined;
     }>;
     tabsActiveStyle: import("vue").ComputedRef<{
-        color: any;
-        background: any;
+        color: string;
+        background: string;
     }>;
     container: Ref<any>;
-    getScrollY: import("vue").ComputedRef<any>;
+    getScrollY: import("vue").ComputedRef<boolean>;
     onStickyScroll: (params: {
         top: number;
         fixed: boolean;

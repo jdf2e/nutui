@@ -3,7 +3,6 @@ import NutPrice from "../price/Price.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import { T as TypeOfFun } from "../util-4Jkyw4BJ.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index-wY4t0zYt.js";
 const { create: create$4 } = createComponent("sku-header");
@@ -154,10 +153,11 @@ const _sfc_main$2 = create$2({
     });
     const getExtraText = () => {
       const { stepperExtraText } = props;
-      if (stepperExtraText && TypeOfFun(stepperExtraText) == "function") {
-        return stepperExtraText();
-      } else {
-        return "";
+      if (stepperExtraText) {
+        if (stepperExtraText === true) {
+          return "";
+        }
+        return stepperExtraText == null ? void 0 : stepperExtraText();
       }
     };
     const add = (value) => {

@@ -106,7 +106,7 @@ const _sfc_main = create({
     const show = () => {
       clearTimer();
       if (props.duration) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           hide();
         }, props.duration);
       }
@@ -150,8 +150,9 @@ const _sfc_main = create({
       return ["nut-toast-icon-wrapper", { "nut-toast-icon-no-animation": !props.loadingRotate }];
     });
     const onAfterLeave = () => {
+      var _a;
       clearTimer();
-      props.unmount(props.id);
+      (_a = props.unmount) == null ? void 0 : _a.call(props, props.id);
       props.onClose && props.onClose();
     };
     return {

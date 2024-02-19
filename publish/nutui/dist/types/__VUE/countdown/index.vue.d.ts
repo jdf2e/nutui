@@ -41,9 +41,31 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     start: () => void;
     pause: () => void;
-    renderTime: import("vue").ComputedRef<any>;
+    renderTime: import("vue").ComputedRef<string | {
+        d: number;
+        h: number;
+        m: number;
+        s: number;
+        ms: number;
+    }>;
     translate: (keyPath: string, ...args: unknown[]) => any;
     reset: () => void;
+    time: import("vue").Ref<string | number>;
+    paused: import("vue").Ref<boolean>;
+    modelValue: import("vue").Ref<Record<string, any>>;
+    millisecond: import("vue").Ref<boolean>;
+    format: import("vue").Ref<string>;
+    autoStart: import("vue").Ref<boolean>;
+    startTime: import("vue").Ref<string | number | undefined>;
+    endTime: import("vue").Ref<string | number | undefined>;
+    onInput: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onEnd: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onRestart: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onPaused: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onOnEnd: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onOnRestart: import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onOnPaused: import("vue").Ref<((...args: any[]) => any) | undefined>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused")[], "input" | "end" | "paused" | "update:modelValue" | "restart" | "onEnd" | "onRestart" | "onPaused", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ObjectConstructor;

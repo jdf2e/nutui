@@ -41,9 +41,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }, {
     classes: import("vue").ComputedRef<{
-        [x: number]: boolean;
+        [x: string]: boolean;
         "nut-fixed-nav": boolean;
-        active: any;
+        active: boolean;
     }>;
     updateValue: (value?: boolean) => void;
     selected: (item: any, event: Event) => void;

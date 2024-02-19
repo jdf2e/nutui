@@ -87,7 +87,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     tabsContentRef: Ref<HTMLElement | undefined>;
     contentStyle: import("vue").ComputedRef<CSSProperties>;
     tabsNavStyle: import("vue").ComputedRef<{
-        background: any;
+        background: string;
     }>;
     titleStyle: import("vue").ComputedRef<{
         marginTop?: undefined;
@@ -106,14 +106,14 @@ declare const _default: Install< import("vue").DefineComponent<{
         marginBottom?: undefined;
     }>;
     tabsActiveStyle: import("vue").ComputedRef<{
-        color: any;
-        background: any;
+        color: string;
+        background: string;
     }>;
     container: Ref<null>;
     scrollLeft: Ref<number>;
     scrollTop: Ref<number>;
-    getScrollX: import("vue").ComputedRef<any>;
-    getScrollY: import("vue").ComputedRef<any>;
+    getScrollX: import("vue").ComputedRef<boolean>;
+    getScrollY: import("vue").ComputedRef<boolean>;
     scrollWithAnimation: Ref<boolean>;
     canShowLabel: Ref<boolean>;
     refRandomId: string;

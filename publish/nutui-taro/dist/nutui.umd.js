@@ -14889,7 +14889,7 @@ var __async = (__this, __arguments, generator) => {
         return formatRemainTime(state.restTime);
       });
       const initTime = () => {
-        state.handleEndTime = props.endTime;
+        state.handleEndTime = Number(props.endTime);
         state.diffTime = Date.now() - getTimeStamp(props.startTime);
         if (!state.counting)
           state.counting = true;
@@ -14990,14 +14990,14 @@ var __async = (__this, __arguments, generator) => {
       const reset = () => {
         if (!props.autoStart) {
           pause();
-          state.restTime = props.time;
+          state.restTime = Number(props.time);
         }
       };
       vue.onBeforeMount(() => {
         if (props.autoStart) {
           initTime();
         } else {
-          state.restTime = props.time;
+          state.restTime = Number(props.time);
         }
       });
       vue.watch(
@@ -17983,7 +17983,7 @@ var __async = (__this, __arguments, generator) => {
       }
     },
     emits: ["change"],
-    setup: (props, context) => {
+    setup: (props, { emit }) => {
       const currentKey = vue.inject("currentKey");
       const state = vue.reactive({
         currentKey
@@ -17996,7 +17996,7 @@ var __async = (__this, __arguments, generator) => {
         };
       });
       const handlePannel = (pannelKey) => {
-        context.emit("change", pannelKey);
+        emit("change", pannelKey);
       };
       return __spreadProps(__spreadValues({}, vue.toRefs(state)), {
         classes,
@@ -18222,10 +18222,11 @@ var __async = (__this, __arguments, generator) => {
       });
       const getExtraText = () => {
         const { stepperExtraText } = props;
-        if (stepperExtraText && TypeOfFun(stepperExtraText) == "function") {
-          return stepperExtraText();
-        } else {
-          return "";
+        if (stepperExtraText) {
+          if (stepperExtraText === true) {
+            return "";
+          }
+          return stepperExtraText == null ? void 0 : stepperExtraText();
         }
       };
       const add = (value) => {

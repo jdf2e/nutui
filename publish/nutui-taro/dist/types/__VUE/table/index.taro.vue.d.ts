@@ -27,13 +27,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }, {
     cellClasses: (item: TableColumns) => {
-        [x: string]: any;
-        'nut-table__main__head__tr--border': any;
+        [x: string]: boolean;
+        'nut-table__main__head__tr--border': boolean;
     };
     getColumnItem: (value: string) => TableColumns;
-    getColumnItemStyle: (value: string) => any;
+    getColumnItemStyle: (value: string) => string;
     handleSorterClick: (item: TableColumns) => void;
-    sortDataItem: () => any;
+    sortDataItem: () => [string, any][];
     translate: (keyPath: string, ...args: unknown[]) => any;
     stylehead: (item: TableColumns) => string;
     stylecolumn: (item: TableColumns) => string;

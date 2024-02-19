@@ -46,13 +46,13 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }, {
-    avatarShape: import("vue").Ref<any>;
+    avatarShape: import("vue").Ref<AvatarShape>;
     avatarClass: import("vue").ComputedRef<{
-        [x: string]: any;
+        [x: string]: boolean | AvatarShape;
         avatarClass: boolean;
     }>;
     getBlockClass: (prefixCls: string) => {
-        [x: string]: any;
+        [x: string]: boolean;
     };
     getStyle: () => CSSProperties;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
