@@ -64,7 +64,7 @@ app.use(FormItem);
 | required | 是否显示必填字段的标签旁边的红色星号 | boolean | `false` |
 | prop | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是必填的 | string | - |
 | rules | 定义校验规则 | FormItemRule [] | [] |
-| label-width | 表单项 `label` 宽度，默认单位为`px` | number \| string | `90` |
+| label-width | 表单项 `label` 宽度，默认单位为`px` | number \| string | - |
 | label-align | 表单项 `label` 对齐方式，可选值为 `center` `right` | string | `left` |
 | body-align | 右侧插槽对齐方式，可选值为 `center` `right` | string | `left` |
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | string | `left` |
@@ -91,13 +91,6 @@ app.use(FormItem);
 | default | 自定义内容 |
 | label | 自定义 `label` 区域 |
 
-```vue
-插槽使用方式
-<nut-form-item>
-  <template #label>slot label</template>
-</nut-form-item>
-```
-
 ### Methods
 
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 `Form` 实例并调用实例方法
@@ -107,6 +100,23 @@ app.use(FormItem);
 | submit | 提交表单进行校验的方法 | - | - |
 | reset | 清空校验结果 | - | - |
 | validate | 用户主动触发校验，用于用户自定义场景时触发，例如 `blur`、`change` 事件 | 同 `FormItem prop` 值,不传值会校验全部 `Rule` | - |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  FormErrorMessage,
+  FormLabelPosition,
+  FormStarPosition,
+  FormItemRule,
+  FormProps,
+  FormInstance,
+  FormItemProps,
+  FormItemInstance
+} from '@nutui/nutui';
+```
 
 ## 主题定制
 

@@ -39,8 +39,8 @@
 <script lang="ts">
 import { reactive, toRefs, computed, ref, onMounted, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import NutForm from '../form/index.vue';
-import NutFormItem from '../formitem/index.vue';
+import NutForm from '../form';
+import NutFormItem from '../formitem';
 import NutRadio from '../radio/index.vue';
 import NutRadioGroup from '../radiogroup/index.vue';
 import NutButton from '../button';
