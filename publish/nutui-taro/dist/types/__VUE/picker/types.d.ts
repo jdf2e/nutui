@@ -18,4 +18,5 @@ export interface PickerFieldNames {
     text?: string;
     value?: string;
     children?: string;
+    className?: string;
 }

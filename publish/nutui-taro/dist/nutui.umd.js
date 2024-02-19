@@ -7163,7 +7163,8 @@ var __async = (__this, __arguments, generator) => {
   const DEFAULT_FILED_NAMES = {
     text: "text",
     value: "value",
-    children: "children"
+    children: "children",
+    className: "className"
   };
   const usePicker = (props, emit) => {
     const state = vue.reactive({
@@ -7585,15 +7586,20 @@ var __async = (__this, __arguments, generator) => {
           }, [
             item && item[_ctx.fieldNames.text] && _ctx.threeDimensional ? (vue.openBlock(), vue.createElementBlock("view", {
               key: 0,
-              class: vue.normalizeClass(["nut-picker-roller-item", { "nut-picker-roller-item-hidden": _ctx.isHidden(index + 1) }]),
+              class: vue.normalizeClass(["nut-picker-roller-item", {
+                "nut-picker-roller-item-hidden": _ctx.isHidden(index + 1),
+                [item[_ctx.fieldNames.className]]: item[_ctx.fieldNames.className]
+              }]),
               style: vue.normalizeStyle(_ctx.setRollerStyle(index + 1))
             }, vue.toDisplayString(item[_ctx.fieldNames.text]), 7)) : vue.createCommentVNode("", true),
             vue.createTextVNode(),
             item && item[_ctx.fieldNames.text] && !_ctx.threeDimensional ? (vue.openBlock(), vue.createElementBlock("view", {
               key: 1,
-              class: "nut-picker-roller-item-tile",
+              class: vue.normalizeClass(["nut-picker-roller-item-tile", {
+                [item[_ctx.fieldNames.className]]: item[_ctx.fieldNames.className]
+              }]),
               style: vue.normalizeStyle({ height: _ctx.pxCheck(_ctx.optionHeight), lineHeight: _ctx.pxCheck(_ctx.optionHeight) })
-            }, vue.toDisplayString(item[_ctx.fieldNames.text]), 5)) : vue.createCommentVNode("", true)
+            }, vue.toDisplayString(item[_ctx.fieldNames.text]), 7)) : vue.createCommentVNode("", true)
           ], 64);
         }), 128))
       ], 36),
@@ -7792,11 +7798,13 @@ var __async = (__this, __arguments, generator) => {
               var _a;
               return vue.openBlock(), vue.createElementBlock("view", {
                 key: (_a = item[_ctx.columnFieldNames.value]) != null ? _a : index,
-                class: "nut-picker-roller-item-tarotile",
+                class: vue.normalizeClass(["nut-picker-roller-item-tarotile", {
+                  [item[_ctx.columnFieldNames.className]]: item[_ctx.columnFieldNames.className]
+                }]),
                 style: vue.normalizeStyle({
                   lineHeight: _ctx.pxCheck(_ctx.optionHeight)
                 })
-              }, vue.toDisplayString(item[_ctx.columnFieldNames.text]), 5);
+              }, vue.toDisplayString(item[_ctx.columnFieldNames.text]), 7);
             }), 128))
           ], 8, _hoisted_5$k);
         }), 128))

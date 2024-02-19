@@ -6,6 +6,7 @@ export declare const usePicker: (props: any, emit: any) => {
         text: string;
         value: string;
         children: string;
+        className: string;
     }>;
     cancel: () => void;
     changeHandler: (columnIndex: number, option: PickerOption) => void;

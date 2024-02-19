@@ -55,6 +55,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         text: string;
         value: string;
         children: string;
+        className: string;
     }>;
     cancel: () => void;
     changeHandler: (columnIndex: number, option: import("./types").PickerOption) => void;

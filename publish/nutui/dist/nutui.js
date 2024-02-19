@@ -6263,7 +6263,8 @@ const bo = Symbol("nut-checkbox"), { create: Vf, componentName: et } = Y("checkb
 }), Wf = {
   text: "text",
   value: "value",
-  children: "children"
+  children: "children",
+  className: "className"
 }, Yf = (e, t) => {
   const n = ce({
     formattedColumns: e.columns
@@ -6550,14 +6551,19 @@ function Kf(e, t, n, s, o, a) {
         }, [
           l && l[e.fieldNames.text] && e.threeDimensional ? (u(), f("view", {
             key: 0,
-            class: L(["nut-picker-roller-item", { "nut-picker-roller-item-hidden": e.isHidden(r + 1) }]),
+            class: L(["nut-picker-roller-item", {
+              "nut-picker-roller-item-hidden": e.isHidden(r + 1),
+              [l[e.fieldNames.className]]: l[e.fieldNames.className]
+            }]),
             style: A(e.setRollerStyle(r + 1))
           }, E(l[e.fieldNames.text]), 7)) : N("", !0),
           l && l[e.fieldNames.text] && !e.threeDimensional ? (u(), f("view", {
             key: 1,
-            class: "nut-picker-roller-item-tile",
+            class: L(["nut-picker-roller-item-tile", {
+              [l[e.fieldNames.className]]: l[e.fieldNames.className]
+            }]),
             style: A({ height: e.pxCheck(e.optionHeight), lineHeight: e.pxCheck(e.optionHeight) })
-          }, E(l[e.fieldNames.text]), 5)) : N("", !0)
+          }, E(l[e.fieldNames.text]), 7)) : N("", !0)
         ], 64);
       }), 128))
     ], 36),

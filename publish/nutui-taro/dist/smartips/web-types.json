@@ -3902,7 +3902,7 @@
             },
             {
               "name": "field-names",
-              "default": "`{ text: 'text', value: 'value', children: 'children' }`",
+              "default": "`{ text: 'text', value: 'value', children: 'children', className: 'className' }`",
               "description": "自定义 columns 中的字段",
               "value": {
                 "type": "object",
