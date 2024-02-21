@@ -16,243 +16,35 @@ app.use(Video);
 
 ### 基础用法
 
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options" @play="play" @pause="pause" @playend="playend">
-  </nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    controls: true
-  }
-});
-const play = (elm) => console.log('play', elm);
-const pause = (elm) => console.log('pause', elm);
-const playend = (elm) => console.log('playend', elm);
-</script>
-```
-
-:::
+> demo: video basic
 
 ### 自动播放
 
 autoplay 属性设置视频自动播放
 
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options"></nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    autoplay: true,
-    muted: true,
-    controls: true
-  }
-});
-</script>
-```
-
-:::
-
-### 初始化静音
-
-muted 属性设置视频初始化静音
-
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options"></nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    muted: true,
-    controls: true
-  }
-});
-</script>
-```
-
-:::
+> demo: video autoplay
 
 ### 视频封面海报设置
 
 poster 属性设置视频海报
 
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options"></nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    controls: true,
-    poster:
-      'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp'
-  }
-});
-</script>
-```
-
-:::
+> demo: video poster
 
 ### 行内播放
 
 playsinline 属性设置移动端视频行内播放，阻止新打开页面播放（兼容 ios，兼容部分安卓机）
 
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options"></nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    playsinline: true,
-    controls: true
-  }
-});
-</script>
-```
-
-:::
+> demo: video playsinline
 
 ### 视频背景图
 
 当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示
 
-:::demo
+> demo: video background
 
-```vue
-<template>
-  <nut-video :source="state.source" :options="state.options"></nut-video>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    controls: false,
-    autoplay: true,
-    muted: true,
-    disabled: true,
-    playsinline: true,
-    loop: true
-  }
-});
-</script>
-```
+### Ref 方法 v4.1.6
 
-:::
-
-### 视频切换
-
-当视频地址发生变化时，重置视频
-
-:::demo
-
-```vue
-<template>
-  <nut-video :source="state.source1" :options="state.options"></nut-video>
-  <nut-button type="primary" @click="changeVideo">切换视频</nut-button>
-</template>
-<script setup>
-import { reactive } from 'vue';
-const state = reactive({
-  source1: {
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4'
-  },
-  options: {
-    controls: true
-  }
-});
-const changeVideo = () => {
-  state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
-};
-</script>
-```
-
-:::
-
-### Ref 控制播放，暂停，结束，静音，取消静音 v4.1.6
-
-:::demo
-
-```vue
-<template>
-  <nut-video
-    ref="videoRef"
-    :source="state.source"
-    :options="state.options"
-    @play="play"
-    @pause="pause"
-    @playend="playend"
-  >
-  </nut-video>
-  <nut-button type="success" class="m-b" @click="videoRef.play()">播放</nut-button>
-  <nut-button type="warning" class="m-b" @click="videoRef.pause()">暂停</nut-button>
-  <nut-button type="danger" class="m-b" @click="videoRef.stop()">结束</nut-button>
-  <nut-button type="success" class="m-b" @click="videoRef.muted()">静音</nut-button>
-  <nut-button type="danger" class="m-b" @click="videoRef.unmuted()">取消静音</nut-button>
-</template>
-<script setup>
-import { reactive, ref } from 'vue';
-const state = reactive({
-  source: {
-    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-    type: 'video/mp4'
-  },
-  options: {
-    controls: true
-  }
-});
-const videoRef = ref(null);
-const play = (elm) => console.log('play', elm);
-const pause = (elm) => console.log('pause', elm);
-const playend = (elm) => console.log('playend', elm);
-</script>
-```
-
-:::
+> demo: video methods
 
 ## API
 
