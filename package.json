@@ -77,8 +77,8 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.1",
-    "@commitlint/config-conventional": "^18.6.2",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "@nutui/eslint-config": "workspace:*",
     "@nutui/prettier-plugin": "workspace:*",
     "@nutui/vite-plugins": "workspace:*",
