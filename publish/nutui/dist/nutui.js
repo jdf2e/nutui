@@ -16837,7 +16837,7 @@ function p5(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const m5 = "4.3.0", b5 = { install: p5, version: m5 };
+const m5 = "4.3.1", b5 = { install: p5, version: m5 };
 export {
   cm as ActionSheet,
   Sv as Address,

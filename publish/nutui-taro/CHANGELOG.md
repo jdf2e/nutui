@@ -1,3 +1,24 @@
+## v4.3.1
+
+`2024-02-29`
+
+Features
+
+- form: 新增禁用（disabled）属性 (#2690) @yi-boide
+
+Bug Fixes
+
+- picker: className option (#2926) @eiinu
+
+Refactors
+
+- form: move to script setup (#2923), close #2677 @eiinu
+- collapse: move to script setup (#2907) @eiinu
+
+Reverts
+
+- fix(textarea, taro): 修复 h5 下双向绑定失效的问题 (#2768) (#2935), close #2930
+
 ## v4.3.0
 
 `2024-02-05`
