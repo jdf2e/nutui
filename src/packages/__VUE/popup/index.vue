@@ -140,7 +140,6 @@ export default create({
         }
         if (!props.visible && opened) {
           close();
-          emit('close');
         }
       }
     );
