@@ -82,6 +82,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         TT: TaroGeneral.ENV_TYPE.TT;
         QQ: TaroGeneral.ENV_TYPE.QQ;
         JD: TaroGeneral.ENV_TYPE.JD;
+        HARMONYHYBRID: TaroGeneral.ENV_TYPE.HARMONYHYBRID;
     }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "change" | "update:modelValue" | "confirm")[], "cancel" | "change" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
