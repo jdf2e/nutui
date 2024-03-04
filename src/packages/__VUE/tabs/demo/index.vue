@@ -6,6 +6,9 @@
     <h2>{{ t('smile') }}</h2>
     <Smile />
 
+    <h2>{{ t('animatedTime') }}</h2>
+    <AnimatedTime />
+
     <h2>{{ t('leftAlign') }}</h2>
     <LeftAlign />
 
@@ -36,6 +39,7 @@
 import { useTranslate } from '@/sites/utils';
 import Basic from './basic.vue';
 import Smile from './smile.vue';
+import AnimatedTime from './animated-time.vue';
 import AutoHeight from './auto-height.vue';
 import Swipeable from './swipeable.vue';
 import Scroll from './scroll.vue';
@@ -49,6 +53,7 @@ const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
     smile: '微笑曲线',
+    animatedTime: '无切换动画',
     leftAlign: 'Title 左对齐',
     autoHeight: '自动高度',
     swipeable: '手势滑动切换',
@@ -61,6 +66,7 @@ const t = useTranslate({
   'en-US': {
     basic: 'Basic Usage',
     smile: 'Smile Type',
+    animatedTime: 'Without Animation',
     leftAlign: 'Title left align',
     autoHeight: 'Auto Height',
     swipeable: 'Swipeable',

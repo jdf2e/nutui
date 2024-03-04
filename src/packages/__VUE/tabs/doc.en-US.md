@@ -23,6 +23,14 @@ app.use(TabPane);
 
 > demo: tabs smile
 
+### Without Animation
+
+By default, Tabs uses Transform layout to implement switching animation. If other Fixed positioned components (such as Popup, Menu), etc. are used internally, style interference will occur.
+
+You can set `animated-time` to 0. At this time, Tabs will have no switching animation and panel switching will be smoother.
+
+> demo: tabs animated-time
+
 ### Title Align to Left v4.2.7
 
 > demo: tabs left-align
