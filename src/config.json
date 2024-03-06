@@ -1122,6 +1122,7 @@
           "show": true,
           "taro": true,
           "tarodoc": false,
+          "setup": true,
           "type": "component",
           "author": "lijiamiao"
         },
