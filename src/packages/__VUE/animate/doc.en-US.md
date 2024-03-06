@@ -60,3 +60,16 @@ app.use(Animate);
 | 9 | jump | jump，It is recommended that loop be true |
 | 10 | twinkle | twinkle，It is recommended that loop be true |
 | 11 | flicker | Polish button，It is recommended that loop be true |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  AnimateType,
+  AnimateAction,
+  AnimateProps,
+  AnimateInstance
+} from '@nutui/nutui';
+```
