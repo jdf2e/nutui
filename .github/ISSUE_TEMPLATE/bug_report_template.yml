@@ -18,6 +18,7 @@ body:
     id: npm
     attributes:
       label: NutUI 包名
+      multiple: true
       description: 选择使用的 NutUI NPM 包名
       options:
         - "@nutui/nutui"
