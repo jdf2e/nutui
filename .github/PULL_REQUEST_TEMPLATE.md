@@ -10,30 +10,25 @@ https://github.com/jdf2e/nutui/issues/1671
 
 **这个 PR 是什么类型?** (至少选择一个)
 
-- [ ] 新特性提交
-- [ ] 日常 bug 修复
-- [ ] 站点、文档改进
-- [ ] 演示代码改进
-- [ ] 组件样式/交互改进
-- [ ] TypeScript 定义更新
-- [ ] 包体积优化
-- [ ] 性能优化
-- [ ] 功能增强
-- [ ] 国际化改进
-- [ ] 代码重构
-- [ ] 代码风格优化
-- [ ] 测试用例
-- [ ] 分支合并
-- [ ] 其他改动（是关于什么的改动？）
+- [ ] feat: 新特性提交
+- [ ] fix: bug 修复
+- [ ] docs: 文档改进
+- [ ] style: 组件样式/交互改进
+- [ ] type: 类型定义更新
+- [ ] perf: 性能、包体积优化
+- [ ] refactor: 代码重构、代码风格优化
+- [ ] test: 测试用例
+- [ ] chore(deps): 依赖升级
+- [ ] chore(demo): 演示代码改进
+- [ ] chore(locale): 国际化改进
+- [ ] chore: 其他改动（是关于什么的改动？）
 
 **这个 PR 涉及以下平台:**
 
-- [ ] NutUI 4.0 H5
-- [ ] NutUI 4.0 小程序
-- [ ] NutUI 3.0 H5
-- [ ] NutUI 3.0 小程序
+- [ ] NutUI H5 @nutui/nutui
+- [ ] NutUI Taro @nutui/nutui-taro
 
 **这个 PR 是否已自测:**
 
-- [ ] 自测 Vite 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/nutui4-vue/vite-ts)
-- [ ] 自测 Taro 脚手架使用小程序 & Taro-H5 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/nutui4-vue/taro)
+- [ ] 自测 Vite 脚手架使用 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/vite)
+- [ ] 自测 Taro 脚手架使用小程序 & Taro-H5 [测试仓库](https://github.com/jdf2e/nutui-demo/tree/dev/taro)
