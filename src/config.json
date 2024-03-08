@@ -1000,6 +1000,7 @@
           "cName": "价格",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "价格组件",
           "author": "ailululu"
         },

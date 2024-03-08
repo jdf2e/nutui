@@ -63,6 +63,19 @@ size: `small`, `normal`, `large`
 | size | Size，`small`、`normal`、`large` | string | `normal` |
 | strike-through`v4.0.3` | strike-through | Boolean | false |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  PriceSize,
+  PricePosition,
+  PriceProps,
+  PriceInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
