@@ -63,6 +63,19 @@ app.use(Price);
 | size | 价格尺寸，`small`、`normal`、`large` | string | `normal` |
 | strike-through`v4.0.3` | 是否展示划线价 | Boolean | false |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  PriceSize,
+  PricePosition,
+  PriceProps,
+  PriceInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量
