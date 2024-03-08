@@ -59,3 +59,16 @@ Layout 组件提供 24 列栅格，通过在 Col 上添加 span 属性设置列�
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | click | 点击时触发 | `event: MouseEvent` |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  RowProps,
+  RowInstance,
+  ColProps,
+  ColInstance
+} from '@nutui/nutui-taro';
+```
