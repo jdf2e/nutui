@@ -1,4 +1,4 @@
-import Row from '../index.vue';
+import Row from '../';
 import { mount } from '@vue/test-utils';
 
 test('should add "nut-row-flex-nowrap" class when wrap prop is false', () => {
