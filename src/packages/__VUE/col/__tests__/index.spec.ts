@@ -1,5 +1,5 @@
-import Col from '../index.vue';
-import Row from '../../row/index.vue';
+import Col from '../';
+import Row from '../../row';
 import { mount } from '@vue/test-utils';
 
 // 测试用例
