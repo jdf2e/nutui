@@ -1,12 +1,12 @@
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { resolveComponent, openBlock, createElementBlock, createElementVNode, toDisplayString, renderSlot, createVNode, createCommentVNode, withCtx, createTextVNode } from "vue";
-import NutPrice from "../price/Price.js";
+import { Price as _sfc_main$1 } from "../price/Price.js";
 import NutTag from "../tag/Tag.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("card");
 const _sfc_main = create({
   components: {
-    NutPrice,
+    NutPrice: _sfc_main$1,
     NutTag
   },
   props: {
