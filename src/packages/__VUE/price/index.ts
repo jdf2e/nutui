@@ -6,7 +6,7 @@ withInstall(Price);
 
 export type { PriceProps } from './price.vue';
 
-export type {} from './types';
+export type { PriceSize, PricePosition } from './types';
 
 export type PriceInstance = ComponentPublicInstance & InstanceType<typeof Price>;
 
