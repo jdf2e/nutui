@@ -4,7 +4,7 @@ import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-xXrovSQL.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import NutInputNumber from "../inputnumber/InputNumber.js";
-import { N as NutPopup } from "../index.taro-JFNR7Hum.js";
+import { N as NutPopup } from "../index.taro-KP3y-XSA.js";
 import { _ as _sfc_main$6 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";

@@ -111,6 +111,7 @@ const _sfc_main = create({
   props: popupProps,
   emits: ["clickPop", "clickCloseIcon", "open", "close", "opened", "closed", "clickOverlay", "update:visible"],
   setup(props, { emit }) {
+    let opened;
     const state = reactive({
       zIndex: props.zIndex,
       showSlot: true,
@@ -136,23 +137,29 @@ const _sfc_main = create({
       return props.transition ? props.transition : `nut-popup-slide-${props.position}`;
     });
     const open = () => {
-      if (props.zIndex !== initIndex) {
-        _zIndex = Number(props.zIndex);
+      if (!opened) {
+        opened = true;
+        if (props.zIndex !== initIndex) {
+          _zIndex = Number(props.zIndex);
+        }
+        emit("update:visible", true);
+        state.zIndex = ++_zIndex;
+        if (props.destroyOnClose) {
+          state.showSlot = true;
+        }
+        emit("open");
       }
-      emit("update:visible", true);
-      state.zIndex = ++_zIndex;
-      if (props.destroyOnClose) {
-        state.showSlot = true;
-      }
-      emit("open");
     };
     const close = () => {
-      emit("update:visible", false);
-      emit("close");
-      if (props.destroyOnClose) {
-        setTimeout(() => {
-          state.showSlot = false;
-        }, +props.duration * 1e3);
+      if (opened) {
+        opened = false;
+        emit("update:visible", false);
+        emit("close");
+        if (props.destroyOnClose) {
+          setTimeout(() => {
+            state.showSlot = false;
+          }, +props.duration * 1e3);
+        }
       }
     };
     const onClick = (e) => {
@@ -161,12 +168,12 @@ const _sfc_main = create({
     const onClickCloseIcon = (e) => {
       e.stopPropagation();
       emit("clickCloseIcon", e);
-      emit("update:visible", false);
+      close();
     };
     const onClickOverlay = (e) => {
       emit("clickOverlay", e);
       if (props.closeOnClickOverlay) {
-        emit("update:visible", false);
+        close();
       }
     };
     const onOpened = (el) => {
@@ -178,7 +185,12 @@ const _sfc_main = create({
     watch(
       () => props.visible,
       () => {
-        props.visible ? open() : close();
+        if (props.visible && !opened) {
+          open();
+        }
+        if (!props.visible && opened) {
+          close();
+        }
       }
     );
     watchEffect(() => {

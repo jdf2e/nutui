@@ -55,7 +55,7 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 import { computed, ref, watch, resolveComponent, openBlock, createBlock, withCtx, createElementBlock, Fragment, renderList, createElementVNode, normalizeClass, toDisplayString, createCommentVNode, createVNode } from "vue";
-import { N as NutPopup, p as popupProps } from "../index-wY4t0zYt.js";
+import { N as NutPopup, p as popupProps } from "../index-BqB5dTeo.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Loading, Checklist } from "@nutui/icons-vue";
 import NutTabs from "../tabs/Tabs.js";

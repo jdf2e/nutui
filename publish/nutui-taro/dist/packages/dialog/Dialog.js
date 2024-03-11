@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, onMounted, watch, computed, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, normalizeClass, createElementBlock, renderSlot, Fragment, createTextVNode, toDisplayString, createCommentVNode, resolveDynamicComponent } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { d as isPromise } from "../util-Bt8WDYya.js";
-import { N as NutPopup, p as popupProps } from "../index.taro-JFNR7Hum.js";
+import { N as NutPopup, p as popupProps } from "../index.taro-KP3y-XSA.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-xXrovSQL.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";

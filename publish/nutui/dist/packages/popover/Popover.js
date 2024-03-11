@@ -2,7 +2,7 @@ import { ref, computed, onMounted, watch, nextTick, resolveComponent, openBlock,
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
 import { u as useRect } from "../index-cp6Ms_Qe.js";
-import { N as NutPopup } from "../index-wY4t0zYt.js";
+import { N as NutPopup } from "../index-BqB5dTeo.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("popover");
 const _sfc_main = create({
