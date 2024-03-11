@@ -69,6 +69,7 @@ app.use(InputNumber);
 | button-size | 操作符+、-尺寸 | string | `` |
 | min | 最小值限制 | string \| number | `1` |
 | max | 最大值限制 | string \| number | `9999` |
+| type | 返回值格式设置 | string | `string` |
 | step | 步长 | string \| number | `1` |
 | decimal-places | 设置保留的小数位 | string \| number | `0` |
 | disabled | 禁用所有功能 | boolean | `false` |
