@@ -16777,7 +16777,7 @@ function l5(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const s5 = "4.3.1", d5 = { install: l5, version: s5 };
+const s5 = "4.3.2", d5 = { install: l5, version: s5 };
 export {
   im as ActionSheet,
   hv as Address,
