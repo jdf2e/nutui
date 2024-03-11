@@ -24,13 +24,13 @@ test('prop modelValue test', () => {
   expect(wrapper.classes()).toContain('nut-switch-open');
 });
 
-test('prop disable test', () => {
+test('prop disabled test', () => {
   const wrapper = mount(Switch, {
     props: {
-      disable: true
+      disabled: true
     }
   });
-  expect(wrapper.classes()).toContain('nut-switch-disable');
+  expect(wrapper.classes()).toContain('nut-switch-disabled');
 });
 
 test('prop loading test', () => {

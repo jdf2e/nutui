@@ -53,7 +53,7 @@ app.use(Switch);
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | v-model | Status of Switch | boolean \| string \| number | `false` |
-| disable | Disable status | boolean | `false` |
+| disabled `version` | Disable status | boolean | `false` |
 | loading | Loading status | boolean | `false` |
 | active-color | Background color when active | string | `#fa2c19` |
 | inactive-color | Background color when inactive | string | `#ebebeb` |
@@ -61,6 +61,7 @@ app.use(Switch);
 | inactive-text | Word description when inactive | string | - |
 | active-value | Value when active | boolean ｜ string ｜ number | `true` |
 | inactive-value | Value when inactive | boolean ｜ string ｜ number | `false` |
+| disable `deprecated` | Disable status | boolean | `false` |
 
 ### Slots
 
