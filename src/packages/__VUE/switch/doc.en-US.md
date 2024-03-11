@@ -53,7 +53,7 @@ app.use(Switch);
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | v-model | Status of Switch | boolean \| string \| number | `false` |
-| disabled `version` | Disable status | boolean | `false` |
+| disabled `v4.3.2` | Disable status | boolean | `false` |
 | loading | Loading status | boolean | `false` |
 | active-color | Background color when active | string | `#fa2c19` |
 | inactive-color | Background color when inactive | string | `#ebebeb` |

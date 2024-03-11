@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -64,6 +64,7 @@
     "dts:taro": "rimraf ./tsc/type && vue-tsc --declaration --emitDeclarationOnly -p ./tsconfig.declaration.taro.json && pnpm generate:types:taro",
     "copy:h5": "node ./scripts/copyh5.cjs",
     "copy:taro": "node ./scripts/copytaro.cjs",
+    "copy:info": "node ./scripts/copy-dist.cjs nutui && node ./scripts/copy-dist.cjs nutui-taro",
     "changelog": "node ./scripts/generate-changelog.cjs",
     "gen:setup": "node ./scripts/generate-script-setup.cjs",
     "publish:h5:beta": "pnpm --dir ./publish/nutui publish:beta",

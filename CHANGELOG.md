@@ -1,3 +1,27 @@
+## v4.3.2
+
+`2024-03-11`
+
+Features
+
+- switch: add disabled prop (#2959) @eiinu
+
+Bug Fixes
+
+- popup: 修复 update:visible 事件关闭时重复调用 (#2936) @yang1206
+- form: 修复 disabled 关联子组件收集问题 (#2958) @eiinu
+
+Refactors
+
+- price: move to script setup (#2952) @eiinu
+- layout: move to script setup (#2951) @eiinu
+- animate: move to script setup (#2947) @eiinu
+
+Other Changes
+
+- tabs: add animated-time demo (#2942) @eiinu
+- deps: update to taro 3.6.24 (#2939) @eiinu
+
 ## v4.3.1
 
 `2024-02-29`
