@@ -49,6 +49,7 @@ export default create({
   emits: ['clickPop', 'clickCloseIcon', 'open', 'close', 'opened', 'closed', 'clickOverlay', 'update:visible'],
 
   setup(props, { emit }) {
+    let opened: boolean;
     const state = reactive({
       zIndex: props.zIndex,
       showSlot: true,
@@ -79,25 +80,30 @@ export default create({
     });
 
     const open = () => {
-      if (props.zIndex !== initIndex) {
-        _zIndex = Number(props.zIndex);
+      if (!opened) {
+        opened = true;
+        if (props.zIndex !== initIndex) {
+          _zIndex = Number(props.zIndex);
+        }
+        emit('update:visible', true);
+        state.zIndex = ++_zIndex;
+        if (props.destroyOnClose) {
+          state.showSlot = true;
+        }
+        emit('open');
       }
-      emit('update:visible', true);
-      state.zIndex = ++_zIndex;
-      if (props.destroyOnClose) {
-        state.showSlot = true;
-      }
-      emit('open');
     };
 
     const close = () => {
-      // if (!props.visible) return; //避免重复调用
-      emit('update:visible', false);
-      emit('close');
-      if (props.destroyOnClose) {
-        setTimeout(() => {
-          state.showSlot = false;
-        }, +props.duration * 1000);
+      if (opened) {
+        opened = false;
+        emit('update:visible', false);
+        emit('close');
+        if (props.destroyOnClose) {
+          setTimeout(() => {
+            state.showSlot = false;
+          }, +props.duration * 1000);
+        }
       }
     };
 
@@ -108,15 +114,13 @@ export default create({
     const onClickCloseIcon = (e: Event) => {
       e.stopPropagation();
       emit('clickCloseIcon', e);
-      emit('update:visible', false);
-      // close();
+      close();
     };
 
     const onClickOverlay = (e: Event) => {
       emit('clickOverlay', e);
       if (props.closeOnClickOverlay) {
-        emit('update:visible', false);
-        // close();
+        close();
       }
     };
 
@@ -131,7 +135,12 @@ export default create({
     watch(
       () => props.visible,
       () => {
-        props.visible ? open() : close();
+        if (props.visible && !opened) {
+          open();
+        }
+        if (!props.visible && opened) {
+          close();
+        }
       }
     );
     watchEffect(() => {
