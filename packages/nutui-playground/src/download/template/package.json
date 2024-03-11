@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.1.4",
+    "vite": "^5.1.5",
     "unplugin-vue-components": "^0.26.0"
   }
 }
