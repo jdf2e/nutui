@@ -67,6 +67,10 @@ export default create({
       type: [Number, String],
       default: 9999
     },
+    type: {
+      type: String,
+      default: 'string'
+    },
     step: {
       type: [Number, String],
       default: 1
@@ -94,18 +98,25 @@ export default create({
         [`${prefixCls}--disabled`]: disabled.value
       };
     });
+    const formatValue = (val: string | number) => {
+      if (props.type === 'string') {
+        return val;
+      } else {
+        return Number(val);
+      }
+    };
     const fixedDecimalPlaces = (v: string | number): string => {
       return Number(v).toFixed(Number(props.decimalPlaces));
     };
     const change = (event: Event) => {
       const input = event.target as HTMLInputElement;
-      emit('update:modelValue', input.value, event);
-      emit('change', input.value, event);
+      emit('update:modelValue', formatValue(input.value), event);
+      emit('change', formatValue(input.value), event);
     };
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);
-      emit('update:modelValue', output_value, event);
-      if (Number(props.modelValue) !== Number(output_value)) emit('change', output_value, event);
+      emit('update:modelValue', formatValue(output_value), event);
+      if (Number(props.modelValue) !== Number(output_value)) emit('change', formatValue(output_value), event);
     };
     const addAllow = (value = Number(props.modelValue)): boolean => {
       return value < Number(props.max) && !disabled.value;
