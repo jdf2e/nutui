@@ -2,9 +2,6 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import Address from '../index.vue';
 import { addressListData, addressExistData } from '../address-list';
-import { mockElementMethod, sleep } from '@/packages/utils/unit';
-
-mockElementMethod(Element, 'scrollTo');
 
 test('Address: address render', async () => {
   const wrapper = mount(Address, {
@@ -36,12 +33,11 @@ test('Address: choose address item', async () => {
       }
     }
   });
-  const fn = mockElementMethod(Element, 'scrollTo');
-  expect(wrapper.html()).toMatchSnapshot();
   expect(wrapper.find('.nut-address__region-item').text()).toEqual('请选择');
+  expect(wrapper.findAll('.nut-address__region-item').length).toEqual(1);
   wrapper.find('.nut-address__detail-item').trigger('click');
-  await sleep(0);
-  expect(fn).toBeCalled();
+  await nextTick();
+  expect(wrapper.findAll('.nut-address__detail-item.active').length).toEqual(1);
 });
 
 test('Address: default choose address', async () => {
