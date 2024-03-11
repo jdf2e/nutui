@@ -2,7 +2,7 @@ import { toRef, computed, watch, resolveComponent, openBlock, createElementBlock
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { Minus, Plus } from "@nutui/icons-vue";
-import { u as useFormDisabled } from "../common-LvGbU-A3.js";
+import { u as useFormDisabled } from "../common-FZL3qC99.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { componentName, create } = createComponent("input-number");
 const _sfc_main = create({

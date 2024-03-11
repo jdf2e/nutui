@@ -3,7 +3,7 @@ import { c as createComponent } from "./component-TCzwHGVq.js";
 import { CheckNormal, CheckChecked } from "@nutui/icons-vue";
 import { p as pxCheck } from "./pxCheck-OnXlN1NC.js";
 import { R as RADIO_KEY } from "./types-odSRziQJ.js";
-import { u as useFormDisabled } from "./common-LvGbU-A3.js";
+import { u as useFormDisabled } from "./common-FZL3qC99.js";
 const { componentName, create } = createComponent("radio");
 const _sfc_main = create({
   components: {

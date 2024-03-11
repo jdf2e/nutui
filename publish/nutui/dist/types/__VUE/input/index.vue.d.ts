@@ -199,13 +199,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     border: boolean;
     placeholder: string;
     modelValue: string | number;
-    required: boolean;
     maxLength: string | number;
     clearable: boolean;
     autofocus: boolean;
     readonly: boolean;
     inputAlign: InputAlignType;
     formatter: (value: string) => string;
+    required: boolean;
     clearSize: string | number;
     formatTrigger: InputFormatTrigger;
     showWordLimit: boolean;

@@ -1,4 +1,3 @@
-export declare const FORM_KEY: unique symbol;
 export interface FormItemRuleWithoutValidator {
     [key: string]: any;
     regex?: RegExp;

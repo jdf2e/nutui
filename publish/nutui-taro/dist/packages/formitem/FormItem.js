@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, inject, openBlock, createBlock, normalizeClass, unref, normalizeStyle, withCtx, createElementBlock, renderSlot, createTextVNode, toDisplayString, createCommentVNode, createElementVNode } from "vue";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import NutCell from "../cell/Cell.js";
-import { F as FORM_KEY } from "../types-Ynmct7na.js";
+import { F as FORM_KEY } from "../common-FZL3qC99.js";
 import { u as useParent } from "../useParent-KIxqkovs.js";
 import { w as withInstall } from "../with-install-p59gYYU_.js";
 const _hoisted_1 = { class: "nut-cell__value nut-form-item__body" };

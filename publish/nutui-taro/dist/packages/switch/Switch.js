@@ -1,7 +1,7 @@
 import { toRef, computed, watch, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createVNode, createCommentVNode, createTextVNode, Fragment, withDirectives, toDisplayString, vShow } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Loading1 } from "@nutui/icons-vue-taro";
-import { u as useFormDisabled } from "../common-LvGbU-A3.js";
+import { u as useFormDisabled } from "../common-FZL3qC99.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { componentName, create } = createComponent("switch");
 const _sfc_main = create({

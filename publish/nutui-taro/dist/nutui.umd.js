@@ -3915,8 +3915,9 @@ var __async = (__this, __arguments, generator) => {
   }
   const SubSideNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$16]]);
   const FORM_KEY = Symbol("nut-form");
+  const FORM_DISABLED_KEY = Symbol("nut-form-disabled");
   const useFormDisabled = (disabled) => {
-    const { parent } = useParent(FORM_KEY);
+    const { parent } = useParent(FORM_DISABLED_KEY);
     return vue.computed(() => {
       var _a;
       return disabled.value || ((_a = parent == null ? void 0 : parent.props) == null ? void 0 : _a.disabled) || false;
@@ -10490,6 +10491,8 @@ var __async = (__this, __arguments, generator) => {
       const emit = __emit;
       const { children, linkChildren } = useChildren(FORM_KEY);
       linkChildren({ props });
+      const { linkChildren: linkChildren2 } = useChildren(FORM_DISABLED_KEY);
+      linkChildren2({ props });
       const formErrorTip = vue.computed(() => vue.reactive({}));
       vue.provide("formErrorTip", formErrorTip);
       const clearErrorTips = () => {

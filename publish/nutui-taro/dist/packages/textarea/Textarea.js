@@ -2,7 +2,7 @@ import { toRef, computed, ref, watch, nextTick, onMounted, openBlock, createElem
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import Taro from "@tarojs/taro";
 import { u as useLocale } from "../index-xXrovSQL.js";
-import { u as useFormDisabled } from "../common-LvGbU-A3.js";
+import { u as useFormDisabled } from "../common-FZL3qC99.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 const { create } = createComponent("textarea");
 const cN = "NutTextarea";
