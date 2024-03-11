@@ -7,6 +7,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     disable: {
         type: BooleanConstructor;
         default: boolean;
@@ -53,6 +57,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | BooleanConstructor | StringConstructor)[];
         default: boolean;
     };
+    disabled: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     disable: {
         type: BooleanConstructor;
         default: boolean;
@@ -91,6 +99,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     "onUpdate:loading"?: ((...args: any[]) => any) | undefined;
 }, {
     loading: boolean;
+    disabled: boolean;
     activeColor: string;
     activeText: string;
     modelValue: string | number | boolean;

@@ -11782,6 +11782,13 @@ var __async = (__this, __arguments, generator) => {
         type: [String, Number, Boolean],
         default: false
       },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      /**
+       * @deprecated Please use `disabled` prop instead.
+       */
       disable: {
         type: Boolean,
         default: false
@@ -11817,14 +11824,15 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["change", "update:modelValue", "update:loading"],
     setup(props, { emit }) {
-      const disabled = useFormDisabled(vue.toRef(props, "disable"));
+      const legacyDisabled = vue.computed(() => props.disabled || props.disable);
+      const disabled = useFormDisabled(legacyDisabled);
       const isActive = vue.computed(() => props.modelValue === props.activeValue);
       const classes = vue.computed(() => {
         const prefixCls2 = componentName$7;
         return {
           [prefixCls2]: true,
           [isActive.value ? "nut-switch-open" : "nut-switch-close"]: true,
-          [`${prefixCls2}-disable`]: disabled.value,
+          [`${prefixCls2}-disabled`]: disabled.value,
           [`${prefixCls2}-base`]: true
         };
       });

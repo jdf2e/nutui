@@ -5986,7 +5986,7 @@
               }
             },
             {
-              "name": "disable",
+              "name": "disabled ",
               "default": "`false`",
               "description": "禁用状态",
               "value": {
@@ -6054,6 +6054,15 @@
               "description": "关闭组件的值",
               "value": {
                 "type": "boolean ｜ string ｜ number",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "disable ",
+              "default": "`false`",
+              "description": "禁用状态",
+              "value": {
+                "type": "boolean",
                 "kind": "expression"
               }
             }

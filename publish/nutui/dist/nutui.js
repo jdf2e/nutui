@@ -20,7 +20,7 @@ var _t = (e) => typeof e == "symbol" ? e : e + "", Ft = (e, t) => {
   return n;
 };
 var V = (e, t, n) => (Rt(e, typeof t != "symbol" ? t + "" : t, n), n);
-var Je = (e, t, n) => new Promise((s, o) => {
+var Ge = (e, t, n) => new Promise((s, o) => {
   var r = (i) => {
     try {
       a(n.next(i));
@@ -36,7 +36,7 @@ var Je = (e, t, n) => new Promise((s, o) => {
   }, a = (i) => i.done ? s(i.value) : Promise.resolve(i.value).then(r, l);
   a((n = n.apply(e, t)).next());
 });
-import { reactive as ce, ref as z, defineComponent as Pe, useSlots as lt, h as be, openBlock as u, createBlock as ee, computed as D, createElementBlock as f, normalizeClass as L, normalizeStyle as A, createElementVNode as m, createTextVNode as ge, unref as Fe, createCommentVNode as N, renderSlot as I, provide as Le, inject as Me, getCurrentInstance as Ye, onUnmounted as Xe, createApp as Jo, resolveComponent as W, Fragment as x, toDisplayString as E, watchEffect as bt, Transition as Jt, withCtx as ne, withDirectives as Ce, withModifiers as De, vShow as Ne, watch as Q, toRefs as he, Teleport as Hn, mergeProps as wt, createVNode as oe, onMounted as ve, onBeforeUnmount as Qt, shallowReactive as Qo, markRaw as $n, isVNode as xo, Comment as el, Text as tl, nextTick as Se, renderList as ie, normalizeProps as nl, guardReactiveProps as ol, resolveDynamicComponent as ze, onActivated as Ct, toRef as qe, createSlots as kt, onBeforeMount as Rn, readonly as bn, onDeactivated as St, render as xt, vModelText as Fn } from "vue";
+import { reactive as ce, ref as z, defineComponent as Pe, useSlots as lt, h as be, openBlock as u, createBlock as ee, computed as D, createElementBlock as f, normalizeClass as L, normalizeStyle as A, createElementVNode as m, createTextVNode as ge, unref as Fe, createCommentVNode as N, renderSlot as I, provide as Le, inject as Me, getCurrentInstance as Ye, onUnmounted as Xe, createApp as Jo, resolveComponent as W, Fragment as x, toDisplayString as E, watchEffect as bt, Transition as Jt, withCtx as ne, withDirectives as Ce, withModifiers as De, vShow as Ne, watch as Q, toRefs as he, Teleport as Hn, mergeProps as wt, createVNode as oe, onMounted as ve, onBeforeUnmount as Qt, shallowReactive as Qo, markRaw as $n, isVNode as xo, Comment as el, Text as tl, nextTick as Se, renderList as ie, normalizeProps as nl, guardReactiveProps as ol, resolveDynamicComponent as ze, onActivated as Ct, toRef as xe, createSlots as kt, onBeforeMount as Rn, readonly as bn, onDeactivated as St, render as xt, vModelText as Fn } from "vue";
 class Wn {
 }
 let ll = class extends Wn {
@@ -339,7 +339,7 @@ function cl(e, t = 2) {
 function dt(e, t) {
   (typeof e.cancelable != "boolean" || e.cancelable) && e.preventDefault(), t && e.stopPropagation();
 }
-const xe = (e, t = 2) => {
+const Qe = (e, t = 2) => {
   for (e += ""; e.length < t; )
     e = "0" + e;
   return e.toString();
@@ -1242,7 +1242,7 @@ function Gr(e, t, n, s, o, r) {
 const Jr = /* @__PURE__ */ ye(Xr, [["render", Gr]]);
 F("uploader");
 F("voice");
-const Qr = { class: "nut-button__wrap" }, Ze = /* @__PURE__ */ Pe({
+const Qr = { class: "nut-button__wrap" }, qe = /* @__PURE__ */ Pe({
   name: "NutButton",
   __name: "button",
   props: {
@@ -1335,7 +1335,7 @@ const Qr = { class: "nut-button__wrap" }, Ze = /* @__PURE__ */ Pe({
     t.name && n.component(t.name, t);
   }, t;
 };
-je(Ze);
+je(qe);
 const xr = (e) => e.replace(/-./g, (t) => t[1].toUpperCase());
 function Y(e) {
   return {
@@ -3481,7 +3481,7 @@ function et() {
   };
 }
 const Nc = (e, t, n, s) => {
-  const o = z(), r = z({ width: 0, height: 0 }), l = () => Je(void 0, null, function* () {
+  const o = z(), r = z({ width: 0, height: 0 }), l = () => Ge(void 0, null, function* () {
     var g, k;
     n && n.getEnv() !== n.ENV_TYPE.WEB ? s(o).then(
       ($) => {
@@ -3917,7 +3917,7 @@ const vo = /* @__PURE__ */ q(Pc, [["render", Ac]]), { create: zc } = Y("indicato
         [`${n}--block`]: e.block,
         [`${n}--align__${e.align}`]: e.block && e.align
       };
-    }), padZero: xe };
+    }), padZero: Qe };
   }
 }), Oc = {
   key: 0,
@@ -4047,7 +4047,7 @@ function ad(e, t, n, s, o, r) {
     ])
   ]);
 }
-const rd = /* @__PURE__ */ q(nd, [["render", ad]]), $o = Symbol("nut-form"), bo = Symbol("nut-form-disabled"), Ge = (e) => {
+const rd = /* @__PURE__ */ q(nd, [["render", ad]]), $o = Symbol("nut-form"), bo = Symbol("nut-form-disabled"), Ze = (e) => {
   const { parent: t } = ln(bo);
   return D(() => {
     var n;
@@ -4098,7 +4098,7 @@ const rd = /* @__PURE__ */ q(nd, [["render", ad]]), $o = Symbol("nut-form"), bo 
   },
   emits: ["change", "dragEnd", "dragStart", "update:modelValue"],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = z(0);
+    const n = Ze(xe(e, "disabled")), s = z(0);
     let o, r;
     const l = z(), a = z(), i = et(), p = D(() => {
       const { marks: j, max: U, min: R } = e;
@@ -4404,7 +4404,7 @@ const wo = /* @__PURE__ */ q(cd, [["render", vd]]), { create: $d } = Y("searchba
     "clickRightIcon"
   ],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = ke(bd), o = ce({
+    const n = Ze(xe(e, "disabled")), s = ke(bd), o = ce({
       active: !1
     }), r = D(() => ({
       background: e.background
@@ -4654,7 +4654,7 @@ const { create: Md } = Y("cascader-item"), Ld = Md({
       convertConfig: e.convertConfig
     })), o = z(0), r = z(!1), l = z(e.modelValue), a = z(new In([], {})), i = z([]), p = D(() => s.value.lazy && !!s.value.lazyLoad), d = /* @__PURE__ */ new Map();
     let v;
-    const g = () => Je(this, null, function* () {
+    const g = () => Ge(this, null, function* () {
       d.clear(), i.value = [], o.value = 0, r.value = !1, v = null;
       let { options: h } = e;
       s.value.convertConfig && (h = Bd(h, s.value.convertConfig)), a.value = new In(h, {
@@ -4667,7 +4667,7 @@ const { create: Md } = Y("cascader-item"), Ld = Md({
         text: "",
         value: ""
       })), i.value = [{ nodes: a.value.nodes, selectedNode: null }], k();
-    }), k = () => Je(this, null, function* () {
+    }), k = () => Ge(this, null, function* () {
       const h = l.value;
       if (h === void 0 || !a.value.nodes.length)
         return;
@@ -4681,7 +4681,7 @@ const { create: Md } = Y("cascader-item"), Ld = Md({
         let S = a.value.nodes.find((_) => _.value === h[0]);
         if (S) {
           b = [S.value], r.value = !0;
-          const _ = yield h.slice(1).reduce((B, M) => Je(this, null, function* () {
+          const _ = yield h.slice(1).reduce((B, M) => Ge(this, null, function* () {
             var P;
             const C = yield B;
             yield $(C);
@@ -4694,7 +4694,7 @@ const { create: Md } = Y("cascader-item"), Ld = Md({
       b.length && h === e.modelValue && a.value.getPathNodesByValue(b).map((_, B) => {
         o.value = B, c.handleNode(_, !0);
       });
-    }), $ = (h) => Je(this, null, function* () {
+    }), $ = (h) => Ge(this, null, function* () {
       if (!h)
         return;
       if (!s.value.lazyLoad) {
@@ -4718,7 +4718,7 @@ const { create: Md } = Y("cascader-item"), Ld = Md({
     }, c = {
       // 选中一个节点，静默模式不触发事件
       handleNode(h, b) {
-        return Je(this, null, function* () {
+        return Ge(this, null, function* () {
           const { disabled: S, loading: _ } = h;
           if (!(!b && S || !i.value[o.value])) {
             if (a.value.isLeaf(h, p.value)) {
@@ -6104,7 +6104,7 @@ const To = Symbol("nut-checkbox"), { create: Af, componentName: tt } = Y("checkb
   },
   emits: ["change", "update:modelValue"],
   setup(e, { emit: t, slots: n }) {
-    const s = Ge(qe(e, "disabled")), o = Me(To, null), r = ce({
+    const s = Ze(xe(e, "disabled")), o = Me(To, null), r = ce({
       partialSelect: e.indeterminate
     }), l = D(() => !!o), a = D(() => l.value ? o.value.value.includes(e.label) : e.modelValue), i = D(() => l.value && o.disabled.value ? o.disabled.value : s.value), p = D(() => !!e.modelValue), d = D(() => i.value ? "nut-checkbox__icon--disable" : r.partialSelect ? "nut-checkbox__icon--indeterminate" : a.value ? "nut-checkbox__icon" : "nut-checkbox__icon--unchecked");
     let v = "";
@@ -6835,9 +6835,9 @@ const tp = {
       const { formatter: h, isShowChinese: b } = e;
       let S = null;
       if (h)
-        S = h(c, { text: xe(y, 2), value: xe(y, 2) });
+        S = h(c, { text: Qe(y, 2), value: Qe(y, 2) });
       else {
-        const _ = xe(y, 2), B = b ? tp[c] : "";
+        const _ = Qe(y, 2), B = b ? tp[c] : "";
         S = { text: _ + B, value: _ };
       }
       return S;
@@ -6982,7 +6982,7 @@ const lp = /* @__PURE__ */ q(np, [["render", op]]), { componentName: sp, create:
   },
   emits: ["update:modelValue", "change", "blur", "focus", "reduce", "add", "overlimit"],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = D(() => {
+    const n = Ze(xe(e, "disabled")), s = D(() => {
       const $ = sp;
       return {
         [$]: !0,
@@ -7181,7 +7181,7 @@ const { componentName: fp, create: pp } = Y("input"), mp = pp({
   emits: ["update:modelValue", "blur", "focus", "clear", "keypress", "click", "clickInput", "confirm"],
   expose: ["focus", "blur", "select"],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = z(!1), o = z(), r = () => {
+    const n = Ze(xe(e, "disabled")), s = z(!1), o = z(), r = () => {
       var C;
       return String((C = e.modelValue) != null ? C : "");
     }, l = (C) => be("input", Z({}, dp(C))), a = ce({
@@ -7344,7 +7344,7 @@ function kp(e, t, n, s, o, r) {
     ])
   ], 2);
 }
-const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { componentName: Qe, create: Sp } = Y("radio"), _o = Sp({
+const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { componentName: Je, create: Sp } = Y("radio"), _o = Sp({
   components: {
     CheckNormal: Ut,
     CheckChecked: kn
@@ -7372,7 +7372,7 @@ const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { 
     }
   },
   setup(e, { slots: t }) {
-    const n = Ge(qe(e, "disabled")), { size: s } = he(e);
+    const n = Ze(xe(e, "disabled")), { size: s } = he(e);
     let o = Me(Do, null);
     const r = D(() => o.label.value === e.label), l = D(() => n.value ? "nut-radio__icon--disable" : r.value ? "nut-radio__icon" : "nut-radio__icon--unchecked"), a = () => {
       const { iconSize: g } = e, k = {
@@ -7389,7 +7389,7 @@ const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { 
       return be(
         "view",
         {
-          class: `${Qe}__label ${n.value ? `${Qe}__label--disabled` : ""}`
+          class: `${Je}__label ${n.value ? `${Je}__label--disabled` : ""}`
         },
         (g = t.default) == null ? void 0 : g.call(t)
       );
@@ -7398,7 +7398,7 @@ const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { 
       return be(
         "view",
         {
-          class: `${Qe}__button ${r.value && `${Qe}__button--active`} ${Qe}__button--${s.value} ${e.disabled ? `${Qe}__button--disabled` : ""}`
+          class: `${Je}__button ${r.value && `${Je}__button--active`} ${Je}__button--${s.value} ${e.disabled ? `${Je}__button--disabled` : ""}`
         },
         (g = t.default) == null ? void 0 : g.call(t)
       );
@@ -7408,7 +7408,7 @@ const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { 
     return () => be(
       "view",
       {
-        class: `${Qe} ${Qe}--${e.shape} ${v.value ? `${Qe}--reverse` : ""}`,
+        class: `${Je} ${Je}--${e.shape} ${v.value ? `${Je}--reverse` : ""}`,
         onClick: d
       },
       [e.shape === "button" ? p() : [a(), i()]]
@@ -7500,7 +7500,7 @@ const Cp = /* @__PURE__ */ q(mp, [["render", kp]]), Do = Symbol("nut-radio"), { 
   components: { StarFillN: Cn },
   emits: ["update:modelValue", "change"],
   setup(e, { emit: t, slots: n }) {
-    const s = Ge(qe(e, "disabled")), o = z([]), r = (v) => {
+    const s = Ze(xe(e, "disabled")), o = z([]), r = (v) => {
       t("update:modelValue", v), t("change", v);
     }, l = (v, g) => {
       if (s.value || e.readonly)
@@ -7771,7 +7771,7 @@ const jp = /* @__PURE__ */ q(Ap, [["render", Yp]]), { create: Up } = Y("textarea
   },
   emits: ["update:modelValue", "change", "blur", "focus"],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = ke(Kp), o = z(), r = D(() => {
+    const n = Ze(xe(e, "disabled")), s = ke(Kp), o = z(), r = D(() => {
       const $ = "nut-textarea";
       return {
         [$]: !0,
@@ -8101,7 +8101,7 @@ const Mo = /* @__PURE__ */ q(n1, [["render", l1]]), { create: s1 } = Y("uploader
     "fileItemClick"
   ],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disabled")), s = ke(a1), o = z(e.fileList), r = z([]);
+    const n = Ze(xe(e, "disabled")), s = ke(a1), o = z(e.fileList), r = z([]);
     Q(
       () => e.fileList,
       () => {
@@ -8565,7 +8565,7 @@ const F1 = /* @__PURE__ */ q(N1, [["render", R1]]), un = /* @__PURE__ */ Pe({
       }), c;
     }, g = (c) => {
       c.message && o("validate", c), i.value[c.prop] = c.message;
-    }, k = (c) => Je(this, null, function* () {
+    }, k = (c) => Ge(this, null, function* () {
       const { rules: y = [], prop: h } = c, b = (C) => new Promise((T, P) => {
         try {
           g(C), T(C);
@@ -9185,7 +9185,7 @@ const ym = /* @__PURE__ */ q(hm, [["render", gm]]), { create: vm } = Y("dialog")
   inheritAttrs: !1,
   components: {
     NutPopup: Ee,
-    NutButton: Ze
+    NutButton: qe
   },
   props: de(Z({}, Nt), {
     closeOnClickOverlay: {
@@ -9409,7 +9409,7 @@ class Tm {
     V(this, "instance");
     const n = Object.assign(this.options, t), { unmount: s } = sn(n, {
       name: "dialog",
-      components: [Ee, Ze, Tt],
+      components: [Ee, qe, Tt],
       wrapper: (o, r) => ({
         setup() {
           return n.onUpdate = (l) => {
@@ -9855,6 +9855,13 @@ const Po = (e) => {
       type: [String, Number, Boolean],
       default: !1
     },
+    disabled: {
+      type: Boolean,
+      default: !1
+    },
+    /**
+     * @deprecated Please use `disabled` prop instead.
+     */
     disable: {
       type: Boolean,
       default: !1
@@ -9890,34 +9897,34 @@ const Po = (e) => {
   },
   emits: ["change", "update:modelValue", "update:loading"],
   setup(e, { emit: t }) {
-    const n = Ge(qe(e, "disable")), s = D(() => e.modelValue === e.activeValue), o = D(() => {
-      const i = qm;
+    const n = D(() => e.disabled || e.disable), s = Ze(n), o = D(() => e.modelValue === e.activeValue), r = D(() => {
+      const p = qm;
       return {
-        [i]: !0,
-        [s.value ? "nut-switch-open" : "nut-switch-close"]: !0,
-        [`${i}-disable`]: n.value,
-        [`${i}-base`]: !0
+        [p]: !0,
+        [o.value ? "nut-switch-open" : "nut-switch-close"]: !0,
+        [`${p}-disabled`]: s.value,
+        [`${p}-base`]: !0
       };
-    }), r = D(() => ({
-      backgroundColor: s.value ? e.activeColor : e.inactiveColor
+    }), l = D(() => ({
+      backgroundColor: o.value ? e.activeColor : e.inactiveColor
     }));
-    let l = "";
-    const a = (i) => {
-      if (e.loading || n.value)
+    let a = "";
+    const i = (p) => {
+      if (e.loading || s.value)
         return;
-      const p = s.value ? e.inactiveValue : e.activeValue;
-      l = "click", t("update:modelValue", p), t("change", p, i);
+      const d = o.value ? e.inactiveValue : e.activeValue;
+      a = "click", t("update:modelValue", d), t("change", d, p);
     };
     return Q(
       () => e.modelValue,
-      (i) => {
-        l == "click" ? l = "" : t("change", i);
+      (p) => {
+        a == "click" ? a = "" : t("change", p);
       }
     ), {
-      classes: o,
-      style: r,
-      isActive: s,
-      onClick: a
+      classes: r,
+      style: l,
+      isActive: o,
+      onClick: i
     };
   }
 }), Jm = { class: "nut-switch-button" };
@@ -10380,7 +10387,7 @@ const yh = /* @__PURE__ */ q(rh, [["render", gh]]), { create: vh } = Y("audio-op
     }
   },
   components: {
-    NutButton: Ze
+    NutButton: qe
   },
   emits: ["click"],
   setup(e) {
@@ -12793,8 +12800,8 @@ const v0 = /* @__PURE__ */ q(m0, [["render", y0]]), $0 = (e) => {
       return w > 0 && (c.d = w >= y ? Math.floor(w / S) : 0, c.h = Math.floor(w % S / b), c.m = Math.floor(w % b / h), c.s = Math.floor(w % h / y), c.ms = Math.floor(w % y)), $ == "custom" ? c : p(Z({}, c));
     }, p = (k) => {
       let { d: $, h: w, m: c, s: y, ms: h } = k, b = e.format;
-      if (b.includes("DD") ? b = b.replace("DD", xe($)) : w += Number($) * 24, b.includes("HH") ? b = b.replace("HH", xe(w)) : c += Number(w) * 60, b.includes("mm") ? b = b.replace("mm", xe(c)) : y += Number(c) * 60, b.includes("ss") ? b = b.replace("ss", xe(y)) : h += Number(y) * 1e3, b.includes("S")) {
-        const S = xe(h, 3).toString();
+      if (b.includes("DD") ? b = b.replace("DD", Qe($)) : w += Number($) * 24, b.includes("HH") ? b = b.replace("HH", Qe(w)) : c += Number(w) * 60, b.includes("mm") ? b = b.replace("mm", Qe(c)) : y += Number(c) * 60, b.includes("ss") ? b = b.replace("ss", Qe(y)) : h += Number(y) * 1e3, b.includes("S")) {
+        const S = Qe(h, 3).toString();
         b.includes("SSS") ? b = b.replace("SSS", S) : b.includes("SS") ? b = b.replace("SS", S.slice(0, 2)) : b.includes("S") && (b = b.replace("S", S.slice(0, 1)));
       }
       return b;
@@ -14616,7 +14623,7 @@ const bv = /* @__PURE__ */ q(yv, [["render", $v]]), { create: wv } = Y("signatur
     }
   },
   components: {
-    NutButton: Ze
+    NutButton: qe
   },
   emits: ["start", "end", "signing", "confirm", "clear"],
   setup(e, { emit: t }) {
@@ -15601,7 +15608,7 @@ const On = /* @__PURE__ */ q(p3, [["render", w3]]), { create: k3 } = Y("address-
   emits: ["delIcon", "editIcon", "clickItem", "longDown", "longCopy", "longSet", "longDel", "swipeDel"],
   components: {
     ItemContents: On,
-    NutButton: Ze,
+    NutButton: qe,
     NutSwipe: Eo
   },
   setup(e, { emit: t }) {
@@ -15781,7 +15788,7 @@ const D3 = /* @__PURE__ */ q(C3, [["render", N3]]), { create: _3 } = Y("address-
   },
   components: {
     GeneralShell: D3,
-    NutButton: Ze
+    NutButton: qe
   },
   emits: ["delIcon", "editIcon", "clickItem", "longCopy", "longSet", "longDel", "swipeDel", "add"],
   setup(e, { emit: t }) {
@@ -16377,7 +16384,7 @@ const W4 = /* @__PURE__ */ q(z4, [["render", F4]]), { componentName: Y4, create:
     NutFormItem: cn,
     NutRadio: _o,
     NutRadioGroup: Io,
-    NutButton: Ze
+    NutButton: qe
   },
   props: {
     data: {
@@ -16497,7 +16504,7 @@ function q4(e, t, n, s, o, r) {
 }
 const Z4 = /* @__PURE__ */ q(U4, [["render", q4]]), { create: G4 } = Y("avatar-cropper"), J4 = G4({
   components: {
-    NutButton: Ze,
+    NutButton: qe,
     Refresh2: ur,
     Retweet: mr
   },
@@ -16594,7 +16601,7 @@ const Z4 = /* @__PURE__ */ q(U4, [["render", q4]]), { create: G4 } = Y("avatar-c
       H.img = X;
       const re = ae > J, me = re ? J / ae : ae / J;
       H.width = we, H.height = re ? we / me : we * me, H.x = -H.width / 2, H.y = -H.height / 2, H.swidth = we - e.space * 2 * p, H.sheight = re ? H.swidth / me : H.swidth * me, H.sx = e.space * p, H.sy = (_e - H.swidth) / 2, r.value = H, s.defScale = H.swidth / (re ? H.width : H.height), S();
-    }, b = (X) => Je(this, null, function* () {
+    }, b = (X) => Ge(this, null, function* () {
       s.visible = !0;
       const se = X.target;
       let { files: ue } = se;
@@ -16767,7 +16774,7 @@ function n5(e, t, n, s, o, r) {
 }
 const o5 = /* @__PURE__ */ q(J4, [["render", n5]]);
 function l5(e) {
-  [Ze, eo, to, Tt, Ee, Ni, Pi, oo, so, ao, uo, co, Gi, nu, lu, fu, Cu, Mu, Vu, Fu, ec, go, wc, yo, vo, Fc, qc, ed, rd, wo, _d, Yd, pf, So, zf, Hf, lp, rn, Cp, _o, Io, Bo, Co, No, jp, Jp, C1, F1, un, cn, Eo, G1, im, pm, ym, dn, Vm, Ym, zt, xm, Vt, yh, Ch, fn, Bh, Ah, Mo, Uh, tg, cg, pn, Ig, Yg, mn, hn, Ot, gn, v0, N0, ho, Fo, Wo, Y0, jo, Uo, my, Ko, ky, Dy, Ly, jy, hv, bv, _v, Rv, Uv, xv, H2, Q2, c3, E3, F3, s4, W4, Z4, o5].forEach((n) => {
+  [qe, eo, to, Tt, Ee, Ni, Pi, oo, so, ao, uo, co, Gi, nu, lu, fu, Cu, Mu, Vu, Fu, ec, go, wc, yo, vo, Fc, qc, ed, rd, wo, _d, Yd, pf, So, zf, Hf, lp, rn, Cp, _o, Io, Bo, Co, No, jp, Jp, C1, F1, un, cn, Eo, G1, im, pm, ym, dn, Vm, Ym, zt, xm, Vt, yh, Ch, fn, Bh, Ah, Mo, Uh, tg, cg, pn, Ig, Yg, mn, hn, Ot, gn, v0, N0, ho, Fo, Wo, Y0, jo, Uo, my, Ko, ky, Dy, Ly, jy, hv, bv, _v, Rv, Uv, xv, H2, Q2, c3, E3, F3, s4, W4, Z4, o5].forEach((n) => {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
@@ -16785,7 +16792,7 @@ export {
   pm as Backtop,
   ho as Badge,
   bv as Barrage,
-  Ze as Button,
+  qe as Button,
   pf as Calendar,
   So as CalendarCard,
   Co as CalendarItem,
