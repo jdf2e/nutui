@@ -8597,9 +8597,7 @@ const F1 = /* @__PURE__ */ q(N1, [["render", R1]]), un = /* @__PURE__ */ Pe({
       return Promise.resolve(!0);
     }), $ = (c = "") => new Promise((y, h) => {
       try {
-        const b = v();
-        console.log("task", b);
-        const S = b.map((_) => c && c !== _.prop ? Promise.resolve(!0) : k(_));
+        const S = v().map((_) => c && c !== _.prop ? Promise.resolve(!0) : k(_));
         Promise.all(S).then((_) => {
           _ = _.filter((M) => M !== !0);
           const B = { valid: !0, errors: [] };

@@ -164,7 +164,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       return new Promise((resolve, reject) => {
         try {
           const task = getTaskFromChildren();
-          console.log("task", task);
           const errors = task.map((item) => {
             if (customProp && customProp !== item.prop) {
               return Promise.resolve(true);
