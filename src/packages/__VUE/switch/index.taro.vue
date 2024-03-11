@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, toRef, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Loading1 } from '@nutui/icons-vue-taro';
 import { useFormDisabled } from '../form/common';
@@ -26,6 +26,13 @@ export default create({
       type: [String, Number, Boolean],
       default: false
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * @deprecated Please use `disabled` prop instead.
+     */
     disable: {
       type: Boolean,
       default: false
@@ -61,14 +68,15 @@ export default create({
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disable'));
+    const legacyDisabled = computed(() => props.disabled || props.disable);
+    const disabled = useFormDisabled(legacyDisabled);
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
         [isActive.value ? 'nut-switch-open' : 'nut-switch-close']: true,
-        [`${prefixCls}-disable`]: disabled.value,
+        [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-base`]: true
       };
     });

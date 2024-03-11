@@ -1,5 +1,5 @@
 <template>
-  <nut-switch v-model="val" disable />
+  <nut-switch v-model="val" disabled />
 </template>
 <script setup>
 import { ref } from 'vue';
