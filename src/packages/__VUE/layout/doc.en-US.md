@@ -59,3 +59,16 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 | Event | Description | callback parameter |
 | --- | --- | --- |
 | click | Triggered when clicked | `event: MouseEvent` |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  RowProps,
+  RowInstance,
+  ColProps,
+  ColInstance
+} from '@nutui/nutui';
+```

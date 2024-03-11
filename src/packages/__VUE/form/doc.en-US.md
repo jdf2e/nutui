@@ -101,7 +101,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) t
 | reset | Clear verification results | - | - |
 | validate | Active trigger verification is used to trigger when the user customizes the scene, such as blur and change events | Same as FormItem prop value | - |
 
-### Types version
+### Types v4.3.1
 
 The component exports the following type definitions:
 

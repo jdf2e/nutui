@@ -152,8 +152,6 @@ const onClick = () => {
 | class-name | Custom class name | string \| number | `1 ` |
 | position | custom position, optional values are `top` `bottom` `left` `right` `center` | string | `top` |
 
-> Component call is supported after version 'v3.1.20'.
-
 ### Events
 
 | Event | Description | Arguments |

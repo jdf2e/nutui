@@ -185,6 +185,7 @@
           "cName": "布局",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "简便地创建布局",
           "author": "undo"
         },
@@ -196,6 +197,7 @@
           "type": "component",
           "show": false,
           "taro": true,
+          "setup": true,
           "exportEmpty": true,
           "desc": "布局组件Col",
           "author": "undo"
@@ -208,6 +210,7 @@
           "type": "component",
           "show": false,
           "taro": true,
+          "setup": true,
           "exportEmpty": true,
           "desc": "布局组件Row",
           "author": "undo"
@@ -997,6 +1000,7 @@
           "cName": "价格",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "价格组件",
           "author": "ailululu"
         },
@@ -1122,6 +1126,7 @@
           "show": true,
           "taro": true,
           "tarodoc": false,
+          "setup": true,
           "type": "component",
           "author": "lijiamiao"
         },

@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-import NutPrice from '../price/index.taro.vue';
+import NutPrice from '../price/index.taro';
 import NutTag from '../tag/index.taro.vue';
 const { create } = createComponent('card');
 export default create({

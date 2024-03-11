@@ -84,7 +84,7 @@ CollapseItem 组件必须设置 name 属性作为唯一标识符。
 | --- | --- | --- |
 | change | 切换面板时触发 | `(modelValue, currName, status)` |
 
-### 类型定义 version
+### 类型定义 v4.3.1
 
 组件导出以下类型定义：
 

@@ -10,7 +10,7 @@ import { reactive, computed, provide, watch } from 'vue';
 import { useChildren, getPropByPath, isPromise } from '@/packages/utils';
 import NutCellGroup from '../cellgroup/index.taro.vue';
 import type { FormErrorMessage, FormLabelPosition, FormRule, FormRules, FormStarPosition, FormItemRule } from './types';
-import { FORM_KEY } from './types';
+import { FORM_KEY, FORM_DISABLED_KEY } from './common';
 
 defineOptions({
   name: 'NutForm'
@@ -36,6 +36,9 @@ const emit = defineEmits(['validate']);
 
 const { children, linkChildren } = useChildren(FORM_KEY);
 linkChildren({ props });
+
+const { linkChildren: linkChildren2 } = useChildren(FORM_DISABLED_KEY);
+linkChildren2({ props });
 
 const formErrorTip = computed(() => reactive<any>({}));
 

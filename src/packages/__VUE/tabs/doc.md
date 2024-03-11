@@ -23,6 +23,14 @@ app.use(TabPane);
 
 > demo: tabs smile
 
+### 无切换动画
+
+默认情况下 Tabs 使用 Transform 布局实现切换动画，如果内部使用了其他 Fixed 定位的组件（比如 Popup、Menu）等，会产生样式干扰。
+
+可以设置 `animated-time` 为 0，此时 Tabs 无切换动画，面板切换更流畅。
+
+> demo: tabs animated-time
+
 ### Title 左对齐 v4.2.7
 
 > demo: tabs left-align

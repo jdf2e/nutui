@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Price from '../index.vue';
+import Price from '../';
 
 test('Price: base price', () => {
   const wrapper = mount(Price, {
@@ -49,7 +49,8 @@ test('Price: symbol props', () => {
 test('Price: size props', () => {
   const wrapper = mount(Price, {
     props: {
-      size: 'small'
+      size: 'small',
+      position: 'after'
     }
   });
   const price: any = wrapper.find('.nut-price');

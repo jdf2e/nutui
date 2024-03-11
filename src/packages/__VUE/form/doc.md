@@ -101,7 +101,7 @@ app.use(FormItem);
 | reset | 清空校验结果 | - | - |
 | validate | 用户主动触发校验，用于用户自定义场景时触发，例如 `blur`、`change` 事件 | 同 `FormItem prop` 值,不传值会校验全部 `Rule` | - |
 
-### 类型定义 version
+### 类型定义 v4.3.1
 
 组件导出以下类型定义：
 

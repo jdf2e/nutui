@@ -84,7 +84,7 @@ Set a custom icon through the `slots.icon` or `props.icon` property.
 | --- | --- | --- |
 | change | Triggered when switching panels | `(modelValue, currName, status)` |
 
-### Types version
+### Types v4.3.1
 
 The component exports the following type definitions:
 

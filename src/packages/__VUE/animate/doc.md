@@ -60,3 +60,16 @@ app.use(Animate);
 | 9 | jump | 跳跃，建议 loop 为 true |
 | 10 | twinkle | 水波，建议 loop 为 true |
 | 11 | flicker | 擦亮按钮，建议 loop 为 true |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  AnimateType,
+  AnimateAction,
+  AnimateProps,
+  AnimateInstance
+} from '@nutui/nutui';
+```
