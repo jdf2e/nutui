@@ -1,5 +1,3 @@
-export const FORM_KEY = Symbol('nut-form');
-
 export interface FormItemRuleWithoutValidator {
   [key: string]: any;
   regex?: RegExp;
