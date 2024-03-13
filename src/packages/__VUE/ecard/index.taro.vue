@@ -33,7 +33,7 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import NutInputNumber from '../inputnumber/index.taro.vue';
+import NutInputNumber from '../inputnumber/index.taro';
 import type { PropType } from 'vue';
 import { useLocale } from '@/packages/utils/useLocale';
 
