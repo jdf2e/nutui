@@ -7,7 +7,7 @@ var __publicField = (obj, key, value) => {
 import { toRef, ref, watch, h, reactive, resolveComponent, openBlock, createElementBlock, renderSlot, createBlock, resolveDynamicComponent, createCommentVNode, Fragment, renderList, normalizeClass, createElementVNode, toDisplayString, createVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { f as funInterceptor } from "../Interceptor-WYVtGbGC.js";
-import NutProgress from "../progress/Progress.js";
+import { Progress as _sfc_main$1 } from "../progress/Progress.js";
 import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { u as useFormDisabled } from "../common-FZL3qC99.js";
@@ -94,7 +94,7 @@ const { create } = createComponent("uploader");
 const cN = "NutUploader";
 const _sfc_main = create({
   components: {
-    NutProgress,
+    NutProgress: _sfc_main$1,
     Photograph,
     Failure,
     Loading,

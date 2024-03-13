@@ -21,8 +21,8 @@ var __publicField = (obj, key, value) => {
 import { toRef, ref, watch, reactive, resolveComponent, openBlock, createElementBlock, renderSlot, createTextVNode, createBlock, createCommentVNode, Fragment, renderList, normalizeClass, createElementVNode, toDisplayString, createVNode } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { f as funInterceptor } from "../Interceptor-xNdrCqtu.js";
-import NutProgress from "../progress/Progress.js";
-import { Button as _sfc_main$1 } from "../button/Button.js";
+import { Progress as _sfc_main$1 } from "../progress/Progress.js";
+import { Button as _sfc_main$2 } from "../button/Button.js";
 import Taro from "@tarojs/taro";
 import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-xXrovSQL.js";
@@ -155,8 +155,8 @@ const { create } = createComponent("uploader");
 const cN = "NutUploader";
 const _sfc_main = create({
   components: {
-    NutProgress,
-    NutButton: _sfc_main$1,
+    NutProgress: _sfc_main$1,
+    NutButton: _sfc_main$2,
     Photograph,
     Failure,
     Loading,
