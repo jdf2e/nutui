@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Progress from '../index.vue';
+import Progress from '../';
 
 test('should render progress when use props', async () => {
   const wrapper = mount(Progress, {

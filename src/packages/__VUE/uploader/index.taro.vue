@@ -76,7 +76,7 @@ import { createComponent } from '@/packages/utils/create';
 import { UploaderTaro, UploadOptions } from './uploader';
 import { FileItem, MediaType, SizeType, SourceType } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import NutProgress from '../progress/index.taro.vue';
+import NutProgress from '../progress/index.taro';
 import NutButton from '../button/index.taro';
 import Taro from '@tarojs/taro';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue-taro';

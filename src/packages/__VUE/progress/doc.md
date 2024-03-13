@@ -71,6 +71,19 @@ size: `small`, `base`, `large`
 | --- | --- | --- |
 | icon-name | 右侧 `icon` 内容 | - |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  ProgressSize,
+  ProgressStatus,
+  ProgressProps,
+  ProgressInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量

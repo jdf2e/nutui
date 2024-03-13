@@ -600,6 +600,7 @@
           "name": "Progress",
           "cName": "进度条",
           "desc": "用来展示进度",
+          "setup": true,
           "author": "Drjingubo"
         },
         {

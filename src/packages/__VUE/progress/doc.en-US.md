@@ -71,6 +71,19 @@ size: `small`, `base`, `large` .
 | --- | --- |
 | icon-name | Right icon content |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  ProgressSize,
+  ProgressStatus,
+  ProgressProps,
+  ProgressInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
