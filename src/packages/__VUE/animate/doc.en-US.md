@@ -61,7 +61,7 @@ app.use(Animate);
 | 10 | twinkle | twinkle，It is recommended that loop be true |
 | 11 | flicker | Polish button，It is recommended that loop be true |
 
-### Types 4.3.2
+### Types v4.3.2
 
 The component exports the following type definitions:
 

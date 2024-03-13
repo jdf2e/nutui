@@ -60,7 +60,7 @@ The Layout component provides a 24-column grid, by adding the span attribute on 
 | --- | --- | --- |
 | click | Triggered when clicked | `event: MouseEvent` |
 
-### Types 4.3.2
+### Types v4.3.2
 
 The component exports the following type definitions:
 

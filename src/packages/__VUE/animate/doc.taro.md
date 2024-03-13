@@ -61,7 +61,7 @@ app.use(Animate);
 | 10 | twinkle | 水波，建议 loop 为 true |
 | 11 | flicker | 擦亮按钮，建议 loop 为 true |
 
-### 类型定义 4.3.2
+### 类型定义 v4.3.2
 
 组件导出以下类型定义：
 

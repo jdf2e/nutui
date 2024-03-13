@@ -543,6 +543,7 @@
           "cName": "数字输入框",
           "type": "component",
           "show": true,
+          "setup": true,
           "desc": "数字输入框组件",
           "author": "szg2008"
         },
