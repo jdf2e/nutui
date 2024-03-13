@@ -608,6 +608,7 @@
           "name": "CircleProgress",
           "cName": "环形进度条",
           "desc": "用来展示进度",
+          "setup": true,
           "author": "Drjingubo"
         },
         {

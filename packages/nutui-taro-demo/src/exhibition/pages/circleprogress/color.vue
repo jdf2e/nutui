@@ -1,6 +1,6 @@
 <template>
   <nut-space>
-    <nut-circle-progress :progress="50" color="red" />
+    <nut-circle-progress :progress="50" color="skyblue" />
     <nut-circle-progress :progress="100" :color="gradientColor" />
   </nut-space>
 </template>
