@@ -34,7 +34,7 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('comment-header');
-import NutRate from '../../rate/index.taro.vue';
+import NutRate from '../../rate/index.taro';
 
 export default create({
   components: {
