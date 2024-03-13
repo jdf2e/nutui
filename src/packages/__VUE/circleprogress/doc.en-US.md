@@ -58,6 +58,18 @@ app.use(CircleProgress);
 | --- | --- |
 | default | Custom Content |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  CircleProgressStrokeLinecap,
+  CircleProgressProps,
+  CircleProgressInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

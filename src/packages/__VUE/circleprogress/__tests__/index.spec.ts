@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Circleprogress from '../index.vue';
+import Circleprogress from '../';
 
 test('CircleProgress: should change stoke when use width props', async () => {
   const wrapper = mount(Circleprogress, {
