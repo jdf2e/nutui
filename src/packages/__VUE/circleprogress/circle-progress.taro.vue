@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<CircleProgressProps>(), {
   strokeWidth: 5,
   radius: 50,
   strokeLinecap: 'round',
-  color: '#FF673E',
+  color: '#fa2c19',
   pathColor: '#d9d9d9',
   clockwise: true
 });
