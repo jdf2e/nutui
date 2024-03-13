@@ -76,7 +76,10 @@ test('CalendarCard: test type range', async () => {
 
   // current
   const currentDays = wrapper.findAll('.nut-calendarcard-day.current');
-  currentDays[1].trigger('click'); // 0102
+  currentDays[24].trigger('click'); // 0125
+  const startAndEnd = wrapper.findAll('.nut-calendarcard-day.start.end');
+  expect(startAndEnd.length).toBe(1);
+
   currentDays[3].trigger('click'); // 0104
   currentDays[8].trigger('click'); // 0109
   await nextTick();

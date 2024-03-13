@@ -318,7 +318,7 @@ const handleDayClick = (day: CalendarCardDay) => {
         change([day]);
       } else if (len === 1) {
         const t = compareDay(innerValue.value[0], day);
-        if (t === 0 || t === null || t === undefined) {
+        if (t === null || t === undefined) {
           change([]);
         } else if (t < 0) {
           change([innerValue.value[0], day]);
