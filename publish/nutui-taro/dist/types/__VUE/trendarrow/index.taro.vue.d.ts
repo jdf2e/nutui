@@ -83,8 +83,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    rate: number;
     textColor: string;
+    rate: number;
     digits: number;
     showSign: boolean;
     showZero: boolean;

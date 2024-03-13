@@ -1,59 +1,60 @@
-import { toRef, ref, openBlock, createElementBlock, Fragment, renderList, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createTextVNode, createCommentVNode } from "vue";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, toRef, ref, openBlock, createElementBlock, Fragment, renderList, unref, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createTextVNode, createCommentVNode } from "vue";
 import { StarFillN } from "@nutui/icons-vue-taro";
-import { c as createComponent } from "../component-TCzwHGVq.js";
 import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
 import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
 import { u as useFormDisabled } from "../common-FZL3qC99.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { create } = createComponent("rate");
-const _sfc_main = create({
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _hoisted_1 = { class: "nut-rate" };
+const _hoisted_2 = ["id"];
+const _hoisted_3 = { class: "nut-rate-item__icon--full" };
+const _hoisted_4 = {
+  key: 0,
+  class: "nut-rate-item__icon--half"
+};
+const _hoisted_5 = {
+  key: 1,
+  class: "nut-rate-item__icon--half"
+};
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutRate"
+}), {
+  __name: "rate.taro",
   props: {
-    count: {
-      type: [String, Number],
-      default: 5
-    },
-    modelValue: {
-      type: [String, Number],
-      default: 0
-    },
-    customIcon: {
-      type: Object,
-      default: () => {
-        return StarFillN;
-      }
-    },
-    size: {
-      type: [String, Number],
-      default: void 0
-    },
-    activeColor: {
-      type: String,
-      default: ""
-    },
-    voidColor: {
-      type: String,
-      default: ""
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    allowHalf: {
-      type: Boolean,
-      default: false
-    },
-    spacing: {
-      type: [String, Number],
-      default: void 0
-    }
+    count: { default: 5 },
+    modelValue: { default: 0 },
+    customIcon: { default: () => StarFillN },
+    size: {},
+    activeColor: { default: "" },
+    voidColor: { default: "" },
+    readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    allowHalf: { type: Boolean, default: false },
+    spacing: {}
   },
-  components: { StarFillN },
   emits: ["update:modelValue", "change"],
-  setup(props, { emit, slots }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const refRandomId = Math.random().toString(36).slice(-8);
     const disabled = useFormDisabled(toRef(props, "disabled"));
     const rateRefs = ref([]);
     const updateVal = (value) => {
@@ -74,77 +75,58 @@ const _sfc_main = create({
       }
       updateVal(value);
     };
-    const refRandomId = Math.random().toString(36).slice(-8);
-    return {
-      onClick,
-      pxCheck,
-      rateRefs,
-      refRandomId,
-      renderIcon,
-      slots,
-      disabled
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", _hoisted_1, [
+        (openBlock(true), createElementBlock(Fragment, null, renderList(Number(_ctx.count), (n) => {
+          return openBlock(), createElementBlock("view", {
+            id: "rateRefs-" + unref(refRandomId) + n,
+            key: n,
+            ref_for: true,
+            ref_key: "rateRefs",
+            ref: rateRefs,
+            class: "nut-rate-item",
+            style: normalizeStyle(n < Number(_ctx.count) ? { marginRight: unref(pxCheck)(_ctx.spacing) } : {})
+          }, [
+            createElementVNode("view", _hoisted_3, [
+              (openBlock(), createBlock(resolveDynamicComponent(
+                unref(renderIcon)(_ctx.customIcon, {
+                  width: _ctx.size,
+                  height: _ctx.size,
+                  size: _ctx.size,
+                  color: n <= Number(_ctx.modelValue) ? _ctx.activeColor : _ctx.voidColor
+                })
+              ), {
+                class: normalizeClass(["nut-rate-item__icon", { "nut-rate-item__icon--disabled": unref(disabled) || n > Number(_ctx.modelValue) }]),
+                onClick: ($event) => onClick(1, n)
+              }, null, 8, ["class", "onClick"]))
+            ]),
+            createTextVNode(),
+            _ctx.allowHalf && Number(_ctx.modelValue) + 1 > n ? (openBlock(), createElementBlock("view", _hoisted_4, [
+              (openBlock(), createBlock(resolveDynamicComponent(
+                unref(renderIcon)(_ctx.customIcon, {
+                  width: _ctx.size,
+                  height: _ctx.size,
+                  size: _ctx.size,
+                  color: n <= Number(_ctx.modelValue) + 1 ? _ctx.activeColor : _ctx.voidColor
+                })
+              ), {
+                class: "nut-rate-item__icon",
+                onClick: ($event) => onClick(2, n)
+              }, null, 8, ["onClick"]))
+            ])) : _ctx.allowHalf && Number(_ctx.modelValue) + 1 < n ? (openBlock(), createElementBlock("view", _hoisted_5, [
+              (openBlock(), createBlock(resolveDynamicComponent(unref(renderIcon)(_ctx.customIcon, { width: _ctx.size, height: _ctx.size, size: _ctx.size, color: _ctx.voidColor })), {
+                class: "nut-rate-item__icon nut-rate-item__icon--disabled",
+                onClick: ($event) => onClick(2, n)
+              }, null, 8, ["onClick"]))
+            ])) : createCommentVNode("", true)
+          ], 12, _hoisted_2);
+        }), 128))
+      ]);
     };
   }
-});
-const _hoisted_1 = { class: "nut-rate" };
-const _hoisted_2 = ["id"];
-const _hoisted_3 = { class: "nut-rate-item__icon--full" };
-const _hoisted_4 = {
-  key: 0,
-  class: "nut-rate-item__icon--half"
-};
-const _hoisted_5 = {
-  key: 1,
-  class: "nut-rate-item__icon--half"
-};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", _hoisted_1, [
-    (openBlock(true), createElementBlock(Fragment, null, renderList(Number(_ctx.count), (n) => {
-      return openBlock(), createElementBlock("view", {
-        id: "rateRefs-" + _ctx.refRandomId + n,
-        key: n,
-        ref_for: true,
-        ref: "rateRefs",
-        class: "nut-rate-item",
-        style: normalizeStyle(n < Number(_ctx.count) ? { marginRight: _ctx.pxCheck(_ctx.spacing) } : {})
-      }, [
-        createElementVNode("view", _hoisted_3, [
-          (openBlock(), createBlock(resolveDynamicComponent(
-            _ctx.renderIcon(_ctx.customIcon, {
-              width: _ctx.size,
-              height: _ctx.size,
-              size: _ctx.size,
-              color: n <= Number(_ctx.modelValue) ? _ctx.activeColor : _ctx.voidColor
-            })
-          ), {
-            class: normalizeClass(["nut-rate-item__icon", { "nut-rate-item__icon--disabled": _ctx.disabled || n > Number(_ctx.modelValue) }]),
-            onClick: ($event) => _ctx.onClick(1, n)
-          }, null, 8, ["class", "onClick"]))
-        ]),
-        createTextVNode(),
-        _ctx.allowHalf && Number(_ctx.modelValue) + 1 > n ? (openBlock(), createElementBlock("view", _hoisted_4, [
-          (openBlock(), createBlock(resolveDynamicComponent(
-            _ctx.renderIcon(_ctx.customIcon, {
-              width: _ctx.size,
-              height: _ctx.size,
-              size: _ctx.size,
-              color: n <= Number(_ctx.modelValue) + 1 ? _ctx.activeColor : _ctx.voidColor
-            })
-          ), {
-            class: "nut-rate-item__icon",
-            onClick: ($event) => _ctx.onClick(2, n)
-          }, null, 8, ["onClick"]))
-        ])) : _ctx.allowHalf && Number(_ctx.modelValue) + 1 < n ? (openBlock(), createElementBlock("view", _hoisted_5, [
-          (openBlock(), createBlock(resolveDynamicComponent(_ctx.renderIcon(_ctx.customIcon, { width: _ctx.size, height: _ctx.size, size: _ctx.size, color: _ctx.voidColor })), {
-            class: "nut-rate-item__icon nut-rate-item__icon--disabled",
-            onClick: ($event) => _ctx.onClick(2, n)
-          }, null, 8, ["onClick"]))
-        ])) : createCommentVNode("", true)
-      ], 12, _hoisted_2);
-    }), 128))
-  ]);
-}
-const NutRate = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  NutRate as default
+  _sfc_main as Rate,
+  _sfc_main as default
 };
