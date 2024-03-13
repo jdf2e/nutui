@@ -1,40 +1,46 @@
-import { computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, Fragment, renderList, renderSlot, toDisplayString } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { k as isObject } from "../util-4Jkyw4BJ.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { create } = createComponent("circle-progress");
-const _sfc_main = create({
-  props: {
-    progress: {
-      type: [Number, String],
-      defualt: 0
-    },
-    strokeWidth: {
-      type: [Number, String],
-      default: 5
-    },
-    radius: {
-      type: [Number, String],
-      default: 50
-    },
-    strokeLinecap: {
-      type: String,
-      default: "round"
-    },
-    color: {
-      type: [String, Object],
-      default: ""
-    },
-    pathColor: {
-      type: String,
-      default: ""
-    },
-    clockwise: {
-      type: Boolean,
-      default: true
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
     }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, unref, Fragment, renderList, renderSlot, toDisplayString } from "vue";
+import { k as isObject } from "../util-4Jkyw4BJ.js";
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _hoisted_1 = { viewBox: "0 0 100 100" };
+const _hoisted_2 = ["id"];
+const _hoisted_3 = ["offset", "stop-color"];
+const _hoisted_4 = ["d", "stroke-width"];
+const _hoisted_5 = ["d", "stroke", "stroke-linecap", "stroke-width"];
+const _hoisted_6 = { class: "nut-circle-progress__text" };
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutCircleProgress"
+}), {
+  __name: "circle-progress",
+  props: {
+    progress: { default: 0 },
+    strokeWidth: { default: 5 },
+    radius: { default: 50 },
+    strokeLinecap: { default: "round" },
+    color: { default: "#fa2c19" },
+    pathColor: { default: "#d9d9d9" },
+    clockwise: { type: Boolean, default: true }
   },
-  setup(props) {
+  setup(__props) {
+    const props = __props;
     const refRandomId = Math.random().toString(36).slice(-8);
     const path = computed(() => {
       const isWise = props.clockwise ? 1 : 0;
@@ -74,70 +80,57 @@ const _sfc_main = create({
       });
       return stopArr;
     });
-    return {
-      hoverStyle,
-      pathStyle,
-      path,
-      hoverColor,
-      stop,
-      refRandomId
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: "nut-circle-progress",
+        style: normalizeStyle({ height: Number(_ctx.radius) * 2 + "px", width: Number(_ctx.radius) * 2 + "px" })
+      }, [
+        (openBlock(), createElementBlock("svg", _hoisted_1, [
+          createElementVNode("defs", null, [
+            createElementVNode("linearGradient", {
+              id: unref(refRandomId),
+              x1: "100%",
+              y1: "0%",
+              x2: "0%",
+              y2: "0%"
+            }, [
+              (openBlock(true), createElementBlock(Fragment, null, renderList(stop.value, (item, index) => {
+                return openBlock(), createElementBlock("stop", {
+                  key: index,
+                  offset: item.key,
+                  "stop-color": item.value
+                }, null, 8, _hoisted_3);
+              }), 128))
+            ], 8, _hoisted_2)
+          ]),
+          createElementVNode("path", {
+            class: "nut-circle-progress__path",
+            style: normalizeStyle(pathStyle.value),
+            d: path.value,
+            fill: "none",
+            "stroke-width": _ctx.strokeWidth
+          }, " > ", 12, _hoisted_4),
+          createElementVNode("path", {
+            class: "nut-circle-progress__hover",
+            style: normalizeStyle(hoverStyle.value),
+            d: path.value,
+            fill: "none",
+            stroke: hoverColor.value,
+            "stroke-linecap": _ctx.strokeLinecap,
+            "stroke-width": _ctx.strokeWidth
+          }, null, 12, _hoisted_5)
+        ])),
+        createElementVNode("div", _hoisted_6, [
+          renderSlot(_ctx.$slots, "default", {}, () => [
+            createElementVNode("div", null, toDisplayString(_ctx.progress) + "%", 1)
+          ])
+        ])
+      ], 4);
     };
   }
-});
-const _hoisted_1 = { viewBox: "0 0 100 100" };
-const _hoisted_2 = ["id"];
-const _hoisted_3 = ["offset", "stop-color"];
-const _hoisted_4 = ["d", "stroke-width"];
-const _hoisted_5 = ["d", "stroke", "stroke-linecap", "stroke-width"];
-const _hoisted_6 = { class: "nut-circle-progress__text" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: "nut-circle-progress",
-    style: normalizeStyle({ height: Number(_ctx.radius) * 2 + "px", width: Number(_ctx.radius) * 2 + "px" })
-  }, [
-    (openBlock(), createElementBlock("svg", _hoisted_1, [
-      createElementVNode("defs", null, [
-        createElementVNode("linearGradient", {
-          id: _ctx.refRandomId,
-          x1: "100%",
-          y1: "0%",
-          x2: "0%",
-          y2: "0%"
-        }, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.stop, (item, index2) => {
-            return openBlock(), createElementBlock("stop", {
-              key: index2,
-              offset: item.key,
-              "stop-color": item.value
-            }, null, 8, _hoisted_3);
-          }), 128))
-        ], 8, _hoisted_2)
-      ]),
-      createElementVNode("path", {
-        class: "nut-circle-progress__path",
-        style: normalizeStyle(_ctx.pathStyle),
-        d: _ctx.path,
-        fill: "none",
-        "stroke-width": _ctx.strokeWidth
-      }, " > ", 12, _hoisted_4),
-      createElementVNode("path", {
-        class: "nut-circle-progress__hover",
-        style: normalizeStyle(_ctx.hoverStyle),
-        d: _ctx.path,
-        fill: "none",
-        stroke: _ctx.hoverColor,
-        "stroke-linecap": _ctx.strokeLinecap,
-        "stroke-width": _ctx.strokeWidth
-      }, null, 12, _hoisted_5)
-    ])),
-    createElementVNode("div", _hoisted_6, [
-      renderSlot(_ctx.$slots, "default", {}, () => [
-        createElementVNode("div", null, toDisplayString(_ctx.progress) + "%", 1)
-      ])
-    ])
-  ], 4);
-}
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index as default
+  _sfc_main as CircleProgress,
+  _sfc_main as default
 };
