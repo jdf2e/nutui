@@ -6,7 +6,7 @@ import Textarea from '../../textarea/index.vue';
 import Button from '../../button';
 import Switch from '../../switch/index.vue';
 import Checkbox from '../../checkbox/index.vue';
-import Rate from '../../rate/index.vue';
+import Rate from '../../rate';
 import InputNumber from '../../inputnumber';
 import Range from '../../range/index.vue';
 import Uploader from '../../uploader/index.vue';

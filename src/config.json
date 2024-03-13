@@ -406,6 +406,7 @@
           "name": "Rate",
           "cName": "评分",
           "desc": "评分组件",
+          "setup": true,
           "author": "undo"
         },
         {

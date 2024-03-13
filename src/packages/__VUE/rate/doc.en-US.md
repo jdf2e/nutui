@@ -74,6 +74,17 @@ app.use(Rate);
 | --- | --- | --- |
 | change | An event that fires whenever the current score is modified | val |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  RateProps,
+  RateInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

@@ -47,90 +47,61 @@
     </view>
   </view>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import { ref, toRef } from 'vue';
 import { StarFillN } from '@nutui/icons-vue-taro';
-import { createComponent, renderIcon } from '@/packages/utils/create';
+import { renderIcon } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useFormDisabled } from '../form/common';
-const { create } = createComponent('rate');
-export default create({
-  props: {
-    count: {
-      type: [String, Number],
-      default: 5
-    },
-    modelValue: {
-      type: [String, Number],
-      default: 0
-    },
-    customIcon: {
-      type: Object,
-      default: () => {
-        return StarFillN;
-      }
-    },
-    size: {
-      type: [String, Number],
-      default: undefined
-    },
-    activeColor: {
-      type: String,
-      default: ''
-    },
-    voidColor: {
-      type: String,
-      default: ''
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    allowHalf: {
-      type: Boolean,
-      default: false
-    },
-    spacing: {
-      type: [String, Number],
-      default: undefined
-    }
-  },
-  components: { StarFillN },
-  emits: ['update:modelValue', 'change'],
-  setup(props, { emit, slots }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const rateRefs = ref<HTMLElement[]>([]);
-    const updateVal = (value: number) => {
-      emit('update:modelValue', value);
-      emit('change', value);
-    };
-    const onClick = (e: number, index: number) => {
-      if (disabled.value || props.readonly) return;
-      let value = 0;
-      if (index === 1 && props.modelValue === index) {
-        value = 0;
-      } else {
-        value = index;
-        if (props.allowHalf && e == 2) {
-          value -= 0.5;
-        }
-      }
-      updateVal(value);
-    };
-    const refRandomId = Math.random().toString(36).slice(-8);
-    return {
-      onClick,
-      pxCheck,
-      rateRefs,
-      refRandomId,
-      renderIcon,
-      slots,
-      disabled
-    };
-  }
+
+defineOptions({
+  name: 'NutRate'
 });
+
+export type RateProps = Partial<{
+  count: string | number;
+  modelValue: string | number;
+  customIcon: any;
+  size: string | number;
+  activeColor: string;
+  voidColor: string;
+  readonly: boolean;
+  disabled: boolean;
+  allowHalf: boolean;
+  spacing: string | number;
+}>;
+
+const props = withDefaults(defineProps<RateProps>(), {
+  count: 5,
+  modelValue: 0,
+  customIcon: () => StarFillN,
+  activeColor: '',
+  voidColor: '',
+  readonly: false,
+  disabled: false,
+  allowHalf: false
+});
+
+const emit = defineEmits(['update:modelValue', 'change']);
+
+const refRandomId = Math.random().toString(36).slice(-8);
+const disabled = useFormDisabled(toRef(props, 'disabled'));
+const rateRefs = ref<HTMLElement[]>([]);
+const updateVal = (value: number) => {
+  emit('update:modelValue', value);
+  emit('change', value);
+};
+const onClick = (e: number, index: number) => {
+  if (disabled.value || props.readonly) return;
+  let value = 0;
+  if (index === 1 && props.modelValue === index) {
+    value = 0;
+  } else {
+    value = index;
+    if (props.allowHalf && e == 2) {
+      value -= 0.5;
+    }
+  }
+  updateVal(value);
+};
 </script>
