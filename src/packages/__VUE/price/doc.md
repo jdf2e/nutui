@@ -63,7 +63,7 @@ app.use(Price);
 | size | 价格尺寸，`small`、`normal`、`large` | string | `normal` |
 | strike-through`v4.0.3` | 是否展示划线价 | Boolean | false |
 
-### 类型定义 4.3.2
+### 类型定义 v4.3.2
 
 组件导出以下类型定义：
 

@@ -92,6 +92,17 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 | blur | Triggered when the input box blur | `event: Event` |
 | focus | Triggered when the input box focus | `event: Event ` |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  InputNumberProps,
+  InputNumberInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

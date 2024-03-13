@@ -92,6 +92,17 @@ app.use(InputNumber);
 | blur | 输入框失去焦点时触发 | `(event: Event)  ` |
 | focus | 输入框获得焦点时触发 | `(event: Event ) ` |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  InputNumberProps,
+  InputNumberInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量
