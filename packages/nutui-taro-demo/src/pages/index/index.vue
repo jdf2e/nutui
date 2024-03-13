@@ -16,7 +16,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <template v-for="_package in reorder(_nav.packages)" :key="_package">
-            <li v-if="_package.show && _package.taro && _package.exportEmpty !== false">
+            <li v-if="_package.show !== false && _package.taro !== false">
               <a @click="navigateTo(_package.name, _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;

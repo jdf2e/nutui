@@ -15,7 +15,7 @@ const createConfig = async () => {
       };
 
       item.packages.map((it) => {
-        if (!(it.exportEmpty == false) && it.show) {
+        if (it.show !== false && it.taro !== false) {
           co.pages.push(`pages/${it.name.toLowerCase()}/index`);
         }
       });

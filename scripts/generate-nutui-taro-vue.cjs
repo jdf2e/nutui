@@ -12,7 +12,7 @@ const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, exclude, taro, setup } = element;
-    if (taro == true) {
+    if (taro !== false) {
       if (setup === true) {
         dts += `    Nut${name}: typeof import('@/packages/__VUE/${name.toLowerCase()}/index.taro')['default']\n`
         importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.taro';\n`;
@@ -27,7 +27,7 @@ config.nav.map((item) => {
         }
       }
       importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
-      if (exclude != true) {
+      if (exclude !== true) {
         packages.push(name);
       }
     }

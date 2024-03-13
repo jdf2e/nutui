@@ -22,9 +22,9 @@ config.nav.forEach((item) => {
     });
     if (target === 'nutui-taro' && element.taro === false) return; // 排除无 Taro 版组件
     // gen entry
-    if (element.exclude != true) {
+    if (element.exclude !== true) {
       let outputMjs = '';
-      if (element.type == 'methods' && target == 'nutui') {
+      if (element.funcCall === true && target == 'nutui') {
         outputMjs = `import ${element.name} from './${element.name}.js';
 import { show${element.name} } from './${element.name}.js';
 export { ${element.name}, show${element.name}, ${element.name} as default };`;
