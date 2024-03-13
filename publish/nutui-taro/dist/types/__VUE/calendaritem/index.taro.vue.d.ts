@@ -1,9 +1,5 @@
 import { MonthInfo, Day } from './type';
-
-declare type Install<T> = T & {
-    install(app: import('vue').App): void;
-};
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<{
     type: {
         type: StringConstructor;
         default: string;
@@ -208,11 +204,5 @@ declare const _default: Install< import("vue").DefineComponent<{
     startDate: string;
     endDate: string;
     firstDayOfWeek: number;
-}, {}>>;
+}, {}>;
 export default _default;
-
-declare module 'vue' {
-    interface GlobalComponents {
-        NutCalendarItem: typeof _default;
-    }
-}

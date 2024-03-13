@@ -40,7 +40,6 @@ export * from "./packages/input/index.mjs";
 export * from "./packages/radio/index.mjs";
 export * from "./packages/radiogroup/index.mjs";
 export * from "./packages/rate/index.mjs";
-export * from "./packages/calendaritem/index.mjs";
 export * from "./packages/picker/index.mjs";
 export * from "./packages/shortpassword/index.mjs";
 export * from "./packages/textarea/index.mjs";
@@ -146,7 +145,6 @@ import { Input } from "./packages/input/index.mjs";
 import { Radio } from "./packages/radio/index.mjs";
 import { RadioGroup } from "./packages/radiogroup/index.mjs";
 import { Rate } from "./packages/rate/index.mjs";
-import { CalendarItem } from "./packages/calendaritem/index.mjs";
 import { Picker } from "./packages/picker/index.mjs";
 import { ShortPassword } from "./packages/shortpassword/index.mjs";
 import { Textarea } from "./packages/textarea/index.mjs";
@@ -212,7 +210,7 @@ import { Invoice } from "./packages/invoice/index.mjs";
 import { AvatarCropper } from "./packages/avatarcropper/index.mjs";
 export { Locale } from "./packages/locale/lang";
 export function install(app) {
-  const packages = [Button,Cell,CellGroup,Overlay,Popup,ConfigProvider,Image,Layout,Col,Row,Sticky,Divider,Grid,GridItem,Space,Navbar,FixedNav,Menu,MenuItem,Tabbar,TabbarItem,Elevator,Pagination,Tabs,TabPane,Indicator,SideNavbar,SideNavbarItem,SubSideNavbar,Range,Searchbar,Cascader,Calendar,CalendarCard,Checkbox,CheckboxGroup,DatePicker,InputNumber,Input,Radio,RadioGroup,Rate,CalendarItem,Picker,ShortPassword,Textarea,Uploader,NumberKeyboard,Form,FormItem,Swipe,SwipeGroup,ActionSheet,Backtop,Drag,Dialog,InfiniteLoading,PullRefresh,Notify,Switch,Toast,Audio,AudioOperate,Avatar,AvatarGroup,List,Progress,CircleProgress,Noticebar,Empty,Video,Steps,Step,Swiper,SwiperItem,Price,ImagePreview,Countup,Countdown,Badge,Tag,Popover,Skeleton,Collapse,CollapseItem,Table,Animate,Ellipsis,Watermark,TrendArrow,Tour,Address,Barrage,Signature,TimeSelect,TimePannel,TimeDetail,Sku,Card,Ecard,AddressList,Category,CategoryPane,Comment,Invoice,AvatarCropper];
+  const packages = [Button,Cell,CellGroup,Overlay,Popup,ConfigProvider,Image,Layout,Col,Row,Sticky,Divider,Grid,GridItem,Space,Navbar,FixedNav,Menu,MenuItem,Tabbar,TabbarItem,Elevator,Pagination,Tabs,TabPane,Indicator,SideNavbar,SideNavbarItem,SubSideNavbar,Range,Searchbar,Cascader,Calendar,CalendarCard,Checkbox,CheckboxGroup,DatePicker,InputNumber,Input,Radio,RadioGroup,Rate,Picker,ShortPassword,Textarea,Uploader,NumberKeyboard,Form,FormItem,Swipe,SwipeGroup,ActionSheet,Backtop,Drag,Dialog,InfiniteLoading,PullRefresh,Notify,Switch,Toast,Audio,AudioOperate,Avatar,AvatarGroup,List,Progress,CircleProgress,Noticebar,Empty,Video,Steps,Step,Swiper,SwiperItem,Price,ImagePreview,Countup,Countdown,Badge,Tag,Popover,Skeleton,Collapse,CollapseItem,Table,Animate,Ellipsis,Watermark,TrendArrow,Tour,Address,Barrage,Signature,TimeSelect,TimePannel,TimeDetail,Sku,Card,Ecard,AddressList,Category,CategoryPane,Comment,Invoice,AvatarCropper];
   packages.forEach((item) => {
     if (item.install) {
       app.use(item);
