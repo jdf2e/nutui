@@ -5986,7 +5986,7 @@ const pf = /* @__PURE__ */ q(df, [["render", ff]]), mf = () => be(
               v([B]);
             else if (M === 1) {
               const C = nt(d.value[0], B);
-              C === 0 || C === null || C === void 0 ? v([]) : C < 0 ? v([d.value[0], B]) : v([B, d.value[0]]);
+              C == null ? v([]) : C < 0 ? v([d.value[0], B]) : v([B, d.value[0]]);
             } else
               console.warn("[NutUI] Calendar range error");
             break;

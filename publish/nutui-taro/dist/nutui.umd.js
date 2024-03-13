@@ -6808,7 +6808,7 @@ var __async = (__this, __arguments, generator) => {
               change([day]);
             } else if (len === 1) {
               const t = compareDay(innerValue.value[0], day);
-              if (t === 0 || t === null || t === void 0) {
+              if (t === null || t === void 0) {
                 change([]);
               } else if (t < 0) {
                 change([innerValue.value[0], day]);
