@@ -76,7 +76,7 @@ import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import NutProgress from '../progress/index.vue';
+import NutProgress from '../progress';
 import { Photograph, Failure, Loading, Del, Link } from '@nutui/icons-vue';
 import { useLocale } from '@/packages/utils/useLocale';
 import { useFormDisabled } from '../form/common';
