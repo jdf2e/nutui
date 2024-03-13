@@ -67,7 +67,7 @@ const copy = async () => {
   const fromConfig = await fse.readJson(configPath);
   fromConfig.nav.forEach(({ packages }) => {
     packages.forEach((item) => {
-      if (item.show) {
+      if (item.show !== false) {
         let cmpName = item.name.toLowerCase();
         let docpath = `src/packages/__VUE/${cmpName}/doc.md`;
         let docEnPath = `src/packages/__VUE/${cmpName}/doc.en-US.md`;

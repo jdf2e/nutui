@@ -67,7 +67,7 @@ const copy = async () => {
   const fromConfig = await fse.readJson(configPath);
   fromConfig.nav.forEach(({ packages }) => {
     packages.forEach((item) => {
-      if (item.show) {
+      if (item.show !== false) {
         let cmpName = item.name.toLowerCase();
         let doctaropath = `src/packages/__VUE/${cmpName}/doc.taro.md`;
         fse.readFile(doctaropath, (err, data) => {
