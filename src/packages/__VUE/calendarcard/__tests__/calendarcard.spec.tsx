@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import CalendarCard from '..';
-import { nextTick } from 'vue';
+import { nextTick, ref } from 'vue';
 import { CalendarCardDay } from '../types';
 
 test('CalendarCard: test defaultValue mount(() => ', async () => {
@@ -72,11 +72,16 @@ test('CalendarCard: test type multiple', async () => {
 });
 
 test('CalendarCard: test type range', async () => {
-  const wrapper = mount(() => <CalendarCard modelValue={[new Date('2023-01-25')]} type="range" />);
+  const val = ref([new Date('2023-01-25')]);
+  const wrapper = mount(() => <CalendarCard v-model={val.value} type="range" />);
 
   // current
   const currentDays = wrapper.findAll('.nut-calendarcard-day.current');
+  const active = wrapper.findAll('.nut-calendarcard-day.active');
+  expect(active.length).toBe(1);
+
   currentDays[24].trigger('click'); // 0125
+  await nextTick();
   const startAndEnd = wrapper.findAll('.nut-calendarcard-day.start.end');
   expect(startAndEnd.length).toBe(1);
 
