@@ -7,7 +7,7 @@ import Button from '../../button';
 import Switch from '../../switch/index.vue';
 import Checkbox from '../../checkbox/index.vue';
 import Rate from '../../rate/index.vue';
-import InputNumber from '../../inputnumber/index.vue';
+import InputNumber from '../../inputnumber';
 import Range from '../../range/index.vue';
 import Uploader from '../../uploader/index.vue';
 
