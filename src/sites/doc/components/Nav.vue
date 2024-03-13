@@ -4,7 +4,7 @@
       <li>{{ _nav.name }}</li>
       <ul>
         <template v-for="_package in reorder(_nav.packages)" :key="_package">
-          <li v-if="_package.show" :class="{ active: isActive(_package.name) }">
+          <li v-if="_package.show !== false" :class="{ active: isActive(_package.name) }">
             <router-link :to="_package.name.toLowerCase()" :class="{ active: isActive(_package.name) }">
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
             </router-link>

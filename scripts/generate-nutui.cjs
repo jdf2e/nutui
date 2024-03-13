@@ -12,7 +12,7 @@ const packages = [];
 const methods = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, type, exclude, setup } = element;
+    let { name, funcCall, exclude, setup } = element;
     if (setup === true) {
       dts += `    Nut${name}: typeof import('./__VUE/${name.toLowerCase()}/index')['default']\n`
       importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index';\n`;
@@ -22,7 +22,7 @@ config.nav.map((item) => {
       if (name !== 'Icon') {
         importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
       }
-      if (type === 'methods') {
+      if (funcCall === true) {
         importStr += `import { show${name} } from './__VUE/${name.toLowerCase()}/index';\n`;
         methods.push(`show${name}`);
       }
