@@ -3,7 +3,7 @@ import { Price as _sfc_main$5 } from "../price/Price.js";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useLocale } from "../index-s3RgMhc7.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import NutInputNumber from "../inputnumber/InputNumber.js";
+import { InputNumber as _sfc_main$6 } from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index-BqB5dTeo.js";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";
@@ -144,7 +144,7 @@ const _sfc_main$2 = create$2({
   },
   emits: ["click", "changeSku", "changeStepper", "clickBtnOptions", "overLimit", "reduce", "add"],
   components: {
-    NutInputNumber
+    NutInputNumber: _sfc_main$6
   },
   setup(props, { emit }) {
     const goodsCount = ref(props.stepperMin);
