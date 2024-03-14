@@ -43,7 +43,7 @@ app.use(Backtop);
 | content | 滚动容器中包含的内容 |
 | icon | 返回到顶部，按钮内容 |
 
-### 类型定义
+### 类型定义 version
 
 组件导出以下类型定义：
 

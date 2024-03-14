@@ -52,7 +52,7 @@ app.use(Backtop);
 | --- | --- |
 | default | The default slot is used to customize the content |
 
-### Types
+### Types version
 
 The component exports the following type definitions:
 

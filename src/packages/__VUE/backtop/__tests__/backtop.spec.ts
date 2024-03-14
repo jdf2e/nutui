@@ -1,5 +1,5 @@
 import { mount, config } from '@vue/test-utils';
-import Backtop from '../index.vue';
+import Backtop from '../backtop.vue';
 import { mockScrollTop } from './../../../utils/unit';
 import { nextTick } from 'vue';
 import { Top } from '@nutui/icons-vue';
