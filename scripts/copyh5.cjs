@@ -12,7 +12,7 @@ const replaceFile = (file) => {
       const target = path.resolve('src/packages/__VUE/', left, 'demo', `${right}.vue`);
       let code = '';
       try {
-        code = fs.readFileSync(target, 'utf-8');
+        code = fs.readFileSync(target, 'utf-8').trim();
       } catch (err) {
         code =
           '[script] copy:h5 File not found: ' + target;
