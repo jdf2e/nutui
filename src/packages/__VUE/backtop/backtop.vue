@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" :style="style" @click.stop="handleClick">
     <slot>
-      <Top size="19" class="nut-backtop-main"></Top>
+      <Top width="19px" height="19px" class="nut-backtop-main"></Top>
     </slot>
   </div>
 </template>

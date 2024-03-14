@@ -11,7 +11,7 @@
     </nut-scroll-view>
     <view :class="classes" :style="style" @click.stop="handleClick">
       <slot name="icon">
-        <Top size="19" class="nut-backtop-main"></Top>
+        <Top width="19px" height="19px" class="nut-backtop-main"></Top>
       </slot>
     </view>
   </view>
@@ -21,6 +21,10 @@
 import { computed, ref } from 'vue';
 import NutScrollView from '../scroll-view/index.taro.vue';
 import { Top } from '@nutui/icons-vue-taro';
+
+defineOptions({
+  name: 'NutBacktop'
+});
 
 export type BacktopProps = Partial<{
   height: string;
