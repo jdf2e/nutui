@@ -9,85 +9,62 @@
     >
       <slot name="content"></slot>
     </nut-scroll-view>
-    <view :class="classes" :style="style" @click.stop="click">
+    <view :class="classes" :style="style" @click.stop="handleClick">
       <slot name="icon">
-        <Top width="19px" height="19px" class="nut-backtop-main"></Top>
+        <Top size="19" class="nut-backtop-main"></Top>
       </slot>
     </view>
   </view>
 </template>
 
-<script lang="ts">
-import { reactive, computed, toRefs } from 'vue';
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import NutScrollView from '../scroll-view/index.taro.vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('backtop');
 import { Top } from '@nutui/icons-vue-taro';
-export default create({
-  components: {
-    Top,
-    NutScrollView
-  },
-  props: {
-    height: {
-      type: String,
-      default: '100vh'
-    },
-    bottom: {
-      type: Number,
-      default: 20
-    },
-    right: {
-      type: Number,
-      default: 10
-    },
-    zIndex: {
-      type: Number,
-      default: 10
-    },
-    distance: {
-      type: Number,
-      default: 200
-    }
-  },
-  emits: ['click'],
-  setup(props, { emit }) {
-    const state = reactive({
-      backTop: false,
-      scrollTop: 1
-    });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true,
-        show: state.backTop
-      };
-    });
-    const style = computed(() => {
-      return {
-        right: `${props.right}px`,
-        bottom: `${props.bottom}px`,
-        zIndex: props.zIndex
-      };
-    });
 
-    const scroll = (e: any) => {
-      state.scrollTop = 2;
-      state.backTop = e.detail.scrollTop >= props.distance;
-    };
+export type BacktopProps = Partial<{
+  height: string;
+  bottom: number;
+  right: number;
+  distance: number;
+  zIndex: number;
+}>;
 
-    const click = (e: MouseEvent) => {
-      state.scrollTop = 1;
-      emit('click', e);
-    };
-
-    return {
-      ...toRefs(state),
-      classes,
-      style,
-      scroll,
-      click
-    };
-  }
+const props = withDefaults(defineProps<BacktopProps>(), {
+  height: '100vh',
+  bottom: 20,
+  right: 10,
+  distance: 200,
+  zIndex: 10
 });
+
+const emit = defineEmits(['click']);
+
+const backTop = ref(false);
+const scrollTop = ref(1);
+const scroll = (e: any) => {
+  scrollTop.value = 2;
+  backTop.value = e.detail.scrollTop >= props.distance;
+};
+
+const classes = computed(() => {
+  const prefixCls = 'nut-backtop';
+  return {
+    [prefixCls]: true,
+    show: backTop.value
+  };
+});
+
+const style = computed(() => {
+  return {
+    right: `${props.right}px`,
+    bottom: `${props.bottom}px`,
+    zIndex: props.zIndex
+  };
+});
+
+const handleClick = (e: MouseEvent) => {
+  scrollTop.value = 1;
+  emit('click', e);
+};
 </script>

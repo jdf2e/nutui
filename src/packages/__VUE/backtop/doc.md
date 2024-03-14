@@ -52,6 +52,14 @@ app.use(Backtop);
 | --- | --- |
 | default | 默认 `slot`，用以自定义内容 |
 
+### 类型定义
+
+组件导出以下类型定义：
+
+```ts
+import type { BacktopProps, BacktopInstance } from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量
