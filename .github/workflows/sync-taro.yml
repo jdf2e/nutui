@@ -1,6 +1,7 @@
 name: sync to docs-taro
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - v4 # default branch

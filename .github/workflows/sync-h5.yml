@@ -1,6 +1,7 @@
 name: sync to docs-h5
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - v4 # default branch
