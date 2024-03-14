@@ -79,7 +79,6 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value |
 | --- | --- |
 | --nut-navbar-height | _44px_ |
-| --nut-navbar-margin-bottom | _20px_ |
 | --nut-navbar-padding | _0 16px_ |
 | --nut-navbar-background | _var(--nut-white)_ |
 | --nut-navbar-box-shadow | _0px 1px 7px 0px rgba(237, 238, 241, 1)_ |
