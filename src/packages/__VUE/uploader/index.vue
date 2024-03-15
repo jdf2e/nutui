@@ -42,7 +42,7 @@
             v-if="isDeletable"
             color="#808080"
             class="nut-uploader__preview-img__file__del"
-            @click="onDelete(item, index)"
+            @click.stop="onDelete(item, index)"
           ></Del>
         </view>
 
