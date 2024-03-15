@@ -18,7 +18,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { toRef, ref, watch, reactive, resolveComponent, openBlock, createElementBlock, renderSlot, createTextVNode, createBlock, createCommentVNode, Fragment, renderList, normalizeClass, createElementVNode, toDisplayString, createVNode } from "vue";
+import { toRef, ref, watch, reactive, resolveComponent, openBlock, createElementBlock, renderSlot, createTextVNode, createBlock, createCommentVNode, Fragment, renderList, normalizeClass, createElementVNode, toDisplayString, createVNode, withModifiers } from "vue";
 import { c as createComponent } from "../component-TCzwHGVq.js";
 import { f as funInterceptor } from "../Interceptor-xNdrCqtu.js";
 import { Progress as _sfc_main$1 } from "../progress/Progress.js";
@@ -579,7 +579,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               key: 0,
               color: "#808080",
               class: "nut-uploader__preview-img__file__del",
-              onClick: ($event) => _ctx.onDelete(item, index)
+              onClick: withModifiers(($event) => _ctx.onDelete(item, index), ["stop"])
             }, null, 8, ["onClick"])) : createCommentVNode("", true)
           ], 10, _hoisted_13),
           createTextVNode(),

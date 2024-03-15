@@ -10062,7 +10062,7 @@ var __async = (__this, __arguments, generator) => {
                 key: 0,
                 color: "#808080",
                 class: "nut-uploader__preview-img__file__del",
-                onClick: ($event) => _ctx.onDelete(item, index)
+                onClick: vue.withModifiers(($event) => _ctx.onDelete(item, index), ["stop"])
               }, null, 8, ["onClick"])) : vue.createCommentVNode("", true)
             ], 10, _hoisted_13$2),
             vue.createTextVNode(),
