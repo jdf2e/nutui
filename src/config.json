@@ -494,6 +494,7 @@
           "version": "3.0.0",
           "name": "Backtop",
           "cName": "返回顶部",
+          "setup": true,
           "desc": "较长页面快捷返回顶部",
           "author": "liqiong43"
         },
