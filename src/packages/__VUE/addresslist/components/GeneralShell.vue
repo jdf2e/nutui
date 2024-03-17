@@ -47,7 +47,7 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('address-list-general');
 import ItemContents from './ItemContents.vue';
 import NutButton from '../../button';
-import NutSwipe from '../../swipe/index.vue';
+import NutSwipe from '../../swipe';
 
 export default create({
   props: {

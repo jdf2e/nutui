@@ -1,9 +1,6 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
-import Swipe from '../index.vue';
-import SwipeGroup from '../../swipegroup/index.vue';
+import { Button, Cell, Swipe, SwipeGroup } from '@nutui/nutui';
 import { nextTick } from 'vue';
-import Button from '../../button';
-import Cell from '../../cell/index.vue';
 import { triggerDrag, mockGetBoundingClientRect } from '@/packages/utils/unit';
 
 test('Swipe: base swipe', () => {
