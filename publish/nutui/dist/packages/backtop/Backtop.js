@@ -1,57 +1,53 @@
-import { reactive, computed, onMounted, onUnmounted, onActivated, onDeactivated, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, withModifiers, renderSlot, createVNode } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, ref, computed, onMounted, onUnmounted, onActivated, onDeactivated, openBlock, createElementBlock, normalizeClass, normalizeStyle, withModifiers, renderSlot, createVNode, unref } from "vue";
 import { r as requestAniFrame, c as cancelRaf } from "../raf-MQjoO-Ag.js";
 import { Top } from "@nutui/icons-vue";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { componentName, create } = createComponent("backtop");
-const _sfc_main = create({
-  components: {
-    Top
-  },
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutBacktop"
+}), {
+  __name: "backtop",
   props: {
-    bottom: {
-      type: Number,
-      default: 20
-    },
-    right: {
-      type: Number,
-      default: 10
-    },
-    elId: {
-      type: [String],
-      default: "body"
-    },
-    distance: {
-      type: Number,
-      default: 200
-    },
-    zIndex: {
-      type: Number,
-      default: 10
-    },
-    isAnimation: {
-      type: Boolean,
-      default: true
-    },
-    duration: {
-      type: Number,
-      default: 1e3
-    }
+    bottom: { default: 20 },
+    right: { default: 10 },
+    elId: { default: "body" },
+    distance: { default: 200 },
+    zIndex: { default: 10 },
+    isAnimation: { type: Boolean, default: true },
+    duration: { default: 1e3 }
   },
   emits: ["click"],
-  setup(props, { emit }) {
-    const state = reactive({
-      backTop: false,
-      scrollTop: 0,
-      scrollEl: window,
-      startTime: 0,
-      keepAlive: false
-    });
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const backTop = ref(false);
+    const scrollTop = ref(0);
+    const scrollEl = ref(window);
+    const startTime = ref(0);
+    const keepAlive = ref(false);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-backtop";
       return {
         [prefixCls]: true,
-        show: state.backTop
+        show: backTop.value
       };
     });
     const style = computed(() => {
@@ -62,24 +58,24 @@ const _sfc_main = create({
       };
     });
     function scrollListener() {
-      if (state.scrollEl instanceof Window) {
-        state.scrollTop = state.scrollEl.pageYOffset;
+      if (scrollEl.value instanceof Window) {
+        scrollTop.value = scrollEl.value.scrollY;
       } else {
-        state.scrollTop = state.scrollEl.scrollTop;
+        scrollTop.value = scrollEl.value.scrollTop;
       }
-      state.backTop = state.scrollTop >= props.distance;
+      backTop.value = scrollTop.value >= props.distance;
     }
     function scroll(y = 0) {
-      if (state.scrollEl instanceof Window) {
+      if (scrollEl.value instanceof Window) {
         window.scrollTo(0, y);
       } else {
-        state.scrollEl.scrollTop = y;
+        scrollEl.value.scrollTop = y;
       }
     }
     function scrollAnimation() {
       let cid = requestAniFrame(function fn() {
-        var t = props.duration - Math.max(0, state.startTime - +/* @__PURE__ */ new Date() + props.duration);
-        var y = t * -state.scrollTop / props.duration + state.scrollTop;
+        var t = props.duration - Math.max(0, startTime.value - +/* @__PURE__ */ new Date() + props.duration);
+        var y = t * -scrollTop.value / props.duration + scrollTop.value;
         scroll(y);
         cid = requestAniFrame(fn);
         if (t == props.duration || y == 0) {
@@ -88,27 +84,27 @@ const _sfc_main = create({
       });
     }
     function addEventListener() {
-      state.scrollEl.addEventListener("scroll", scrollListener, false);
-      state.scrollEl.addEventListener("resize", scrollListener, false);
+      scrollEl.value.addEventListener("scroll", scrollListener, false);
+      scrollEl.value.addEventListener("resize", scrollListener, false);
     }
     function removeEventListener() {
-      state.scrollEl.removeEventListener("scroll", scrollListener, false);
-      state.scrollEl.removeEventListener("resize", scrollListener, false);
+      scrollEl.value.removeEventListener("scroll", scrollListener, false);
+      scrollEl.value.removeEventListener("resize", scrollListener, false);
     }
-    function click(e) {
-      state.startTime = +/* @__PURE__ */ new Date();
+    function handleClick(e) {
+      startTime.value = +/* @__PURE__ */ new Date();
       props.isAnimation && props.duration > 0 ? scrollAnimation() : scroll();
       emit("click", e);
     }
     function init() {
       if (props.elId && document.getElementById(props.elId)) {
-        state.scrollEl = document.getElementById(props.elId);
+        scrollEl.value = document.getElementById(props.elId);
       }
       addEventListener();
     }
     onMounted(() => {
       if (props.distance == 0) {
-        state.backTop = true;
+        backTop.value = true;
       }
       init();
     });
@@ -116,40 +112,34 @@ const _sfc_main = create({
       removeEventListener();
     });
     onActivated(() => {
-      if (state.keepAlive) {
-        state.keepAlive = false;
+      if (keepAlive.value) {
+        keepAlive.value = false;
         init();
       }
     });
     onDeactivated(() => {
-      state.keepAlive = true;
+      keepAlive.value = true;
       removeEventListener();
     });
-    return {
-      state,
-      classes,
-      style,
-      click
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(classes.value),
+        style: normalizeStyle(style.value),
+        onClick: withModifiers(handleClick, ["stop"])
+      }, [
+        renderSlot(_ctx.$slots, "default", {}, () => [
+          createVNode(unref(Top), {
+            width: "19px",
+            height: "19px",
+            class: "nut-backtop-main"
+          })
+        ])
+      ], 6);
     };
   }
-});
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Top = resolveComponent("Top");
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.classes),
-    style: normalizeStyle(_ctx.style),
-    onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.click && _ctx.click(...args), ["stop"]))
-  }, [
-    renderSlot(_ctx.$slots, "default", {}, () => [
-      createVNode(_component_Top, {
-        width: "19px",
-        height: "19px",
-        class: "nut-backtop-main"
-      })
-    ])
-  ], 6);
-}
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index as default
+  _sfc_main as Backtop,
+  _sfc_main as default
 };

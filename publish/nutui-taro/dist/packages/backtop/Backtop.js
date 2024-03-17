@@ -17,50 +17,36 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, computed, toRefs, resolveComponent, openBlock, createElementBlock, createVNode, normalizeStyle, withCtx, renderSlot, createTextVNode, createElementVNode, normalizeClass, withModifiers } from "vue";
+import { defineComponent, ref, computed, openBlock, createElementBlock, createVNode, normalizeStyle, withCtx, renderSlot, createTextVNode, createElementVNode, normalizeClass, withModifiers, unref } from "vue";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
-import { c as createComponent } from "../component-TCzwHGVq.js";
 import { Top } from "@nutui/icons-vue-taro";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { componentName, create } = createComponent("backtop");
-const _sfc_main = create({
-  components: {
-    Top,
-    NutScrollView: _sfc_main$1
-  },
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutBacktop"
+}), {
+  __name: "backtop.taro",
   props: {
-    height: {
-      type: String,
-      default: "100vh"
-    },
-    bottom: {
-      type: Number,
-      default: 20
-    },
-    right: {
-      type: Number,
-      default: 10
-    },
-    zIndex: {
-      type: Number,
-      default: 10
-    },
-    distance: {
-      type: Number,
-      default: 200
-    }
+    height: { default: "100vh" },
+    bottom: { default: 20 },
+    right: { default: 10 },
+    distance: { default: 200 },
+    zIndex: { default: 10 }
   },
   emits: ["click"],
-  setup(props, { emit }) {
-    const state = reactive({
-      backTop: false,
-      scrollTop: 1
-    });
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const backTop = ref(false);
+    const scrollTop = ref(1);
+    const scroll = (e) => {
+      scrollTop.value = 2;
+      backTop.value = e.detail.scrollTop >= props.distance;
+    };
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-backtop";
       return {
         [prefixCls]: true,
-        show: state.backTop
+        show: backTop.value
       };
     });
     const style = computed(() => {
@@ -70,55 +56,44 @@ const _sfc_main = create({
         zIndex: props.zIndex
       };
     });
-    const scroll = (e) => {
-      state.scrollTop = 2;
-      state.backTop = e.detail.scrollTop >= props.distance;
-    };
-    const click = (e) => {
-      state.scrollTop = 1;
+    const handleClick = (e) => {
+      scrollTop.value = 1;
       emit("click", e);
     };
-    return __spreadProps(__spreadValues({}, toRefs(state)), {
-      classes,
-      style,
-      scroll,
-      click
-    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", null, [
+        createVNode(_sfc_main$1, {
+          "scroll-y": true,
+          style: normalizeStyle({ height: _ctx.height }),
+          "scroll-top": scrollTop.value,
+          "scroll-with-animation": "true",
+          onScroll: scroll
+        }, {
+          default: withCtx(() => [
+            renderSlot(_ctx.$slots, "content")
+          ]),
+          _: 3
+        }, 8, ["style", "scroll-top"]),
+        createTextVNode(),
+        createElementVNode("view", {
+          class: normalizeClass(classes.value),
+          style: normalizeStyle(style.value),
+          onClick: withModifiers(handleClick, ["stop"])
+        }, [
+          renderSlot(_ctx.$slots, "icon", {}, () => [
+            createVNode(unref(Top), {
+              width: "19px",
+              height: "19px",
+              class: "nut-backtop-main"
+            })
+          ])
+        ], 6)
+      ]);
+    };
   }
-});
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_nut_scroll_view = resolveComponent("nut-scroll-view");
-  const _component_Top = resolveComponent("Top");
-  return openBlock(), createElementBlock("view", null, [
-    createVNode(_component_nut_scroll_view, {
-      "scroll-y": true,
-      style: normalizeStyle({ height: _ctx.height }),
-      "scroll-top": _ctx.scrollTop,
-      "scroll-with-animation": "true",
-      onScroll: _ctx.scroll
-    }, {
-      default: withCtx(() => [
-        renderSlot(_ctx.$slots, "content")
-      ]),
-      _: 3
-    }, 8, ["style", "scroll-top", "onScroll"]),
-    createTextVNode(),
-    createElementVNode("view", {
-      class: normalizeClass(_ctx.classes),
-      style: normalizeStyle(_ctx.style),
-      onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.click && _ctx.click(...args), ["stop"]))
-    }, [
-      renderSlot(_ctx.$slots, "icon", {}, () => [
-        createVNode(_component_Top, {
-          width: "19px",
-          height: "19px",
-          class: "nut-backtop-main"
-        })
-      ])
-    ], 6)
-  ]);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Backtop,
+  _sfc_main as default
 };
