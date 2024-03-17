@@ -52,6 +52,14 @@ app.use(Backtop);
 | --- | --- |
 | default | The default slot is used to customize the content |
 
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type { BacktopProps, BacktopInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
