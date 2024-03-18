@@ -17,34 +17,27 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, ref, inject, watch, onMounted, reactive, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, unref, renderSlot, createTextVNode } from "vue";
 import { u as useTouch } from "../index-084nl_oE.js";
-import { ref, inject, watch, onMounted, reactive, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, renderSlot, createTextVNode } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
 import { S as SWIPE_KEY } from "../types-qOrhXtA_.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { create } = createComponent("swipe");
-const _sfc_main = create({
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _hoisted_1 = ["id"];
+const _hoisted_2 = ["id"];
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutSwipe"
+}), {
+  __name: "swipe.taro",
   props: {
-    name: {
-      type: String,
-      default: ""
-    },
-    touchMoveStopPropagation: {
-      type: Boolean,
-      default: false
-    },
-    touchMovePreventDefault: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
+    name: { default: "" },
+    touchMoveStopPropagation: { type: Boolean, default: false },
+    touchMovePreventDefault: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false }
   },
   emits: ["open", "close", "click"],
-  setup(props, { emit }) {
+  setup(__props, { expose: __expose, emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const refRandomId = Math.random().toString(36).slice(-8);
     const leftRef = ref();
     const leftRefWidth = ref(0);
@@ -147,107 +140,99 @@ const _sfc_main = create({
       state.offset = offset;
     };
     const touch = useTouch();
-    const touchMethods = {
-      onTouchStart(event) {
-        if (props.disabled)
-          return;
-        touch.start(event);
-      },
-      onTouchMove(event) {
-        if (props.disabled)
-          return;
-        touch.move(event);
-        if (touch.isHorizontal()) {
-          lockClick.value = true;
-          state.moving = true;
-          setoffset(touch.deltaX.value);
-          if (props.touchMovePreventDefault) {
-            event.preventDefault();
-          }
-          if (props.touchMoveStopPropagation) {
-            event.stopPropagation();
-          }
+    const onTouchStart = (event) => {
+      if (props.disabled)
+        return;
+      touch.start(event);
+    };
+    const onTouchMove = (event) => {
+      if (props.disabled)
+        return;
+      touch.move(event);
+      if (touch.isHorizontal()) {
+        lockClick.value = true;
+        state.moving = true;
+        setoffset(touch.deltaX.value);
+        if (props.touchMovePreventDefault) {
+          event.preventDefault();
         }
-      },
-      onTouchEnd() {
-        if (state.moving) {
-          state.moving = false;
-          oldPosition = position;
-          switch (position) {
-            case "left":
-              if (Math.abs(state.offset) <= rightRefWidth.value / 2) {
-                close();
-              } else {
-                state.offset = -rightRefWidth.value;
-                open();
-              }
-              break;
-            case "right":
-              if (Math.abs(state.offset) <= leftRefWidth.value / 2) {
-                close();
-              } else {
-                state.offset = leftRefWidth.value;
-                open();
-              }
-              break;
-          }
-          setTimeout(() => {
-            lockClick.value = false;
-          }, 0);
+        if (props.touchMoveStopPropagation) {
+          event.stopPropagation();
         }
       }
     };
-    return __spreadProps(__spreadValues({
-      touchStyle
-    }, touchMethods), {
-      leftRef,
-      rightRef,
-      refRandomId,
+    const onTouchEnd = () => {
+      if (state.moving) {
+        state.moving = false;
+        oldPosition = position;
+        switch (position) {
+          case "left":
+            if (Math.abs(state.offset) <= rightRefWidth.value / 2) {
+              close();
+            } else {
+              state.offset = -rightRefWidth.value;
+              open();
+            }
+            break;
+          case "right":
+            if (Math.abs(state.offset) <= leftRefWidth.value / 2) {
+              close();
+            } else {
+              state.offset = leftRefWidth.value;
+              open();
+            }
+            break;
+        }
+        setTimeout(() => {
+          lockClick.value = false;
+        }, 0);
+      }
+    };
+    __expose({
       open,
-      close,
-      onClick,
-      lockClick
+      close
     });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: "nut-swipe",
+        style: normalizeStyle(touchStyle.value),
+        onTouchstart: onTouchStart,
+        onTouchmove: onTouchMove,
+        onTouchend: onTouchEnd,
+        onTouchcancel: onTouchEnd
+      }, [
+        createElementVNode("view", {
+          id: "leftRef-" + unref(refRandomId),
+          ref_key: "leftRef",
+          ref: leftRef,
+          class: "nut-swipe__left",
+          onClick: _cache[0] || (_cache[0] = ($event) => onClick($event, "left", true))
+        }, [
+          renderSlot(_ctx.$slots, "left")
+        ], 8, _hoisted_1),
+        createTextVNode(),
+        createElementVNode("view", {
+          class: "nut-swipe__content",
+          onClick: _cache[1] || (_cache[1] = ($event) => onClick($event, "content", lockClick.value))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        createTextVNode(),
+        createElementVNode("view", {
+          id: "rightRef-" + unref(refRandomId),
+          ref_key: "rightRef",
+          ref: rightRef,
+          class: "nut-swipe__right",
+          onClick: _cache[2] || (_cache[2] = ($event) => onClick($event, "right", true))
+        }, [
+          renderSlot(_ctx.$slots, "right")
+        ], 8, _hoisted_2)
+      ], 36);
+    };
   }
-});
-const _hoisted_1 = ["id"];
-const _hoisted_2 = ["id"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: "nut-swipe",
-    style: normalizeStyle(_ctx.touchStyle),
-    onTouchstart: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
-    onTouchmove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
-    onTouchend: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
-    onTouchcancel: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
-  }, [
-    createElementVNode("view", {
-      id: "leftRef-" + _ctx.refRandomId,
-      ref: "leftRef",
-      class: "nut-swipe__left",
-      onClick: _cache[0] || (_cache[0] = ($event) => _ctx.onClick($event, "left", true))
-    }, [
-      renderSlot(_ctx.$slots, "left")
-    ], 8, _hoisted_1),
-    createTextVNode(),
-    createElementVNode("view", {
-      class: "nut-swipe__content",
-      onClick: _cache[1] || (_cache[1] = ($event) => _ctx.onClick($event, "content", _ctx.lockClick))
-    }, [
-      renderSlot(_ctx.$slots, "default")
-    ]),
-    createTextVNode(),
-    createElementVNode("view", {
-      id: "rightRef-" + _ctx.refRandomId,
-      ref: "rightRef",
-      class: "nut-swipe__right",
-      onClick: _cache[2] || (_cache[2] = ($event) => _ctx.onClick($event, "right", true))
-    }, [
-      renderSlot(_ctx.$slots, "right")
-    ], 8, _hoisted_2)
-  ], 36);
-}
-const NutSwipe = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  NutSwipe as default
+  _sfc_main as Swipe,
+  _sfc_main as default
 };

@@ -5,7 +5,7 @@ import { u as useLocale } from "../index-xXrovSQL.js";
 import { Del, Edit } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 import { Button as _sfc_main$3 } from "../button/Button.js";
-import NutSwipe from "../swipe/Swipe.js";
+import { Swipe as _sfc_main$4 } from "../swipe/Swipe.js";
 const { create: create$2 } = createComponent("address-list-item");
 const cN$1 = "NutAddressList";
 const _sfc_main$2 = create$2({
@@ -112,7 +112,7 @@ const _sfc_main$1 = create$1({
   components: {
     ItemContents,
     NutButton: _sfc_main$3,
-    NutSwipe
+    NutSwipe: _sfc_main$4
   },
   setup(props, { emit }) {
     const renderCompontent = () => {
