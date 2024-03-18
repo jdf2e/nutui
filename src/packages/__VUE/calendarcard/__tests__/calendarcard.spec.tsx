@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
-import CalendarCard from '..';
+import { CalendarCard, type CalendarCardDay } from '@nutui/nutui';
 import { nextTick, ref } from 'vue';
-import { CalendarCardDay } from '../types';
 
 test('CalendarCard: test defaultValue mount(() => ', async () => {
   const wrapper = mount(() => <CalendarCard modelValue={new Date('2023-01-25')} />);

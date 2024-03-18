@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Countup from '../index.vue';
+import { Countup } from '@nutui/nutui';
 import { nextTick } from 'vue';
 import { sleep } from '@/packages/utils/unit';
 

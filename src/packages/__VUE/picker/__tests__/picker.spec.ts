@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Picker from '../index.vue';
+import { Picker } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 const simpleColumns = [

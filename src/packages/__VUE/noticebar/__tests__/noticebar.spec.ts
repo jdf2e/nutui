@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick, ref, h } from 'vue';
-import Noticebar from '../index.vue';
+import { Noticebar } from '@nutui/nutui';
 import { Issue } from '@nutui/icons-vue';
 
 Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {

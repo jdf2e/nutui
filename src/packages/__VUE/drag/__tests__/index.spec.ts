@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Drag from '../index.vue';
+import { Drag } from '@nutui/nutui';
 import { triggerDrag, sleep } from '../../../utils/unit';
 
 test('should render default slot correctly', () => {

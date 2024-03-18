@@ -1,4 +1,4 @@
-import Badge from '../index.vue';
+import { Badge } from '@nutui/nutui';
 import { mount } from '@vue/test-utils';
 
 test('should render nothing when content is empty string', () => {

@@ -1,13 +1,5 @@
-import { mount, config } from '@vue/test-utils';
-import Switch from '../index.vue';
-
-beforeAll(() => {
-  config.global.components = {};
-});
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { mount } from '@vue/test-utils';
+import { Switch } from '@nutui/nutui';
 
 test('render ok', () => {
   const wrapper = mount(Switch);

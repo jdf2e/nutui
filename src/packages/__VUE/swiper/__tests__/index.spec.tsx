@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { vi } from 'vitest';
-import Swiper from '../index.vue';
-import SwiperItem from './../../swiperitem/index.vue';
+import { Swiper, SwiperItem } from '@nutui/nutui';
 import { nextTick, toRefs, reactive } from 'vue';
 import { sleep } from '@/packages/utils/unit';
 

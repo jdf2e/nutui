@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Searchbar from '../index.vue';
+import { Searchbar } from '@nutui/nutui';
 
 test('Searchbar: basic usage', () => {
   const wrapper = mount(Searchbar, {

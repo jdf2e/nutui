@@ -1,15 +1,6 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
-import Form from '../';
-import FormItem from '../../formitem';
-import Textarea from '../../textarea/index.vue';
-import Button from '../../button';
-import Switch from '../../switch/index.vue';
-import Checkbox from '../../checkbox/index.vue';
-import Rate from '../../rate';
-import InputNumber from '../../inputnumber';
-import Range from '../../range/index.vue';
-import Uploader from '../../uploader/index.vue';
+import { Form, FormItem, Button, Textarea, Switch, Checkbox, Rate, InputNumber, Range, Uploader } from '@nutui/nutui';
 
 test('base Form', () => {
   const wrapper = mount(() => {

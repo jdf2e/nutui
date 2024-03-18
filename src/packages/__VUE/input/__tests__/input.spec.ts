@@ -1,5 +1,5 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
-import Input from '../index.vue';
+import { Input } from '@nutui/nutui';
 import { nextTick, ref } from 'vue';
 
 test('base', () => {

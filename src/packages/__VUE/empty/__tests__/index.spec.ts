@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Empty from '../../empty/index.vue';
+import { Empty } from '@nutui/nutui';
 
 test('Empty: should be shown when passing image and description', () => {
   const wrapper = mount(Empty, {

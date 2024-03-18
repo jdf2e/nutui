@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Elevator from '../index.vue';
+import { Elevator } from '@nutui/nutui';
 
 const indexList = [
   {

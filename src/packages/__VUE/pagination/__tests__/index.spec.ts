@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Pagination from '../index.vue';
+import { Pagination } from '@nutui/nutui';
 
 //测试 totalItems itemsPerPage currentPage @change
 test('should render five items and should not emit change event after clicking disabled option', async () => {

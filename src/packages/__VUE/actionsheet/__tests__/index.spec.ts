@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ActionSheet from '../index.vue';
+import { ActionSheet } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 test('should render ActionSheet when visible is true', async () => {

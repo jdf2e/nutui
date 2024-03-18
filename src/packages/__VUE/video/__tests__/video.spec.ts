@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Video from '../index.vue';
+import { Video } from '@nutui/nutui';
 import { mockElementMethod } from '@/packages/utils/unit';
 
 mockElementMethod(HTMLMediaElement, 'load');

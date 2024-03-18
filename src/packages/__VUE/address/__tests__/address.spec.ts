@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Address from '../index.vue';
+import { Address } from '@nutui/nutui';
 import { addressListData, addressExistData } from '../address-list';
 
 test('Address: address render', async () => {

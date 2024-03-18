@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import DatePicker from '../../datepicker/index.vue';
+import { DatePicker } from '@nutui/nutui';
 
 test('Do not display Chinese', async () => {
   const wrapper = mount(DatePicker, {

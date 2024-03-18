@@ -1,5 +1,5 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
-import Card from '../index.vue';
+import { Card } from '@nutui/nutui';
 
 test('Card: title props', () => {
   const wrapper = mount(Card, {

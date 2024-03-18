@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import FixedNav from '../index.vue';
+import { FixedNav } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 describe('FixedNav', () => {

@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import PopUp from '../index.vue';
+import { Popup } from '@nutui/nutui';
 
 test('should change z-index when using z-index prop', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       zIndex: 99
@@ -15,7 +15,7 @@ test('should change z-index when using z-index prop', async () => {
 });
 
 test('should change animation duration when using duration prop', () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       duration: 12
@@ -27,7 +27,7 @@ test('should change animation duration when using duration prop', () => {
 });
 
 test('should lock scroll when showed', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     visible: false
   });
 
@@ -36,7 +36,7 @@ test('should lock scroll when showed', async () => {
 });
 
 test('should not render overlay when overlay prop is false', () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       overlay: false
@@ -46,7 +46,7 @@ test('should not render overlay when overlay prop is false', () => {
 });
 
 test('prop close-on-click-overlay test', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       closeOnClickOverlay: false
@@ -58,7 +58,7 @@ test('prop close-on-click-overlay test', async () => {
 });
 
 test('pop from top', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       position: 'top'
@@ -70,7 +70,7 @@ test('pop from top', async () => {
 });
 
 test('pop from bottom', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       position: 'bottom'
@@ -82,7 +82,7 @@ test('pop from bottom', async () => {
 });
 
 test('pop from left', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       position: 'left'
@@ -94,7 +94,7 @@ test('pop from left', async () => {
 });
 
 test('pop from right', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       position: 'right'
@@ -106,7 +106,7 @@ test('pop from right', async () => {
 });
 
 test('should render close icon when using closeable prop', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       closeable: true
@@ -118,7 +118,7 @@ test('should render close icon when using closeable prop', async () => {
 });
 
 // test('should render correct close icon when using close-icon prop', () => {
-//   const wrapper = mount(PopUp, {
+//   const wrapper = mount(Popup, {
 //     props: {
 //       visible: true,
 //       closeable: true,
@@ -130,7 +130,7 @@ test('should render close icon when using closeable prop', async () => {
 // });
 
 test('should have "nut-popup--round" class when setting the round prop', () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       round: true
@@ -141,7 +141,7 @@ test('should have "nut-popup--round" class when setting the round prop', () => {
 });
 
 test('event click pop test', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       closeOnClickOverlay: true
@@ -154,7 +154,7 @@ test('event click pop test', async () => {
 });
 
 test('event click-close-icon test', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true,
       closeable: true
@@ -165,7 +165,7 @@ test('event click-close-icon test', async () => {
 });
 
 test('should emit open event when prop visible is set to true', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: false
     }
@@ -176,7 +176,7 @@ test('should emit open event when prop visible is set to true', async () => {
 });
 
 test('event close test', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true
     }
@@ -187,7 +187,7 @@ test('event close test', async () => {
 });
 
 test('event click-overlay test', async () => {
-  const wrapper = mount(PopUp, {
+  const wrapper = mount(Popup, {
     props: {
       visible: true
     }

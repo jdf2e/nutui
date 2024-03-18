@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ImagePreview from '../index.vue';
+import { ImagePreview } from '@nutui/nutui';
 import { nextTick } from 'vue';
 import { sleep } from '@/packages/utils/unit';
 

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Skeleton from '../index.vue';
+import { Skeleton } from '@nutui/nutui';
 
 test('should render with row‘s father content width correctly', () => {
   const wrapper = mount(Skeleton, {

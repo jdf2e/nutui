@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Popover from '../index.vue';
+import { Popover } from '@nutui/nutui';
 import { ref, nextTick } from 'vue';
 import { sleep } from '@/packages/utils/unit';
 

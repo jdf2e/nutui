@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Comment from '../index.vue';
+import { Comment } from '@nutui/nutui';
 import CommentData from '../comment_data.json';
 
 test('comment init render', async () => {

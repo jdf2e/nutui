@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Barrage from '../index.vue';
+import { Barrage } from '@nutui/nutui';
 
 const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-'];
 

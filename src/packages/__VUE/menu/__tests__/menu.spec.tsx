@@ -1,6 +1,5 @@
 import { config, mount } from '@vue/test-utils';
-import Menu from '../index.vue';
-import MenuItem from '../../menuitem/index.vue';
+import { Menu, MenuItem } from '@nutui/nutui';
 import { mockScrollTop } from './../../../utils/unit';
 import { h, nextTick } from 'vue';
 

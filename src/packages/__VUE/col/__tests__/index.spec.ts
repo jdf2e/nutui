@@ -1,5 +1,4 @@
-import Col from '../';
-import Row from '../../row';
+import { Col, Row } from '@nutui/nutui';
 import { mount } from '@vue/test-utils';
 
 // 测试用例

@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Space from '../index.vue';
-import NutButton from '../../button';
+import { Button, Space } from '@nutui/nutui';
 import { h } from 'vue';
 
 const prefixCls = 'nut-space';
@@ -8,7 +7,7 @@ const prefixCls = 'nut-space';
 test('space: should match snapshot', () => {
   const wrapper = mount(Space, {
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.html()).toMatchSnapshot();
@@ -20,7 +19,7 @@ test('space: with props direction', () => {
       direction: 'vertical'
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.classes()).toContain(`${prefixCls}-vertical`);
@@ -32,7 +31,7 @@ test('space: with props align', () => {
       align: 'end'
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.classes()).toContain(`${prefixCls}-align-end`);
@@ -44,7 +43,7 @@ test('space: with props justify', () => {
       justify: 'center'
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.classes()).toContain(`${prefixCls}-justify-center`);
@@ -56,7 +55,7 @@ test('space: with props wrap', () => {
       wrap: true
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.classes()).toContain(`${prefixCls}-wrap`);
@@ -68,7 +67,7 @@ test('space: with props fill', () => {
       fill: true
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   expect(wrapper.classes()).toContain(`${prefixCls}-fill`);
@@ -80,7 +79,7 @@ test('space: with props gutter number', () => {
       gutter: 20
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   const nutSpaceItem = wrapper.find('.nut-space-item');
@@ -93,7 +92,7 @@ test('space: with props gutter string', () => {
       gutter: '1rem'
     },
     slots: {
-      default: [h(NutButton, () => '按钮'), h(NutButton, () => '按钮'), h(NutButton, () => '按钮')]
+      default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
   });
   const nutSpaceItem = wrapper.find('.nut-space-item');

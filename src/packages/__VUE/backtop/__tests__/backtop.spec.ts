@@ -1,7 +1,7 @@
 import { mount, config } from '@vue/test-utils';
-import Backtop from '../backtop.vue';
 import { mockScrollTop } from './../../../utils/unit';
 import { nextTick } from 'vue';
+import { Backtop } from '@nutui/nutui';
 import { Top } from '@nutui/icons-vue';
 beforeAll(() => {
   config.global.components = {

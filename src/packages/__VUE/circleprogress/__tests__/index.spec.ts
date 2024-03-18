@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
-import Circleprogress from '../';
+import { CircleProgress } from '@nutui/nutui';
 
 test('CircleProgress: should change stoke when use width props', async () => {
-  const wrapper = mount(Circleprogress, {
+  const wrapper = mount(CircleProgress, {
     props: {
       progress: 40,
       strokeWidth: 10,
@@ -14,7 +14,7 @@ test('CircleProgress: should change stoke when use width props', async () => {
   expect(element.style.height).toEqual('120px');
 });
 test('CircleProgress: should change color when use color props', async () => {
-  const wrapper = mount(Circleprogress, {
+  const wrapper = mount(CircleProgress, {
     props: {
       progress: 40,
       color: 'red'
@@ -24,7 +24,7 @@ test('CircleProgress: should change color when use color props', async () => {
   expect(path[1].html()).toContain('red');
 });
 test('CircleProgress: gradient', async () => {
-  const wrapper = mount(Circleprogress, {
+  const wrapper = mount(CircleProgress, {
     props: {
       progress: 40,
       clockwise: false,

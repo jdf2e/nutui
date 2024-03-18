@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Price from '../';
+import { Price } from '@nutui/nutui';
 
 test('Price: base price', () => {
   const wrapper = mount(Price, {

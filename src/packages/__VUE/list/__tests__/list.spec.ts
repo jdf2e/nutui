@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import List from '../index.vue';
+import { List } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 test('should render height', async () => {

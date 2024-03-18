@@ -1,4 +1,4 @@
-import Tag from '../index.vue';
+import { Tag } from '@nutui/nutui';
 import { mount } from '@vue/test-utils';
 
 test('Tag: should emit close event when clicking the close icon', () => {

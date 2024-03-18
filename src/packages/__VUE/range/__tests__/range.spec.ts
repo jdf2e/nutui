@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Range from '../index.vue';
+import { Range } from '@nutui/nutui';
 import { trigger, triggerDrag } from '../../../utils/unit';
 
 test('should render range when used ', async () => {

@@ -1,6 +1,6 @@
 import { CascaderOption } from './../types';
 import { mount } from '@vue/test-utils';
-import Cascader from '../index.vue';
+import { Cascader } from '@nutui/nutui';
 import Tree from '../tree';
 import { formatTree, convertListToOptions } from '../helper';
 

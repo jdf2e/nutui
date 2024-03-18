@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ConfigProvider from '../index.vue';
+import { ConfigProvider } from '@nutui/nutui';
 import { Close } from '@nutui/icons-vue';
 import { h } from 'vue';
 

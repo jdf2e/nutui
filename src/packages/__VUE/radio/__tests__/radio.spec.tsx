@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-import RadioGroup from '../../radiogroup/index.vue';
-import Radio from '../index.vue';
+import { Radio, RadioGroup } from '@nutui/nutui';
 import { ref } from 'vue';
 
 test('Radio: v-model & change', async () => {
