@@ -32,7 +32,7 @@ app.use(Tag);
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | Label type，can be set `primary` `success` `danger` `warning` | string | `default` |
+| type | Label type，can be set `primary` `success` `danger` `warning`、`default` | string | `default` |
 | color | Label color | string | - |
 | text-color | Text color, which takes precedence over the `color` attribute | string | `white` |
 | plain | Whether it is plain | boolean | `false` |
@@ -52,6 +52,14 @@ app.use(Tag);
 | --- | --- | --- |
 | click | click event | `event` |
 | close | close event | `event` |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type { TagType, TagProps, TagInstance } from '@nutui/nutui-taro';
+```
 
 ## Theming
 
