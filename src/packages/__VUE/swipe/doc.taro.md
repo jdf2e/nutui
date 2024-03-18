@@ -57,6 +57,7 @@ app.use(Swipe);
 
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
+| click | 点击事件 | `name, position: 'left' \| 'content' \| 'right'` |
 | open | 滑动时触发，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right'` |
 | close | 关闭时触发，同上 | `name, position: 'left' \| 'right'` |
 
@@ -74,7 +75,6 @@ app.use(Swipe);
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
-| click | 点击事件 | `name, position: 'left' \| 'content' \| 'right'` |
 | open | 滑动单元格侧边栏，left 指向左滑，right 指向右滑 | `name, position: 'left' \| 'right'` |
 | close | 收起单元格侧边栏，同上 | `name, position: 'left' \| 'right'` |
 
@@ -85,3 +85,11 @@ app.use(Swipe);
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | lock`v4.1.1` | 控制内部 Swipe 互斥，即滑动打开某一个 Swipe 时，触发其余 Swipe 的 close 方法 | boolean | `false` |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```ts
+import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui-taro';
+```

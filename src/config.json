@@ -472,6 +472,7 @@
           "name": "Swipe",
           "cName": "滑动手势",
           "desc": "列表项左滑删除场景使用",
+          "setup": true,
           "author": "richard1015"
         },
         {
@@ -479,6 +480,7 @@
           "cName": "滑动手势",
           "show": false,
           "desc": "Swipe 的集合，用于控制互斥",
+          "setup": true,
           "author": "eiinu"
         },
         {

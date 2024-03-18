@@ -57,6 +57,7 @@ The prop `name` of Swipe is required.
 
 | Event | Description | Arguments |
 | --- | --- | --- |
+| click | click event | `name, position: 'left' \| 'content' \| 'right'` |
 | open | Emitted when Swipe is opened, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 | close | Emitted when Swipe is closed, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
@@ -74,7 +75,6 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 
 | Name | Description | Arguments |
 | --- | --- | --- |
-| click | click event | `name, position: 'left' \| 'content' \| 'right'` |
 | open | open swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 | close | close swipe, swipe left/swipe right | `name, position: 'left' \| 'right' ` |
 
@@ -85,3 +85,11 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | lock`v4.1.1` | When a child Swipe opens, others will close. | boolean | `false` |
+
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui';
+```
