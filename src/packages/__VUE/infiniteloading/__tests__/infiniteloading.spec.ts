@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import InfiniteLoading from '../index.vue';
+import { InfiniteLoading } from '@nutui/nutui';
 import { toRefs, reactive, ref, onMounted } from 'vue';
 
 test('infiniteloading base', async () => {

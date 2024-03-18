@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick, toRefs, reactive } from 'vue';
-import Countdown from '../index.vue';
-import Button from '../../button';
+import { Button, Countdown } from '@nutui/nutui';
 import { sleep } from '@/packages/utils/unit';
 
 test('endTime props', async () => {

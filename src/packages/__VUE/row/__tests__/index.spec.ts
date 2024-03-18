@@ -1,4 +1,4 @@
-import Row from '../';
+import { Row } from '@nutui/nutui';
 import { mount } from '@vue/test-utils';
 
 test('should add "nut-row-flex-nowrap" class when wrap prop is false', () => {

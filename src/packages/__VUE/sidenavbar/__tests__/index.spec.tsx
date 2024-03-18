@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils';
-import SideNavbar from '../index.vue';
-import SideNavbarItem from '../../sidenavbaritem/index.vue';
-import SubSideNavbar from '../../subsidenavbar/index.vue';
+import { SideNavbar, SideNavbarItem, SubSideNavbar } from '@nutui/nutui';
 
 beforeAll(() => {
   MutationObserver.prototype.observe = vi.fn();

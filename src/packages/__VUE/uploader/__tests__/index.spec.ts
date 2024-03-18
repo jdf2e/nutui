@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { vi } from 'vitest';
-import Uploader from '../index.vue';
+import { Uploader } from '@nutui/nutui';
 import { nextTick, h } from 'vue';
 import { Dongdong } from '@nutui/icons-vue';
 import { sleep } from '@/packages/utils/unit';

@@ -1,9 +1,7 @@
 import { config, mount } from '@vue/test-utils';
-import Tabs from '../index.vue';
-import TabPane from './../../tabpane/index.vue';
 import { nextTick, reactive } from 'vue';
 import { JoySmile, Dongdong } from '@nutui/icons-vue';
-import NutSticky from '../../sticky/index.vue';
+import { Sticky as NutSticky, Tabs, TabPane } from '@nutui/nutui';
 
 beforeAll(() => {
   config.global.components = {

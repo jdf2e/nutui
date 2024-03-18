@@ -1,16 +1,13 @@
 import { mount } from '@vue/test-utils';
 import { reactive, toRefs, nextTick } from 'vue';
-import TimeSelect from '../index.vue';
-import TimePanel from '../../timepannel/index.vue';
-import TimeDetail from '../../timedetail/index.vue';
-import Popup from '../../popup/index.vue';
+import { TimeDetail, TimeSelect, TimePannel, Popup } from '@nutui/nutui';
 
 test('props test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
       'nut-time-select': TimeSelect,
-      'nut-time-pannel': TimePanel,
+      'nut-time-pannel': TimePannel,
       'nut-time-detail': TimeDetail
     },
     template: `
@@ -111,7 +108,7 @@ test('Events test', async () => {
     emits: ['change', 'select'],
     components: {
       'nut-time-select': TimeSelect,
-      'nut-time-pannel': TimePanel,
+      'nut-time-pannel': TimePannel,
       'nut-time-detail': TimeDetail
     },
     template: `

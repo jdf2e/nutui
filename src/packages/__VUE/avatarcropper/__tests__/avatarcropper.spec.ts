@@ -1,6 +1,6 @@
 import 'vitest-canvas-mock';
 import { mount } from '@vue/test-utils';
-import AvatarCropper from '../index.vue';
+import { AvatarCropper } from '@nutui/nutui';
 import { sleep, trigger, triggerDrag } from '@/packages/utils/unit';
 import { h } from 'vue';
 

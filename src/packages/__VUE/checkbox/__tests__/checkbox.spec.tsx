@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Checkbox from '../index.vue';
+import { Checkbox } from '@nutui/nutui';
 import { ref } from 'vue';
 
 test('basic usage', () => {

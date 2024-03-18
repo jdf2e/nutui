@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Indicator from '../index.vue';
+import { Indicator } from '@nutui/nutui';
 
 test('Indicator: should be shown when passing size and current', async () => {
   const wrapper = mount(Indicator, {

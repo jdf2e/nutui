@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Toast from '../index.vue';
+import { Toast } from '@nutui/nutui';
 
 describe('component toast', () => {
   test('should render toast after using msg and id', async () => {

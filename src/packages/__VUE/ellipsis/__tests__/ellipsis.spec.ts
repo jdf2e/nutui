@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Ellipsis from '../index.vue';
+import { Ellipsis } from '@nutui/nutui';
 
 const originGetComputedStyle = window.getComputedStyle;
 const lineHeight = 19.5;

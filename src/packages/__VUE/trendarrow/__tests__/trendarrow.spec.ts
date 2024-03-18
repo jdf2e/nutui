@@ -1,5 +1,5 @@
 import { config, mount } from '@vue/test-utils';
-import Trendarrow from '../index.vue';
+import { TrendArrow } from '@nutui/nutui';
 import { Failure } from '@nutui/icons-vue';
 import { h } from 'vue';
 
@@ -14,7 +14,7 @@ afterAll(() => {
 });
 
 test('should render rate when used ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 12.325
     }
@@ -23,7 +23,7 @@ test('should render rate when used ', async () => {
 });
 
 test('should render digits when used ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 12.325,
       digits: 1
@@ -33,7 +33,7 @@ test('should render digits when used ', async () => {
 });
 
 test('should render digits when used ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 12.325,
       digits: 1
@@ -43,7 +43,7 @@ test('should render digits when used ', async () => {
 });
 
 test('should render showSign when used ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 12.325,
       showSign: true
@@ -52,7 +52,7 @@ test('should render showSign when used ', async () => {
   expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('+12.33%');
 });
 test('should render showZero when used ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 0,
       showSign: true,
@@ -62,7 +62,7 @@ test('should render showZero when used ', async () => {
   expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('0.00%');
 });
 test('should not render 0  when showZero is false ', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 0,
       showSign: true,
@@ -72,7 +72,7 @@ test('should not render 0  when showZero is false ', async () => {
   expect(wrapper.find('.nut-trend-arrow-rate').text()).toBe('--');
 });
 test('should render left icon when arrowLeft', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 10,
       arrowLeft: true
@@ -82,7 +82,7 @@ test('should render left icon when arrowLeft', async () => {
   expect(wrapper.findAll('.nut-trend-arrow-icon-after').length).toBe(1);
 });
 test('should render sync text color when syncTextColor is true', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 10,
       syncTextColor: true
@@ -93,7 +93,7 @@ test('should render sync text color when syncTextColor is true', async () => {
 });
 
 test('should render text color when textColor used', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 10,
       textColor: 'rgb(39,197,48)',
@@ -105,7 +105,7 @@ test('should render text color when textColor used', async () => {
 });
 
 test('should render triangle color when riseColor used', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: 10,
       riseColor: 'rgb(73,143,242)'
@@ -116,7 +116,7 @@ test('should render triangle color when riseColor used', async () => {
 });
 
 test('should render triangle color when dropColor used', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: -10,
       dropColor: 'rgb(73,143,242)',
@@ -127,7 +127,7 @@ test('should render triangle color when dropColor used', async () => {
   expect(span.element.style.color).toContain('(73, 143, 242)');
 });
 test('should render SVG icon when use down-icon slots', async () => {
-  const wrapper = mount(Trendarrow, {
+  const wrapper = mount(TrendArrow, {
     props: {
       rate: -10
     },

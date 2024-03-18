@@ -1,13 +1,7 @@
 import { h, nextTick } from 'vue';
-import { config, mount } from '@vue/test-utils';
-import { vi } from 'vitest';
+import { mount } from '@vue/test-utils';
 import { useRouter } from 'vue-router';
-import Grid from '../index.vue';
-import GridItem from '../../griditem/index.vue';
-
-afterAll(() => {
-  config.global.components = {};
-});
+import { Grid, GridItem } from '@nutui/nutui';
 
 // mock module
 vi.mock('vue-router', () => ({

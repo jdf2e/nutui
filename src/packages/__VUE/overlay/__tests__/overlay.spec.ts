@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Overlay from '../index.vue';
+import { Overlay } from '@nutui/nutui';
 
 test('should change z-index when using z-index prop', () => {
   const wrapper = mount(Overlay, {

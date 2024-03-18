@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Rate from '..';
+import { Rate } from '@nutui/nutui';
 import { h, nextTick, ref } from 'vue';
 import { Check } from '@nutui/icons-vue';
 import { triggerDrag } from '@/packages/utils/unit';

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Calendar from '../index.vue';
+import { Calendar } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 test('show-title prop', async () => {

@@ -1,6 +1,6 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { mockScrollTop } from './../../../utils/unit';
-import Sticky from '../index.vue';
+import { Sticky } from '@nutui/nutui';
 import type { ComponentPublicInstance } from 'vue';
 
 Object.defineProperty(window.HTMLElement.prototype, 'clientHeight', {

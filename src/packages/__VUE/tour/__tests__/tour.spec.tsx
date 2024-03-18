@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
-import Tour, { StepOptions } from '../index.vue';
+import { StepOptions } from '../index.vue';
+import { Tour } from '@nutui/nutui';
 
 const steps1 = [
   {

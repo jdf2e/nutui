@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ShortPassword from '../index.vue';
+import { ShortPassword } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 test('should render shortpassword', async () => {

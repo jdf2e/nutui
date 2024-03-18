@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import NavBar from '../index.vue';
+import { Navbar } from '@nutui/nutui';
 
 test('Navbar: slot content & left & right', () => {
-  const wrapper = mount(NavBar, {
+  const wrapper = mount(Navbar, {
     slots: {
       content: () => 'Title',
       left: () => 'Left',
@@ -16,7 +16,7 @@ test('Navbar: slot content & left & right', () => {
 });
 
 test('Navbar: prop left-text & desc', () => {
-  const wrapper = mount(NavBar, {
+  const wrapper = mount(Navbar, {
     props: {
       leftText: 'left',
       desc: 'desc'
@@ -30,7 +30,7 @@ test('Navbar: prop left-text & desc', () => {
 });
 
 test('Navbar: should render placeholder element when using placeholder prop', async () => {
-  const wrapper = mount(NavBar, {
+  const wrapper = mount(Navbar, {
     props: {
       fixed: true,
       placeholder: true
@@ -40,7 +40,7 @@ test('Navbar: should render placeholder element when using placeholder prop', as
 });
 
 test('Navbar: emit click-left & click-right', () => {
-  const wrapper = mount(NavBar, {
+  const wrapper = mount(Navbar, {
     props: {
       titleIcon: true,
       title: '123'
@@ -58,7 +58,7 @@ test('Navbar: emit click-left & click-right', () => {
 });
 
 test('Navbar: should change z-index when using z-index prop', async () => {
-  const wrapper = mount(NavBar, {
+  const wrapper = mount(Navbar, {
     props: {
       zIndex: 100
     }

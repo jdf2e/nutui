@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Button from '../';
+import { Button } from '@nutui/nutui';
 import { nextTick } from 'vue';
 import { StarFill } from '@nutui/icons-vue';
 test('emit click event', () => {

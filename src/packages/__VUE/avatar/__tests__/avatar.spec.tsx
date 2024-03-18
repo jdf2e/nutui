@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { h, nextTick } from 'vue';
-import Avatar from '../index.vue';
-import AvatarGroup from '../../avatargroup/index.vue';
+import { Avatar, AvatarGroup } from '@nutui/nutui';
 
 test('Avatar: size props', async () => {
   const wrapper = mount(Avatar, {

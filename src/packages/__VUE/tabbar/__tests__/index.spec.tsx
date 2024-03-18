@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { vi } from 'vitest';
-import Tabbar from '../index.vue';
-import TabbarItem from '../../tabbaritem/index.vue';
+import { Tabbar, TabbarItem } from '@nutui/nutui';
 import { nextTick, h } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
 

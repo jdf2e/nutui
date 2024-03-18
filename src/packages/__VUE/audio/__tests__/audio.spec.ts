@@ -1,7 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import { nextTick, toRefs, reactive } from 'vue';
-import Audio from '../index.vue';
-import AudioOperate from '../../audiooperate/index.vue';
+import { Audio, AudioOperate } from '@nutui/nutui';
 
 beforeAll(() => {
   config.global.components = {

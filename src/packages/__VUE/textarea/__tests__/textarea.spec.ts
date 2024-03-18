@@ -1,5 +1,5 @@
 import { mount, config } from '@vue/test-utils';
-import Textarea from '../index.vue';
+import { Textarea } from '@nutui/nutui';
 import { nextTick, ref } from 'vue';
 
 // 所有的测试用例之前执行一次

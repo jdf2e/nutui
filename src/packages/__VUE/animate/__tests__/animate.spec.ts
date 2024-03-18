@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
-import Animate from '../';
+import { Animate, type AnimateType } from '@nutui/nutui';
 import { nextTick } from 'vue';
-import { AnimateType } from '../types';
 import { sleep } from '@/packages/utils/unit';
 
 const testType = [

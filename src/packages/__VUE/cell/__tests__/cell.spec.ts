@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { vi } from 'vitest';
-import Cell from '../index.vue';
+import { Cell } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 // mock module

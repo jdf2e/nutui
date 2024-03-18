@@ -1,5 +1,5 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
-import Ecard from '../index.vue';
+import { Ecard } from '@nutui/nutui';
 import { nextTick } from 'vue';
 
 const data = [

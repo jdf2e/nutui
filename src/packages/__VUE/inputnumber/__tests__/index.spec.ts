@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import InputNumber from '../';
+import { InputNumber } from '@nutui/nutui';
 import { h, nextTick } from 'vue';
 import { Left, Right } from '@nutui/icons-vue';
 

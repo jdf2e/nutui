@@ -1,4 +1,4 @@
-import NumberKeyboard from '../index.vue';
+import { NumberKeyboard } from '@nutui/nutui';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 

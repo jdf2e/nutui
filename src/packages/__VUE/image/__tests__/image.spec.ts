@@ -1,5 +1,5 @@
 import { config, mount } from '@vue/test-utils';
-import ImagePage from '../index.vue';
+import { Image as ImagePage } from '@nutui/nutui';
 import { Loading, CircleClose, Image, ImageError } from '@nutui/icons-vue';
 beforeAll(() => {
   config.global.components = {

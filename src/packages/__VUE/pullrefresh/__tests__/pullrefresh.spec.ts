@@ -1,5 +1,5 @@
 import { config, mount } from '@vue/test-utils';
-import PullRefresh from '../index.vue';
+import { PullRefresh } from '@nutui/nutui';
 import { sleep, trigger, triggerDrag } from '../../../utils/unit';
 
 afterAll(() => {

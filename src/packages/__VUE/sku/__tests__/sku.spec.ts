@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import Sku from '../index.vue';
+import { Sku } from '@nutui/nutui';
 import { Sku as SkuData, Goods } from '../data';
 
 test('sku init render', async () => {

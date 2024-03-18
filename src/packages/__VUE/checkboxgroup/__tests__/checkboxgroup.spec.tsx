@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-import CheckboxGroup from '../index.vue';
-import Checkbox from '../../checkbox/index.vue';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui';
 import { ref } from 'vue';
 
 test('CheckboxGroup: v-model & change', async () => {
