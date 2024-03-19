@@ -20,14 +20,14 @@ import { c as createComponent } from "../component-TCzwHGVq.js";
 import { u as useFormDisabled } from "../common-FZL3qC99.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
 function trimExtraChar(value, char, regExp) {
-  const index2 = value.indexOf(char);
-  if (index2 === -1) {
+  const index = value.indexOf(char);
+  if (index === -1) {
     return value;
   }
-  if (char === "-" && index2 !== 0) {
-    return value.slice(0, index2);
+  if (char === "-" && index !== 0) {
+    return value.slice(0, index);
   }
-  return value.slice(0, index2 + 1) + value.slice(index2).replace(regExp, "");
+  return value.slice(0, index + 1) + value.slice(index).replace(regExp, "");
 }
 function formatNumber(value, allowDot = true, allowMinus = true) {
   if (allowDot) {
@@ -375,7 +375,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 2);
 }
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const NutInput = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  index as default
+  NutInput as default
 };

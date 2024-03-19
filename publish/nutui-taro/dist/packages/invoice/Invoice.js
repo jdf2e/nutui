@@ -17,160 +17,109 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { ref, reactive, computed, onMounted, watch, toRefs, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, withCtx, Fragment, renderList, createBlock, createTextVNode, toDisplayString, withDirectives, vModelText, createCommentVNode } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { defineComponent, ref, openBlock, createElementBlock, createVNode, unref, withCtx, Fragment, renderList, createBlock, createTextVNode, toDisplayString, createCommentVNode } from "vue";
 import { Form as _sfc_main$1 } from "../form/Form.js";
 import { FormItem as _sfc_main$2 } from "../formitem/FormItem.js";
-import { _ as _sfc_main$3 } from "../index.taro.vue_vue_type_script_lang-jDQP_6bo.js";
-import { _ as _sfc_main$4 } from "../index.taro.vue_vue_type_script_lang-54PRh3YM.js";
+import { _ as _sfc_main$4 } from "../index.taro.vue_vue_type_script_lang-jDQP_6bo.js";
+import { _ as _sfc_main$3 } from "../index.taro.vue_vue_type_script_lang-54PRh3YM.js";
 import { Button as _sfc_main$5 } from "../button/Button.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { componentName, create } = createComponent("invoice");
-const _sfc_main = create({
-  components: {
-    NutForm: _sfc_main$1,
-    NutFormItem: _sfc_main$2,
-    NutRadio: _sfc_main$3,
-    NutRadioGroup: _sfc_main$4,
-    NutButton: _sfc_main$5
-  },
-  props: {
-    data: {
-      type: Array,
-      default: () => []
-    },
-    formValue: {
-      type: Object,
-      default: {}
-    },
-    submit: {
-      type: Boolean,
-      default: true
-    }
-  },
-  emits: [
-    "submit",
-    "scrollBottom",
-    // will be deprecated
-    "onSubmit"
-  ],
-  setup(props, { emit }) {
-    const formRef = ref();
-    const list = ref([]);
-    const state = reactive({
-      // list: []
-    });
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-    onMounted(() => {
-      init();
-    });
-    const init = () => {
-      list.value = props.data;
-    };
-    const submitFun = () => {
-      formRef.value.validate().then(({ valid, errors }) => {
-        emit("submit", valid, errors);
-        emit("onSubmit", valid, errors);
-      });
-    };
-    watch(
-      () => props.data,
-      () => init(),
-      { deep: true }
-    );
-    return __spreadProps(__spreadValues({}, toRefs(state)), {
-      classes,
-      formRef,
-      list,
-      submitFun
-    });
-  }
-});
-const _hoisted_1 = ["onUpdate:modelValue", "placeholder"];
+import NutInput from "../input/Input.js";
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _hoisted_1 = { class: "nut-invoice" };
 const _hoisted_2 = {
   key: 0,
   class: "nut-invoice__submit"
 };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_nut_radio = resolveComponent("nut-radio");
-  const _component_nut_radio_group = resolveComponent("nut-radio-group");
-  const _component_nut_form_item = resolveComponent("nut-form-item");
-  const _component_nut_form = resolveComponent("nut-form");
-  const _component_nut_button = resolveComponent("nut-button");
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes)
-  }, [
-    createVNode(_component_nut_form, {
-      ref: "formRef",
-      "model-value": _ctx.formValue
-    }, {
-      default: withCtx(() => [
-        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.list, (item, index) => {
-          return openBlock(), createBlock(_component_nut_form_item, {
-            key: index,
-            label: item.label,
-            required: item.required,
-            rules: item.rules,
-            prop: item.formItemProp
-          }, {
-            default: withCtx(() => [
-              item.type === "radio" ? (openBlock(), createBlock(_component_nut_radio_group, {
-                key: 0,
-                modelValue: _ctx.formValue[item.formItemProp],
-                "onUpdate:modelValue": ($event) => _ctx.formValue[item.formItemProp] = $event
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutInvoice"
+}), {
+  __name: "invoice.taro",
+  props: {
+    data: { default: () => [] },
+    formValue: { default: () => {
+    } },
+    submit: { type: Boolean, default: true }
+  },
+  emits: ["submit", "scrollBottom"],
+  setup(__props, { emit: __emit }) {
+    const emit = __emit;
+    const formRef = ref();
+    const submitFun = () => {
+      formRef.value.validate().then(({ valid, errors }) => {
+        emit("submit", valid, errors);
+      });
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", _hoisted_1, [
+        createVNode(unref(_sfc_main$1), {
+          ref_key: "formRef",
+          ref: formRef,
+          "model-value": _ctx.formValue
+        }, {
+          default: withCtx(() => [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.data, (item, index) => {
+              return openBlock(), createBlock(unref(_sfc_main$2), {
+                key: index,
+                label: item.label,
+                required: item.required,
+                rules: item.rules,
+                prop: item.formItemProp
               }, {
                 default: withCtx(() => [
-                  (openBlock(true), createElementBlock(Fragment, null, renderList(item.radioLabel, (radioItem, radioIndex) => {
-                    return openBlock(), createBlock(_component_nut_radio, {
-                      key: radioIndex,
-                      shape: "button",
-                      label: radioItem.label
-                    }, {
-                      default: withCtx(() => [
-                        createTextVNode(toDisplayString(radioItem.label), 1)
-                      ]),
-                      _: 2
-                    }, 1032, ["label"]);
-                  }), 128))
+                  item.type === "radio" ? (openBlock(), createBlock(_sfc_main$3, {
+                    key: 0,
+                    modelValue: _ctx.formValue[item.formItemProp],
+                    "onUpdate:modelValue": ($event) => _ctx.formValue[item.formItemProp] = $event
+                  }, {
+                    default: withCtx(() => [
+                      (openBlock(true), createElementBlock(Fragment, null, renderList(item.radioLabel, (radioItem, radioIndex) => {
+                        return openBlock(), createBlock(_sfc_main$4, {
+                          key: radioIndex,
+                          shape: "button",
+                          label: radioItem.label
+                        }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(radioItem.label), 1)
+                          ]),
+                          _: 2
+                        }, 1032, ["label"]);
+                      }), 128))
+                    ]),
+                    _: 2
+                  }, 1032, ["modelValue", "onUpdate:modelValue"])) : (openBlock(), createBlock(NutInput, {
+                    key: 1,
+                    modelValue: _ctx.formValue[item.formItemProp],
+                    "onUpdate:modelValue": ($event) => _ctx.formValue[item.formItemProp] = $event,
+                    class: "nut-input-text",
+                    placeholder: item.placeholder,
+                    type: "text"
+                  }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder"]))
                 ]),
                 _: 2
-              }, 1032, ["modelValue", "onUpdate:modelValue"])) : withDirectives((openBlock(), createElementBlock("input", {
-                key: 1,
-                "onUpdate:modelValue": ($event) => _ctx.formValue[item.formItemProp] = $event,
-                class: "nut-input-text",
-                placeholder: item.placeholder,
-                type: "text"
-              }, null, 8, _hoisted_1)), [
-                [vModelText, _ctx.formValue[item.formItemProp]]
-              ])
+              }, 1032, ["label", "required", "rules", "prop"]);
+            }), 128))
+          ]),
+          _: 1
+        }, 8, ["model-value"]),
+        createTextVNode(),
+        _ctx.submit ? (openBlock(), createElementBlock("div", _hoisted_2, [
+          createVNode(unref(_sfc_main$5), {
+            type: "primary",
+            block: "",
+            onClick: submitFun
+          }, {
+            default: withCtx(() => [
+              createTextVNode("提交审批")
             ]),
-            _: 2
-          }, 1032, ["label", "required", "rules", "prop"]);
-        }), 128))
-      ]),
-      _: 1
-    }, 8, ["model-value"]),
-    createTextVNode(),
-    _ctx.submit ? (openBlock(), createElementBlock("div", _hoisted_2, [
-      createVNode(_component_nut_button, {
-        type: "primary",
-        block: "",
-        onClick: _ctx.submitFun
-      }, {
-        default: withCtx(() => [
-          createTextVNode("提交审批")
-        ]),
-        _: 1
-      }, 8, ["onClick"])
-    ])) : createCommentVNode("", true)
-  ], 2);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+            _: 1
+          })
+        ])) : createCommentVNode("", true)
+      ]);
+    };
+  }
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Invoice,
+  _sfc_main as default
 };
