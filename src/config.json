@@ -897,6 +897,7 @@
           "cType": "特色组件",
           "cName": "发票",
           "desc": "发票",
+          "setup": true,
           "author": "ailululu"
         },
         {
