@@ -1,43 +1,51 @@
-import { toRefs, ref, computed, onMounted, resolveComponent, openBlock, createElementBlock, normalizeStyle, createElementVNode, normalizeClass, renderSlot, createVNode, createCommentVNode, createTextVNode, toDisplayString } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, ref, computed, onMounted, openBlock, createElementBlock, normalizeStyle, createElementVNode, unref, normalizeClass, renderSlot, createVNode, createCommentVNode, createTextVNode, toDisplayString } from "vue";
 import { Left } from "@nutui/icons-vue-taro";
 import { u as useTaroRect } from "../index-d4pC_9mG.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-const { componentName, create } = createComponent("navbar");
-const _sfc_main = create({
-  components: { Left },
+import { w as withInstall } from "../with-install-p59gYYU_.js";
+const _hoisted_1 = ["id"];
+const _hoisted_2 = {
+  key: 1,
+  class: "nut-navbar__text"
+};
+const _hoisted_3 = { class: "nut-navbar__title" };
+const _hoisted_4 = {
+  key: 0,
+  class: "nut-navbar__text"
+};
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutNavbar"
+}), {
+  __name: "navbar.taro",
   props: {
     leftShow: { type: Boolean, default: false },
-    //左侧  是否显示返回icon
-    title: { type: String, default: "" },
-    //中间  文字标题
+    title: { default: "" },
     titleIcon: { type: Boolean, default: false },
-    //中间
-    leftText: { type: String, default: "" },
-    //左侧文字
-    desc: { type: String, default: "" },
-    //右侧   按钮文字
-    fixed: {
-      type: Boolean,
-      default: false
-    },
-    safeAreaInsetTop: {
-      type: Boolean,
-      default: false
-    },
-    border: {
-      type: Boolean,
-      default: false
-    },
-    placeholder: {
-      // 生成一个等高的占位元素
-      type: Boolean,
-      default: true
-    },
-    zIndex: {
-      type: [Number, String],
-      default: 10
-    }
+    leftText: { default: "" },
+    desc: { default: "" },
+    fixed: { type: Boolean, default: false },
+    safeAreaInsetTop: { type: Boolean, default: false },
+    border: { type: Boolean, default: false },
+    placeholder: { type: Boolean, default: true },
+    zIndex: { default: 10 }
   },
   emits: [
     "clickBack",
@@ -50,22 +58,23 @@ const _sfc_main = create({
     "onClickIcon",
     "onClickRight"
   ],
-  setup(props, { emit }) {
-    const { border, fixed, safeAreaInsetTop, placeholder } = toRefs(props);
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const refRandomId = Math.random().toString(36).slice(-8);
     const navHeight = ref("auto");
     const navbarRef = ref(null);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-navbar";
       return {
         [prefixCls]: true,
-        [`${prefixCls}--border`]: border.value,
-        [`${prefixCls}--fixed`]: fixed.value,
-        [`${prefixCls}--safe-area-inset-top`]: safeAreaInsetTop.value
+        [`${prefixCls}--border`]: props.border,
+        [`${prefixCls}--fixed`]: props.fixed,
+        [`${prefixCls}--safe-area-inset-top`]: props.safeAreaInsetTop
       };
     });
     const rootStyle = computed(() => {
-      if (fixed.value && placeholder.value) {
+      if (props.fixed && props.placeholder) {
         return {
           height: navHeight.value
         };
@@ -82,7 +91,7 @@ const _sfc_main = create({
       );
     };
     onMounted(() => {
-      if (fixed.value && placeholder.value) {
+      if (props.fixed && props.placeholder) {
         setTimeout(() => {
           getNavHeight();
         }, 100);
@@ -104,89 +113,67 @@ const _sfc_main = create({
       emit("clickRight");
       emit("onClickRight");
     };
-    return {
-      refRandomId,
-      navbarRef,
-      rootStyle,
-      classes,
-      navHeight,
-      handleLeft,
-      handleCenter,
-      handleCenterIcon,
-      handleRight
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: "nut-navbar--placeholder",
+        style: normalizeStyle(rootStyle.value)
+      }, [
+        createElementVNode("view", {
+          id: "navbarRef-" + unref(refRandomId),
+          ref_key: "navbarRef",
+          ref: navbarRef,
+          class: normalizeClass(classes.value),
+          style: normalizeStyle({ zIndex: _ctx.zIndex })
+        }, [
+          createElementVNode("view", {
+            class: "nut-navbar__left",
+            onClick: handleLeft
+          }, [
+            _ctx.leftShow ? renderSlot(_ctx.$slots, "left-show", { key: 0 }, () => [
+              createVNode(unref(Left), {
+                height: "12px",
+                color: "#979797"
+              })
+            ]) : createCommentVNode("", true),
+            createTextVNode(),
+            _ctx.leftText ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.leftText), 1)) : createCommentVNode("", true),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "left")
+          ]),
+          createTextVNode(),
+          createElementVNode("view", _hoisted_3, [
+            _ctx.title ? (openBlock(), createElementBlock("view", {
+              key: 0,
+              class: "title",
+              onClick: handleCenter
+            }, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
+            createTextVNode(),
+            _ctx.titleIcon ? (openBlock(), createElementBlock("view", {
+              key: 1,
+              class: "icon",
+              onClick: handleCenterIcon
+            }, [
+              renderSlot(_ctx.$slots, "title-icon", { onClick: handleCenterIcon })
+            ])) : createCommentVNode("", true),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "content")
+          ]),
+          createTextVNode(),
+          createElementVNode("view", {
+            class: "nut-navbar__right",
+            onClick: handleRight
+          }, [
+            _ctx.desc ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.desc), 1)) : createCommentVNode("", true),
+            createTextVNode(),
+            renderSlot(_ctx.$slots, "right")
+          ])
+        ], 14, _hoisted_1)
+      ], 4);
     };
   }
-});
-const _hoisted_1 = ["id"];
-const _hoisted_2 = {
-  key: 1,
-  class: "nut-navbar__text"
-};
-const _hoisted_3 = { class: "nut-navbar__title" };
-const _hoisted_4 = {
-  key: 0,
-  class: "nut-navbar__text"
-};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Left = resolveComponent("Left");
-  return openBlock(), createElementBlock("view", {
-    class: "nut-navbar--placeholder",
-    style: normalizeStyle(_ctx.rootStyle)
-  }, [
-    createElementVNode("view", {
-      id: "navbarRef-" + _ctx.refRandomId,
-      ref: "navbarRef",
-      class: normalizeClass(_ctx.classes),
-      style: normalizeStyle({ zIndex: _ctx.zIndex })
-    }, [
-      createElementVNode("view", {
-        class: "nut-navbar__left",
-        onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleLeft && _ctx.handleLeft(...args))
-      }, [
-        _ctx.leftShow ? renderSlot(_ctx.$slots, "left-show", { key: 0 }, () => [
-          createVNode(_component_Left, {
-            height: "12px",
-            color: "#979797"
-          })
-        ]) : createCommentVNode("", true),
-        createTextVNode(),
-        _ctx.leftText ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.leftText), 1)) : createCommentVNode("", true),
-        createTextVNode(),
-        renderSlot(_ctx.$slots, "left")
-      ]),
-      createTextVNode(),
-      createElementVNode("view", _hoisted_3, [
-        _ctx.title ? (openBlock(), createElementBlock("view", {
-          key: 0,
-          class: "title",
-          onClick: _cache[1] || (_cache[1] = (...args) => _ctx.handleCenter && _ctx.handleCenter(...args))
-        }, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
-        createTextVNode(),
-        _ctx.titleIcon ? (openBlock(), createElementBlock("view", {
-          key: 1,
-          class: "icon",
-          onClick: _cache[3] || (_cache[3] = (...args) => _ctx.handleCenterIcon && _ctx.handleCenterIcon(...args))
-        }, [
-          renderSlot(_ctx.$slots, "title-icon", {
-            onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleCenterIcon && _ctx.handleCenterIcon(...args))
-          })
-        ])) : createCommentVNode("", true),
-        createTextVNode(),
-        renderSlot(_ctx.$slots, "content")
-      ]),
-      createTextVNode(),
-      createElementVNode("view", {
-        class: "nut-navbar__right",
-        onClick: _cache[4] || (_cache[4] = (...args) => _ctx.handleRight && _ctx.handleRight(...args))
-      }, [
-        _ctx.desc ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.desc), 1)) : createCommentVNode("", true),
-        createTextVNode(),
-        renderSlot(_ctx.$slots, "right")
-      ])
-    ], 14, _hoisted_1)
-  ], 4);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Navbar,
+  _sfc_main as default
 };
