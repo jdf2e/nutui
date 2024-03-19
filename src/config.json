@@ -706,6 +706,7 @@
           "version": "3.0.0",
           "name": "Tag",
           "cName": "标签",
+          "setup": true,
           "desc": "标签",
           "author": "liqiong"
         },

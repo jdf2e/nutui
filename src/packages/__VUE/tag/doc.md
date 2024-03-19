@@ -32,7 +32,7 @@ app.use(Tag);
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 标签类型，可选值为 `primary`、`success`、`danger`、`warning` | string | `default` |
+| type | 标签类型，可选值为 `primary`、`success`、`danger`、`warning`、`default` | string | `default` |
 | color | 标签颜色 | string | - |
 | text-color | 文本颜色，优先级高于 `color` 属性 | string | `white` |
 | plain | 是否为空心样式 | boolean | `false` |
@@ -52,6 +52,14 @@ app.use(Tag);
 | --- | --- | --- |
 | click | 点击事件 | `event` |
 | close | 关闭事件 | `event` |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type { TagType, TagProps, TagInstance } from '@nutui/nutui';
+```
 
 ## 主题定制
 

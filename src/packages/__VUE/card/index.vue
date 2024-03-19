@@ -31,7 +31,7 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import NutPrice from '../price';
-import NutTag from '../tag/index.vue';
+import NutTag from '../tag';
 const { create } = createComponent('card');
 export default create({
   components: {
