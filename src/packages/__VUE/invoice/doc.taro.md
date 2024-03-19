@@ -46,8 +46,19 @@ app.use(Invoice);
 
 | 事件名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| submit`v4.1.5` | 提交表单的方法 | - | Promise |
-| on-submit | 提交表单的方法 | - | Promise |
+| submit | 提交表单的方法 | - | Promise |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  InvoiceDataItem,
+  InvoiceProps,
+  InvoiceInstance
+} from '@nutui/nutui-taro';
+```
 
 ## 主题定制
 

@@ -46,8 +46,19 @@ The optional attributes are as follows:
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| submit`v4.1.5` | Method of submitting form for verification | Promise |
-| on-submit | Method of submitting form for verification | Promise |
+| submit | Method of submitting form for verification | Promise |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  InvoiceDataItem,
+  InvoiceProps,
+  InvoiceInstance
+} from '@nutui/nutui';
+```
 
 ## Theming
 

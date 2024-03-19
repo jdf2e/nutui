@@ -3,6 +3,7 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
+import type { InvoiceDataItem } from '../types';
 const asyncValidator = (val: string) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -11,7 +12,7 @@ const asyncValidator = (val: string) => {
   });
 };
 
-const data = ref([
+const data = ref<InvoiceDataItem[]>([
   {
     type: 'radio',
     label: '发票类型',
