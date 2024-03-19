@@ -6331,7 +6331,7 @@
             {
               "name": "type",
               "default": "`default`",
-              "description": "标签类型，可选值为 `primary`、`success`、`danger`、`warning`",
+              "description": "标签类型，可选值为 `primary`、`success`、`danger`、`warning`、`default`",
               "value": {
                 "type": "string",
                 "kind": "expression"
