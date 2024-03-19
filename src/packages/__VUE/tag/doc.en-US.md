@@ -58,7 +58,7 @@ app.use(Tag);
 The component exports the following type definitions:
 
 ```js
-import type { TagType, TagProps, TagInstance } from '@nutui/nutui-taro';
+import type { TagType, TagProps, TagInstance } from '@nutui/nutui';
 ```
 
 ## Theming

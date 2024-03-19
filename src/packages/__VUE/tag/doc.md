@@ -58,7 +58,7 @@ app.use(Tag);
 组件导出以下类型定义：
 
 ```js
-import type { TagType, TagProps, TagInstance } from '@nutui/nutui-taro';
+import type { TagType, TagProps, TagInstance } from '@nutui/nutui';
 ```
 
 ## 主题定制
