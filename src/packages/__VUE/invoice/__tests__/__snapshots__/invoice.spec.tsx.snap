@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`base 1`] = `"<view class="nut-invoice"><form class="nut-form" action="#"><view class="nut-cell-group"><!--v-if--><!--v-if--><view class="nut-cell-group__wrap"></view></view></form><div class="nut-invoice__submit"><view class="nut-button nut-button--primary nut-button--normal nut-button--round nut-button--block"><view class="nut-button__wrap"><!--v-if--><!--v-if--><view class="">提交审批</view></view></view></div></view>"`;
