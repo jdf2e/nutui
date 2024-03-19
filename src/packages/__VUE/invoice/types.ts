@@ -1,6 +1,13 @@
-export class FormItemRule {
-  regex?: RegExp;
-  required?: boolean;
-  message!: string;
-  validator?: (value: any) => boolean | string | Promise<boolean | string>;
+import type { FormItemRule } from '../form/types';
+
+export interface InvoiceDataItem {
+  type: 'input' | 'radio';
+  label: string;
+  placeholder: string;
+  radioLabel: {
+    label: string;
+  }[];
+  formItemProp: string;
+  rules: FormItemRule[];
+  required: boolean;
 }
