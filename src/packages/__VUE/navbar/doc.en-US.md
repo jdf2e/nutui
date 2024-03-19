@@ -70,6 +70,17 @@ app.use(Navbar);
 | left-show | Custom icon of left arrow |
 | title-icon | Custom icon in header |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  NavbarProps,
+  NavbarInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

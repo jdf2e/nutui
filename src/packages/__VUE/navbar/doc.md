@@ -70,6 +70,17 @@ app.use(Navbar);
 | left-show | 左侧箭头自定义图标 |
 | title-icon | 标题中自定义图标 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  NavbarProps,
+  NavbarInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量
