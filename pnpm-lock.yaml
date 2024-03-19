@@ -51,6 +51,9 @@ importers:
       '@vitejs/plugin-vue-jsx':
         specifier: ^3.1.0
         version: 3.1.0(vite@5.1.6)(vue@3.4.21)
+      '@vitest/coverage-istanbul':
+        specifier: ^1.4.0
+        version: 1.4.0(vitest@1.4.0)
       '@vitest/coverage-v8':
         specifier: ^1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -3993,6 +3996,25 @@ packages:
     dependencies:
       vite: 5.1.6(@types/node@18.19.24)(sass@1.72.0)
       vue: 3.4.21(typescript@5.3.3)
+    dev: true
+
+  /@vitest/coverage-istanbul@1.4.0(vitest@1.4.0):
+    resolution: {integrity: sha512-39TjURYyAY6CLDx8M1RNYGoAuWicPWoofk+demJbAZROLCwUgGPgMRSg51GN+snbmQRTpSizuS9XC3cMSdQH2Q==}
+    peerDependencies:
+      vitest: 1.4.0
+    dependencies:
+      debug: 4.3.4
+      istanbul-lib-coverage: 3.2.2
+      istanbul-lib-instrument: 6.0.2
+      istanbul-lib-report: 3.0.1
+      istanbul-lib-source-maps: 5.0.4
+      istanbul-reports: 3.1.6
+      magicast: 0.3.3
+      picocolors: 1.0.0
+      test-exclude: 6.0.0
+      vitest: 1.4.0(@types/node@18.19.24)(@vitest/ui@1.4.0)(happy-dom@13.9.0)(sass@1.72.0)
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@vitest/coverage-v8@1.4.0(vitest@1.4.0):
@@ -9630,6 +9652,19 @@ packages:
   /istanbul-lib-coverage@3.2.2:
     resolution: {integrity: sha512-O8dpsF+r0WV/8MNRKfnmrtCWhuKjxrq2w+jpzBL5UZKTi2LeVWnWOmWRxFlesJONmc+wLAGvKQZEOanko0LFTg==}
     engines: {node: '>=8'}
+    dev: true
+
+  /istanbul-lib-instrument@6.0.2:
+    resolution: {integrity: sha512-1WUsZ9R1lA0HtBSohTkm39WTPlNKSJ5iFk7UwqXkBLoHQT+hfqPsfsTDVuZdKGaBwn7din9bS7SsnoAr943hvw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/core': 7.24.0
+      '@babel/parser': 7.24.0
+      '@istanbuljs/schema': 0.1.3
+      istanbul-lib-coverage: 3.2.2
+      semver: 7.6.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /istanbul-lib-report@3.0.1:
