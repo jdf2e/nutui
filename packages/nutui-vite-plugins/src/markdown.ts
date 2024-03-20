@@ -1,6 +1,6 @@
 import Markdown from 'unplugin-vue-markdown/vite';
 import MarkdownIt from 'markdown-it-container';
-import hljs from 'highlight.js';
+import Shiki from '@shikijs/markdown-it';
 import LZUTF8 from 'lzutf8';
 import fs from 'fs-extra';
 import path from 'path';
@@ -60,17 +60,9 @@ export default function markdown(options: MarkdownOptions) {
     TransformMarkdownDemo(options),
     Markdown({
       markdownItOptions: {
-        typographer: false,
-        highlight: function (str, lang) {
-          if (lang && (lang === 'vue' || hljs.getLanguage(lang))) {
-            return hljs.highlight(str, {
-              language: lang === 'vue' ? 'html' : lang
-            }).value;
-          }
-          return '';
-        }
+        typographer: false
       },
-      markdownItSetup(md) {
+      markdownItSetup: async (md) => {
         md.use(MarkdownIt, 'demo', {
           validate: function (params: any) {
             return params.match(/^demo\s*(.*)$/);
@@ -87,6 +79,14 @@ export default function markdown(options: MarkdownOptions) {
             }
           }
         });
+        md.use(
+          await Shiki({
+            themes: {
+              light: 'github-light',
+              dark: 'github-dark'
+            }
+          })
+        );
       }
     })
   ];

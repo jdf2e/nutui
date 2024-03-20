@@ -31,12 +31,12 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "highlight.js": "^11.9.0",
     "lzutf8": "^0.6.3",
     "markdown-it-container": "^4.0.0",
     "unplugin-vue-markdown": "^0.26.0"
   },
   "devDependencies": {
+    "@shikijs/markdown-it": "^1.2.0",
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it-container": "^2.0.9",
     "tsup": "^8.0.2",
