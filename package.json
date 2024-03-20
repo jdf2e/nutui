@@ -95,7 +95,7 @@
     "codesandbox": "^2.2.3",
     "eslint": "^8.57.0",
     "fs-extra": "^11.2.0",
-    "happy-dom": "^13.9.0",
+    "happy-dom": "^14.0.0",
     "husky": "^9.0.11",
     "inquirer": "^9.2.16",
     "lzutf8": "^0.6.3",
