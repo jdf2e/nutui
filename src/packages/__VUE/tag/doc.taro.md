@@ -53,7 +53,7 @@ app.use(Tag);
 | click | 点击事件 | `event` |
 | close | 关闭事件 | `event` |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

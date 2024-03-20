@@ -2,7 +2,7 @@
 
 ### Intro
 
-A bubble component used to guide the user through the product's capabilities. This component has been available since version 4.0.
+A bubble component used to guide the user through the product's capabilities. This component has been available since v4.0.
 
 ### Install
 

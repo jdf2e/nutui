@@ -71,7 +71,7 @@ size: `small`, `base`, `large`
 | --- | --- | --- |
 | icon-name | 右侧 `icon` 内容 | - |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

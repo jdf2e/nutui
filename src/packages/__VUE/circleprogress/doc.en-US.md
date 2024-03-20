@@ -58,7 +58,7 @@ app.use(CircleProgress);
 | --- | --- |
 | default | Custom Content |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

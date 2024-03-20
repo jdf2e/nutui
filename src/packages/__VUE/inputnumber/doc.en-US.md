@@ -92,7 +92,7 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 | blur | Triggered when the input box blur | `event: Event` |
 | focus | Triggered when the input box focus | `event: Event ` |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

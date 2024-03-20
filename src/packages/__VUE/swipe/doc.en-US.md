@@ -86,7 +86,7 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 | --- | --- | --- | --- |
 | lock`v4.1.1` | When a child Swipe opens, others will close. | boolean | `false` |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

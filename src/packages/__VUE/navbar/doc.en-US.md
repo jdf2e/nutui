@@ -70,7 +70,7 @@ app.use(Navbar);
 | left-show | Custom icon of left arrow |
 | title-icon | Custom icon in header |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

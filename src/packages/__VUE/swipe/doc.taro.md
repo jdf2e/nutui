@@ -86,7 +86,7 @@ app.use(Swipe);
 | --- | --- | --- | --- |
 | lock`v4.1.1` | 控制内部 Swipe 互斥，即滑动打开某一个 Swipe 时，触发其余 Swipe 的 close 方法 | boolean | `false` |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

@@ -74,7 +74,7 @@ app.use(Rate);
 | --- | --- | --- |
 | change | An event that fires whenever the current score is modified | val |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

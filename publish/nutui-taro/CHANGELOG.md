@@ -1,3 +1,23 @@
+## v4.3.3
+
+`2024-03-20`
+
+Bug Fixes
+
+- uploader: add stop on delete event (#2971) @subordon
+- calendar-card: 选择范围时支持仅选择单个日期 (#2963) @eiinu
+- navbar: remove unused css var @eiinu
+
+Refactors
+
+- move to script setup
+  - backtop, tag @subordon
+  - input-number, rate, progress, circle-progress, swipe, navbar, invoice @eiinu
+
+Other Changes
+
+- test: add some unit tests (#2980) @eiinu
+
 ## v4.3.2
 
 `2024-03-11`

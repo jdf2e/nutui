@@ -58,7 +58,7 @@ app.use(CircleProgress);
 | --- | --- |
 | default | 自定义文字内容 |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

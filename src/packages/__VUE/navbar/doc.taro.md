@@ -70,7 +70,7 @@ app.use(Navbar);
 | left-show | 左侧箭头自定义图标 |
 | title-icon | 标题中自定义图标 |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

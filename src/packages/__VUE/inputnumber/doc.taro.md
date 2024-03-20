@@ -92,7 +92,7 @@ app.use(InputNumber);
 | blur | 输入框失去焦点时触发 | `(event: Event)  ` |
 | focus | 输入框获得焦点时触发 | `(event: Event ) ` |
 
-### 类型定义 version
+### 类型定义 v4.3.3
 
 组件导出以下类型定义：
 

@@ -53,7 +53,7 @@ app.use(Tag);
 | click | click event | `event` |
 | close | close event | `event` |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 

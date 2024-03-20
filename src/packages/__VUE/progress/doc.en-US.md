@@ -71,7 +71,7 @@ size: `small`, `base`, `large` .
 | --- | --- |
 | icon-name | Right icon content |
 
-### Types version
+### Types v4.3.3
 
 The component exports the following type definitions:
 
