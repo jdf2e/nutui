@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Invoice } from '@nutui/nutui';
+import { Invoice, type InvoiceDataItem } from '@nutui/nutui';
 import { ref } from 'vue';
 
 test('base', () => {
@@ -10,7 +10,7 @@ test('base', () => {
       }, 1000);
     });
   };
-  const data = ref([
+  const data = ref<InvoiceDataItem[]>([
     {
       type: 'radio',
       label: '发票类型',
