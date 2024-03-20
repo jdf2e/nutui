@@ -15,7 +15,7 @@ import { createApp } from 'vue';
 import { List } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use();
+app.use(List);
 ```
 
 ### 基础用法
