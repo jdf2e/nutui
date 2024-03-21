@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "vue": "^3.4.21",
-    "@nutui/nutui": "^4.3.2",
+    "@nutui/nutui": "^4.3.3",
     "@nutui/touch-emulator": "^1.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.1.6",
+    "vite": "^5.2.2",
     "unplugin-vue-components": "^0.26.0"
   }
 }
