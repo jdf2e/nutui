@@ -1,7 +1,7 @@
 import { useSlots, ref, computed, onMounted, watch, reactive, openBlock, createElementBlock, normalizeClass, createElementVNode, Fragment, renderList, normalizeStyle, toDisplayString } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import Taro from "@tarojs/taro";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { componentName, create } = createComponent("barrage");
 const _sfc_main = create({
   props: {

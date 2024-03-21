@@ -1,7 +1,7 @@
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import { toRefs, computed, resolveComponent, openBlock, createElementBlock, renderSlot, createCommentVNode, createTextVNode, createElementVNode, createBlock, normalizeClass, normalizeStyle, Fragment, renderList } from "vue";
-import { N as NutAvatar } from "../index.taro--uVlasFu.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { N as NutAvatar } from "../index.taro-Do4_KY74.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("skeleton");
 const _sfc_main = create({
   components: {

@@ -1,10 +1,10 @@
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { inject, reactive, getCurrentInstance, computed, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createVNode, normalizeProps, guardReactiveProps, withCtx, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, toDisplayString } from "vue";
-import { u as useRouter } from "../index-Ii9XdkPy.js";
+import { u as useRouter } from "../index-aiGQ-EiA.js";
 import NutBadge from "../badge/Badge.js";
-import { T as TABBAR_KEY } from "../types-Cq2YypZn.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("tabbar-item");
 const _sfc_main = create({
   components: { NutBadge },

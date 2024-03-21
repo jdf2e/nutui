@@ -1,6 +1,6 @@
 import { reactive, provide, computed, watch, h } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { C as CHECKBOX_KEY } from "../types-zeKkNDAq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { C as CHECKBOX_KEY } from "../types-48N1bMrT.js";
 const { create, componentName } = createComponent("checkbox-group");
 const _sfc_main = create({
   props: {

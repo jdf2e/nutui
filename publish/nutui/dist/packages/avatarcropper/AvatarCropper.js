@@ -40,12 +40,12 @@ var __async = (__this, __arguments, generator) => {
 };
 import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, renderSlot, withDirectives, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
 import { Button as _sfc_main$1 } from "../button/Button.js";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { d as preventDefault, e as clamp } from "../util-4Jkyw4BJ.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { d as preventDefault, e as clamp } from "../util-6wYEjmEl.js";
 import { Refresh2, Retweet } from "@nutui/icons-vue";
-import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useRect } from "../index-cp6Ms_Qe.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { u as useTouch } from "../index-I8tfW3Kf.js";
+import { u as useRect } from "../index-B1qsj2XR.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("avatar-cropper");
 const _sfc_main = create({
   components: {

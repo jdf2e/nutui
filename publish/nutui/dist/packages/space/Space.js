@@ -1,5 +1,5 @@
 import { h, Fragment, Comment, Text } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 const { create, componentName } = createComponent("space");
 const _sfc_main = create({
   props: {

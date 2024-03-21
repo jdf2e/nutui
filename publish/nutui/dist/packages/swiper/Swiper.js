@@ -1,10 +1,10 @@
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, nextTick, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, Fragment, renderList, createCommentVNode } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { e as clamp } from "../util-4Jkyw4BJ.js";
-import { u as useTouch } from "../index-084nl_oE.js";
-import { r as requestAniFrame } from "../raf-MQjoO-Ag.js";
-import { S as SWIPER_KEY } from "../types-9wCQwtH3.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { e as clamp } from "../util-6wYEjmEl.js";
+import { u as useTouch } from "../index-I8tfW3Kf.js";
+import { r as requestAniFrame } from "../raf-c01wDYCo.js";
+import { S as SWIPER_KEY } from "../types-DUkJysbi.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create, componentName } = createComponent("swiper");
 const _sfc_main = create({
   props: {

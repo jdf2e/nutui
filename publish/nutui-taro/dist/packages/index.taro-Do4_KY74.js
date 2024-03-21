@@ -1,6 +1,6 @@
 import { toRefs, inject, ref, computed, openBlock, createElementBlock, normalizeStyle, normalizeClass, renderSlot } from "vue";
-import { c as createComponent } from "./component-TCzwHGVq.js";
-import { _ as _export_sfc } from "./_plugin-vue_export-helper-yVxbj29m.js";
+import { c as createComponent } from "./component-DQf3CENX.js";
+import { _ as _export_sfc } from "./_plugin-vue_export-helper-1tPrXgE0.js";
 const AVATAR_KEY = Symbol("nut-avatar");
 const { create } = createComponent("avatar");
 const _sfc_main = create({

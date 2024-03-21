@@ -1,7 +1,7 @@
 import { toRefs, ref, reactive, provide, watch, onMounted, nextTick, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { T as TABBAR_KEY } from "../types-Cq2YypZn.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("tabbar");
 const _sfc_main = create({
   props: {

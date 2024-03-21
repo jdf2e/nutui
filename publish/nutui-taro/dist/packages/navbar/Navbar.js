@@ -19,8 +19,8 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, computed, onMounted, openBlock, createElementBlock, normalizeStyle, createElementVNode, unref, normalizeClass, renderSlot, createVNode, createCommentVNode, createTextVNode, toDisplayString } from "vue";
 import { Left } from "@nutui/icons-vue-taro";
-import { u as useTaroRect } from "../index-d4pC_9mG.js";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { u as useTaroRect } from "../index-m0Wcof-q.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["id"];
 const _hoisted_2 = {
   key: 1,

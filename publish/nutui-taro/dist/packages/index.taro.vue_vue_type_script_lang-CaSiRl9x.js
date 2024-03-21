@@ -1,6 +1,6 @@
 import { provide, readonly, computed, watch, h } from "vue";
-import { c as createComponent } from "./component-TCzwHGVq.js";
-import { R as RADIO_KEY } from "./types-odSRziQJ.js";
+import { c as createComponent } from "./component-DQf3CENX.js";
+import { R as RADIO_KEY } from "./types-BODurTjN.js";
 const { componentName, create } = createComponent("radio-group");
 const _sfc_main = create({
   props: {

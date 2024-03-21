@@ -40,15 +40,15 @@ var __async = (__this, __arguments, generator) => {
 };
 import Taro from "@tarojs/taro";
 import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, normalizeStyle, withCtx, createElementVNode, renderSlot, Fragment, renderList, createCommentVNode, createTextVNode, toDisplayString } from "vue";
-import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-SKyMF-aS.js";
+import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
 import { JoySmile } from "@nutui/icons-vue-taro";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { T as TypeOfFun } from "../util-Bt8WDYya.js";
-import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
-import { r as requestAniFrame } from "../raf-9SbwNmt2.js";
-import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useTaroRect } from "../index-d4pC_9mG.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { T as TypeOfFun } from "../util-CyCQsn5J.js";
+import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
+import { r as requestAniFrame } from "../raf-CzJhCkQo.js";
+import { u as useTouch } from "../index-I8tfW3Kf.js";
+import { u as useTaroRect } from "../index-m0Wcof-q.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const useTabContentTouch = (props, tabMethods, taro, useTaroRect2) => {
   const tabsContentRef = ref();
   const tabsContentRefRect = ref({ width: 0, height: 0 });

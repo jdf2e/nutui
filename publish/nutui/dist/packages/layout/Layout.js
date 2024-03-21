@@ -1,6 +1,6 @@
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import "vue";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const { create } = createComponent("layout");
 const _sfc_main = create({});
 withInstall(_sfc_main);

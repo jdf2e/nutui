@@ -20,10 +20,10 @@ var __async = (__this, __arguments, generator) => {
 };
 import Taro from "@tarojs/taro";
 import { computed, ref, reactive, onMounted, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, createTextVNode, createVNode, withCtx, toDisplayString } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
-import { u as useLocale } from "../index-xXrovSQL.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { u as useLocale } from "../index-CV7DiiiD.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("signature");
 const cN = "NutSignature";
 const _sfc_main = create({

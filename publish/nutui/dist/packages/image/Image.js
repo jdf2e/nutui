@@ -18,10 +18,10 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, useSlots, computed, ref, onMounted, onBeforeUnmount, watch, toRefs, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, createBlock, createCommentVNode, renderSlot } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { Image, ImageError } from "@nutui/icons-vue";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { componentName, create } = createComponent("image");
 const _sfc_main = create({
   props: {

@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, computed, onMounted, nextTick, openBlock, createElementBlock, normalizeStyle, createElementVNode, normalizeClass, renderSlot, createVNode, unref, createCommentVNode, toDisplayString } from "vue";
 import { Left } from "@nutui/icons-vue";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = {
   key: 1,
   class: "nut-navbar__text"

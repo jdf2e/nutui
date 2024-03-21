@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { B as BaseLang } from "./baseLang-7uiEiO-2.js";
+import { B as BaseLang } from "./baseLang-Bnfy6fTl.js";
 class Lang extends BaseLang {
   constructor() {
     super(...arguments);

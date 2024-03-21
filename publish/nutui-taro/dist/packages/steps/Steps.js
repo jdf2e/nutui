@@ -1,6 +1,6 @@
 import { reactive, computed, provide, h } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { S as STEPS_KEY } from "../types-RCVUm7Nb.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { S as STEPS_KEY } from "../types-1HzUV14W.js";
 const { create, componentName } = createComponent("steps");
 const _sfc_main = create({
   props: {

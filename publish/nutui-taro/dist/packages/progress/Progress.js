@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, createTextVNode, toDisplayString, createCommentVNode, renderSlot, createVNode, unref } from "vue";
 import { Checked } from "@nutui/icons-vue-taro";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-progress" };
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
   name: "NutProgress"

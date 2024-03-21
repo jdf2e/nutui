@@ -19,11 +19,11 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, renderSlot, createVNode, createCommentVNode, createTextVNode, createElementVNode, toDisplayString, withModifiers, vShow, Fragment, renderList, createBlock } from "vue";
 import { Notice, CircleClose } from "@nutui/icons-vue-taro";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { r as renderIcon } from "../renderIcon--EgZu5_5.js";
-import { p as pxCheck } from "../pxCheck-OnXlN1NC.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import Taro from "@tarojs/taro";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("noticebar");
 const _sfc_main = create({
   props: {

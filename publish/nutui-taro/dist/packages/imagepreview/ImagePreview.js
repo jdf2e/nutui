@@ -20,12 +20,12 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, computed, watch, onMounted, toRefs, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, createElementBlock, Fragment, renderList, withModifiers, createCommentVNode, createTextVNode, toDisplayString, normalizeStyle, createVNode } from "vue";
 import Taro from "@tarojs/taro";
 import { CircleClose } from "@nutui/icons-vue-taro";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { f as funInterceptor } from "../Interceptor-xNdrCqtu.js";
-import { N as NutPopup } from "../index.taro-KP3y-XSA.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { f as funInterceptor } from "../Interceptor-u2SK4X2w.js";
+import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
 import NutSwiper from "../swiper/Swiper.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("image-preview");
 const _sfc_main = create({
   props: {

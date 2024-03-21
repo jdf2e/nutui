@@ -18,7 +18,7 @@ var __spreadValues = (a2, b) => {
 };
 var __spreadProps = (a2, b) => __defProps(a2, __getOwnPropDescs(b));
 import { defineComponent, useSlots, h as h$1, openBlock, createBlock, computed, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createTextVNode, unref, withModifiers, createCommentVNode } from "vue";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const h = /* @__PURE__ */ defineComponent({
   __name: "IconFont",
   props: {

@@ -1,6 +1,6 @@
 import { useSlots, ref, onMounted, onUnmounted, watch, nextTick, openBlock, createElementBlock, createElementVNode, normalizeClass, renderSlot, createCommentVNode } from "vue";
-import { c as createComponent } from "../component-TCzwHGVq.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("barrage");
 const _sfc_main = create({
   name: "barrage",

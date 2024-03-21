@@ -1,8 +1,8 @@
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import { resolveComponent, openBlock, createElementBlock, createElementVNode, createTextVNode, toDisplayString, renderSlot, createVNode, createCommentVNode, withCtx } from "vue";
 import { Price as _sfc_main$1 } from "../price/Price.js";
 import { Tag as _sfc_main$2 } from "../tag/Tag.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("card");
 const _sfc_main = create({
   components: {

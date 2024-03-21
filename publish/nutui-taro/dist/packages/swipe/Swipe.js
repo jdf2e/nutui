@@ -18,10 +18,10 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, inject, watch, onMounted, reactive, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, unref, renderSlot, createTextVNode } from "vue";
-import { u as useTouch } from "../index-084nl_oE.js";
-import { u as useTaroRect } from "../index-d4pC_9mG.js";
-import { S as SWIPE_KEY } from "../types-qOrhXtA_.js";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { u as useTouch } from "../index-I8tfW3Kf.js";
+import { u as useTaroRect } from "../index-m0Wcof-q.js";
+import { S as SWIPE_KEY } from "../types-BWhKcf4T.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["id"];
 const _hoisted_2 = ["id"];
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {

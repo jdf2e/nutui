@@ -18,8 +18,8 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, inject, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot } from "vue";
-import { L as LAYOUT_KEY } from "../types-Ww4ErYJT.js";
-import { w as withInstall } from "../with-install-p59gYYU_.js";
+import { L as LAYOUT_KEY } from "../types-BKDaJvHp.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const prefixCls = "nut-col";
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
   name: "NutCol"

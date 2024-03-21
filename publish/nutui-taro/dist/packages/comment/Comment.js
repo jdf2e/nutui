@@ -1,9 +1,9 @@
 import { resolveComponent, openBlock, createElementBlock, createElementVNode, createCommentVNode, createTextVNode, normalizeClass, toDisplayString, renderSlot, createVNode, ref, watch, onMounted, Fragment, renderList, createBlock, computed, withCtx, normalizeStyle } from "vue";
 import { Right, Fabulous, Comment, MoreX } from "@nutui/icons-vue-taro";
-import { c as createComponent } from "../component-TCzwHGVq.js";
+import { c as createComponent } from "../component-DQf3CENX.js";
 import { Rate as _sfc_main$4 } from "../rate/Rate.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-yVxbj29m.js";
-import { u as useLocale } from "../index-xXrovSQL.js";
+import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
+import { u as useLocale } from "../index-CV7DiiiD.js";
 const { create: create$3 } = createComponent("comment-header");
 const _sfc_main$3 = create$3({
   components: {
