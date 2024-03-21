@@ -88,6 +88,14 @@ The bardge logo component is used internally and its properties can be applied d
 | --- | --- | --- |
 | tab-switch | Emitted when changing active tab | item,index |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type { TabbarProps, TabbarInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
