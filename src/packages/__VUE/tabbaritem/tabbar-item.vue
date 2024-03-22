@@ -60,7 +60,7 @@ const slots = useSlots();
 const router = useRouter();
 const { parent, index } = useParent(TABBAR_KEY);
 
-const active = computed(() => index.value === parent.props.modelValue);
+const active = computed(() => (props.name ?? index.value) === parent.props.modelValue);
 const activeColor = computed(() => (active.value ? parent.props.activeColor : parent.props.unactiveColor));
 
 const isHaveSlot = (slot: string) => {
@@ -69,7 +69,7 @@ const isHaveSlot = (slot: string) => {
 
 const change = () => {
   const key = props.name ?? index.value;
-  parent.changeIndex(key, index.value);
+  parent.changeIndex(index.value, key);
 
   if (parent.children[index.value]?.href) {
     window.location.href = parent.children[index.value].href;

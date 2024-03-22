@@ -1,5 +1,5 @@
 <template>
-  <nut-tabbar>
+  <nut-tabbar v-model="active">
     <nut-tabbar-item tab-title="Home" :value="11">
       <template #icon>
         <Home></Home>
@@ -28,5 +28,8 @@
   </nut-tabbar>
 </template>
 <script setup>
+import { ref } from 'vue';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
+
+const active = ref(0);
 </script>
