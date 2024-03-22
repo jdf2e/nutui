@@ -3,11 +3,13 @@ import { Tabbar, TabbarItem } from '@nutui/nutui';
 import { nextTick, h, ref } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
 import { mockGetBoundingClientRect, sleep } from '@/packages/utils/unit';
+import { useRouter } from '@/packages/utils/useRoute';
 
-// 模拟setup导入资源
-vi.mock('vue-router', () => ({
-  useRouter: vi.fn()
-}));
+vi.mock('@/packages/utils/useRoute');
+
+(useRouter as any).mockReturnValue({
+  push: vi.fn()
+});
 
 test('should render tabbar when default', async () => {
   const wrapper = mount(() => {
@@ -89,13 +91,8 @@ test('should match active tabbar by clcik', async () => {
   const wrapper = mount({
     setup() {
       const active = ref(0);
-      return {
-        active
-      };
-    },
-    render() {
-      return (
-        <Tabbar unactive-color="grey" active-color="blue" v-model={this.active}>
+      return () => (
+        <Tabbar unactive-color="grey" active-color="blue" v-model={active.value}>
           <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
           <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
           <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
@@ -140,4 +137,53 @@ test('should render placeholder when using placeholder and bottom prop', async (
   mockGetBoundingClientRect({ height: 40 });
   await sleep(500);
   expect(wrapper.html()).toMatchSnapshot();
+});
+
+test('should redirect when exist router and using to prop', async () => {
+  const wrapper = mount(() => {
+    return (
+      <Tabbar>
+        <TabbarItem tab-title="首页" icon={h(Home)} to="/home"></TabbarItem>
+        <TabbarItem tab-title="分类" icon={h(Category)} to="/category"></TabbarItem>
+        <TabbarItem tab-title="发现" icon={h(Find)} to="/category"></TabbarItem>
+      </Tabbar>
+    );
+  });
+  const tabbarItem: any = wrapper.findAll('.nut-tabbar-item');
+  await tabbarItem[1].trigger('click');
+  expect(useRouter().push).toHaveBeenCalledTimes(1);
+  expect(useRouter().push).toHaveBeenCalledWith('/category');
+});
+
+test('should call replace when no router exist and using to prop', async () => {
+  (useRouter as any).mockReturnValue(undefined);
+
+  const wrapper = mount(() => {
+    return (
+      <Tabbar>
+        <TabbarItem tab-title="首页" icon={h(Home)} to="/home"></TabbarItem>
+        <TabbarItem tab-title="分类" icon={h(Category)} to="/category"></TabbarItem>
+        <TabbarItem tab-title="发现" icon={h(Find)} to="/category"></TabbarItem>
+      </Tabbar>
+    );
+  });
+  location.replace = vi.fn();
+  const tabbarItem: any = wrapper.findAll('.nut-tabbar-item');
+  await tabbarItem[1].trigger('click');
+  expect(location.replace).toHaveBeenCalledWith('/category');
+});
+
+test('should set window.location.href when using href prop', async () => {
+  const wrapper = mount(() => {
+    return (
+      <Tabbar>
+        <TabbarItem tab-title="首页" icon={h(Home)} href="/home"></TabbarItem>
+        <TabbarItem tab-title="分类" icon={h(Category)} href="/category"></TabbarItem>
+        <TabbarItem tab-title="发现" icon={h(Find)} href="/find"></TabbarItem>
+      </Tabbar>
+    );
+  });
+  const tabbarItem: any = wrapper.findAll('.nut-tabbar-item');
+  await tabbarItem[1].trigger('click');
+  expect(window.location.href).toMatch('/category');
 });
