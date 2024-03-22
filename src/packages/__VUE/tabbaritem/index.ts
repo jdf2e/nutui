@@ -1,11 +1,11 @@
-import Tabbar from './tabbar-item.vue';
+import TabbarItem from './tabbar-item.vue';
 import type { ComponentPublicInstance } from 'vue';
 import { withInstall } from '@/packages/utils';
 
-withInstall(Tabbar);
+withInstall(TabbarItem);
 
 export type { tabbarItemProps } from './tabbar-item.vue';
 
-export type TabbarInstance = ComponentPublicInstance & InstanceType<typeof Tabbar>;
+export type TabbarItemInstance = ComponentPublicInstance & InstanceType<typeof TabbarItem>;
 
-export { Tabbar, Tabbar as default };
+export { TabbarItem, TabbarItem as default };

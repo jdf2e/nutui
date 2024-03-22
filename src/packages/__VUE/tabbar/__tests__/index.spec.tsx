@@ -1,7 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { Tabbar, TabbarItem } from '@nutui/nutui';
-import { nextTick, h } from 'vue';
+import { nextTick, h, ref } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
+import { mockGetBoundingClientRect } from '@/packages/utils/unit';
 
 // 模拟setup导入资源
 vi.mock('vue-router', () => ({
@@ -85,14 +86,22 @@ test('should render fixed element when using bottom prop', async () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 test('should match active tabbar by clcik', async () => {
-  const wrapper = mount(() => {
-    return (
-      <Tabbar unactive-color="grey" active-color="blue">
-        <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
-        <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
-        <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
-      </Tabbar>
-    );
+  const wrapper = mount({
+    setup() {
+      const active = ref(0);
+      return {
+        active
+      };
+    },
+    render() {
+      return (
+        <Tabbar unactive-color="grey" active-color="blue" v-model={this.active}>
+          <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
+          <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
+          <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
+        </Tabbar>
+      );
+    }
   });
   const tabbarItem: any = wrapper.findAll('.nut-tabbar-item');
 
@@ -119,4 +128,15 @@ test('should show sure emitted when click', async () => {
   await tabbarItem[1].trigger('click');
   await nextTick();
   expect(tabSwitch).toBeCalled();
+});
+
+test('should render placeholder when using placeholder and bottom prop', async () => {
+  const wrapper = mount(Tabbar, {
+    props: {
+      bottom: true,
+      placeholder: true
+    }
+  });
+  mockGetBoundingClientRect({ height: 40 });
+  expect(wrapper.html()).toMatchSnapshot();
 });

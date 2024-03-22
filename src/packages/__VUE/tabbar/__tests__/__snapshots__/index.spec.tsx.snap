@@ -6,6 +6,12 @@ exports[`should render fixed element when using bottom prop 1`] = `
 </div>"
 `;
 
+exports[`should render placeholder when using placeholder and bottom prop 1`] = `
+"<div class="nut-tabbar__placeholder" style="">
+  <view class="nut-tabbar nut-tabbar-bottom"></view>
+</div>"
+`;
+
 exports[`should render tabbar when default 1`] = `
 "<div class="" style="">
   <view class="nut-tabbar">
