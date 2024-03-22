@@ -130,12 +130,6 @@ test('should show sure emitted when click', async () => {
   expect(tabSwitch).toBeCalled();
 });
 
-export function later(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
 test('should render placeholder when using placeholder and bottom prop', async () => {
   const wrapper = mount(Tabbar, {
     props: {
