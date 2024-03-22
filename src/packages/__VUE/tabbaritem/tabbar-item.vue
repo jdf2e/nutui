@@ -77,7 +77,7 @@ const change = () => {
   }
 
   if (parent.children[index.value]?.to) {
-    let to = parent.children[index.value].to;
+    const to = parent.children[index.value].to;
     if (to && router) {
       router.push(to);
     } else {

@@ -44,7 +44,6 @@ const emit = defineEmits(['tabSwitch', 'update:modelValue']);
 
 const refRandomId = Math.random().toString(36).slice(-8);
 const height = ref('auto');
-
 const nutTabbarRef = ref<HTMLElement | null>(null);
 
 const { children, linkChildren } = useChildren(TABBAR_KEY);
