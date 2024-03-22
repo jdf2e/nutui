@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { Tabbar, TabbarItem } from '@nutui/nutui';
 import { nextTick, h, ref } from 'vue';
 import { Home, Category, Find } from '@nutui/icons-vue';
-import { mockGetBoundingClientRect } from '@/packages/utils/unit';
+import { mockGetBoundingClientRect, sleep } from '@/packages/utils/unit';
 
 // 模拟setup导入资源
 vi.mock('vue-router', () => ({
@@ -130,6 +130,12 @@ test('should show sure emitted when click', async () => {
   expect(tabSwitch).toBeCalled();
 });
 
+export function later(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
 test('should render placeholder when using placeholder and bottom prop', async () => {
   const wrapper = mount(Tabbar, {
     props: {
@@ -138,5 +144,6 @@ test('should render placeholder when using placeholder and bottom prop', async (
     }
   });
   mockGetBoundingClientRect({ height: 40 });
+  await sleep(500);
   expect(wrapper.html()).toMatchSnapshot();
 });
