@@ -24,8 +24,9 @@ import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-empty" };
 const _hoisted_2 = ["src"];
 const _hoisted_3 = { class: "nut-empty__description" };
+const cN = "NutEmpty";
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
-  name: "NutEmpty"
+  name: cN
 }), {
   __name: "empty.taro",
   props: {
@@ -35,7 +36,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
   },
   setup(__props) {
     const props = __props;
-    const translate = useLocale("NutEmpty");
+    const translate = useLocale(cN);
     const defaultStatus = {
       empty: "https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png",
       error: "https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png",

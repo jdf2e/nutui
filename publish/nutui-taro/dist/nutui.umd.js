@@ -1890,7 +1890,7 @@ var __async = (__this, __arguments, generator) => {
     };
   };
   const { create: create$1e } = createComponent("fixed-nav");
-  const cN$m = "NutFixedNav";
+  const cN$n = "NutFixedNav";
   const _sfc_main$1w = create$1e({
     components: {
       NutOverlay: Overlay,
@@ -1937,7 +1937,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["update:visible", "selected"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$m);
+      const translate = useLocale(cN$n);
       const classes = vue.computed(() => {
         const prefixCls2 = "nut-fixed-nav";
         return {
@@ -2910,7 +2910,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Elevator = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["render", _sfc_render$13]]);
   const { create: create$17 } = createComponent("pagination");
-  const cN$l = "NutPagination";
+  const cN$m = "NutPagination";
   const _sfc_main$1o = create$17({
     props: {
       modelValue: {
@@ -2953,7 +2953,7 @@ var __async = (__this, __arguments, generator) => {
     components: {},
     emits: ["change", "update:modelValue"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$l);
+      const translate = useLocale(cN$m);
       const { modelValue, mode, showPageSize, forceEllipses } = vue.toRefs(props);
       const countRef = vue.computed(() => {
         const { pageCount, totalItems, itemsPerPage } = vue.toRefs(props);
@@ -4353,7 +4353,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Range = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$X]]);
   const { create: create$$ } = createComponent("searchbar");
-  const cN$k = "NutSearchbar";
+  const cN$l = "NutSearchbar";
   const _sfc_main$1g = create$$({
     props: {
       modelValue: {
@@ -4438,7 +4438,7 @@ var __async = (__this, __arguments, generator) => {
     ],
     setup(props, { emit }) {
       const disabled = useFormDisabled(vue.toRef(props, "disabled"));
-      const translate = useLocale(cN$k);
+      const translate = useLocale(cN$l);
       const state = vue.reactive({
         active: false
       });
@@ -5323,7 +5323,7 @@ var __async = (__this, __arguments, generator) => {
     }
   };
   const { create: create$Y } = createComponent("calendar-item");
-  const cN$j = "NutCalendarItem";
+  const cN$k = "NutCalendarItem";
   const TARO_ENV = Taro.getEnv();
   const _sfc_main$1d = create$Y({
     components: {
@@ -5394,7 +5394,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["choose", "update", "close", "select"],
     setup(props, { emit, slots, expose }) {
-      const translate = useLocale(cN$j);
+      const translate = useLocale(cN$k);
       const weekdays = translate("weekdays").map((day, index) => ({
         day,
         weekend: index === 0 || index === 6
@@ -6570,9 +6570,9 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_10$5 = { class: "nut-calendarcard-day-top" };
   const _hoisted_11$4 = { class: "nut-calendarcard-day-inner" };
   const _hoisted_12$4 = { class: "nut-calendarcard-day-bottom" };
-  const cN$i = "NutCalendarCard";
+  const cN$j = "NutCalendarCard";
   const _sfc_main$1b = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
-    name: cN$i
+    name: cN$j
   }), {
     __name: "calendar-card.taro",
     props: {
@@ -6587,7 +6587,7 @@ var __async = (__this, __arguments, generator) => {
     setup(__props, { expose: __expose, emit: __emit }) {
       const props = __props;
       const emit = __emit;
-      const translate = useLocale(cN$i);
+      const translate = useLocale(cN$j);
       const initMonth = () => {
         let date = new Date(Date.now());
         const val = props.modelValue;
@@ -7619,7 +7619,7 @@ var __async = (__this, __arguments, generator) => {
     }
   };
   const { create: create$T } = createComponent("picker");
-  const cN$h = "NutPicker";
+  const cN$i = "NutPicker";
   const _sfc_main$17 = create$T({
     components: {
       NutPickerColumn
@@ -7627,7 +7627,7 @@ var __async = (__this, __arguments, generator) => {
     props: baseProps,
     emits: ["cancel", "change", "confirm", "update:modelValue"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$h);
+      const translate = useLocale(cN$i);
       const {
         changeHandler,
         confirm,
@@ -8948,7 +8948,7 @@ var __async = (__this, __arguments, generator) => {
   }));
   withInstall(_sfc_main$11);
   const { create: create$O } = createComponent("short-password");
-  const cN$g = "NutShortPassword";
+  const cN$h = "NutShortPassword";
   const _sfc_main$10 = create$O({
     components: {
       NutPopup: Popup,
@@ -8995,7 +8995,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["update:modelValue", "update:visible", "complete", "tips", "close", "focus"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$g);
+      const translate = useLocale(cN$h);
       const realInput = vue.ref(props.modelValue);
       const comLen = vue.computed(() => range(Number(props.length)));
       const show = vue.ref(props.visible);
@@ -9118,7 +9118,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const ShortPassword = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$N]]);
   const { create: create$N } = createComponent("textarea");
-  const cN$f = "NutTextarea";
+  const cN$g = "NutTextarea";
   const _sfc_main$$ = create$N({
     inheritAttrs: false,
     props: {
@@ -9166,7 +9166,7 @@ var __async = (__this, __arguments, generator) => {
     emits: ["update:modelValue", "change", "blur", "focus"],
     setup(props, { emit }) {
       const disabled = useFormDisabled(vue.toRef(props, "disabled"));
-      const translate = useLocale(cN$f);
+      const translate = useLocale(cN$g);
       const classes = vue.computed(() => {
         const prefixCls2 = "nut-textarea";
         return {
@@ -9603,7 +9603,7 @@ var __async = (__this, __arguments, generator) => {
   }));
   withInstall(_sfc_main$_);
   const { create: create$M } = createComponent("uploader");
-  const cN$e = "NutUploader";
+  const cN$f = "NutUploader";
   const _sfc_main$Z = create$M({
     components: {
       NutProgress: _sfc_main$_,
@@ -9682,7 +9682,7 @@ var __async = (__this, __arguments, generator) => {
     ],
     setup(props, { emit }) {
       const disabled = useFormDisabled(vue.toRef(props, "disabled"));
-      const translate = useLocale(cN$e);
+      const translate = useLocale(cN$f);
       const fileList = vue.ref(props.fileList);
       const uploadQueue = vue.ref([]);
       vue.watch(
@@ -10062,7 +10062,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Uploader = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$L]]);
   const { create: create$L } = createComponent("number-keyboard");
-  const cN$d = "NutNumberKeyboard";
+  const cN$e = "NutNumberKeyboard";
   const _sfc_main$Y = create$L({
     components: {
       NutPopup: Popup
@@ -10115,7 +10115,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["input", "delete", "close", "update:modelValue", "update:visible"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$d);
+      const translate = useLocale(cN$e);
       const clickKeyIndex = vue.ref(void 0);
       const show = vue.ref(props.visible);
       const root = vue.ref();
@@ -11271,7 +11271,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const Drag = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$I]]);
   const { create: create$I } = createComponent("dialog");
-  const cN$c = "NutDialog";
+  const cN$d = "NutDialog";
   const _sfc_main$Q = create$I({
     inheritAttrs: false,
     components: {
@@ -11345,7 +11345,7 @@ var __async = (__this, __arguments, generator) => {
     }),
     emits: ["update", "update:visible", "ok", "cancel", "opened", "closed"],
     setup(props, { emit }) {
-      const translate = useLocale(cN$c);
+      const translate = useLocale(cN$d);
       const showPopup = vue.ref(props.visible);
       vue.onMounted(() => {
         if (props.closeOnPopstate) {
@@ -12926,8 +12926,9 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_1$C = { class: "nut-empty" };
   const _hoisted_2$v = ["src"];
   const _hoisted_3$o = { class: "nut-empty__description" };
+  const cN$c = "NutEmpty";
   const _sfc_main$H = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
-    name: "NutEmpty"
+    name: cN$c
   }), {
     __name: "empty.taro",
     props: {
@@ -12937,7 +12938,7 @@ var __async = (__this, __arguments, generator) => {
     },
     setup(__props) {
       const props = __props;
-      const translate = useLocale("NutEmpty");
+      const translate = useLocale(cN$c);
       const defaultStatus = {
         empty: "https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png",
         error: "https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png",

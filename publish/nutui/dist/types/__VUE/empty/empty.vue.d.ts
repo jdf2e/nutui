@@ -1,6 +1,6 @@
 import type { WithInstall } from '../../utils';
 import { EmptyImage } from './types';
-export type emptyProps = Partial<{
+export type EmptyProps = Partial<{
     image: EmptyImage;
     imageSize: number | string;
     description: string;
