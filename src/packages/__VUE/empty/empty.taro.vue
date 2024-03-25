@@ -20,25 +20,29 @@ import { EmptyImage } from './types';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useLocale } from '@/packages/utils/useLocale';
 
+const cN = 'NutEmpty';
+
 defineOptions({
-  name: 'NutEmpty'
+  name: cN
 });
 
-export type emptyProps = Partial<{
+export type EmptyProps = Partial<{
   image: EmptyImage;
   imageSize: number | string;
   description: string;
 }>;
 
-const props = withDefaults(defineProps<emptyProps>(), {
+const props = withDefaults(defineProps<EmptyProps>(), {
   image: 'empty',
   imageSize: '',
   description: ''
 });
 
-const translate = useLocale('NutEmpty');
+const translate = useLocale(cN);
 
-const defaultStatus: any = {
+const defaultStatus: {
+  [key: EmptyImage]: string;
+} = {
   empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
   error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
   network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png'
