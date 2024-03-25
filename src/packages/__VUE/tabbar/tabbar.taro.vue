@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import Taro from '@tarojs/taro';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { useChildren } from '@/packages/utils';
@@ -56,6 +56,13 @@ const changeIndex = (index: number, active: number | string) => {
 };
 
 linkChildren({ props, activeIndex, changeIndex });
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    activeIndex.value = val;
+  }
+);
 
 const updateHeight = () => {
   if (props.bottom && props.placeholder) {

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ref, nextTick } from 'vue';
+import { onMounted, computed, ref, watch, nextTick } from 'vue';
 import { useChildren } from '@/packages/utils';
 import { TABBAR_KEY } from './types';
 
@@ -57,6 +57,13 @@ const changeIndex = (index: number, active: number | string) => {
 };
 
 linkChildren({ props, activeIndex, changeIndex });
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    activeIndex.value = val;
+  }
+);
 
 const updateHeight = () => {
   if (props.bottom && props.placeholder) {
