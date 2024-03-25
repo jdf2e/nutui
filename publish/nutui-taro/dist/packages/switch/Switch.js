@@ -1,63 +1,52 @@
-import { computed, watch, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createVNode, createCommentVNode, createTextVNode, Fragment, withDirectives, toDisplayString, vShow } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, computed, watch, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createVNode, unref, createCommentVNode, createTextVNode, Fragment, withDirectives, toDisplayString, vShow } from "vue";
 import { Loading1 } from "@nutui/icons-vue-taro";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { componentName, create } = createComponent("switch");
-const _sfc_main = create({
-  components: { Loading1 },
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = { class: "nut-switch-button" };
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutSwitch"
+}), {
+  __name: "switch.taro",
   props: {
-    modelValue: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * @deprecated Please use `disabled` prop instead.
-     */
-    disable: {
-      type: Boolean,
-      default: false
-    },
-    activeColor: {
-      type: String,
-      default: ""
-    },
-    inactiveColor: {
-      type: String,
-      default: ""
-    },
-    activeText: {
-      type: String,
-      default: ""
-    },
-    inactiveText: {
-      type: String,
-      default: ""
-    },
-    activeValue: {
-      type: [String, Number, Boolean],
-      default: true
-    },
-    inactiveValue: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
+    modelValue: { type: [String, Number, Boolean], default: false },
+    disabled: { type: Boolean, default: false },
+    activeColor: { default: "" },
+    inactiveColor: { default: "" },
+    activeText: { default: "" },
+    inactiveText: { default: "" },
+    activeValue: { type: [String, Number, Boolean], default: true },
+    inactiveValue: { type: [String, Number, Boolean], default: false },
+    loading: { type: Boolean, default: false },
+    disable: { type: Boolean, default: false }
   },
   emits: ["change", "update:modelValue", "update:loading"],
-  setup(props, { emit }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const legacyDisabled = computed(() => props.disabled || props.disable);
     const disabled = useFormDisabled(legacyDisabled);
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-switch";
       return {
         [prefixCls]: true,
         [isActive.value ? "nut-switch-open" : "nut-switch-close"]: true,
@@ -89,43 +78,36 @@ const _sfc_main = create({
         }
       }
     );
-    return {
-      classes,
-      style,
-      isActive,
-      onClick
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass(classes.value),
+        style: normalizeStyle(style.value),
+        onClick
+      }, [
+        createElementVNode("view", _hoisted_1, [
+          _ctx.loading ? renderSlot(_ctx.$slots, "icon", { key: 0 }, () => [
+            createVNode(unref(Loading1), {
+              name: "loading1",
+              color: _ctx.activeColor
+            }, null, 8, ["color"])
+          ]) : createCommentVNode("", true),
+          createTextVNode(),
+          _ctx.activeText ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+            withDirectives(createElementVNode("view", { class: "nut-switch-label open" }, toDisplayString(_ctx.activeText), 513), [
+              [vShow, isActive.value]
+            ]),
+            createTextVNode(),
+            withDirectives(createElementVNode("view", { class: "nut-switch-label close" }, toDisplayString(_ctx.inactiveText), 513), [
+              [vShow, !isActive.value]
+            ])
+          ], 64)) : createCommentVNode("", true)
+        ])
+      ], 6);
     };
   }
-});
-const _hoisted_1 = { class: "nut-switch-button" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Loading1 = resolveComponent("Loading1");
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes),
-    style: normalizeStyle(_ctx.style),
-    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-  }, [
-    createElementVNode("view", _hoisted_1, [
-      _ctx.loading ? renderSlot(_ctx.$slots, "icon", { key: 0 }, () => [
-        createVNode(_component_Loading1, {
-          name: "loading1",
-          color: _ctx.activeColor
-        }, null, 8, ["color"])
-      ]) : createCommentVNode("", true),
-      createTextVNode(),
-      _ctx.activeText ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-        withDirectives(createElementVNode("view", { class: "nut-switch-label open" }, toDisplayString(_ctx.activeText), 513), [
-          [vShow, _ctx.isActive]
-        ]),
-        createTextVNode(),
-        withDirectives(createElementVNode("view", { class: "nut-switch-label close" }, toDisplayString(_ctx.inactiveText), 513), [
-          [vShow, !_ctx.isActive]
-        ])
-      ], 64)) : createCommentVNode("", true)
-    ])
-  ], 6);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Switch,
+  _sfc_main as default
 };
