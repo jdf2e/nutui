@@ -48,6 +48,14 @@ app.use(Empty);
 | image | Custom image |
 | description | Custom description |
 
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
