@@ -65,6 +65,14 @@ app.use(TrendArrow);
 | up-icon | custom up icon |
 | down-icon | custom down icon |
 
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

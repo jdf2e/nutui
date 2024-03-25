@@ -781,6 +781,7 @@
           "cType": "展示组件",
           "cName": "趋势箭头",
           "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "setup": true,
           "author": "liukun"
         },
         {
