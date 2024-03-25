@@ -1,5 +1,5 @@
 <template>
-  <nut-tabbar v-model="active" unactive-color="grey" active-color="blue" @tab-switch="tabSwitch">
+  <nut-tabbar v-model="active" @tab-switch="tabSwitch">
     <nut-tabbar-item tab-title="Home">
       <template #icon>
         <Home></Home>
