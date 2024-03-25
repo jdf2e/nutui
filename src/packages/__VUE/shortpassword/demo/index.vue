@@ -14,11 +14,11 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Length from './length.vue';
-import Forget from './forget.vue';
-import Error from './error.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Length from './length.vue'
+import Forget from './forget.vue'
+import Error from './error.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -33,5 +33,5 @@ const t = useTranslate({
     forget: 'Forget Password',
     error: 'Error Message'
   }
-});
+})
 </script>

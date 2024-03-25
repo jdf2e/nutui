@@ -20,10 +20,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const showPopup = ref(false);
-const showPopover = ref(false);
-const curPostion = ref('top');
+import { ref } from 'vue'
+const showPopup = ref(false)
+const showPopover = ref(false)
+const curPostion = ref('top')
 const positionList = ref([
   {
     name: 'option1'
@@ -31,24 +31,24 @@ const positionList = ref([
   {
     name: 'option2'
   }
-]);
+])
 const close = () => {
-  showPopover.value = false;
-  showPopup.value = false;
-};
+  showPopover.value = false
+  showPopup.value = false
+}
 
 const change = ({ selectedValue }) => {
-  curPostion.value = selectedValue[0];
-  if (showPopup.value) showPopover.value = true;
-};
+  curPostion.value = selectedValue[0]
+  if (showPopup.value) showPopover.value = true
+}
 
 const handlePicker = () => {
-  showPopup.value = true;
-};
+  showPopup.value = true
+}
 
 const handleOpened = () => {
-  showPopover.value = true;
-};
+  showPopover.value = true
+}
 
 const columns = ref([
   { text: 'top', value: 'top' },
@@ -63,7 +63,7 @@ const columns = ref([
   { text: 'left', value: 'left' },
   { text: 'left-start', value: 'left-start' },
   { text: 'left-end', value: 'left-end' }
-]);
+])
 </script>
 
 <style>

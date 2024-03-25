@@ -7,11 +7,11 @@ Used to provide interactive operations for pull-down refresh.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { PullRefresh } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { PullRefresh } from '@nutui/nutui'
 
-const app = createApp();
-app.use(PullRefresh);
+const app = createApp()
+app.use(PullRefresh)
 ```
 
 ### Basic Usage
@@ -29,13 +29,13 @@ The refresh event will be Emitted when pull refresh, you should set v-model to f
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>
@@ -72,13 +72,13 @@ The pull-down refresh has four states:`'loading' | 'loosing' | 'pulling' | 'comp
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>
@@ -107,13 +107,13 @@ The trigger conditions for PullRefresh are: The parent position of the scroll ba
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>

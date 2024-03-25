@@ -1,18 +1,18 @@
-import { config, mount } from '@vue/test-utils';
-import { Image as ImagePage } from '@nutui/nutui';
-import { Loading, CircleClose, Image, ImageError } from '@nutui/icons-vue';
+import { config, mount } from '@vue/test-utils'
+import { Image as ImagePage } from '@nutui/nutui'
+import { Loading, CircleClose, Image, ImageError } from '@nutui/icons-vue'
 beforeAll(() => {
   config.global.components = {
     Loading,
     CircleClose,
     Image,
     ImageError
-  };
-});
+  }
+})
 
 afterAll(() => {
-  config.global.components = {};
-});
+  config.global.components = {}
+})
 
 test('ImagePage render', async () => {
   const wrapper = mount(ImagePage, {
@@ -22,10 +22,10 @@ test('ImagePage render', async () => {
       height: '100',
       showLoading: false
     }
-  });
-  await wrapper.find('img').trigger('load');
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  await wrapper.find('img').trigger('load')
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('ImagePage load error', async () => {
   const wrapper = mount(ImagePage, {
@@ -35,11 +35,11 @@ test('ImagePage load error', async () => {
       height: '100',
       showError: true
     }
-  });
-  await wrapper.find('img').trigger('error');
-  expect(wrapper.find('.nut-img-error').exists()).toBeTruthy();
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  await wrapper.find('img').trigger('error')
+  expect(wrapper.find('.nut-img-error').exists()).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('ImagePage loading', async () => {
   const wrapper = mount(ImagePage, {
@@ -49,11 +49,11 @@ test('ImagePage loading', async () => {
       height: '100',
       showLoading: true
     }
-  });
+  })
   // await wrapper.find('img').trigger('load');
-  expect(wrapper.find('.nut-img-loading').exists()).toBeTruthy();
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.nut-img-loading').exists()).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('ImagePage render Round', async () => {
   const wrapper = mount(ImagePage, {
@@ -63,8 +63,8 @@ test('ImagePage render Round', async () => {
       height: '100',
       round: true
     }
-  });
-  await wrapper.find('img').trigger('load');
-  expect(wrapper.find('.nut-image-round').exists()).toBeTruthy();
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  await wrapper.find('img').trigger('load')
+  expect(wrapper.find('.nut-image-round').exists()).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})

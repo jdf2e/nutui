@@ -15,12 +15,12 @@
   </view>
 </template>
 <script lang="ts">
-import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue';
-import Taro from '@tarojs/taro';
-import { createComponent } from '@/packages/utils/create';
-import { AVATAR_KEY, type AvatarShape, type AvatarSize, type AvatarZIndex } from '../avatar/types';
-import NutAvatar from '../avatar/index.taro.vue';
-const { create } = createComponent('avatar-group');
+import { onMounted, provide, ref, onUnmounted, nextTick, unref, PropType, computed } from 'vue'
+import Taro from '@tarojs/taro'
+import { createComponent } from '@/packages/utils/create'
+import { AVATAR_KEY, type AvatarShape, type AvatarSize, type AvatarZIndex } from '../avatar/types'
+import NutAvatar from '../avatar/index.taro.vue'
+const { create } = createComponent('avatar-group')
 export default create({
   components: {
     NutAvatar
@@ -60,98 +60,98 @@ export default create({
     }
   },
   setup(props) {
-    const avatarGroupRef = ref<any>(null);
-    const foldCount = ref(99);
-    const observer = ref<MutationObserver>();
+    const avatarGroupRef = ref<any>(null)
+    const foldCount = ref(99)
+    const observer = ref<MutationObserver>()
     const styles = computed(() => {
       return {
         marginLeft: -1 * Number(props.span) + 'px'
-      };
-    });
+      }
+    })
 
     // 折叠头像
     const foldAvatar = (element: any) => {
-      let count = 0;
+      let count = 0
 
-      const children = element.children;
+      const children = element.children
       if (props.zIndex === 'right') {
         for (let i = 0; i < Number(props.maxCount); i++) {
-          const child = children[i];
-          child.style.zIndex = `${99 - i}`;
+          const child = children[i]
+          child.style.zIndex = `${99 - i}`
         }
       }
       for (let i = Number(props.maxCount); i < children.length; i++) {
-        const child = children[i] as any;
-        let className;
+        const child = children[i] as any
+        let className
         if (Taro.getEnv() === 'WEB') {
-          className = child.className;
+          className = child.className
         } else {
-          className = child.props.class;
+          className = child.props.class
         }
         if (className.includes('avater-fold')) {
-          continue;
+          continue
         }
-        child.style.display = 'none';
-        count++;
+        child.style.display = 'none'
+        count++
       }
-      foldCount.value = count;
-    };
+      foldCount.value = count
+    }
 
     // 监听 default slot
     const watchDefaultSlot = (element: any) => {
       // 观察器的配置（需要观察什么变动）
-      const config = { attributes: false, childList: true, subtree: true };
+      const config = { attributes: false, childList: true, subtree: true }
 
       // 当观察到变动时执行的回调函数
       const callback = function (mutations: MutationRecord[]) {
-        let sig = false;
+        let sig = false
         // Use traditional 'for loops' for IE 11
         for (let mutation of mutations) {
           if (mutation.type === 'childList') {
-            sig = true;
-            break;
+            sig = true
+            break
           }
         }
-        if (sig) foldAvatar(element);
-      };
+        if (sig) foldAvatar(element)
+      }
 
       // 创建一个观察器实例并传入回调函数
-      const observer = new MutationObserver(callback);
+      const observer = new MutationObserver(callback)
       // 以上述配置开始观察目标节点
-      observer.observe(element, config);
-      return observer;
-    };
+      observer.observe(element, config)
+      return observer
+    }
 
     onMounted(() => {
       if (props.maxCount) {
         nextTick(() => {
-          let element = unref(avatarGroupRef);
+          let element = unref(avatarGroupRef)
           if (Taro.getEnv() === 'WEB') {
             if (element && element.$el) {
-              element = element.$el;
+              element = element.$el
             }
           }
-          foldAvatar(element);
-          observer.value = watchDefaultSlot(element);
-        });
+          foldAvatar(element)
+          observer.value = watchDefaultSlot(element)
+        })
       }
-    });
+    })
 
     onUnmounted(() => {
       // 之后，可停止观察
-      observer.value?.disconnect();
-    });
+      observer.value?.disconnect()
+    })
 
     provide(AVATAR_KEY, {
       props,
       avatarGroupRef
-    });
+    })
 
     return {
       styles,
       foldCount,
       avatarGroupRef
-    };
+    }
   }
-});
+})
 </script>

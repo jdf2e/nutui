@@ -32,10 +32,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
-import config from '@/packages/../config.json';
-import Taro from '@tarojs/taro';
-import { Right } from '@nutui/icons-vue-taro';
+import { reactive, toRefs } from 'vue'
+import config from '@/packages/../config.json'
+import Taro from '@tarojs/taro'
+import { Right } from '@nutui/icons-vue-taro'
 export default {
   name: 'NutUI',
   components: { Right },
@@ -44,7 +44,7 @@ export default {
       title: '',
       path: '/pages/index/index',
       success: function () {}
-    };
+    }
   },
   // onShareTimeline() {
   //   return {
@@ -55,27 +55,27 @@ export default {
   setup() {
     const state = reactive({
       nav: config.nav
-    });
+    })
 
     const reorder = (packages: any) => {
       return packages.sort(function (x: any, y: any) {
-        return x['name'].toLowerCase().localeCompare(y['name'].toLowerCase());
-      });
-    };
+        return x['name'].toLowerCase().localeCompare(y['name'].toLowerCase())
+      })
+    }
 
     const navigateTo = (name, enName) => {
       Taro.navigateTo({
         url: `/${enName}/pages/${name.toLowerCase()}/index`
-      });
-    };
+      })
+    }
 
     return {
       ...toRefs(state),
       reorder,
       navigateTo
-    };
+    }
   }
-};
+}
 </script>
 <style lang="scss">
 .index {

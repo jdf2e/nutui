@@ -14,11 +14,11 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Top from './top.vue';
-import Container from './container.vue';
-import Bottom from './bottom.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Top from './top.vue'
+import Container from './container.vue'
+import Bottom from './bottom.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -33,5 +33,5 @@ const t = useTranslate({
     container: 'Custom Container',
     bottom: 'Bottom Distance'
   }
-});
+})
 </script>

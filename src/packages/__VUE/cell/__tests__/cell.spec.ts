@@ -1,11 +1,11 @@
-import { mount } from '@vue/test-utils';
-import { Cell } from '@nutui/nutui';
-import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Cell } from '@nutui/nutui'
+import { nextTick } from 'vue'
 
 // mock module
 vi.mock('vue-router', () => ({
   useRouter: vi.fn()
-}));
+}))
 
 test('prop title desc subtitle', async () => {
   const wrapper = mount(Cell, {
@@ -14,25 +14,25 @@ test('prop title desc subtitle', async () => {
       desc: '描述1',
       subTitle: '副标题1'
     }
-  });
-  const html = expect(wrapper.html());
-  html.toContain('标题1');
-  html.toContain('描述1');
-  html.toContain('副标题1');
+  })
+  const html = expect(wrapper.html())
+  html.toContain('标题1')
+  html.toContain('描述1')
+  html.toContain('副标题1')
 
   wrapper.setProps({
     title: '标题2',
     desc: '描述2',
     subTitle: '副标题2'
-  });
-  await nextTick();
-  const html2 = expect(wrapper.html());
-  html2.toContain('标题2');
-  html2.toContain('描述2');
-  html2.toContain('副标题2');
+  })
+  await nextTick()
+  const html2 = expect(wrapper.html())
+  html2.toContain('标题2')
+  html2.toContain('描述2')
+  html2.toContain('副标题2')
 
-  html.toMatchSnapshot();
-});
+  html.toMatchSnapshot()
+})
 
 test('prop desc-text-align left', () => {
   const wrapper = mount(Cell, {
@@ -40,27 +40,27 @@ test('prop desc-text-align left', () => {
       descTextAlign: 'left',
       desc: '张三'
     }
-  });
-  expect(wrapper.find<HTMLElement>('.nut-cell__value').element.style.textAlign).toEqual('left');
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.find<HTMLElement>('.nut-cell__value').element.style.textAlign).toEqual('left')
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('prop isLink ', () => {
   const wrapper = mount(Cell, {
     props: {
       isLink: true
     }
-  });
-  expect(wrapper.find<HTMLElement>('.nut-cell__link'));
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.find<HTMLElement>('.nut-cell__link'))
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('emit click event', () => {
-  const wrapper = mount(Cell);
+  const wrapper = mount(Cell)
 
-  wrapper.trigger('click');
-  expect(wrapper.emitted('click')!.length).toEqual(1);
-});
+  wrapper.trigger('click')
+  expect(wrapper.emitted('click')!.length).toEqual(1)
+})
 
 test('slot default test', () => {
   const wrapper = mount(Cell, {
@@ -72,10 +72,10 @@ test('slot default test', () => {
     slots: {
       default: 'Custom Content'
     }
-  });
-  expect(wrapper.html()).toContain('Custom Content');
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.html()).toContain('Custom Content')
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('slot link、icon test', () => {
   const wrapper = mount(Cell, {
@@ -88,9 +88,9 @@ test('slot link、icon test', () => {
       icon: 'Custom Icon',
       link: 'Custom Link'
     }
-  });
-  const html = expect(wrapper.html());
-  html.toContain('Custom Link');
-  html.toContain('Custom Icon');
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  const html = expect(wrapper.html())
+  html.toContain('Custom Link')
+  html.toContain('Custom Icon')
+  expect(wrapper.html()).toMatchSnapshot()
+})

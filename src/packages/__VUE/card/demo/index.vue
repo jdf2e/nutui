@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Tag from './tag.vue';
-import Shop from './shop.vue';
-import Footer from './footer.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Tag from './tag.vue'
+import Shop from './shop.vue'
+import Footer from './footer.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     shop: 'Custom Content',
     footer: 'Customize bottom right content'
   }
-});
+})
 </script>

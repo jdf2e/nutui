@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { AvatarCropper } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { AvatarCropper } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(AvatarCropper);
+const app = createApp()
+app.use(AvatarCropper)
 ```
 
 ### 基础用法

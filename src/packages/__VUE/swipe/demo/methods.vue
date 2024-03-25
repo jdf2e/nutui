@@ -8,14 +8,14 @@
   </nut-swipe>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const swipeRef = ref();
-const checked = ref(false);
+import { ref } from 'vue'
+const swipeRef = ref()
+const checked = ref(false)
 const change = (value: boolean) => {
   if (value) {
-    swipeRef.value?.open('left');
+    swipeRef.value?.open('left')
   } else {
-    swipeRef.value?.close();
+    swipeRef.value?.close()
   }
-};
+}
 </script>

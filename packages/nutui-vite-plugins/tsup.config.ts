@@ -1,4 +1,4 @@
-import type { Options } from 'tsup';
+import type { Options } from 'tsup'
 
 export default <Options>{
   entryPoints: ['src/*.ts'],
@@ -7,4 +7,4 @@ export default <Options>{
   dts: true,
   shims: true,
   silent: true
-};
+}

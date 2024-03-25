@@ -1,4 +1,4 @@
-export type PopoverTheme = 'light' | 'dark';
+export type PopoverTheme = 'light' | 'dark'
 
 export type PopoverLocation =
   | 'bottom'
@@ -12,4 +12,4 @@ export type PopoverLocation =
   | 'left-start'
   | 'left-end'
   | 'right-start'
-  | 'right-end';
+  | 'right-end'

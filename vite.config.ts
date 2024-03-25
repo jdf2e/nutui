@@ -1,13 +1,13 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import path from 'path';
-import config from './package.json';
-import autoprefixer from 'autoprefixer';
-import VueDevTools from 'vite-plugin-vue-devtools';
-import { markdown } from '@nutui/vite-plugins';
-const resolve = path.resolve;
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import path from 'path'
+import config from './package.json'
+import autoprefixer from 'autoprefixer'
+import VueDevTools from 'vite-plugin-vue-devtools'
+import { markdown } from '@nutui/vite-plugins'
+const resolve = path.resolve
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
@@ -73,4 +73,4 @@ export default defineConfig({
     include: ['src/packages/__VUE/**/*.(test|spec).(ts|tsx)'],
     reporters: ['default', 'html']
   }
-});
+})

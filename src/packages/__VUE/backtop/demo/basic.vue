@@ -6,8 +6,8 @@
 </template>
 <script setup>
 const handleClick = () => {
-  console.log('back to top');
-};
+  console.log('back to top')
+}
 </script>
 
 <style>

@@ -6,8 +6,8 @@
   </nut-popover>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(false);
+import { ref } from 'vue'
+const show = ref(false)
 const list = ref([
   {
     name: 'option1'
@@ -18,10 +18,10 @@ const list = ref([
   {
     name: 'option3'
   }
-]);
+])
 const choose = (item: unknown, index: number) => {
-  console.log(item, index);
-};
+  console.log(item, index)
+}
 </script>
 
 <style>

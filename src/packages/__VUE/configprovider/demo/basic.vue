@@ -39,12 +39,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const theme = ref('');
-const checked = ref(false);
+import { ref } from 'vue'
+const theme = ref('')
+const checked = ref(false)
 const change = (v) => {
-  theme.value = v ? 'dark' : '';
-};
+  theme.value = v ? 'dark' : ''
+}
 const formData = ref({
   switch: false,
   checkbox: false,
@@ -68,5 +68,5 @@ const formData = ref({
       type: 'image'
     }
   ]
-});
+})
 </script>

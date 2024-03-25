@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Autoplay from './autoplay.vue';
-import Poster from './poster.vue';
-import Playsinline from './playsinline.vue';
-import Background from './background.vue';
-import Methods from './methods.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Autoplay from './autoplay.vue'
+import Poster from './poster.vue'
+import Playsinline from './playsinline.vue'
+import Background from './background.vue'
+import Methods from './methods.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     background: 'Set video as background',
     methods: 'Ref Methods'
   }
-});
+})
 </script>

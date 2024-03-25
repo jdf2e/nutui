@@ -7,11 +7,11 @@ Search bar
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Searchbar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Searchbar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Searchbar);
+const app = createApp()
+app.use(Searchbar)
 ```
 
 ### Basic Usage

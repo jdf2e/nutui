@@ -38,20 +38,20 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import { useSlots } from 'vue';
-import type { PropType } from 'vue';
-import { popupProps } from '../popup/props';
-import NutPopup from '../popup/index.vue';
-import { Loading } from '@nutui/icons-vue';
-const { create } = createComponent('action-sheet');
+import { createComponent } from '@/packages/utils/create'
+import { useSlots } from 'vue'
+import type { PropType } from 'vue'
+import { popupProps } from '../popup/props'
+import NutPopup from '../popup/index.vue'
+import { Loading } from '@nutui/icons-vue'
+const { create } = createComponent('action-sheet')
 export interface ActionSheetMenuItems {
-  [key: PropertyKey]: any;
-  name?: string;
-  subname?: string;
-  disable?: boolean;
-  loading?: boolean;
-  color?: string;
+  [key: PropertyKey]: any
+  name?: string
+  subname?: string
+  disable?: boolean
+  loading?: boolean
+  color?: string
 }
 export default create({
   components: {
@@ -100,30 +100,30 @@ export default create({
   emits: ['cancel', 'close', 'choose', 'update:visible'],
 
   setup(props, { emit }) {
-    const slotDefault = !!useSlots().default;
+    const slotDefault = !!useSlots().default
 
     const isHighlight = (item: ActionSheetMenuItems) => {
-      return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '';
-    };
+      return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : ''
+    }
 
     const cancelActionSheet = () => {
-      emit('cancel');
-      emit('update:visible', false);
-    };
+      emit('cancel')
+      emit('update:visible', false)
+    }
 
     const chooseItem = (item: ActionSheetMenuItems, index: number) => {
       if (!item.disable && !item.loading) {
-        emit('choose', item, index);
-        emit('update:visible', false);
+        emit('choose', item, index)
+        emit('update:visible', false)
       }
-    };
+    }
 
     const close = (e: Event) => {
       if (props.closeAbled) {
-        emit('close', e);
-        emit('update:visible', false);
+        emit('close', e)
+        emit('update:visible', false)
       }
-    };
+    }
 
     return {
       slotDefault,
@@ -131,7 +131,7 @@ export default create({
       cancelActionSheet,
       chooseItem,
       close
-    };
+    }
   }
-});
+})
 </script>

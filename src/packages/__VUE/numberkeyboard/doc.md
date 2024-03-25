@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { NumberKeyboard } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { NumberKeyboard } from '@nutui/nutui'
 
-const app = createApp();
-app.use(NumberKeyboard);
+const app = createApp()
+app.use(NumberKeyboard)
 ```
 
 ### 默认键盘

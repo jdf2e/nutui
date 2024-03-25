@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Scroll from './scroll.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Scroll from './scroll.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -28,5 +28,5 @@ const t = useTranslate({
     custom: 'Custom scrolling picture display',
     scroll: 'Lottery (simulated rolling lottery)'
   }
-});
+})
 </script>

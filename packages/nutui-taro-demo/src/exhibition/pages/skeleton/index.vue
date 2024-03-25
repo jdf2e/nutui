@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Row from './row.vue';
-import Avatar from './avatar.vue';
-import Round from './round.vue';
-import Picture from './picture.vue';
-import Sub from './sub.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Row from './row.vue'
+import Avatar from './avatar.vue'
+import Round from './round.vue'
+import Picture from './picture.vue'
+import Sub from './sub.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     picture: 'Picture combination',
     sub: 'Display sub-component'
   }
-});
+})
 </script>

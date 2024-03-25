@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Single from './single.vue';
-import Range from './range.vue';
-import Multiple from './multiple.vue';
-import Week from './week.vue';
-import Disabled from './disabled.vue';
-import SingleQuick from './single-quick.vue';
-import RangeQuick from './range-quick.vue';
-import Custom from './custom.vue';
-import Tiled from './tiled.vue';
+import { useTranslate } from '@/sites/utils'
+import Single from './single.vue'
+import Range from './range.vue'
+import Multiple from './multiple.vue'
+import Week from './week.vue'
+import Disabled from './disabled.vue'
+import SingleQuick from './single-quick.vue'
+import RangeQuick from './range-quick.vue'
+import Custom from './custom.vue'
+import Tiled from './tiled.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -64,7 +64,7 @@ const t = useTranslate({
     custom: 'Custom Calendar',
     tiled: 'Tiled Display'
   }
-});
+})
 </script>
 
 <style lang="scss">

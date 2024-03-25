@@ -35,14 +35,14 @@
 </template>
 
 <script lang="ts">
-import type { PropType, CSSProperties } from 'vue';
-import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useRouter } from '@/packages/utils/useRoute';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { Right } from '@nutui/icons-vue';
-import { CellSize } from './types';
-const { componentName, create } = createComponent('cell');
+import type { PropType, CSSProperties } from 'vue'
+import { computed } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useRouter } from '@/packages/utils/useRoute'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { Right } from '@nutui/icons-vue'
+import { CellSize } from './types'
+const { componentName, create } = createComponent('cell')
 export default create({
   components: { Right },
   props: {
@@ -67,44 +67,44 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}--clickable`]: props.isLink || props.to,
         [`${prefixCls}--center`]: props.center,
         [`${prefixCls}--large`]: props.size === 'large'
-      };
-    });
-    const router = useRouter();
+      }
+    })
+    const router = useRouter()
 
     const baseStyle = computed(() => {
       return {
         borderRadius: pxCheck(props.roundRadius)
-      };
-    });
+      }
+    })
 
     const descStyle = computed(() => {
       return {
         textAlign: props.descTextAlign
-      } as CSSProperties;
-    });
+      } as CSSProperties
+    })
 
     const handleClick = (event: Event) => {
-      emit('click', event);
+      emit('click', event)
 
       if (props.to && router) {
-        router[props.replace ? 'replace' : 'push'](props.to);
+        router[props.replace ? 'replace' : 'push'](props.to)
       } else if (props.url) {
-        props.replace ? location.replace(props.url) : (location.href = props.url);
+        props.replace ? location.replace(props.url) : (location.href = props.url)
       }
-    };
+    }
 
     return {
       handleClick,
       classes,
       baseStyle,
       descStyle
-    };
+    }
   }
-});
+})
 </script>

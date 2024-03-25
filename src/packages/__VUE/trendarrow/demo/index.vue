@@ -23,14 +23,14 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Digits from './digits.vue';
-import Left from './left.vue';
-import Sign from './sign.vue';
-import Zero from './zero.vue';
-import Color from './color.vue';
-import IconDemo from './icon.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Digits from './digits.vue'
+import Left from './left.vue'
+import Sign from './sign.vue'
+import Zero from './zero.vue'
+import Color from './color.vue'
+import IconDemo from './icon.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -51,7 +51,7 @@ const t = useTranslate({
     color: 'Custom color',
     icon: 'Custom icon'
   }
-});
+})
 </script>
 <style lang="scss">
 .trend-arrow-demo {

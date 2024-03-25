@@ -1,19 +1,19 @@
-import { config, mount } from '@vue/test-utils';
-import { Menu, MenuItem } from '@nutui/nutui';
-import { mockScrollTop } from './../../../utils/unit';
-import { h, nextTick } from 'vue';
+import { config, mount } from '@vue/test-utils'
+import { Menu, MenuItem } from '@nutui/nutui'
+import { mockScrollTop } from './../../../utils/unit'
+import { h, nextTick } from 'vue'
 
 const options1 = [
   { text: '全部商品', value: 0 },
   { text: '新款商品', value: 1 },
   { text: '活动商品', value: 2 }
-];
+]
 
 const options2 = [
   { text: '默认排序', value: 'a' },
   { text: '好评排序', value: 'b' },
   { text: '销量排序', value: 'c' }
-];
+]
 
 const options3 = [
   { text: '全部商品', value: 0 },
@@ -34,15 +34,15 @@ const options3 = [
   { text: '传统滋补', value: 15 },
   { text: '汽车用品', value: 16 },
   { text: '家居日用', value: 17 }
-];
+]
 
 // 所有的测试用例之前执行一次
 beforeAll(() => {
   config.global.components = {
     NutMenuItem: MenuItem,
     NutMenu: Menu
-  };
-});
+  }
+})
 
 test('Menu: menu item cols props: nut-menu-item__option flex-basis should be 50%', () => {
   const wrapper = mount(Menu, {
@@ -53,10 +53,10 @@ test('Menu: menu item cols props: nut-menu-item__option flex-basis should be 50%
         options: options3
       })
     }
-  });
+  })
 
-  expect(wrapper.find<HTMLElement>('.nut-menu-item__option').element.style.flexBasis).toEqual('50%');
-});
+  expect(wrapper.find<HTMLElement>('.nut-menu-item__option').element.style.flexBasis).toEqual('50%')
+})
 
 test('Menu: menu item options props: html should contain options3 text', () => {
   const wrapper = mount(Menu, {
@@ -69,10 +69,10 @@ test('Menu: menu item options props: html should contain options3 text', () => {
         options: options3
       })
     }
-  });
+  })
 
-  expect(wrapper.html()).toContain('全部商品');
-});
+  expect(wrapper.html()).toContain('全部商品')
+})
 
 test('Menu: menu item custom text: nut-menu-item__content html should contain custom text', () => {
   const component = {
@@ -86,14 +86,14 @@ test('Menu: menu item custom text: nut-menu-item__content html should contain cu
       return {
         options1,
         value1: 0
-      };
+      }
     }
-  };
+  }
 
-  const wrapper = mount(component);
+  const wrapper = mount(component)
 
-  expect(wrapper.html()).toContain('custom text');
-});
+  expect(wrapper.html()).toContain('custom text')
+})
 
 test('Menu: menu item disabled props: nut-menu__item classes should contain disabled', async () => {
   const wrapper = mount(Menu, {
@@ -104,12 +104,12 @@ test('Menu: menu item disabled props: nut-menu__item classes should contain disa
         options: options1
       })
     }
-  });
-  await nextTick();
+  })
+  await nextTick()
 
-  const barItem: any = wrapper.find('.nut-menu__item');
-  expect(barItem.classes()).toContain('disabled');
-});
+  const barItem: any = wrapper.find('.nut-menu__item')
+  expect(barItem.classes()).toContain('disabled')
+})
 
 test('Menu: menu item title props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
@@ -119,11 +119,11 @@ test('Menu: menu item title props: nut-menu__title-text html should contain cust
         options: options1
       })
     }
-  });
-  await nextTick();
+  })
+  await nextTick()
 
-  expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title');
-});
+  expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title')
+})
 
 // test('Menu: menu item title icon props: nut-menu__title i classes should contain nut-icon-joy-smile', async () => {
 //   const wrapper = mount(Menu, {
@@ -190,14 +190,14 @@ test('Menu: active color props: icon in active nut-menu-item__option color and a
         options: options1
       })
     }
-  });
+  })
 
-  await nextTick();
-  wrapper.find('.nut-menu__item').trigger('click');
-  await nextTick();
-  expect(wrapper.find<HTMLElement>('.nut-menu__item.active').element.style.color).toEqual('green');
+  await nextTick()
+  wrapper.find('.nut-menu__item').trigger('click')
+  await nextTick()
+  expect(wrapper.find<HTMLElement>('.nut-menu__item.active').element.style.color).toEqual('green')
   // expect(wrapper.find<HTMLElement>('.nut-menu-item__option.active svg').element.style.color).toEqual('green');
-});
+})
 
 test('Menu: menu item change props: value2 should be b after click', async () => {
   const wrapper = mount({
@@ -214,22 +214,22 @@ test('Menu: menu item change props: value2 should be b after click', async () =>
       return {
         value2: 'a',
         options2
-      };
+      }
     },
     methods: {
       handleChange(val: any) {
-        (this as any).value2 = val;
+        ;(this as any).value2 = val
       }
     }
-  });
+  })
 
-  await nextTick();
-  const tabbarItem: any = wrapper.findAll('.nut-menu-item__option');
+  await nextTick()
+  const tabbarItem: any = wrapper.findAll('.nut-menu-item__option')
 
-  tabbarItem[1].trigger('click');
+  tabbarItem[1].trigger('click')
 
-  expect(wrapper.vm.value2).toBe('b');
-});
+  expect(wrapper.vm.value2).toBe('b')
+})
 
 test('Menu: menu close-on-click-overlay props: ', async () => {
   const wrapper = mount(Menu, {
@@ -242,16 +242,16 @@ test('Menu: menu close-on-click-overlay props: ', async () => {
         options: options1
       })
     }
-  });
-  await nextTick();
-  wrapper.find('.nut-menu__item').trigger('click');
-  await nextTick();
+  })
+  await nextTick()
+  wrapper.find('.nut-menu__item').trigger('click')
+  await nextTick()
 
-  wrapper.find('.nut-overlay').trigger('click');
-  await nextTick();
+  wrapper.find('.nut-overlay').trigger('click')
+  await nextTick()
 
-  expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none');
-});
+  expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none')
+})
 
 test('Menu: menu scroll-fixed props: nut-menu classes should contain scroll-fixed', async () => {
   const wrapper = mount(Menu, {
@@ -264,12 +264,12 @@ test('Menu: menu scroll-fixed props: nut-menu classes should contain scroll-fixe
         options: options1
       })
     }
-  });
+  })
 
-  await mockScrollTop(100);
+  await mockScrollTop(100)
 
-  expect(wrapper.find('.nut-menu').classes()).toContain('scroll-fixed');
-});
+  expect(wrapper.find('.nut-menu').classes()).toContain('scroll-fixed')
+})
 
 test('Menu: menu title-class props: nut-menu__title classes should contain custom-title-class', async () => {
   const wrapper = mount(Menu, {
@@ -282,14 +282,14 @@ test('Menu: menu title-class props: nut-menu__title classes should contain custo
         options: options1
       })
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const menuTitle: any = wrapper.find<HTMLElement>('.nut-menu__title');
+  const menuTitle: any = wrapper.find<HTMLElement>('.nut-menu__title')
 
-  expect(menuTitle.classes()).toContain('custom-title-class');
-});
+  expect(menuTitle.classes()).toContain('custom-title-class')
+})
 
 test('Menu: menu item open and close events: should be both emitted', async () => {
   const wrapper = mount({
@@ -306,24 +306,24 @@ test('Menu: menu item open and close events: should be both emitted', async () =
       return {
         value2: 'a',
         options2
-      };
+      }
     },
     methods: {
       handleOpen() {
-        (this as any).value2 = 'b';
+        ;(this as any).value2 = 'b'
       },
       handleClose() {
-        (this as any).value2 = 'c';
+        ;(this as any).value2 = 'c'
       }
     }
-  });
+  })
 
-  await nextTick();
-  wrapper.find('.nut-menu__item').trigger('click');
-  expect(wrapper.vm.value2).toBe('b');
+  await nextTick()
+  wrapper.find('.nut-menu__item').trigger('click')
+  expect(wrapper.vm.value2).toBe('b')
 
-  wrapper.find('.nut-menu-item-placeholder-element').trigger('click');
-  expect(wrapper.vm.value2).toBe('c');
+  wrapper.find('.nut-menu-item-placeholder-element').trigger('click')
+  expect(wrapper.vm.value2).toBe('c')
 
-  wrapper.unmount();
-});
+  wrapper.unmount()
+})

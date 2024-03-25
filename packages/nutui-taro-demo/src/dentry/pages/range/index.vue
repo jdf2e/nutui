@@ -36,18 +36,18 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Range from './range.vue';
-import Limit from './limit.vue';
-import Step from './step.vue';
-import HiddenRange from './hidden-range.vue';
-import HiddenTag from './hidden-tag.vue';
-import Disabled from './disabled.vue';
-import Color from './color.vue';
-import Button from './button.vue';
-import Vertical from './vertical.vue';
-import Marks from './marks.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Range from './range.vue'
+import Limit from './limit.vue'
+import Step from './step.vue'
+import HiddenRange from './hidden-range.vue'
+import HiddenTag from './hidden-tag.vue'
+import Disabled from './disabled.vue'
+import Color from './color.vue'
+import Button from './button.vue'
+import Vertical from './vertical.vue'
+import Marks from './marks.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -76,7 +76,7 @@ const t = useTranslate({
     vertical: 'Vertical',
     marks: 'Marks'
   }
-});
+})
 </script>
 <style>
 .range-demo h2 {

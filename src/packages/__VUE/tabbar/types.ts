@@ -1,1 +1,1 @@
-export const TABBAR_KEY = Symbol('nut-tabbar');
+export const TABBAR_KEY = Symbol('nut-tabbar')

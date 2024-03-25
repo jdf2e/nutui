@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ### 基础用法
@@ -85,6 +85,14 @@ app.use(TabbarItem);
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui-taro';
+```
 
 ## 主题定制
 

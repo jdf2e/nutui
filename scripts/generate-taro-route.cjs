@@ -1,34 +1,34 @@
-const fse = require('fs-extra');
-const config = require('../src/config.json');
-const targetBaseUrl = `${process.cwd()}`;
-const taroConfig = `${targetBaseUrl}/packages/nutui-taro-demo/src/app.config.ts`;
+const fse = require('fs-extra')
+const config = require('../src/config.json')
+const targetBaseUrl = `${process.cwd()}`
+const taroConfig = `${targetBaseUrl}/packages/nutui-taro-demo/src/app.config.ts`
 
 // 创建 config
 const createConfig = async () => {
-  let configRef = [];
+  let configRef = []
 
   return new Promise((res, rej) => {
     config.nav.map((item) => {
       let co = {
         root: item.enName,
         pages: []
-      };
+      }
 
       item.packages.map((it) => {
         if (it.show !== false && it.taro !== false) {
-          co.pages.push(`pages/${it.name.toLowerCase()}/index`);
+          co.pages.push(`pages/${it.name.toLowerCase()}/index`)
         }
-      });
+      })
 
-      configRef.push(co);
-    });
+      configRef.push(co)
+    })
 
-    res(configRef);
-  });
-};
+    res(configRef)
+  })
+}
 
 const create = async () => {
-  const subpackages = await createConfig();
+  const subpackages = await createConfig()
 
   fse.writeFileSync(
     taroConfig,
@@ -45,7 +45,7 @@ export default {
   }
 }`,
     'utf8'
-  );
-};
+  )
+}
 
-create();
+create()

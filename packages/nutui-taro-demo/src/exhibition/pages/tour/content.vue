@@ -23,14 +23,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref(false);
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref(false)
 const steps = ref([
   {
     target: 'tour4'
   }
-]);
+])
 </script>
 
 <style>

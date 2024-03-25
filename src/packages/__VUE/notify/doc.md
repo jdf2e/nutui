@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Notify } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Notify } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Notify);
+const app = createApp()
+app.use(Notify)
 ```
 
 ### 基础用法
@@ -23,19 +23,19 @@ app.use(Notify);
   <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showNotify } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/notify/style';
+import { ref } from 'vue'
+import { showNotify } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/notify/style'
 const baseNotify = (msg) => {
   showNotify.text(msg, {
     onClose: () => {
-      console.log('close');
+      console.log('close')
     },
     onClick: () => {
-      console.log('click');
+      console.log('click')
     }
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -55,21 +55,21 @@ const baseNotify = (msg) => {
   </nut-cell-group>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showNotify } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/notify/style';
+import { ref } from 'vue'
+import { showNotify } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/notify/style'
 const primaryNotify = (msg) => {
-  showNotify.primary(msg);
-};
+  showNotify.primary(msg)
+}
 const successNotify = (msg) => {
-  showNotify.success(msg);
-};
+  showNotify.success(msg)
+}
 const errorNotify = (msg) => {
-  showNotify.danger(msg);
-};
+  showNotify.danger(msg)
+}
 const warningNotify = (msg) => {
-  showNotify.warn(msg);
-};
+  showNotify.warn(msg)
+}
 </script>
 ```
 
@@ -92,18 +92,18 @@ const warningNotify = (msg) => {
   </nut-cell-group>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showNotify } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/notify/style';
+import { ref } from 'vue'
+import { showNotify } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/notify/style'
 const cusBgNotify = (msg) => {
-  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-};
+  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' })
+}
 const timeNotify = (msg) => {
-  showNotify.text(msg, { duration: 10000 });
-};
+  showNotify.text(msg, { duration: 10000 })
+}
 const positionNotify = (msg) => {
-  showNotify.text(msg, { position: 'bottom' });
-};
+  showNotify.text(msg, { position: 'bottom' })
+}
 </script>
 ```
 
@@ -123,13 +123,13 @@ const positionNotify = (msg) => {
   </nut-cell-group>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showNotify } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/notify/style';
-const show = ref(false);
+import { ref } from 'vue'
+import { showNotify } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/notify/style'
+const show = ref(false)
 const onClick = () => {
-  show.value = true;
-};
+  show.value = true
+}
 </script>
 ```
 

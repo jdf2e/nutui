@@ -5,12 +5,12 @@
   </nut-action-sheet>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref('');
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref('')
 const click = () => {
-  show.value = true;
-};
+  show.value = true
+}
 </script>
 <style>
 .custom-content {

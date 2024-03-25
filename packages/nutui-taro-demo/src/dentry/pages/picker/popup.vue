@@ -5,9 +5,9 @@
   </nut-popup>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref();
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref()
 const columns = ref([
   { text: '南京', value: 'Nanjing' },
   { text: '无锡', value: 'Wuxi' },
@@ -16,10 +16,10 @@ const columns = ref([
   { text: '连云港', value: 'Lianyungang' },
   { text: '长沙', value: 'Changsha' },
   { text: '武汉', value: 'Wuhan' }
-]);
+])
 
 const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue[0], selectedOptions[0]);
-  show.value = false;
-};
+  console.log(selectedValue[0], selectedOptions[0])
+  show.value = false
+}
 </script>

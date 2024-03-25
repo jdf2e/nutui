@@ -17,5 +17,5 @@
   </nut-progress>
 </template>
 <script setup lang="ts">
-import { Issue } from '@nutui/icons-vue-taro';
+import { Issue } from '@nutui/icons-vue-taro'
 </script>

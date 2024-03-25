@@ -48,16 +48,16 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { popupProps } from '../popup/props';
-import NutPopup from '../popup/index.taro.vue';
-import NutButton from '../button/index.taro';
-import { isPromise } from '@/packages/utils/util';
-import { useLocale } from '@/packages/utils/useLocale';
+import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { popupProps } from '../popup/props'
+import NutPopup from '../popup/index.taro.vue'
+import NutButton from '../button/index.taro'
+import { isPromise } from '@/packages/utils/util'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const { create } = createComponent('dialog');
-const cN = 'NutDialog';
+const { create } = createComponent('dialog')
+const cN = 'NutDialog'
 
 export default create({
   inheritAttrs: false,
@@ -132,75 +132,75 @@ export default create({
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const showPopup = ref(props.visible);
+    const translate = useLocale(cN)
+    const showPopup = ref(props.visible)
     onMounted(() => {
       if (props.closeOnPopstate) {
         window.addEventListener('popstate', function () {
-          closed('page');
-        });
+          closed('page')
+        })
       }
-    });
+    })
 
     watch(
       () => props.visible,
       (value) => {
-        showPopup.value = value;
+        showPopup.value = value
         if (value) {
-          emit('opened');
+          emit('opened')
         }
       }
-    );
+    )
 
     const update = (val: boolean) => {
-      emit('update', val);
-      emit('update:visible', val);
-    };
+      emit('update', val)
+      emit('update:visible', val)
+    }
 
     const closed = (action: string) => {
       if (props.beforeClose) {
-        const result = props.beforeClose(action);
+        const result = props.beforeClose(action)
         if (isPromise(result)) {
           result.then((bool) => {
             if (bool) {
-              update(false);
-              emit('closed');
+              update(false)
+              emit('closed')
             } else {
               // 用户阻止删除
             }
-          });
+          })
         }
       } else {
-        update(false);
-        emit('closed');
+        update(false)
+        emit('closed')
       }
-    };
+    }
 
     const onCancel = () => {
-      emit('cancel');
+      emit('cancel')
       if (props.cancelAutoClose) {
-        closed('cancel');
+        closed('cancel')
       }
-    };
+    }
 
     const onOk = () => {
-      emit('ok');
+      emit('ok')
       if (props.okAutoClose) {
-        closed('ok');
+        closed('ok')
       }
-    };
+    }
 
     const onClickOverlay = () => {
       if (props.closeOnClickOverlay) {
-        closed('');
+        closed('')
       }
-    };
+    }
 
     const contentStyle = computed(() => {
       return {
         textAlign: props.textAlign
-      } as CSSProperties;
-    });
+      } as CSSProperties
+    })
 
     return {
       closed,
@@ -210,7 +210,7 @@ export default create({
       onClickOverlay,
       contentStyle,
       translate
-    };
+    }
   }
-});
+})
 </script>

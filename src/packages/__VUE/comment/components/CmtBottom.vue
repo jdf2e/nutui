@@ -24,13 +24,13 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted, PropType } from 'vue';
-import { Fabulous, Comment, MoreX } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
+import { ref, onMounted, PropType } from 'vue'
+import { Fabulous, Comment, MoreX } from '@nutui/icons-vue'
+import { createComponent } from '@/packages/utils/create'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const { create } = createComponent('comment-bottom');
-const cN = 'NutComment';
+const { create } = createComponent('comment-bottom')
+const cN = 'NutComment'
 
 export default create({
   props: {
@@ -51,36 +51,36 @@ export default create({
   components: { Fabulous, Comment, MoreX },
   emits: ['clickOperate', 'handleClick'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const showPopver = ref(false);
+    const translate = useLocale(cN)
+    const showPopver = ref(false)
 
-    const mergeOp = ref([]);
+    const mergeOp = ref([])
 
     onMounted(() => {
-      const deOp = ['replay', 'like', 'more'];
+      const deOp = ['replay', 'like', 'more']
 
       if (props.operation) {
         props.operation.forEach((name: string) => {
           if (deOp.includes(name)) {
-            (mergeOp.value as any).push(name);
+            ;(mergeOp.value as any).push(name)
           }
-        });
+        })
       }
-    });
+    })
 
     const operate = (type: string) => {
       if (type == 'more') {
-        showPopver.value = !showPopver.value;
+        showPopver.value = !showPopver.value
       }
 
-      emit('clickOperate', type);
-    };
+      emit('clickOperate', type)
+    }
 
     const handleClick = () => {
-      emit('handleClick');
-    };
+      emit('handleClick')
+    }
 
-    return { showPopver, operate, mergeOp, handleClick, translate };
+    return { showPopver, operate, mergeOp, handleClick, translate }
   }
-});
+})
 </script>

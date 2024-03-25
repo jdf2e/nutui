@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Right from './right.vue';
-import Random from './random.vue';
-import Title from './title.vue';
-import Idcard from './idcard.vue';
-import Value from './value.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Right from './right.vue'
+import Random from './random.vue'
+import Title from './title.vue'
+import Idcard from './idcard.vue'
+import Value from './value.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     idcard: 'Idcard',
     value: 'v-model'
   }
-});
+})
 </script>

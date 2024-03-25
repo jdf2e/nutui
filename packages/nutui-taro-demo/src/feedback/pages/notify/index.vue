@@ -51,9 +51,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-const onClosed = () => console.log('closed');
-const onClick = () => console.log('click');
+import { reactive, ref } from 'vue'
+const onClosed = () => console.log('closed')
+const onClick = () => console.log('click')
 
 const baseState = {
   state: reactive({
@@ -62,10 +62,10 @@ const baseState = {
   }),
   methods: {
     cellClick() {
-      baseState.state.show = true;
+      baseState.state.show = true
     }
   }
-};
+}
 
 const notifyState = {
   state: reactive({
@@ -75,12 +75,12 @@ const notifyState = {
   }),
   methods: {
     cellClick(type: string, desc: string) {
-      notifyState.state.show = true;
-      notifyState.state.type = type;
-      notifyState.state.desc = desc;
+      notifyState.state.show = true
+      notifyState.state.type = type
+      notifyState.state.desc = desc
     }
   }
-};
+}
 const customState = {
   state: reactive({
     show: false,
@@ -90,18 +90,18 @@ const customState = {
   }),
   methods: {
     cellClick(type: string, desc: string, duration: number) {
-      customState.state.show = true;
-      customState.state.type = type;
-      customState.state.desc = desc;
-      customState.state.duration = duration;
+      customState.state.show = true
+      customState.state.type = type
+      customState.state.desc = desc
+      customState.state.duration = duration
     }
   }
-};
-const show = ref(false);
+}
+const show = ref(false)
 const showNotify = () => {
-  show.value = true;
+  show.value = true
   setTimeout(() => {
-    show.value = false;
-  }, 2000);
-};
+    show.value = false
+  }, 2000)
+}
 </script>

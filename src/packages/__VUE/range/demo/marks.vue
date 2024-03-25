@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const val1 = ref(60);
-const val2 = ref([20, 80]);
-const val3 = ref(60);
-const val4 = ref([20, 80]);
+import { ref } from 'vue'
+const val1 = ref(60)
+const val2 = ref([20, 80])
+const val3 = ref(60)
+const val4 = ref([20, 80])
 const marks = ref({
   0: 0,
   20: 20,
@@ -28,13 +28,13 @@ const marks = ref({
   60: 60,
   80: 80,
   100: 100
-});
+})
 const change1 = (value: number) => {
-  console.log(value);
-};
+  console.log(value)
+}
 const change2 = (value: number[]) => {
-  console.log(value);
-};
+  console.log(value)
+}
 </script>
 
 <style>

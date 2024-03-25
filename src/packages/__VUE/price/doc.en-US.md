@@ -7,11 +7,11 @@ It is used to apply different styles to the parts before and after the decimal p
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Price } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Price } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Price);
+const app = createApp()
+app.use(Price)
 ```
 
 ### Size

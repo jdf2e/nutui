@@ -7,13 +7,13 @@ For content selection and switching
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { SideNavbar, SubSideNavbar, SideNavbarItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(SideNavbar);
-app.use(SubSideNavbar);
-app.use(SideNavbarItem);
+const app = createApp()
+app.use(SideNavbar)
+app.use(SubSideNavbar)
+app.use(SideNavbarItem)
 ```
 
 ### Basic Usage

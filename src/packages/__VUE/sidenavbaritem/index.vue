@@ -6,8 +6,8 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('side-navbar-item');
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('side-navbar-item')
 export default create({
   props: {
     title: {
@@ -15,5 +15,5 @@ export default create({
       default: ''
     }
   }
-});
+})
 </script>

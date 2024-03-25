@@ -12,10 +12,10 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
-const date = ref('2022-02-01');
+import { ref } from 'vue'
+const date = ref('2022-02-01')
 const choose = (param) => {
-  console.log(param);
-  date.value = param[3];
-};
+  console.log(param)
+  date.value = param[3]
+}
 </script>

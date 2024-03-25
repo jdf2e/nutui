@@ -10,7 +10,7 @@
   </nut-cell>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const dataList = ref([
   {
     price: 10
@@ -24,16 +24,16 @@ const dataList = ref([
   {
     price: 40
   }
-]);
-const money = ref(10);
+])
+const money = ref(10)
 const inputChange = (val: number) => {
-  money.value = val;
-};
+  money.value = val
+}
 const change = (item: any) => {
-  money.value = item.price;
-};
+  money.value = item.price
+}
 const changeStep = (num: number, price: number) => {
-  const val = price * num;
-  money.value = val;
-};
+  const val = price * num
+  money.value = val
+}
 </script>

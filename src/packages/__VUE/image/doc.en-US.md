@@ -7,11 +7,11 @@ Enhanced img tag with multiple image fill modes, support for loading hint, loadi
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Image } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Image } from '@nutui/nutui'
 
-const app = createApp();
-app.use();
+const app = createApp()
+app.use()
 ```
 
 ### Basic Usage

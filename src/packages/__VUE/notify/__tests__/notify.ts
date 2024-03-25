@@ -1,5 +1,5 @@
-import { createVNode, render, h, onMounted } from 'vue';
-import Notify from '../index.vue';
+import { createVNode, render, h, onMounted } from 'vue'
+import Notify from '../index.vue'
 const defaultOptions = {
   type: 'base',
   msg: '',
@@ -12,62 +12,62 @@ const defaultOptions = {
   onOpened: null,
   // textTimer: null,
   unmount: null
-};
+}
 
-let idsMap: string[] = [];
-let optsMap: any[] = [];
+let idsMap: string[] = []
+let optsMap: any[] = []
 const clearNotify = (id?: string) => {
   if (id) {
-    const container = document.getElementById(id);
-    optsMap = optsMap.filter((item) => item.id !== id);
-    idsMap = idsMap.filter((item) => item !== id);
+    const container = document.getElementById(id)
+    optsMap = optsMap.filter((item) => item.id !== id)
+    idsMap = idsMap.filter((item) => item !== id)
     if (container) {
-      document.body.removeChild(container);
+      document.body.removeChild(container)
     }
   } else {
     idsMap.forEach((item) => {
-      const container = document.getElementById(item);
+      const container = document.getElementById(item)
       if (container) {
-        document.body.removeChild(container);
+        document.body.removeChild(container)
       }
-    });
-    optsMap = [];
-    idsMap = [];
+    })
+    optsMap = []
+    idsMap = []
   }
-};
+}
 
 const updateNotify = (opts: any) => {
-  const container = document.getElementById(opts.id);
+  const container = document.getElementById(opts.id)
   if (container) {
-    const currentOpt = optsMap.find((item) => item.id === opts.id);
+    const currentOpt = optsMap.find((item) => item.id === opts.id)
     if (currentOpt) {
-      opts = { ...defaultOptions, ...currentOpt, ...opts };
+      opts = { ...defaultOptions, ...currentOpt, ...opts }
     } else {
-      opts = { ...defaultOptions, ...opts };
+      opts = { ...defaultOptions, ...opts }
     }
-    const instance: any = createVNode(Notify, opts);
-    render(instance, container);
-    return instance.component.ctx;
+    const instance: any = createVNode(Notify, opts)
+    render(instance, container)
+    return instance.component.ctx
   }
-};
+}
 
 const mountNotify = (opts: any) => {
-  opts.unmount = clearNotify;
-  let _id;
+  opts.unmount = clearNotify
+  let _id
   if (opts.id) {
-    _id = opts.id;
+    _id = opts.id
     if (idsMap.find((item) => item === opts.id)) {
-      return updateNotify(opts);
+      return updateNotify(opts)
     }
   } else {
-    _id = new Date().getTime() + '';
+    _id = new Date().getTime() + ''
   }
-  opts = { ...defaultOptions, ...opts };
-  opts.id = _id;
-  idsMap.push(opts.id);
-  optsMap.push(opts);
-  const root = document.createElement('view');
-  root.id = 'notify-' + opts.id;
+  opts = { ...defaultOptions, ...opts }
+  opts.id = _id
+  idsMap.push(opts.id)
+  optsMap.push(opts)
+  const root = document.createElement('view')
+  root.id = 'notify-' + opts.id
   const Wrapper = {
     setup() {
       // opts.onUpdate = (val: boolean) => {
@@ -76,58 +76,58 @@ const mountNotify = (opts: any) => {
       //     document.body.removeChild(root);
       //   }
       // };
-      opts.teleport = `#notify-${opts.id}`;
+      opts.teleport = `#notify-${opts.id}`
       onMounted(() => {
         setTimeout(() => {
-          document.body.removeChild(root);
-        }, opts.duration);
-      });
+          document.body.removeChild(root)
+        }, opts.duration)
+      })
       return () => {
-        return h(Notify, opts);
-      };
+        return h(Notify, opts)
+      }
     }
-  };
-  const instance: any = createVNode(Wrapper);
-  document.body.appendChild(root);
-  render(instance, root);
-};
+  }
+  const instance: any = createVNode(Wrapper)
+  document.body.appendChild(root)
+  render(instance, root)
+}
 
 const errorMsg = (msg: string) => {
   if (!msg) {
-    console.warn('[NutUI Notify]: msg不能为空');
-    return;
+    console.warn('[NutUI Notify]: msg不能为空')
+    return
   }
-};
+}
 
 export const NotifyFunction = {
   text(msg: string, obj = {}) {
-    errorMsg(msg);
-    return mountNotify({ ...obj, msg });
+    errorMsg(msg)
+    return mountNotify({ ...obj, msg })
   },
   primary(msg: string, obj = {}) {
-    errorMsg(msg);
-    return mountNotify({ ...obj, msg, type: 'primary' });
+    errorMsg(msg)
+    return mountNotify({ ...obj, msg, type: 'primary' })
   },
   success(msg: string, obj = {}) {
-    errorMsg(msg);
-    return mountNotify({ ...obj, msg, type: 'success' });
+    errorMsg(msg)
+    return mountNotify({ ...obj, msg, type: 'success' })
   },
   danger(msg: string, obj = {}) {
-    errorMsg(msg);
-    return mountNotify({ ...obj, msg, type: 'danger' });
+    errorMsg(msg)
+    return mountNotify({ ...obj, msg, type: 'danger' })
   },
   warn(msg: string, obj = {}) {
-    errorMsg(msg);
-    return mountNotify({ ...obj, msg, type: 'warning' });
+    errorMsg(msg)
+    return mountNotify({ ...obj, msg, type: 'warning' })
   },
   hide() {
-    clearNotify();
+    clearNotify()
   },
   install(app: any): void {
-    app.use(Notify);
-    app.config.globalProperties.$notify = NotifyFunction;
+    app.use(Notify)
+    app.config.globalProperties.$notify = NotifyFunction
   }
-};
+}
 
-export default NotifyFunction;
-export { Notify };
+export default NotifyFunction
+export { Notify }

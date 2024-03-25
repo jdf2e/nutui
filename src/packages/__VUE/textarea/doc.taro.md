@@ -9,11 +9,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Textarea } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Textarea } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Textarea);
+const app = createApp()
+app.use(Textarea)
 ```
 
 ### 基础用法

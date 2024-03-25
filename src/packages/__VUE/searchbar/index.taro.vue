@@ -53,15 +53,15 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties, toRef } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
-import { CircleClose } from '@nutui/icons-vue-taro';
-import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types';
-import { useLocale } from '@/packages/utils/useLocale';
-import { useFormDisabled } from '../form/common';
-const { create } = createComponent('searchbar');
+import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties, toRef } from 'vue'
+import { createComponent, renderIcon } from '@/packages/utils/create'
+import { CircleClose } from '@nutui/icons-vue-taro'
+import { SearchbarConfirmType, SearchbarInputAlign, SearchbarShape } from './types'
+import { useLocale } from '@/packages/utils/useLocale'
+import { useFormDisabled } from '../form/common'
+const { create } = createComponent('searchbar')
 
-const cN = 'NutSearchbar';
+const cN = 'NutSearchbar'
 
 export default create({
   props: {
@@ -148,91 +148,91 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const translate = useLocale(cN);
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const translate = useLocale(cN)
     const state = reactive({
       active: false
-    });
+    })
 
     const searchbarStyle = computed(() => {
       return {
         background: props.background
-      };
-    });
+      }
+    })
     const inputSearchbarStyle = computed(() => {
       return {
         background: props.inputBackground
-      };
-    });
+      }
+    })
 
     const valueChange = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let val = input.value;
+      const input = event.target as HTMLInputElement
+      let val = input.value
 
       if (props.maxLength && val.length > Number(props.maxLength)) {
-        val = val.slice(0, Number(props.maxLength));
+        val = val.slice(0, Number(props.maxLength))
       }
-      emit('update:modelValue', val, event);
-      emit('change', val, event);
-    };
+      emit('update:modelValue', val, event)
+      emit('change', val, event)
+    }
 
-    const focusCss = ref({});
+    const focusCss = ref({})
     const valueFocus = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
-      state.active = true;
-      focusCss.value = props.focusStyle;
-      emit('focus', value, event);
-    };
+      const input = event.target as HTMLInputElement
+      let value = input.value
+      state.active = true
+      focusCss.value = props.focusStyle
+      emit('focus', value, event)
+    }
 
     const valueBlur = (event: Event) => {
       setTimeout(() => {
-        state.active = false;
-      }, 0);
+        state.active = false
+      }, 0)
 
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      const input = event.target as HTMLInputElement
+      let value = input.value
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+        value = value.slice(0, Number(props.maxLength))
       }
-      focusCss.value = {};
-      emit('blur', value, event);
-    };
+      focusCss.value = {}
+      emit('blur', value, event)
+    }
 
     const handleClear = (event: Event) => {
-      emit('update:modelValue', '', event);
-      emit('change', '', event);
-      emit('clear', '');
-    };
+      emit('update:modelValue', '', event)
+      emit('change', '', event)
+      emit('clear', '')
+    }
 
     const handleSubmit = () => {
-      emit('search', props.modelValue);
-    };
+      emit('search', props.modelValue)
+    }
 
     const clickInput = (event: Event) => {
-      emit('clickInput', event);
-    };
+      emit('clickInput', event)
+    }
 
     const leftIconClick = (event: Event) => {
-      emit('clickLeftIcon', props.modelValue, event);
-    };
+      emit('clickLeftIcon', props.modelValue, event)
+    }
 
     const rightIconClick = (event: Event) => {
-      emit('clickRightIcon', props.modelValue, event);
-    };
+      emit('clickRightIcon', props.modelValue, event)
+    }
 
     const styleSearchbar = computed(() => {
       const style: CSSProperties = {
         textAlign: props.inputAlign
-      };
-      return style;
-    });
-    const inputsearch: Ref<HTMLElement | null> = ref(null);
+      }
+      return style
+    })
+    const inputsearch: Ref<HTMLElement | null> = ref(null)
     onMounted(() => {
       if (props.autofocus) {
-        (inputsearch.value as HTMLElement).focus();
+        ;(inputsearch.value as HTMLElement).focus()
       }
-    });
+    })
 
     return {
       renderIcon,
@@ -252,7 +252,7 @@ export default create({
       rightIconClick,
       styleSearchbar,
       disabled
-    };
+    }
   }
-});
+})
 </script>

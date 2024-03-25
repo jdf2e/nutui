@@ -7,11 +7,11 @@ Use fixed positioning to achieve a ceiling effect similar to `position: sticky`.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Sticky } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Sticky } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Sticky);
+const app = createApp()
+app.use(Sticky)
 ```
 
 ### Basic Usage

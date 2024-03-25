@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Navbar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Navbar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Navbar);
+const app = createApp()
+app.use(Navbar)
 ```
 
 ### 基础用法

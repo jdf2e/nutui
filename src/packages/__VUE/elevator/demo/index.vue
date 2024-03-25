@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Sticky from './sticky.vue';
-import Content from './content.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Sticky from './sticky.vue'
+import Content from './content.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     sticky: 'Index ceiling',
     content: 'Custom content'
   }
-});
+})
 </script>

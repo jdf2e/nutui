@@ -12,7 +12,7 @@
   </nut-card>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const state = ref({
   imgUrl:
     '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
@@ -22,5 +22,5 @@ const state = ref({
   shopDesc: '自营',
   delivery: '厂商配送',
   shopName: '阳澄湖大闸蟹自营店>'
-});
+})
 </script>

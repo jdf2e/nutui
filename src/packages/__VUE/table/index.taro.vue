@@ -50,15 +50,15 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, toRefs, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('table');
-import RenderColumn from './renderColumn';
-import { DownArrow } from '@nutui/icons-vue-taro';
-import { TableColumns } from './types';
-import { useLocale } from '@/packages/utils/useLocale';
+import { PropType, reactive, toRefs, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('table')
+import RenderColumn from './renderColumn'
+import { DownArrow } from '@nutui/icons-vue-taro'
+import { TableColumns } from './types'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const cN = 'NutTable';
+const cN = 'NutTable'
 
 export default create({
   components: {
@@ -89,57 +89,57 @@ export default create({
   },
   emits: ['sorter'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
 
     const state = reactive({
       curData: props.data
-    });
+    })
 
     const cellClasses = (item: TableColumns) => {
       return {
         'nut-table__main__head__tr--border': props.bordered,
         [`nut-table__main__head__tr--align${item.align ? item.align : ''}`]: true
-      };
-    };
+      }
+    }
 
     const stylehead = (item: TableColumns) => {
-      return item.stylehead ? item.stylehead : '';
-    };
+      return item.stylehead ? item.stylehead : ''
+    }
     const stylecolumn = (item: TableColumns) => {
-      return item.stylecolumn ? item.stylecolumn : '';
-    };
+      return item.stylecolumn ? item.stylecolumn : ''
+    }
 
     const getColumnItem = (value: string): TableColumns => {
-      return props.columns.filter((item: TableColumns) => item.key === value)[0];
-    };
+      return props.columns.filter((item: TableColumns) => item.key === value)[0]
+    }
     const getColumnItemStyle = (value: string) => {
-      const style = props.columns.filter((item: TableColumns) => item.key === value);
-      return style[0].stylecolumn ? style[0].stylecolumn : '';
-    };
+      const style = props.columns.filter((item: TableColumns) => item.key === value)
+      return style[0].stylecolumn ? style[0].stylecolumn : ''
+    }
     const handleSorterClick = (item: TableColumns) => {
       if (item.sorter) {
-        emit('sorter', item);
+        emit('sorter', item)
         state.curData =
           typeof item.sorter === 'function'
             ? state.curData.sort(item.sorter)
             : item.sorter === 'default'
               ? state.curData.sort()
-              : state.curData;
+              : state.curData
       }
-    };
+    }
 
     const sortDataItem = () => {
       return props.columns.map((columns: TableColumns) => {
-        return [columns.key, columns.render];
-      }) as [string, any][];
-    };
+        return [columns.key, columns.render]
+      }) as [string, any][]
+    }
 
     watch(
       () => props.data,
       (val) => {
-        state.curData = val.slice();
+        state.curData = val.slice()
       }
-    );
+    )
 
     return {
       ...toRefs(state),
@@ -151,7 +151,7 @@ export default create({
       translate,
       stylehead,
       stylecolumn
-    };
+    }
   }
-});
+})
 </script>

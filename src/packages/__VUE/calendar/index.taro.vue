@@ -90,13 +90,13 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { ref, computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('calendar');
-import NutCalendarItem from '../calendaritem/index.taro.vue';
-import NutPopup from '../popup/index.taro.vue';
-import Utils from '@/packages/utils/date';
-import { CalendarRef } from '../calendaritem/type';
+import { ref, computed, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('calendar')
+import NutCalendarItem from '../calendaritem/index.taro.vue'
+import NutPopup from '../popup/index.taro.vue'
+import Utils from '@/packages/utils/date'
+import { CalendarRef } from '../calendaritem/type'
 
 export default create({
   components: {
@@ -178,73 +178,73 @@ export default create({
   setup(props, { emit, slots, expose }) {
     const visible = computed({
       get() {
-        return props.visible;
+        return props.visible
       },
       set(val) {
-        emit('update:visible', val);
+        emit('update:visible', val)
       }
-    });
+    })
     const showTopBtn = computed(() => {
-      return slots.btn;
-    });
+      return slots.btn
+    })
     const topInfo = computed(() => {
-      return slots['top-info'];
-    });
+      return slots['top-info']
+    })
     const dayInfo = computed(() => {
-      return slots.day;
-    });
+      return slots.day
+    })
     const bottomInfo = computed(() => {
-      return slots['bottom-info'];
-    });
+      return slots['bottom-info']
+    })
     const footerInfo = computed(() => {
-      return slots['footer-info'];
-    });
+      return slots['footer-info']
+    })
     // element refs
-    const calendarRef = ref<null | CalendarRef>(null);
+    const calendarRef = ref<null | CalendarRef>(null)
     const scrollToDate = (date: string) => {
-      calendarRef.value?.scrollToDate(date);
-    };
+      calendarRef.value?.scrollToDate(date)
+    }
     const initPosition = () => {
-      calendarRef.value?.initPosition();
-    };
+      calendarRef.value?.initPosition()
+    }
     expose({
       scrollToDate,
       initPosition
-    });
+    })
     // methods
     const update = () => {
-      emit('update:visible', false);
-    };
+      emit('update:visible', false)
+    }
 
     const close = () => {
-      emit('close');
-      emit('update:visible', false);
-    };
+      emit('close')
+      emit('update:visible', false)
+    }
 
     const choose = (param: any) => {
-      close();
-      emit('choose', param);
-    };
+      close()
+      emit('choose', param)
+    }
 
     const closePopup = () => {
-      close();
-    };
+      close()
+    }
     const select = (param: any) => {
       // close();
-      emit('select', param);
-    };
+      emit('select', param)
+    }
 
     const opened = () => {
       if (props.defaultValue) {
         if (Array.isArray(props.defaultValue)) {
           if (props.defaultValue?.length) {
-            calendarRef.value?.scrollToDate(props.defaultValue?.[0]);
+            calendarRef.value?.scrollToDate(props.defaultValue?.[0])
           }
         } else {
-          calendarRef.value?.scrollToDate(props.defaultValue);
+          calendarRef.value?.scrollToDate(props.defaultValue)
         }
       }
-    };
+    }
 
     return {
       visible,
@@ -260,7 +260,7 @@ export default create({
       dayInfo,
       bottomInfo,
       footerInfo
-    };
+    }
   }
-});
+})
 </script>

@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Animate } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Animate } from '@nutui/nutui-taro'
 
-const app = createApp(Animate);
-app.use(Animate);
+const app = createApp(Animate)
+app.use(Animate)
 ```
 
 ### 通过 show 控制动画

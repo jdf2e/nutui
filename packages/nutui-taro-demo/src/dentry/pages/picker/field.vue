@@ -11,7 +11,7 @@
   />
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const columns = ref([
   {
     name: '江苏',
@@ -35,9 +35,9 @@ const columns = ref([
       }
     ]
   }
-]);
+])
 
 const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue, selectedOptions);
-};
+  console.log(selectedValue, selectedOptions)
+}
 </script>

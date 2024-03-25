@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Dot from './dot.vue';
-import Desc from './desc.vue';
-import Custom from './custom.vue';
-import Vertical from './vertical.vue';
-import VerticalDot from './vertical-dot.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Dot from './dot.vue'
+import Desc from './desc.vue'
+import Custom from './custom.vue'
+import Vertical from './vertical.vue'
+import VerticalDot from './vertical-dot.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     vertical: 'Vertical step bar',
     verticalDot: 'Point steps and vertical orientation'
   }
-});
+})
 </script>

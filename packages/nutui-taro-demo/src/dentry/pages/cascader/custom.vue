@@ -14,9 +14,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-const visible = ref(false);
-const value = ref(['福建', '福州', '台江区']);
+import { ref } from 'vue'
+const visible = ref(false)
+const value = ref(['福建', '福州', '台江区'])
 const options = ref([
   {
     text: '浙江',
@@ -41,11 +41,11 @@ const options = ref([
       }
     ]
   }
-]);
+])
 const change = (...args: any[]) => {
-  console.log('change', ...args);
-};
+  console.log('change', ...args)
+}
 const pathChange = (...args: any[]) => {
-  console.log('pathChange', ...args);
-};
+  console.log('pathChange', ...args)
+}
 </script>

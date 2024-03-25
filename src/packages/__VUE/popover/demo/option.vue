@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef, h } from 'vue';
-import { Location, Cart2, My2 } from '@nutui/icons-vue';
-const show1 = ref(false);
-const show2 = ref(false);
+import { ref, shallowRef, h } from 'vue'
+import { Location, Cart2, My2 } from '@nutui/icons-vue'
+const show1 = ref(false)
+const show2 = ref(false)
 const list1 = ref([
   {
     name: 'option1',
@@ -30,7 +30,7 @@ const list1 = ref([
   {
     name: 'option3'
   }
-]);
+])
 const list2 = shallowRef([
   {
     name: 'option1',
@@ -38,7 +38,7 @@ const list2 = shallowRef([
       return h(My2, {
         width: '14px',
         color: 'rgba(250, 44, 25, 1)'
-      });
+      })
     }
   },
   {
@@ -49,7 +49,7 @@ const list2 = shallowRef([
     name: 'option3',
     icon: Location
   }
-]);
+])
 </script>
 
 <style>

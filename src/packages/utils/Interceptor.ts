@@ -1,5 +1,5 @@
-import { isPromise } from './util';
-export type Interceptor = (...args: any[]) => Promise<boolean> | boolean | undefined | void;
+import { isPromise } from './util'
+export type Interceptor = (...args: any[]) => Promise<boolean> | boolean | undefined | void
 
 export const funInterceptor = (
   interceptor: Interceptor | undefined,
@@ -8,30 +8,30 @@ export const funInterceptor = (
     done,
     canceled
   }: {
-    args?: unknown[];
-    done: (val?: any) => void;
-    canceled?: () => void;
+    args?: unknown[]
+    done: (val?: any) => void
+    canceled?: () => void
   }
 ) => {
   if (interceptor) {
-    const returnVal = interceptor.apply(null, args);
+    const returnVal = interceptor.apply(null, args)
 
     if (isPromise(returnVal)) {
       returnVal
         .then((value) => {
           if (value) {
-            done(value);
+            done(value)
           } else if (canceled) {
-            canceled();
+            canceled()
           }
         })
-        .catch(() => {});
+        .catch(() => {})
     } else if (returnVal) {
-      done();
+      done()
     } else if (canceled) {
-      canceled();
+      canceled()
     }
   } else {
-    done();
+    done()
   }
-};
+}

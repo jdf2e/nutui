@@ -1,1 +1,1 @@
-export type IndicatorAlign = 'left' | 'center' | 'right';
+export type IndicatorAlign = 'left' | 'center' | 'right'

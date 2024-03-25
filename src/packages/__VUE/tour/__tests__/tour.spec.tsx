@@ -1,13 +1,13 @@
-import { mount } from '@vue/test-utils';
-import { StepOptions } from '../index.vue';
-import { Tour } from '@nutui/nutui';
+import { mount } from '@vue/test-utils'
+import { StepOptions } from '../index.vue'
+import { Tour } from '@nutui/nutui'
 
 const steps1 = [
   {
     content: '70+ 高质量组件，覆盖移动端主流场景',
     target: 'tour-target'
   }
-];
+]
 
 const steps2 = [
   {
@@ -16,14 +16,14 @@ const steps2 = [
     popoverOffset: [40, 12],
     arrowOffset: -36
   }
-];
+]
 
 const steps4 = [
   {
     content: '70+ 高质量组件，覆盖移动端主流场景',
     target: 'tour-target'
   }
-];
+]
 
 const steps = [
   {
@@ -44,12 +44,12 @@ const steps = [
     target: 'target4',
     location: 'top-end'
   }
-] as StepOptions[];
+] as StepOptions[]
 
 test('Tour: base render', async () => {
   const wrapper = mount(
     () => {
-      return <Tour modelValue={true} steps={steps1} type="tile" location="bottom-end" />;
+      return <Tour modelValue={true} steps={steps1} type="tile" location="bottom-end" />
     },
     {
       global: {
@@ -58,15 +58,15 @@ test('Tour: base render', async () => {
         }
       }
     }
-  );
-  expect(wrapper.find('.nut-popover').exists()).toBeTruthy();
-  expect(wrapper.find('.nut-popover-content--bottom-end').exists()).toBeTruthy();
-});
+  )
+  expect(wrapper.find('.nut-popover').exists()).toBeTruthy()
+  expect(wrapper.find('.nut-popover-content--bottom-end').exists()).toBeTruthy()
+})
 
 test('Tour: custom style', async () => {
   const wrapper = mount(
     () => {
-      return <Tour modelValue={true} steps={steps1} theme="dark" bgColor="#f00" />;
+      return <Tour modelValue={true} steps={steps1} theme="dark" bgColor="#f00" />
     },
     {
       global: {
@@ -75,19 +75,19 @@ test('Tour: custom style', async () => {
         }
       }
     }
-  );
+  )
 
-  const arrow = wrapper.find('.nut-popover-arrow');
-  expect(arrow.html()).toContain('border-bottom-color: #f00');
+  const arrow = wrapper.find('.nut-popover-arrow')
+  expect(arrow.html()).toContain('border-bottom-color: #f00')
 
-  const popover = wrapper.find('.nut-popover-content');
-  expect(popover.html()).toContain('background: #f00');
-});
+  const popover = wrapper.find('.nut-popover-content')
+  expect(popover.html()).toContain('background: #f00')
+})
 
 test('Tour: custom offset', async () => {
   const wrapper = mount(
     () => {
-      return <Tour modelValue={true} steps={steps2} type="tile" location="bottom-end" offset={[8, 8]} />;
+      return <Tour modelValue={true} steps={steps2} type="tile" location="bottom-end" offset={[8, 8]} />
     },
     {
       global: {
@@ -96,10 +96,10 @@ test('Tour: custom offset', async () => {
         }
       }
     }
-  );
-  const arrow = wrapper.find('.nut-popover-arrow');
-  expect(arrow.html()).toContain('right: 52px');
-});
+  )
+  const arrow = wrapper.find('.nut-popover-arrow')
+  expect(arrow.html()).toContain('right: 52px')
+})
 
 test('Tour: slot render', async () => {
   const wrapper = mount(
@@ -109,7 +109,7 @@ test('Tour: slot render', async () => {
           {' '}
           Default Slot{' '}
         </Tour>
-      );
+      )
     },
     {
       global: {
@@ -118,10 +118,10 @@ test('Tour: slot render', async () => {
         }
       }
     }
-  );
-  const popover = wrapper.find('.nut-popover-content-group');
-  expect(popover.text()).toEqual('Default Slot');
-});
+  )
+  const popover = wrapper.find('.nut-popover-content-group')
+  expect(popover.text()).toEqual('Default Slot')
+})
 
 test('Tour: type=step', async () => {
   const wrapper = mount(
@@ -132,7 +132,7 @@ test('Tour: type=step', async () => {
           <div id="tour-target1"></div>
           <div id="tour-target2"></div>
         </div>
-      );
+      )
     },
     {
       global: {
@@ -141,13 +141,13 @@ test('Tour: type=step', async () => {
         }
       }
     }
-  );
+  )
 
-  const btn = wrapper.find('.nut-tour-content-bottom-operate-btn');
-  expect(btn.exists()).toBeTruthy();
+  const btn = wrapper.find('.nut-tour-content-bottom-operate-btn')
+  expect(btn.exists()).toBeTruthy()
 
-  await btn.trigger('click');
+  await btn.trigger('click')
 
-  const btn2 = wrapper.findAll('.nut-tour-content-bottom-operate-btn');
-  expect(btn2.length).toBe(2);
-});
+  const btn2 = wrapper.findAll('.nut-tour-content-bottom-operate-btn')
+  expect(btn2.length).toBe(2)
+})

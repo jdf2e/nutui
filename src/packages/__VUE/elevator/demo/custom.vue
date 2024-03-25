@@ -2,7 +2,7 @@
   <nut-elevator :index-list="data" :height="220" accept-key="num"></nut-elevator>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const data = ref([
   {
     num: '一',
@@ -103,5 +103,5 @@ const data = ref([
       }
     ]
   }
-]);
+])
 </script>

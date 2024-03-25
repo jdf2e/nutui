@@ -19,19 +19,19 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('pull-refresh');
-import { useTouch } from '@/packages/utils/useTouch';
-import { getScrollTopRoot } from '@/packages/utils/util';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { useScrollParent } from '@/packages/utils/useScrollParent';
-import { Loading } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { toRefs, reactive, computed, CSSProperties, ref, nextTick, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('pull-refresh')
+import { useTouch } from '@/packages/utils/useTouch'
+import { getScrollTopRoot } from '@/packages/utils/util'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { useScrollParent } from '@/packages/utils/useScrollParent'
+import { Loading } from '@nutui/icons-vue'
+import { useLocale } from '@/packages/utils/useLocale'
 
-type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete';
+type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'complete'
 
-const cN = 'NutPullRefresh';
+const cN = 'NutPullRefresh'
 
 export default create({
   props: {
@@ -80,148 +80,148 @@ export default create({
   components: { Loading },
 
   setup(props, { emit, slots }) {
-    const translate = useLocale(cN);
-    const touch: any = useTouch();
-    const scroller = ref<HTMLElement>();
-    const scrollParent = useScrollParent(scroller);
+    const translate = useLocale(cN)
+    const touch: any = useTouch()
+    const scroller = ref<HTMLElement>()
+    const scrollParent = useScrollParent(scroller)
 
     const state = reactive<{
-      isPullRefresh: Boolean;
-      distance: Number;
-      status: PullRefreshStatus;
+      isPullRefresh: Boolean
+      distance: Number
+      status: PullRefreshStatus
     }>({
       isPullRefresh: false,
       distance: 0,
       status: 'normal'
-    });
+    })
 
     const getPullStatus = computed(() => {
       switch (state.status) {
         case 'pulling':
-          return !slots.pulling ? props.pullingTxt || translate('pulling') : '';
+          return !slots.pulling ? props.pullingTxt || translate('pulling') : ''
         case 'loosing':
-          return !slots.loosing ? props.loosingTxt || translate('loosing') : '';
+          return !slots.loosing ? props.loosingTxt || translate('loosing') : ''
         case 'loading':
-          return !slots.loading ? props.loadingTxt || translate('loading') : '';
+          return !slots.loading ? props.loadingTxt || translate('loading') : ''
         case 'complete':
-          return !slots.complete ? props.completeTxt || translate('complete') : '';
+          return !slots.complete ? props.completeTxt || translate('complete') : ''
         default:
-          break;
+          break
       }
-      return '';
-    });
+      return ''
+    })
 
     const getStyle = computed(() => {
       return {
         transitionDuration: `${props.duration}s`,
         transform: state.distance ? `translate3d(0,${state.distance}px, 0)` : ''
-      };
-    });
+      }
+    })
 
     const getHeightStyle = computed(() => {
-      const styles: CSSProperties = {};
-      if (props.headHeight != 50) styles.height = pxCheck(props.headHeight);
-      return styles;
-    });
+      const styles: CSSProperties = {}
+      if (props.headHeight != 50) styles.height = pxCheck(props.headHeight)
+      return styles
+    })
 
     const timing = (distance: number) => {
-      const pullDistance = +(props.pullDistance || props.headHeight);
-      let moveDistance = distance;
+      const pullDistance = +(props.pullDistance || props.headHeight)
+      let moveDistance = distance
       if (distance > pullDistance) {
         if (distance < pullDistance * 2) {
-          moveDistance = (distance + pullDistance) / 2;
+          moveDistance = (distance + pullDistance) / 2
         } else {
-          moveDistance = pullDistance + distance / 4;
+          moveDistance = pullDistance + distance / 4
         }
       }
 
-      return Math.round(moveDistance);
-    };
+      return Math.round(moveDistance)
+    }
 
     const setPullStatus = (distance: number, isLoading?: boolean, isComplete?: boolean) => {
-      const pullDistance = +(props.pullDistance || props.headHeight);
-      state.distance = distance;
+      const pullDistance = +(props.pullDistance || props.headHeight)
+      state.distance = distance
 
       if (isLoading) {
-        state.status = 'loading';
+        state.status = 'loading'
       } else if (isComplete) {
-        state.status = 'complete';
+        state.status = 'complete'
       } else if (distance === 0) {
-        state.status = 'normal';
+        state.status = 'normal'
       } else if (distance < pullDistance) {
-        state.status = 'pulling';
+        state.status = 'pulling'
       } else {
-        state.status = 'loosing';
+        state.status = 'loosing'
       }
 
-      emit('change', { status: state.status, distance });
-    };
+      emit('change', { status: state.status, distance })
+    }
 
-    const isCanTouch = () => state.status !== 'loading' && state.status !== 'complete';
+    const isCanTouch = () => state.status !== 'loading' && state.status !== 'complete'
 
     const isScrollTop = () => {
       if (scrollParent.value == window) {
-        return getScrollTopRoot() == 0;
+        return getScrollTopRoot() == 0
       } else {
-        return scrollParent.value && (scrollParent.value as Element).scrollTop == 0;
+        return scrollParent.value && (scrollParent.value as Element).scrollTop == 0
       }
-    };
+    }
 
     const touchStart = (event: TouchEvent) => {
       if (isCanTouch()) {
         if (isScrollTop()) {
-          touch.start(event);
-          state.isPullRefresh = true;
+          touch.start(event)
+          state.isPullRefresh = true
         } else {
-          state.distance = 0;
-          state.isPullRefresh = false;
+          state.distance = 0
+          state.isPullRefresh = false
         }
       }
-    };
+    }
 
     const touchMove = (event: TouchEvent) => {
       if (isCanTouch()) {
-        touch.move(event);
+        touch.move(event)
 
-        const { deltaY } = touch;
+        const { deltaY } = touch
 
         if ((touch as any).isVertical() && deltaY.value > 0 && state.isPullRefresh) {
-          event.preventDefault();
-          setPullStatus(timing(deltaY.value));
+          event.preventDefault()
+          setPullStatus(timing(deltaY.value))
         }
       }
-    };
+    }
 
     const touchEnd = () => {
       if (state.isPullRefresh && isCanTouch() && touch.deltaY.value) {
         if (state.status === 'loosing') {
-          setPullStatus(+props.headHeight, true);
-          emit('update:modelValue', true);
-          nextTick(() => emit('refresh'));
+          setPullStatus(+props.headHeight, true)
+          emit('update:modelValue', true)
+          nextTick(() => emit('refresh'))
         } else {
-          setPullStatus(0);
+          setPullStatus(0)
         }
       }
 
       setTimeout(() => {
-        touch.reset();
-      }, 0);
-    };
+        touch.reset()
+      }, 0)
+    }
 
     watch(
       () => props.modelValue,
       (val) => {
         if (val) {
-          setPullStatus(+props.headHeight, true);
+          setPullStatus(+props.headHeight, true)
         } else {
-          if (props.completeDuration === 0) setPullStatus(0);
-          setPullStatus(+props.headHeight, false, true);
+          if (props.completeDuration === 0) setPullStatus(0)
+          setPullStatus(+props.headHeight, false, true)
           setTimeout(() => {
-            setPullStatus(0);
-          }, props.completeDuration);
+            setPullStatus(0)
+          }, props.completeDuration)
         }
       }
-    );
+    )
 
     return {
       scroller,
@@ -234,7 +234,7 @@ export default create({
       slots,
       getHeightStyle,
       getPullStatus
-    };
+    }
   }
-});
+})
 </script>

@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts">
-import type { PropType, CSSProperties } from 'vue';
-import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { Right } from '@nutui/icons-vue-taro';
-import { CellSize } from './types';
-const { componentName, create } = createComponent('cell');
+import type { PropType, CSSProperties } from 'vue'
+import { computed } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { Right } from '@nutui/icons-vue-taro'
+import { CellSize } from './types'
+const { componentName, create } = createComponent('cell')
 export default create({
   components: { Right },
   props: {
@@ -63,37 +63,37 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}--clickable`]: props.isLink,
         [`${prefixCls}--center`]: props.center,
         [`${prefixCls}--large`]: props.size === 'large'
-      };
-    });
+      }
+    })
 
     const baseStyle = computed(() => {
       return {
         borderRadius: pxCheck(props.roundRadius)
-      };
-    });
+      }
+    })
 
     const descStyle = computed(() => {
       return {
         textAlign: props.descTextAlign
-      } as CSSProperties;
-    });
+      } as CSSProperties
+    })
 
     const handleClick = (event: Event) => {
-      emit('click', event);
-    };
+      emit('click', event)
+    }
 
     return {
       handleClick,
       classes,
       baseStyle,
       descStyle
-    };
+    }
   }
-});
+})
 </script>

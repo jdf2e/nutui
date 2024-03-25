@@ -4,8 +4,8 @@
   <nut-input v-model="val3" input-align="right" />
 </template>
 <script setup>
-import { ref } from 'vue';
-const val1 = ref('Left');
-const val2 = ref('Center');
-const val3 = ref('Right');
+import { ref } from 'vue'
+const val1 = ref('Left')
+const val2 = ref('Center')
+const val3 = ref('Right')
 </script>

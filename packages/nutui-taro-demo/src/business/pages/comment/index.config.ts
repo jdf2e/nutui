@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'Comment' };
+export default { navigationBarTitleText: 'Comment' }

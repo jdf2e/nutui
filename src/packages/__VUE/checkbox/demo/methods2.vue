@@ -12,25 +12,25 @@
   </nut-cell>
 </template>
 <script setup>
-import { ref } from 'vue';
-const group = ref(null);
-const val1 = ref(false);
-const val2 = ref([]);
-const indeterminate = ref(false);
+import { ref } from 'vue'
+const group = ref(null)
+const val1 = ref(false)
+const val2 = ref([])
+const indeterminate = ref(false)
 
 const change1 = (value) => {
-  group.value.toggleAll(value);
-};
+  group.value.toggleAll(value)
+}
 
 const change2 = (label) => {
   if (label.length === 4) {
-    indeterminate.value = false;
-    val1.value = true;
+    indeterminate.value = false
+    val1.value = true
   } else if (label.length && label.length < 4) {
-    indeterminate.value = true;
+    indeterminate.value = true
   } else {
-    indeterminate.value = false;
-    val1.value = false;
+    indeterminate.value = false
+    val1.value = false
   }
-};
+}
 </script>

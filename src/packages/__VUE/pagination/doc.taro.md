@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Pagination } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Pagination } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Pagination);
+const app = createApp()
+app.use(Pagination)
 ```
 
 ### 基础用法

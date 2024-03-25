@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Backtop } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Backtop } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Backtop);
+const app = createApp()
+app.use(Backtop)
 ```
 
 ### 基础用法
@@ -48,7 +48,7 @@ app.use(Backtop);
 组件导出以下类型定义：
 
 ```ts
-import type { BacktopProps, BacktopInstance } from '@nutui/nutui-taro';
+import type { BacktopProps, BacktopInstance } from '@nutui/nutui-taro'
 ```
 
 ## 主题定制

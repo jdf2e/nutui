@@ -19,13 +19,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const val = ref(false);
-const show = ref(false);
+import { ref } from 'vue'
+const val = ref(false)
+const show = ref(false)
 const steps = ref([
   {
     content: '京东风格的轻量级移动端组件库',
     target: 'tour2'
   }
-]);
+])
 </script>

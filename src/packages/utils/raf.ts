@@ -1,6 +1,6 @@
-const _window = window as any;
+const _window = window as any
 
-export const inBrowser = typeof window !== 'undefined';
+export const inBrowser = typeof window !== 'undefined'
 
 function requestAniFrame() {
   if (typeof _window !== 'undefined') {
@@ -8,22 +8,22 @@ function requestAniFrame() {
       _window.requestAnimationFrame ||
       _window.webkitRequestAnimationFrame ||
       function (callback: Function) {
-        _window.setTimeout(callback, 1000 / 60);
+        _window.setTimeout(callback, 1000 / 60)
       }
-    );
+    )
   } else {
     return function (callback: Function) {
-      setTimeout(callback, 1000 / 60);
-    };
+      setTimeout(callback, 1000 / 60)
+    }
   }
 }
 
 export function cancelRaf(id: number) {
   if (inBrowser) {
-    cancelAnimationFrame(id);
+    cancelAnimationFrame(id)
   } else {
-    clearTimeout(id);
+    clearTimeout(id)
   }
 }
 
-export default requestAniFrame();
+export default requestAniFrame()

@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
@@ -9,13 +9,13 @@ export default defineConfig({
       name: 'name',
       fileName: (format) => {
         if (format === 'es') {
-          return 'index.mjs';
+          return 'index.mjs'
         } else {
-          return 'index.js';
+          return 'index.js'
         }
       },
       formats: ['es', 'cjs']
     },
     emptyOutDir: false
   }
-});
+})

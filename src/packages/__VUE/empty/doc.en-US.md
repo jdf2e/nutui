@@ -7,11 +7,11 @@ Occupation reminder when empty.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Empty } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Empty } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Empty);
+const app = createApp()
+app.use(Empty)
 ```
 
 ### Basic Usage
@@ -53,7 +53,7 @@ app.use(Empty);
 The component exports the following type definitions:
 
 ```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui';
+import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui'
 ```
 
 ## Theming

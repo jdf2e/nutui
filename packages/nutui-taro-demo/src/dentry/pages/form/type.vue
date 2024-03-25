@@ -35,7 +35,7 @@
   </nut-form>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const formData = ref({
   switch: false,
   checkbox: false,
@@ -59,5 +59,5 @@ const formData = ref({
       type: 'image'
     }
   ]
-});
+})
 </script>

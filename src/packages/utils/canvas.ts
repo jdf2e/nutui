@@ -1,35 +1,35 @@
-import Taro from '@tarojs/taro';
-import CanvasContext = Taro.CanvasContext;
+import Taro from '@tarojs/taro'
+import CanvasContext = Taro.CanvasContext
 
 const compareVersion = (v1Old: string, v2Old: string) => {
-  let v1 = v1Old.split('.');
-  let v2 = v2Old.split('.');
-  const len = Math.max(v1.length, v2.length);
+  let v1 = v1Old.split('.')
+  let v2 = v2Old.split('.')
+  const len = Math.max(v1.length, v2.length)
 
   while (v1.length < len) {
-    v1.push('0');
+    v1.push('0')
   }
   while (v2.length < len) {
-    v2.push('0');
+    v2.push('0')
   }
 
   for (let i = 0; i < len; i++) {
-    const num1 = parseInt(v1[i]);
-    const num2 = parseInt(v2[i]);
+    const num1 = parseInt(v1[i])
+    const num2 = parseInt(v2[i])
 
     if (num1 > num2) {
-      return 1;
+      return 1
     } else if (num1 < num2) {
-      return -1;
+      return -1
     }
   }
 
-  return 0;
-};
+  return 0
+}
 
 const isWeapp = () => {
-  return process.env.TARO_ENV === 'weapp';
-};
+  return process.env.TARO_ENV === 'weapp'
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 //////// 微信小程序自1.9.90起废除若干个CanvasContext的函数，改为属性，以下为兼容代码
@@ -42,9 +42,9 @@ function _easyCanvasContextBase(
   targetVersion: string = '1.9.90'
 ) {
   if (isWeapp() && compareVersion(systemInfo.SDKVersion, targetVersion) >= 0) {
-    highCallback();
+    highCallback()
   } else {
-    lowCallback();
+    lowCallback()
   }
 }
 /**
@@ -62,28 +62,28 @@ function easySetStrokeStyle(
   _easyCanvasContextBase(
     systemInfo,
     () => {
-      canvasContext.setStrokeStyle(color);
-      console.log('???');
+      canvasContext.setStrokeStyle(color)
+      console.log('???')
     },
     () => {
       if (typeof color === 'string') {
-        canvasContext.strokeStyle = color;
+        canvasContext.strokeStyle = color
       }
-      console.log('2333');
+      console.log('2333')
     }
-  );
+  )
 }
 
 function easySetLineWidth(systemInfo: Taro.getSystemInfoSync.Result, canvasContext: CanvasContext, lineWidth: number) {
   _easyCanvasContextBase(
     systemInfo,
     () => {
-      canvasContext.setLineWidth(lineWidth);
+      canvasContext.setLineWidth(lineWidth)
     },
     () => {
-      canvasContext.lineWidth = lineWidth;
+      canvasContext.lineWidth = lineWidth
     }
-  );
+  )
 }
 
 function easySetFillStyle(
@@ -94,14 +94,14 @@ function easySetFillStyle(
   _easyCanvasContextBase(
     systemInfo,
     () => {
-      canvasContext.setFillStyle(color);
+      canvasContext.setFillStyle(color)
     },
     () => {
       if (typeof color === 'string') {
-        canvasContext.fillStyle = color;
+        canvasContext.fillStyle = color
       }
     }
-  );
+  )
 }
 
-export { compareVersion, easySetStrokeStyle, easySetLineWidth, easySetFillStyle };
+export { compareVersion, easySetStrokeStyle, easySetLineWidth, easySetFillStyle }

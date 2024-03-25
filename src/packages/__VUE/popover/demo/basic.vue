@@ -13,9 +13,9 @@
   </nut-space>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const show1 = ref(false);
-const show2 = ref(false);
+import { ref } from 'vue'
+const show1 = ref(false)
+const show2 = ref(false)
 const list = ref([
   {
     name: 'option1'
@@ -26,10 +26,10 @@ const list = ref([
   {
     name: 'option3'
   }
-]);
+])
 const choose = (item: unknown, index: number) => {
-  console.log(item, index);
-};
+  console.log(item, index)
+}
 </script>
 
 <style>

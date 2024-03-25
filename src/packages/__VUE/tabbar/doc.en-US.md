@@ -7,12 +7,12 @@ Bottom navigation bar
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ### Basic Usage
@@ -73,8 +73,8 @@ The bardge logo component is used internally and its properties can be applied d
 | tab-title | title | string | -- |
 | name | Identifier | string | `Item index` |
 | icon | icon name | string | -- |
-| href | Jump links for tabs | string | -- |
-| to | Target route of the link, same as to of vue-router | string \| object | -- |
+| href `deprecated` | Jump links for tabs | string | -- |
+| to `deprecated` | Target route of the link, same as to of vue-router | string \| object | -- |
 
 ### TabbarItem Slots
 
@@ -87,6 +87,14 @@ The bardge logo component is used internally and its properties can be applied d
 | Event | Description | Arguments |
 | --- | --- | --- |
 | tab-switch | Emitted when changing active tab | item,index |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
+```
 
 ## Theming
 

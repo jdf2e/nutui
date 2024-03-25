@@ -1,4 +1,4 @@
-import { h, defineComponent } from 'vue';
+import { h, defineComponent } from 'vue'
 export default defineComponent({
   props: {
     slots: {
@@ -11,6 +11,6 @@ export default defineComponent({
     }
   },
   setup(props: any) {
-    return () => h(`view`, {}, props.slots[0] ? props.slots[0](props.record) : props.slots[1](props.record));
+    return () => h(`view`, {}, props.slots[0] ? props.slots[0](props.record) : props.slots[1](props.record))
   }
-});
+})

@@ -1,1 +1,1 @@
-export const LAYOUT_KEY = Symbol('nut-layout');
+export const LAYOUT_KEY = Symbol('nut-layout')

@@ -2,15 +2,15 @@
   <nut-invoice :data="data" :form-value="formValue" @submit="submit"></nut-invoice>
 </template>
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import type { InvoiceDataItem } from '@nutui/nutui-taro';
+import { ref, reactive } from 'vue'
+import type { InvoiceDataItem } from '@nutui/nutui-taro'
 const asyncValidator = (val: string) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
-    }, 1000);
-  });
-};
+      resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val))
+    }, 1000)
+  })
+}
 
 const data = ref<InvoiceDataItem[]>([
   {
@@ -67,7 +67,7 @@ const data = ref<InvoiceDataItem[]>([
     placeholder: '请输入银行账户',
     formItemProp: 'account'
   }
-]);
+])
 
 const formValue = reactive({
   type: '企业',
@@ -78,13 +78,13 @@ const formValue = reactive({
   address: '',
   bank: '',
   account: ''
-});
+})
 
 const submit = (valid: boolean, errors: any) => {
   if (valid) {
-    console.log('success', formValue);
+    console.log('success', formValue)
   } else {
-    console.log('error submit!!', errors);
+    console.log('error submit!!', errors)
   }
-};
+}
 </script>

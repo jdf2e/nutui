@@ -16,9 +16,9 @@
   </nut-popup>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
+import { ref } from 'vue'
+const show = ref(false)
 const handleClick = () => {
-  show.value = true;
-};
+  show.value = true
+}
 </script>

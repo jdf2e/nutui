@@ -28,7 +28,7 @@ jobs:
 
       - name: Build @nutui/nutui
         run: pnpm build
-      
+
       - name: Build @nutui/nutui-taro
         run: pnpm build:taro
 

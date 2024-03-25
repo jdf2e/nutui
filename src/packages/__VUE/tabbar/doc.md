@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ### 基础用法
@@ -73,8 +73,8 @@ app.use(TabbarItem);
 | tab-title | 标签页的标题 | string | -- |
 | name | 标签名称，作为匹配的标识符 | string | `当前标签的索引值` |
 | icon | 标签页显示的[图标](#/zh-CN/component/icon) | Component | -- |
-| href | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to` | string | -- |
-| to | 标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -- |
+| href `deprecated` | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to` | string | -- |
+| to `deprecated` | 标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -- |
 
 ### TabbarItem Slots
 
@@ -87,6 +87,14 @@ app.use(TabbarItem);
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
+```
 
 ## 主题定制
 

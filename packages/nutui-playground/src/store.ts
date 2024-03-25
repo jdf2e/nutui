@@ -1,7 +1,7 @@
-import { StoreOptions, File, ReplStore, compileFile } from '@vue/repl';
-import { ref, computed } from 'vue';
+import { StoreOptions, File, ReplStore, compileFile } from '@vue/repl'
+import { ref, computed } from 'vue'
 
-const style = ref('https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/style.css');
+const style = ref('https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/style.css')
 
 const appFileCode = `
 <script setup lang="ts">
@@ -18,13 +18,13 @@ const show = () => {
     </template>
   </nut-cell>
 </template>
-`.trim();
+`.trim()
 
-const CONTAINER_FILE = 'src/Container.vue';
-const APP_FILE = 'src/App.vue';
-const INSTALL_FILE = 'src/install-nutui.js';
-const IMPORTMAP_FILE = 'import-map.json';
-const TSCONFIG_FILE = 'tsconfig.json';
+const CONTAINER_FILE = 'src/Container.vue'
+const APP_FILE = 'src/App.vue'
+const INSTALL_FILE = 'src/install-nutui.js'
+const IMPORTMAP_FILE = 'import-map.json'
+const TSCONFIG_FILE = 'tsconfig.json'
 
 const containerCode = `\
 <script setup>
@@ -38,7 +38,7 @@ installNutUI()
 <template>
   <App />
 </template>
-`;
+`
 const installCode = computed(
   () => `import NutUI from '@nutui/nutui'
 import { getCurrentInstance } from 'vue'
@@ -65,55 +65,55 @@ export const installNutUI = () => {
   instance.appContext.app.use(NutUI)
 }
 `
-);
+)
 
 const utoa = (data: string) => {
-  return btoa(unescape(encodeURIComponent(data)));
-};
+  return btoa(unescape(encodeURIComponent(data)))
+}
 
 const atou = (b64: string) => {
-  return decodeURIComponent(escape(atob(b64)));
-};
+  return decodeURIComponent(escape(atob(b64)))
+}
 
 // 不允许修改的文件，不通过 URL 传递
-const filterFiles = [IMPORTMAP_FILE, CONTAINER_FILE, INSTALL_FILE];
+const filterFiles = [IMPORTMAP_FILE, CONTAINER_FILE, INSTALL_FILE]
 export class NutUIStore extends ReplStore {
   constructor(storeOptions?: StoreOptions, hash?: string) {
-    super(storeOptions);
+    super(storeOptions)
     if (hash) {
-      const saved = JSON.parse(atou(hash));
+      const saved = JSON.parse(atou(hash))
       for (const filename in saved) {
-        const newName = filename.startsWith('src/') ? filename : `src/${filename}`;
+        const newName = filename.startsWith('src/') ? filename : `src/${filename}`
         if (!filterFiles.includes(newName)) {
-          this.addFile(new File(newName, saved[filename]));
+          this.addFile(new File(newName, saved[filename]))
         }
       }
     } else {
-      const main = new File(APP_FILE, appFileCode, false);
-      this.addFile(main);
+      const main = new File(APP_FILE, appFileCode, false)
+      this.addFile(main)
     }
 
-    const container = new File(CONTAINER_FILE, containerCode, true);
-    this.addFile(container);
-    const install = new File(INSTALL_FILE, installCode.value, true);
-    this.addFile(install);
+    const container = new File(CONTAINER_FILE, containerCode, true)
+    this.addFile(container)
+    const install = new File(INSTALL_FILE, installCode.value, true)
+    this.addFile(install)
 
-    this.state.mainFile = CONTAINER_FILE;
-    this.setActive(APP_FILE);
+    this.state.mainFile = CONTAINER_FILE
+    this.setActive(APP_FILE)
   }
   serialize() {
-    const files = this.getFiles();
-    delete files[IMPORTMAP_FILE];
-    delete files[TSCONFIG_FILE];
-    delete files[CONTAINER_FILE.replace('src/', '')];
-    delete files[INSTALL_FILE.replace('src/', '')];
-    return '#' + utoa(JSON.stringify(files));
+    const files = this.getFiles()
+    delete files[IMPORTMAP_FILE]
+    delete files[TSCONFIG_FILE]
+    delete files[CONTAINER_FILE.replace('src/', '')]
+    delete files[INSTALL_FILE.replace('src/', '')]
+    return '#' + utoa(JSON.stringify(files))
   }
   setNutUIVersion(v: string) {
-    style.value = `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/style.css`;
-    const install = new File(INSTALL_FILE, installCode.value, true);
-    this.addFile(install);
-    compileFile(this, install).then((errs) => this.state.errors.push(...errs));
+    style.value = `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/style.css`
+    const install = new File(INSTALL_FILE, installCode.value, true)
+    this.addFile(install)
+    compileFile(this, install).then((errs) => this.state.errors.push(...errs))
     this.setImportMap({
       imports: {
         '@nutui/nutui': `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/nutui.js`,
@@ -125,6 +125,6 @@ export class NutUIStore extends ReplStore {
         '@nutui/nutui/dist/packages/imagepreview/style': './style.js',
         '@nutui/nutui/dist/packages/notify/style': './style.js'
       }
-    });
+    })
   }
 }

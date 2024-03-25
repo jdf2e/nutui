@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import { SideNavbar, SideNavbarItem, SubSideNavbar } from '@nutui/nutui';
+import { mount } from '@vue/test-utils'
+import { SideNavbar, SideNavbarItem, SubSideNavbar } from '@nutui/nutui'
 
 beforeAll(() => {
-  MutationObserver.prototype.observe = vi.fn();
-});
+  MutationObserver.prototype.observe = vi.fn()
+})
 
 const template = (
   <>
@@ -20,27 +20,27 @@ const template = (
       </SubSideNavbar>
     </SideNavbar>
   </>
-);
+)
 
 test('SideNavbar: offset', async () => {
   const wrapper = mount(() => {
-    return template;
-  });
+    return template
+  })
 
-  const items = wrapper.findAll('.nut-sub-side-navbar__title');
-  expect(items[0].attributes('style')).toContain('padding-left: 30px');
-  expect(items[1].attributes('style')).toContain('padding-left: 60px');
-  expect(items[2].attributes('style')).toContain('padding-left: 60px');
-});
+  const items = wrapper.findAll('.nut-sub-side-navbar__title')
+  expect(items[0].attributes('style')).toContain('padding-left: 30px')
+  expect(items[1].attributes('style')).toContain('padding-left: 60px')
+  expect(items[2].attributes('style')).toContain('padding-left: 60px')
+})
 
 test('SideNavbar: click', async () => {
   const wrapper = mount(() => {
-    return template;
-  });
+    return template
+  })
 
-  const items = wrapper.findAll('.nut-sub-side-navbar__title');
-  const list = wrapper.findAll('.nut-sub-side-navbar__list');
+  const items = wrapper.findAll('.nut-sub-side-navbar__title')
+  const list = wrapper.findAll('.nut-sub-side-navbar__list')
 
-  await items[0].trigger('click');
-  expect(list[0].attributes('style')).toContain('display: none');
-});
+  await items[0].trigger('click')
+  expect(list[0].attributes('style')).toContain('display: none')
+})

@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Text from './text.vue';
-import Position from './position.vue';
-import Dashed from './dashed.vue';
-import Custom from './custom.vue';
-import Vertical from './vertical.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Text from './text.vue'
+import Position from './position.vue'
+import Dashed from './dashed.vue'
+import Custom from './custom.vue'
+import Vertical from './vertical.vue'
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -45,5 +45,5 @@ const t = useTranslate({
     custom: 'Custom Style',
     vertical: 'Vertical Divider'
   }
-});
+})
 </script>

@@ -49,13 +49,13 @@
   </template>
 </template>
 <script lang="ts">
-import { watch, ref, Ref, computed } from 'vue';
-import { CascaderValue, CascaderOption } from './types';
-import { createComponent } from '@/packages/utils/create';
-import { popupProps } from '../popup/props';
-const { create } = createComponent('cascader');
-import NutCascaderItem from './cascader-item.taro.vue';
-import NutPopup from '../popup/index.taro.vue';
+import { watch, ref, Ref, computed } from 'vue'
+import { CascaderValue, CascaderOption } from './types'
+import { createComponent } from '@/packages/utils/create'
+import { popupProps } from '../popup/props'
+const { create } = createComponent('cascader')
+import NutCascaderItem from './cascader-item.taro.vue'
+import NutPopup from '../popup/index.taro.vue'
 
 export default create({
   components: {
@@ -93,42 +93,42 @@ export default create({
   },
   emits: ['update:modelValue', 'change', 'pathChange', 'update:visible'],
   setup(props, { emit }) {
-    const innerValue: Ref<CascaderValue> = ref(props.modelValue as CascaderValue);
+    const innerValue: Ref<CascaderValue> = ref(props.modelValue as CascaderValue)
     const innerVisible = computed({
       get() {
-        return props.visible;
+        return props.visible
       },
       set(value) {
-        emit('update:visible', value);
+        emit('update:visible', value)
       }
-    });
+    })
 
     const onChange = (value: CascaderValue, pathNodes: CascaderOption[]) => {
-      innerValue.value = value;
-      innerVisible.value = false;
-      emit('change', value, pathNodes);
-      emit('update:modelValue', value);
-    };
+      innerValue.value = value
+      innerVisible.value = false
+      emit('change', value, pathNodes)
+      emit('update:modelValue', value)
+    }
 
     const onPathChange = (pathNodes: CascaderOption[]) => {
-      emit('pathChange', pathNodes);
-    };
+      emit('pathChange', pathNodes)
+    }
 
     watch(
       () => props.modelValue,
       (value) => {
         if (value !== innerValue.value) {
-          innerValue.value = value as CascaderValue;
+          innerValue.value = value as CascaderValue
         }
       }
-    );
+    )
 
     return {
       onChange,
       onPathChange,
       innerValue,
       innerVisible
-    };
+    }
   }
-});
+})
 </script>

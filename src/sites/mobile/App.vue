@@ -13,45 +13,45 @@
   <router-view />
 </template>
 <script setup lang="ts">
-import { watch, computed, onBeforeMount } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { isMobile } from '@/sites/assets/util';
-import { translateChange, initSiteLang } from '../assets/util/useTranslate';
-import { Left } from '@nutui/icons-vue';
-const route = useRoute();
-const router = useRouter();
+import { watch, computed, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { isMobile } from '@/sites/assets/util'
+import { translateChange, initSiteLang } from '../assets/util/useTranslate'
+import { Left } from '@nutui/icons-vue'
+const route = useRoute()
+const router = useRouter()
 onBeforeMount(() => {
   if (window.top) {
-    const { origin, hash, pathname } = window.top.location;
-    const lang = hash.includes('zh-CN') ? 'zh-CN' : 'en-US';
+    const { origin, hash, pathname } = window.top.location
+    const lang = hash.includes('zh-CN') ? 'zh-CN' : 'en-US'
     if (!isMobile && pathname.includes('demo')) {
-      window.location.href = `${origin}/h5/vue/4x/index.html#/${lang}/component/${hash.split('/').slice(-1)[0]}`;
+      window.location.href = `${origin}/h5/vue/4x/index.html#/${lang}/component/${hash.split('/').slice(-1)[0]}`
     }
   }
-});
+})
 
 const goBack = () => {
-  router.back();
-};
+  router.back()
+}
 
 const title = computed(() => {
-  return route.meta.ComponentName || '';
-});
+  return route.meta.ComponentName || ''
+})
 
 const isShow = computed(() => {
-  return title.value && title.value != '/';
-});
+  return title.value && title.value != '/'
+})
 
 watch(
   () => route,
   () => {
-    initSiteLang();
+    initSiteLang()
   },
   {
     immediate: true,
     deep: true
   }
-);
+)
 </script>
 
 <style lang="scss">

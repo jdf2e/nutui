@@ -12,5 +12,5 @@
   </nut-button>
 </template>
 <script setup lang="ts">
-import { StarFill, Star } from '@nutui/icons-vue-taro';
+import { StarFill, Star } from '@nutui/icons-vue-taro'
 </script>

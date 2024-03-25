@@ -11,16 +11,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const item = ref();
-const val = ref(0);
+import { ref } from 'vue'
+const item = ref()
+const val = ref(0)
 const options = ref([
   { text: '全部商品', value: 0 },
   { text: '新款商品', value: 1 },
   { text: '活动商品', value: 2 }
-]);
+])
 
 const onClick = () => {
-  item.value.toggle();
-};
+  item.value.toggle()
+}
 </script>

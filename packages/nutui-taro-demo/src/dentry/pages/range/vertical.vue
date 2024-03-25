@@ -9,15 +9,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const val1 = ref(20);
-const val2 = ref([20, 80]);
+import { ref } from 'vue'
+const val1 = ref(20)
+const val2 = ref([20, 80])
 const change1 = (value: number) => {
-  console.log(value);
-};
+  console.log(value)
+}
 const change2 = (value: number[]) => {
-  console.log(value);
-};
+  console.log(value)
+}
 </script>
 <style>
 .range-demo-vertical {

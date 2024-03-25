@@ -36,9 +36,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { createVNode, ref } from 'vue';
-import { showDialog } from './index';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { createVNode, ref } from 'vue'
+import { showDialog } from './index'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
 const translate = useTranslate({
   'zh-CN': {
     funUse: '函数式调用',
@@ -76,16 +76,16 @@ const translate = useTranslate({
     content3: 'I can be a custom component',
     content4: 'Click confirm to close it in 1 second'
   }
-});
-const visible = ref(false);
-const visible1 = ref(false);
+})
+const visible = ref(false)
+const visible1 = ref(false)
 
 const onCancel = () => {
-  console.log('event cancel');
-};
+  console.log('event cancel')
+}
 const onOk = () => {
-  console.log('event ok');
-};
+  console.log('event ok')
+}
 
 const baseClick = (): void => {
   showDialog({
@@ -93,8 +93,8 @@ const baseClick = (): void => {
     content: createVNode('span', { style: { color: 'red' } }, translate('content3')),
     onCancel,
     onOk
-  });
-};
+  })
+}
 
 const transparentClick = (): void => {
   showDialog({
@@ -103,8 +103,8 @@ const transparentClick = (): void => {
     content: 'Content',
     onCancel,
     onOk
-  });
-};
+  })
+}
 
 const htmlClick = (): void => {
   showDialog({
@@ -113,8 +113,8 @@ const htmlClick = (): void => {
       "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
     onCancel,
     onOk
-  });
-};
+  })
+}
 
 const beforeCloseClick = (): void => {
   showDialog({
@@ -125,20 +125,20 @@ const beforeCloseClick = (): void => {
     beforeClose: (action: string) => {
       return new Promise((r) => {
         setTimeout(() => {
-          r(action == 'ok');
-        }, 1000);
-      });
+          r(action == 'ok')
+        }, 1000)
+      })
     }
-  });
-};
+  })
+}
 
 const noTitleClick = () => {
   showDialog({
     content: translate('noTitle'),
     onCancel,
     onOk
-  });
-};
+  })
+}
 const tipsClick = () => {
   showDialog({
     title: translate('tips'),
@@ -146,8 +146,8 @@ const tipsClick = () => {
     noCancelBtn: true,
     onCancel,
     onOk
-  });
-};
+  })
+}
 const verticalClick = () => {
   showDialog({
     title: translate('tips'),
@@ -155,15 +155,15 @@ const verticalClick = () => {
     footerDirection: 'vertical',
     onCancel,
     onOk
-  });
-};
+  })
+}
 
 const componentClick = () => {
-  visible.value = true;
-};
+  visible.value = true
+}
 const componentvVrticalClick = () => {
-  visible1.value = true;
-};
+  visible1.value = true
+}
 
 const teleportClick = (teleport: string) => {
   showDialog({
@@ -172,6 +172,6 @@ const teleportClick = (teleport: string) => {
     content: translate('content2'),
     noCancelBtn: true,
     onCancel
-  });
-};
+  })
+}
 </script>

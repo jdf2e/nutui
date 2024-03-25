@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const config = {
   projectName: '@nutui/nutui-taro-demo',
   date: '2021-5-29',
@@ -53,7 +53,7 @@ const config = {
             }
           ]
         }
-      });
+      })
     },
     postcss: {
       pxtransform: {
@@ -97,11 +97,11 @@ const config = {
       }
     }
   }
-};
+}
 
 module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'));
+    return merge({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod'));
-};
+  return merge({}, config, require('./prod'))
+}

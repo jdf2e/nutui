@@ -16,7 +16,7 @@
   </nut-fixed-nav>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Retweet } from '@nutui/icons-vue-taro';
-const visible = ref(false);
+import { ref } from 'vue'
+import { Retweet } from '@nutui/icons-vue-taro'
+const visible = ref(false)
 </script>

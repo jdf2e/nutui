@@ -15,32 +15,32 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { RefData } from '@/sites/assets/util/ref';
-import { nav } from '@/config.json';
-import { reorder } from '../../assets/util/index';
-const fixed = ref(false);
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { RefData } from '@/sites/assets/util/ref'
+import { nav } from '@/config.json'
+import { reorder } from '../../assets/util/index'
+const fixed = ref(false)
 const isActive = computed(() => {
   return function (name: string) {
-    const currentValue = RefData.getInstance().currentRoute.value;
-    let value = currentValue.indexOf('-taro') > -1 ? currentValue.split('-taro')[0] : currentValue;
-    return value == name.toLowerCase();
-  };
-});
-const scrollNav = () => {
-  const top = document.documentElement.scrollTop;
-  if (top > 64) {
-    fixed.value = true;
-  } else {
-    fixed.value = false;
+    const currentValue = RefData.getInstance().currentRoute.value
+    let value = currentValue.indexOf('-taro') > -1 ? currentValue.split('-taro')[0] : currentValue
+    return value == name.toLowerCase()
   }
-};
+})
+const scrollNav = () => {
+  const top = document.documentElement.scrollTop
+  if (top > 64) {
+    fixed.value = true
+  } else {
+    fixed.value = false
+  }
+}
 onMounted(() => {
-  document.addEventListener('scroll', scrollNav);
-});
+  document.addEventListener('scroll', scrollNav)
+})
 onUnmounted(() => {
-  document.removeEventListener('scroll', scrollNav);
-});
+  document.removeEventListener('scroll', scrollNav)
+})
 </script>
 
 <style lang="scss">

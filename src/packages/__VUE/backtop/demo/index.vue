@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Distance from './distance.vue';
-import Custom from './custom.vue';
-const value = ref('1');
+import { ref } from 'vue'
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Distance from './distance.vue'
+import Custom from './custom.vue'
+const value = ref('1')
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -32,7 +32,7 @@ const t = useTranslate({
     distance: 'Distance',
     custom: 'Custom Style'
   }
-});
+})
 </script>
 
 <style lang="scss" scoped>

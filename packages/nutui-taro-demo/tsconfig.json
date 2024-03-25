@@ -22,7 +22,7 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@/packages/*": ["../../src/packages/*"],
-      "@nutui/nutui-taro": ["../../src/packages/taro.ts"],
+      "@nutui/nutui-taro": ["../../src/packages/taro.ts"]
     }
   },
   "include": ["./src", "./types", "components.d.ts"],

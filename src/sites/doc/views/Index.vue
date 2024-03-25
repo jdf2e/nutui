@@ -16,16 +16,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, watch } from 'vue';
-import { nav } from '@/config.json';
-import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
-import DocHeader from '@/sites/doc/components/DocHeader.vue';
-import DocNav from '@/sites/doc/components/Nav.vue';
-import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import { RefData } from '@/sites/assets/util/ref';
-import { initSiteLang } from '@/sites/assets/util/useTranslate';
-const route = useRoute();
-initSiteLang();
+import { onMounted, reactive, watch } from 'vue'
+import { nav } from '@/config.json'
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router'
+import DocHeader from '@/sites/doc/components/DocHeader.vue'
+import DocNav from '@/sites/doc/components/Nav.vue'
+import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue'
+import { RefData } from '@/sites/assets/util/ref'
+import { initSiteLang } from '@/sites/assets/util/useTranslate'
+const route = useRoute()
+initSiteLang()
 const state = reactive({
   fixed: false, // 是否吸顶
   hidden: false, // 是否隐藏
@@ -35,7 +35,7 @@ const state = reactive({
     cName: '',
     type: ''
   }
-});
+})
 const data = reactive({
   demoUrl: 'demo.html',
   curKey: 'vue',
@@ -49,69 +49,69 @@ const data = reactive({
       text: 'taro'
     }
   ]
-});
+})
 
 const isTaro = (router: RouteLocationNormalized) => {
-  return router.path.indexOf('taro') > -1;
-};
+  return router.path.indexOf('taro') > -1
+}
 
 const watchDemoUrl = (router: RouteLocationNormalized) => {
-  RefData.getInstance().currentRoute.value = router.path as string;
+  RefData.getInstance().currentRoute.value = router.path as string
   if (isTaro(router)) {
     data.demoUrl = `http://localhost:10086/#/${
       state.componentName.type
-    }/pages/${state.componentName.name.toLowerCase()}/index`;
+    }/pages/${state.componentName.name.toLowerCase()}/index`
   } else {
     if (router.path.includes('zh-CN')) {
-      data.demoUrl = `/demo.html#/zh-CN/${state.componentName.name.toLowerCase()}`;
+      data.demoUrl = `/demo.html#/zh-CN/${state.componentName.name.toLowerCase()}`
     } else {
-      data.demoUrl = `/demo.html#/en-US/${state.componentName.name.toLowerCase()}`;
+      data.demoUrl = `/demo.html#/en-US/${state.componentName.name.toLowerCase()}`
     }
   }
-};
+}
 
 onMounted(() => {
-  componentTitle();
-  watchDemoUrl(route);
-  data.curKey = isTaro(route) ? 'taro' : 'vue';
-  document.addEventListener('scroll', scrollTitle);
-});
+  componentTitle()
+  watchDemoUrl(route)
+  data.curKey = isTaro(route) ? 'taro' : 'vue'
+  document.addEventListener('scroll', scrollTitle)
+})
 
 const scrollTitle = () => {
-  let top = document.documentElement.scrollTop;
+  let top = document.documentElement.scrollTop
   if (top > 127) {
-    state.fixed = true;
+    state.fixed = true
     if (top < 142) {
-      state.hidden = true;
+      state.hidden = true
     } else {
-      state.hidden = false;
+      state.hidden = false
     }
   } else {
-    state.fixed = false;
-    state.hidden = false;
+    state.fixed = false
+    state.hidden = false
   }
-};
+}
 
 // 获得组件名称
 const componentTitle = (to?: any) => {
-  state.componentName.name = (to?.path || route?.path)?.split('/').slice(-1)[0];
+  state.componentName.name = (to?.path || route?.path)?.split('/').slice(-1)[0]
   nav.forEach((item: any) => {
     item.packages.forEach((sItem: any) => {
       if (sItem.name.toLowerCase() == state.componentName.name) {
-        state.componentName.name = sItem.name;
-        state.componentName.cName = sItem.cName;
-        state.componentName.type = item.enName;
-        return;
+        state.componentName.name = sItem.name
+        state.componentName.cName = sItem.cName
+        state.componentName.type = item.enName
+        return
       }
-    });
-  });
-};
+    })
+  })
+}
 
 onBeforeRouteUpdate((to) => {
-  componentTitle(to);
-  watchDemoUrl(to);
-  data.curKey = isTaro(to) ? 'taro' : 'vue';
-});
+  componentTitle(to)
+  watchDemoUrl(to)
+  data.curKey = isTaro(to) ? 'taro' : 'vue'
+})
 </script>
 
 <style lang="scss" scoped>

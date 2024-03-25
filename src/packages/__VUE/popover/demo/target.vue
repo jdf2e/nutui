@@ -4,10 +4,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
+import { ref } from 'vue'
+const show = ref(false)
 
-const list = ref([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]);
+const list = ref([{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }])
 </script>
 
 <style>

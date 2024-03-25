@@ -7,11 +7,11 @@ Used for level four address selection
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Address } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Address } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Address);
+const app = createApp()
+app.use(Address)
 ```
 
 ### Choose Custom Address
@@ -33,8 +33,8 @@ app.use(Address);
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-const showPopup = ref(false);
+import { ref, reactive } from 'vue'
+const showPopup = ref(false)
 const address = reactive({
   province: [
     { id: 1, name: '北京' },
@@ -54,23 +54,23 @@ const address = reactive({
     { id: 4, name: '常营乡' }
   ],
   town: []
-});
+})
 
-const text = ref('Choose Address');
+const text = ref('Choose Address')
 
 const showAddress = () => {
-  showPopup.value = !showPopup.value;
-};
+  showPopup.value = !showPopup.value
+}
 
 const onChange = (cal) => {
-  const name = address[cal.next];
+  const name = address[cal.next]
   if (!name || name.length < 1) {
-    showPopup.value = false;
+    showPopup.value = false
   }
-};
+}
 const close = (val) => {
-  text.value = val.data.addressStr;
-};
+  text.value = val.data.addressStr
+}
 </script>
 ```
 
@@ -98,9 +98,9 @@ If you want to select a province, you need to set the region ID in the order of 
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-const showPopup = ref(false);
-const value = ref([1, 7, 3]);
+import { ref, reactive } from 'vue'
+const showPopup = ref(false)
+const value = ref([1, 7, 3])
 const address = reactive({
   province: [
     { id: 1, name: '北京' },
@@ -120,24 +120,24 @@ const address = reactive({
     { id: 4, name: '常营乡' }
   ],
   town: []
-});
+})
 
-const text = ref('Balizhuang Street, Chaoyang District, Beijing');
+const text = ref('Balizhuang Street, Chaoyang District, Beijing')
 
 const showAddress = () => {
-  showPopup.value = !showPopup.value;
-};
+  showPopup.value = !showPopup.value
+}
 
 const onChange = (cal) => {
-  const name = address[cal.next];
+  const name = address[cal.next]
   if (!name || name.length < 1) {
-    showPopup.value = false;
+    showPopup.value = false
   }
-};
+}
 const close = (val) => {
-  text.value = val.data.addressStr;
-  value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.value = val.data.addressStr
+  value.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 </script>
 ```
 
@@ -164,9 +164,9 @@ const close = (val) => {
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-const showPopup = ref(false);
-const value = ref([1, 7, 3]);
+import { ref, reactive } from 'vue'
+const showPopup = ref(false)
+const value = ref([1, 7, 3])
 const address = reactive({
   province: [
     { id: 1, name: '北京', title: 'B' },
@@ -189,24 +189,24 @@ const address = reactive({
     { id: 4, name: '常营乡', title: 'C' }
   ],
   town: []
-});
+})
 
-const text = ref('Balizhuang Street, Chaoyang District, Beijing');
+const text = ref('Balizhuang Street, Chaoyang District, Beijing')
 
 const showAddress = () => {
-  showPopup.value = !showPopup.value;
-};
+  showPopup.value = !showPopup.value
+}
 
 const onChange = (cal) => {
-  const name = address[cal.next];
+  const name = address[cal.next]
   if (!name || name.length < 1) {
-    showPopup.value = false;
+    showPopup.value = false
   }
-};
+}
 const close = (val) => {
-  text.value = val.data.addressStr;
-  value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.value = val.data.addressStr
+  value.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 </script>
 ```
 
@@ -230,8 +230,8 @@ const close = (val) => {
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-const showPopupExist = ref(false);
+import { ref, reactive } from 'vue'
+const showPopupExist = ref(false)
 const existAddress = ref([
   {
     id: 1,
@@ -266,27 +266,27 @@ const existAddress = ref([
     name: '探探鱼',
     phone: '182****1718'
   }
-]);
+])
 
-const text = ref('Choose Address');
+const text = ref('Choose Address')
 
 const showAddressExist = () => {
-  showPopupExist.value = true;
-};
+  showPopupExist.value = true
+}
 
 const close = (val) => {
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.value = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.value = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.value = val.data.addressStr;
+    text.value = val.data.addressStr
   }
-};
+}
 
 const selected = (prevExistAdd, nowExistAdd, arr) => {
-  console.log(prevExistAdd);
-  console.log(nowExistAdd);
-};
+  console.log(prevExistAdd)
+  console.log(nowExistAdd)
+}
 </script>
 ```
 
@@ -320,9 +320,9 @@ const selected = (prevExistAdd, nowExistAdd, arr) => {
   </nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-import { HeartFill, Heart1 } from '@nutui/icons-vue';
-const showPopupCustomImg = ref(false);
+import { ref, reactive } from 'vue'
+import { HeartFill, Heart1 } from '@nutui/icons-vue'
+const showPopupCustomImg = ref(false)
 const existAddress = ref([
   {
     id: 1,
@@ -357,27 +357,27 @@ const existAddress = ref([
     name: '探探鱼',
     phone: '182****1718'
   }
-]);
+])
 
-const text = ref('Choose Address');
+const text = ref('Choose Address')
 
 const showCustomImg = () => {
-  showPopupCustomImg.value = true;
-};
+  showPopupCustomImg.value = true
+}
 
 const close = (val) => {
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.value = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.value = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.value = val.data.addressStr;
+    text.value = val.data.addressStr
   }
-};
+}
 
 const selected = (prevExistAdd, nowExistAdd, arr) => {
-  console.log(prevExistAdd);
-  console.log(nowExistAdd);
-};
+  console.log(prevExistAdd)
+  console.log(nowExistAdd)
+}
 </script>
 <style>
 .nut-address-custom-buttom {
@@ -426,8 +426,8 @@ const selected = (prevExistAdd, nowExistAdd, arr) => {
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-const showPopupOther = ref(false);
+import { ref, reactive } from 'vue'
+const showPopupOther = ref(false)
 const address = reactive({
   province: [
     { id: 1, name: '北京' },
@@ -447,7 +447,7 @@ const address = reactive({
     { id: 4, name: '常营乡' }
   ],
   town: []
-});
+})
 const existAddress = ref([
   {
     id: 1,
@@ -482,45 +482,45 @@ const existAddress = ref([
     name: '探探鱼',
     phone: '182****1718'
   }
-]);
-const backBtnIcon = ref('left');
-const text = ref('Choose Address');
+])
+const backBtnIcon = ref('left')
+const text = ref('Choose Address')
 
 const showAddressOther = () => {
-  showPopupOther.value = true;
-};
+  showPopupOther.value = true
+}
 
 const close = (val) => {
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.value = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.value = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.value = val.data.addressStr;
+    text.value = val.data.addressStr
   }
-};
+}
 
 const selected = (prevExistAdd, nowExistAdd, arr) => {
-  console.log(prevExistAdd);
-  console.log(nowExistAdd);
-};
+  console.log(prevExistAdd)
+  console.log(nowExistAdd)
+}
 
 const switchModule = (cal) => {
   if (cal.type == 'custom') {
-    console.log('点击了“选择其他地址”按钮');
+    console.log('点击了“选择其他地址”按钮')
   } else {
-    console.log('点击了自定义地址左上角的返回按钮');
+    console.log('点击了自定义地址左上角的返回按钮')
   }
-};
+}
 const onChange = (cal) => {
-  const name = address[cal.next];
+  const name = address[cal.next]
   if (!name || name.length < 1) {
-    showPopupOther.value = false;
+    showPopupOther.value = false
   }
-};
+}
 
 const closeMask = (val) => {
-  console.log('关闭弹层', val);
-};
+  console.log('关闭弹层', val)
+}
 </script>
 ```
 

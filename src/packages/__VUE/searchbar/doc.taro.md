@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Searchbar } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Searchbar } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Searchbar);
+const app = createApp()
+app.use(Searchbar)
 ```
 
 ### 基础用法

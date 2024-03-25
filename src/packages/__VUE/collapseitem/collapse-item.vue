@@ -44,25 +44,25 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref, computed, watch, inject } from 'vue';
-import { DownArrow } from '@nutui/icons-vue';
-import { renderIcon } from '@/packages/utils/create';
-import { COLLAPSE_KEY } from '../collapse/types';
+import { ref, computed, watch, inject } from 'vue'
+import { DownArrow } from '@nutui/icons-vue'
+import { renderIcon } from '@/packages/utils/create'
+import { COLLAPSE_KEY } from '../collapse/types'
 
 defineOptions({
   name: 'NutCollapseItem'
-});
+})
 
 export type CollapseItemProps = Partial<{
-  title: string;
-  value: string;
-  label: string;
-  disabled: boolean;
-  name: string | number;
-  border: boolean;
-  icon: any;
-  rotate: string | number;
-}>;
+  title: string
+  value: string
+  label: string
+  disabled: boolean
+  name: string | number
+  border: boolean
+  icon: any
+  rotate: string | number
+}>
 
 const props = withDefaults(defineProps<CollapseItemProps>(), {
   title: '',
@@ -73,62 +73,62 @@ const props = withDefaults(defineProps<CollapseItemProps>(), {
   border: true,
   icon: () => DownArrow,
   rotate: 180
-});
+})
 
 // 获取 DOM 元素
-const wrapperRef = ref<HTMLDivElement | null>(null);
-const contentRef = ref<HTMLDivElement | null>(null);
+const wrapperRef = ref<HTMLDivElement | null>(null)
+const contentRef = ref<HTMLDivElement | null>(null)
 
-const parent = inject(COLLAPSE_KEY);
+const parent = inject(COLLAPSE_KEY)
 
 const classes = computed(() => {
-  const prefixCls = 'nut-collapse-item';
+  const prefixCls = 'nut-collapse-item'
   return {
     [prefixCls]: true,
     [prefixCls + '__border']: props.border
-  };
-});
+  }
+})
 
 const expanded = computed(() => {
   if (parent) {
-    return parent.isExpanded(props.name);
+    return parent.isExpanded(props.name)
   }
-  return false;
-});
+  return false
+})
 
-const wrapperHeight = ref(expanded.value ? 'auto' : '0px');
+const wrapperHeight = ref(expanded.value ? 'auto' : '0px')
 
 const toggle = () => {
-  parent && parent.updateVal(props.name);
-};
+  parent && parent.updateVal(props.name)
+}
 
 const onTransitionEnd = () => {
   if (expanded.value) {
-    wrapperHeight.value = 'auto';
+    wrapperHeight.value = 'auto'
   }
-};
+}
 
 const open = () => {
-  wrapperHeight.value = '0px';
+  wrapperHeight.value = '0px'
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      const height = contentRef.value?.offsetHeight;
-      wrapperHeight.value = height ? `${height}px` : 'auto';
-    });
-  });
-};
+      const height = contentRef.value?.offsetHeight
+      wrapperHeight.value = height ? `${height}px` : 'auto'
+    })
+  })
+}
 
 const close = () => {
-  const height = contentRef.value?.offsetHeight;
-  wrapperHeight.value = height ? `${height}px` : 'auto';
+  const height = contentRef.value?.offsetHeight
+  wrapperHeight.value = height ? `${height}px` : 'auto'
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      wrapperHeight.value = '0px';
-    });
-  });
-};
+      wrapperHeight.value = '0px'
+    })
+  })
+}
 
 watch(expanded, (value) => {
-  value ? open() : close();
-});
+  value ? open() : close()
+})
 </script>

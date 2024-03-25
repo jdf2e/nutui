@@ -5,9 +5,9 @@
   <nut-input v-model="val4" placeholder="Digit" type="digit" />
 </template>
 <script setup>
-import { ref } from 'vue';
-const val1 = ref('');
-const val2 = ref('');
-const val3 = ref('');
-const val4 = ref('');
+import { ref } from 'vue'
+const val1 = ref('')
+const val2 = ref('')
+const val3 = ref('')
+const val4 = ref('')
 </script>

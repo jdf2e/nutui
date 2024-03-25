@@ -56,17 +56,17 @@
   </view>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
-import { MaskClose } from '@nutui/icons-vue-taro';
-import { ref, reactive, computed, onMounted, watch, h, toRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { formatNumber } from './util';
-import { useFormDisabled } from '../form/common';
+import Taro from '@tarojs/taro'
+import { MaskClose } from '@nutui/icons-vue-taro'
+import { ref, reactive, computed, onMounted, watch, h, toRef } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { formatNumber } from './util'
+import { useFormDisabled } from '../form/common'
 
-import type { PropType, ComputedRef } from 'vue';
-import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType, InputEvent } from './type';
+import type { PropType, ComputedRef } from 'vue'
+import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType, InputEvent } from './type'
 
-const { componentName, create } = createComponent('input');
+const { componentName, create } = createComponent('input')
 
 export default create({
   inheritAttrs: false,
@@ -160,40 +160,40 @@ export default create({
   emits: ['update:modelValue', 'blur', 'focus', 'clear', 'keypress', 'click', 'clickInput', 'confirm'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const active = ref(false);
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const active = ref(false)
 
-    const inputRef = ref();
-    const getModelValue = () => String(props.modelValue ?? '');
+    const inputRef = ref()
+    const getModelValue = () => String(props.modelValue ?? '')
 
     const renderInput = (type: InputType) => {
-      let inputType: any = { type };
+      let inputType: any = { type }
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         // Taro H5 端与小程序端效果保持一致
         if (type === 'number') {
           inputType = {
             type: 'tel',
             inputmode: 'numeric'
-          };
+          }
         }
         if (type === 'digit') {
           inputType = {
             type: 'text',
             inputmode: 'decimal'
-          };
+          }
         }
       }
-      return h('input', inputType);
-    };
+      return h('input', inputType)
+    }
 
     const state = reactive({
       focused: false,
       validateFailed: false, // 校验失败
       validateMessage: '' // 校验信息
-    });
+    })
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: disabled.value,
@@ -201,142 +201,142 @@ export default create({
         [`${prefixCls}--error`]: props.error,
         [`${prefixCls}--border`]: props.border,
         [props.class]: !!props.class
-      };
-    });
+      }
+    })
 
     const styles: ComputedRef = computed(() => {
       return {
         textAlign: props.inputAlign
-      };
-    });
+      }
+    })
 
     const onInput = (event: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (!(event.target as InputTarget)!.composing) {
-          _onInput(event);
+          _onInput(event)
         }
       } else {
-        _onInput(event);
+        _onInput(event)
       }
-    };
+    }
     const _onInput = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
-      updateValue(value);
-    };
+      const input = event.target as HTMLInputElement
+      let value = input.value
+      updateValue(value)
+    }
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
       // #2178 & Taro #2642
-      emit('update:modelValue', value);
+      emit('update:modelValue', value)
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+        value = value.slice(0, Number(props.maxLength))
       }
       // In weapp input digit is decimal keyboard
       if (['number', 'digit'].includes(props.type)) {
-        const isDigit = props.type === 'digit';
-        value = formatNumber(value, isDigit, isDigit);
+        const isDigit = props.type === 'digit'
+        value = formatNumber(value, isDigit, isDigit)
       }
       if (props.formatter && trigger === props.formatTrigger) {
-        value = props.formatter(value);
+        value = props.formatter(value)
       }
       if (value !== props.modelValue) {
-        emit('update:modelValue', value);
+        emit('update:modelValue', value)
         // emit('change', value);
       }
-    };
+    }
 
     const onFocus = (event: Event) => {
       if (disabled.value || props.readonly) {
-        return;
+        return
       }
-      active.value = true;
-      emit('focus', event);
+      active.value = true
+      emit('focus', event)
       // emit('update:modelValue', value);
-    };
+    }
 
     const onBlur = (event: Event) => {
       if (disabled.value || props.readonly) {
-        return;
+        return
       }
       setTimeout(() => {
-        active.value = false;
-      }, 200);
+        active.value = false
+      }, 200)
 
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      const input = event.target as HTMLInputElement
+      let value = input.value
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+        value = value.slice(0, Number(props.maxLength))
       }
-      updateValue(getModelValue(), 'onBlur');
-      emit('blur', event);
+      updateValue(getModelValue(), 'onBlur')
+      emit('blur', event)
       // emit('update:modelValue', value);
-    };
+    }
 
     const clear = (event: Event) => {
-      event.stopPropagation();
-      if (disabled.value) return;
-      emit('update:modelValue', '', event);
+      event.stopPropagation()
+      if (disabled.value) return
+      emit('update:modelValue', '', event)
       // emit('change', '', event);
-      emit('clear', '', event);
-    };
+      emit('clear', '', event)
+    }
 
     const resetValidation = () => {
       if (state.validateFailed) {
-        state.validateFailed = false;
-        state.validateMessage = '';
+        state.validateFailed = false
+        state.validateMessage = ''
       }
-    };
+    }
 
     const onClickInput = (event: MouseEvent) => {
       if (disabled.value) {
-        return;
+        return
       }
-      emit('clickInput', event);
-    };
+      emit('clickInput', event)
+    }
 
     const onClick = (event: MouseEvent) => {
-      emit('click', event);
-    };
+      emit('click', event)
+    }
 
     const startComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        (target as InputTarget)!.composing = true;
+        ;(target as InputTarget)!.composing = true
       }
-    };
+    }
 
     const endComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if ((target as InputTarget)!.composing) {
-          (target as InputTarget)!.composing = false;
-          (target as InputTarget)!.dispatchEvent(new Event('input'));
+          ;(target as InputTarget)!.composing = false
+          ;(target as InputTarget)!.dispatchEvent(new Event('input'))
         }
       }
-    };
+    }
 
     const onKeyup = (e: KeyboardEvent) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB && e.key === 'Enter') {
-        emit('confirm', e);
+        emit('confirm', e)
       }
-    };
+    }
 
     const onConfirm = (e: InputEvent) => {
-      emit('confirm', e);
-    };
+      emit('confirm', e)
+    }
 
     watch(
       () => props.modelValue,
       () => {
-        updateValue(getModelValue());
-        resetValidation();
+        updateValue(getModelValue())
+        resetValidation()
       }
-    );
+    )
 
     onMounted(() => {
       if (props.autofocus) {
-        inputRef.value.focus();
+        inputRef.value.focus()
       }
-      updateValue(getModelValue(), props.formatTrigger);
-    });
+      updateValue(getModelValue(), props.formatTrigger)
+    })
 
     return {
       renderInput,
@@ -356,7 +356,7 @@ export default create({
       onConfirm,
       onKeyup,
       getModelValue
-    };
+    }
   }
-});
+})
 </script>

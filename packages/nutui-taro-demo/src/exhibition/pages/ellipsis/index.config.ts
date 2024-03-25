@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'Ellipsis' };
+export default { navigationBarTitleText: 'Ellipsis' }

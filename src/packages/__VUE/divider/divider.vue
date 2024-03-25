@@ -4,31 +4,31 @@
   </view>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
-import { DividerDirection, DividerPosition } from './types';
+import { computed } from 'vue'
+import { DividerDirection, DividerPosition } from './types'
 
 defineOptions({
   name: 'NutDivider'
-});
+})
 
 export type DividerProps = Partial<{
-  contentPosition: DividerPosition;
-  dashed: boolean;
-  hairline: boolean;
-  direction: DividerDirection;
-}>;
+  contentPosition: DividerPosition
+  dashed: boolean
+  hairline: boolean
+  direction: DividerDirection
+}>
 
 const props = withDefaults(defineProps<DividerProps>(), {
   contentPosition: 'center',
   dashed: false,
   hairline: true,
   direction: 'horizontal'
-});
+})
 
-const slots = defineSlots();
+const slots = defineSlots()
 
 const classes = computed(() => {
-  const prefixCls = 'nut-divider';
+  const prefixCls = 'nut-divider'
   if (props.direction === 'horizontal') {
     return {
       [prefixCls]: true,
@@ -37,12 +37,12 @@ const classes = computed(() => {
       [`${prefixCls}-right`]: props.contentPosition === 'right',
       [`${prefixCls}-dashed`]: props.dashed,
       [`${prefixCls}-hairline`]: props.hairline
-    };
+    }
   } else {
     return {
       [prefixCls]: true,
       [`${prefixCls}-vertical`]: props.direction === 'vertical'
-    };
+    }
   }
-});
+})
 </script>

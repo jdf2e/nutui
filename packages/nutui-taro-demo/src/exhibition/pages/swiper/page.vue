@@ -9,17 +9,17 @@
   </nut-swiper>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const list = ref([
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
   'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-]);
-const val = ref(1);
+])
+const val = ref(1)
 const onChange = (index) => {
-  val.value = index + 1;
-};
+  val.value = index + 1
+}
 </script>
 <style>
 .swiper-pagination {

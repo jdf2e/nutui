@@ -23,14 +23,14 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Fit from './fit.vue';
-import Position from './position.vue';
-import Round from './round.vue';
-import Loading from './loading.vue';
-import Error from './error.vue';
-import Lazy from './lazy.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Fit from './fit.vue'
+import Position from './position.vue'
+import Round from './round.vue'
+import Loading from './loading.vue'
+import Error from './error.vue'
+import Lazy from './lazy.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -51,5 +51,5 @@ const t = useTranslate({
     error: 'Error',
     lazy: 'Lazy Load'
   }
-});
+})
 </script>

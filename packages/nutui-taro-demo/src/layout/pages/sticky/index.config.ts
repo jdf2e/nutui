@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'Sticky' };
+export default { navigationBarTitleText: 'Sticky' }

@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Picker } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Picker } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Picker);
+const app = createApp()
+app.use(Picker)
 ```
 
 ### 基础用法

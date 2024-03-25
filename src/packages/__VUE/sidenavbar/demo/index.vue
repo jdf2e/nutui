@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Popup from './popup.vue';
-import Nest from './nest.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Popup from './popup.vue'
+import Nest from './nest.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -28,5 +28,5 @@ const t = useTranslate({
     popup: 'Popup',
     nest: 'Navigation nesting (up to three layers are recommended)'
   }
-});
+})
 </script>

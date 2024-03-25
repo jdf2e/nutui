@@ -7,11 +7,11 @@ Used to display product pictures, prices and other information.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Card } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Card } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Card);
+const app = createApp()
+app.use(Card)
 ```
 
 ### Usage

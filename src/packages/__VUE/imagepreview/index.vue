@@ -44,18 +44,18 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref, computed, nextTick } from 'vue';
-import type { PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { isArray } from '@/packages/utils/util';
-import { funInterceptor, Interceptor } from '@/packages/utils/util';
-import { useRect } from '@/packages/utils/useRect';
-import ImagePreviewItem from './imagePreviewItem.vue';
-import { ImageInterface, baseProps } from './types';
-const { create } = createComponent('image-preview');
-import { CircleClose } from '@nutui/icons-vue';
-import NutPopup from '../popup/index.vue';
-import NutSwiper from '../swiper/index.vue';
+import { toRefs, reactive, watch, onMounted, ref, computed, nextTick } from 'vue'
+import type { PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { isArray } from '@/packages/utils/util'
+import { funInterceptor, Interceptor } from '@/packages/utils/util'
+import { useRect } from '@/packages/utils/useRect'
+import ImagePreviewItem from './imagePreviewItem.vue'
+import { ImageInterface, baseProps } from './types'
+const { create } = createComponent('image-preview')
+import { CircleClose } from '@nutui/icons-vue'
+import NutPopup from '../popup/index.vue'
+import NutSwiper from '../swiper/index.vue'
 
 export default create({
   props: {
@@ -91,80 +91,80 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const swipeRef = ref();
+    const swipeRef = ref()
 
     const state = reactive({
       showPop: props.show,
       active: 0,
       rootWidth: 0,
       rootHeight: 0
-    });
+    })
 
     const iconClasses = computed(() => {
-      const pre = 'nut-image-preview-close';
-      const iconn = props.closeIconPosition == 'top-right' ? `${pre}-right` : `${pre}-left`;
-      return `nut-image-preview-close-icon ${iconn}`;
-    });
+      const pre = 'nut-image-preview-close'
+      const iconn = props.closeIconPosition == 'top-right' ? `${pre}-right` : `${pre}-left`
+      return `nut-image-preview-close-icon ${iconn}`
+    })
 
     const mergeImages = computed(() => {
       if (isArray(props.videos)) {
-        return ([] as any).concat(props.videos).concat(props.images);
+        return ([] as any).concat(props.videos).concat(props.images)
       }
-      return props.images;
-    });
+      return props.images
+    })
     // 设置当前选中第几个
     const setActive = (active: number) => {
       if (active !== state.active) {
-        state.active = active;
-        emit('change', state.active);
+        state.active = active
+        emit('change', state.active)
       }
-    };
+    }
 
     const onClose = () => {
       funInterceptor(props.beforeClose, {
         args: [state.active],
         done: () => closeDone()
-      });
-    };
+      })
+    }
     // 执行关闭
     const closeDone = () => {
-      state.showPop = false;
+      state.showPop = false
 
-      emit('close');
-    };
+      emit('close')
+    }
 
     const init = () => {
       if (swipeRef.value) {
-        const rect = useRect(swipeRef.value);
-        state.rootHeight = rect.height;
-        state.rootWidth = rect.width;
+        const rect = useRect(swipeRef.value)
+        state.rootHeight = rect.height
+        state.rootWidth = rect.width
       }
-    };
+    }
 
     watch(
       () => props.show,
       (val) => {
-        state.showPop = val;
+        state.showPop = val
 
         if (val) {
-          setActive(props.initNo);
+          setActive(props.initNo)
           nextTick(() => {
-            init();
-          });
+            init()
+          })
         }
       }
-    );
+    )
 
     watch(
       () => props.initNo,
       (val) => {
-        if (val != state.active) setActive(val);
+        if (val != state.active) setActive(val)
       }
-    );
+    )
 
     onMounted(() => {
-      setActive(props.initNo);
-    });
+      setActive(props.initNo)
+    })
 
     return {
       swipeRef,
@@ -173,7 +173,7 @@ export default create({
       mergeImages,
       setActive,
       iconClasses
-    };
+    }
   }
-});
+})
 </script>

@@ -7,11 +7,11 @@ Used to select time, support date and time dimensions, usually used with the Pop
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { DatePicker } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { DatePicker } from '@nutui/nutui'
 
-const app = createApp();
-app.use(DatePicker);
+const app = createApp()
+app.use(DatePicker)
 ```
 
 ### Choose Date

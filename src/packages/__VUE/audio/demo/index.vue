@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Play from './play.vue';
-import Progress from './progress.vue';
-import Control from './control.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Play from './play.vue'
+import Progress from './progress.vue'
+import Control from './control.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     progress: 'Progress',
     control: 'Custom Control'
   }
-});
+})
 </script>

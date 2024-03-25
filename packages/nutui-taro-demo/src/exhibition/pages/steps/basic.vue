@@ -6,10 +6,10 @@
   </nut-steps>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const current = ref(1);
+import { ref } from 'vue'
+const current = ref(1)
 const onClickStep = (index: number) => {
-  console.log(index);
-  current.value = index;
-};
+  console.log(index)
+  current.value = index
+}
 </script>

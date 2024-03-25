@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Switch } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Switch } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Switch);
+const app = createApp()
+app.use(Switch)
 ```
 
 ### 基础用法
@@ -80,7 +80,7 @@ app.use(Switch);
 组件导出以下类型定义：
 
 ```ts
-import type { SwitchProps, SwitchInstance } from '@nutui/nutui';
+import type { SwitchProps, SwitchInstance } from '@nutui/nutui'
 ```
 
 ## 主题定制

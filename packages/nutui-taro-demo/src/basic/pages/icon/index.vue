@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue-taro';
+import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue-taro'
 </script>
 
 <style lang="scss">

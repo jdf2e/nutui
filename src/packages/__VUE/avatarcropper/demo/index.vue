@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Shape from './shape.vue';
-import Toolbar from './toolbar.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Shape from './shape.vue'
+import Toolbar from './toolbar.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -28,5 +28,5 @@ const t = useTranslate({
     shape: 'Shape',
     toolbar: 'Toolbar Slot'
   }
-});
+})
 </script>

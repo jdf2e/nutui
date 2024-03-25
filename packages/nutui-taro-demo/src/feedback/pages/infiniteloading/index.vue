@@ -21,39 +21,39 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-const hasMore = ref(true);
-const defaultList = ref(['']);
+import { onMounted, ref } from 'vue'
+const hasMore = ref(true)
+const defaultList = ref([''])
 
 const loadMore = (done) => {
   setTimeout(() => {
-    const curLen = defaultList.value.length;
+    const curLen = defaultList.value.length
 
     for (let i = curLen; i < curLen + 10; i++) {
-      defaultList.value.push(`${i}`);
+      defaultList.value.push(`${i}`)
     }
 
-    if (defaultList.value.length > 30) hasMore.value = false;
+    if (defaultList.value.length > 30) hasMore.value = false
 
-    done();
-  }, 500);
-};
+    done()
+  }, 500)
+}
 
 const refresh = (done) => {
   setTimeout(() => {
-    console.log('刷新成功');
-    done();
-  }, 1000);
-};
+    console.log('刷新成功')
+    done()
+  }, 1000)
+}
 
 const init = () => {
   for (let i = 0; i < 20; i++) {
-    defaultList.value.push(`${i}`);
+    defaultList.value.push(`${i}`)
   }
-};
+}
 onMounted(() => {
-  init();
-});
+  init()
+})
 </script>
 
 <style>

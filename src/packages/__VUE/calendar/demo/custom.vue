@@ -26,60 +26,60 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const date = ref([]);
-const calendarRef = ref(null);
+import { ref } from 'vue'
+const show = ref(false)
+const date = ref([])
+const calendarRef = ref(null)
 const getNumTwoBit = function (n) {
-  n = Number(n);
-  return (n > 9 ? '' : '0') + n;
-};
+  n = Number(n)
+  return (n > 9 ? '' : '0') + n
+}
 const date2Str = function (date, split) {
-  split = split || '-';
-  const y = date.getFullYear();
-  const m = getNumTwoBit(date.getMonth() + 1);
-  const d = getNumTwoBit(date.getDate());
-  return [y, m, d].join(split);
-};
+  split = split || '-'
+  const y = date.getFullYear()
+  const m = getNumTwoBit(date.getMonth() + 1)
+  const d = getNumTwoBit(date.getDate())
+  return [y, m, d].join(split)
+}
 const getDay = function (i) {
-  i = i || 0;
-  let date = new Date();
-  const diff = i * (1000 * 60 * 60 * 24);
-  date = new Date(date.getTime() + diff);
-  return date2Str(date);
-};
+  i = i || 0
+  let date = new Date()
+  const diff = i * (1000 * 60 * 60 * 24)
+  date = new Date(date.getTime() + diff)
+  return date2Str(date)
+}
 const isLeapYear = function (y) {
-  return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
-};
+  return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
+}
 const getMonthDays = function (year, month) {
   if (/^0/.test(month)) {
-    month = month.split('')[1];
+    month = month.split('')[1]
   }
-  return [0, 31, isLeapYear(Number(year)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
-};
+  return [0, 31, isLeapYear(Number(year)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
+}
 const choose = (param) => {
-  date.value = [param[0][3], param[1][3]];
-};
+  date.value = [param[0][3], param[1][3]]
+}
 const click1 = () => {
   if (calendarRef.value) {
-    const d = new Date();
-    d.setDate(d.getDate() + 30);
-    calendarRef.value.scrollToDate(date2Str(d));
+    const d = new Date()
+    d.setDate(d.getDate() + 30)
+    calendarRef.value.scrollToDate(date2Str(d))
   }
-};
+}
 const click2 = () => {
-  const d = [date2Str(new Date()), getDay(6)];
-  date.value = d;
-};
+  const d = [date2Str(new Date()), getDay(6)]
+  date.value = d
+}
 const click3 = () => {
-  const d = new Date();
-  const year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  month = month < 10 ? '0' + month : month + '';
-  const yearMonth = `${year}-${month}`;
-  const currMonthDays = getMonthDays(year + '', month + '');
-  date.value = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
-};
+  const d = new Date()
+  const year = d.getFullYear()
+  let month = d.getMonth() + 1
+  month = month < 10 ? '0' + month : month + ''
+  const yearMonth = `${year}-${month}`
+  const currMonthDays = getMonthDays(year + '', month + '')
+  date.value = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]
+}
 </script>
 
 <style>

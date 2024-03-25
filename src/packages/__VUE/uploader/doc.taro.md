@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Uploader } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Uploader } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Uploader);
+const app = createApp()
+app.use(Uploader)
 ```
 
 ### 基础用法
@@ -177,12 +177,12 @@ import { ref } from 'vue';
 
 ```vue
 <script setup>
-import { ref, reactive } from 'vue';
-const uploadUrl = 'http://服务器地址';
-const progressPercentage = ref(0);
+import { ref, reactive } from 'vue'
+const uploadUrl = 'http://服务器地址'
+const progressPercentage = ref(0)
 const formData = {
   custom: 'test'
-};
+}
 const defaultFileList = reactive([
   {
     name: '文件1.png',
@@ -205,41 +205,41 @@ const defaultFileList = reactive([
     message: '上传中...',
     type: 'image'
   }
-]);
+])
 const fileToDataURL = (file) => {
   return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = (e) => resolve(e.target.result);
-    reader.readAsDataURL(file);
-  });
-};
+    const reader = new FileReader()
+    reader.onloadend = (e) => resolve(e.target.result)
+    reader.readAsDataURL(file)
+  })
+}
 const dataURLToImage = (dataURL) => {
   return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.src = dataURL;
-  });
-};
+    const img = new Image()
+    img.onload = () => resolve(img)
+    img.src = dataURL
+  })
+}
 const canvastoFile = (canvas, type, quality) => {
-  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
-};
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
+}
 const onOversize = (files) => {
-  console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
+  console.log('oversize 触发 文件大小不能超过 50kb', files)
+}
 const onDelete = (obj) => {
-  console.log('delete 事件触发', obj);
-};
+  console.log('delete 事件触发', obj)
+}
 const onProgress = ({ event, options, percentage }) => {
-  progressPercentage.value = percentage;
-  console.log('progress 事件触发', percentage);
-};
-const uploadRef = ref(null);
+  progressPercentage.value = percentage
+  console.log('progress 事件触发', percentage)
+}
+const uploadRef = ref(null)
 const submitUpload = () => {
-  uploadRef.value.submit();
-};
+  uploadRef.value.submit()
+}
 const clearUpload = () => {
-  uploadRef.value.clearUploadQueue();
-};
+  uploadRef.value.clearUploadQueue()
+}
 </script>
 ```
 

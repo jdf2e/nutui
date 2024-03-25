@@ -1,1 +1,1 @@
-export type CircleProgressStrokeLinecap = 'butt' | 'round' | 'square';
+export type CircleProgressStrokeLinecap = 'butt' | 'round' | 'square'

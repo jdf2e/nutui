@@ -35,15 +35,15 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutPopup from '../popup/index.taro.vue';
-import { Tips } from '@nutui/icons-vue-taro';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('short-password');
-import { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import { ref, computed, watch, onMounted } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutPopup from '../popup/index.taro.vue'
+import { Tips } from '@nutui/icons-vue-taro'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('short-password')
+import { eventCenter, getCurrentInstance } from '@tarojs/taro'
 
-const cN = 'NutShortPassword';
+const cN = 'NutShortPassword'
 
 export default create({
   components: {
@@ -90,42 +90,42 @@ export default create({
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const realInput = ref(props.modelValue);
-    const comLen = computed(() => range(Number(props.length)));
-    const show = ref(props.visible);
+    const translate = useLocale(cN)
+    const realInput = ref(props.modelValue)
+    const comLen = computed(() => range(Number(props.length)))
+    const show = ref(props.visible)
     function focus(event: any) {
-      event.stopPropagation();
-      emit('focus');
+      event.stopPropagation()
+      emit('focus')
     }
     watch(
       () => props.visible,
       (value) => {
-        show.value = value;
+        show.value = value
       }
-    );
+    )
     watch(
       () => props.modelValue,
       (value) => {
-        realInput.value = value;
+        realInput.value = value
         if (String(value).length === comLen.value) {
-          emit('complete', value);
+          emit('complete', value)
         }
       }
-    );
+    )
     function close() {
-      emit('update:visible', false);
-      emit('close');
+      emit('update:visible', false)
+      emit('close')
     }
     function range(val: number) {
-      return Math.min(Math.max(4, val), 6);
+      return Math.min(Math.max(4, val), 6)
     }
     function onTips() {
-      emit('tips');
+      emit('tips')
     }
     onMounted(() => {
-      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
-    });
+      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {})
+    })
     return {
       comLen,
       realInput,
@@ -135,7 +135,7 @@ export default create({
       focus,
       show,
       translate
-    };
+    }
   }
-});
+})
 </script>

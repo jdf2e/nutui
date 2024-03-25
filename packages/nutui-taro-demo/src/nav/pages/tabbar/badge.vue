@@ -28,5 +28,5 @@
   </nut-tabbar>
 </template>
 <script setup>
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
 </script>

@@ -6,37 +6,39 @@
 </template>
 
 <script lang="ts" setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
-const activeName = ref('category');
+import { h, ref } from 'vue'
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
+
+const activeName = ref('category')
 const List = [
   {
-    title: 'label',
+    title: 'Home',
     icon: h(Home),
     name: 'home'
   },
   {
-    title: 'label',
+    title: 'Category',
     icon: h(Category),
     name: 'category'
   },
   {
-    title: 'label',
+    title: 'Find',
     icon: h(Find),
     name: 'find'
   },
   {
-    title: 'label',
+    title: 'Cart',
     icon: Cart,
     name: 'cart'
   },
   {
-    title: 'label',
+    title: 'My',
     icon: h(My),
     name: 'my'
   }
-];
+]
+
 const tabSwitch = (item: Record<string, unknown>, index: number) => {
-  console.log(item, index);
-};
+  console.log(item, index)
+}
 </script>

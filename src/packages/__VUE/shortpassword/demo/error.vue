@@ -13,15 +13,15 @@
   </nut-number-keyboard>
 </template>
 <script setup>
-import { ref } from 'vue';
-const visible = ref(false);
-const showKeyboard = ref(false);
-const value = ref('');
-const errorMsg = ref('请输入正确的密码');
+import { ref } from 'vue'
+const visible = ref(false)
+const showKeyboard = ref(false)
+const value = ref('')
+const errorMsg = ref('请输入正确的密码')
 const complete = (value) => {
-  console.log(value);
-};
+  console.log(value)
+}
 const onTips = () => {
-  console.log('Click Tip');
-};
+  console.log('Click Tip')
+}
 </script>

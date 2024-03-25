@@ -15,58 +15,58 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { EmptyImage } from './types';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { useLocale } from '@/packages/utils/useLocale';
+import { computed } from 'vue'
+import { EmptyImage } from './types'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const cN = 'NutEmpty';
+const cN = 'NutEmpty'
 
 defineOptions({
   name: cN
-});
+})
 
 export type EmptyProps = Partial<{
-  image: EmptyImage;
-  imageSize: number | string;
-  description: string;
-}>;
+  image: EmptyImage
+  imageSize: number | string
+  description: string
+}>
 
 const props = withDefaults(defineProps<EmptyProps>(), {
   image: 'empty',
   imageSize: '',
   description: ''
-});
+})
 
-const translate = useLocale(cN);
+const translate = useLocale(cN)
 
 const defaultStatus: {
-  [key: EmptyImage]: string;
+  [key: EmptyImage]: string
 } = {
   empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
   error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
   network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png'
-};
+}
 
 const style = computed(() => {
   if (props.imageSize) {
     return {
       width: pxCheck(props.imageSize),
       height: pxCheck(props.imageSize)
-    };
+    }
   }
-  return {};
-});
+  return {}
+})
 
 const src = computed(() => {
   if (props.image.startsWith('https://') || props.image.startsWith('http://') || props.image.startsWith('//')) {
-    return props.image;
+    return props.image
   } else {
-    return defaultStatus[props.image];
+    return defaultStatus[props.image]
   }
-});
+})
 
 const descriptionText = computed(() => {
-  return props.description || translate('noData');
-});
+  return props.description || translate('noData')
+})
 </script>

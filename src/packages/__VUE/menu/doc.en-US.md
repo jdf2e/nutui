@@ -7,12 +7,12 @@ The menu list that pops down downwards.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Menu, MenuItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Menu, MenuItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Menu);
-app.use(MenuItem);
+const app = createApp()
+app.use(Menu)
+app.use(MenuItem)
 ```
 
 ### Basic Usage

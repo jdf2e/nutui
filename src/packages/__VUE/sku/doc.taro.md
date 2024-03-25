@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Sku } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Sku } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Sku);
+const app = createApp()
+app.use(Sku)
 ```
 
 ### 基础用法
@@ -31,44 +31,44 @@ app.use(Sku);
   ></nut-sku>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-const base = ref(false);
+import { ref, reactive, onMounted } from 'vue'
+import Taro from '@tarojs/taro'
+const base = ref(false)
 const data = reactive({
   sku: [],
   goods: {}
-});
+})
 
 onMounted(() => {
   Taro.request({
     url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
     success: function (res) {
-      console.log(res.data);
-      const { Sku, Goods, imagePathMap } = res.data;
-      data.sku = Sku;
-      data.goods = Goods;
+      console.log(res.data)
+      const { Sku, Goods, imagePathMap } = res.data
+      data.sku = Sku
+      data.goods = Goods
     }
-  });
-});
+  })
+})
 // 切换规格类目
 const selectSku = (ss) => {
-  const { sku, skuIndex, parentSku, parentIndex } = ss;
-  if (sku.disable) return false;
+  const { sku, skuIndex, parentSku, parentIndex } = ss
+  if (sku.disable) return false
   data.sku[parentIndex].list.forEach((s) => {
-    s.active = s.id == sku.id;
-  });
+    s.active = s.id == sku.id
+  })
   data.goods = {
     skuId: sku.id,
     price: '4599.00',
     imagePath: '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg'
-  };
-};
+  }
+}
 // 底部操作按钮触发
 const clickBtnOperate = (op) => {
-  console.log('点击了操作按钮', op);
-};
+  console.log('点击了操作按钮', op)
+}
 // 关闭商品规格弹框
-const close = () => {};
+const close = () => {}
 </script>
 ```
 
@@ -99,50 +99,50 @@ const close = () => {};
   </nut-sku>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-const notSell = ref(false);
+import { ref, reactive, onMounted } from 'vue'
+import Taro from '@tarojs/taro'
+const notSell = ref(false)
 const data = reactive({
   sku: [],
   goods: {}
-});
+})
 
-const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
+const btnExtraText = ref('抱歉，此商品在所选区域暂无存货')
 
 onMounted(() => {
   Taro.request({
     url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
     success: function (res) {
-      console.log(res.data);
-      const { Sku, Goods, imagePathMap } = res.data;
-      data.sku = Sku;
-      data.goods = Goods;
+      console.log(res.data)
+      const { Sku, Goods, imagePathMap } = res.data
+      data.sku = Sku
+      data.goods = Goods
     }
-  });
-});
+  })
+})
 
 // inputNumber 更改
 const changeStepper = (count) => {
-  console.log('购买数量', count);
-};
+  console.log('购买数量', count)
+}
 
 // 切换规格类目
 const selectSku = (ss) => {
-  const { sku, skuIndex, parentSku, parentIndex } = ss;
-  if (sku.disable) return false;
+  const { sku, skuIndex, parentSku, parentIndex } = ss
+  if (sku.disable) return false
   data.sku[parentIndex].list.forEach((s) => {
-    s.active = s.id == sku.id;
-  });
+    s.active = s.id == sku.id
+  })
   data.goods = {
     skuId: sku.id,
     price: '4599.00',
     imagePath: '//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg'
-  };
-};
+  }
+}
 // 底部操作按钮触发
 const clickBtnOperate = (op) => {
-  console.log('点击了操作按钮', op);
-};
+  console.log('点击了操作按钮', op)
+}
 </script>
 <style>
 .sku-operate-box {
@@ -186,59 +186,59 @@ const clickBtnOperate = (op) => {
   ></nut-sku>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-const customStepper = ref(false);
+import { ref, reactive, onMounted } from 'vue'
+import Taro from '@tarojs/taro'
+const customStepper = ref(false)
 const data = reactive({
   sku: [],
   goods: {}
-});
+})
 
 onMounted(() => {
   Taro.request({
     url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
     success: function (res) {
-      console.log(res.data);
-      const { Sku, Goods, imagePathMap } = res.data;
-      data.sku = Sku;
-      data.goods = Goods;
+      console.log(res.data)
+      const { Sku, Goods, imagePathMap } = res.data
+      data.sku = Sku
+      data.goods = Goods
     }
-  });
-});
+  })
+})
 
 const stepperExtraText = () => {
-  return `<div style="width:100%;text-align:right;color:#F00">2 件起售</div>`;
-};
+  return `<div style="width:100%;text-align:right;color:#F00">2 件起售</div>`
+}
 // inputNumber 更改
 const changeStepper = (count) => {
-  console.log('购买数量', count);
-};
+  console.log('购买数量', count)
+}
 
 // inputNumber 极限值
 const overLimit = (val) => {
   if (val.action == 'reduce') {
-    console.log(`至少买${val.value}件哦`);
+    console.log(`至少买${val.value}件哦`)
   } else {
-    console.log(`最多买${val.value}件哦`);
+    console.log(`最多买${val.value}件哦`)
   }
-};
+}
 // 切换规格类目
 const selectSku = (ss) => {
-  const { sku, skuIndex, parentSku, parentIndex } = ss;
-  if (sku.disable) return false;
+  const { sku, skuIndex, parentSku, parentIndex } = ss
+  if (sku.disable) return false
   data.sku[parentIndex].list.forEach((s) => {
-    s.active = s.id == sku.id;
-  });
+    s.active = s.id == sku.id
+  })
   data.goods = {
     skuId: sku.id,
     price: '4599.00',
     imagePath: '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg'
-  };
-};
+  }
+}
 // 底部操作按钮触发
 const clickBtnOperate = (op) => {
-  console.log('点击了操作按钮', op);
-};
+  console.log('点击了操作按钮', op)
+}
 </script>
 ```
 
@@ -302,16 +302,16 @@ Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可�
   ></nut-address>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import Taro from '@tarojs/taro';
-const customBySlot = ref(false);
-const showAddressPopup = ref(false);
+import { ref, reactive, onMounted } from 'vue'
+import Taro from '@tarojs/taro'
+const customBySlot = ref(false)
+const showAddressPopup = ref(false)
 const data = reactive({
   sku: [],
   goods: {}
-});
+})
 
-const addressDesc = ref('(配送地会影响库存，请先确认)');
+const addressDesc = ref('(配送地会影响库存，请先确认)')
 const existAddress = ref([
   {
     id: 1,
@@ -349,41 +349,41 @@ const existAddress = ref([
     selectedAddress: false,
     townName: ''
   }
-]);
+])
 
 onMounted(() => {
   Taro.request({
     url: 'https://storage.360buyimg.com/nutui/3x/data.js', //仅为示例，并非真实的接口地址
     success: function (res) {
-      console.log(res.data);
-      const { Sku, Goods, imagePathMap } = res.data;
-      data.sku = Sku;
-      data.goods = Goods;
+      console.log(res.data)
+      const { Sku, Goods, imagePathMap } = res.data
+      data.sku = Sku
+      data.goods = Goods
     }
-  });
-});
+  })
+})
 
 // 切换规格类目
 const selectSku = (ss) => {
-  const { sku, skuIndex, parentSku, parentIndex } = ss;
-  if (sku.disable) return false;
+  const { sku, skuIndex, parentSku, parentIndex } = ss
+  if (sku.disable) return false
   data.sku[parentIndex].list.forEach((s) => {
-    s.active = s.id == sku.id;
-  });
+    s.active = s.id == sku.id
+  })
   data.goods = {
     skuId: sku.id,
     price: '6002.10',
     imagePath: '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg'
-  };
-};
+  }
+}
 const selectedAddress = (prevExistAdd, nowExistAdd) => {
-  const { provinceName, countyName, cityName } = nowExistAdd;
-  addressDesc.value = `${provinceName}${countyName}${cityName}`;
-};
+  const { provinceName, countyName, cityName } = nowExistAdd
+  addressDesc.value = `${provinceName}${countyName}${cityName}`
+}
 // 底部操作按钮触发
 const clickBtnOperate = (op) => {
-  console.log('点击了操作按钮', op);
-};
+  console.log('点击了操作按钮', op)
+}
 </script>
 
 <style>
@@ -558,7 +558,7 @@ sku: [
       }
     ]
   }
-];
+]
 ```
 
 ## 主题定制

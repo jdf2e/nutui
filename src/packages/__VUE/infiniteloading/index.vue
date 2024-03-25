@@ -22,16 +22,16 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, onUnmounted, reactive, onActivated, onDeactivated, ref, watch, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('infinite-loading');
-import { useScrollParent } from '@/packages/utils/useScrollParent';
-import requestAniFrame from '@/packages/utils/raf';
-import { getScrollTopRoot } from '@/packages/utils/util';
-import { Loading } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { toRefs, onMounted, onUnmounted, reactive, onActivated, onDeactivated, ref, watch, nextTick } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('infinite-loading')
+import { useScrollParent } from '@/packages/utils/useScrollParent'
+import requestAniFrame from '@/packages/utils/raf'
+import { getScrollTopRoot } from '@/packages/utils/util'
+import { Loading } from '@nutui/icons-vue'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const cN = 'NutInfiniteLoading';
+const cN = 'NutInfiniteLoading'
 
 export default create({
   props: {
@@ -65,112 +65,112 @@ export default create({
     Loading
   },
   setup(props, { emit, slots }) {
-    const translate = useLocale(cN);
-    const scroller = ref<HTMLElement>();
-    const scrollParent = useScrollParent(scroller);
+    const translate = useLocale(cN)
+    const scroller = ref<HTMLElement>()
+    const scrollParent = useScrollParent(scroller)
     const state = reactive({
       beforeScrollTop: 0,
       isInfiniting: false,
       y: 0,
       x: 0,
       distance: 0
-    });
+    })
 
     const calculateTopPosition = (el: HTMLElement): number => {
-      return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
-    };
+      return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement)
+    }
 
     const isScrollAtBottom = () => {
-      let offsetDistance = 0;
-      let resScrollTop = 0;
-      let direction = 'down';
+      let offsetDistance = 0
+      let resScrollTop = 0
+      let direction = 'down'
 
       if (scrollParent.value == window) {
-        const windowScrollTop = getScrollTopRoot();
+        const windowScrollTop = getScrollTopRoot()
 
         if (scroller.value) {
           offsetDistance =
-            calculateTopPosition(scroller.value) + scroller.value.offsetHeight - windowScrollTop - window.innerHeight;
+            calculateTopPosition(scroller.value) + scroller.value.offsetHeight - windowScrollTop - window.innerHeight
         }
 
-        resScrollTop = windowScrollTop;
+        resScrollTop = windowScrollTop
       } else {
-        const { scrollHeight, clientHeight, scrollTop } = scrollParent.value as HTMLElement;
+        const { scrollHeight, clientHeight, scrollTop } = scrollParent.value as HTMLElement
 
-        offsetDistance = scrollHeight - clientHeight - scrollTop;
-        resScrollTop = scrollTop;
+        offsetDistance = scrollHeight - clientHeight - scrollTop
+        resScrollTop = scrollTop
       }
 
       if (state.beforeScrollTop > resScrollTop) {
-        direction = 'up';
+        direction = 'up'
       } else {
-        direction = 'down';
+        direction = 'down'
       }
 
-      state.beforeScrollTop = resScrollTop;
+      state.beforeScrollTop = resScrollTop
 
-      emit('scrollChange', resScrollTop);
+      emit('scrollChange', resScrollTop)
 
-      return offsetDistance <= props.threshold && direction == 'down';
-    };
+      return offsetDistance <= props.threshold && direction == 'down'
+    }
 
     const handleScroll = () => {
       requestAniFrame(() => {
         if (!isScrollAtBottom() || !props.hasMore || state.isInfiniting) {
-          return false;
+          return false
         } else {
-          state.isInfiniting = true;
-          emit('update:modelValue', true);
-          nextTick(() => emit('loadMore'));
+          state.isInfiniting = true
+          emit('update:modelValue', true)
+          nextTick(() => emit('loadMore'))
         }
-      });
-    };
+      })
+    }
 
     const scrollListener = () => {
-      scrollParent.value && scrollParent.value.addEventListener('scroll', handleScroll, props.useCapture);
-    };
+      scrollParent.value && scrollParent.value.addEventListener('scroll', handleScroll, props.useCapture)
+    }
 
     const removeScrollListener = () => {
-      scrollParent.value && scrollParent.value.removeEventListener('scroll', handleScroll, props.useCapture);
-    };
+      scrollParent.value && scrollParent.value.removeEventListener('scroll', handleScroll, props.useCapture)
+    }
 
     onMounted(() => {
-      scrollListener();
-    });
+      scrollListener()
+    })
 
     onUnmounted(() => {
-      removeScrollListener();
-    });
+      removeScrollListener()
+    })
 
-    const isKeepAlive = ref(false);
+    const isKeepAlive = ref(false)
 
     onActivated(() => {
       if (isKeepAlive.value) {
-        isKeepAlive.value = false;
-        scrollListener();
+        isKeepAlive.value = false
+        scrollListener()
       }
-    });
+    })
 
     onDeactivated(() => {
-      isKeepAlive.value = true;
-      removeScrollListener();
-    });
+      isKeepAlive.value = true
+      removeScrollListener()
+    })
 
     watch(
       () => props.modelValue,
       (val) => {
         if (!val) {
-          state.isInfiniting = false;
+          state.isInfiniting = false
         }
       }
-    );
+    )
 
     return {
       scroller,
       ...toRefs(state),
       translate,
       slots
-    };
+    }
   }
-});
+})
 </script>

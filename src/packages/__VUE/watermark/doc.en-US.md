@@ -5,11 +5,11 @@
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Watermark } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Watermark } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Watermark);
+const app = createApp()
+app.use(Watermark)
 ```
 
 ### Basic Usage

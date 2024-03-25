@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { ImagePreview } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { ImagePreview } from '@nutui/nutui'
 
-const app = createApp();
-app.use(ImagePreview);
+const app = createApp()
+app.use(ImagePreview)
 ```
 
 ### 基础用法
@@ -25,7 +25,7 @@ app.use(ImagePreview);
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 const state = reactive({
   showPreview: false,
   imgData: [
@@ -42,15 +42,15 @@ const state = reactive({
       src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
     }
   ]
-});
+})
 
 const showFn = () => {
-  state.showPreview = true;
-};
+  state.showPreview = true
+}
 
 const hideFn = () => {
-  state.showPreview = false;
-};
+  state.showPreview = false
+}
 </script>
 ```
 
@@ -66,7 +66,7 @@ const hideFn = () => {
   <nut-cell isLink title="设置初始页码" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 const state = reactive({
   showPreview: false,
   imgData: [
@@ -83,15 +83,15 @@ const state = reactive({
       src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
     }
   ]
-});
+})
 
 const showFn = () => {
-  state.showPreview = true;
-};
+  state.showPreview = true
+}
 
 const hideFn = () => {
-  state.showPreview = false;
-};
+  state.showPreview = false
+}
 </script>
 ```
 
@@ -113,7 +113,7 @@ const hideFn = () => {
   <nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn"></nut-cell>
 </template>
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 const state = reactive({
   showPreview: false,
   imgData: [
@@ -130,15 +130,15 @@ const state = reactive({
       src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
     }
   ]
-});
+})
 
 const showFn = () => {
-  state.showPreview = true;
-};
+  state.showPreview = true
+}
 
 const hideFn = () => {
-  state.showPreview = false;
-};
+  state.showPreview = false
+}
 </script>
 ```
 
@@ -157,8 +157,8 @@ const hideFn = () => {
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
+import { reactive } from 'vue'
+import Taro from '@tarojs/taro'
 const state = reactive({
   showPreview: false,
   imgData: [
@@ -175,15 +175,15 @@ const state = reactive({
       src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
     }
   ]
-});
+})
 
 const showFn = () => {
-  state.showPreview = true;
-};
+  state.showPreview = true
+}
 
 const hideFn = () => {
-  state.showPreview = false;
-};
+  state.showPreview = false
+}
 
 const longPress = (image) => {
   Taro.getImageInfo({
@@ -194,12 +194,12 @@ const longPress = (image) => {
         success: () => {
           Taro.showToast({
             title: '保存成功'
-          });
+          })
         }
-      });
+      })
     }
-  });
-};
+  })
+}
 </script>
 ```
 

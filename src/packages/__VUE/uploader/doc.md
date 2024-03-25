@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Uploader } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Uploader } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Uploader);
+const app = createApp()
+app.use(Uploader)
 ```
 
 ### 基础用法
@@ -35,8 +35,8 @@ app.use(Uploader);
   <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
 </template>
 <script setup>
-import { reactive } from 'vue';
-const uploadUrl = 'https://xxxxx';
+import { reactive } from 'vue'
+const uploadUrl = 'https://xxxxx'
 const defaultFileList = reactive([
   {
     name: '文件1.png',
@@ -59,7 +59,7 @@ const defaultFileList = reactive([
     message: '上传中...',
     type: 'image'
   }
-]);
+])
 </script>
 ```
 
@@ -76,8 +76,8 @@ const defaultFileList = reactive([
   </nut-uploader>
 </template>
 <script setup>
-import { reactive } from 'vue';
-const uploadUrl = 'https://xxxxx';
+import { reactive } from 'vue'
+const uploadUrl = 'https://xxxxx'
 const defaultFileList = reactive([
   {
     name: '文件1.png',
@@ -100,7 +100,7 @@ const defaultFileList = reactive([
     message: '上传中...',
     type: 'image'
   }
-]);
+])
 </script>
 ```
 
@@ -138,14 +138,14 @@ const defaultFileList = reactive([
   </nut-progress>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const uploadUrl = 'https://xxxxx';
-const progressPercentage = (ref < string) | (number > 0);
+import { ref } from 'vue'
+import { showToast } from '@nutui/nutui'
+const uploadUrl = 'https://xxxxx'
+const progressPercentage = (ref < string) | (number > 0)
 const onProgress = ({ event, options, percentage }) => {
-  progressPercentage.value = percentage;
-  showToast.text('progress 事件触发' + percentage);
-};
+  progressPercentage.value = percentage
+  showToast.text('progress 事件触发' + percentage)
+}
 </script>
 ```
 
@@ -184,12 +184,12 @@ const onProgress = ({ event, options, percentage }) => {
   <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { showToast } from '@nutui/nutui';
-const uploadUrl = 'https://xxxxx';
+import { ref } from 'vue'
+import { showToast } from '@nutui/nutui'
+const uploadUrl = 'https://xxxxx'
 const onOversize = (files) => {
-  showToast.text('oversize 触发 文件大小不能超过 50kb');
-};
+  showToast.text('oversize 触发 文件大小不能超过 50kb')
+}
 </script>
 ```
 
@@ -204,41 +204,41 @@ const onOversize = (files) => {
   <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"></nut-uploader>
 </template>
 <script setup>
-import { ref } from 'vue';
-const uploadUrl = 'https://xxxxx';
+import { ref } from 'vue'
+const uploadUrl = 'https://xxxxx'
 const fileToDataURL = (file) => {
   return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = (e) => resolve(e.target.result);
-    reader.readAsDataURL(file);
-  });
-};
+    const reader = new FileReader()
+    reader.onloadend = (e) => resolve(e.target.result)
+    reader.readAsDataURL(file)
+  })
+}
 const dataURLToImage = (dataURL) => {
   return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.src = dataURL;
-  });
-};
+    const img = new Image()
+    img.onload = () => resolve(img)
+    img.src = dataURL
+  })
+}
 const canvastoFile = (canvas, type, quality) => {
-  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
-};
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
+}
 const beforeUpload = async (file) => {
-  let fileName = file[0].name;
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-  const base64 = await fileToDataURL(file[0]);
-  const img = await dataURLToImage(base64);
-  canvas.width = img.width;
-  canvas.height = img.height;
+  let fileName = file[0].name
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  const base64 = await fileToDataURL(file[0])
+  const img = await dataURLToImage(base64)
+  canvas.width = img.width
+  canvas.height = img.height
 
-  context.clearRect(0, 0, img.width, img.height);
-  context.drawImage(img, 0, 0, img.width, img.height);
+  context.clearRect(0, 0, img.width, img.height)
+  context.drawImage(img, 0, 0, img.width, img.height)
 
-  let blob = await canvastoFile(canvas, 'image/jpeg', 0.5); //quality:0.5可根据实际情况计算
-  const f = await new File([blob], fileName);
-  return [f];
-};
+  let blob = await canvastoFile(canvas, 'image/jpeg', 0.5) //quality:0.5可根据实际情况计算
+  const f = await new File([blob], fileName)
+  return [f]
+}
 </script>
 ```
 
@@ -253,11 +253,11 @@ const beforeUpload = async (file) => {
   <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
 </template>
 <script setup>
-import { ref } from 'vue';
-const uploadUrl = 'https://xxxxx';
+import { ref } from 'vue'
+const uploadUrl = 'https://xxxxx'
 const formData = {
   custom: 'test'
-};
+}
 </script>
 ```
 
@@ -274,15 +274,15 @@ const formData = {
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 // source file https://github.com/jdf2e/nutui/blob/v4/src/packages/__VUE/uploader/uploader.ts#L51
 const beforeXhrUpload = (xhr, options) => {
   if (options.method.toLowerCase() == 'put') {
-    xhr.send(options.sourceFile);
+    xhr.send(options.sourceFile)
   } else {
-    xhr.send(options.formData);
+    xhr.send(options.formData)
   }
-};
+}
 </script>
 ```
 
@@ -300,15 +300,15 @@ const beforeXhrUpload = (xhr, options) => {
   <nut-button type="danger" size="small" @click="clearUpload">手动清空上传</nut-button>
 </template>
 <script setup>
-import { ref } from 'vue';
-const uploadUrl = 'https://xxxxx';
-const uploadRef = ref(null);
+import { ref } from 'vue'
+const uploadUrl = 'https://xxxxx'
+const uploadRef = ref(null)
 const submitUpload = () => {
-  uploadRef.value.submit();
-};
+  uploadRef.value.submit()
+}
 const clearUpload = () => {
-  uploadRef.value.clearUploadQueue();
-};
+  uploadRef.value.clearUploadQueue()
+}
 </script>
 ```
 

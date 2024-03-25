@@ -1,11 +1,11 @@
-import { mount } from '@vue/test-utils';
-import { Video } from '@nutui/nutui';
-import { mockElementMethod } from '@/packages/utils/unit';
+import { mount } from '@vue/test-utils'
+import { Video } from '@nutui/nutui'
+import { mockElementMethod } from '@/packages/utils/unit'
 
-mockElementMethod(HTMLMediaElement, 'load');
-mockElementMethod(HTMLMediaElement, 'pause');
+mockElementMethod(HTMLMediaElement, 'load')
+mockElementMethod(HTMLMediaElement, 'pause')
 
-const videoUrl = 'https://storage.jd.com/about/big-final.mp4';
+const videoUrl = 'https://storage.jd.com/about/big-final.mp4'
 
 test('Video: base info', () => {
   const wrapper = mount(Video, {
@@ -24,10 +24,10 @@ test('Video: base info', () => {
         loop: true
       }
     }
-  });
-  expect(wrapper.find<HTMLElement>('.nut-video source').html()).toContain(videoUrl);
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.find<HTMLElement>('.nut-video source').html()).toContain(videoUrl)
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('Video: ref methods', () => {
   const wrapper = mount(Video, {
@@ -38,12 +38,12 @@ test('Video: ref methods', () => {
       },
       options: {}
     }
-  });
-  const vm: any = wrapper.vm;
-  vm.play();
-  vm.pause();
-  vm.stop();
-  vm.muted();
-  vm.unmuted();
-  expect(wrapper.emitted('pause')).toHaveLength(1);
-});
+  })
+  const vm: any = wrapper.vm
+  vm.play()
+  vm.pause()
+  vm.stop()
+  vm.muted()
+  vm.unmuted()
+  expect(wrapper.emitted('pause')).toHaveLength(1)
+})

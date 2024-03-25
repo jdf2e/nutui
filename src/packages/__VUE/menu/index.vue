@@ -24,13 +24,13 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, ref, onMounted, onUnmounted, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useRect } from '@/packages/utils/useRect';
-const { componentName, create } = createComponent('menu');
-import { RectUp, RectDown } from '@nutui/icons-vue';
-import { MENU_KEY, MenuDirection } from './types';
-import { useChildren } from '@/packages/utils';
+import { computed, ref, onMounted, onUnmounted, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useRect } from '@/packages/utils/useRect'
+const { componentName, create } = createComponent('menu')
+import { RectUp, RectDown } from '@nutui/icons-vue'
+import { MENU_KEY, MenuDirection } from './types'
+import { useChildren } from '@/packages/utils'
 export default create({
   components: {
     RectUp,
@@ -71,89 +71,89 @@ export default create({
     }
   },
   setup(props) {
-    const barRef = ref<HTMLElement>();
-    const offset = ref(0);
-    const isScrollFixed = ref(false);
+    const barRef = ref<HTMLElement>()
+    const offset = ref(0)
+    const isScrollFixed = ref(false)
 
-    const { children, linkChildren } = useChildren(MENU_KEY);
+    const { children, linkChildren } = useChildren(MENU_KEY)
 
-    const opened = computed(() => children.some((item) => item.state.showWrapper));
+    const opened = computed(() => children.some((item) => item.state.showWrapper))
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         'scroll-fixed': isScrollFixed.value
-      };
-    });
+      }
+    })
 
     const updateOffset = () => {
       if (barRef.value) {
-        const rect = useRect(barRef);
+        const rect = useRect(barRef)
 
         if (props.direction === 'down') {
-          offset.value = rect.bottom;
+          offset.value = rect.bottom
         } else {
-          offset.value = window.innerHeight - rect.top;
+          offset.value = window.innerHeight - rect.top
         }
       }
-    };
+    }
 
-    linkChildren({ props, offset });
+    linkChildren({ props, offset })
 
     const toggleItem = (active: number) => {
       children.forEach((item, index) => {
         if (index === active) {
-          updateOffset();
-          item.toggle();
+          updateOffset()
+          item.toggle()
         } else if (item.state.showPopup) {
-          item.toggle(false, { immediate: true });
+          item.toggle(false, { immediate: true })
         }
-      });
-    };
+      })
+    }
 
     const getScrollTop = (el: Element | Window) => {
-      return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset);
-    };
+      return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset)
+    }
 
     const onScroll = () => {
-      const { scrollFixed } = props;
+      const { scrollFixed } = props
 
-      const scrollTop = getScrollTop(window);
+      const scrollTop = getScrollTop(window)
 
-      isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed));
-    };
+      isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
+    }
 
     const getClasses = (showPopup: boolean) => {
-      let str = '';
-      const { titleClass } = props;
+      let str = ''
+      const { titleClass } = props
 
       if (showPopup) {
-        str += 'active';
+        str += 'active'
       }
 
       if (titleClass) {
-        str += ` ${titleClass}`;
+        str += ` ${titleClass}`
       }
 
-      return str;
-    };
+      return str
+    }
 
     onMounted(() => {
-      const { scrollFixed } = props;
+      const { scrollFixed } = props
 
       if (scrollFixed) {
-        window.addEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll)
       }
-    });
+    })
 
     onUnmounted(() => {
-      const { scrollFixed } = props;
+      const { scrollFixed } = props
 
       if (scrollFixed) {
-        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('scroll', onScroll)
       }
-    });
+    })
 
     return {
       toggleItem,
@@ -162,7 +162,7 @@ export default create({
       classes,
       barRef,
       getClasses
-    };
+    }
   }
-});
+})
 </script>

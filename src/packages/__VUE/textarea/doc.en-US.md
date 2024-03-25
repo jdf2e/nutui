@@ -7,11 +7,11 @@ Enter or edit text in the text box, and limit the number of entries is supported
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Textarea } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Textarea } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Textarea);
+const app = createApp()
+app.use(Textarea)
 ```
 
 ### Basic Usage

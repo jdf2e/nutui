@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Divider } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Divider } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Divider);
+const app = createApp()
+app.use(Divider)
 ```
 
 ### 基础用法

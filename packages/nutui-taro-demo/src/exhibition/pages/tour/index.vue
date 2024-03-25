@@ -17,12 +17,12 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Position from './position.vue';
-import Content from './content.vue';
-import Step from './step.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Position from './position.vue'
+import Content from './content.vue'
+import Step from './step.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -39,5 +39,5 @@ const t = useTranslate({
     content: 'Custom Content',
     step: 'Steps'
   }
-});
+})
 </script>

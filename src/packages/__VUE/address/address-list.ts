@@ -20,7 +20,7 @@ const addressListData = {
     { id: 4, name: '常营乡', title: 'C' }
   ],
   town: []
-};
+}
 
 const addressExistData = [
   {
@@ -56,5 +56,5 @@ const addressExistData = [
     name: '探探鱼',
     phone: '182****1718'
   }
-];
-export { addressListData, addressExistData };
+]
+export { addressListData, addressExistData }

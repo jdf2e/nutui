@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
 
 export default defineConfig({
   define: {
@@ -32,7 +32,7 @@ export default defineConfig({
               tag.startsWith('picker') ||
               tag.startsWith('picker-view') ||
               tag.startsWith('picker-view-column')
-            );
+            )
           },
           whitespace: 'preserve'
         }
@@ -60,4 +60,4 @@ export default defineConfig({
       formats: ['umd']
     }
   }
-});
+})

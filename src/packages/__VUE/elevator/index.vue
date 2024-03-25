@@ -39,10 +39,10 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { ElevatorData } from './type';
-const { create } = createComponent('elevator');
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { ElevatorData } from './type'
+const { create } = createComponent('elevator')
 
 export default create({
   props: {
@@ -73,7 +73,7 @@ export default create({
   },
   emits: ['clickItem', 'clickIndex', 'change'],
   setup(props, { emit, expose }) {
-    const listview: Ref<any> = ref(null);
+    const listview: Ref<any> = ref(null)
     const state = reactive({
       anchorIndex: 0,
       codeIndex: 0,
@@ -90,132 +90,132 @@ export default create({
       scrollY: 0,
       diff: -1,
       fixedTop: 0
-    });
+    })
 
     const clientHeight = computed(() => {
-      return listview.value.clientHeight;
-    });
+      return listview.value.clientHeight
+    })
 
     const getData = (el: HTMLElement, name: string): string | void => {
-      const prefix = 'data-';
-      return el.getAttribute(prefix + name) as string;
-    };
+      const prefix = 'data-'
+      return el.getAttribute(prefix + name) as string
+    }
 
     const setListGroup = (el: any) => {
       nextTick(() => {
         if (!state.listGroup.includes(el) && el != null) {
-          state.listGroup.push(el);
+          state.listGroup.push(el)
         }
-      });
-    };
+      })
+    }
 
     const calculateHeight = () => {
-      let height = 0;
-      state.listHeight.push(height);
+      let height = 0
+      state.listHeight.push(height)
       for (let i = 0; i < state.listGroup.length; i++) {
-        let item = state.listGroup[i];
-        height += Math.floor(item.clientHeight);
-        state.listHeight.push(height);
+        let item = state.listGroup[i]
+        height += Math.floor(item.clientHeight)
+        state.listHeight.push(height)
       }
-    };
+    }
 
     const scrollTo = (index: number) => {
       if (!index && index !== 0) {
-        return;
+        return
       }
-      if (index < 0) index = 0;
-      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
-      state.codeIndex = index;
-      listview.value.scrollTo(0, state.listHeight[index]);
-    };
+      if (index < 0) index = 0
+      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2
+      state.codeIndex = index
+      listview.value.scrollTo(0, state.listHeight[index])
+    }
 
     const touchStart = (e: TouchEvent) => {
-      state.scrollStart = true;
-      let index = getData(e.target as HTMLElement, 'index');
-      let firstTouch = e.touches[0];
-      state.touchState.y1 = firstTouch.pageY;
-      state.anchorIndex = +index;
-      state.codeIndex = +index;
-      scrollTo(+index);
-    };
+      state.scrollStart = true
+      let index = getData(e.target as HTMLElement, 'index')
+      let firstTouch = e.touches[0]
+      state.touchState.y1 = firstTouch.pageY
+      state.anchorIndex = +index
+      state.codeIndex = +index
+      scrollTo(+index)
+    }
 
     const touchMove = (e: TouchEvent) => {
-      let firstTouch = e.touches[0];
-      state.touchState.y2 = firstTouch.pageY;
-      let delta = ((state.touchState.y2 - state.touchState.y1) / props.spaceHeight) | 0;
-      state.codeIndex = state.anchorIndex + delta;
-      scrollTo(state.codeIndex);
-    };
+      let firstTouch = e.touches[0]
+      state.touchState.y2 = firstTouch.pageY
+      let delta = ((state.touchState.y2 - state.touchState.y1) / props.spaceHeight) | 0
+      state.codeIndex = state.anchorIndex + delta
+      scrollTo(state.codeIndex)
+    }
 
     const touchEnd = () => {
-      state.scrollStart = false;
-    };
+      state.scrollStart = false
+    }
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      emit('clickItem', key, item);
-      state.currentData = item;
-      state.currentKey = key;
-    };
+      emit('clickItem', key, item)
+      state.currentData = item
+      state.currentKey = key
+    }
 
     const handleClickIndex = (key: string) => {
-      emit('clickIndex', key);
-    };
+      emit('clickIndex', key)
+    }
 
     const listViewScroll = (e: Event) => {
-      let target = e.target as Element;
-      let scrollTop = target.scrollTop;
-      const listHeight = state.listHeight;
-      state.scrollY = scrollTop;
+      let target = e.target as Element
+      let scrollTop = target.scrollTop
+      const listHeight = state.listHeight
+      state.scrollY = scrollTop
       for (let i = 0; i < listHeight.length - 1; i++) {
-        let height1 = listHeight[i];
-        let height2 = listHeight[i + 1];
+        let height1 = listHeight[i]
+        let height2 = listHeight[i + 1]
         if (state.scrollY >= height1 && state.scrollY < height2) {
-          state.currentIndex = i;
-          state.diff = height2 - state.scrollY;
-          return;
+          state.currentIndex = i
+          state.diff = height2 - state.scrollY
+          return
         }
       }
 
-      state.currentIndex = listHeight.length - 2;
-    };
+      state.currentIndex = listHeight.length - 2
+    }
 
     onMounted(() => {
       if (listview.value) {
-        listview.value.addEventListener('scroll', listViewScroll);
+        listview.value.addEventListener('scroll', listViewScroll)
       }
-    });
+    })
 
     expose({
       scrollTo
-    });
+    })
 
     watch(
       () => state.listGroup.length,
       () => {
-        state.listHeight = [];
-        nextTick(calculateHeight);
+        state.listHeight = []
+        nextTick(calculateHeight)
       }
-    );
+    )
 
     watch(
       () => state.diff,
       (newVal: number) => {
-        const listHeight = state.listHeight;
-        let fixedTop = newVal > 0 && newVal < props.titleHeight ? newVal - props.titleHeight : 0;
+        const listHeight = state.listHeight
+        let fixedTop = newVal > 0 && newVal < props.titleHeight ? newVal - props.titleHeight : 0
         if (state.scrollY + clientHeight.value === listHeight[listHeight.length - 1]) {
-          if (fixedTop !== 0) fixedTop = 0;
+          if (fixedTop !== 0) fixedTop = 0
         }
-        if (state.fixedTop === fixedTop) return;
-        state.fixedTop = fixedTop;
+        if (state.fixedTop === fixedTop) return
+        state.fixedTop = fixedTop
       }
-    );
+    )
 
     watch(
       () => state.currentIndex,
       (newVal: number) => {
-        emit('change', newVal);
+        emit('change', newVal)
       }
-    );
+    )
 
     return {
       ...toRefs(state),
@@ -227,7 +227,7 @@ export default create({
       touchEnd,
       handleClickItem,
       handleClickIndex
-    };
+    }
   }
-});
+})
 </script>

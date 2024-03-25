@@ -1,4 +1,4 @@
-import type { ComponentResolveResult, ComponentResolver } from 'unplugin-vue-components/types';
+import type { ComponentResolveResult, ComponentResolver } from 'unplugin-vue-components/types'
 
 export interface NutUIResolverOptions {
   /**
@@ -6,45 +6,45 @@ export interface NutUIResolverOptions {
    *
    * @default 'css'
    */
-  importStyle?: boolean | 'css' | 'sass';
+  importStyle?: boolean | 'css' | 'sass'
 
   /**
    * NutUI or NutUI-Taro
    *
    * @default false
    */
-  taro?: boolean;
+  taro?: boolean
 
   /**
    * compatible with unplugin-auto-import
    *
    * @default false
    */
-  autoImport?: boolean;
+  autoImport?: boolean
 }
 
-const nutFunctions = ['showToast', 'showNotify', 'showDialog', 'showImagePreview'];
+const nutFunctions = ['showToast', 'showNotify', 'showDialog', 'showImagePreview']
 
 function getNutResolved(name: string, options: NutUIResolverOptions): ComponentResolveResult {
-  const { importStyle = true, taro = false, autoImport = false } = options;
+  const { importStyle = true, taro = false, autoImport = false } = options
 
-  const packageName = taro ? '@nutui/nutui-taro' : '@nutui/nutui';
+  const packageName = taro ? '@nutui/nutui-taro' : '@nutui/nutui'
 
-  if (!importStyle) return { name, from: packageName };
+  if (!importStyle) return { name, from: packageName }
 
-  const componentName = autoImport ? name.slice(4) : name;
+  const componentName = autoImport ? name.slice(4) : name
 
-  let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/css`;
+  let style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style/css`
 
   if (importStyle === 'sass') {
-    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`;
+    style = `${packageName}/dist/packages/${componentName.toLowerCase()}/style`
   }
 
   return {
     name,
     from: packageName,
     sideEffects: style
-  };
+  }
 }
 
 /**
@@ -56,11 +56,11 @@ export default function NutUIResolver(options: NutUIResolverOptions = {}): Compo
   return {
     type: 'component',
     resolve: (name) => {
-      const { autoImport = false } = options;
+      const { autoImport = false } = options
 
-      if (autoImport && nutFunctions.includes(name)) return getNutResolved(name, options);
+      if (autoImport && nutFunctions.includes(name)) return getNutResolved(name, options)
 
-      if (name.startsWith('Nut')) return getNutResolved(name.slice(3), options);
+      if (name.startsWith('Nut')) return getNutResolved(name.slice(3), options)
     }
-  };
+  }
 }

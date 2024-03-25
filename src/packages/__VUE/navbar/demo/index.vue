@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Left from './left.vue';
-import Right from './right.vue';
-import Title from './title.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Left from './left.vue'
+import Right from './right.vue'
+import Title from './title.vue'
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -33,7 +33,7 @@ const t = useTranslate({
     right: 'Custom Right Slot',
     title: 'Custom Title Content'
   }
-});
+})
 </script>
 <style>
 .nut-navbar {

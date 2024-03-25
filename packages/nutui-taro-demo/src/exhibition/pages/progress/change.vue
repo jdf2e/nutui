@@ -4,18 +4,18 @@
   <nut-button type="primary" @click="add"> + 10 </nut-button>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const val = ref(0);
+import { ref } from 'vue'
+const val = ref(0)
 const add = () => {
   if (val.value >= 100) {
-    return false;
+    return false
   }
-  val.value += 10;
-};
+  val.value += 10
+}
 const reduce = () => {
   if (val.value <= 0) {
-    return false;
+    return false
   }
-  val.value -= 10;
-};
+  val.value -= 10
+}
 </script>

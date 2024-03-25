@@ -1,1 +1,1 @@
-export type NumberKeyboardType = 'default' | 'rightColumn';
+export type NumberKeyboardType = 'default' | 'rightColumn'

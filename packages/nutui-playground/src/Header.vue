@@ -1,34 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { downloadProject } from './download/download';
-import Sun from './icons/Sun.vue';
-import Moon from './icons/Moon.vue';
-import Share from './icons/Share.vue';
-import Download from './icons/Download.vue';
-import GitHub from './icons/GitHub.vue';
-import VersionSelect from './VersionSelect.vue';
-import type { NutUIStore } from './store';
+import { ref } from 'vue'
+import { downloadProject } from './download/download'
+import Sun from './icons/Sun.vue'
+import Moon from './icons/Moon.vue'
+import Share from './icons/Share.vue'
+import Download from './icons/Download.vue'
+import GitHub from './icons/GitHub.vue'
+import VersionSelect from './VersionSelect.vue'
+import type { NutUIStore } from './store'
 
 const props = defineProps<{
-  store: NutUIStore;
-}>();
-const nutuiVersion = ref(`latest`);
+  store: NutUIStore
+}>()
+const nutuiVersion = ref(`latest`)
 
 async function setNutUIVersion(v: string) {
-  nutuiVersion.value = `loading...`;
-  props.store.setNutUIVersion(v);
-  nutuiVersion.value = `v${v}`;
+  nutuiVersion.value = `loading...`
+  props.store.setNutUIVersion(v)
+  nutuiVersion.value = `v${v}`
 }
 
 async function copyLink() {
-  await navigator.clipboard.writeText(location.href);
-  alert('Sharable URL has been copied to clipboard.');
+  await navigator.clipboard.writeText(location.href)
+  alert('Sharable URL has been copied to clipboard.')
 }
 
 function toggleDark() {
-  const cls = document.documentElement.classList;
-  cls.toggle('dark');
-  localStorage.setItem('vue-sfc-playground-prefer-dark', String(cls.contains('dark')));
+  const cls = document.documentElement.classList
+  cls.toggle('dark')
+  localStorage.setItem('vue-sfc-playground-prefer-dark', String(cls.contains('dark')))
 }
 </script>
 

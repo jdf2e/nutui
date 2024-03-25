@@ -89,29 +89,29 @@ import {
   watch,
   h,
   Slots
-} from 'vue';
-import { Notice, CircleClose } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('noticebar');
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { PropType } from 'vue';
-import { NoticebarDirection } from './types';
+} from 'vue'
+import { Notice, CircleClose } from '@nutui/icons-vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('noticebar')
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { PropType } from 'vue'
+import { NoticebarDirection } from './types'
 
 interface StateProps {
-  wrapWidth: number;
-  firstRound: boolean;
-  duration: number;
-  offsetWidth: number;
-  showNoticebar: boolean;
-  animationClass: string;
+  wrapWidth: number
+  firstRound: boolean
+  duration: number
+  offsetWidth: number
+  showNoticebar: boolean
+  animationClass: string
 
-  animate: boolean;
-  scrollList: Slots[];
-  distance: number;
-  timer: null;
-  keepAlive: boolean;
-  isCanScroll: null | boolean;
-  showNotica: boolean;
+  animate: boolean
+  scrollList: Slots[]
+  distance: number
+  timer: null
+  keepAlive: boolean
+  isCanScroll: null | boolean
+  showNotica: boolean
 }
 export default create({
   props: {
@@ -171,9 +171,9 @@ export default create({
   },
   components: {
     ScrollItem: function (props) {
-      props.item.props.style = props.style;
-      props.item.key = props.key;
-      return h(props.item);
+      props.item.props.style = props.style
+      props.item.key = props.key
+      return h(props.item)
     },
     Notice,
     CircleClose
@@ -181,8 +181,8 @@ export default create({
   emits: ['click', 'close', 'acrossEnd'],
 
   setup(props, { emit, slots }) {
-    const wrap = ref<null | HTMLElement>(null);
-    const content = ref<null | HTMLElement>(null);
+    const wrap = ref<null | HTMLElement>(null)
+    const content = ref<null | HTMLElement>(null)
 
     const state = reactive<StateProps>({
       wrapWidth: 0,
@@ -198,231 +198,231 @@ export default create({
       keepAlive: false,
       isCanScroll: null,
       showNotica: true
-    });
+    })
 
     const isEllipsis = computed(() => {
       if (state.isCanScroll == null) {
-        return props.wrapable;
+        return props.wrapable
       } else {
-        return !state.isCanScroll && !props.wrapable;
+        return !state.isCanScroll && !props.wrapable
       }
-    });
+    })
 
     const wrapContentClass = computed(() => {
       return {
         'nut-noticebar__page-wrap-content': true,
         'nut-ellipsis': isEllipsis.value,
         [state.animationClass]: true
-      };
-    });
+      }
+    })
 
     const barStyle = computed(() => {
       let style: {
-        [props: string]: any;
-      } = {};
+        [props: string]: any
+      } = {}
 
-      props.color && (style.color = props.color);
-      props.background && (style.background = props.background);
+      props.color && (style.color = props.color)
+      props.background && (style.background = props.background)
 
       if (props.direction == 'vertical') {
-        style.height = `${props.height}px`;
+        style.height = `${props.height}px`
       }
-      return style;
-    });
+      return style
+    })
 
     const contentStyle = computed(() => {
       return {
         animationDelay: (state.firstRound ? props.delay : 0) + 's',
         animationDuration: state.duration + 's',
         transform: `translateX(${state.firstRound ? 0 : state.wrapWidth + 'px'})`
-      };
-    });
+      }
+    })
     const horseLampStyle = computed(() => {
-      let styles = {};
+      let styles = {}
       if (props.complexAm) {
         styles = {
           transform: `translateY(${state.distance}px)`
-        };
+        }
       } else {
         if (state.animate) {
-          let a = ~~(props.height / props.speed / 4);
+          let a = ~~(props.height / props.speed / 4)
           styles = {
             transition: `all ${a == 0 ? ~~(props.height / props.speed) : a}s`,
             'margin-top': `-${props.height}px`
-          };
+          }
         }
       }
-      return styles;
-    });
+      return styles
+    })
 
     watch(
       () => props.text,
       () => {
-        initScrollWrap();
+        initScrollWrap()
       }
-    );
+    )
 
     watch(
       () => props.list,
       (value) => {
-        state.scrollList = [].concat(value as any);
+        state.scrollList = [].concat(value as any)
       }
-    );
+    )
 
     const initScrollWrap = () => {
       if (state.showNoticebar == false) {
-        return;
+        return
       }
       setTimeout(() => {
         if (!wrap.value || !content.value) {
-          return;
+          return
         }
-        const wrapWidth = wrap.value.getBoundingClientRect().width;
+        const wrapWidth = wrap.value.getBoundingClientRect().width
 
-        const offsetWidth = content.value.getBoundingClientRect().width;
+        const offsetWidth = content.value.getBoundingClientRect().width
 
-        state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
+        state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable
 
         if (state.isCanScroll) {
-          state.wrapWidth = wrapWidth;
-          state.offsetWidth = offsetWidth;
+          state.wrapWidth = wrapWidth
+          state.offsetWidth = offsetWidth
 
-          state.duration = offsetWidth / props.speed;
-          state.animationClass = 'play';
+          state.duration = offsetWidth / props.speed
+          state.animationClass = 'play'
         } else {
-          state.animationClass = '';
+          state.animationClass = ''
         }
-      }, 0);
-    };
+      }, 0)
+    }
     const handleClick = (event: Event) => {
-      emit('click', event);
-    };
+      emit('click', event)
+    }
 
     const onClickIcon = (event: Event) => {
       if (props.closeMode) {
-        state.showNoticebar = !props.closeMode;
+        state.showNoticebar = !props.closeMode
       }
-      emit('close', event);
-    };
+      emit('close', event)
+    }
 
     const onAnimationEnd = (event: Event) => {
-      state.firstRound = false;
-      emit('acrossEnd', event);
+      state.firstRound = false
+      emit('acrossEnd', event)
       setTimeout(() => {
-        state.duration = (state.offsetWidth + state.wrapWidth) / props.speed;
-        state.animationClass = 'play-infinite';
-      }, 0);
-    };
+        state.duration = (state.offsetWidth + state.wrapWidth) / props.speed
+        state.animationClass = 'play-infinite'
+      }, 0)
+    }
 
     /**
      * 利益点滚动方式一
      */
     const startRollEasy = () => {
-      showhorseLamp();
-      (state.timer as any) = setInterval(showhorseLamp, ~~((props.height / props.speed / 4) * 1000) + props.standTime);
-    };
+      showhorseLamp()
+      ;(state.timer as any) = setInterval(showhorseLamp, ~~((props.height / props.speed / 4) * 1000) + props.standTime)
+    }
     const showhorseLamp = () => {
-      state.animate = true;
+      state.animate = true
       setTimeout(
         () => {
-          state.scrollList.push(state.scrollList[0]);
-          state.scrollList.shift();
-          state.animate = false;
+          state.scrollList.push(state.scrollList[0])
+          state.scrollList.shift()
+          state.animate = false
         },
         ~~((props.height / props.speed / 4) * 1000)
-      );
-    };
+      )
+    }
 
     const startRoll = () => {
-      (state.timer as any) = setInterval(
+      ;(state.timer as any) = setInterval(
         () => {
-          let chunk = 100;
+          let chunk = 100
           for (let i = 0; i < chunk; i++) {
-            scroll(i, i < chunk - 1 ? false : true);
+            scroll(i, i < chunk - 1 ? false : true)
           }
         },
         props.standTime + 100 * props.speed
-      );
-    };
+      )
+    }
     const scroll = (n: number, last: boolean) => {
       setTimeout(() => {
-        state.distance -= props.height / 100;
+        state.distance -= props.height / 100
         if (last) {
-          state.scrollList.push(state.scrollList[0]);
-          state.scrollList.shift();
-          state.distance = 0;
+          state.scrollList.push(state.scrollList[0])
+          state.scrollList.shift()
+          state.distance = 0
         }
-      }, n * props.speed);
-    };
+      }, n * props.speed)
+    }
     /**
      * 点击滚动单元
      */
     const go = (item: any) => {
-      emit('click', item);
-    };
+      emit('click', item)
+    }
 
     const handleClickIcon = () => {
       if (props.closeMode) {
-        state.showNoticebar = !props.closeMode;
+        state.showNoticebar = !props.closeMode
       }
-      emit('close', state.scrollList[0]);
-    };
+      emit('close', state.scrollList[0])
+    }
 
     onMounted(() => {
       if (props.direction == 'vertical') {
         if (slots.default) {
-          updateSlotChild();
-          watchSlots();
+          updateSlotChild()
+          watchSlots()
         } else {
-          state.scrollList = [].concat(props.list as any);
+          state.scrollList = [].concat(props.list as any)
         }
 
         setTimeout(() => {
-          props.complexAm ? startRoll() : startRollEasy();
-        }, props.standTime);
+          props.complexAm ? startRoll() : startRollEasy()
+        }, props.standTime)
       } else {
-        initScrollWrap();
+        initScrollWrap()
       }
-    });
+    })
 
     const updateSlotChild = () => {
-      if (slots.default) state.scrollList = [].concat(slots.default()[0].children as any);
-    };
+      if (slots.default) state.scrollList = [].concat(slots.default()[0].children as any)
+    }
 
     const watchSlots = () => {
       setTimeout(() => {
         var observer = new MutationObserver(() => {
-          state.showNotica = false;
+          state.showNotica = false
           setTimeout(() => {
-            state.showNotica = true;
-          });
-          updateSlotChild();
-        });
-        const ele = document.getElementsByClassName('nut-noticebar-custom-item')[0];
+            state.showNotica = true
+          })
+          updateSlotChild()
+        })
+        const ele = document.getElementsByClassName('nut-noticebar-custom-item')[0]
 
         if (ele) {
           observer.observe(ele, {
             childList: true,
             subtree: true
-          });
+          })
         }
-      }, 100);
-    };
+      }, 100)
+    }
 
     onActivated(() => {
       if (state.keepAlive) {
-        state.keepAlive = false;
+        state.keepAlive = false
       }
-    });
+    })
 
     onDeactivated(() => {
-      state.keepAlive = true;
-      clearInterval(state.timer as any);
-    });
+      state.keepAlive = true
+      clearInterval(state.timer as any)
+    })
 
     onUnmounted(() => {
-      clearInterval(state.timer as any);
-    });
+      clearInterval(state.timer as any)
+    })
 
     return {
       ...toRefs(state),
@@ -440,7 +440,7 @@ export default create({
       slots,
       pxCheck,
       wrapContentClass
-    };
+    }
   }
-});
+})
 </script>

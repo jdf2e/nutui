@@ -33,17 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Single from './single.vue';
-import Multiple from './multiple.vue';
-import Range from './range.vue';
-import Week from './week.vue';
-import Info from './info.vue';
-import First from './first.vue';
-import CustomRange from './custom-range.vue';
-import Disable from './disable.vue';
-import Popup from './popup.vue';
-import Ref from './ref.vue';
+import { useTranslate } from '@/sites/utils'
+import Single from './single.vue'
+import Multiple from './multiple.vue'
+import Range from './range.vue'
+import Week from './week.vue'
+import Info from './info.vue'
+import First from './first.vue'
+import CustomRange from './custom-range.vue'
+import Disable from './disable.vue'
+import Popup from './popup.vue'
+import Ref from './ref.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -70,5 +70,5 @@ const t = useTranslate({
     popup: 'Use with Popup',
     ref: 'Use Ref'
   }
-});
+})
 </script>

@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { DatePicker } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { DatePicker } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(DatePicker);
+const app = createApp()
+app.use(DatePicker)
 ```
 
 ### 选择年月日

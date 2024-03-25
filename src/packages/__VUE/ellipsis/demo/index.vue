@@ -17,12 +17,12 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Start from './start.vue';
-import End from './end.vue';
-import Middle from './middle.vue';
-import Row from './row.vue';
-import Expand from './expand.vue';
+import { useTranslate } from '@/sites/utils'
+import Start from './start.vue'
+import End from './end.vue'
+import Middle from './middle.vue'
+import Row from './row.vue'
+import Expand from './expand.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -39,5 +39,5 @@ const t = useTranslate({
     row: 'Multi-line',
     expand: 'Expand & Collapse'
   }
-});
+})
 </script>

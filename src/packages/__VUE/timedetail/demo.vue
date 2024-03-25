@@ -12,22 +12,22 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+import { reactive, toRefs, defineComponent } from 'vue'
 export default defineComponent({
   setup() {
     const state = reactive({
       visible1: false,
       val1: ''
-    });
+    })
 
     const handleClick1 = () => {
-      state.visible1 = true;
-    };
+      state.visible1 = true
+    }
 
     return {
       ...toRefs(state),
       handleClick1
-    };
+    }
   }
-});
+})
 </script>

@@ -24,14 +24,14 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Column from './column.vue';
-import Sqaure from './square.vue';
-import Gutter from './gutter.vue';
-import Reverse from './reverse.vue';
-import Horizontal from './horizontal.vue';
-import Content from './content.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Column from './column.vue'
+import Sqaure from './square.vue'
+import Gutter from './gutter.vue'
+import Reverse from './reverse.vue'
+import Horizontal from './horizontal.vue'
+import Content from './content.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -54,5 +54,5 @@ const t = useTranslate({
     horizontal: 'Horizontal',
     content: 'Custom Content'
   }
-});
+})
 </script>

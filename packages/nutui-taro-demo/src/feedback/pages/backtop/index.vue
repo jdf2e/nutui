@@ -6,5 +6,5 @@
 </template>
 
 <script lang="ts" setup>
-import Basic from './basic.vue';
+import Basic from './basic.vue'
 </script>

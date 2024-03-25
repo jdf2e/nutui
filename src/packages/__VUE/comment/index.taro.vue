@@ -41,27 +41,27 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, PropType } from 'vue';
-import { Right } from '@nutui/icons-vue-taro';
-import { createComponent } from '@/packages/utils/create';
-import CommentHeader from './components/CmtHeader.taro.vue';
-import CommentImages from './components/CmtImages.taro.vue';
-import CommentBottom from './components/CmtBottom.taro.vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { computed, PropType } from 'vue'
+import { Right } from '@nutui/icons-vue-taro'
+import { createComponent } from '@/packages/utils/create'
+import CommentHeader from './components/CmtHeader.taro.vue'
+import CommentImages from './components/CmtImages.taro.vue'
+import CommentBottom from './components/CmtBottom.taro.vue'
+import { useLocale } from '@/packages/utils/useLocale'
 
 interface VideosType {
-  id?: number | string;
-  mainUrl: string;
-  videoUrl: string;
+  id?: number | string
+  mainUrl: string
+  videoUrl: string
 }
 interface ImagesType {
-  smallImgUrl: string;
-  bigImgUrl: string;
-  imgUrl: string;
+  smallImgUrl: string
+  bigImgUrl: string
+  imgUrl: string
 }
 
-const { create } = createComponent('comment');
-const cN = 'NutComment';
+const { create } = createComponent('comment')
+const cN = 'NutComment'
 
 export default create({
   props: {
@@ -118,25 +118,25 @@ export default create({
   emits: ['click', 'clickImages', 'clickOperate'],
 
   setup(props, { emit }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
     const conEllipsis = computed(() => {
-      if (props.ellipsis) return props.ellipsis;
+      if (props.ellipsis) return props.ellipsis
 
-      return props.headerType == 'complex' ? 6 : 2;
-    });
+      return props.headerType == 'complex' ? 6 : 2
+    })
     const clickOperate = (t: string) => {
-      emit('clickOperate', t);
-    };
+      emit('clickOperate', t)
+    }
 
     const handleClick = () => {
-      emit('click', props.info);
-    };
+      emit('click', props.info)
+    }
 
     const clickImages = (value: any) => {
-      emit('clickImages', value);
-    };
+      emit('clickImages', value)
+    }
 
-    return { conEllipsis, clickOperate, handleClick, clickImages, translate };
+    return { conEllipsis, clickOperate, handleClick, clickImages, translate }
   }
-});
+})
 </script>

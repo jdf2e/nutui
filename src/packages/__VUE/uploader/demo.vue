@@ -47,9 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showToast } from '../toast/index';
+import { ref, reactive } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
+import { showToast } from '../toast/index'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -99,12 +99,12 @@ const translate = useTranslate({
     success: 'Upload successful',
     error: 'Upload failed'
   }
-});
-const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
-const progressPercentage = ref<string | number>(0);
+})
+const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+const progressPercentage = ref<string | number>(0)
 const formData = {
   custom: 'test'
-};
+}
 
 const defaultFileList = reactive([
   {
@@ -128,7 +128,7 @@ const defaultFileList = reactive([
     message: translate('uploading'),
     type: 'image'
   }
-]);
+])
 const defaultFileList1 = reactive([
   {
     name: 'file 1.png',
@@ -151,64 +151,64 @@ const defaultFileList1 = reactive([
     message: translate('uploading'),
     type: 'image'
   }
-]);
+])
 const fileToDataURL = (file: Blob): Promise<any> => {
   return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = (e) => resolve((e.target as FileReader).result);
-    reader.readAsDataURL(file);
-  });
-};
+    const reader = new FileReader()
+    reader.onloadend = (e) => resolve((e.target as FileReader).result)
+    reader.readAsDataURL(file)
+  })
+}
 const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
   return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.src = dataURL;
-  });
-};
+    const img = new Image()
+    img.onload = () => resolve(img)
+    img.src = dataURL
+  })
+}
 const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
-  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
-};
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
+}
 const onOversize = () => {
-  showToast.text('oversize 触发 文件大小不能超过 50kb');
-};
+  showToast.text('oversize 触发 文件大小不能超过 50kb')
+}
 const onDelete = () => {
-  showToast.text('delete 事件触发');
-};
+  showToast.text('delete 事件触发')
+}
 const onProgress = ({ percentage }: any) => {
-  progressPercentage.value = percentage;
-  showToast.text('progress 事件触发' + percentage);
-};
+  progressPercentage.value = percentage
+  showToast.text('progress 事件触发' + percentage)
+}
 const beforeUpload = async (file: File[]) => {
-  let fileName = file[0].name;
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-  const base64 = await fileToDataURL(file[0]);
-  const img = await dataURLToImage(base64);
-  canvas.width = img.width;
-  canvas.height = img.height;
+  let fileName = file[0].name
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D
+  const base64 = await fileToDataURL(file[0])
+  const img = await dataURLToImage(base64)
+  canvas.width = img.width
+  canvas.height = img.height
 
-  context.clearRect(0, 0, img.width, img.height);
-  context.drawImage(img, 0, 0, img.width, img.height);
+  context.clearRect(0, 0, img.width, img.height)
+  context.drawImage(img, 0, 0, img.width, img.height)
 
-  let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob; //quality:0.5可根据实际情况计算
-  const f = await new File([blob], fileName);
-  return [f];
-};
+  let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob //quality:0.5可根据实际情况计算
+  const f = await new File([blob], fileName)
+  return [f]
+}
 const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
   if (options.method.toLowerCase() == 'put') {
-    xhr.send(options.sourceFile);
+    xhr.send(options.sourceFile)
   } else {
-    xhr.send(options.formData);
+    xhr.send(options.formData)
   }
-};
-const uploadRef = ref<any>(null);
+}
+const uploadRef = ref<any>(null)
 const submitUpload = () => {
-  uploadRef.value.submit();
-};
+  uploadRef.value.submit()
+}
 const clearUpload = () => {
-  uploadRef.value.clearUploadQueue();
-};
+  uploadRef.value.clearUploadQueue()
+}
 </script>
 
 <style lang="scss" scoped></style>

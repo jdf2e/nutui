@@ -52,12 +52,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
-const progressPercentage = ref<string | number>(0);
+import { ref, reactive } from 'vue'
+const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+const progressPercentage = ref<string | number>(0)
 const formData = {
   custom: 'test'
-};
+}
 const defaultFileList = reactive([
   {
     name: '文件1.png',
@@ -80,7 +80,7 @@ const defaultFileList = reactive([
     message: '上传中...',
     type: 'image'
   }
-]);
+])
 const defaultFileList1 = reactive([
   {
     name: '文件1.png',
@@ -103,24 +103,24 @@ const defaultFileList1 = reactive([
     message: '上传中...',
     type: 'image'
   }
-]);
+])
 const onOversize = (files: File[]) => {
-  console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
+  console.log('oversize 触发 文件大小不能超过 50kb', files)
+}
 const onDelete = (file: any, fileList: any[]) => {
-  console.log('delete 事件触发', file, fileList);
-};
+  console.log('delete 事件触发', file, fileList)
+}
 const onProgress = ({ percentage }: any) => {
-  progressPercentage.value = percentage;
-  console.log('progress 事件触发', percentage);
-};
-const uploadRef = ref<any>(null);
+  progressPercentage.value = percentage
+  console.log('progress 事件触发', percentage)
+}
+const uploadRef = ref<any>(null)
 const submitUpload = () => {
-  uploadRef.value.submit();
-};
+  uploadRef.value.submit()
+}
 const clearUpload = () => {
-  uploadRef.value.clearUploadQueue();
-};
+  uploadRef.value.clearUploadQueue()
+}
 
 const beforeXhrUpload = (taroUploadFile: any, options: any) => {
   //taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
@@ -136,24 +136,24 @@ const beforeXhrUpload = (taroUploadFile: any, options: any) => {
     name: options.name,
     success(response: { errMsg: any; statusCode: number; data: string }) {
       if (options.xhrState == response.statusCode) {
-        options.onSuccess?.(response, options);
+        options.onSuccess?.(response, options)
       } else {
-        options.onFailure?.(response, options);
+        options.onFailure?.(response, options)
       }
     },
     fail(e: any) {
-      options.onFailure?.(e, options);
+      options.onFailure?.(e, options)
     }
-  });
-  options.onStart?.(options);
+  })
+  options.onStart?.(options)
   uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
-    options.onProgress?.(res, options);
+    options.onProgress?.(res, options)
     // console.log('上传进度', res.progress);
     // console.log('已经上传的数据长度', res.totalBytesSent);
     // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
-  });
+  })
   // uploadTask.abort(); // 取消上传任务
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

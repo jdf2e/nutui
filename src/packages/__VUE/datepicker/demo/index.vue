@@ -33,17 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Pop from './pop.vue';
-import YearMonth from './year-month.vue';
-import MonthDay from './month-day.vue';
-import DateTime from './date-time.vue';
-import Time from './time.vue';
-import HourMinute from './hour-minute.vue';
-import Format from './format.vue';
-import Step from './step.vue';
-import Filter from './filter.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Pop from './pop.vue'
+import YearMonth from './year-month.vue'
+import MonthDay from './month-day.vue'
+import DateTime from './date-time.vue'
+import Time from './time.vue'
+import HourMinute from './hour-minute.vue'
+import Format from './format.vue'
+import Step from './step.vue'
+import Filter from './filter.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -70,5 +70,5 @@ const t = useTranslate({
     step: 'Option Steps',
     filter: 'Option Filter'
   }
-});
+})
 </script>

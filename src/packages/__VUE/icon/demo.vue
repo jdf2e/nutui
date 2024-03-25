@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
+import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate'
 const translate = useTranslate({
   'zh-CN': {
     basic: 'IconFont 基础用法',
@@ -86,22 +86,22 @@ const translate = useTranslate({
     iconSize: 'Icon Size',
     copyToast: 'Copied successfully'
   }
-});
-import { showToast } from '@nutui/nutui';
-import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue';
+})
+import { showToast } from '@nutui/nutui'
+import { Add, IconFontConfig, IconFont } from '@nutui/icons-vue'
 const copyTag = (name: string) => {
-  const text = `<IconFont name="${name}"></IconFont>`;
-  const displayText = `&lt;IconFont name="${name}"&gt;&lt;/IconFont&gt;`;
-  const input = document.createElement('input');
-  document.body.appendChild(input);
-  input.setAttribute('value', text);
-  input.select();
+  const text = `<IconFont name="${name}"></IconFont>`
+  const displayText = `&lt;IconFont name="${name}"&gt;&lt;/IconFont&gt;`
+  const input = document.createElement('input')
+  document.body.appendChild(input)
+  input.setAttribute('value', text)
+  input.select()
   if (document.execCommand('copy')) {
-    document.execCommand('copy');
-    showToast.text(`${translate('copyToast')}: <br/>${displayText}`);
+    document.execCommand('copy')
+    showToast.text(`${translate('copyToast')}: <br/>${displayText}`)
   }
-  document.body.removeChild(input);
-};
+  document.body.removeChild(input)
+}
 </script>
 
 <style lang="scss" scoped>

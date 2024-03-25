@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Position from './position.vue';
-import Close from './close.vue';
-import Round from './round.vue';
-import Multi from './multi.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Position from './position.vue'
+import Close from './close.vue'
+import Round from './round.vue'
+import Multi from './multi.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -42,5 +42,5 @@ const t = useTranslate({
     muti: 'Multi Layers',
     teleport: 'Teleport'
   }
-});
+})
 </script>

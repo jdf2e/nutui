@@ -28,28 +28,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { isObject } from '@/packages/utils/util';
-import type { CircleProgressStrokeLinecap } from './types';
+import { computed } from 'vue'
+import { isObject } from '@/packages/utils/util'
+import type { CircleProgressStrokeLinecap } from './types'
 
 export interface stopArr {
-  key: string;
-  value: string;
+  key: string
+  value: string
 }
 
 defineOptions({
   name: 'NutCircleProgress'
-});
+})
 
 export type CircleProgressProps = Partial<{
-  progress: string | number;
-  strokeWidth: string | number;
-  radius: string | number;
-  strokeLinecap: CircleProgressStrokeLinecap;
-  color: any;
-  pathColor: string;
-  clockwise: boolean;
-}>;
+  progress: string | number
+  strokeWidth: string | number
+  radius: string | number
+  strokeLinecap: CircleProgressStrokeLinecap
+  color: any
+  pathColor: string
+  clockwise: boolean
+}>
 
 const props = withDefaults(defineProps<CircleProgressProps>(), {
   progress: 0,
@@ -59,45 +59,45 @@ const props = withDefaults(defineProps<CircleProgressProps>(), {
   color: '#fa2c19',
   pathColor: '#d9d9d9',
   clockwise: true
-});
+})
 
-const refRandomId = Math.random().toString(36).slice(-8);
+const refRandomId = Math.random().toString(36).slice(-8)
 const path = computed(() => {
-  const isWise = props.clockwise ? 1 : 0;
-  return `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`;
-});
+  const isWise = props.clockwise ? 1 : 0
+  return `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`
+})
 const hoverColor = computed(() => {
-  return isObject(props.color) ? `url(#${refRandomId})` : props.color;
-});
+  return isObject(props.color) ? `url(#${refRandomId})` : props.color
+})
 const hoverStyle = computed(() => {
-  let perimeter = 283;
-  let offset = (perimeter * Number(props.progress)) / 100;
+  let perimeter = 283
+  let offset = (perimeter * Number(props.progress)) / 100
   return {
     stroke: isObject(props.color) ? `url(#${refRandomId})` : props.color,
     strokeDasharray: `${offset}px ${perimeter}px`
-  };
-});
+  }
+})
 const pathStyle = computed(() => {
   return {
     stroke: props.pathColor
-  };
-});
+  }
+})
 const stop = computed(() => {
   if (!isObject(props.color)) {
-    return;
+    return
   }
-  let color = props.color;
-  const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
-  let stopArr: stopArr[] = [];
+  let color = props.color
+  const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b))
+  let stopArr: stopArr[] = []
   colorArr.map((item) => {
     let obj = {
       key: '',
       value: ''
-    };
-    obj.key = item;
-    obj.value = color[item];
-    stopArr.push(obj);
-  });
-  return stopArr;
-});
+    }
+    obj.key = item
+    obj.value = color[item]
+    stopArr.push(obj)
+  })
+  return stopArr
+})
 </script>

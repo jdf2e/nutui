@@ -9,6 +9,6 @@
   </nut-cell>
 </template>
 <script setup>
-import { ref } from 'vue';
-const val = ref(['2', '3']);
+import { ref } from 'vue'
+const val = ref(['2', '3'])
 </script>

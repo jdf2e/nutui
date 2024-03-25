@@ -7,11 +7,11 @@ Slide the input bar to select a value within a given range.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Range } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Range } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Range);
+const app = createApp()
+app.use(Range)
 ```
 
 ### Basic Usage

@@ -1,22 +1,25 @@
 <template>
-  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-    <nut-tabbar-item tab-title="label" :value="11">
+  <nut-tabbar v-model="active" unactive-color="#7d7e80" active-color="#1989fa">
+    <nut-tabbar-item tab-title="Home" :value="11">
       <template #icon>
         <Home></Home>
       </template>
     </nut-tabbar-item>
-    <nut-tabbar-item tab-title="label" :dot="true">
+    <nut-tabbar-item tab-title="Category" :dot="true">
       <template #icon>
-        <Home></Home>
+        <Category></Category>
       </template>
     </nut-tabbar-item>
-    <nut-tabbar-item tab-title="label" :value="110">
+    <nut-tabbar-item tab-title="Find" :value="110">
       <template #icon>
-        <Home></Home>
+        <Find></Find>
       </template>
     </nut-tabbar-item>
   </nut-tabbar>
 </template>
 <script setup>
-import { Home } from '@nutui/icons-vue-taro';
+import { ref } from 'vue'
+import { Home, Category, Find } from '@nutui/icons-vue-taro'
+
+const active = ref(0)
 </script>

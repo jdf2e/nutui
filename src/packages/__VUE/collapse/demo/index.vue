@@ -20,13 +20,13 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Data from './data.vue';
-import Accordion from './accordion.vue';
-import Custom from './custom.vue';
-import Disabled from './disabled.vue';
-import Extra from './extra.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Data from './data.vue'
+import Accordion from './accordion.vue'
+import Custom from './custom.vue'
+import Disabled from './disabled.vue'
+import Extra from './extra.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -45,5 +45,5 @@ const t = useTranslate({
     disabled: 'Disabled CollapseItem',
     extra: 'Set fixed content (do not collapse)'
   }
-});
+})
 </script>

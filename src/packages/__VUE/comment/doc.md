@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Comment } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Comment } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Comment);
+const app = createApp()
+app.use(Comment)
 ```
 
 ### 评论图片单行展示
@@ -39,22 +39,22 @@ app.use(Comment);
   </nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const handleclick = (info) => {
-  console.log('进行跳转', info);
-};
+  console.log('进行跳转', info)
+}
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -94,19 +94,19 @@ const clickImages = (imgs) => {
   </nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -128,19 +128,19 @@ const clickImages = (imgs) => {
   ></nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -189,7 +189,7 @@ const images = [
     bigImgUrl: '', // 大图，大图展示使用
     imgUrl: '' // 兜底图
   }
-];
+]
 ```
 
 ### videos 数组
@@ -200,7 +200,7 @@ const videos = [
     mainUrl: '', // 视频遮罩图片
     videoUrl: '' // 视频链接
   }
-];
+]
 ```
 
 ### info 对象
@@ -217,7 +217,7 @@ const info = {
   size: '', // 评论人购买的商品规格
   replay: 23, // 此评论的回复数
   like: 1 // 此评论的点赞数
-};
+}
 ```
 
 ### follow 对象
@@ -229,7 +229,7 @@ const follow = {
   days: 0, // 购买多少天后进行追评
   content: '', // 追评内容
   images: [] // 追评图片
-};
+}
 ```
 
 ## 主题定制

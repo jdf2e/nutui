@@ -7,11 +7,11 @@ Digital scrolling component, which is used to display the dynamic effect of digi
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Countup } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Countup } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Countup);
+const app = createApp()
+app.use(Countup)
 ```
 
 ### Basic Usage

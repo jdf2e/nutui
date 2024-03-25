@@ -20,13 +20,13 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Width from './width.vue';
-import Color from './color.vue';
-import Size from './size.vue';
-import Content from './content.vue';
-import Change from './change.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Width from './width.vue'
+import Color from './color.vue'
+import Size from './size.vue'
+import Content from './content.vue'
+import Change from './change.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -47,5 +47,5 @@ const t = useTranslate({
     content: 'Custom Content',
     change: 'Dynamic Change'
   }
-});
+})
 </script>

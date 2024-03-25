@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
-import type { PopupCloseIconPosition, PopupPosition } from './types';
+import type { PropType } from 'vue'
+import type { PopupCloseIconPosition, PopupPosition } from './types'
 
 export const popupProps = {
   visible: {
@@ -78,4 +78,4 @@ export const popupProps = {
     type: Object,
     default: () => ({})
   }
-};
+}

@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Size from './size.vue';
-import Decimal from './decimal.vue';
-import Through from './through.vue';
-import Symbol from './symbol.vue';
-import Position from './position.vue';
-import Thousands from './thousands.vue';
+import { useTranslate } from '@/sites/utils'
+import Size from './size.vue'
+import Decimal from './decimal.vue'
+import Through from './through.vue'
+import Symbol from './symbol.vue'
+import Position from './position.vue'
+import Thousands from './thousands.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     position: 'Currency symbol position',
     title5: 'Separated by thousands'
   }
-});
+})
 </script>

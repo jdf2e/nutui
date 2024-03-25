@@ -7,11 +7,11 @@ It is used to quickly locate the list and display the index
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Elevator } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Elevator } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Elevator);
+const app = createApp()
+app.use(Elevator)
 ```
 
 ### Basic Usage

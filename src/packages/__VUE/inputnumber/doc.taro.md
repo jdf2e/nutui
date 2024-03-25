@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { InputNumber } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { InputNumber } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(InputNumber);
+const app = createApp()
+app.use(InputNumber)
 ```
 
 ### 基础用法

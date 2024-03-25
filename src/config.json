@@ -239,6 +239,7 @@
           "version": "3.0.0",
           "name": "Tabbar",
           "cName": "标签栏",
+          "setup": true,
           "desc": "标签栏",
           "author": "Drjingfubo"
         },
@@ -246,6 +247,7 @@
           "version": "3.0.0",
           "name": "TabbarItem",
           "cName": "标签栏子组件",
+          "setup": true,
           "show": false,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
@@ -782,6 +784,7 @@
           "cType": "展示组件",
           "cName": "趋势箭头",
           "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "setup": true,
           "author": "liukun"
         },
         {

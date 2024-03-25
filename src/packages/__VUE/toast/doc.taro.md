@@ -9,11 +9,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Toast } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Toast } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Toast);
+const app = createApp()
+app.use(Toast)
 ```
 
 ### 基础用法
@@ -41,7 +41,7 @@ app.use(Toast);
   <nut-cell title="Loading 带白色背景遮罩" is-link @click="openToast('loading', '加载中', true)"></nut-cell>
 </template>
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 const state = reactive({
   msg: 'toast',
   type: 'text',
@@ -50,17 +50,17 @@ const state = reactive({
   title: '',
   bottom: '',
   center: true
-});
+})
 const openToast = (type, msg, cover = false) => {
-  state.show = true;
-  state.msg = msg;
-  state.type = type;
-  state.cover = cover;
-  state.title = title;
-  state.bottom = bottom;
-  state.center = center;
-};
-const onClosed = () => console.log('closed');
+  state.show = true
+  state.msg = msg
+  state.type = type
+  state.cover = cover
+  state.title = title
+  state.bottom = bottom
+  state.center = center
+}
+const onClosed = () => console.log('closed')
 </script>
 ```
 

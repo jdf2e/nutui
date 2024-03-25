@@ -12,11 +12,11 @@
   </nut-calendar>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const date = ref(['2019-12-23', '2019-12-26']);
+import { ref } from 'vue'
+const show = ref(false)
+const date = ref(['2019-12-23', '2019-12-26'])
 const choose = (param) => {
-  const { weekDate } = param;
-  date.value = [weekDate[0].date[3], weekDate[1].date[3]];
-};
+  const { weekDate } = param
+  date.value = [weekDate[0].date[3], weekDate[1].date[3]]
+}
 </script>
