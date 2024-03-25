@@ -53,7 +53,7 @@ import { defineComponent, computed, reactive, provide, watch, openBlock, createE
 import { u as useChildren } from "../useChildren-4flBkurC.js";
 import { g as getPropByPath, f as isPromise } from "../util-6wYEjmEl.js";
 import NutCellGroup from "../cellgroup/CellGroup.js";
-import { F as FORM_KEY, a as FORM_DISABLED_KEY } from "../common-BSbjjJAx.js";
+import { F as FORM_KEY, a as FORM_DISABLED_KEY } from "../common-DRG0ue26.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
   name: "NutForm"

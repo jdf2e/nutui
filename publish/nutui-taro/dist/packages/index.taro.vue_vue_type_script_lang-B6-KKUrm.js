@@ -1,9 +1,9 @@
 import { toRef, toRefs, inject, computed, h } from "vue";
 import { c as createComponent } from "./component-DQf3CENX.js";
-import { CheckNormal, CheckChecked } from "@nutui/icons-vue";
+import { CheckNormal, CheckChecked } from "@nutui/icons-vue-taro";
 import { p as pxCheck } from "./pxCheck-DN6FYV6q.js";
 import { R as RADIO_KEY } from "./types-BODurTjN.js";
-import { u as useFormDisabled } from "./common-BSbjjJAx.js";
+import { u as useFormDisabled } from "./common-DRG0ue26.js";
 const { componentName, create } = createComponent("radio");
 const _sfc_main = create({
   components: {
@@ -53,6 +53,7 @@ const _sfc_main = create({
       return h(iconNode, {
         width: size2,
         height: size2,
+        size: size2,
         class: color.value
       });
     };
@@ -89,7 +90,7 @@ const _sfc_main = create({
           class: `${componentName} ${componentName}--${props.shape} ${reverseState.value ? `${componentName}--reverse` : ""}`,
           onClick: handleClick
         },
-        [props.shape === "button" ? renderButton() : [renderIcon(), renderLabel()]]
+        [props.shape == "button" ? renderButton() : [renderIcon(), renderLabel()]]
       );
     };
   }

@@ -26,7 +26,7 @@ import { Button as _sfc_main$2 } from "../button/Button.js";
 import Taro from "@tarojs/taro";
 import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-CV7DiiiD.js";
-import { u as useFormDisabled } from "../common-BSbjjJAx.js";
+import { u as useFormDisabled } from "../common-DRG0ue26.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 class UploadOptions {
   constructor() {

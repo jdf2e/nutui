@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, openBlock, createElementBlock, createVNode, unref, withCtx, Fragment, renderList, createBlock, createTextVNode, toDisplayString, createCommentVNode } from "vue";
 import { Form as _sfc_main$1 } from "../form/Form.js";
 import { FormItem as _sfc_main$2 } from "../formitem/FormItem.js";
-import { _ as _sfc_main$4 } from "../index.taro.vue_vue_type_script_lang-hGiwDRea.js";
+import { _ as _sfc_main$4 } from "../index.taro.vue_vue_type_script_lang-B6-KKUrm.js";
 import { _ as _sfc_main$3 } from "../index.taro.vue_vue_type_script_lang-CaSiRl9x.js";
 import { Button as _sfc_main$5 } from "../button/Button.js";
 import NutInput from "../input/Input.js";

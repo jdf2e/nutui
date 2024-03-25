@@ -1,77 +1,64 @@
-import { toRefs, ref, reactive, provide, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
-import Taro from "@tarojs/taro";
-import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
-import { u as useTaroRect } from "../index-m0Wcof-q.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { create } = createComponent("tabbar");
-const _sfc_main = create({
-  props: {
-    modelValue: {
-      type: [Number, String],
-      default: 0
-    },
-    bottom: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: "base"
-    },
-    size: {
-      type: String,
-      default: "20px"
-    },
-    unactiveColor: {
-      type: String,
-      default: ""
-    },
-    activeColor: {
-      type: String,
-      default: ""
-    },
-    safeAreaInsetBottom: {
-      type: Boolean,
-      default: false
-    },
-    placeholder: {
-      type: Boolean,
-      default: false
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
     }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, unref, renderSlot } from "vue";
+import Taro from "@tarojs/taro";
+import { u as useTaroRect } from "../index-m0Wcof-q.js";
+import { u as useChildren } from "../useChildren-4flBkurC.js";
+import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = ["id"];
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutTabbar"
+}), {
+  __name: "tabbar.taro",
+  props: {
+    modelValue: { default: 0 },
+    bottom: { type: Boolean, default: false },
+    unactiveColor: { default: "" },
+    activeColor: { default: "" },
+    safeAreaInsetBottom: { type: Boolean, default: false },
+    placeholder: { type: Boolean, default: false }
   },
   emits: ["tabSwitch", "update:modelValue"],
-  setup(props, { emit }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const refRandomId = Math.random().toString(36).slice(-8);
-    const { bottom, placeholder } = toRefs(props);
     const height = ref("auto");
-    const mdValue = reactive({
-      val: props.modelValue,
-      children: []
-    });
     const nutTabbarRef = ref(null);
-    function changeIndex(index, active) {
+    const activeIndex = ref(props.modelValue);
+    const { children, linkChildren } = useChildren(TABBAR_KEY);
+    const changeIndex = (index, active) => {
+      activeIndex.value = active;
       emit("update:modelValue", active);
-      parentData.modelValue = active;
-      emit("tabSwitch", parentData.children[index], active);
-    }
-    const parentData = reactive({
-      children: mdValue.children,
-      size: props.size,
-      modelValue: mdValue.val,
-      unactiveColor: props.unactiveColor,
-      activeColor: props.activeColor,
-      changeIndex
-    });
-    provide(TABBAR_KEY, parentData);
+      emit("tabSwitch", children[index], active);
+    };
+    linkChildren({ props, activeIndex, changeIndex });
     watch(
       () => props.modelValue,
-      (value) => {
-        parentData.modelValue = value;
+      (val) => {
+        activeIndex.value = val;
       }
     );
-    onMounted(() => {
-      if (bottom.value && placeholder.value) {
+    const updateHeight = () => {
+      if (props.bottom && props.placeholder) {
         Taro.nextTick(() => {
           useTaroRect(nutTabbarRef).then(
             (rect) => {
@@ -82,31 +69,27 @@ const _sfc_main = create({
           );
         });
       }
-    });
-    return {
-      refRandomId,
-      changeIndex,
-      nutTabbarRef,
-      height
+    };
+    onMounted(updateHeight);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass({ "nut-tabbar__placeholder": _ctx.bottom && _ctx.placeholder }),
+        style: normalizeStyle({ height: height.value })
+      }, [
+        createElementVNode("view", {
+          id: `nut-tabbar-${unref(refRandomId)}`,
+          ref_key: "nutTabbarRef",
+          ref: nutTabbarRef,
+          class: normalizeClass(["nut-tabbar", { "nut-tabbar-bottom": _ctx.bottom, "nut-tabbar-safebottom": _ctx.safeAreaInsetBottom }])
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 10, _hoisted_1)
+      ], 6);
     };
   }
-});
-const _hoisted_1 = ["id"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass({ "nut-tabbar__placeholder": _ctx.bottom && _ctx.placeholder }),
-    style: normalizeStyle({ height: _ctx.height })
-  }, [
-    createElementVNode("view", {
-      id: `nut-tabbar-${_ctx.refRandomId}`,
-      ref: "nutTabbarRef",
-      class: normalizeClass(["nut-tabbar", { "nut-tabbar-bottom": _ctx.bottom, "nut-tabbar-safebottom": _ctx.safeAreaInsetBottom }])
-    }, [
-      renderSlot(_ctx.$slots, "default")
-    ], 10, _hoisted_1)
-  ], 6);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Tabbar,
+  _sfc_main as default
 };

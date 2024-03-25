@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRef, computed, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createVNode, unref, normalizeStyle } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { Minus, Plus } from "@nutui/icons-vue";
-import { u as useFormDisabled } from "../common-BSbjjJAx.js";
+import { u as useFormDisabled } from "../common-DRG0ue26.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["min", "max", "disabled", "readonly", "value"];
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {

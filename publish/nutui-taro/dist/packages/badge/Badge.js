@@ -91,7 +91,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-const NutBadge = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  NutBadge as default
+  index_taro as default
 };

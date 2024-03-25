@@ -22,7 +22,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
 import { Check } from "@nutui/icons-vue-taro";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
-import { u as useParent } from "../useParent-Cm0ckjcv.js";
+import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { M as MENU_KEY } from "../types-CkPfROfI.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("menu-item");

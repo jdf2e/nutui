@@ -22,7 +22,7 @@ import { StarFillN } from "@nutui/icons-vue";
 import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
-import { u as useFormDisabled } from "../common-BSbjjJAx.js";
+import { u as useFormDisabled } from "../common-DRG0ue26.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["id"];
 const _hoisted_2 = { class: "nut-rate-item__icon--full" };
