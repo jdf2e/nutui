@@ -37,6 +37,7 @@ const emit = defineEmits(['tabSwitch', 'update:modelValue']);
 
 const height = ref<number | undefined>();
 const nutTabbar = ref<HTMLElement | null>(null);
+const activeIndex = ref<number | string>(props.modelValue);
 
 const classes = computed(() => {
   const prefixCls = 'nut-tabbar';
@@ -50,11 +51,12 @@ const classes = computed(() => {
 const { children, linkChildren } = useChildren(TABBAR_KEY);
 
 const changeIndex = (index: number, active: number | string) => {
+  activeIndex.value = active;
   emit('update:modelValue', active);
   emit('tabSwitch', children[index], active);
 };
 
-linkChildren({ props, changeIndex });
+linkChildren({ props, activeIndex, changeIndex });
 
 const updateHeight = () => {
   if (props.bottom && props.placeholder) {

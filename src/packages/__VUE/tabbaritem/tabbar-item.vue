@@ -60,7 +60,7 @@ const slots = useSlots();
 const router = useRouter();
 const { parent, index } = useParent(TABBAR_KEY);
 
-const active = computed(() => (props.name ?? index.value) === parent.props.modelValue);
+const active = computed(() => (props.name ?? index.value) === parent.activeIndex.value);
 const activeColor = computed(() => (active.value ? parent.props.activeColor : parent.props.unactiveColor));
 
 const isHaveSlot = (slot: string) => {

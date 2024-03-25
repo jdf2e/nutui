@@ -45,15 +45,17 @@ const emit = defineEmits(['tabSwitch', 'update:modelValue']);
 const refRandomId = Math.random().toString(36).slice(-8);
 const height = ref('auto');
 const nutTabbarRef = ref<HTMLElement | null>(null);
+const activeIndex = ref<number | string>(props.modelValue);
 
 const { children, linkChildren } = useChildren(TABBAR_KEY);
 
 const changeIndex = (index: number, active: number | string) => {
+  activeIndex.value = active;
   emit('update:modelValue', active);
   emit('tabSwitch', children[index], active);
 };
 
-linkChildren({ props, changeIndex });
+linkChildren({ props, activeIndex, changeIndex });
 
 const updateHeight = () => {
   if (props.bottom && props.placeholder) {
