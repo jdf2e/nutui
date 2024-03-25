@@ -543,6 +543,7 @@
           "name": "Switch",
           "cName": "开关",
           "desc": "用来打开或关闭选项",
+          "setup": true,
           "author": "zongyue3"
         },
         {

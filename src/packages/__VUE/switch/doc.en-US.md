@@ -75,6 +75,14 @@ app.use(Switch);
 | --- | --- | --- |
 | change | Emitted when check status changed | (value: boolean,event: Event) |
 
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type { SwitchProps, SwitchInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
