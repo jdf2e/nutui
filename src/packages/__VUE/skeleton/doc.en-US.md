@@ -7,11 +7,11 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Skeleton } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Skeleton } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Skeleton);
+const app = createApp()
+app.use(Skeleton)
 ```
 
 ### Basic usage

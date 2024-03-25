@@ -1,11 +1,11 @@
-import SwipeGroup from './swipe-group.taro.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import SwipeGroup from './swipe-group.taro.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(SwipeGroup);
+withInstall(SwipeGroup)
 
-export type { SwipeGroupProps } from './swipe-group.taro.vue';
+export type { SwipeGroupProps } from './swipe-group.taro.vue'
 
-export type SwipeGroupInstance = ComponentPublicInstance & InstanceType<typeof SwipeGroup>;
+export type SwipeGroupInstance = ComponentPublicInstance & InstanceType<typeof SwipeGroup>
 
-export { SwipeGroup, SwipeGroup as default };
+export { SwipeGroup, SwipeGroup as default }

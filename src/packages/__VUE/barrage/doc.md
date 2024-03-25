@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Barrage } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Barrage } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Barrage);
+const app = createApp()
+app.use(Barrage)
 ```
 
 ### 基础用法

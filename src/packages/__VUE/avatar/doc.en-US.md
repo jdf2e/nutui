@@ -7,11 +7,11 @@ Avatars can be used to represent people or objects. It supports images, Icons, o
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Avatar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Avatar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Avatar);
+const app = createApp()
+app.use(Avatar)
 ```
 
 ### Basic Usage

@@ -7,8 +7,8 @@
   </nut-navbar>
 </template>
 <script setup lang="ts">
-import { ShareN } from '@nutui/icons-vue';
+import { ShareN } from '@nutui/icons-vue'
 const onClick = () => {
-  console.log('[Navbar]: on click right');
-};
+  console.log('[Navbar]: on click right')
+}
 </script>

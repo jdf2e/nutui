@@ -8,6 +8,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const container = ref<any>(null);
+import { ref } from 'vue'
+const container = ref<any>(null)
 </script>

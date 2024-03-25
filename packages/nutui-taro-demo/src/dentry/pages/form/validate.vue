@@ -54,75 +54,75 @@
   </nut-form>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const formData = ref({
   name: '',
   age: '',
   tel: '',
   address: ''
-});
+})
 
-const formRef = ref(null);
+const formRef = ref(null)
 
 const reset = () => {
-  formRef.value?.reset();
-};
+  formRef.value?.reset()
+}
 
 const submit = () => {
   formRef.value?.validate().then(({ valid, errors }) => {
     if (valid) {
-      console.log('success:', formData.value);
+      console.log('success:', formData.value)
     } else {
-      console.warn('error:', errors);
+      console.warn('error:', errors)
     }
-  });
-};
+  })
+}
 // 失去焦点校验
 const customBlurValidate = (prop) => {
   formRef.value?.validate(prop).then(({ valid, errors }) => {
     if (valid) {
-      console.log('success:', formData.value);
+      console.log('success:', formData.value)
     } else {
-      console.warn('error:', errors);
+      console.warn('error:', errors)
     }
-  });
-};
+  })
+}
 // 函数校验
 const customValidator = (val) => {
   if (/^\d+$/.test(val)) {
-    return Promise.resolve();
+    return Promise.resolve()
   } else {
-    return Promise.reject('必须输入数字');
+    return Promise.reject('必须输入数字')
   }
-};
+}
 const customRulePropValidator = (val, rule) => {
   if (rule.reg.test(val)) {
-    return Promise.resolve();
+    return Promise.resolve()
   } else {
-    return Promise.reject('必须输入数字');
+    return Promise.reject('必须输入数字')
   }
-};
+}
 const nameLengthValidator = (val) => {
   if (val.length > 2) {
-    return Promise.resolve();
+    return Promise.resolve()
   } else {
-    return Promise.reject('名称两个字以上');
+    return Promise.reject('名称两个字以上')
   }
-};
+}
 // Promise 异步校验
 const asyncValidator = (val) => {
-  const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/;
+  const telReg = /^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/
   return new Promise((resolve, reject) => {
-    console.log('模拟异步验证中...');
+    console.log('模拟异步验证中...')
     setTimeout(() => {
       if (!val) {
-        reject('请输入联系电话');
+        reject('请输入联系电话')
       } else if (!telReg.test(val)) {
-        reject('联系电话格式不正确');
+        reject('联系电话格式不正确')
       } else {
-        resolve('');
+        resolve('')
       }
-    }, 1000);
-  });
-};
+    }, 1000)
+  })
+}
 </script>

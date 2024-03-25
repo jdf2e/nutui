@@ -7,11 +7,11 @@ Used to display the countdown value in real time, and precision supports millise
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Countdown } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Countdown } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Countdown);
+const app = createApp()
+app.use(Countdown)
 ```
 
 ### Basic Usage

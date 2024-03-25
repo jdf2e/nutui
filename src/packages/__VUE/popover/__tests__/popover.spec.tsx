@@ -1,16 +1,16 @@
-import { mount } from '@vue/test-utils';
-import { Popover } from '@nutui/nutui';
-import { ref, nextTick } from 'vue';
-import { sleep } from '@/packages/utils/unit';
+import { mount } from '@vue/test-utils'
+import { Popover } from '@nutui/nutui'
+import { ref, nextTick } from 'vue'
+import { sleep } from '@/packages/utils/unit'
 
-const list = [{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }];
+const list = [{ name: 'option1' }, { name: 'option2' }, { name: 'option3' }]
 
-const listDisabled = [{ name: 'option1', disabled: true }, { name: 'option2', disabled: true }, { name: 'option3' }];
+const listDisabled = [{ name: 'option1', disabled: true }, { name: 'option2', disabled: true }, { name: 'option3' }]
 
 test('Popover: first render', async () => {
   const wrapper = mount(
     () => {
-      return <Popover visible={true} list={list} />;
+      return <Popover visible={true} list={list} />
     },
     {
       global: {
@@ -19,14 +19,14 @@ test('Popover: first render', async () => {
         }
       }
     }
-  );
-  expect(wrapper.find('.nut-popover-menu-item').exists()).toBeTruthy();
-});
+  )
+  expect(wrapper.find('.nut-popover-menu-item').exists()).toBeTruthy()
+})
 
 test('Popover: theme=dark', async () => {
   const wrapper = mount(
     () => {
-      return <Popover visible={true} list={list} theme="dark" />;
+      return <Popover visible={true} list={list} theme="dark" />
     },
     {
       global: {
@@ -35,14 +35,14 @@ test('Popover: theme=dark', async () => {
         }
       }
     }
-  );
-  expect(wrapper.find('.nut-popover--dark').exists()).toBeTruthy();
-});
+  )
+  expect(wrapper.find('.nut-popover--dark').exists()).toBeTruthy()
+})
 
 test('Popover: disabled', async () => {
   const wrapper = mount(
     () => {
-      return <Popover visible={true} list={listDisabled} theme="dark" />;
+      return <Popover visible={true} list={listDisabled} theme="dark" />
     },
     {
       global: {
@@ -51,19 +51,19 @@ test('Popover: disabled', async () => {
         }
       }
     }
-  );
-  expect(wrapper.findAll('.nut-popover-menu-disabled').length).toEqual(2);
+  )
+  expect(wrapper.findAll('.nut-popover-menu-disabled').length).toEqual(2)
 
-  wrapper.find('.nut-popover-menu-item').trigger('click');
-  expect(wrapper.emitted('choose')).toBeFalsy();
-});
+  wrapper.find('.nut-popover-menu-item').trigger('click')
+  expect(wrapper.emitted('choose')).toBeFalsy()
+})
 
 test('Popover: should close popover when clicking the action', async () => {
-  const show = ref(true);
-  const close = ref(true);
+  const show = ref(true)
+  const close = ref(true)
   const wrapper = mount(
     () => {
-      return <Popover v-model:visible={show.value} list={list} closeOnClickAction={close.value} />;
+      return <Popover v-model:visible={show.value} list={list} closeOnClickAction={close.value} />
     },
     {
       global: {
@@ -72,24 +72,24 @@ test('Popover: should close popover when clicking the action', async () => {
         }
       }
     }
-  );
-  const items = wrapper.findAll('.nut-popover-menu-item');
-  await items[0].trigger('click');
-  expect(show.value).toEqual(false);
+  )
+  const items = wrapper.findAll('.nut-popover-menu-item')
+  await items[0].trigger('click')
+  expect(show.value).toEqual(false)
 
-  show.value = true;
-  close.value = false;
-  await nextTick();
-  expect(show.value).toEqual(true);
-  const item = wrapper.find('.nut-popover-menu-item');
-  await item.trigger('click');
-  expect(show.value).toEqual(true);
-});
+  show.value = true
+  close.value = false
+  await nextTick()
+  expect(show.value).toEqual(true)
+  const item = wrapper.find('.nut-popover-menu-item')
+  await item.trigger('click')
+  expect(show.value).toEqual(true)
+})
 
 test('Popover: position=top-start', async () => {
   const wrapper = mount(
     () => {
-      return <Popover visible={true} list={list} location="top-start" />;
+      return <Popover visible={true} list={list} location="top-start" />
     },
     {
       global: {
@@ -98,14 +98,14 @@ test('Popover: position=top-start', async () => {
         }
       }
     }
-  );
-  expect(wrapper.find('.nut-popover-arrow--top-start').exists()).toBeTruthy();
-});
+  )
+  expect(wrapper.find('.nut-popover-arrow--top-start').exists()).toBeTruthy()
+})
 
 test('Popover: position=left-end', async () => {
   const wrapper = mount(
     () => {
-      return <Popover visible={true} list={list} location="left-end" />;
+      return <Popover visible={true} list={list} location="left-end" />
     },
     {
       global: {
@@ -114,13 +114,13 @@ test('Popover: position=left-end', async () => {
         }
       }
     }
-  );
-  expect(wrapper.find('.nut-popover-arrow--left-end').exists()).toBeTruthy();
-});
+  )
+  expect(wrapper.find('.nut-popover-arrow--left-end').exists()).toBeTruthy()
+})
 
 test('Popover: target', async () => {
-  const p = document.createElement('div');
-  p.id = 'popover-target';
+  const p = document.createElement('div')
+  p.id = 'popover-target'
   p.getBoundingClientRect = vi.fn(() => {
     return {
       width: 300,
@@ -128,15 +128,15 @@ test('Popover: target', async () => {
       left: 0,
       top: 0,
       right: 300
-    } as DOMRect;
-  });
-  document.body.appendChild(p);
-  const show = ref(false);
+    } as DOMRect
+  })
+  document.body.appendChild(p)
+  const show = ref(false)
   const wrapper = mount(
     () => {
       return (
         <Popover v-model:visible={show.value} duration={0} targetId="popover-target" list={list} arrowOffset={16} />
-      );
+      )
     },
     {
       global: {
@@ -145,10 +145,10 @@ test('Popover: target', async () => {
         }
       }
     }
-  );
-  show.value = true;
-  await sleep(200);
-  const popoverWrapper = wrapper.find('.nut-popover');
-  expect(popoverWrapper.attributes('style')).contain('top: 112px;');
-  expect(popoverWrapper.attributes('style')).contain('left: 150px;');
-});
+  )
+  show.value = true
+  await sleep(200)
+  const popoverWrapper = wrapper.find('.nut-popover')
+  expect(popoverWrapper.attributes('style')).contain('top: 112px;')
+  expect(popoverWrapper.attributes('style')).contain('left: 150px;')
+})

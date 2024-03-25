@@ -1,1 +1,1 @@
-export type CellSize = 'normal' | 'large';
+export type CellSize = 'normal' | 'large'

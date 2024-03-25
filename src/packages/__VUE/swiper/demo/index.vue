@@ -24,14 +24,14 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Async from './async.vue';
-import Dynamic from './dynamic.vue';
-import Width from './width.vue';
-import Page from './page.vue';
-import Methods from './methods.vue';
-import Vertical from './vertical.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Async from './async.vue'
+import Dynamic from './dynamic.vue'
+import Width from './width.vue'
+import Page from './page.vue'
+import Methods from './methods.vue'
+import Vertical from './vertical.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -52,5 +52,5 @@ const t = useTranslate({
     methods: 'Manual switching',
     vertical: 'Vertical direction'
   }
-});
+})
 </script>

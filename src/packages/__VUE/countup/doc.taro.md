@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Countup } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Countup } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Countup);
+const app = createApp()
+app.use(Countup)
 ```
 
 ### 基础用法

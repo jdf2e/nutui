@@ -11,5 +11,5 @@
   </template>
 </template>
 <script setup lang="ts">
-import Taro from '@tarojs/taro';
+import Taro from '@tarojs/taro'
 </script>

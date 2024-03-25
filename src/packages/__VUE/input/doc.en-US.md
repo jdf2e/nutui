@@ -7,11 +7,11 @@ The user can enter content in the text box.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Input } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Input } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Input);
+const app = createApp()
+app.use(Input)
 ```
 
 ### Basic Usage

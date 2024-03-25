@@ -8,6 +8,6 @@
 </template>
 <script setup lang="ts">
 const onClick = () => {
-  console.log('[Navbar]: on click back');
-};
+  console.log('[Navbar]: on click back')
+}
 </script>

@@ -18,10 +18,10 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue-taro';
-const { create } = createComponent('sub-side-navbar');
+import { computed, onMounted, reactive, toRefs } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { ArrowDown2, ArrowUp2 } from '@nutui/icons-vue-taro'
+const { create } = createComponent('sub-side-navbar')
 export default create({
   props: {
     title: {
@@ -38,24 +38,24 @@ export default create({
   setup: (props, { emit }) => {
     const state = reactive({
       direction: ''
-    });
+    })
     const style = computed(() => {
       return {
         height: !state.direction ? 'auto' : '0px'
-      };
-    });
+      }
+    })
     const handleClick = () => {
-      emit('titleClick');
-      state.direction = !state.direction ? 'up' : '';
-    };
+      emit('titleClick')
+      state.direction = !state.direction ? 'up' : ''
+    }
     onMounted(() => {
-      state.direction = props.open ? '' : 'up';
-    });
+      state.direction = props.open ? '' : 'up'
+    })
     return {
       ...toRefs(state),
       style,
       handleClick
-    };
+    }
   }
-});
+})
 </script>

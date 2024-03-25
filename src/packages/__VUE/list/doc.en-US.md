@@ -11,11 +11,11 @@ In most scenarios, you don't need to use this component. It may have problems su
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { List } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { List } from '@nutui/nutui'
 
-const app = createApp();
-app.use();
+const app = createApp()
+app.use()
 ```
 
 ### Basic Usage

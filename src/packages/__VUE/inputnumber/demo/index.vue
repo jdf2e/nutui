@@ -27,15 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Step from './step.vue';
-import Limit from './limit.vue';
-import Disabled from './disabled.vue';
-import Readonly from './readonly.vue';
-import Decimal from './decimal.vue';
-import Size from './size.vue';
-import IconDemo from './icon.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Step from './step.vue'
+import Limit from './limit.vue'
+import Disabled from './disabled.vue'
+import Readonly from './readonly.vue'
+import Decimal from './decimal.vue'
+import Size from './size.vue'
+import IconDemo from './icon.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -58,5 +58,5 @@ const t = useTranslate({
     size: 'Custom button size',
     icon: 'Custom icon name'
   }
-});
+})
 </script>

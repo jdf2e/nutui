@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Type from './type.vue';
-import Custom from './custom.vue';
-import Bottom from './bottom.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Type from './type.vue'
+import Custom from './custom.vue'
+import Bottom from './bottom.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     custom: 'Custom Image',
     bottom: 'Bottom Content'
   }
-});
+})
 </script>

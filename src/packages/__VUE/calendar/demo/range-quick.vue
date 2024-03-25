@@ -14,13 +14,13 @@
   </nut-calendar>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const date = ref(['2019-12-23', '2019-12-26']);
+import { ref } from 'vue'
+const show = ref(false)
+const date = ref(['2019-12-23', '2019-12-26'])
 const choose = (param) => {
-  date.value = [param[0][3], param[1][3]];
-};
+  date.value = [param[0][3], param[1][3]]
+}
 const select = (param) => {
-  console.log(param);
-};
+  console.log(param)
+}
 </script>

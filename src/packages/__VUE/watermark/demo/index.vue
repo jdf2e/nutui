@@ -11,10 +11,10 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Part from './part.vue';
-import Multi from './multi.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Part from './part.vue'
+import Multi from './multi.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -27,5 +27,5 @@ const t = useTranslate({
     part: 'Part Usage',
     multi: 'Multiline Watermark'
   }
-});
+})
 </script>

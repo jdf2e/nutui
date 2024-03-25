@@ -11,11 +11,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { List } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { List } from '@nutui/nutui'
 
-const app = createApp();
-app.use(List);
+const app = createApp()
+app.use(List)
 ```
 
 ### 基础用法

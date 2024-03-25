@@ -6,11 +6,11 @@
   </nut-range>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const val = ref(40);
+import { ref } from 'vue'
+const val = ref(40)
 const change = (value: number) => {
-  console.log(value);
-};
+  console.log(value)
+}
 </script>
 <style>
 .range-demo-button {

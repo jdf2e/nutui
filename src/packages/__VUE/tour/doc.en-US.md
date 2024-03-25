@@ -7,11 +7,11 @@ A bubble component used to guide the user through the product's capabilities. Th
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Tour } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tour } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tour);
+const app = createApp()
+app.use(Tour)
 ```
 
 ### Basic Usage

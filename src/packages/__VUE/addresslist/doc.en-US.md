@@ -7,11 +7,11 @@ It is mainly used to display and operate the address list.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { AddressList } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { AddressList } from '@nutui/nutui'
 
-const app = createApp();
-app.use(AddressList);
+const app = createApp()
+app.use(AddressList)
 ```
 
 ### Basic Usage
@@ -31,7 +31,7 @@ app.use(AddressList);
   </nut-address-list>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue'
 const data = ref([
   {
     testid: 3,
@@ -47,21 +47,21 @@ const data = ref([
     defaultAddress: true,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   }
-]);
+])
 const dataOptions = reactive({
   id: 'testid',
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
-});
+})
 const clickItem = () => {
-  console.log('Click To Address');
-};
+  console.log('Click To Address')
+}
 const delClick = () => {
-  console.log('Click To Delete');
-};
+  console.log('Click To Delete')
+}
 const editClick = () => {
-  console.log('Click To Edit');
-};
+  console.log('Click To Edit')
+}
 </script>
 ```
 
@@ -88,7 +88,7 @@ const editClick = () => {
   </nut-address-list>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue'
 const data = ref([
   {
     testid: 3,
@@ -104,30 +104,30 @@ const data = ref([
     defaultAddress: true,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   }
-]);
+])
 const dataOptions = reactive({
   id: 'testid',
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
-});
+})
 const clickItem = () => {
-  console.log('Click To Address');
-};
+  console.log('Click To Address')
+}
 const delClick = () => {
-  console.log('Click To Delete');
-};
+  console.log('Click To Delete')
+}
 const editClick = () => {
-  console.log('Click To Edit');
-};
+  console.log('Click To Edit')
+}
 const copyClick = () => {
-  console.log('Click To Copy');
-};
+  console.log('Click To Copy')
+}
 const setClick = () => {
-  console.log('Click On Settings');
-};
+  console.log('Click On Settings')
+}
 const delClickLong = () => {
-  console.log('Click To Add');
-};
+  console.log('Click To Add')
+}
 </script>
 ```
 
@@ -153,7 +153,7 @@ const delClickLong = () => {
   </nut-address-list>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue'
 const data = ref([
   {
     testid: 3,
@@ -169,27 +169,27 @@ const data = ref([
     defaultAddress: true,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   }
-]);
+])
 const dataOptions = reactive({
   id: 'testid',
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
-});
+})
 const clickItem = () => {
-  console.log('Click To Address');
-};
+  console.log('Click To Address')
+}
 const editClick = () => {
-  console.log('Click To Edit');
-};
+  console.log('Click To Edit')
+}
 const delClick = () => {
-  console.log('Click To Delete');
-};
+  console.log('Click To Delete')
+}
 const delClickSwipe = () => {
-  console.log('Click On DelClickSwipe');
-};
+  console.log('Click On DelClickSwipe')
+}
 const addAddress = () => {
-  console.log('Click To Add');
-};
+  console.log('Click To Add')
+}
 </script>
 ```
 
@@ -243,7 +243,7 @@ const dataInfo = {
   phone: '123****4567', //联系方式
   defaultAddress: false, //是否是默认
   fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试' //详细地址
-};
+}
 ```
 
 In the component, the fields defined in the basic data structure are preferentially obtained. If you want to customize the `key` value, you can set the mapping relationship through `dataOptions`
@@ -253,7 +253,7 @@ const dataOptions = {
   id: 'testid',
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
-};
+}
 ```
 
 ## Theming

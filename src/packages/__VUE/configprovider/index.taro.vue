@@ -1,8 +1,8 @@
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import { component } from './common';
+import { createComponent } from '@/packages/utils/create'
+import { component } from './common'
 
-const { create } = createComponent('config-provider');
+const { create } = createComponent('config-provider')
 
-export default create(component('view'));
+export default create(component('view'))
 </script>

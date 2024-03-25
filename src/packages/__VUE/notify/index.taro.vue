@@ -13,11 +13,11 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch, onUnmounted, type PropType } from 'vue';
-import { createComponent } from '../../utils/create';
-import NutPopup from '../popup/index.taro.vue';
-import type { NotifyPosition, NotifyType } from './types';
-const { create } = createComponent('notify');
+import { ref, watch, onUnmounted, type PropType } from 'vue'
+import { createComponent } from '../../utils/create'
+import NutPopup from '../popup/index.taro.vue'
+import type { NotifyPosition, NotifyType } from './types'
+const { create } = createComponent('notify')
 
 export default create({
   components: {
@@ -64,43 +64,43 @@ export default create({
   emits: ['update:visible'],
   setup(props, { emit }) {
     const clickCover = () => {
-      props.onClick && props.onClick();
-    };
+      props.onClick && props.onClick()
+    }
 
     // timer
-    let timer: null | NodeJS.Timeout = null;
+    let timer: null | NodeJS.Timeout = null
     const clearTimer = () => {
-      timer && clearTimeout(timer);
-      timer = null;
-    };
+      timer && clearTimeout(timer)
+      timer = null
+    }
 
     // hide popup
     const hide = () => {
-      emit('update:visible', false);
-    };
+      emit('update:visible', false)
+    }
 
     // watch show popup
-    const isShowPopup = ref<boolean>(false);
+    const isShowPopup = ref<boolean>(false)
 
     watch(
       () => props.visible,
       (newVal: boolean) => {
-        isShowPopup.value = props.visible;
-        const DURATION: number = props.duration;
+        isShowPopup.value = props.visible
+        const DURATION: number = props.duration
         if (newVal && DURATION) {
           timer = setTimeout(() => {
-            hide();
-          }, DURATION);
+            hide()
+          }, DURATION)
         }
       },
       { immediate: true }
-    );
+    )
 
     onUnmounted(() => {
-      clearTimer();
-    });
+      clearTimer()
+    })
 
-    return { clickCover, isShowPopup };
+    return { clickCover, isShowPopup }
   }
-});
+})
 </script>

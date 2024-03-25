@@ -5,8 +5,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const val = ref(0);
+import { ref } from 'vue'
+const val = ref(0)
 const options = ref([
   { text: '全部商品', value: 0 },
   { text: '家庭清洁/纸品', value: 1 },
@@ -26,5 +26,5 @@ const options = ref([
   { text: '传统滋补', value: 15 },
   { text: '汽车用品', value: 16 },
   { text: '家居日用', value: 17 }
-]);
+])
 </script>

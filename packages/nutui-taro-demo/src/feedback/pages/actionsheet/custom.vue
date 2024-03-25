@@ -10,9 +10,9 @@
   />
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref('');
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref('')
 const menuItems = [
   {
     name: 'A'
@@ -25,11 +25,11 @@ const menuItems = [
     color: 'red',
     subname: 'desc'
   }
-];
+]
 const click = () => {
-  show.value = true;
-};
+  show.value = true
+}
 const choose = (item) => {
-  val.value = item.name;
-};
+  val.value = item.name
+}
 </script>

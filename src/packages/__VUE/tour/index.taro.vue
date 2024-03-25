@@ -74,22 +74,22 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, onMounted } from 'vue';
-import { PopoverLocation, PopoverTheme } from '../popover/type';
-import { createComponent } from '@/packages/utils/create';
-import { rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect';
-import { Close } from '@nutui/icons-vue-taro';
-import NutPopover from '../popover/index.taro.vue';
+import { computed, watch, ref, reactive, toRefs, PropType, onMounted } from 'vue'
+import { PopoverLocation, PopoverTheme } from '../popover/type'
+import { createComponent } from '@/packages/utils/create'
+import { rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect'
+import { Close } from '@nutui/icons-vue-taro'
+import NutPopover from '../popover/index.taro.vue'
 
 export interface StepOptions {
-  target: string;
-  content?: string;
-  location?: PopoverLocation;
-  popoverOffset?: number[];
-  arrowOffset?: number;
+  target: string
+  content?: string
+  location?: PopoverLocation
+  popoverOffset?: number[]
+  arrowOffset?: number
 }
-export type TourType = 'step' | 'tile';
-const { create } = createComponent('tour');
+export type TourType = 'step' | 'tile'
+const { create } = createComponent('tour')
 export default create({
   components: {
     NutPopover,
@@ -167,99 +167,99 @@ export default create({
     const state = reactive({
       showTour: props.modelValue,
       active: 0
-    });
+    })
 
-    const showPopup = ref([false]);
+    const showPopup = ref([false])
 
-    let maskRect: rectTaro[] = [];
+    let maskRect: rectTaro[] = []
 
-    let maskStyles = ref<any[]>([]);
+    let maskStyles = ref<any[]>([])
 
     const classes = computed(() => {
-      const prefixCls = 'nut-tour';
-      return `${prefixCls}`;
-    });
+      const prefixCls = 'nut-tour'
+      return `${prefixCls}`
+    })
 
     const maskStyle = (index: number) => {
-      const { offset, maskWidth, maskHeight } = props;
+      const { offset, maskWidth, maskHeight } = props
 
-      if (!maskRect[index]) return {};
-      const { width, height, left, top } = maskRect[index];
+      if (!maskRect[index]) return {}
+      const { width, height, left, top } = maskRect[index]
 
-      const center = [left + width / 2, top + height / 2]; // 中心点 【横，纵】
-      const w: number = Number(maskWidth ? maskWidth : width);
-      const h: number = Number(maskHeight ? maskHeight : height);
+      const center = [left + width / 2, top + height / 2] // 中心点 【横，纵】
+      const w: number = Number(maskWidth ? maskWidth : width)
+      const h: number = Number(maskHeight ? maskHeight : height)
 
       const styles = {
         width: `${w + +offset[1] * 2}px`,
         height: `${h + +offset[0] * 2}px`,
         top: `${center[1] - h / 2 - +offset[0]}px`,
         left: `${center[0] - w / 2 - +offset[1]}px`
-      };
-      maskStyles.value[index] = styles;
-    };
+      }
+      maskStyles.value[index] = styles
+    }
 
     const changeStep = (type: string) => {
-      const current = state.active;
-      let next = current;
+      const current = state.active
+      let next = current
 
       if (type == 'next') {
-        next = current + 1;
+        next = current + 1
       } else {
-        next = current - 1;
+        next = current - 1
       }
-      showPopup.value[current] = false;
+      showPopup.value[current] = false
 
       setTimeout(() => {
-        showPopup.value[next] = true;
-        state.active = next;
-      }, 300);
+        showPopup.value[next] = true
+        state.active = next
+      }, 300)
 
-      emit('change', state.active);
-    };
+      emit('change', state.active)
+    }
 
     const getRootPosition = () => {
       props.steps.forEach(async (item, i) => {
         useTaroRectById(item.target).then(
           (rect: any) => {
-            maskRect[i] = rect;
-            maskStyle(i);
+            maskRect[i] = rect
+            maskStyle(i)
           },
           () => {}
-        );
-      });
-    };
+        )
+      })
+    }
 
     const close = () => {
-      state.showTour = false;
-      showPopup.value[state.active] = false;
-      emit('close', state.active);
-      emit('update:modelValue', false);
-    };
+      state.showTour = false
+      showPopup.value[state.active] = false
+      emit('close', state.active)
+      emit('update:modelValue', false)
+    }
 
     const handleClickMask = () => {
-      props.closeOnClickOverlay && close();
-    };
+      props.closeOnClickOverlay && close()
+    }
 
     onMounted(() => {
       setTimeout(() => {
-        getRootPosition();
-      }, 500);
-    });
+        getRootPosition()
+      }, 500)
+    })
 
     watch(
       () => props.modelValue,
       (val) => {
         if (val) {
-          state.active = 0;
-          getRootPosition();
+          state.active = 0
+          getRootPosition()
         }
-        state.showTour = val;
-        showPopup.value[state.active] = val;
+        state.showTour = val
+        showPopup.value[state.active] = val
       }
-    );
+    )
 
-    const refRandomId = Math.random().toString(36).slice(-8);
+    const refRandomId = Math.random().toString(36).slice(-8)
 
     return {
       ...toRefs(state),
@@ -271,7 +271,7 @@ export default create({
       handleClickMask,
       maskStyles,
       refRandomId
-    };
+    }
   }
-});
+})
 </script>

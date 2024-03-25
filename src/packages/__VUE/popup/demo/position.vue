@@ -12,9 +12,9 @@
   <nut-popup v-model:visible="showRight" position="right" :style="{ width: '20%', height: '100%' }"></nut-popup>
 </template>
 <script setup>
-import { ref } from 'vue';
-const showTop = ref(false);
-const showBottom = ref(false);
-const showLeft = ref(false);
-const showRight = ref(false);
+import { ref } from 'vue'
+const showTop = ref(false)
+const showBottom = ref(false)
+const showLeft = ref(false)
+const showRight = ref(false)
 </script>

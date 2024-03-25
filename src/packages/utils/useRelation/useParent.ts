@@ -1,23 +1,23 @@
-import { getCurrentInstance, computed, inject, onUnmounted } from 'vue';
+import { getCurrentInstance, computed, inject, onUnmounted } from 'vue'
 
 export const useParent = (key: symbol) => {
-  const parent = inject<any>(key, null);
+  const parent = inject<any>(key, null)
 
   if (parent) {
-    const instance = getCurrentInstance()!;
-    const { link, unlink, internalChildren } = parent;
+    const instance = getCurrentInstance()!
+    const { link, unlink, internalChildren } = parent
 
-    link(instance);
+    link(instance)
     onUnmounted(() => {
-      unlink(instance);
-    });
-    const index = computed(() => internalChildren.indexOf(instance));
+      unlink(instance)
+    })
+    const index = computed(() => internalChildren.indexOf(instance))
 
-    return { parent, index };
+    return { parent, index }
   }
 
   return {
     parent,
     index: computed(() => -1)
-  };
-};
+  }
+}

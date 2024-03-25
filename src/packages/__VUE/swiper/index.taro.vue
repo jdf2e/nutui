@@ -38,15 +38,15 @@ import {
   ref,
   watch,
   VNode
-} from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useTouch } from '@/packages/utils/useTouch/index';
-import { useTaroRect } from '@/packages/utils/useTaroRect';
-import requestAniFrame from '@/packages/utils/raf';
-import { clamp } from '@/packages/utils/util';
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
-import { SWIPER_KEY } from './types';
-const { create, componentName } = createComponent('swiper');
+} from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useTouch } from '@/packages/utils/useTouch/index'
+import { useTaroRect } from '@/packages/utils/useTaroRect'
+import requestAniFrame from '@/packages/utils/raf'
+import { clamp } from '@/packages/utils/util'
+import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro'
+import { SWIPER_KEY } from './types'
+const { create, componentName } = createComponent('swiper')
 export default create({
   props: {
     width: {
@@ -103,8 +103,8 @@ export default create({
   emits: ['change'],
 
   setup(props, { emit, slots, expose }) {
-    const container = ref<HTMLElement>();
-    const refRandomId = Math.random().toString(36).slice(-8);
+    const container = ref<HTMLElement>()
+    const refRandomId = Math.random().toString(36).slice(-8)
     const state = reactive({
       active: 0,
       num: 0,
@@ -118,348 +118,348 @@ export default create({
       children: [] as ComponentPublicInstance[],
       childrenVNode: [] as VNode[],
       style: {}
-    });
+    })
 
-    const touch = useTouch();
+    const touch = useTouch()
 
-    const isVertical = computed(() => props.direction === 'vertical');
+    const isVertical = computed(() => props.direction === 'vertical')
 
     const classesInner = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [`${prefixCls}-inner`]: true,
         [`${prefixCls}-vertical`]: isVertical.value
-      };
-    });
+      }
+    })
 
     const classesPagination = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [`${prefixCls}-pagination`]: true,
         [`${prefixCls}-pagination-vertical`]: isVertical.value
-      };
-    });
+      }
+    })
 
     const delTa = computed(() => {
-      return isVertical.value ? touch.deltaY.value : touch.deltaX.value;
-    });
+      return isVertical.value ? touch.deltaY.value : touch.deltaX.value
+    })
 
     const isCorrectDirection = computed(() => {
-      return touch.direction.value === props.direction;
-    });
+      return touch.direction.value === props.direction
+    })
 
-    const childCount = computed(() => state.children.length);
+    const childCount = computed(() => state.children.length)
 
-    const size = computed(() => state[isVertical.value ? 'height' : 'width']);
+    const size = computed(() => state[isVertical.value ? 'height' : 'width'])
 
-    const trackSize = computed(() => childCount.value * size.value);
+    const trackSize = computed(() => childCount.value * size.value)
 
     const minOffset = computed(() => {
       if (state.rect) {
-        const base = isVertical.value ? state.rect.height : state.rect.width;
-        return base - size.value * childCount.value;
+        const base = isVertical.value ? state.rect.height : state.rect.width
+        return base - size.value * childCount.value
       }
-      return 0;
-    });
+      return 0
+    })
 
-    const activePagination = computed(() => (state.active + childCount.value) % childCount.value);
+    const activePagination = computed(() => (state.active + childCount.value) % childCount.value)
 
     const getStyle = () => {
-      let offset = 0;
-      offset = state.offset;
+      let offset = 0
+      offset = state.offset
       state.style = {
         transitionDuration: `${state.moving ? 0 : props.duration}ms`,
         transform: `translate${isVertical.value ? 'Y' : 'X'}(${offset}px)`,
         [isVertical.value ? 'height' : 'width']: `${size.value * childCount.value}px`,
         [isVertical.value ? 'width' : 'height']: `${isVertical.value ? state.width : state.height}px`
-      };
-    };
+      }
+    }
 
     const relation = (child: ComponentInternalInstance) => {
-      let children = [] as VNode[];
-      const childrenVNodeLen = state.childrenVNode.length;
-      let slot = slots?.default?.() as VNode[];
-      slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children));
+      let children = [] as VNode[]
+      const childrenVNodeLen = state.childrenVNode.length
+      let slot = slots?.default?.() as VNode[]
+      slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children))
       slot.forEach((item: VNode) => {
-        children = children.concat(item.children as VNode[]);
-      });
+        children = children.concat(item.children as VNode[])
+      })
       if (!childrenVNodeLen) {
-        state.childrenVNode = children.slice();
-        child.proxy && state.children.push(child.proxy);
+        state.childrenVNode = children.slice()
+        child.proxy && state.children.push(child.proxy)
       } else {
         if (childrenVNodeLen > children.length) {
-          state.children = state.children.filter((item: ComponentPublicInstance) => child.proxy !== item);
+          state.children = state.children.filter((item: ComponentPublicInstance) => child.proxy !== item)
         } else if (childrenVNodeLen < children.length) {
           for (let i = 0; i < childrenVNodeLen; i++) {
             if ((children[i] as VNode).key !== (state.childrenVNode[i] as VNode).key) {
-              child.proxy && state.children.splice(i, 0, child.proxy);
-              child.vnode && state.childrenVNode.splice(i, 0, child.vnode);
-              break;
+              child.proxy && state.children.splice(i, 0, child.proxy)
+              child.vnode && state.childrenVNode.splice(i, 0, child.vnode)
+              break
             }
           }
           if (childrenVNodeLen !== children.length) {
-            child.proxy && state.children.push(child.proxy);
-            child.vnode && state.childrenVNode.push(child.vnode);
+            child.proxy && state.children.push(child.proxy)
+            child.vnode && state.childrenVNode.push(child.vnode)
           }
         } else {
-          state.childrenVNode = children.slice();
-          child.proxy && state.children.push(child.proxy);
+          state.childrenVNode = children.slice()
+          child.proxy && state.children.push(child.proxy)
         }
       }
-    };
+    }
 
     const getOffset = (active: number, offset = 0) => {
-      let currentPosition = active * size.value;
+      let currentPosition = active * size.value
       if (!props.loop) {
-        currentPosition = Math.min(currentPosition, -minOffset.value);
+        currentPosition = Math.min(currentPosition, -minOffset.value)
       }
 
-      let targetOffset = offset - currentPosition;
+      let targetOffset = offset - currentPosition
       if (!props.loop) {
-        targetOffset = clamp(targetOffset, minOffset.value, 0);
+        targetOffset = clamp(targetOffset, minOffset.value, 0)
       }
 
-      return targetOffset;
-    };
+      return targetOffset
+    }
 
     const getActive = (pace: number) => {
-      const { active } = state;
+      const { active } = state
       if (pace) {
         if (props.loop) {
-          return clamp(active + pace, -1, childCount.value);
+          return clamp(active + pace, -1, childCount.value)
         }
-        return clamp(active + pace, 0, childCount.value - 1);
+        return clamp(active + pace, 0, childCount.value - 1)
       }
-      return active;
-    };
+      return active
+    }
 
     const move = ({ pace = 0, offset = 0, isEmit = false }) => {
-      if (childCount.value <= 1) return;
+      if (childCount.value <= 1) return
 
-      const { active } = state;
+      const { active } = state
 
-      const targetActive = getActive(pace);
-      const targetOffset = getOffset(targetActive, offset);
+      const targetActive = getActive(pace)
+      const targetOffset = getOffset(targetActive, offset)
 
       if (props.loop) {
         if (state.children[0] && targetOffset !== minOffset.value) {
-          const rightBound = targetOffset < minOffset.value;
-          (state.children[0] as any).setOffset(rightBound ? trackSize.value : 0);
+          const rightBound = targetOffset < minOffset.value
+          ;(state.children[0] as any).setOffset(rightBound ? trackSize.value : 0)
         }
         if (state.children[childCount.value - 1] && targetOffset !== 0) {
-          const leftBound = targetOffset > 0;
-          (state.children[childCount.value - 1] as any).setOffset(leftBound ? -trackSize.value : 0);
+          const leftBound = targetOffset > 0
+          ;(state.children[childCount.value - 1] as any).setOffset(leftBound ? -trackSize.value : 0)
         }
       }
 
-      state.active = targetActive;
-      state.offset = targetOffset;
+      state.active = targetActive
+      state.offset = targetOffset
 
       if (isEmit && active !== state.active) {
-        emit('change', activePagination.value);
+        emit('change', activePagination.value)
       }
 
-      getStyle();
-    };
+      getStyle()
+    }
 
     const resettPosition = () => {
-      state.moving = true;
+      state.moving = true
 
       if (state.active <= -1) {
-        move({ pace: childCount.value });
+        move({ pace: childCount.value })
       }
       if (state.active >= childCount.value) {
-        move({ pace: -childCount.value });
+        move({ pace: -childCount.value })
       }
-    };
+    }
 
     const stopAutoPlay = () => {
       if (state.autoplayTimer) {
-        clearTimeout(state.autoplayTimer);
+        clearTimeout(state.autoplayTimer)
       }
-    };
+    }
 
     const jump = (pace: number) => {
-      resettPosition();
-      touch.reset();
+      resettPosition()
+      touch.reset()
 
       requestAniFrame(() => {
         requestAniFrame(() => {
-          state.moving = false;
+          state.moving = false
           move({
             pace,
             isEmit: true
-          });
-        });
-      });
-    };
+          })
+        })
+      })
+    }
 
     const prev = () => {
-      jump(-1);
-    };
+      jump(-1)
+    }
 
     const next = () => {
-      jump(1);
-    };
+      jump(1)
+    }
 
     const to = (index: number) => {
-      resettPosition();
+      resettPosition()
 
-      touch.reset();
+      touch.reset()
 
       requestAniFrame(() => {
-        state.moving = false;
-        let targetIndex;
+        state.moving = false
+        let targetIndex
         if (props.loop && childCount.value === index) {
-          targetIndex = state.active === 0 ? 0 : index;
+          targetIndex = state.active === 0 ? 0 : index
         } else {
-          targetIndex = index % childCount.value;
+          targetIndex = index % childCount.value
         }
         move({
           pace: targetIndex - state.active,
           isEmit: true
-        });
-      });
-    };
+        })
+      })
+    }
 
     const autoplay = () => {
-      if (Number(props.autoPlay) <= 0 || childCount.value <= 1) return;
-      stopAutoPlay();
+      if (Number(props.autoPlay) <= 0 || childCount.value <= 1) return
+      stopAutoPlay()
 
       state.autoplayTimer = setTimeout(() => {
-        next();
-        autoplay();
-      }, Number(props.autoPlay));
-    };
+        next()
+        autoplay()
+      }, Number(props.autoPlay))
+    }
 
     const init = async (active: number = +props.initPage) => {
-      if (!container.value) return;
-      stopAutoPlay();
+      if (!container.value) return
+      stopAutoPlay()
       useTaroRect(container).then(
         (rect: any) => {
-          state.rect = rect;
-          active = Math.min(childCount.value - 1, active);
-          state.width = props.width ? +props.width : rect?.width;
-          state.height = props.height ? +props.height : rect?.height;
-          state.active = active;
-          state.offset = getOffset(state.active);
-          state.moving = true;
-          getStyle();
-          autoplay();
+          state.rect = rect
+          active = Math.min(childCount.value - 1, active)
+          state.width = props.width ? +props.width : rect?.width
+          state.height = props.height ? +props.height : rect?.height
+          state.active = active
+          state.offset = getOffset(state.active)
+          state.moving = true
+          getStyle()
+          autoplay()
         },
         () => {}
-      );
-    };
+      )
+    }
 
     const onTouchStart = (e: TouchEvent) => {
-      if (props.isStopPropagation) e.stopPropagation();
-      if (!props.touchable) return;
-      touch.start(e);
-      state.touchTime = Date.now();
-      stopAutoPlay();
-      resettPosition();
-    };
+      if (props.isStopPropagation) e.stopPropagation()
+      if (!props.touchable) return
+      touch.start(e)
+      state.touchTime = Date.now()
+      stopAutoPlay()
+      resettPosition()
+    }
 
     const onTouchMove = (e: TouchEvent) => {
       if (props.touchable && state.moving) {
-        touch.move(e);
+        touch.move(e)
         if (isCorrectDirection.value) {
           move({
             offset: delTa.value
-          });
+          })
         }
       }
-    };
+    }
 
     const onTouchEnd = () => {
-      if (!props.touchable || !state.moving) return;
-      const speed = delTa.value / (Date.now() - state.touchTime);
-      const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
+      if (!props.touchable || !state.moving) return
+      const speed = delTa.value / (Date.now() - state.touchTime)
+      const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2)
 
       if (isShouldMove && isCorrectDirection.value) {
-        let pace = 0;
-        const offset = isVertical.value ? touch.offsetY.value : touch.offsetX.value;
+        let pace = 0
+        const offset = isVertical.value ? touch.offsetY.value : touch.offsetX.value
         if (props.loop) {
-          pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0;
+          pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0
         } else {
-          pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](delTa.value / size.value);
+          pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](delTa.value / size.value)
         }
         move({
           pace,
           isEmit: true
-        });
+        })
       } else if (delTa.value) {
-        move({ pace: 0 });
+        move({ pace: 0 })
       }
-      state.moving = false;
-      getStyle();
-      autoplay();
-    };
+      state.moving = false
+      getStyle()
+      autoplay()
+    }
 
     provide(SWIPER_KEY, {
       props,
       size,
       relation
-    });
+    })
 
     expose({
       prev,
       next,
       to
-    });
+    })
 
     onDeactivated(() => {
-      stopAutoPlay();
-    });
+      stopAutoPlay()
+    })
 
     onBeforeUnmount(() => {
-      stopAutoPlay();
-    });
+      stopAutoPlay()
+    })
 
     watch(
       () => props.initPage,
       (val) => {
         Taro.nextTick(() => {
-          init(+val);
-        });
+          init(+val)
+        })
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-          init(+val);
-        });
+          init(+val)
+        })
       }
-    );
+    )
 
     watch(
       () => props.height,
       () => {
         Taro.nextTick(() => {
-          init();
-        });
+          init()
+        })
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-          init();
-        });
+          init()
+        })
       }
-    );
+    )
 
     watch(
       () => state.children.length,
       () => {
         Taro.nextTick(() => {
-          init();
-        });
+          init()
+        })
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
           Taro.nextTick(() => {
-            init();
-          });
-        });
+            init()
+          })
+        })
       }
-    );
+    )
 
     watch(
       () => props.autoPlay,
       (val) => {
-        Number(val) > 0 ? autoplay() : stopAutoPlay();
+        Number(val) > 0 ? autoplay() : stopAutoPlay()
       }
-    );
+    )
 
     return {
       state,
@@ -471,7 +471,7 @@ export default create({
       onTouchStart,
       onTouchMove,
       onTouchEnd
-    };
+    }
   }
-});
+})
 </script>

@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Space } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Space } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Space);
+const app = createApp()
+app.use(Space)
 ```
 
 ### 基础用法

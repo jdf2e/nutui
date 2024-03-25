@@ -7,13 +7,13 @@ For delivery time selection
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { TimeSelect, TimePannel, TimeDetail } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { TimeSelect, TimePannel, TimeDetail } from '@nutui/nutui'
 
-const app = createApp();
-app.use(TimeSelect);
-app.use(TimePannel);
-app.use(TimeDetail);
+const app = createApp()
+app.use(TimeSelect)
+app.use(TimePannel)
+app.use(TimeDetail)
 ```
 
 ### Basic Usage

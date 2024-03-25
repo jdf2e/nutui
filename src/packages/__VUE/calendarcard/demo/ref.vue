@@ -8,11 +8,11 @@
   <nut-calendar-card ref="calendarCardRef" v-model="value" @change="onChange" />
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { CalendarCardInstance } from '@nutui/nutui';
-const calendarCardRef = ref<CalendarCardInstance>();
-const value = ref(null);
+import { ref } from 'vue'
+import { CalendarCardInstance } from '@nutui/nutui'
+const calendarCardRef = ref<CalendarCardInstance>()
+const value = ref(null)
 const onChange = (val: Date) => {
-  console.log(val);
-};
+  console.log(val)
+}
 </script>

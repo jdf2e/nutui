@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Grid, GridItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Grid, GridItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Grid);
-app.use(GridItem);
+const app = createApp()
+app.use(Grid)
+app.use(GridItem)
 ```
 
 ### 基础用法

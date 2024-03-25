@@ -13,5 +13,5 @@
   </nut-cell>
 </template>
 <script setup lang="ts">
-import { Success, Failure } from '@nutui/icons-vue-taro';
+import { Success, Failure } from '@nutui/icons-vue-taro'
 </script>

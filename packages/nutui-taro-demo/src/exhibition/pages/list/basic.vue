@@ -10,19 +10,19 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const data = ref(new Array(100).fill(0));
+const data = ref(new Array(100).fill(0))
 
 onMounted(() => {
-  data.value = data.value.map((_: number, index: number) => index + 1);
-});
+  data.value = data.value.map((_: number, index: number) => index + 1)
+})
 
 const onScrollBottom = () => {
-  let arr = new Array(100).fill(0);
-  const len = data.value.length;
-  data.value = data.value.concat(arr.map((_: number, index: number) => len + index + 1));
-};
+  let arr = new Array(100).fill(0)
+  const len = data.value.length
+  data.value = data.value.concat(arr.map((_: number, index: number) => len + index + 1))
+}
 </script>
 
 <style>

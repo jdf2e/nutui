@@ -7,11 +7,11 @@ Signature component based on canvas.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Signature } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Signature } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Signature);
+const app = createApp()
+app.use(Signature)
 ```
 
 ### Basic usage

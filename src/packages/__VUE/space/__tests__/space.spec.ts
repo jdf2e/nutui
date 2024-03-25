@@ -1,17 +1,17 @@
-import { mount } from '@vue/test-utils';
-import { Button, Space } from '@nutui/nutui';
-import { h } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Button, Space } from '@nutui/nutui'
+import { h } from 'vue'
 
-const prefixCls = 'nut-space';
+const prefixCls = 'nut-space'
 
 test('space: should match snapshot', () => {
   const wrapper = mount(Space, {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('space: with props direction', () => {
   const wrapper = mount(Space, {
@@ -21,9 +21,9 @@ test('space: with props direction', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.classes()).toContain(`${prefixCls}-vertical`);
-});
+  })
+  expect(wrapper.classes()).toContain(`${prefixCls}-vertical`)
+})
 
 test('space: with props align', () => {
   const wrapper = mount(Space, {
@@ -33,9 +33,9 @@ test('space: with props align', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.classes()).toContain(`${prefixCls}-align-end`);
-});
+  })
+  expect(wrapper.classes()).toContain(`${prefixCls}-align-end`)
+})
 
 test('space: with props justify', () => {
   const wrapper = mount(Space, {
@@ -45,9 +45,9 @@ test('space: with props justify', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.classes()).toContain(`${prefixCls}-justify-center`);
-});
+  })
+  expect(wrapper.classes()).toContain(`${prefixCls}-justify-center`)
+})
 
 test('space: with props wrap', () => {
   const wrapper = mount(Space, {
@@ -57,9 +57,9 @@ test('space: with props wrap', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.classes()).toContain(`${prefixCls}-wrap`);
-});
+  })
+  expect(wrapper.classes()).toContain(`${prefixCls}-wrap`)
+})
 
 test('space: with props fill', () => {
   const wrapper = mount(Space, {
@@ -69,9 +69,9 @@ test('space: with props fill', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  expect(wrapper.classes()).toContain(`${prefixCls}-fill`);
-});
+  })
+  expect(wrapper.classes()).toContain(`${prefixCls}-fill`)
+})
 
 test('space: with props gutter number', () => {
   const wrapper = mount(Space, {
@@ -81,10 +81,10 @@ test('space: with props gutter number', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  const nutSpaceItem = wrapper.find('.nut-space-item');
-  expect(nutSpaceItem.attributes('style')).toBe('margin-right: 20px;');
-});
+  })
+  const nutSpaceItem = wrapper.find('.nut-space-item')
+  expect(nutSpaceItem.attributes('style')).toBe('margin-right: 20px;')
+})
 
 test('space: with props gutter string', () => {
   const wrapper = mount(Space, {
@@ -94,7 +94,7 @@ test('space: with props gutter string', () => {
     slots: {
       default: [h(Button, () => '按钮'), h(Button, () => '按钮'), h(Button, () => '按钮')]
     }
-  });
-  const nutSpaceItem = wrapper.find('.nut-space-item');
-  expect(nutSpaceItem.attributes('style')).toBe('margin-right: 1rem;');
-});
+  })
+  const nutSpaceItem = wrapper.find('.nut-space-item')
+  expect(nutSpaceItem.attributes('style')).toBe('margin-right: 1rem;')
+})

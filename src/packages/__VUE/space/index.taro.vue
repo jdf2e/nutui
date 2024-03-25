@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Comment, CSSProperties, Fragment, PropType, Text, h, type VNode } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { SpaceAlign, SpaceJustify, SpaceGutter } from './types';
-const { create, componentName } = createComponent('space');
+import { Comment, CSSProperties, Fragment, PropType, Text, h, type VNode } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { SpaceAlign, SpaceJustify, SpaceGutter } from './types'
+const { create, componentName } = createComponent('space')
 export default create({
   props: {
     align: String as PropType<SpaceAlign>,
@@ -19,46 +19,46 @@ export default create({
     // gutter数值转换
     const getMargin = (gutter: SpaceGutter) => {
       if (typeof gutter === 'number') {
-        return gutter + 'px';
+        return gutter + 'px'
       }
-      return gutter;
-    };
+      return gutter
+    }
 
     // 计算margin样式
     const getMarginStyle = (isLast: boolean): CSSProperties => {
-      const style: CSSProperties = {};
+      const style: CSSProperties = {}
 
-      if (!props.gutter) return style;
+      if (!props.gutter) return style
 
-      const marginRight = `${getMargin(Array.isArray(props.gutter) ? props.gutter[0] : props.gutter)}`;
-      const marginBottom = `${getMargin(Array.isArray(props.gutter) ? props.gutter[1] : props.gutter)}`;
+      const marginRight = `${getMargin(Array.isArray(props.gutter) ? props.gutter[0] : props.gutter)}`
+      const marginBottom = `${getMargin(Array.isArray(props.gutter) ? props.gutter[1] : props.gutter)}`
 
       if (isLast) {
-        return props.wrap ? { marginBottom } : {};
+        return props.wrap ? { marginBottom } : {}
       }
 
       if (props.direction === 'horizontal') {
-        style.marginRight = marginRight;
+        style.marginRight = marginRight
       }
       if (props.direction === 'vertical' || props.wrap) {
-        style.marginBottom = marginBottom;
+        style.marginBottom = marginBottom
       }
 
-      return style;
-    };
+      return style
+    }
 
     // 过滤空节点
     const filterEmpty = (children: VNode[] = []) => {
-      const nodes: VNode[] = [];
+      const nodes: VNode[] = []
       children.forEach((child) => {
         if (Array.isArray(child)) {
-          nodes.push(...child);
+          nodes.push(...child)
         } else if (child.type === Fragment) {
-          nodes.push(...filterEmpty(child.children as VNode[]));
+          nodes.push(...filterEmpty(child.children as VNode[]))
         } else {
-          nodes.push(child);
+          nodes.push(child)
         }
-      });
+      })
       return nodes.filter(
         (c) =>
           !(
@@ -67,13 +67,13 @@ export default create({
               (c.type === Fragment && c.children?.length === 0) ||
               (c.type === Text && (c.children as string).trim() === ''))
           )
-      );
-    };
+      )
+    }
 
-    const { direction, wrap, fill, justify, align } = props;
+    const { direction, wrap, fill, justify, align } = props
 
     return () => {
-      const children = filterEmpty(slots.default?.());
+      const children = filterEmpty(slots.default?.())
 
       // 渲染子节点
       const renderChildren = () => {
@@ -86,9 +86,9 @@ export default create({
               style: getMarginStyle(i === children.length - 1)
             },
             child
-          );
-        });
-      };
+          )
+        })
+      }
 
       // 渲染根节点
       return h(
@@ -104,8 +104,8 @@ export default create({
           ]
         },
         renderChildren()
-      );
-    };
+      )
+    }
   }
-});
+})
 </script>

@@ -2,8 +2,8 @@
   <nut-fixed-nav v-model:visible="visible" type="left" :position="{ top: '140px' }" :nav-list="navList" />
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const visible = ref(false);
+import { ref } from 'vue'
+const visible = ref(false)
 const navList = ref([
   {
     id: 1,
@@ -26,5 +26,5 @@ const navList = ref([
     text: '我的',
     icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
   }
-]);
+])
 </script>

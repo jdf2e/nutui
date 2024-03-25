@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Checkbox);
-app.use(CheckboxGroup);
+const app = createApp()
+app.use(Checkbox)
+app.use(CheckboxGroup)
 ```
 
 ### 基础用法

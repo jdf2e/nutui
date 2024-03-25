@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils';
-import { Radio, RadioGroup } from '@nutui/nutui';
-import { ref } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Radio, RadioGroup } from '@nutui/nutui'
+import { ref } from 'vue'
 
 test('Radio: v-model & change', async () => {
-  const val = ref('');
-  const onChange = vi.fn();
+  const val = ref('')
+  const onChange = vi.fn()
   const wrapper = mount(() => {
     return (
       <>
@@ -15,15 +15,15 @@ test('Radio: v-model & change', async () => {
           <Radio label="4" />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const items = wrapper.findAll('.nut-radio');
-  await items[0].trigger('click');
-  expect(val.value).toEqual('1');
-  expect(onChange).toBeCalledTimes(1);
-  expect(onChange).toBeCalledWith('1');
-});
+  const items = wrapper.findAll('.nut-radio')
+  await items[0].trigger('click')
+  expect(val.value).toEqual('1')
+  expect(onChange).toBeCalledTimes(1)
+  expect(onChange).toBeCalledWith('1')
+})
 
 test('Radio: text-position', () => {
   const wrapper = mount(() => {
@@ -36,12 +36,12 @@ test('Radio: text-position', () => {
           <Radio label="4" />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const items = wrapper.findAll('.nut-radio');
-  expect(items[0].classes()).toContain('nut-radio--reverse');
-});
+  const items = wrapper.findAll('.nut-radio')
+  expect(items[0].classes()).toContain('nut-radio--reverse')
+})
 
 test('Radio: direction', () => {
   const wrapper = mount(() => {
@@ -54,16 +54,16 @@ test('Radio: direction', () => {
           <Radio label="4" />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const item = wrapper.find('.nut-radio-group');
-  expect(item.html()).toContain('nut-radio-group--horizontal');
-});
+  const item = wrapper.find('.nut-radio-group')
+  expect(item.html()).toContain('nut-radio-group--horizontal')
+})
 
 test('Radio: disabled', async () => {
-  const val = ref('4');
-  const onChange = vi.fn();
+  const val = ref('4')
+  const onChange = vi.fn()
   const wrapper = mount(() => {
     return (
       <>
@@ -74,14 +74,14 @@ test('Radio: disabled', async () => {
           <Radio label="4" />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const items = wrapper.findAll('.nut-radio');
-  await items[1].trigger('click');
-  expect(onChange).toBeCalledTimes(0);
-  expect(val.value).toBe('4');
-});
+  const items = wrapper.findAll('.nut-radio')
+  await items[1].trigger('click')
+  expect(onChange).toBeCalledTimes(0)
+  expect(val.value).toBe('4')
+})
 
 test('Radio: icon-size', async () => {
   const wrapper = mount(() => {
@@ -92,13 +92,13 @@ test('Radio: icon-size', async () => {
           <Radio label="2" iconSize={12} />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const items = wrapper.findAll('.nut-radio');
-  expect(items[0].findAll('svg')[0].element.style.width).toEqual('25px');
-  expect(items[1].findAll('svg')[0].element.style.height).toEqual('12px');
-});
+  const items = wrapper.findAll('.nut-radio')
+  expect(items[0].findAll('svg')[0].element.style.width).toEqual('25px')
+  expect(items[1].findAll('svg')[0].element.style.height).toEqual('12px')
+})
 
 test('Radio: shape', async () => {
   const wrapper = mount(() => {
@@ -109,10 +109,10 @@ test('Radio: shape', async () => {
           <Radio label="2" />
         </RadioGroup>
       </>
-    );
-  });
+    )
+  })
 
-  const items = wrapper.findAll('.nut-radio');
-  expect(items[0].classes()).toContain('nut-radio--button');
-  expect(items[1].classes()).toContain('nut-radio--round');
-});
+  const items = wrapper.findAll('.nut-radio')
+  expect(items[0].classes()).toContain('nut-radio--button')
+  expect(items[1].classes()).toContain('nut-radio--round')
+})

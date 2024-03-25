@@ -1,30 +1,30 @@
-import { reactive, provide } from 'vue';
+import { reactive, provide } from 'vue'
 
 export const useChildren = (key: symbol) => {
-  const publicChildren = reactive<any[]>([]);
-  const internalChildren = reactive<any[]>([]);
+  const publicChildren = reactive<any[]>([])
+  const internalChildren = reactive<any[]>([])
 
   const linkChildren = (value?: any) => {
     const link = (child: any) => {
       if (child.proxy) {
-        internalChildren.push(child);
-        publicChildren.push(child.proxy);
+        internalChildren.push(child)
+        publicChildren.push(child.proxy)
       }
-    };
+    }
 
     const unlink = (child: any) => {
       if (child.proxy) {
-        let internalIndex = internalChildren.indexOf(child);
+        let internalIndex = internalChildren.indexOf(child)
         if (internalIndex > -1) {
-          internalChildren.splice(internalIndex, 1);
+          internalChildren.splice(internalIndex, 1)
         }
 
-        let publicIndex = publicChildren.indexOf(child.proxy);
+        let publicIndex = publicChildren.indexOf(child.proxy)
         if (internalIndex > -1) {
-          publicChildren.splice(publicIndex, 1);
+          publicChildren.splice(publicIndex, 1)
         }
       }
-    };
+    }
 
     provide(key, {
       unlink,
@@ -32,11 +32,11 @@ export const useChildren = (key: symbol) => {
       children: publicChildren,
       internalChildren,
       ...value
-    });
-  };
+    })
+  }
 
   return {
     children: publicChildren,
     linkChildren
-  };
-};
+  }
+}

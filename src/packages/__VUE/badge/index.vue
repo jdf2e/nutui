@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('badge');
+import { computed, reactive } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('badge')
 export default create({
   props: {
     value: {
@@ -59,7 +59,7 @@ export default create({
   },
 
   setup(props) {
-    const state = reactive({});
+    const state = reactive({})
 
     const stl = computed(() => {
       return {
@@ -67,24 +67,24 @@ export default create({
         right: `${props.right}px`,
         zIndex: props.zIndex,
         background: props.color
-      };
-    });
+      }
+    })
 
     const content = computed(() => {
-      if (props.dot) return;
-      const value = props.value;
-      const max = props.max;
+      if (props.dot) return
+      const value = props.value
+      const max = props.max
       if (typeof value === 'number' && typeof max === 'number') {
-        return max < value ? `${max}+` : value;
+        return max < value ? `${max}+` : value
       }
-      return value;
-    });
+      return value
+    })
 
     return {
       state,
       stl,
       content
-    };
+    }
   }
-});
+})
 </script>

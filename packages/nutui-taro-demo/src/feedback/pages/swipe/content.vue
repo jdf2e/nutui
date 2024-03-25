@@ -15,6 +15,6 @@
   </nut-swipe>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const number = ref(0);
+import { ref } from 'vue'
+const number = ref(0)
 </script>

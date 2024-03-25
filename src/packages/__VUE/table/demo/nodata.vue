@@ -7,7 +7,7 @@
   </nut-table>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const columns = ref([
   {
     title: '姓名',
@@ -29,6 +29,6 @@ const columns = ref([
     title: '地址',
     key: 'address'
   }
-]);
-const data = ref([]);
+])
+const data = ref([])
 </script>

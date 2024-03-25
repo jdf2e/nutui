@@ -7,11 +7,11 @@ Hover stow experience Interaction for quick navigation
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { FixedNav } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { FixedNav } from '@nutui/nutui'
 
-const app = createApp();
-app.use(FixedNav);
+const app = createApp()
+app.use(FixedNav)
 ```
 
 ### Basic Usage

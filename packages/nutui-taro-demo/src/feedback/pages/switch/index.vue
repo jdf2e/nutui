@@ -27,15 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Disabled from './disabled.vue';
-import Loading from './loading.vue';
-import Event from './event.vue';
-import Async from './async.vue';
-import Color from './color.vue';
-import Text from './text.vue';
-import IconDemo from './icon.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Disabled from './disabled.vue'
+import Loading from './loading.vue'
+import Event from './event.vue'
+import Async from './async.vue'
+import Color from './color.vue'
+import Text from './text.vue'
+import IconDemo from './icon.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -58,5 +58,5 @@ const t = useTranslate({
     text: 'Support Text',
     icon: 'Custom Loading Icon'
   }
-});
+})
 </script>

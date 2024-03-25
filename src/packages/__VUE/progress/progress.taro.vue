@@ -45,26 +45,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Checked } from '@nutui/icons-vue-taro';
-import type { ProgressSize, ProgressStatus } from './types';
+import { computed } from 'vue'
+import { Checked } from '@nutui/icons-vue-taro'
+import type { ProgressSize, ProgressStatus } from './types'
 
 defineOptions({
   name: 'NutProgress'
-});
+})
 
 export type ProgressProps = Partial<{
-  percentage: string | number;
-  size: ProgressSize;
-  status: ProgressStatus;
-  strokeWidth: string | number;
-  textInside: boolean;
-  showText: boolean;
-  strokeColor: string;
-  textColor: string;
-  textBackground: string;
-  isShowPercentage: boolean;
-}>;
+  percentage: string | number
+  size: ProgressSize
+  status: ProgressStatus
+  strokeWidth: string | number
+  textInside: boolean
+  showText: boolean
+  strokeColor: string
+  textColor: string
+  textBackground: string
+  isShowPercentage: boolean
+}>
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   percentage: 0,
@@ -73,26 +73,26 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   textInside: false,
   showText: true,
   isShowPercentage: true
-});
+})
 
 const height = computed(() => {
   if (props.strokeWidth) {
-    return props.strokeWidth + 'px';
+    return props.strokeWidth + 'px'
   }
-  return undefined;
-});
+  return undefined
+})
 const percentage = computed(() => {
-  return Number(props.percentage) >= 100 ? 100 : Number(props.percentage);
-});
+  return Number(props.percentage) >= 100 ? 100 : Number(props.percentage)
+})
 const bgStyle = computed(() => {
   return {
     width: percentage.value + '%',
     background: props.strokeColor || ''
-  };
-});
+  }
+})
 const textStyle = computed(() => {
   return {
     color: props.textColor || ''
-  };
-});
+  }
+})
 </script>

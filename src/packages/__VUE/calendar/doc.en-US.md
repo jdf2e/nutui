@@ -7,11 +7,11 @@ Calendar, tileable/pop-up display
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Calendar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Calendar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Calendar);
+const app = createApp()
+app.use(Calendar)
 ```
 
 ### Select Single Date

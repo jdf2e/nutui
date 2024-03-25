@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts">
-import { computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { Loading1 } from '@nutui/icons-vue';
-import { useFormDisabled } from '../form/common';
-const { componentName, create } = createComponent('switch');
+import { computed, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { Loading1 } from '@nutui/icons-vue'
+import { useFormDisabled } from '../form/common'
+const { componentName, create } = createComponent('switch')
 
 export default create({
   components: { Loading1 },
@@ -68,52 +68,52 @@ export default create({
   },
   emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
-    const legacyDisabled = computed(() => props.disabled || props.disable);
-    const disabled = useFormDisabled(legacyDisabled);
-    const isActive = computed(() => props.modelValue === props.activeValue);
+    const legacyDisabled = computed(() => props.disabled || props.disable)
+    const disabled = useFormDisabled(legacyDisabled)
+    const isActive = computed(() => props.modelValue === props.activeValue)
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [isActive.value ? 'nut-switch-open' : 'nut-switch-close']: true,
         [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-base`]: true
-      };
-    });
+      }
+    })
 
     const style = computed(() => {
       return {
         backgroundColor: isActive.value ? props.activeColor : props.inactiveColor
-      };
-    });
+      }
+    })
 
-    let updateType = '';
+    let updateType = ''
 
     const onClick = (event: Event) => {
-      if (props.loading || disabled.value) return;
-      const value = isActive.value ? props.inactiveValue : props.activeValue;
-      updateType = 'click';
-      emit('update:modelValue', value);
-      emit('change', value, event);
-    };
+      if (props.loading || disabled.value) return
+      const value = isActive.value ? props.inactiveValue : props.activeValue
+      updateType = 'click'
+      emit('update:modelValue', value)
+      emit('change', value, event)
+    }
 
     watch(
       () => props.modelValue,
       (v) => {
         if (updateType == 'click') {
-          updateType = '';
+          updateType = ''
         } else {
-          emit('change', v);
+          emit('change', v)
         }
       }
-    );
+    )
 
     return {
       classes,
       style,
       isActive,
       onClick
-    };
+    }
   }
-});
+})
 </script>

@@ -2,8 +2,8 @@
   <nut-picker v-model="value" :columns="columns" title="请选择时间" @confirm="confirm" />
 </template>
 <script setup>
-import { ref } from 'vue';
-const value = ref(['Wednesday', 'Afternoon']);
+import { ref } from 'vue'
+const value = ref(['Wednesday', 'Afternoon'])
 const columns = ref([
   [
     { text: '周一', value: 'Monday' },
@@ -17,9 +17,9 @@ const columns = ref([
     { text: '下午', value: 'Afternoon' },
     { text: '晚上', value: 'Evening' }
   ]
-]);
+])
 
 const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue, selectedOptions);
-};
+  console.log(selectedValue, selectedOptions)
+}
 </script>

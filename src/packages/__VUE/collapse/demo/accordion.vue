@@ -6,9 +6,9 @@
   </nut-collapse>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const val = ref(['name2', 'name3']);
+import { ref } from 'vue'
+const val = ref(['name2', 'name3'])
 const change = (modelValue: string[], name: string, status: boolean) => {
-  console.log(modelValue, name, status);
-};
+  console.log(modelValue, name, status)
+}
 </script>

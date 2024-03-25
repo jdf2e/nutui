@@ -2,9 +2,9 @@
   <nut-picker v-if="columns.length" v-model="value" :columns="columns" title="城市选择" @confirm="confirm"></nut-picker>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
-const columns = ref([]);
-const value = ref([]);
+import { ref, onMounted } from 'vue'
+const columns = ref([])
+const value = ref([])
 onMounted(() => {
   setTimeout(() => {
     columns.value = [
@@ -52,11 +52,11 @@ onMounted(() => {
           }
         ]
       }
-    ];
-  }, 500);
-});
+    ]
+  }, 500)
+})
 
 const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue, selectedOptions);
-};
+  console.log(selectedValue, selectedOptions)
+}
 </script>

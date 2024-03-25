@@ -33,9 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showImagePreview } from '@nutui/nutui';
+import { reactive } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
+import { showImagePreview } from '@nutui/nutui'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -53,7 +53,7 @@ const translate = useTranslate({
     withVideos: 'With Videos',
     functionalCall: 'Functional Call'
   }
-});
+})
 const resData = reactive({
   showPreview1: false,
   showPreview2: false,
@@ -101,24 +101,24 @@ const resData = reactive({
       }
     }
   ]
-});
+})
 const onClose = () => {
-  console.log('imagepreview closed');
-};
+  console.log('imagepreview closed')
+}
 
 const showFn = (i: number) => {
-  (resData as any)['showPreview' + i] = true;
-};
+  ;(resData as any)['showPreview' + i] = true
+}
 
 const fnShow = () => {
   showImagePreview({
     show: true,
     images: resData.imgData,
     onClose: () => onClose()
-  });
-};
+  })
+}
 
 const hideFn = (i: number) => {
-  (resData as any)['showPreview' + i] = false;
-};
+  ;(resData as any)['showPreview' + i] = false
+}
 </script>

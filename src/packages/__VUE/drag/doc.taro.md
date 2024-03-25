@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Drag } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Drag } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Drag);
+const app = createApp()
+app.use(Drag)
 ```
 
 ### 基础用法

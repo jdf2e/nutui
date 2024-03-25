@@ -16,4 +16,4 @@ module.exports = {
       ['upd', 'chore', 'docs', 'feat', 'fix', 'test', 'refactor', 'revert', 'style', 'release', 'perf']
     ]
   }
-};
+}

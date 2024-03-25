@@ -1,1 +1,1 @@
-export type AudioType = 'progress' | 'icon' | 'controls' | 'none';
+export type AudioType = 'progress' | 'icon' | 'controls' | 'none'

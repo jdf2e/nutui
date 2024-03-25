@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils';
-import { Checkbox, CheckboxGroup } from '@nutui/nutui';
-import { ref } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Checkbox, CheckboxGroup } from '@nutui/nutui'
+import { ref } from 'vue'
 
 test('CheckboxGroup: v-model & change', async () => {
-  const val = ref([]);
-  const onChange = vi.fn();
+  const val = ref([])
+  const onChange = vi.fn()
   const wrapper = mount(() => {
     return (
       <CheckboxGroup v-model={val.value} onChange={onChange}>
@@ -13,17 +13,17 @@ test('CheckboxGroup: v-model & change', async () => {
         <Checkbox label="3"></Checkbox>
         <Checkbox label="4"></Checkbox>
       </CheckboxGroup>
-    );
-  });
-  const items = wrapper.findAll('.nut-checkbox');
-  await items[0].trigger('click');
-  expect(val.value).toEqual(['1']);
-  expect(onChange).toBeCalledTimes(1);
-  expect(onChange).toBeCalledWith(['1']);
-});
+    )
+  })
+  const items = wrapper.findAll('.nut-checkbox')
+  await items[0].trigger('click')
+  expect(val.value).toEqual(['1'])
+  expect(onChange).toBeCalledTimes(1)
+  expect(onChange).toBeCalledWith(['1'])
+})
 
 test('CheckboxGroup: disabled', async () => {
-  const val = ref([]);
+  const val = ref([])
   const wrapper = mount(() => {
     return (
       <CheckboxGroup v-model={val.value} disabled>
@@ -32,10 +32,10 @@ test('CheckboxGroup: disabled', async () => {
         <Checkbox label="3"></Checkbox>
         <Checkbox label="4"></Checkbox>
       </CheckboxGroup>
-    );
-  });
-  const items = wrapper.findAll('.nut-checkbox');
-  await items[0].trigger('click');
-  expect(val.value).toEqual([]);
-  expect(wrapper.find('.nut-checkbox__icon--disable')).toBeTruthy();
-});
+    )
+  })
+  const items = wrapper.findAll('.nut-checkbox')
+  await items[0].trigger('click')
+  expect(val.value).toEqual([])
+  expect(wrapper.find('.nut-checkbox__icon--disable')).toBeTruthy()
+})

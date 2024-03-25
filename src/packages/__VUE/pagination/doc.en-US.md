@@ -7,11 +7,11 @@ When the amount of data is too much, use pagination to separate the data.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Pagination } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Pagination } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Pagination);
+const app = createApp()
+app.use(Pagination)
 ```
 
 ### Basic Usage

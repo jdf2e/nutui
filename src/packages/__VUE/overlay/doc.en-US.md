@@ -7,11 +7,11 @@ Create a mask layer, which is usually used to prevent users from doing other ope
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Overlay } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Overlay } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Overlay);
+const app = createApp()
+app.use(Overlay)
 ```
 
 ### Basic Usage

@@ -11,10 +11,10 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Show from './show.vue';
-import Loop from './loop.vue';
-import Click from './click.vue';
+import { useTranslate } from '@/sites/utils'
+import Show from './show.vue'
+import Loop from './loop.vue'
+import Click from './click.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -27,7 +27,7 @@ const t = useTranslate({
     loop: 'Loop animation',
     click: 'Click'
   }
-});
+})
 </script>
 <style lang="scss">
 .demo-animate {

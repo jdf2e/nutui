@@ -7,11 +7,11 @@ Click or hover over the element to pop up the bubble card overlay.
 ### Install
 
 ```javascript
-import { createApp } from 'vue';
-import { Popover } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Popover } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Popover);
+const app = createApp()
+app.use(Popover)
 ```
 
 ### Basic Usage

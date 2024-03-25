@@ -10,9 +10,9 @@
   ></nut-cascader>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
-const visible = ref(false);
-const value = ref(['湖南']);
+import { ref } from 'vue'
+const visible = ref(false)
+const value = ref(['湖南'])
 const options = ref([
   {
     value: '浙江',
@@ -56,11 +56,11 @@ const options = ref([
       }
     ]
   }
-]);
+])
 const change = (...args: any[]) => {
-  console.log('change', ...args);
-};
+  console.log('change', ...args)
+}
 const pathChange = (...args: any[]) => {
-  console.log('pathChange', ...args);
-};
+  console.log('pathChange', ...args)
+}
 </script>

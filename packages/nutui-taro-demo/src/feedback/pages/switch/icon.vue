@@ -6,7 +6,7 @@
   </nut-switch>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { Loading } from '@nutui/icons-vue-taro';
-const val = ref(true);
+import { ref } from 'vue'
+import { Loading } from '@nutui/icons-vue-taro'
+const val = ref(true)
 </script>

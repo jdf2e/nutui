@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Disabled from './disabled.vue';
-import Direction from './direction.vue';
-import Methods from './methods.vue';
-import Content from './content.vue';
-import Lock from './lock.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Disabled from './disabled.vue'
+import Direction from './direction.vue'
+import Methods from './methods.vue'
+import Content from './content.vue'
+import Lock from './lock.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -48,5 +48,5 @@ const t = useTranslate({
     content: 'Custom Content',
     lock: 'Use SwipeGroup to make swipe exclusive'
   }
-});
+})
 </script>

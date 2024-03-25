@@ -1,9 +1,9 @@
-import Layout from './layout.taro.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import Layout from './layout.taro.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(Layout);
+withInstall(Layout)
 
-export type LayoutInstance = ComponentPublicInstance & InstanceType<typeof Layout>;
+export type LayoutInstance = ComponentPublicInstance & InstanceType<typeof Layout>
 
-export { Layout, Layout as default };
+export { Layout, Layout as default }

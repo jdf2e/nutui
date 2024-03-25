@@ -17,12 +17,12 @@
   </view>
 </template>
 <script lang="ts">
-import NutPrice from '../../price/index.taro';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('sku-header');
+import NutPrice from '../../price/index.taro'
+import { createComponent } from '@/packages/utils/create'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('sku-header')
 
-const cN = 'NutSkuHeader';
+const cN = 'NutSkuHeader'
 
 export default create({
   props: {
@@ -35,13 +35,13 @@ export default create({
     NutPrice
   },
   setup(props, { slots }) {
-    const translate = useLocale(cN);
-    const getSlots = (name: string) => slots[name];
+    const translate = useLocale(cN)
+    const getSlots = (name: string) => slots[name]
 
     return {
       getSlots,
       translate
-    };
+    }
   }
-});
+})
 </script>

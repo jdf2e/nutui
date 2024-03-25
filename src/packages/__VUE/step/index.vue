@@ -27,10 +27,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { STEPS_KEY } from '../steps/types';
-const { create, componentName } = createComponent('step');
+import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { STEPS_KEY } from '../steps/types'
+const { create, componentName } = createComponent('step')
 
 export default create({
   props: {
@@ -46,44 +46,44 @@ export default create({
   emits: ['clickStep'],
 
   setup() {
-    const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-    const parent: any = inject(STEPS_KEY);
-    parent['relation'](proxy);
+    const { proxy } = getCurrentInstance() as ComponentInternalInstance
+    const parent: any = inject(STEPS_KEY)
+    parent['relation'](proxy)
 
     const state = reactive({
       dot: parent.props.progressDot
-    });
+    })
 
-    const index = computed(() => parent.state.children.indexOf(proxy) + 1);
+    const index = computed(() => parent.state.children.indexOf(proxy) + 1)
 
     const getCurrentStatus = () => {
-      const activeIndex = index.value;
-      if (activeIndex < +parent.props.current) return 'finish';
-      return activeIndex === +parent.props.current ? 'process' : 'wait';
-    };
+      const activeIndex = index.value
+      if (activeIndex < +parent.props.current) return 'finish'
+      return activeIndex === +parent.props.current ? 'process' : 'wait'
+    }
 
     const status = computed(() => {
-      return getCurrentStatus();
-    });
+      return getCurrentStatus()
+    })
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}-${status.value}`]: true
-      };
-    });
+      }
+    })
 
     const handleClickStep = () => {
-      parent['onEmit'](index.value);
-    };
+      parent['onEmit'](index.value)
+    }
 
     return {
       ...toRefs(state),
       index,
       classes,
       handleClickStep
-    };
+    }
   }
-});
+})
 </script>

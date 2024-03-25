@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Color from './color.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Color from './color.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -28,5 +28,5 @@ const t = useTranslate({
     custom: 'Style',
     color: 'Custom Color'
   }
-});
+})
 </script>

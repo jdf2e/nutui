@@ -4,7 +4,7 @@
   </nut-number-keyboard>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref('');
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref('')
 </script>

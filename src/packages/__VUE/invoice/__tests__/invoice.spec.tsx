@@ -1,15 +1,15 @@
-import { mount } from '@vue/test-utils';
-import { Invoice, type InvoiceDataItem } from '@nutui/nutui';
-import { ref } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Invoice, type InvoiceDataItem } from '@nutui/nutui'
+import { ref } from 'vue'
 
 test('base', () => {
   const asyncValidator = (val: string) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val));
-      }, 1000);
-    });
-  };
+        resolve(/^400(-?)[0-9]{7}$|^1\d{10}$|^0[0-9]{2,3}-[0-9]{7,8}$/.test(val))
+      }, 1000)
+    })
+  }
   const data = ref<InvoiceDataItem[]>([
     {
       type: 'radio',
@@ -65,7 +65,7 @@ test('base', () => {
       placeholder: '请输入银行账户',
       formItemProp: 'account'
     }
-  ]);
+  ])
 
   const formValue = ref({
     type: '企业',
@@ -76,18 +76,18 @@ test('base', () => {
     address: '',
     bank: '',
     account: ''
-  });
+  })
 
   const submit = (valid: boolean, errors: any) => {
     if (valid) {
-      console.log('success', formValue.value);
+      console.log('success', formValue.value)
     } else {
-      console.log('error submit!!', errors);
+      console.log('error submit!!', errors)
     }
-  };
+  }
   const wrapper = mount(() => {
-    return <Invoice data={data.value} formValue={formValue.value} onSubmit={submit} />;
-  });
-  const invoice = wrapper.find('.nut-invoice');
-  expect(invoice.element.outerHTML).toMatchSnapshot();
-});
+    return <Invoice data={data.value} formValue={formValue.value} onSubmit={submit} />
+  })
+  const invoice = wrapper.find('.nut-invoice')
+  expect(invoice.element.outerHTML).toMatchSnapshot()
+})

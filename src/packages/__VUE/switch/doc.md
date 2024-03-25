@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Switch } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Switch } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Switch);
+const app = createApp()
+app.use(Switch)
 ```
 
 ### 基础用法

@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import fs from 'fs'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   base: '/playground/',
@@ -18,4 +18,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@vue/repl']
   }
-});
+})

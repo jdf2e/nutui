@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Border from './border.vue';
-import Align from './align.vue';
-import Summary from './summary.vue';
-import Striped from './striped.vue';
-import Nodata from './nodata.vue';
-import Custom from './custom.vue';
-import Async from './async.vue';
-import Sort from './sort.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Border from './border.vue'
+import Align from './align.vue'
+import Summary from './summary.vue'
+import Striped from './striped.vue'
+import Nodata from './nodata.vue'
+import Custom from './custom.vue'
+import Async from './async.vue'
+import Sort from './sort.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -65,5 +65,5 @@ const t = useTranslate({
     async: 'Asynchronous rendering(See the effect after 5S)',
     sort: 'Support sorting'
   }
-});
+})
 </script>

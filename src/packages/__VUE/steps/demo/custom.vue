@@ -12,5 +12,5 @@
   </nut-steps>
 </template>
 <script setup lang="ts">
-import { Service, People, Location2 } from '@nutui/icons-vue';
+import { Service, People, Location2 } from '@nutui/icons-vue'
 </script>

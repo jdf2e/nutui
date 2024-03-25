@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Ellipsis } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Ellipsis } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Ellipsis);
+const app = createApp()
+app.use(Ellipsis)
 ```
 
 ### 头部省略

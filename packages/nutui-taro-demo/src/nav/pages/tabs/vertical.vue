@@ -6,7 +6,7 @@
   </nut-tabs>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const value = ref('1');
-const list = new Array(10).fill(0).map((_, index) => index + 1);
+import { ref } from 'vue'
+const value = ref('1')
+const list = new Array(10).fill(0).map((_, index) => index + 1)
 </script>

@@ -7,12 +7,12 @@ The multiple selection button is used to select.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Checkbox, CheckboxGroup } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Checkbox, CheckboxGroup } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Checkbox);
-app.use(CheckboxGroup);
+const app = createApp()
+app.use(Checkbox)
+app.use(CheckboxGroup)
 ```
 
 ### Basic Usage

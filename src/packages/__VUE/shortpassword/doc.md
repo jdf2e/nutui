@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { ShortPassword, NumberKeyboard } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { ShortPassword, NumberKeyboard } from '@nutui/nutui'
 
-const app = createApp();
-app.use(ShortPassword);
-app.use(NumberKeyboard);
+const app = createApp()
+app.use(ShortPassword)
+app.use(NumberKeyboard)
 ```
 
 ### 基础用法

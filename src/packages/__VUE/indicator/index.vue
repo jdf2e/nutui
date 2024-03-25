@@ -9,11 +9,11 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { padZero } from '@/packages/utils/util';
-import { IndicatorAlign } from './types';
-const { create } = createComponent('indicator');
+import { PropType, computed } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { padZero } from '@/packages/utils/util'
+import { IndicatorAlign } from './types'
+const { create } = createComponent('indicator')
 
 export default create({
   props: {
@@ -40,14 +40,14 @@ export default create({
   },
   setup(props) {
     const classes = computed(() => {
-      const prefixCls = 'nut-indicator';
+      const prefixCls = 'nut-indicator'
       return {
         [prefixCls]: true,
         [`${prefixCls}--block`]: props.block,
         [`${prefixCls}--align__${props.align}`]: props.block && props.align
-      };
-    });
-    return { classes, padZero };
+      }
+    })
+    return { classes, padZero }
   }
-});
+})
 </script>

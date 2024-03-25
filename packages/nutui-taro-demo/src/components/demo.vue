@@ -16,25 +16,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import Taro from '@tarojs/taro';
-import { Left } from '@nutui/icons-vue-taro';
-import config from '@/packages/../config.json';
+import { computed } from 'vue'
+import Taro from '@tarojs/taro'
+import { Left } from '@nutui/icons-vue-taro'
+import config from '@/packages/../config.json'
 
-const isWeb = Taro.getEnv() === Taro.ENV_TYPE.WEB;
+const isWeb = Taro.getEnv() === Taro.ENV_TYPE.WEB
 const navigateTo = () => {
-  Taro.navigateBack();
-};
+  Taro.navigateBack()
+}
 
 const compName = computed(() => {
-  let allComps: any = [];
-  const hashCompName = location.hash.split('pages/')[1].replace('/index', '');
+  let allComps: any = []
+  const hashCompName = location.hash.split('pages/')[1].replace('/index', '')
   config.nav.map((item) => {
-    allComps = [...allComps, ...item.packages];
-  });
-  const targetComp = allComps.filter((item: any) => hashCompName === item.name.toLowerCase());
-  return targetComp[0].name;
-});
+    allComps = [...allComps, ...item.packages]
+  })
+  const targetComp = allComps.filter((item: any) => hashCompName === item.name.toLowerCase())
+  return targetComp[0].name
+})
 </script>
 
 <style lang="scss">

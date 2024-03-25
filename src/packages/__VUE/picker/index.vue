@@ -22,7 +22,7 @@
           :option-height="optionHeight"
           @change="
             (option: any) => {
-              changeHandler(columnIndex, option);
+              changeHandler(columnIndex, option)
             }
           "
         ></nut-picker-column>
@@ -33,15 +33,15 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, computed, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { usePicker } from './usePicker';
-import NutPickerColumn from './Column.vue';
-import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('picker');
+import { ref, computed, CSSProperties } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { usePicker } from './usePicker'
+import NutPickerColumn from './Column.vue'
+import baseProps from './baseProps'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('picker')
 
-const cN = 'NutPicker';
+const cN = 'NutPicker'
 
 export default create({
   components: {
@@ -50,34 +50,34 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
     const { changeHandler, confirm, defaultValues, columnsList, columnsType, columnFieldNames, cancel } = usePicker(
       props,
       emit
-    );
+    )
 
-    const pickerColumn = ref<any[]>([]);
+    const pickerColumn = ref<any[]>([])
 
     const swipeRef = (el: any) => {
       if (el && pickerColumn.value.length < columnsList.value.length) {
-        pickerColumn.value.push(el);
+        pickerColumn.value.push(el)
       }
-    };
+    }
     const columnStyle = computed(() => {
-      const styles: CSSProperties = {};
-      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
-      styles['--lineHeight'] = `${+props.optionHeight}px`;
-      return styles;
-    });
+      const styles: CSSProperties = {}
+      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`
+      styles['--lineHeight'] = `${+props.optionHeight}px`
+      return styles
+    })
 
     const confirmHandler = () => {
       pickerColumn.value.length > 0 &&
         pickerColumn.value.forEach((column) => {
-          column.stopMomentum();
-        });
+          column.stopMomentum()
+        })
 
-      confirm();
-    };
+      confirm()
+    }
 
     return {
       columnsType,
@@ -91,7 +91,7 @@ export default create({
       pickerColumn,
       swipeRef,
       columnStyle
-    };
+    }
   }
-});
+})
 </script>

@@ -1,1 +1,1 @@
-export type EllipsisDirection = 'start' | 'end' | 'middle';
+export type EllipsisDirection = 'start' | 'end' | 'middle'

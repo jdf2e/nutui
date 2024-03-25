@@ -9,5 +9,5 @@
   </nut-space>
 </template>
 <script setup lang="ts">
-import { Loading } from '@nutui/icons-vue';
+import { Loading } from '@nutui/icons-vue'
 </script>

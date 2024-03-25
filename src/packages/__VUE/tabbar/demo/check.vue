@@ -5,10 +5,10 @@
   </nut-tabbar>
 </template>
 <script lang="ts" setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
+import { h, ref } from 'vue'
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue'
 
-const active = ref(2);
+const active = ref(2)
 const List = [
   {
     title: 'Home',
@@ -35,9 +35,9 @@ const List = [
     icon: h(My),
     name: 'my'
   }
-];
+]
 
 const tabSwitch = (item: Record<string, unknown>, index: number) => {
-  console.log(item, index);
-};
+  console.log(item, index)
+}
 </script>

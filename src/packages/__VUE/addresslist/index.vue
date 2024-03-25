@@ -36,15 +36,15 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('address-list');
-import GeneralShell from './components/GeneralShell.vue';
-import { floatData } from '@/packages/utils/util';
-import NutButton from '../button';
-import { useLocale } from '@/packages/utils/useLocale';
+import { reactive, onMounted, ref, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('address-list')
+import GeneralShell from './components/GeneralShell.vue'
+import { floatData } from '@/packages/utils/util'
+import NutButton from '../button'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const cN = 'NutAddressList';
+const cN = 'NutAddressList'
 export default create({
   props: {
     data: {
@@ -75,65 +75,65 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem', 'longCopy', 'longSet', 'longDel', 'swipeDel', 'add'],
 
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const dataArray = ref([]) as any;
+    const translate = useLocale(cN)
+    const dataArray = ref([]) as any
     const dataInfo = reactive({
       id: 2,
       addressName: '姓名',
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
-    });
+    })
     //磨平参数差异
     const trowelData = () => {
       if (Object.keys(props.dataOptions).length > 0) {
         dataArray.value = props.data.map((item) => {
-          return floatData(dataInfo, item, props.dataOptions);
-        });
+          return floatData(dataInfo, item, props.dataOptions)
+        })
       }
-    };
+    }
 
     watch(
       () => props.data,
       () => trowelData(),
       { deep: true }
-    );
+    )
 
     const clickDelIcon = (event: Event, item: unknown) => {
-      emit('delIcon', event, item);
-      event.stopPropagation();
-    };
+      emit('delIcon', event, item)
+      event.stopPropagation()
+    }
     const clickEditIcon = (event: Event, item: unknown) => {
-      emit('editIcon', event, item);
-      event.stopPropagation();
-    };
+      emit('editIcon', event, item)
+      event.stopPropagation()
+    }
     const clickContentItem = (event: Event, item: unknown) => {
-      emit('clickItem', event, item);
-      event.stopPropagation();
-    };
+      emit('clickItem', event, item)
+      event.stopPropagation()
+    }
     const clickLongCopy = (event: Event, item: unknown) => {
-      emit('longCopy', event, item);
-      event.stopPropagation();
-    };
+      emit('longCopy', event, item)
+      event.stopPropagation()
+    }
     const clickLongSet = (event: Event, item: unknown) => {
-      emit('longSet', event, item);
-      event.stopPropagation();
-    };
+      emit('longSet', event, item)
+      event.stopPropagation()
+    }
     const clickLongDel = (event: Event, item: unknown) => {
-      emit('longDel', event, item);
-      event.stopPropagation();
-    };
+      emit('longDel', event, item)
+      event.stopPropagation()
+    }
     const clickSwipeDel = (event: Event, item: unknown) => {
-      emit('swipeDel', event, item);
-      event.stopPropagation();
-    };
+      emit('swipeDel', event, item)
+      event.stopPropagation()
+    }
     const addAddress = (event: Event) => {
-      emit('add', event);
-      event.stopPropagation();
-    };
+      emit('add', event)
+      event.stopPropagation()
+    }
     onMounted(() => {
-      trowelData();
-    });
+      trowelData()
+    })
     return {
       clickDelIcon,
       clickEditIcon,
@@ -145,7 +145,7 @@ export default create({
       addAddress,
       dataArray,
       translate
-    };
+    }
   }
-});
+})
 </script>

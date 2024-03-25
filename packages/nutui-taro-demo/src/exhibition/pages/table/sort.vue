@@ -2,7 +2,7 @@
   <nut-table :columns="columns" :data="data" @sorter="handleSorter"></nut-table>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const columns = ref<any[]>([
   {
     title: '姓名',
@@ -21,10 +21,10 @@ const columns = ref<any[]>([
     title: '年龄',
     key: 'age',
     sorter: (row1: any, row2: any) => {
-      return row1.age - row2.age;
+      return row1.age - row2.age
     }
   }
-]);
+])
 const data = ref([
   {
     name: 'Tom',
@@ -44,9 +44,9 @@ const data = ref([
     record: '高中',
     age: 4
   }
-]);
+])
 
 const handleSorter = (item: any) => {
-  console.log(`${JSON.stringify(item)}`);
-};
+  console.log(`${JSON.stringify(item)}`)
+}
 </script>

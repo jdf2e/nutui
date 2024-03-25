@@ -7,12 +7,12 @@ Used to make a single selection in a set of alternatives
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Radio, RadioGroup } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Radio, RadioGroup } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+const app = createApp()
+app.use(Radio)
+app.use(RadioGroup)
 ```
 
 ### Basic Usage

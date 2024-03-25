@@ -10,9 +10,9 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('watermark');
+import { reactive, toRefs, computed, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { componentName, create } = createComponent('watermark')
 export default create({
   props: {
     name: {
@@ -89,7 +89,7 @@ export default create({
   setup(props) {
     const state = reactive({
       base64Url: ''
-    });
+    })
     const {
       zIndex,
       gapX,
@@ -106,27 +106,27 @@ export default create({
       fontColor,
       fontSize,
       fontFamily
-    } = props;
+    } = props
     const init = () => {
-      const canvas = document.createElement('canvas');
-      const ratio = window.devicePixelRatio;
-      const ctx = canvas.getContext('2d');
-      const canvasWidth = `${(gapX + width) * ratio}px`;
-      const canvasHeight = `${(gapY + height) * ratio}px`;
-      const markWidth = width * ratio;
-      const markHeight = height * ratio;
-      canvas.setAttribute('width', canvasWidth);
-      canvas.setAttribute('height', canvasHeight);
+      const canvas = document.createElement('canvas')
+      const ratio = window.devicePixelRatio
+      const ctx = canvas.getContext('2d')
+      const canvasWidth = `${(gapX + width) * ratio}px`
+      const canvasHeight = `${(gapY + height) * ratio}px`
+      const markWidth = width * ratio
+      const markHeight = height * ratio
+      canvas.setAttribute('width', canvasWidth)
+      canvas.setAttribute('height', canvasHeight)
 
       if (ctx) {
         if (image) {
-          ctx.translate(markWidth / 2, markHeight / 2);
-          ctx.rotate((Math.PI / 180) * Number(rotate));
+          ctx.translate(markWidth / 2, markHeight / 2)
+          ctx.rotate((Math.PI / 180) * Number(rotate))
 
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
-          img.referrerPolicy = 'no-referrer';
-          img.src = image;
+          const img = new Image()
+          img.crossOrigin = 'anonymous'
+          img.referrerPolicy = 'no-referrer'
+          img.src = image
           img.onload = () => {
             ctx.drawImage(
               img,
@@ -134,35 +134,35 @@ export default create({
               (-imageHeight * ratio) / 2,
               imageWidth * ratio,
               imageHeight * ratio
-            );
-            ctx.restore();
-            state.base64Url = canvas.toDataURL();
-          };
+            )
+            ctx.restore()
+            state.base64Url = canvas.toDataURL()
+          }
         } else if (content) {
-          ctx.textBaseline = 'middle';
-          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle'
+          ctx.textAlign = 'center'
           // 文字绕中间旋转
-          ctx.translate(markWidth / 2, markHeight / 2);
-          ctx.rotate((Math.PI / 180) * Number(rotate));
+          ctx.translate(markWidth / 2, markHeight / 2)
+          ctx.rotate((Math.PI / 180) * Number(rotate))
 
-          const markSize = Number(fontSize) * ratio;
-          ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
-          ctx.fillStyle = fontColor;
+          const markSize = Number(fontSize) * ratio
+          ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`
+          ctx.fillStyle = fontColor
           if (Array.isArray(content)) {
             content.map((item, index) => {
-              ctx.fillText(item, 0, (index - 1) * markSize);
-            });
+              ctx.fillText(item, 0, (index - 1) * markSize)
+            })
           } else {
-            ctx.fillText(content, 0, 0);
+            ctx.fillText(content, 0, 0)
           }
-          ctx.restore();
-          state.base64Url = canvas.toDataURL();
+          ctx.restore()
+          state.base64Url = canvas.toDataURL()
         }
       } else {
-        throw new Error('当前环境不支持Canvas');
+        throw new Error('当前环境不支持Canvas')
       }
-    };
-    init();
+    }
+    init()
 
     watch(
       () => [
@@ -183,18 +183,18 @@ export default create({
         fontFamily
       ],
       () => {
-        init();
+        init()
       }
-    );
+    )
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}-full-page`]: props.fullPage
-      };
-    });
+      }
+    })
 
-    return { ...toRefs(state), classes };
+    return { ...toRefs(state), classes }
   }
-});
+})
 </script>

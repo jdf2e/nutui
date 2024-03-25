@@ -7,7 +7,7 @@
   </nut-searchbar>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Search2 } from '@nutui/icons-vue';
-const val = ref('');
+import { ref } from 'vue'
+import { Search2 } from '@nutui/icons-vue'
+const val = ref('')
 </script>

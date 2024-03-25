@@ -1,11 +1,11 @@
 <script lang="ts">
-import { computed, h, inject, PropType, toRef, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('radio');
-import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { RADIO_KEY, RadioShape, RadioButtonSize } from './types';
-import { useFormDisabled } from '../form/common';
+import { computed, h, inject, PropType, toRef, toRefs } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { componentName, create } = createComponent('radio')
+import { CheckNormal, CheckChecked } from '@nutui/icons-vue-taro'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { RADIO_KEY, RadioShape, RadioButtonSize } from './types'
+import { useFormDisabled } from '../form/common'
 export default create({
   components: {
     CheckNormal,
@@ -34,37 +34,37 @@ export default create({
     }
   },
   setup(props, { slots }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const { size } = toRefs(props);
-    let parent: any = inject(RADIO_KEY, null);
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const { size } = toRefs(props)
+    let parent: any = inject(RADIO_KEY, null)
 
     const isCurValue = computed(() => {
-      return parent.label.value === props.label;
-    });
+      return parent.label.value === props.label
+    })
 
     const color = computed(() => {
       return !disabled.value
         ? isCurValue.value
           ? 'nut-radio__icon'
           : 'nut-radio__icon--unchecked'
-        : 'nut-radio__icon--disable';
-    });
+        : 'nut-radio__icon--disable'
+    })
 
     const renderIcon = () => {
-      const { iconSize } = props;
+      const { iconSize } = props
       const iconNodeMap = {
         CheckNormal: slots.icon ? slots.icon : CheckNormal,
         Checked: slots.checkedIcon ? slots.checkedIcon : CheckChecked
-      };
-      const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked;
-      const size = pxCheck(iconSize);
+      }
+      const iconNode = !isCurValue.value ? iconNodeMap.CheckNormal : iconNodeMap.Checked
+      const size = pxCheck(iconSize)
       return h(iconNode, {
         width: size,
         height: size,
         size: size,
         class: color.value
-      });
-    };
+      })
+    }
 
     const renderLabel = () => {
       return h(
@@ -73,8 +73,8 @@ export default create({
           class: `${componentName}__label ${disabled.value ? `${componentName}__label--disabled` : ''}`
         },
         slots.default?.()
-      );
-    };
+      )
+    }
     const renderButton = () => {
       return h(
         'view',
@@ -84,15 +84,15 @@ export default create({
           } ${componentName}__button--${size.value} ${props.disabled ? `${componentName}__button--disabled` : ''}`
         },
         slots.default?.()
-      );
-    };
+      )
+    }
 
     const handleClick = () => {
-      if (isCurValue.value || disabled.value) return;
-      parent.updateValue(props.label);
-    };
+      if (isCurValue.value || disabled.value) return
+      parent.updateValue(props.label)
+    }
 
-    const reverseState = computed(() => parent.position.value === 'left');
+    const reverseState = computed(() => parent.position.value === 'left')
 
     return () => {
       return h(
@@ -104,8 +104,8 @@ export default create({
           onClick: handleClick
         },
         [props.shape == 'button' ? renderButton() : [renderIcon(), renderLabel()]]
-      );
-    };
+      )
+    }
   }
-});
+})
 </script>

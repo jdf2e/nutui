@@ -46,26 +46,26 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, inject, useSlots } from 'vue';
-import { DownArrow } from '@nutui/icons-vue-taro';
-import { renderIcon } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
-import { COLLAPSE_KEY } from '../collapse/types';
+import { ref, computed, watch, onMounted, inject, useSlots } from 'vue'
+import { DownArrow } from '@nutui/icons-vue-taro'
+import { renderIcon } from '@/packages/utils/create'
+import Taro from '@tarojs/taro'
+import { COLLAPSE_KEY } from '../collapse/types'
 
 defineOptions({
   name: 'NutCollapseItem'
-});
+})
 
 export type CollapseItemProps = Partial<{
-  title: string;
-  value: string;
-  label: string;
-  disabled: boolean;
-  name: string | number;
-  border: boolean;
-  icon: any;
-  rotate: string | number;
-}>;
+  title: string
+  value: string
+  label: string
+  disabled: boolean
+  name: string | number
+  border: boolean
+  icon: any
+  rotate: string | number
+}>
 
 const props = withDefaults(defineProps<CollapseItemProps>(), {
   title: '',
@@ -76,34 +76,34 @@ const props = withDefaults(defineProps<CollapseItemProps>(), {
   border: true,
   icon: () => DownArrow,
   rotate: 180
-});
+})
 
-const slots = useSlots();
+const slots = useSlots()
 
-const wrapperRef = ref<HTMLDivElement | null>(null);
-const refRandomId = Math.random().toString(36).slice(-8);
-const target = `#nut-collapse__item-${refRandomId}`;
-const currentHeight = ref<string>('auto');
-const inAnimation = ref(false);
-const timeoutId = ref<any>('');
-const parent = inject(COLLAPSE_KEY);
+const wrapperRef = ref<HTMLDivElement | null>(null)
+const refRandomId = Math.random().toString(36).slice(-8)
+const target = `#nut-collapse__item-${refRandomId}`
+const currentHeight = ref<string>('auto')
+const inAnimation = ref(false)
+const timeoutId = ref<any>('')
+const parent = inject(COLLAPSE_KEY)
 const classes = computed(() => {
-  const prefixCls = 'nut-collapse-item';
+  const prefixCls = 'nut-collapse-item'
   return {
     [prefixCls]: true,
     [prefixCls + '__border']: props.border
-  };
-});
+  }
+})
 
 onMounted(() => {
   setTimeout(() => {
     getRect(target).then((res: any) => {
       if (res?.height) {
-        currentHeight.value = `${res.height}px`;
+        currentHeight.value = `${res.height}px`
       }
-    });
-  }, 100);
-});
+    })
+  }, 100)
+})
 
 watch(
   () => slots.default?.(),
@@ -111,12 +111,12 @@ watch(
     setTimeout(() => {
       getRect(target).then((res: any) => {
         if (res?.height) {
-          currentHeight.value = `${res.height}px`;
+          currentHeight.value = `${res.height}px`
         }
-      });
-    }, 200);
+      })
+    }, 200)
   }
-);
+)
 
 const getRect = (selector: string) => {
   return new Promise((resolve) => {
@@ -124,46 +124,46 @@ const getRect = (selector: string) => {
       .select(selector)
       .boundingClientRect()
       .exec((rect = []) => {
-        resolve(rect[0]);
-      });
-  });
-};
+        resolve(rect[0])
+      })
+  })
+}
 
 const expanded = computed(() => {
   if (parent) {
-    return parent.isExpanded(props.name);
+    return parent.isExpanded(props.name)
   }
-  return false;
-});
+  return false
+})
 
-const wrapperHeight = ref(expanded.value ? 'auto' : '0px');
+const wrapperHeight = ref(expanded.value ? 'auto' : '0px')
 
 const handleClick = () => {
   if (!inAnimation.value) {
-    parent && parent.updateVal(props.name);
+    parent && parent.updateVal(props.name)
   }
-};
+}
 
 const toggle = (open: boolean) => {
   // 连续切换状态时，清除打开的后续操作
   if (timeoutId.value) {
-    clearTimeout(timeoutId.value);
-    timeoutId.value = '';
+    clearTimeout(timeoutId.value)
+    timeoutId.value = ''
   }
-  const start = open ? '0px' : currentHeight.value;
-  const end = open ? currentHeight.value : '0px';
-  inAnimation.value = true;
-  wrapperHeight.value = start;
+  const start = open ? '0px' : currentHeight.value
+  const end = open ? currentHeight.value : '0px'
+  inAnimation.value = true
+  wrapperHeight.value = start
   setTimeout(() => {
-    wrapperHeight.value = end;
-    inAnimation.value = false;
+    wrapperHeight.value = end
+    inAnimation.value = false
     if (open) {
       timeoutId.value = setTimeout(() => {
-        wrapperHeight.value = 'auto';
-      }, 300);
+        wrapperHeight.value = 'auto'
+      }, 300)
     }
-  }, 100);
-};
+  }, 100)
+}
 
-watch(expanded, toggle);
+watch(expanded, toggle)
 </script>

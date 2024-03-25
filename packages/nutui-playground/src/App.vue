@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import Header from './Header.vue';
-import { Repl } from '@vue/repl';
-import CodeMirror from '@vue/repl/codemirror-editor';
-import { watchEffect } from 'vue';
-import { NutUIStore } from './store';
+import Header from './Header.vue'
+import { Repl } from '@vue/repl'
+import CodeMirror from '@vue/repl/codemirror-editor'
+import { watchEffect } from 'vue'
+import { NutUIStore } from './store'
 
 const setVH = () => {
-  document.documentElement.style.setProperty('--vh', window.innerHeight + `px`);
-};
-window.addEventListener('resize', setVH);
-setVH();
+  document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
+}
+window.addEventListener('resize', setVH)
+setVH()
 
-const hash = location.hash.slice(1);
+const hash = location.hash.slice(1)
 
 const store = new NutUIStore(
   {
     defaultVueRuntimeURL: 'https://cdn.jsdelivr.net/npm/@vue/runtime-dom/dist/runtime-dom.esm-browser.js'
   },
   hash
-);
+)
 
 store.setImportMap({
   imports: {
@@ -31,13 +31,13 @@ store.setImportMap({
     '@nutui/nutui/dist/packages/imagepreview/style': './style.js',
     '@nutui/nutui/dist/packages/notify/style': './style.js'
   }
-});
+})
 
 // persist state
 watchEffect(() => {
-  const newHash = store.serialize();
-  history.replaceState({}, '', newHash);
-});
+  const newHash = store.serialize()
+  history.replaceState({}, '', newHash)
+})
 </script>
 
 <template>

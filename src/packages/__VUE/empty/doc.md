@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Empty } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Empty } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Empty);
+const app = createApp()
+app.use(Empty)
 ```
 
 ### 基础用法
@@ -53,7 +53,7 @@ app.use(Empty);
 组件导出以下类型定义：
 
 ```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui';
+import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui'
 ```
 
 ## 主题定制

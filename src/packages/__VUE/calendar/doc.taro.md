@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Calendar } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Calendar } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Calendar);
+const app = createApp()
+app.use(Calendar)
 ```
 
 ### 选择单个日期

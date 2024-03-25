@@ -48,30 +48,30 @@
   </view>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRef } from 'vue';
-import { StarFillN } from '@nutui/icons-vue';
-import { renderIcon } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { useTouch } from '@/packages/utils/useTouch';
-import { useFormDisabled } from '../form/common';
+import { Ref, ref, toRef } from 'vue'
+import { StarFillN } from '@nutui/icons-vue'
+import { renderIcon } from '@/packages/utils/create'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { useTouch } from '@/packages/utils/useTouch'
+import { useFormDisabled } from '../form/common'
 
 defineOptions({
   name: 'NutRate'
-});
+})
 
 export type RateProps = Partial<{
-  count: string | number;
-  modelValue: string | number;
-  customIcon: any;
-  size: string | number;
-  activeColor: string;
-  voidColor: string;
-  readonly: boolean;
-  disabled: boolean;
-  allowHalf: boolean;
-  touchable: boolean;
-  spacing: string | number;
-}>;
+  count: string | number
+  modelValue: string | number
+  customIcon: any
+  size: string | number
+  activeColor: string
+  voidColor: string
+  readonly: boolean
+  disabled: boolean
+  allowHalf: boolean
+  touchable: boolean
+  spacing: string | number
+}>
 
 const props = withDefaults(defineProps<RateProps>(), {
   count: 5,
@@ -83,58 +83,58 @@ const props = withDefaults(defineProps<RateProps>(), {
   disabled: false,
   allowHalf: false,
   touchable: true
-});
+})
 
-const emit = defineEmits(['update:modelValue', 'change']);
+const emit = defineEmits(['update:modelValue', 'change'])
 
-const refRandomId = Math.random().toString(36).slice(-8);
-const disabled = useFormDisabled(toRef(props, 'disabled'));
-const rateRefs = ref<HTMLElement[]>([]);
+const refRandomId = Math.random().toString(36).slice(-8)
+const disabled = useFormDisabled(toRef(props, 'disabled'))
+const rateRefs = ref<HTMLElement[]>([])
 const updateVal = (value: number) => {
-  emit('update:modelValue', value);
-  emit('change', value);
-};
+  emit('update:modelValue', value)
+  emit('change', value)
+}
 const onClick = (e: number, index: number) => {
-  if (disabled.value || props.readonly) return;
-  let value = 0;
+  if (disabled.value || props.readonly) return
+  let value = 0
   if (index === 1 && props.modelValue === index) {
-    value = 0;
+    value = 0
   } else {
-    value = index;
+    value = index
     if (props.allowHalf && e == 2) {
-      value -= 0.5;
+      value -= 0.5
     }
   }
-  updateVal(value);
-};
+  updateVal(value)
+}
 const getScoreByPosition = (x: number, rateRefs: Ref<HTMLElement[]>, allowHalf: boolean) => {
-  let v = 0;
+  let v = 0
   for (let index = rateRefs.value.length - 1; index >= 0; index--) {
-    const item = rateRefs.value[index];
+    const item = rateRefs.value[index]
     if (x > item.offsetLeft) {
       if (allowHalf) {
-        v = index + (x > item.offsetLeft + item.clientWidth / 2 ? 1 : 0.5);
+        v = index + (x > item.offsetLeft + item.clientWidth / 2 ? 1 : 0.5)
       } else {
-        v = index + 1;
+        v = index + 1
       }
-      break;
+      break
     }
   }
-  return v;
-};
-const touch = useTouch();
+  return v
+}
+const touch = useTouch()
 const onTouchStart = (event: TouchEvent) => {
-  if (!props.touchable || props.readonly) return;
-  touch.start(event);
-};
+  if (!props.touchable || props.readonly) return
+  touch.start(event)
+}
 const onTouchMove = (event: TouchEvent) => {
-  if (!props.touchable) return;
-  touch.move(event);
+  if (!props.touchable) return
+  touch.move(event)
   if (touch.isHorizontal()) {
     if (rateRefs.value) {
-      event.preventDefault();
-      updateVal(getScoreByPosition(touch.moveX.value, rateRefs, props.allowHalf));
+      event.preventDefault()
+      updateVal(getScoreByPosition(touch.moveX.value, rateRefs, props.allowHalf))
     }
   }
-};
+}
 </script>

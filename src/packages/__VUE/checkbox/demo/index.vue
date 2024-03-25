@@ -38,19 +38,19 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Indeterminate from './indeterminate.vue';
-import Disabled from './disabled.vue';
-import Size from './size.vue';
-import IconDemo from './icon.vue';
-import Event from './event.vue';
-import Group from './group.vue';
-import GroupDisabled from './group-disabled.vue';
-import Methods from './methods.vue';
-import Max from './max.vue';
-import Methods2 from './methods2.vue';
-import Shape from './shape.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Indeterminate from './indeterminate.vue'
+import Disabled from './disabled.vue'
+import Size from './size.vue'
+import IconDemo from './icon.vue'
+import Event from './event.vue'
+import Group from './group.vue'
+import GroupDisabled from './group-disabled.vue'
+import Methods from './methods.vue'
+import Max from './max.vue'
+import Methods2 from './methods2.vue'
+import Shape from './shape.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -81,5 +81,5 @@ const t = useTranslate({
     methods2: 'Select all / half / cancel',
     shape: 'Button Shape'
   }
-});
+})
 </script>

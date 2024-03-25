@@ -10,7 +10,7 @@
   </nut-pagination>
 </template>
 <script setup lang="ts">
-import { Left, Right } from '@nutui/icons-vue';
-import { ref } from 'vue';
-const page = ref(1);
+import { Left, Right } from '@nutui/icons-vue'
+import { ref } from 'vue'
+const page = ref(1)
 </script>

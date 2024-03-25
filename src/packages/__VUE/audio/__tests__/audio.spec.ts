@@ -1,16 +1,16 @@
-import { config, mount } from '@vue/test-utils';
-import { nextTick, toRefs, reactive } from 'vue';
-import { Audio, AudioOperate } from '@nutui/nutui';
+import { config, mount } from '@vue/test-utils'
+import { nextTick, toRefs, reactive } from 'vue'
+import { Audio, AudioOperate } from '@nutui/nutui'
 
 beforeAll(() => {
   config.global.components = {
     AudioOperate
-  };
-});
+  }
+})
 
 afterAll(() => {
-  config.global.components = {};
-});
+  config.global.components = {}
+})
 
 test('audio init render', async () => {
   const wrapper = mount(Audio, {
@@ -18,10 +18,10 @@ test('audio init render', async () => {
       type: 'icon',
       url: '//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav'
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-audio__icon').exists()).toBeTruthy();
-});
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-audio__icon').exists()).toBeTruthy()
+})
 
 test('audio init render', async () => {
   const wrapper = mount({
@@ -54,17 +54,17 @@ test('audio init render', async () => {
         muted: false,
         autoplay: false,
         time: 0
-      });
+      })
       const forward = (p: any) => {
-        data.time = p;
-      };
+        data.time = p
+      }
 
-      return { ...toRefs(data), forward };
+      return { ...toRefs(data), forward }
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-audio-operate-item').exists()).toBeTruthy();
-  wrapper.find('.nut-audio-operate-item').trigger('click');
-  await nextTick();
-  expect(wrapper.vm.time).toBe(1);
-});
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-audio-operate-item').exists()).toBeTruthy()
+  wrapper.find('.nut-audio-operate-item').trigger('click')
+  await nextTick()
+  expect(wrapper.vm.time).toBe(1)
+})

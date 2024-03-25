@@ -9,5 +9,5 @@ export type AnimateType =
   | 'slide-bottom'
   | 'jump'
   | 'twinkle'
-  | 'flicker';
-export type AnimateAction = 'initial' | 'click' | '';
+  | 'flicker'
+export type AnimateAction = 'initial' | 'click' | ''

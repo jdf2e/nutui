@@ -29,12 +29,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro';
+import { ref } from 'vue'
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue-taro'
 
-const active = ref(0);
+const active = ref(0)
 
 const tabSwitch = (item: Record<string, unknown>, index: number) => {
-  console.log(item, index);
-};
+  console.log(item, index)
+}
 </script>

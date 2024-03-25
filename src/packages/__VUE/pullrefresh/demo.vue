@@ -35,9 +35,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showToast } from '@nutui/nutui';
+import { ref, reactive } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
+import { showToast } from '@nutui/nutui'
 
 const translate = useTranslate({
   'zh-CN': {
@@ -62,7 +62,7 @@ const translate = useTranslate({
     ok: 'Ok!',
     pull: 'Pull'
   }
-});
+})
 
 const letter: any[] = [
   'A',
@@ -90,26 +90,26 @@ const letter: any[] = [
   'X',
   'Y',
   'Z'
-];
+]
 
-const refresh = ref(false);
-const refresh2 = ref(false);
+const refresh = ref(false)
+const refresh2 = ref(false)
 
 const data = reactive({
   tabsValue: 0,
   customList: [],
   refreshList: new Array(10).fill(11),
   refreshList2: ([] as Array<any>).concat(letter)
-});
+})
 
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-    refresh2.value = false;
+    refresh.value = false
+    refresh2.value = false
 
-    showToast.text('刷新成功！');
-  }, 3000);
-};
+    showToast.text('刷新成功！')
+  }, 3000)
+}
 </script>
 
 <style lang="scss" scoped>

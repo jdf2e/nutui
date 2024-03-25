@@ -18,8 +18,8 @@
   </nut-tabbar>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { Home, Category, Find } from '@nutui/icons-vue';
+import { ref } from 'vue'
+import { Home, Category, Find } from '@nutui/icons-vue'
 
-const active = ref(0);
+const active = ref(0)
 </script>

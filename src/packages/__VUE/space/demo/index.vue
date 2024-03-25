@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Direction from './direction.vue';
-import Gutter from './gutter.vue';
-import Wrap from './wrap.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Direction from './direction.vue'
+import Gutter from './gutter.vue'
+import Wrap from './wrap.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     gutter: 'Custom gutter',
     wrap: 'Word wrap'
   }
-});
+})
 </script>

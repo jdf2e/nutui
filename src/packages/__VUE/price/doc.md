@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Price } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Price } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Price);
+const app = createApp()
+app.use(Price)
 ```
 
 ### 价格大小

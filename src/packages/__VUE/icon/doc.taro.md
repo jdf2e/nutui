@@ -11,11 +11,11 @@ npm i --save @nutui/icons-vue-taro
 ```
 
 ```javascript
-import { createApp } from 'vue';
-import { IconFont } from '@nutui/icons-vue-taro';
+import { createApp } from 'vue'
+import { IconFont } from '@nutui/icons-vue-taro'
 
-const app = createApp();
-app.use(IconFont);
+const app = createApp()
+app.use(IconFont)
 ```
 
 ### 方式一：组件方式使用
@@ -23,15 +23,15 @@ app.use(IconFont);
 可选项见 @nutui/icons-vue-taro/dist/types/index.d.ts
 
 ```js
-import { Add } from '@nutui/icons-vue-taro';
+import { Add } from '@nutui/icons-vue-taro'
 // template
-<Add color="red" />;
+;<Add color="red" />
 ```
 
 ### 方式二：名称方式使用
 
 ```js
-import { IconFont } from '@nutui/icons-vue-taro';
+import { IconFont } from '@nutui/icons-vue-taro'
 ```
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
@@ -132,7 +132,7 @@ import { IconFont } from '@nutui/icons-vue-taro';
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
 ```javascript
-import './assets/font/iconfont.css';
+import './assets/font/iconfont.css'
 ```
 
 第三步：

@@ -7,9 +7,9 @@
   <nut-calendar-card v-model="value" type="multiple" @change="onChange"></nut-calendar-card>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const value = ref([new Date('2023-01-01'), new Date('2023-01-03')]);
+import { ref } from 'vue'
+const value = ref([new Date('2023-01-01'), new Date('2023-01-03')])
 const onChange = (val: Date) => {
-  console.log(val);
-};
+  console.log(val)
+}
 </script>

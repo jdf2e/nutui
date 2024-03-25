@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Dynamic from './dynamic.vue';
-import Validate from './validate.vue';
-import Type from './type.vue';
-import Star from './star.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Dynamic from './dynamic.vue'
+import Validate from './validate.vue'
+import Type from './type.vue'
+import Star from './star.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -40,5 +40,5 @@ const t = useTranslate({
     type: 'Form Type',
     star: 'Customize the label location'
   }
-});
+})
 </script>

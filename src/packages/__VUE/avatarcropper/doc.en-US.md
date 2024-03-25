@@ -7,11 +7,11 @@ Used to cut the profile picture to create a new image. Available in `NutUI` >= 4
 ### install
 
 ```js
-import { createApp } from 'vue';
-import { AvatarCropper } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { AvatarCropper } from '@nutui/nutui'
 
-const app = createApp();
-app.use(AvatarCropper);
+const app = createApp()
+app.use(AvatarCropper)
 ```
 
 ### Basic Usage

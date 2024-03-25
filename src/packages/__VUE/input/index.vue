@@ -52,15 +52,15 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h, toRef } from 'vue';
-import { MaskClose } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-import { formatNumber, mapInputType } from './util';
-import { useFormDisabled } from '../form/common';
+import { PropType, ref, reactive, computed, onMounted, watch, ComputedRef, h, toRef } from 'vue'
+import { MaskClose } from '@nutui/icons-vue'
+import { createComponent } from '@/packages/utils/create'
+import { formatNumber, mapInputType } from './util'
+import { useFormDisabled } from '../form/common'
 
-import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType } from './type';
+import type { InputType, InputAlignType, InputFormatTrigger, InputTarget, ConfirmTextType } from './type'
 
-const { componentName, create } = createComponent('input');
+const { componentName, create } = createComponent('input')
 
 export default create({
   props: {
@@ -147,21 +147,21 @@ export default create({
   expose: ['focus', 'blur', 'select'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const active = ref(false);
-    const inputRef = ref();
-    const getModelValue = () => String(props.modelValue ?? '');
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const active = ref(false)
+    const inputRef = ref()
+    const getModelValue = () => String(props.modelValue ?? '')
 
-    const renderInput = (type: InputType) => h('input', { ...mapInputType(type) });
+    const renderInput = (type: InputType) => h('input', { ...mapInputType(type) })
 
     const state = reactive({
       focused: false,
       validateFailed: false, // 校验失败
       validateMessage: '' // 校验信息
-    });
+    })
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: disabled.value,
@@ -169,138 +169,138 @@ export default create({
         [`${prefixCls}--error`]: props.error,
         [`${prefixCls}--border`]: props.border,
         [props.class]: !!props.class
-      };
-    });
+      }
+    })
 
     const styles: ComputedRef = computed(() => {
       return {
         textAlign: props.inputAlign
-      };
-    });
+      }
+    })
 
     const onInput = (event: Event) => {
       if (!(event.target as InputTarget)!.composing) {
-        const input = event.target as HTMLInputElement;
-        let value = input.value;
+        const input = event.target as HTMLInputElement
+        let value = input.value
         if (props.maxLength && value.length > Number(props.maxLength)) {
-          value = value.slice(0, Number(props.maxLength));
+          value = value.slice(0, Number(props.maxLength))
         }
-        updateValue(value);
+        updateValue(value)
       }
-    };
+    }
 
     const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
       if (['number', 'digit'].includes(props.type)) {
-        const isNumber = props.type === 'number';
-        value = formatNumber(value, isNumber, isNumber);
+        const isNumber = props.type === 'number'
+        value = formatNumber(value, isNumber, isNumber)
       }
 
       if (props.formatter && trigger === props.formatTrigger) {
-        value = props.formatter(value);
+        value = props.formatter(value)
       }
 
       if (inputRef?.value?.value !== value) {
-        inputRef.value.value = value;
+        inputRef.value.value = value
       }
 
       if (value !== props.modelValue) {
-        emit('update:modelValue', value);
+        emit('update:modelValue', value)
         // emit('change', value);
       }
-    };
+    }
 
     const onFocus = (event: Event) => {
       if (disabled.value || props.readonly) {
-        return;
+        return
       }
-      active.value = true;
-      emit('focus', event);
+      active.value = true
+      emit('focus', event)
       // emit('update:modelValue', value);
-    };
+    }
 
     const onBlur = (event: Event) => {
       if (disabled.value || props.readonly) {
-        return;
+        return
       }
       setTimeout(() => {
-        active.value = false;
-      }, 200);
+        active.value = false
+      }, 200)
 
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      const input = event.target as HTMLInputElement
+      let value = input.value
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+        value = value.slice(0, Number(props.maxLength))
       }
-      updateValue(getModelValue(), 'onBlur');
-      emit('blur', event);
+      updateValue(getModelValue(), 'onBlur')
+      emit('blur', event)
       // emit('update:modelValue', value);
-    };
+    }
 
     const clear = (event: Event) => {
-      event.stopPropagation();
-      if (disabled.value) return;
-      emit('update:modelValue', '', event);
+      event.stopPropagation()
+      if (disabled.value) return
+      emit('update:modelValue', '', event)
       // emit('change', '', event);
-      emit('clear', '', event);
-    };
+      emit('clear', '', event)
+    }
 
     const resetValidation = () => {
       if (state.validateFailed) {
-        state.validateFailed = false;
-        state.validateMessage = '';
+        state.validateFailed = false
+        state.validateMessage = ''
       }
-    };
+    }
 
     const onClickInput = (event: MouseEvent) => {
       if (disabled.value) {
-        return;
+        return
       }
-      emit('clickInput', event);
-    };
+      emit('clickInput', event)
+    }
 
     const onClick = (event: MouseEvent) => {
-      emit('click', event);
-    };
+      emit('click', event)
+    }
 
     const startComposing = ({ target }: Event) => {
-      (target as InputTarget)!.composing = true;
-    };
+      ;(target as InputTarget)!.composing = true
+    }
 
     const endComposing = ({ target }: Event) => {
       if ((target as InputTarget)!.composing) {
-        (target as InputTarget)!.composing = false;
-        (target as InputTarget)!.dispatchEvent(new Event('input'));
+        ;(target as InputTarget)!.composing = false
+        ;(target as InputTarget)!.dispatchEvent(new Event('input'))
       }
-    };
+    }
     watch(
       () => props.modelValue,
       () => {
-        updateValue(getModelValue());
-        resetValidation();
+        updateValue(getModelValue())
+        resetValidation()
       }
-    );
+    )
 
     onMounted(() => {
-      updateValue(getModelValue(), props.formatTrigger);
-    });
+      updateValue(getModelValue(), props.formatTrigger)
+    })
 
     const focus = () => {
-      inputRef.value?.focus();
-    };
+      inputRef.value?.focus()
+    }
 
     const blur = () => {
-      inputRef.value?.blur();
-    };
+      inputRef.value?.blur()
+    }
 
     const select = () => {
-      inputRef.value?.select();
-    };
+      inputRef.value?.select()
+    }
 
     const onKeyup = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
-        emit('confirm', e);
+        emit('confirm', e)
       }
-    };
+    }
 
     return {
       renderInput,
@@ -322,7 +322,7 @@ export default create({
       select,
       onKeyup,
       getModelValue
-    };
+    }
   }
-});
+})
 </script>

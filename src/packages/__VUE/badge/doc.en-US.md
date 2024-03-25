@@ -7,11 +7,11 @@ A red dot, number or text appearing in the upper right corner of the icon or tex
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Badge } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Badge } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Badge);
+const app = createApp()
+app.use(Badge)
 ```
 
 ### Basic Usage

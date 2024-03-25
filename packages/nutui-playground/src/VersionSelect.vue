@@ -1,50 +1,50 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue'
 
-const expanded = ref(false);
-const versions = ref<string[]>();
+const expanded = ref(false)
+const versions = ref<string[]>()
 const props = defineProps<{
-  pkg: string;
-  label: string;
-  modelValue: string;
-}>();
-const emits = defineEmits(['update:modelValue']);
+  pkg: string
+  label: string
+  modelValue: string
+}>()
+const emits = defineEmits(['update:modelValue'])
 
 async function toggle() {
-  expanded.value = !expanded.value;
+  expanded.value = !expanded.value
   if (!versions.value) {
-    versions.value = await fetchVersions();
+    versions.value = await fetchVersions()
   }
 }
 
 async function fetchVersions(): Promise<string[]> {
-  const res = await fetch(`https://data.jsdelivr.com/v1/package/npm/${props.pkg}`);
-  const { versions } = (await res.json()) as { versions: string[] };
+  const res = await fetch(`https://data.jsdelivr.com/v1/package/npm/${props.pkg}`)
+  const { versions } = (await res.json()) as { versions: string[] }
 
   if (props.pkg === '@nutui/nutui') {
     const filteredVersions = (versions as any).filter((i) => {
-      return !i.includes('-') && i >= '4.1.0';
-    });
-    return filteredVersions;
+      return !i.includes('-') && i >= '4.1.0'
+    })
+    return filteredVersions
   }
-  return versions;
+  return versions
 }
 
 function setVersion(v: string) {
-  emits('update:modelValue', v);
-  expanded.value = false;
+  emits('update:modelValue', v)
+  expanded.value = false
 }
 
 onMounted(() => {
   window.addEventListener('click', () => {
-    expanded.value = false;
-  });
+    expanded.value = false
+  })
   window.addEventListener('blur', () => {
     if (document.activeElement?.tagName === 'IFRAME') {
-      expanded.value = false;
+      expanded.value = false
     }
-  });
-});
+  })
+})
 </script>
 
 <template>

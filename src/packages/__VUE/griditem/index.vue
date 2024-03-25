@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties } from 'vue';
-import { useRouter } from '@/packages/utils/useRoute';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { useInject } from '@/packages/utils/useRelation/useInject';
-import { GRID_KEY, GridProps } from '../grid/common';
-const { create, componentName } = createComponent('grid-item');
+import { computed, CSSProperties } from 'vue'
+import { useRouter } from '@/packages/utils/useRoute'
+import { createComponent } from '@/packages/utils/create'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { useInject } from '@/packages/utils/useRelation/useInject'
+import { GRID_KEY, GridProps } from '../grid/common'
+const { create, componentName } = createComponent('grid-item')
 
 export default create({
   props: {
@@ -39,39 +39,39 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY);
-    if (!Parent.parent) return {} as any;
-    const index = Parent.index;
-    const parent = Parent.parent.props;
+    const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY)
+    if (!Parent.parent) return {} as any
+    const index = Parent.index
+    const parent = Parent.parent.props
 
     // root
     const rootClass = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true
-      };
-    });
+      }
+    })
 
     const rootStyle = computed(() => {
       const style: CSSProperties = {
         flexBasis: `${100 / +parent.columnNum}%`
-      };
+      }
 
       if (parent.square) {
-        style.paddingTop = `${100 / +parent.columnNum}%`;
+        style.paddingTop = `${100 / +parent.columnNum}%`
       } else if (parent.gutter) {
-        style.paddingRight = pxCheck(parent.gutter);
+        style.paddingRight = pxCheck(parent.gutter)
         if (index.value >= +parent.columnNum) {
-          style.marginTop = pxCheck(parent.gutter);
+          style.marginTop = pxCheck(parent.gutter)
         }
       }
 
-      return style;
-    });
+      return style
+    })
 
     // content
     const contentClass = computed(() => {
-      const prefixCls = `${componentName}__content`;
+      const prefixCls = `${componentName}__content`
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}--border`]: parent.border,
@@ -81,27 +81,27 @@ export default create({
         [`${prefixCls}--reverse`]: parent.reverse,
         [`${prefixCls}--${parent.direction}`]: !!parent.direction,
         [`${prefixCls}--clickable`]: parent.clickable || props.to || props.url
-      };
-    });
+      }
+    })
 
     // click
-    const router = useRouter();
+    const router = useRouter()
     const handleClick = (event: Event) => {
-      emit('click', event);
+      emit('click', event)
 
       if (props.to && router) {
-        router[props.replace ? 'replace' : 'push'](props.to);
+        router[props.replace ? 'replace' : 'push'](props.to)
       } else if (props.url) {
-        props.replace ? location.replace(props.url) : (location.href = props.url);
+        props.replace ? location.replace(props.url) : (location.href = props.url)
       }
-    };
+    }
 
     return {
       rootClass,
       rootStyle,
       contentClass,
       handleClick
-    };
+    }
   }
-});
+})
 </script>

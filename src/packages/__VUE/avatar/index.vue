@@ -4,10 +4,10 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, computed, inject, ref, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { AVATAR_KEY, type AvatarShape, type AvatarSize } from './types';
-const { create } = createComponent('avatar');
+import { toRefs, computed, inject, ref, PropType, CSSProperties } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { AVATAR_KEY, type AvatarShape, type AvatarSize } from './types'
+const { create } = createComponent('avatar')
 export default create({
   props: {
     size: {
@@ -28,19 +28,19 @@ export default create({
     }
   },
   setup(props) {
-    const { size, shape, bgColor, color } = toRefs(props);
-    const sizeValue = ['large', 'normal', 'small'];
-    const avatarGroup: any = inject(AVATAR_KEY, null);
-    const avatarRef = ref(null);
+    const { size, shape, bgColor, color } = toRefs(props)
+    const sizeValue = ['large', 'normal', 'small']
+    const avatarGroup: any = inject(AVATAR_KEY, null)
+    const avatarRef = ref(null)
 
     const classes = computed(() => {
-      const prefixCls = 'nut-avatar';
+      const prefixCls = 'nut-avatar'
       return {
         [prefixCls]: true,
         [`nut-avatar-${size.value || avatarGroup?.props?.size || 'normal'}`]: true,
         [`nut-avatar-${shape.value || avatarGroup?.props?.shape || 'round'}`]: true
-      };
-    });
+      }
+    })
 
     const styles = computed(() => {
       return {
@@ -49,14 +49,14 @@ export default create({
         backgroundColor: `${bgColor.value}`,
         color: `${color.value}`,
         marginLeft: avatarGroup?.props?.span ? `${avatarGroup?.props?.span}px` : ''
-      } as CSSProperties;
-    });
+      } as CSSProperties
+    })
 
     return {
       classes,
       styles,
       avatarRef
-    };
+    }
   }
-});
+})
 </script>

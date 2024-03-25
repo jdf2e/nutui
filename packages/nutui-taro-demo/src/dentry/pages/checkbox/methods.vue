@@ -13,7 +13,7 @@
   </nut-cell>
 </template>
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref } from 'vue'
 const state = reactive({
   checkboxgroup3: ['2'],
   checkboxsource: [
@@ -26,19 +26,19 @@ const state = reactive({
     { label: '7', value: 'G' },
     { label: '8', value: 'H' }
   ]
-});
+})
 
-const group = ref(null);
+const group = ref(null)
 const changeBox4 = (label) => {
-  console.log(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`);
-};
+  console.log(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`)
+}
 
 const toggleAll = (f) => {
-  group.value.toggleAll(f);
-};
+  group.value.toggleAll(f)
+}
 
 const toggleReverse = () => {
-  console.log(`反选`);
-  group.value.toggleReverse();
-};
+  console.log(`反选`)
+  group.value.toggleReverse()
+}
 </script>

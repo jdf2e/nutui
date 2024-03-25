@@ -12,5 +12,5 @@
   </nut-space>
 </template>
 <script setup lang="ts">
-import { Loading, CircleClose } from '@nutui/icons-vue';
+import { Loading, CircleClose } from '@nutui/icons-vue'
 </script>

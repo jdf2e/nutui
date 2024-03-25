@@ -29,58 +29,58 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { renderIcon } from '@/packages/utils/create';
-import { useRouter } from '@/packages/utils/useRoute';
-import { useParent } from '@/packages/utils';
-import { TABBAR_KEY } from '../tabbar/types';
-import NutBadge from '../badge/index.vue';
+import { computed } from 'vue'
+import { renderIcon } from '@/packages/utils/create'
+import { useRouter } from '@/packages/utils/useRoute'
+import { useParent } from '@/packages/utils'
+import { TABBAR_KEY } from '../tabbar/types'
+import NutBadge from '../badge/index.vue'
 
 defineOptions({
   name: 'NutTabbarItem'
-});
+})
 
 export type TabbarItemProps = Partial<{
-  tabTitle: string;
-  name: string;
-  icon: any;
+  tabTitle: string
+  name: string
+  icon: any
   /**
    * @deprecated It will be removed in next major version.
    */
-  href: string;
+  href: string
   /**
    * @deprecated It will be removed in next major version.
    */
-  to: string | Record<never, any>;
-}>;
+  to: string | Record<never, any>
+}>
 
 const props = withDefaults(defineProps<TabbarItemProps>(), {
   tabTitle: '',
   href: ''
-});
+})
 
-const router = useRouter();
-const { parent, index } = useParent(TABBAR_KEY);
+const router = useRouter()
+const { parent, index } = useParent(TABBAR_KEY)
 
-const active = computed(() => (props.name ?? index.value) === parent.activeIndex.value);
-const activeColor = computed(() => (active.value ? parent.props.activeColor : parent.props.unactiveColor));
+const active = computed(() => (props.name ?? index.value) === parent.activeIndex.value)
+const activeColor = computed(() => (active.value ? parent.props.activeColor : parent.props.unactiveColor))
 
 const change = () => {
-  const key = props.name ?? index.value;
-  parent.changeIndex(index.value, key);
+  const key = props.name ?? index.value
+  parent.changeIndex(index.value, key)
 
   if (parent.children[index.value]?.href) {
-    window.location.href = parent.children[index.value].href;
-    return;
+    window.location.href = parent.children[index.value].href
+    return
   }
 
   if (parent.children[index.value]?.to) {
-    const to = parent.children[index.value].to;
+    const to = parent.children[index.value].to
     if (to && router) {
-      router.push(to);
+      router.push(to)
     } else {
-      location.replace(to);
+      location.replace(to)
     }
   }
-};
+}
 </script>

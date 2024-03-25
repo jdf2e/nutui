@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref } from 'vue'
 const data = ref([
   {
     testid: 3,
@@ -57,34 +57,34 @@ const data = ref([
     defaultAddress: true,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   }
-]);
+])
 const dataOptions = reactive({
   id: 'testid',
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
-});
+})
 const clickItem = () => {
-  console.log('Click To Address');
-};
+  console.log('Click To Address')
+}
 const delClick = () => {
-  console.log('Click To Delete');
-};
+  console.log('Click To Delete')
+}
 const editClick = () => {
-  console.log('Click To Edit');
-};
+  console.log('Click To Edit')
+}
 const copyClick = () => {
-  console.log('Click To Copy');
-};
+  console.log('Click To Copy')
+}
 const setClick = () => {
-  console.log('Click On Settings');
-};
+  console.log('Click On Settings')
+}
 const delClickLong = () => {
-  console.log('Click On DelClickLong');
-};
+  console.log('Click On DelClickLong')
+}
 const delClickSwipe = () => {
-  console.log('Click On DelClickSwipe');
-};
+  console.log('Click On DelClickSwipe')
+}
 const addAddress = () => {
-  console.log('Click To Add');
-};
+  console.log('Click To Add')
+}
 </script>

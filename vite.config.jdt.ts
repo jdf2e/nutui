@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
-import config from './package.json';
-import { markdown } from '@nutui/vite-plugins';
-const resolve = path.resolve;
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import config from './package.json'
+import { markdown } from '@nutui/vite-plugins'
+const resolve = path.resolve
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/jdt/',
@@ -68,4 +68,4 @@ export default defineConfig({
       }
     }
   }
-});
+})

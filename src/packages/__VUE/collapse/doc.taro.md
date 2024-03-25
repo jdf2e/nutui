@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Collapse, CollapseItem } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Collapse, CollapseItem } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Collapse);
-app.use(CollapseItem);
+const app = createApp()
+app.use(Collapse)
+app.use(CollapseItem)
 ```
 
 ### 基础用法

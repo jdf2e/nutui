@@ -6,6 +6,6 @@
   </nut-radio-group>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const val = ref('1');
+import { ref } from 'vue'
+const val = ref('1')
 </script>

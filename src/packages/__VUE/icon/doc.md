@@ -15,9 +15,9 @@ npm i --save @nutui/icons-vue
 按需加载组件使用方式，可选项见 @nutui/icons-vue/dist/types/index.d.ts
 
 ```js
-import { Add } from '@nutui/icons-vue';
+import { Add } from '@nutui/icons-vue'
 // template
-<Add color="red" />;
+;<Add color="red" />
 ```
 
 <icon-demo />
@@ -45,11 +45,11 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ## 方式二： IconFont 全量使用
 
 ```js
-import { createApp } from 'vue';
-import { IconFont } from '@nutui/icons-vue';
-import '@nutui/icons-vue/dist/style_iconfont.css';
-const app = createApp();
-app.use(IconFont);
+import { createApp } from 'vue'
+import { IconFont } from '@nutui/icons-vue'
+import '@nutui/icons-vue/dist/style_iconfont.css'
+const app = createApp()
+app.use(IconFont)
 ```
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。

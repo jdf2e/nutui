@@ -33,10 +33,10 @@
   </Transition>
 </template>
 <script lang="ts">
-import { Component, computed, PropType, watch } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
-const { create } = createComponent('toast');
-import { Failure, Loading, Success, Tips } from '@nutui/icons-vue-taro';
+import { Component, computed, PropType, watch } from 'vue'
+import { createComponent, renderIcon } from '@/packages/utils/create'
+const { create } = createComponent('toast')
+import { Failure, Loading, Success, Tips } from '@nutui/icons-vue-taro'
 export default create({
   components: {},
   props: {
@@ -105,59 +105,59 @@ export default create({
   },
   emits: ['update:visible', 'closed'],
   setup(props, { emit }) {
-    let timer: NodeJS.Timeout | null | undefined;
+    let timer: NodeJS.Timeout | null | undefined
     const clearTimer = () => {
       if (timer) {
-        clearTimeout(timer);
-        timer = null;
+        clearTimeout(timer)
+        timer = null
       }
-    };
+    }
     const hide = () => {
-      emit('update:visible', false);
-      emit('closed');
-    };
+      emit('update:visible', false)
+      emit('closed')
+    }
     const show = () => {
-      clearTimer();
+      clearTimer()
       if (props.duration) {
         timer = setTimeout(() => {
-          hide();
-        }, props.duration);
+          hide()
+        }, props.duration)
       }
-    };
+    }
     const clickCover = () => {
       if (props.closeOnClickOverlay) {
-        hide();
+        hide()
       }
-    };
+    }
 
     watch(
       () => props.visible,
       (val) => {
         if (val) {
-          show();
+          show()
         }
       }
-    );
+    )
 
     const hasIcon = computed(() => {
       if (props.type !== 'text') {
-        return true;
+        return true
       } else {
-        return !!props.icon;
+        return !!props.icon
       }
-    });
+    })
     const iconName = computed(() => {
       if (props.icon) {
-        return props.icon;
+        return props.icon
       } else {
         return {
           success: Success,
           fail: Failure,
           warn: Tips,
           loading: Loading
-        }[props.type] as any;
+        }[props.type] as any
       }
-    });
+    })
     const toastBodyClass = computed(() => {
       return [
         'nut-toast',
@@ -167,15 +167,15 @@ export default create({
         { 'nut-toast-loading': props.type === 'loading' },
         props.customClass,
         'nut-toast-' + props.size
-      ];
-    });
+      ]
+    })
 
     const onAfterLeave = () => {
       if (props.visible) {
-        clearTimer();
-        hide();
+        clearTimer()
+        hide()
       }
-    };
+    }
 
     return {
       clickCover,
@@ -184,7 +184,7 @@ export default create({
       toastBodyClass,
       onAfterLeave,
       renderIcon
-    };
+    }
   }
-});
+})
 </script>

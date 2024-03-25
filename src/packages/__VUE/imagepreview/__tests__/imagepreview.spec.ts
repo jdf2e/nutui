@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
-import { ImagePreview } from '@nutui/nutui';
-import { nextTick } from 'vue';
-import { sleep } from '@/packages/utils/unit';
+import { mount } from '@vue/test-utils'
+import { ImagePreview } from '@nutui/nutui'
+import { nextTick } from 'vue'
+import { sleep } from '@/packages/utils/unit'
 
 const images = [
   {
@@ -16,7 +16,7 @@ const images = [
   {
     src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
   }
-];
+]
 
 test('basic usage test', async () => {
   const wrapper = mount(ImagePreview, {
@@ -24,10 +24,10 @@ test('basic usage test', async () => {
       show: true,
       images
     }
-  });
-  await nextTick();
-  expect((wrapper.find('.nut-image-preview-custom-pop').element as any).style.display).toEqual('');
-});
+  })
+  await nextTick()
+  expect((wrapper.find('.nut-image-preview-custom-pop').element as any).style.display).toEqual('')
+})
 
 test('test autoplay', async () => {
   const wrapper = mount(ImagePreview, {
@@ -36,16 +36,16 @@ test('test autoplay', async () => {
       images,
       autoplay: 3000
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  expect(wrapper.vm.active).toBe(0);
+  expect(wrapper.vm.active).toBe(0)
 
   setTimeout(() => {
-    expect(wrapper.vm.active).toBe(1);
-  }, 3000);
-});
+    expect(wrapper.vm.active).toBe(1)
+  }, 3000)
+})
 
 test('init page No.', async () => {
   const wrapper = mount(ImagePreview, {
@@ -54,10 +54,10 @@ test('init page No.', async () => {
       images,
       initNo: 3
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-image-preview-index').text()).toEqual('4 / 4');
-});
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-image-preview-index').text()).toEqual('4 / 4')
+})
 
 test('customize pagination and color', async () => {
   const wrapper = mount(ImagePreview, {
@@ -67,12 +67,12 @@ test('customize pagination and color', async () => {
       paginationVisible: true,
       paginationColor: 'red'
     }
-  });
-  await nextTick();
-  const swiperPagination = wrapper.find('.nut-swiper-pagination');
-  expect(swiperPagination.exists()).toBe(true);
-  expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
-});
+  })
+  await nextTick()
+  const swiperPagination = wrapper.find('.nut-swiper-pagination')
+  expect(swiperPagination.exists()).toBe(true)
+  expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red')
+})
 
 test('dynamic images', async () => {
   const wrapper = mount(ImagePreview, {
@@ -80,11 +80,11 @@ test('dynamic images', async () => {
       show: true,
       images: []
     }
-  });
-  await nextTick();
+  })
+  await nextTick()
   wrapper.setProps({
     images
-  });
-  await sleep(1);
-  expect((wrapper.find('.nut-swiper-inner').element as any).style.transform).toEqual('translateX(0px)');
-});
+  })
+  await sleep(1)
+  expect((wrapper.find('.nut-swiper-inner').element as any).style.transform).toEqual('translateX(0px)')
+})

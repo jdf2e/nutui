@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Badge } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Badge } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Badge);
+const app = createApp()
+app.use(Badge)
 ```
 
 ### 基础用法

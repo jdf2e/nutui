@@ -24,18 +24,18 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, nextTick, onMounted, ref, toRef, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
-import { useLocale } from '@/packages/utils/useLocale';
-import { useFormDisabled } from '../form/common';
+import { computed, nextTick, onMounted, ref, toRef, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import Taro from '@tarojs/taro'
+import { useLocale } from '@/packages/utils/useLocale'
+import { useFormDisabled } from '../form/common'
 
 export interface InputTarget extends HTMLInputElement {
-  composing?: boolean;
+  composing?: boolean
 }
 
-const { create } = createComponent('textarea');
-const cN = 'NutTextarea';
+const { create } = createComponent('textarea')
+const cN = 'NutTextarea'
 
 export default create({
   inheritAttrs: false,
@@ -85,174 +85,174 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const translate = useLocale(cN);
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const translate = useLocale(cN)
     const classes = computed(() => {
-      const prefixCls = 'nut-textarea';
+      const prefixCls = 'nut-textarea'
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: disabled.value
-      };
-    });
+      }
+    })
 
     const styles = computed(() => {
       const styleObj: any = {
         textAlign: props.textAlign
-      };
-      if (props.autosize) {
-        styleObj['height'] = heightSet.value;
       }
-      return styleObj;
-    });
+      if (props.autosize) {
+        styleObj['height'] = heightSet.value
+      }
+      return styleObj
+    })
 
     const copyTxtStyle: any = ref({
       'word-break': 'break-all',
       width: '0'
-    });
+    })
 
     const emitChange = (value: string, event: Event) => {
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.substring(0, Number(props.maxLength));
+        value = value.substring(0, Number(props.maxLength))
       }
-      emit('update:modelValue', value, event);
-      emit('change', value, event);
-    };
+      emit('update:modelValue', value, event)
+      emit('change', value, event)
+    }
 
     const change = (event: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (!composing.value) {
-          _onInput(event);
+          _onInput(event)
         }
       } else {
-        _onInput(event);
+        _onInput(event)
       }
-    };
+    }
     const _onInput = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      const input = event.target as HTMLInputElement
+      let value = input.value
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.slice(0, Number(props.maxLength));
+        value = value.slice(0, Number(props.maxLength))
       }
-      emitChange(value, event);
-    };
+      emitChange(value, event)
+    }
 
     const focus = (event: Event) => {
-      if (disabled.value) return;
-      if (props.readonly) return;
-      emit('focus', event);
-    };
+      if (disabled.value) return
+      if (props.readonly) return
+      emit('focus', event)
+    }
 
     const blur = (event: Event) => {
-      if (disabled.value) return;
-      if (props.readonly) return;
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
-      emitChange(value, event);
-      emit('blur', event);
-    };
+      if (disabled.value) return
+      if (props.readonly) return
+      const input = event.target as HTMLInputElement
+      let value = input.value
+      emitChange(value, event)
+      emit('blur', event)
+    }
 
-    const textareaRef = ref<any>(null);
-    const textareaHeight = ref(20);
-    const heightSet = ref('auto');
+    const textareaRef = ref<any>(null)
+    const textareaHeight = ref(20)
+    const heightSet = ref('auto')
     const getContentHeight = () => {
-      heightSet.value = 'auto';
-      let height = textareaHeight.value;
+      heightSet.value = 'auto'
+      let height = textareaHeight.value
       if (typeof props.autosize === 'object') {
-        const { maxHeight, minHeight } = props.autosize;
+        const { maxHeight, minHeight } = props.autosize
         if (maxHeight !== undefined) {
-          height = Math.min(height, maxHeight);
+          height = Math.min(height, maxHeight)
         }
         if (minHeight !== undefined) {
-          height = Math.max(height, minHeight);
+          height = Math.max(height, minHeight)
         }
       }
       if (height) {
-        heightSet.value = height + 'px';
+        heightSet.value = height + 'px'
       }
-    };
+    }
     watch(
       () => props.modelValue,
       () => {
         if (props.autosize) {
           setTimeout(() => {
-            copyHeight();
-          }, 100);
+            copyHeight()
+          }, 100)
         }
       }
-    );
+    )
 
     const copyHeight = () => {
-      const query = Taro.createSelectorQuery();
-      query.select('.nut-textarea__cpoyText').boundingClientRect();
+      const query = Taro.createSelectorQuery()
+      query.select('.nut-textarea__cpoyText').boundingClientRect()
       query.exec((res) => {
         if (res[0]) {
           if (props.modelValue == '') {
-            textareaHeight.value = 20;
+            textareaHeight.value = 20
           } else {
-            textareaHeight.value = res[0]['height'] || 20;
+            textareaHeight.value = res[0]['height'] || 20
           }
-          nextTick(getContentHeight);
+          nextTick(getContentHeight)
         }
-      });
-    };
+      })
+    }
 
     const getRefHeight = () => {
-      const query = Taro.createSelectorQuery();
-      query.selectAll('.nut-textarea__textarea').boundingClientRect();
-      let uid = textareaRef.value ? textareaRef.value.uid : '0';
+      const query = Taro.createSelectorQuery()
+      query.selectAll('.nut-textarea__textarea').boundingClientRect()
+      let uid = textareaRef.value ? textareaRef.value.uid : '0'
       query.exec((res: any) => {
         if (res[0] && textareaRef.value) {
-          let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid);
+          let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid)
           if (_item[0]) {
             if (Taro.getEnv() !== Taro.ENV_TYPE.WEAPP) {
-              textareaHeight.value = _item[0]['height'] || 20;
+              textareaHeight.value = _item[0]['height'] || 20
             }
-            copyTxtStyle.value.width = _item[0]['width'] + 'px';
+            copyTxtStyle.value.width = _item[0]['width'] + 'px'
           }
-          nextTick(getContentHeight);
+          nextTick(getContentHeight)
         }
-      });
-    };
+      })
+    }
 
     const getRefWidth = () => {
-      const query = Taro.createSelectorQuery();
-      query.select('.nut-textarea__textarea').boundingClientRect();
+      const query = Taro.createSelectorQuery()
+      query.select('.nut-textarea__textarea').boundingClientRect()
       query.exec((res: any) => {
         if (res[0] && textareaRef.value) {
-          copyTxtStyle.value.width = res[0]['width'] + 'px';
+          copyTxtStyle.value.width = res[0]['width'] + 'px'
         }
-      });
-    };
-    const env = Taro.getEnv();
+      })
+    }
+    const env = Taro.getEnv()
     onMounted(() => {
       if (props.autosize) {
         Taro.nextTick(() => {
           setTimeout(() => {
             if (Taro.getEnv() === 'ALIPAY' || Taro.getEnv() === 'WEB') {
-              getRefWidth();
-              copyHeight();
+              getRefWidth()
+              copyHeight()
             } else {
-              getRefHeight();
+              getRefHeight()
             }
-          }, 300);
-        });
+          }, 300)
+        })
       }
-    });
-    const composing = ref(false);
+    })
+    const composing = ref(false)
     const startComposing = () => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        composing.value = true;
+        composing.value = true
       }
-    };
+    }
 
     const endComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if (composing.value) {
-          composing.value = false;
-          (target as InputTarget).dispatchEvent(new Event('input'));
+          composing.value = false
+          ;(target as InputTarget).dispatchEvent(new Event('input'))
         }
       }
-    };
+    }
 
     return {
       env,
@@ -267,7 +267,7 @@ export default create({
       copyTxtStyle,
       startComposing,
       endComposing
-    };
+    }
   }
-});
+})
 </script>

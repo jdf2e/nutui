@@ -5,17 +5,17 @@
   </nut-space>
 </template>
 <script setup>
-import { ref } from 'vue';
-const paused = ref(false);
-const end = ref(Date.now() + 60 * 1000);
+import { ref } from 'vue'
+const paused = ref(false)
+const end = ref(Date.now() + 60 * 1000)
 
 const toggle = () => {
-  paused.value = !paused.value;
-};
+  paused.value = !paused.value
+}
 const onPaused = (v) => {
-  console.log('paused: ', v);
-};
+  console.log('paused: ', v)
+}
 const onRestart = (v) => {
-  console.log('restart: ', v);
-};
+  console.log('restart: ', v)
+}
 </script>

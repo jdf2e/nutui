@@ -75,22 +75,22 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue';
-import { PopoverLocation, PopoverTheme } from '../popover/type';
-import { createComponent } from '@/packages/utils/create';
-import { useRect } from '@/packages/utils/useRect';
-import { Close } from '@nutui/icons-vue';
-import NutPopover from '../popover/index.vue';
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue'
+import { PopoverLocation, PopoverTheme } from '../popover/type'
+import { createComponent } from '@/packages/utils/create'
+import { useRect } from '@/packages/utils/useRect'
+import { Close } from '@nutui/icons-vue'
+import NutPopover from '../popover/index.vue'
 
 export interface StepOptions {
-  target: Element | string;
-  content?: string;
-  location?: PopoverLocation;
-  popoverOffset?: number[];
-  arrowOffset?: number;
+  target: Element | string
+  content?: string
+  location?: PopoverLocation
+  popoverOffset?: number[]
+  arrowOffset?: number
 }
-export type TourType = 'step' | 'tile';
-const { create } = createComponent('tour');
+export type TourType = 'step' | 'tile'
+const { create } = createComponent('tour')
 export default create({
   components: {
     NutPopover,
@@ -169,19 +169,19 @@ export default create({
       showTour: props.modelValue,
       showPopup: false,
       active: 0
-    });
+    })
 
     const maskRect = ref<
       | DOMRect
       | {
-          [props: string]: number;
+          [props: string]: number
         }
-    >({});
+    >({})
 
     const classes = computed(() => {
-      const prefixCls = 'nut-tour';
-      return `${prefixCls}`;
-    });
+      const prefixCls = 'nut-tour'
+      return `${prefixCls}`
+    })
 
     // const maskClasses = computed(() => {
     //   const prefixCls = 'nut-tour';
@@ -192,70 +192,70 @@ export default create({
     // });
 
     const maskStyle = computed(() => {
-      const { offset, maskWidth, maskHeight } = props;
-      const { width, height, left, top } = maskRect.value;
+      const { offset, maskWidth, maskHeight } = props
+      const { width, height, left, top } = maskRect.value
 
-      const center = [left + width / 2, top + height / 2]; // 中心点 【横，纵】
-      const w: number = Number(maskWidth ? maskWidth : width);
-      const h: number = Number(maskHeight ? maskHeight : height);
+      const center = [left + width / 2, top + height / 2] // 中心点 【横，纵】
+      const w: number = Number(maskWidth ? maskWidth : width)
+      const h: number = Number(maskHeight ? maskHeight : height)
 
       const styles = {
         width: `${w + +offset[1] * 2}px`,
         height: `${h + +offset[0] * 2}px`,
         top: `${center[1] - h / 2 - +offset[0]}px`,
         left: `${center[0] - w / 2 - +offset[1]}px`
-      };
-      return styles;
-    });
+      }
+      return styles
+    })
 
     const changeStep = (type: string) => {
       if (type == 'next') {
-        state.active = state.active + 1;
+        state.active = state.active + 1
       } else {
-        state.active = state.active - 1;
+        state.active = state.active - 1
       }
 
-      state.showPopup = false;
+      state.showPopup = false
       nextTick(() => {
-        state.showPopup = true;
-        getRootPosition();
-      });
+        state.showPopup = true
+        getRootPosition()
+      })
 
-      emit('change', state.active);
-    };
+      emit('change', state.active)
+    }
 
     const getRootPosition = () => {
-      const el: any = document.querySelector(`#${props.steps[state.active].target}`);
-      const rect = useRect(el);
-      maskRect.value = rect;
-    };
+      const el: any = document.querySelector(`#${props.steps[state.active].target}`)
+      const rect = useRect(el)
+      maskRect.value = rect
+    }
 
     const close = () => {
-      state.showTour = false;
-      state.showPopup = false;
-      emit('close', state.active);
-      emit('update:modelValue', false);
-    };
+      state.showTour = false
+      state.showPopup = false
+      emit('close', state.active)
+      emit('update:modelValue', false)
+    }
 
     const handleClickMask = () => {
-      props.closeOnClickOverlay && close();
-    };
+      props.closeOnClickOverlay && close()
+    }
 
     onMounted(() => {
-      state.active = 0;
-      getRootPosition();
-    });
+      state.active = 0
+      getRootPosition()
+    })
     watch(
       () => props.modelValue,
       (val) => {
         if (val) {
-          getRootPosition();
+          getRootPosition()
         }
-        state.active = 0;
-        state.showTour = val;
-        state.showPopup = val;
+        state.active = 0
+        state.showTour = val
+        state.showPopup = val
       }
-    );
+    )
 
     return {
       ...toRefs(state),
@@ -264,7 +264,7 @@ export default create({
       changeStep,
       close,
       handleClickMask
-    };
+    }
   }
-});
+})
 </script>

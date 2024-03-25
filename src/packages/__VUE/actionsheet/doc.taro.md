@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { ActionSheet } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { ActionSheet } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(ActionSheet);
+const app = createApp()
+app.use(ActionSheet)
 ```
 
 ### 基础用法

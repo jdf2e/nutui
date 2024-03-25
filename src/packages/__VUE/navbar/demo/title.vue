@@ -9,5 +9,5 @@
   </nut-navbar>
 </template>
 <script setup lang="ts">
-import { Cart2 } from '@nutui/icons-vue';
+import { Cart2 } from '@nutui/icons-vue'
 </script>

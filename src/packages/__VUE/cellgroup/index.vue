@@ -11,12 +11,12 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('cell-group');
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('cell-group')
 export default create({
   props: {
     title: { type: String, default: '' },
     desc: { type: String, default: '' }
   }
-});
+})
 </script>

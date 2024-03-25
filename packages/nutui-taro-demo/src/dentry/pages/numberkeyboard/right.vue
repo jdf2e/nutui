@@ -13,10 +13,10 @@
   </nut-number-keyboard>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(false);
-const customKey = ref(['.']);
+import { ref } from 'vue'
+const show = ref(false)
+const customKey = ref(['.'])
 const onInput = (val: string) => {
-  console.log(val);
-};
+  console.log(val)
+}
 </script>

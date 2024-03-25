@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Format from './format.vue';
-import Millisecond from './millisecond.vue';
-import Control from './control.vue';
-import Custom from './custom.vue';
-import RefDemo from './ref.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Format from './format.vue'
+import Millisecond from './millisecond.vue'
+import Control from './control.vue'
+import Custom from './custom.vue'
+import RefDemo from './ref.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     custom: 'Custom Style',
     ref: 'Ref Methods'
   }
-});
+})
 </script>

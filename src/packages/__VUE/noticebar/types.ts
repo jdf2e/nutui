@@ -1,1 +1,1 @@
-export type NoticebarDirection = 'across' | 'vertical';
+export type NoticebarDirection = 'across' | 'vertical'

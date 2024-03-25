@@ -15,10 +15,10 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, ref, reactive, watch, useSlots } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
-const { componentName, create } = createComponent('barrage');
+import { computed, onMounted, ref, reactive, watch, useSlots } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import Taro from '@tarojs/taro'
+const { componentName, create } = createComponent('barrage')
 
 export default create({
   props: {
@@ -50,76 +50,76 @@ export default create({
   emits: ['click'],
 
   setup(props) {
-    const classTime = new Date().getTime();
+    const classTime = new Date().getTime()
 
-    const slotDefault = !!useSlots().default;
+    const slotDefault = !!useSlots().default
 
-    const timeId = ref(new Date().getTime());
-    const danmuList = ref<any>(props.danmu);
-    const danmuListSlots = ref<any>([]);
-    const rows = ref<number>(props.rows);
-    const top = ref<number>(props.top);
-    const speeds = props.speeds;
+    const timeId = ref(new Date().getTime())
+    const danmuList = ref<any>(props.danmu)
+    const danmuListSlots = ref<any>([])
+    const rows = ref<number>(props.rows)
+    const top = ref<number>(props.top)
+    const speeds = props.speeds
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         ['nut-barrage--dmBody' + timeId.value]: true
-      };
-    });
+      }
+    })
 
     onMounted(() => {
       if (slotDefault) {
         const list = document
           .getElementsByClassName('nut-barrage__slotBody' + classTime)[0]
-          .getElementsByClassName('nut-barrage__item');
-        let childrens = list?.[0]?.children || [];
-        danmuList.value = childrens;
+          .getElementsByClassName('nut-barrage__item')
+        let childrens = list?.[0]?.children || []
+        danmuList.value = childrens
       }
-      runStep();
-    });
+      runStep()
+    })
 
     watch(
       () => props.danmu,
       (newValue) => {
-        danmuList.value = [...newValue];
+        danmuList.value = [...newValue]
       }
-    );
+    )
 
     const add = (word: string) => {
-      danmuList.value = [...danmuList.value, word];
-      runStep();
-    };
+      danmuList.value = [...danmuList.value, word]
+      runStep()
+    }
     const getNode = (index: number) => {
-      const query = Taro.createSelectorQuery();
+      const query = Taro.createSelectorQuery()
       setTimeout(() => {
-        let width = 100;
+        let width = 100
         query.select('.nut-barrage--dmBody' + timeId.value).boundingClientRect((rec: any) => {
-          width = rec?.width || 300;
-        });
+          width = rec?.width || 300
+        })
         query
           .select('.nut-barrage__item' + index)
           .boundingClientRect((recs: any) => {
-            let height = recs?.height;
-            let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px';
-            styleInfo(index, nodeTop, width);
+            let height = recs?.height
+            let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px'
+            styleInfo(index, nodeTop, width)
           })
-          .exec();
-      }, 500);
-    };
+          .exec()
+      }, 500)
+    }
 
     const runStep = () => {
       danmuList.value.forEach((item: any, index: number) => {
-        getNode(index);
-      });
-    };
+        getNode(index)
+      })
+    }
     // const distance = ref('0');
-    let styleList: any[] = reactive([]);
+    let styleList: any[] = reactive([])
     const styleInfo = (index: number, nodeTop: string, width: number) => {
-      let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
-      let list = styleList;
-      let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;
+      let timeIndex = index - rows.value > 0 ? index - rows.value : 0
+      let list = styleList
+      let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0
       // distance.value = '-' + (speeds / 1000) * 200 + '%';
 
       let obj = {
@@ -129,16 +129,16 @@ export default create({
         animationIterationCount: `${props.loop ? 'infinite' : 1}`,
         animationDelay: `${props.frequency * index + time}ms`,
         '--move-distance': `-${width}px`
-      };
-      if (slotDefault && danmuList.value[index]?.el) {
-        let orginalSty = danmuList.value[index].el.style;
-        danmuList.value[index].el.style = Object.assign(orginalSty, obj);
-      } else {
-        styleList.push(obj);
       }
-    };
+      if (slotDefault && danmuList.value[index]?.el) {
+        let orginalSty = danmuList.value[index].el.style
+        danmuList.value[index].el.style = Object.assign(orginalSty, obj)
+      } else {
+        styleList.push(obj)
+      }
+    }
 
-    return { classTime, classes, danmuList, add, styleList, danmuListSlots };
+    return { classTime, classes, danmuList, add, styleList, danmuListSlots }
   }
-});
+})
 </script>

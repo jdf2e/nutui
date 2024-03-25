@@ -2,8 +2,8 @@
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
 <script setup lang="ts">
-import { ref, h } from 'vue';
-import { Dongdong } from '@nutui/icons-vue';
+import { ref, h } from 'vue'
+import { Dongdong } from '@nutui/icons-vue'
 const columns = ref([
   {
     title: '姓名',
@@ -21,7 +21,7 @@ const columns = ref([
     title: '操作',
     key: 'render'
   }
-]);
+])
 
 const data = ref([
   {
@@ -33,11 +33,11 @@ const data = ref([
         'button',
         {
           onClick: () => {
-            console.log('hello');
+            console.log('hello')
           }
         },
         'Hello'
-      );
+      )
     }
   },
   {
@@ -45,7 +45,7 @@ const data = ref([
     sex: '女',
     record: '本科',
     render: () => {
-      return h(Dongdong, { width: '14px', height: '14px ' });
+      return h(Dongdong, { width: '14px', height: '14px ' })
     }
   },
   {
@@ -57,12 +57,12 @@ const data = ref([
         'button',
         {
           onClick: () => {
-            window.open('https://www.jd.com');
+            window.open('https://www.jd.com')
           }
         },
         '打开京东'
-      );
+      )
     }
   }
-]);
+])
 </script>

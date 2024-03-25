@@ -15,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const imageUrl = ref('');
+import { ref } from 'vue'
+const imageUrl = ref('')
 const confirm = (url: string) => {
-  imageUrl.value = url;
-};
+  imageUrl.value = url
+}
 </script>

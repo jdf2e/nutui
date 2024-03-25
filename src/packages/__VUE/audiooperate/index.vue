@@ -23,14 +23,14 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, useSlots, reactive, inject, type PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutButton from '../button';
-import { useLocale } from '@/packages/utils/useLocale';
-import type { AudioOperateType } from './types';
+import { toRefs, ref, useSlots, reactive, inject, type PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutButton from '../button'
+import { useLocale } from '@/packages/utils/useLocale'
+import type { AudioOperateType } from './types'
 
-const { create } = createComponent('audio-operate');
-const cN = 'NutAudioOperate';
+const { create } = createComponent('audio-operate')
+const cN = 'NutAudioOperate'
 
 export default create({
   props: {
@@ -46,19 +46,19 @@ export default create({
   emits: ['click'],
 
   setup(props) {
-    const translate = useLocale(cN);
-    const audio: any = inject('audioParent');
+    const translate = useLocale(cN)
+    const audio: any = inject('audioParent')
     const parent: {
-      children: [];
-      audioData: any;
-      handleMute: (payload: MouseEvent) => void;
-      forward: (payload: MouseEvent) => void;
-      fastBack: (payload: MouseEvent) => void;
-      changeStatus: (payload: MouseEvent) => void;
-    } = reactive(audio);
-    const customSlot = ref(useSlots().default);
+      children: []
+      audioData: any
+      handleMute: (payload: MouseEvent) => void
+      forward: (payload: MouseEvent) => void
+      fastBack: (payload: MouseEvent) => void
+      changeStatus: (payload: MouseEvent) => void
+    } = reactive(audio)
+    const customSlot = ref(useSlots().default)
 
-    return { ...toRefs(props), ...toRefs(parent), customSlot, translate };
+    return { ...toRefs(props), ...toRefs(parent), customSlot, translate }
   }
-});
+})
 </script>

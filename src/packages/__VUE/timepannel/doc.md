@@ -7,14 +7,14 @@
 ### 安装
 
 ```javascript
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 // vue
-import { TimeSelect } from '@nutui/nutui';
+import { TimeSelect } from '@nutui/nutui'
 // taro
-import { TimeSelect } from '@nutui/nutui-taro';
+import { TimeSelect } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(TimeSelect);
+const app = createApp()
+app.use(TimeSelect)
 ```
 
 ### 基础用法

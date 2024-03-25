@@ -121,17 +121,17 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref, PropType } from 'vue';
-import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-import { AddressData, CustomRegionData, existRegionData } from './type';
-import { popupProps } from '../popup/props';
-import NutPopup from '../popup/index.vue';
-import NutElevator from '../elevator/index.vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, PropType } from 'vue'
+import { Location, Location2, Check, Close, Left } from '@nutui/icons-vue'
+import { createComponent } from '@/packages/utils/create'
+import { AddressData, CustomRegionData, existRegionData } from './type'
+import { popupProps } from '../popup/props'
+import NutPopup from '../popup/index.vue'
+import NutElevator from '../elevator/index.vue'
+import { useLocale } from '@/packages/utils/useLocale'
 
-const { create } = createComponent('address');
-const cN = 'NutAddress';
+const { create } = createComponent('address')
+const cN = 'NutAddress'
 
 export default create({
   components: {
@@ -202,199 +202,199 @@ export default create({
   emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'closeMask', 'switchModule'],
 
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const regionLine = ref<null | HTMLElement>(null);
-    const tabRegion: Ref<any> = ref(null);
-    const showPopup = ref(props.visible);
-    const privateType = ref(props.type);
-    const tabIndex = ref(0);
-    const prevTabIndex = ref(0);
-    const tabName = ref(['province', 'city', 'country', 'town']);
-    const scrollDom = ref<null | HTMLElement>(null);
-    const scrollDis = ref([0, 0, 0, 0]);
-    const regionData = reactive<Array<AddressData[]>>([]);
+    const translate = useLocale(cN)
+    const regionLine = ref<null | HTMLElement>(null)
+    const tabRegion: Ref<any> = ref(null)
+    const showPopup = ref(props.visible)
+    const privateType = ref(props.type)
+    const tabIndex = ref(0)
+    const prevTabIndex = ref(0)
+    const tabName = ref(['province', 'city', 'country', 'town'])
+    const scrollDom = ref<null | HTMLElement>(null)
+    const scrollDis = ref([0, 0, 0, 0])
+    const regionData = reactive<Array<AddressData[]>>([])
 
     const regionList = computed(() => {
       switch (tabIndex.value) {
         case 0:
-          return props.province;
+          return props.province
         case 1:
-          return props.city;
+          return props.city
         case 2:
-          return props.country;
+          return props.country
         default:
-          return props.town;
+          return props.town
       }
-    });
+    })
 
     const transformData = (data: AddressData[]) => {
-      if (!Array.isArray(data)) throw new TypeError('params muse be array.');
+      if (!Array.isArray(data)) throw new TypeError('params muse be array.')
 
-      if (!data.length) return [];
+      if (!data.length) return []
 
       data.forEach((item: AddressData) => {
         if (!item.title) {
-          console.warn('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
-          return;
+          console.warn('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .')
+          return
         }
-      });
+      })
 
-      const newData: CustomRegionData[] = [];
+      const newData: CustomRegionData[] = []
 
-      data = data.sort((a: AddressData, b: AddressData) => a.title.localeCompare(b.title));
+      data = data.sort((a: AddressData, b: AddressData) => a.title.localeCompare(b.title))
 
       data.forEach((item: AddressData) => {
-        const index = newData.findIndex((value: CustomRegionData) => value.title === item.title);
+        const index = newData.findIndex((value: CustomRegionData) => value.title === item.title)
         if (index <= -1) {
           newData.push({
             title: item.title,
             list: ([] as any).concat(item)
-          });
+          })
         } else {
-          newData[index].list.push(item);
+          newData[index].list.push(item)
         }
-      });
+      })
 
-      return newData;
-    };
+      return newData
+    }
 
     //已选择的 省、市、县、镇
-    let selectedRegion = ref<AddressData[]>([]);
+    let selectedRegion = ref<AddressData[]>([])
 
-    let selectedExistAddress = reactive({}); // 当前选择的地址
+    let selectedExistAddress = reactive({}) // 当前选择的地址
 
-    const closeWay = ref('self');
+    const closeWay = ref('self')
 
-    const lineDistance = ref(20);
+    const lineDistance = ref(20)
 
     // 设置选中省市县
     const initCustomSelected = () => {
-      regionData[0] = props.province || [];
-      regionData[1] = props.city || [];
-      regionData[2] = props.country || [];
-      regionData[3] = props.town || [];
+      regionData[0] = props.province || []
+      regionData[1] = props.city || []
+      regionData[2] = props.country || []
+      regionData[3] = props.town || []
 
-      const defaultValue = props.modelValue;
-      const num = defaultValue.length;
+      const defaultValue = props.modelValue
+      const num = defaultValue.length
       if (num > 0) {
-        tabIndex.value = num - 1;
+        tabIndex.value = num - 1
         if (regionList.value.length == 0) {
-          tabIndex.value = 0;
-          return;
+          tabIndex.value = 0
+          return
         }
         for (let index = 0; index < num; index++) {
-          let arr: AddressData[] = regionData[index];
-          selectedRegion.value[index] = arr.filter((item: AddressData) => item.id == defaultValue[index])[0];
+          let arr: AddressData[] = regionData[index]
+          selectedRegion.value[index] = arr.filter((item: AddressData) => item.id == defaultValue[index])[0]
         }
-        lineAnimation();
+        lineAnimation()
       }
-    };
+    }
     const getTabName = (item: AddressData | null, index: number) => {
-      if (item && item.name) return item.name;
+      if (item && item.name) return item.name
       if (tabIndex.value < index && item) {
-        return item.name;
+        return item.name
       } else {
-        return props.columnsPlaceholder[index] || translate('select');
+        return props.columnsPlaceholder[index] || translate('select')
       }
-    };
+    }
 
     const lineAnimation = () => {
-      scrollTo();
+      scrollTo()
 
       nextTick(() => {
-        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
+        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0]
         if (name) {
-          const distance = name.offsetLeft;
-          lineDistance.value = distance ? distance : 20;
+          const distance = name.offsetLeft
+          lineDistance.value = distance ? distance : 20
         }
-      });
-    };
+      })
+    }
 
     const nextAreaList = (item: AddressData) => {
-      const tab = tabIndex.value;
-      prevTabIndex.value = tabIndex.value;
+      const tab = tabIndex.value
+      prevTabIndex.value = tabIndex.value
       const callBackParams: {
-        next?: string;
-        value?: AddressData;
-        custom: string;
+        next?: string
+        value?: AddressData
+        custom: string
       } = {
         custom: tabName.value[tab]
-      };
+      }
 
-      selectedRegion.value[tab] = item;
+      selectedRegion.value[tab] = item
 
       // 删除右边已选择数据
-      selectedRegion.value.splice(tab + 1, selectedRegion.value.length - (tab + 1));
+      selectedRegion.value.splice(tab + 1, selectedRegion.value.length - (tab + 1))
 
-      callBackParams.value = item;
+      callBackParams.value = item
 
       if (regionData[tab + 1]?.length > 0) {
-        tabIndex.value = tab + 1;
-        lineAnimation();
-        callBackParams.next = tabName.value[tabIndex.value];
+        tabIndex.value = tab + 1
+        lineAnimation()
+        callBackParams.next = tabName.value[tabIndex.value]
       } else {
-        handClose();
-        emit('update:modelValue');
+        handClose()
+        emit('update:modelValue')
       }
-      emit('change', callBackParams);
-    };
+      emit('change', callBackParams)
+    }
 
     const changeRegionTab = (item: AddressData, index: number) => {
-      prevTabIndex.value = tabIndex.value;
+      prevTabIndex.value = tabIndex.value
       if (getTabName(item, index)) {
-        tabIndex.value = index;
-        lineAnimation();
+        tabIndex.value = index
+        lineAnimation()
       }
-    };
+    }
 
     const scrollTo = () => {
-      const dom = scrollDom.value;
-      const prev = prevTabIndex.value;
-      const cur = scrollDis.value[tabIndex.value];
+      const dom = scrollDom.value
+      const prev = prevTabIndex.value
+      const cur = scrollDis.value[tabIndex.value]
 
-      dom?.scrollTop && (scrollDis.value[prev] = dom?.scrollTop);
+      dom?.scrollTop && (scrollDis.value[prev] = dom?.scrollTop)
 
       nextTick(() => {
         dom?.scrollTo({
           top: cur,
           behavior: 'auto'
-        });
-      });
-    };
+        })
+      })
+    }
 
     const selectedExist = (item: existRegionData) => {
-      const copyExistAdd = props.existAddress;
-      let prevExistAdd = {};
+      const copyExistAdd = props.existAddress
+      let prevExistAdd = {}
 
       copyExistAdd.forEach((list: existRegionData) => {
-        if (list && list.selectedAddress) prevExistAdd = list;
-        list.selectedAddress = false;
-      });
+        if (list && list.selectedAddress) prevExistAdd = list
+        list.selectedAddress = false
+      })
 
-      item.selectedAddress = true;
+      item.selectedAddress = true
 
-      selectedExistAddress = item;
+      selectedExistAddress = item
 
-      emit('selected', prevExistAdd, item, copyExistAdd);
+      emit('selected', prevExistAdd, item, copyExistAdd)
 
-      handClose();
-    };
+      handClose()
+    }
 
     const initAddress = () => {
-      selectedRegion.value = [];
-      tabIndex.value = 0;
-      lineAnimation();
-    };
+      selectedRegion.value = []
+      tabIndex.value = 0
+      lineAnimation()
+    }
 
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     const handClose = (type = 'self') => {
-      closeWay.value = type == 'cross' ? 'cross' : 'self';
-      showPopup.value = false;
-    };
+      closeWay.value = type == 'cross' ? 'cross' : 'self'
+      showPopup.value = false
+    }
 
     const clickOverlay = () => {
-      closeWay.value = 'mask';
-    };
+      closeWay.value = 'mask'
+    }
 
     const close = () => {
       const data = {
@@ -404,63 +404,63 @@ export default create({
         city: selectedRegion.value[1],
         country: selectedRegion.value[2],
         town: selectedRegion.value[3]
-      };
+      }
 
       const callBackParams = {
         data: {},
         type: privateType.value
-      };
+      }
 
       if (['custom', 'custom2'].includes(privateType.value)) {
-        [0, 1, 2, 3].forEach((i) => {
-          const item = selectedRegion.value[i];
-          data.addressIdStr += `${i ? '_' : ''}${(item && item.id) || 0}`;
-          data.addressStr += (item && item.name) || '';
-        });
+        ;[0, 1, 2, 3].forEach((i) => {
+          const item = selectedRegion.value[i]
+          data.addressIdStr += `${i ? '_' : ''}${(item && item.id) || 0}`
+          data.addressStr += (item && item.name) || ''
+        })
 
-        callBackParams.data = data;
+        callBackParams.data = data
       } else {
-        callBackParams.data = selectedExistAddress;
+        callBackParams.data = selectedExistAddress
       }
 
-      initAddress();
+      initAddress()
 
       if (closeWay.value == 'self') {
-        emit('close', callBackParams);
+        emit('close', callBackParams)
       } else {
-        emit('closeMask', { closeWay: closeWay });
+        emit('closeMask', { closeWay: closeWay })
       }
 
-      emit('update:visible', false);
-    };
+      emit('update:visible', false)
+    }
 
     // 选择其他地址
     const switchModule = () => {
-      const type = privateType.value;
-      privateType.value = type == 'exist' ? 'custom' : 'exist';
-      initAddress();
-      emit('switchModule', { type: privateType.value });
-    };
+      const type = privateType.value
+      privateType.value = type == 'exist' ? 'custom' : 'exist'
+      initAddress()
+      emit('switchModule', { type: privateType.value })
+    }
 
     const handleElevatorItem = (key: string, item: AddressData) => {
-      nextAreaList(item);
-    };
+      nextAreaList(item)
+    }
 
     watch(
       () => props.visible,
       (value) => {
-        showPopup.value = value;
+        showPopup.value = value
       }
-    );
+    )
 
     watch(
       () => showPopup.value,
       (value) => {
         if (value) {
-          initCustomSelected();
+          initCustomSelected()
         }
       }
-    );
+    )
 
     return {
       showPopup,
@@ -487,7 +487,7 @@ export default create({
       regionList,
       transformData,
       scrollDom
-    };
+    }
   }
-});
+})
 </script>

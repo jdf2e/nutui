@@ -1,1 +1,1 @@
-export type SliderValue = number | number[];
+export type SliderValue = number | number[]

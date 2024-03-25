@@ -7,11 +7,11 @@ Action menu panel that pops up from the bottom.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { ActionSheet } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { ActionSheet } from '@nutui/nutui'
 
-const app = createApp();
-app.use(ActionSheet);
+const app = createApp()
+app.use(ActionSheet)
 ```
 
 ### Basic Usage

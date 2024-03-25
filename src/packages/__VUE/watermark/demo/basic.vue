@@ -14,9 +14,9 @@
   ></nut-watermark>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const imgSrc = ref(
   'https://img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
-);
-const show = ref<'text' | 'image' | ''>('');
+)
+const show = ref<'text' | 'image' | ''>('')
 </script>

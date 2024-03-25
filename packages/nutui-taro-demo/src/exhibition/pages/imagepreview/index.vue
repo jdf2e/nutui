@@ -38,8 +38,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import Taro from '@tarojs/taro';
+import { reactive } from 'vue'
+import Taro from '@tarojs/taro'
 const state = reactive({
   showPreview1: false,
   showPreview2: false,
@@ -82,14 +82,14 @@ const state = reactive({
       }
     }
   ]
-});
+})
 // const onClose = () => {
 //   console.log('imagepreview closed');
 // };
 
 const showFn = (i: number) => {
-  (state as any)['showPreview' + i] = true;
-};
+  ;(state as any)['showPreview' + i] = true
+}
 
 // const fnShow = () => {
 //   ImagePreview({
@@ -100,8 +100,8 @@ const showFn = (i: number) => {
 // };
 
 const hideFn = (i: number) => {
-  (state as any)['showPreview' + i] = false;
-};
+  ;(state as any)['showPreview' + i] = false
+}
 
 const longPress = (image: { src: string }) => {
   Taro.getImageInfo({
@@ -112,12 +112,12 @@ const longPress = (image: { src: string }) => {
         success: () => {
           Taro.showToast({
             title: '保存成功'
-          });
+          })
         }
-      });
+      })
     }
-  });
-};
+  })
+}
 </script>
 
 <style lang="scss"></style>

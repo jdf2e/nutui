@@ -1,25 +1,25 @@
-import { Ref, ref } from 'vue';
+import { Ref, ref } from 'vue'
 
 export class RefData {
-  private static instance: RefData;
+  private static instance: RefData
   public static getInstance(): RefData {
     if (this.instance == null) {
-      this.instance = new RefData();
-      let localTheme = localStorage.getItem('nutui-theme-color');
+      this.instance = new RefData()
+      let localTheme = localStorage.getItem('nutui-theme-color')
       if (localTheme) {
-        this.instance.themeColor.value = localTheme;
+        this.instance.themeColor.value = localTheme
       }
     }
-    return this.instance;
+    return this.instance
   }
 
-  public currentRoute: Ref<string> = ref('/');
+  public currentRoute: Ref<string> = ref('/')
 
-  private _themeColor: Ref<string> = ref('black');
+  private _themeColor: Ref<string> = ref('black')
   public get themeColor(): Ref<string> {
-    return this._themeColor;
+    return this._themeColor
   }
   public set themeColor(v: Ref<string>) {
-    this._themeColor = v;
+    this._themeColor = v
   }
 }

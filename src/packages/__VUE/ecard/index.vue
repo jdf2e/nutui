@@ -31,18 +31,18 @@
   </view>
 </template>
 <script lang="ts">
-import { Ref, ref, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutInputNumber from '../inputnumber';
-import type { PropType } from 'vue';
-import { useLocale } from '@/packages/utils/useLocale';
+import { Ref, ref, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutInputNumber from '../inputnumber'
+import type { PropType } from 'vue'
+import { useLocale } from '@/packages/utils/useLocale'
 
 export interface dataList {
-  price: string | number;
+  price: string | number
 }
 
-const { create } = createComponent('ecard');
-const cN = 'NutEcard';
+const { create } = createComponent('ecard')
+const cN = 'NutEcard'
 
 export default create({
   components: {
@@ -93,52 +93,52 @@ export default create({
   emits: ['inputChange', 'changeStep', 'inputClick', 'change', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const currentIndex: Ref<number | null | string> = ref(null);
-    const currentValue: Ref<number | null | string | undefined> = ref(null);
-    const inputValue: Ref<string | undefined | number> = ref('');
-    const stepValue: Ref<number> = ref(props.cardAmountMin);
-    const money: Ref<number | string | undefined> = ref(props.modelValue);
+    const translate = useLocale(cN)
+    const currentIndex: Ref<number | null | string> = ref(null)
+    const currentValue: Ref<number | null | string | undefined> = ref(null)
+    const inputValue: Ref<string | undefined | number> = ref('')
+    const stepValue: Ref<number> = ref(props.cardAmountMin)
+    const money: Ref<number | string | undefined> = ref(props.modelValue)
     const handleClick = (item: { price: number | string }, index: number) => {
-      currentIndex.value = index;
-      stepValue.value = props.cardAmountMin;
-      currentValue.value = item.price;
-      emit('change', item);
-      emit('update:modelValue', item.price);
-    };
+      currentIndex.value = index
+      stepValue.value = props.cardAmountMin
+      currentValue.value = item.price
+      emit('change', item)
+      emit('update:modelValue', item.price)
+    }
     const change = (event: Event) => {
-      let input = event.target as HTMLInputElement;
-      let val = input.value.replace(/[^\d]/g, '');
-      inputValue.value = val;
-      currentValue.value = val;
+      let input = event.target as HTMLInputElement
+      let val = input.value.replace(/[^\d]/g, '')
+      inputValue.value = val
+      currentValue.value = val
       if (Number(val) > props.cardAmountMax) {
-        inputValue.value = props.cardAmountMax;
-        currentValue.value = props.cardAmountMax;
+        inputValue.value = props.cardAmountMax
+        currentValue.value = props.cardAmountMax
       }
       if (Number(val) < props.cardAmountMin) {
-        inputValue.value = props.cardAmountMin;
-        currentValue.value = props.cardAmountMin;
+        inputValue.value = props.cardAmountMin
+        currentValue.value = props.cardAmountMin
       }
-      emit('inputChange', Number(inputValue.value));
-      emit('update:modelValue', Number(inputValue.value));
-    };
+      emit('inputChange', Number(inputValue.value))
+      emit('update:modelValue', Number(inputValue.value))
+    }
     const inputClick = () => {
-      currentIndex.value = 'input';
-      stepValue.value = props.cardAmountMin;
-      currentValue.value = inputValue.value;
-      emit('update:modelValue', inputValue.value);
-      emit('inputClick');
-    };
+      currentIndex.value = 'input'
+      stepValue.value = props.cardAmountMin
+      currentValue.value = inputValue.value
+      emit('update:modelValue', inputValue.value)
+      emit('inputClick')
+    }
     const changeStep = (value: number) => {
-      stepValue.value = value;
-      emit('changeStep', stepValue.value, currentValue.value); // 返回数量, 返回当前选中值
-    };
+      stepValue.value = value
+      emit('changeStep', stepValue.value, currentValue.value) // 返回数量, 返回当前选中值
+    }
     watch(
       () => props.modelValue,
       (value) => {
-        money.value = value;
+        money.value = value
       }
-    );
+    )
     return {
       handleClick,
       changeStep,
@@ -149,7 +149,7 @@ export default create({
       inputValue,
       money,
       translate
-    };
+    }
   }
-});
+})
 </script>

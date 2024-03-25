@@ -1,1 +1,1 @@
-export type PaginationMode = 'multi' | 'simple';
+export type PaginationMode = 'multi' | 'simple'

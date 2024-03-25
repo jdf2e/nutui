@@ -29,10 +29,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import NutPrice from '../price';
-import NutTag from '../tag';
-const { create } = createComponent('card');
+import { createComponent } from '@/packages/utils/create'
+import NutPrice from '../price'
+import NutTag from '../tag'
+const { create } = createComponent('card')
 export default create({
   components: {
     NutPrice,
@@ -72,5 +72,5 @@ export default create({
       default: true
     }
   }
-});
+})
 </script>

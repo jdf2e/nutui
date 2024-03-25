@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'TrendArrow' };
+export default { navigationBarTitleText: 'TrendArrow' }

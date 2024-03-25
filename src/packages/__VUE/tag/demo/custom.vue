@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(true);
+import { ref } from 'vue'
+const show = ref(true)
 const close = () => {
-  show.value = false;
-};
+  show.value = false
+}
 </script>

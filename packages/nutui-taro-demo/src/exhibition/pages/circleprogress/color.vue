@@ -8,5 +8,5 @@
 const gradientColor = {
   '0%': '#FF5E5E',
   '100%': '#FFA062'
-};
+}
 </script>

@@ -36,18 +36,18 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Type from './type.vue';
-import Status from './status.vue';
-import Clear from './clear.vue';
-import FormDemo from './form.vue';
-import Format from './format.vue';
-import Count from './count.vue';
-import Border from './border.vue';
-import Align from './align.vue';
-import Event from './event.vue';
-import SlotDemo from './slot.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Type from './type.vue'
+import Status from './status.vue'
+import Clear from './clear.vue'
+import FormDemo from './form.vue'
+import Format from './format.vue'
+import Count from './count.vue'
+import Border from './border.vue'
+import Align from './align.vue'
+import Event from './event.vue'
+import SlotDemo from './slot.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -76,5 +76,5 @@ const t = useTranslate({
     event: 'Event',
     slot: 'Slot'
   }
-});
+})
 </script>

@@ -2,12 +2,12 @@
   <nut-table :columns="columns" :data="data" :summary="summary"></nut-table>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const summary = () => {
   return {
     value: '这是总结栏'
-  };
-};
+  }
+}
 const columns = ref([
   {
     title: '姓名',
@@ -21,7 +21,7 @@ const columns = ref([
     title: '学历',
     key: 'record'
   }
-]);
+])
 const data = ref([
   {
     name: 'Tom',
@@ -38,5 +38,5 @@ const data = ref([
     sex: '男',
     record: '高中'
   }
-]);
+])
 </script>

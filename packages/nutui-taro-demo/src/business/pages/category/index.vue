@@ -18,40 +18,40 @@
 </template>
 
 <script setup lang="ts">
-import { categoryInfo, categoryChild, customCategory } from './data';
-import { reactive, onMounted } from 'vue';
+import { categoryInfo, categoryChild, customCategory } from './data'
+import { reactive, onMounted } from 'vue'
 
 const data = reactive({
   category: [{}],
   categoryChild1: [{}],
   customCategory: [{}],
   categoryChild2: [{}]
-});
+})
 
 onMounted(() => {
   setTimeout(() => {
-    data.category = categoryInfo.category;
-    data.categoryChild1 = categoryChild;
-    data.customCategory = customCategory;
-    data.categoryChild2 = categoryChild;
-  }, 500);
-});
+    data.category = categoryInfo.category
+    data.categoryChild1 = categoryChild
+    data.customCategory = customCategory
+    data.categoryChild2 = categoryChild
+  }, 500)
+})
 
 const change = (index: any) => {
-  data.categoryChild1 = [].concat(data.category[index]?.children as any);
-};
+  data.categoryChild1 = [].concat(data.category[index]?.children as any)
+}
 
 const changeText = (index: any) => {
-  data.categoryChild2 = [].concat(data.category[index]?.children as any);
-};
+  data.categoryChild2 = [].concat(data.category[index]?.children as any)
+}
 
 const changeCustom = () => {
-  console.log('点击分类数据');
-};
+  console.log('点击分类数据')
+}
 
 const onChange = () => {
-  console.log('当前分类数据');
-};
+  console.log('当前分类数据')
+}
 </script>
 
 <style lang="scss" scoped>

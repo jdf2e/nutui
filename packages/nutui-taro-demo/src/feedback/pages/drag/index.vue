@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Direction from './direction.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Direction from './direction.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -22,5 +22,5 @@ const t = useTranslate({
     basic: 'Basic Usage',
     direction: 'Limit Direction'
   }
-});
+})
 </script>

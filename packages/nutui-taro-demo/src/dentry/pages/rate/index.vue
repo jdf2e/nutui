@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Half from './half.vue';
-import IconDemo from './icon.vue';
-import Count from './count.vue';
-import Color from './color.vue';
-import Disabled from './disabled.vue';
-import Read from './read.vue';
-import Event from './event.vue';
-import Size from './size.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Half from './half.vue'
+import IconDemo from './icon.vue'
+import Count from './count.vue'
+import Color from './color.vue'
+import Disabled from './disabled.vue'
+import Read from './read.vue'
+import Event from './event.vue'
+import Size from './size.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -64,5 +64,5 @@ const t = useTranslate({
     event: 'event',
     size: 'Custom size 35px'
   }
-});
+})
 </script>

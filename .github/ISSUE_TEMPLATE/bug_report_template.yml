@@ -21,8 +21,8 @@ body:
       multiple: true
       description: 选择使用的 NutUI NPM 包名
       options:
-        - "@nutui/nutui"
-        - "@nutui/nutui-taro"
+        - '@nutui/nutui'
+        - '@nutui/nutui-taro'
     validations:
       required: true
 
@@ -76,7 +76,7 @@ body:
       label: 重现步骤
       description: |
         简洁清晰的重现步骤能够帮助我们更迅速地定位问题所在。
-        
+
         请使用 Markdown 语法格式化步骤中涉及的列表、代码片段等，否则它将会非常丑陋。
     validations:
       required: true
