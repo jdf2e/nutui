@@ -7,11 +7,11 @@ for light tips.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Toast } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Toast);
+const app = createApp()
+app.use(Toast)
 ```
 
 ### Text
@@ -23,10 +23,10 @@ app.use(Toast);
   <nut-cell title="Text" is-link @click="textToast('text message~')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
-  showToast.text(msg);
-};
+  showToast.text(msg)
+}
 </script>
 ```
 
@@ -41,12 +41,12 @@ const textToast = (msg) => {
   <nut-cell title="Toast Title" is-link @click="textToast('title message~')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
   showToast.text(msg, {
     title: 'Toast Title'
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -61,10 +61,10 @@ const textToast = (msg) => {
   <nut-cell title="Toast Success" is-link @click="textToast('Success')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
-  showToast.success(msg);
-};
+  showToast.success(msg)
+}
 </script>
 ```
 
@@ -79,10 +79,10 @@ const textToast = (msg) => {
   <nut-cell title="Toast Fail" is-link @click="textToast('Fail')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
-  showToast.fail(msg);
-};
+  showToast.fail(msg)
+}
 </script>
 ```
 
@@ -97,10 +97,10 @@ const textToast = (msg) => {
   <nut-cell title="Toast Warn" is-link @click="textToast('Warn')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
-  showToast.warn(msg);
-};
+  showToast.warn(msg)
+}
 </script>
 ```
 
@@ -115,10 +115,10 @@ const textToast = (msg) => {
   <nut-cell title="Toast Loading" is-link @click="textToast('Loading')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
-  showToast.loading(msg);
-};
+  showToast.loading(msg)
+}
 </script>
 ```
 
@@ -133,12 +133,12 @@ const textToast = (msg) => {
   <nut-cell title="Toast Not Disappear" is-link @click="textToast('Toast Not Disappear')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
   showToast.text(msg, {
     duration: 0
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -153,13 +153,13 @@ const textToast = (msg) => {
   <nut-cell title="Custom Bottom Height" is-link @click="textToast('Custom Bottom Height')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
   showToast.text(msg, {
     center: false,
     bottom: '10%'
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -174,12 +174,12 @@ const textToast = (msg) => {
   <nut-cell title="Loading with transparent cover" is-link @click="textToast('Loading')"></nut-cell>
 </template>
 <script setup>
-import { showToast } from '@nutui/nutui';
+import { showToast } from '@nutui/nutui'
 const textToast = (msg) => {
   showToast.loading(msg, {
     cover: true
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -188,11 +188,11 @@ const textToast = (msg) => {
 ### Support import and use in JS modules
 
 ```js
-import { showToast } from '@nutui/nutui';
-showToast.text('use in js module');
+import { showToast } from '@nutui/nutui'
+showToast.text('use in js module')
 // Return the instance, you can manually call the hide method in the instance to close the prompt
-const toast = showToast.loading('use in js module');
-toast.hide();
+const toast = showToast.loading('use in js module')
+toast.hide()
 ```
 
 ## API

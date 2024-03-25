@@ -1,20 +1,20 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
-import configPkg from './src/config.json';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import configPkg from './src/config.json'
 
-let input = {};
+let input = {}
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, funcCall, exclude, setup } = element;
+    const { name, funcCall, exclude, setup } = element
     if (exclude != true) {
       input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${
         funcCall === true || setup === true ? '.ts' : '.vue'
-      }`;
+      }`
     }
-  });
-});
+  })
+})
 
 export default defineConfig({
   resolve: {
@@ -45,4 +45,4 @@ export default defineConfig({
     },
     emptyOutDir: false
   }
-});
+})

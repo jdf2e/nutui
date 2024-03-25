@@ -10,17 +10,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { RefData } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref'
 const toHome = () => {
-  RefData.getInstance().currentRoute.value = '/';
-};
+  RefData.getInstance().currentRoute.value = '/'
+}
 const switchTo = (type: 'h5' | 'taro') => {
   if (type === 'h5') {
-    location.href = location.href.replace('taro', 'h5');
+    location.href = location.href.replace('taro', 'h5')
   } else {
-    location.href = location.href.replace('h5', 'taro');
+    location.href = location.href.replace('h5', 'taro')
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

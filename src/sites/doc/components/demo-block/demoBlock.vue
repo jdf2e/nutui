@@ -29,15 +29,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { copyCodeHtml, decompressText } from './basedUtil';
-import { getParameters } from 'codesandbox/lib/api/define';
-import codesandboxPackage from './package.json'; // 引入josn文件
-import codesandboxtsconfig from './tsconfig.json'; // 引入ts文件
+import { ref, onMounted } from 'vue'
+import { copyCodeHtml, decompressText } from './basedUtil'
+import { getParameters } from 'codesandbox/lib/api/define'
+import codesandboxPackage from './package.json' // 引入josn文件
+import codesandboxtsconfig from './tsconfig.json' // 引入ts文件
 
 const APP_VUE = `import { createApp } from "vue";
 import App from "./App.vue";
-createApp(App).mount("#app");`;
+createApp(App).mount("#app");`
 
 const INDEX_HTML = `<!DOCTYPE html> 
 <html lang="en">
@@ -51,7 +51,7 @@ const INDEX_HTML = `<!DOCTYPE html>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"><\/script>
   </body>
-</html>`;
+</html>`
 
 const VITE_CONFIG = `// vite.config.js
 import { defineConfig } from 'vite'
@@ -71,27 +71,27 @@ export default defineConfig({
       }
     }
   }
-})`;
+})`
 
-const onlineCode = ref<any>(null);
-const codeType = ref(``);
-const codeSandBoxUrl = ref(``);
-const playgroundUrl = ref(``);
+const onlineCode = ref<any>(null)
+const codeType = ref(``)
+const codeSandBoxUrl = ref(``)
+const playgroundUrl = ref(``)
 
 const utoa = (data: string) => {
-  return btoa(unescape(encodeURIComponent(data)));
-};
+  return btoa(unescape(encodeURIComponent(data)))
+}
 
 const serialize = () => {
   const files = {
     'src/App.vue': decompressText(onlineCode.value.dataset.value)
-  };
-  return '#' + utoa(JSON.stringify(files));
-};
+  }
+  return '#' + utoa(JSON.stringify(files))
+}
 
 onMounted(() => {
-  const sourceValue = decompressText(onlineCode.value.dataset.value);
-  codeType.value = onlineCode.value.dataset.type;
+  const sourceValue = decompressText(onlineCode.value.dataset.value)
+  codeType.value = onlineCode.value.dataset.type
   const parameters = getParameters({
     files: {
       'package.json': {
@@ -119,15 +119,15 @@ onMounted(() => {
         isBinary: false
       }
     }
-  });
-  const query = 'file=/src/App.vue';
-  playgroundUrl.value = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=${query}&resolutionHeight=736`;
-  codeSandBoxUrl.value = `https://nutui.jd.com/playground/${serialize()}`;
-});
+  })
+  const query = 'file=/src/App.vue'
+  playgroundUrl.value = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=${query}&resolutionHeight=736`
+  codeSandBoxUrl.value = `https://nutui.jd.com/playground/${serialize()}`
+})
 const copyCode = () => {
-  const sourceValue = decompressText(onlineCode.value.dataset.value);
+  const sourceValue = decompressText(onlineCode.value.dataset.value)
   copyCodeHtml(sourceValue, () => {
-    console.log('复制成功');
-  });
-};
+    console.log('复制成功')
+  })
+}
 </script>

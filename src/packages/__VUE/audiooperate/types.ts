@@ -1,1 +1,1 @@
-export type AudioOperateType = 'play' | 'back' | 'forward' | 'mute';
+export type AudioOperateType = 'play' | 'back' | 'forward' | 'mute'

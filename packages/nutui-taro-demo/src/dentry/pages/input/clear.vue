@@ -7,11 +7,11 @@
   </nut-input>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { Close } from '@nutui/icons-vue-taro';
-const val1 = ref('');
-const val2 = ref('');
+import { ref } from 'vue'
+import { Close } from '@nutui/icons-vue-taro'
+const val1 = ref('')
+const val2 = ref('')
 const onClick = () => {
-  val2.value = '';
-};
+  val2.value = ''
+}
 </script>

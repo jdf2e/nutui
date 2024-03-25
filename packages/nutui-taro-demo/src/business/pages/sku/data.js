@@ -83,14 +83,14 @@ export const Sku = [
       }
     ]
   }
-];
+]
 
 export const Goods = {
   skuId: '100016015112',
   price: '4599.00',
   imagePath:
     '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/210630/17/8651/208682/618a5bd6Eddc8ea0e/b5e55e1a03bc0126.jpg!q80.dpg.webp'
-};
+}
 
 export const imagePathMap = {
   100009064830: '//img14.360buyimg.com/n4/jfs/t1/160950/40/25098/234168/618a5cb9E65ba975e/7f8f93ea7767a51b.jpg',
@@ -99,4 +99,4 @@ export const imagePathMap = {
   100016015112:
     '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/210630/17/8651/208682/618a5bd6Eddc8ea0e/b5e55e1a03bc0126.jpg!q80.dpg.web',
   100016015142: '//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg'
-};
+}

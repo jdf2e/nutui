@@ -8,16 +8,16 @@
   </nut-animate>
 </template>
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
-const show1 = ref(false);
+import { ref, nextTick } from 'vue'
+const show1 = ref(false)
 const click1 = () => {
-  show1.value = true;
-};
-const show2 = ref(false);
+  show1.value = true
+}
+const show2 = ref(false)
 const click2 = () => {
-  show2.value = true;
+  show2.value = true
   nextTick(() => {
-    show2.value = false;
-  });
-};
+    show2.value = false
+  })
+}
 </script>

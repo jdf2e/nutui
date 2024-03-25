@@ -629,7 +629,7 @@ import {
   TriangleUp,
   Uploader,
   Voice
-} from '@nutui/icons-vue';
+} from '@nutui/icons-vue'
 </script>
 <style lang="scss">
 .icon-demo {

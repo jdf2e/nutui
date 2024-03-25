@@ -7,11 +7,11 @@ Used for cell components that can slide left and right to display operation butt
 ## Install
 
 ```js
-import { createApp } from 'vue';
-import { Swipe } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Swipe } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Swipe);
+const app = createApp()
+app.use(Swipe)
 ```
 
 ## Demo
@@ -91,5 +91,5 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 The component exports the following type definitions:
 
 ```ts
-import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui';
+import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui'
 ```

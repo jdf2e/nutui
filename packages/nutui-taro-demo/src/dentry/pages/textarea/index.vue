@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Limit from './limit.vue';
-import Row from './row.vue';
-import Status from './status.vue';
-import Focus from './focus.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Limit from './limit.vue'
+import Row from './row.vue'
+import Status from './status.vue'
+import Focus from './focus.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -40,5 +40,5 @@ const t = useTranslate({
     status: 'Readonly & Disabled',
     focus: 'Autofocus'
   }
-});
+})
 </script>

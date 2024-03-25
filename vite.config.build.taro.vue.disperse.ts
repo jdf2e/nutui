@@ -1,26 +1,26 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
-import fs from 'fs-extra';
-import configPkg from './src/config.json';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import fs from 'fs-extra'
+import configPkg from './src/config.json'
 
-const input = {};
+const input = {}
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, exclude, taro, setup } = element;
-    if (taro === false) return; // 排除非 Taro 组件
+    const { name, exclude, taro, setup } = element
+    if (taro === false) return // 排除非 Taro 组件
     if (exclude != true) {
       if (setup === true) {
-        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index.taro.ts`;
+        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index.taro.ts`
       } else {
-        const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
-        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
+        const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`)
+        input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`
       }
     }
     // }
-  });
-});
+  })
+})
 
 export default defineConfig({
   resolve: {
@@ -39,7 +39,7 @@ export default defineConfig({
               tag.startsWith('picker') ||
               tag.startsWith('picker-view') ||
               tag.startsWith('picker-view-column')
-            );
+            )
           },
           whitespace: 'preserve'
         }
@@ -70,4 +70,4 @@ export default defineConfig({
     },
     emptyOutDir: false
   }
-});
+})

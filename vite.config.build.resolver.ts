@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import path from 'path';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import path from 'path'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
@@ -12,9 +12,9 @@ export default defineConfig({
       name: 'name',
       fileName: (format) => {
         if (format === 'es') {
-          return 'index.mjs';
+          return 'index.mjs'
         } else {
-          return 'index.js';
+          return 'index.js'
         }
       },
       formats: ['es', 'cjs']
@@ -26,4 +26,4 @@ export default defineConfig({
     },
     emptyOutDir: false
   }
-});
+})

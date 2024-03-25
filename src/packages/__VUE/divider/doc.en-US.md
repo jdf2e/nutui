@@ -7,11 +7,11 @@ Separate content into multiple areas.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Divider } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Divider } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Divider);
+const app = createApp()
+app.use(Divider)
 ```
 
 ### Basic Usage

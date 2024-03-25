@@ -7,11 +7,11 @@
 ## 安装
 
 ```js
-import { createApp } from 'vue';
-import { Swipe } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Swipe } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Swipe);
+const app = createApp()
+app.use(Swipe)
 ```
 
 ## 代码演示
@@ -91,5 +91,5 @@ app.use(Swipe);
 组件导出以下类型定义：
 
 ```ts
-import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui';
+import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui'
 ```

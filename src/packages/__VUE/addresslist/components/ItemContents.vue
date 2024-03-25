@@ -25,12 +25,12 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('address-list-item');
-import { Del, Edit } from '@nutui/icons-vue';
+import { createComponent } from '@/packages/utils/create'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('address-list-item')
+import { Del, Edit } from '@nutui/icons-vue'
 
-const cN = 'NutAddressList';
+const cN = 'NutAddressList'
 
 export default create({
   components: { Del, Edit },
@@ -43,26 +43,26 @@ export default create({
   emits: ['delIcon', 'editIcon', 'clickItem'],
 
   setup(props, { emit }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
     const delClick = (event: Event) => {
-      emit('delIcon', event, props.item);
-      event.stopPropagation();
-    };
+      emit('delIcon', event, props.item)
+      event.stopPropagation()
+    }
     const editClick = (event: Event) => {
-      emit('editIcon', event, props.item);
-      event.stopPropagation();
-    };
+      emit('editIcon', event, props.item)
+      event.stopPropagation()
+    }
     const contentsClick = (event: Event) => {
-      emit('clickItem', event, props.item);
-      event.stopPropagation();
-    };
+      emit('clickItem', event, props.item)
+      event.stopPropagation()
+    }
 
     return {
       delClick,
       editClick,
       contentsClick,
       translate
-    };
+    }
   }
-});
+})
 </script>

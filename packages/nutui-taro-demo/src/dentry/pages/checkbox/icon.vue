@@ -8,7 +8,7 @@
   </nut-cell>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { Checklist } from '@nutui/icons-vue-taro';
-const val = ref(false);
+import { ref } from 'vue'
+import { Checklist } from '@nutui/icons-vue-taro'
+const val = ref(false)
 </script>

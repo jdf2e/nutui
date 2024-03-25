@@ -12,9 +12,9 @@
   ></nut-cascader>
 </template>
 <script setup>
-import { ref } from 'vue';
-const visible = ref(false);
-const value = ref([]);
+import { ref } from 'vue'
+const visible = ref(false)
+const value = ref([])
 const options = ref([
   { value: 'A0', text: 'A0' },
   {
@@ -26,23 +26,23 @@ const options = ref([
     ]
   },
   { value: 'C0', text: 'C0' }
-]);
+])
 const lazyLoad = (node, resolve) => {
   setTimeout(() => {
-    const { value, level } = node;
-    const text = value.substring(0, 1);
-    const value1 = `${text}${level + 1}1`;
-    const value2 = `${text}${level + 1}2`;
+    const { value, level } = node
+    const text = value.substring(0, 1)
+    const value1 = `${text}${level + 1}1`
+    const value2 = `${text}${level + 1}2`
     resolve([
       { value: value1, text: value1, leaf: level >= 2 },
       { value: value2, text: value2, leaf: level >= 1 }
-    ]);
-  }, 500);
-};
+    ])
+  }, 500)
+}
 const change = (...args) => {
-  console.log('change', ...args);
-};
+  console.log('change', ...args)
+}
 const pathChange = (...args) => {
-  console.log('pathChange', ...args);
-};
+  console.log('pathChange', ...args)
+}
 </script>

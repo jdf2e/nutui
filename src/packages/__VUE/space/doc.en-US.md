@@ -7,11 +7,11 @@ Sets the spacing between elements. Available in `NutUI` >= 4.2.0.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Space } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Space } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Space);
+const app = createApp()
+app.use(Space)
 ```
 
 ### Basic Usage

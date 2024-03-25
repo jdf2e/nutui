@@ -1,1 +1,1 @@
-export type EmptyImage = 'empty' | 'error' | 'network' | string;
+export type EmptyImage = 'empty' | 'error' | 'network' | string

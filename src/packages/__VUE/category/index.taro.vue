@@ -17,14 +17,14 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('category');
+import { PropType, ref } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('category')
 
 export type CategoryType = {
-  catName?: string;
-  [key: string]: any;
-};
+  catName?: string
+  [key: string]: any
+}
 
 export default create({
   props: {
@@ -42,19 +42,19 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const checkIndex = ref(0);
-    const categoryLeft = ref(false); //是否显示slot
+    const checkIndex = ref(0)
+    const categoryLeft = ref(false) //是否显示slot
 
     const getChildList = (index: any) => {
-      checkIndex.value = index;
-      emit('change', index);
-    };
+      checkIndex.value = index
+      emit('change', index)
+    }
 
     return {
       getChildList,
       checkIndex,
       categoryLeft
-    };
+    }
   }
-});
+})
 </script>

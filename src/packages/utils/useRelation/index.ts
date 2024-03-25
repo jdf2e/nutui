@@ -1,2 +1,2 @@
-export * from './useChildren';
-export * from './useParent';
+export * from './useChildren'
+export * from './useParent'

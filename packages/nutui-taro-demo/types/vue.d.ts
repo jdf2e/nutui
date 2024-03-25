@@ -1,4 +1,6 @@
-export {};
+import { JSX } from 'vue/jsx-runtime'
+
+export {}
 
 declare module 'vue' {
   export interface GlobalComponents extends JSX.IntrinsicElements {

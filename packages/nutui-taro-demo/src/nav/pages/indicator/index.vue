@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Block from './block.vue';
-import Zero from './zero.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Block from './block.vue'
+import Zero from './zero.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -28,5 +28,5 @@ const t = useTranslate({
     block: 'Block',
     zero: 'Do not make up 0'
   }
-});
+})
 </script>

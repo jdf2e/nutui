@@ -27,15 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Color from './color.vue';
-import Text from './text.vue';
-import Inside from './inside.vue';
-import Content from './content.vue';
-import Size from './size.vue';
-import Status from './status.vue';
-import Change from './change.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Color from './color.vue'
+import Text from './text.vue'
+import Inside from './inside.vue'
+import Content from './content.vue'
+import Size from './size.vue'
+import Status from './status.vue'
+import Change from './change.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -58,7 +58,7 @@ const t = useTranslate({
     status: 'Status Display',
     change: 'Dynamic Change'
   }
-});
+})
 </script>
 
 <style lang="scss">

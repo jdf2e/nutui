@@ -27,9 +27,9 @@
               (e) => {
                 if (typeof index === 'number') {
                   // 实时更新当前拖动的按钮索引
-                  buttonIndex = index;
+                  buttonIndex = index
                 }
-                onTouchStart(e);
+                onTouchStart(e)
               }
             "
             @touchmove.stop.prevent="onTouchMove"
@@ -54,7 +54,7 @@
             aria-orientation="horizontal"
             @touchstart.stop.prevent="
               (e) => {
-                onTouchStart(e);
+                onTouchStart(e)
               }
             "
             @touchmove.stop.prevent="onTouchMove"
@@ -74,14 +74,14 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, toRefs, computed, PropType, CSSProperties, toRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useTouch } from '@/packages/utils/useTouch';
-import { useRect } from '@/packages/utils/useRect';
-import { isArray } from '@/packages/utils/util';
-import { SliderValue } from './type';
-import { useFormDisabled } from '../form/common';
-const { componentName, create } = createComponent('range');
+import { ref, toRefs, computed, PropType, CSSProperties, toRef } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useTouch } from '@/packages/utils/useTouch'
+import { useRect } from '@/packages/utils/useRect'
+import { isArray } from '@/packages/utils/util'
+import { SliderValue } from './type'
+import { useFormDisabled } from '../form/common'
+const { componentName, create } = createComponent('range')
 
 export default create({
   props: {
@@ -131,71 +131,71 @@ export default create({
   emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const buttonIndex = ref(0);
-    let startValue: SliderValue;
-    let currentValue: SliderValue;
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const buttonIndex = ref(0)
+    let startValue: SliderValue
+    let currentValue: SliderValue
 
-    const root = ref<HTMLElement>();
-    const dragStatus = ref<'start' | 'draging' | ''>();
-    const touch = useTouch();
+    const root = ref<HTMLElement>()
+    const dragStatus = ref<'start' | 'draging' | ''>()
+    const touch = useTouch()
 
     const marksList = computed(() => {
-      const { marks, max, min } = props;
-      const marksKeys = Object.keys(marks);
+      const { marks, max, min } = props
+      const marksKeys = Object.keys(marks)
       const list = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
-        .filter((point) => point >= +min && point <= +max);
-      return list;
-    });
-    const scope = computed(() => Number(props.max) - Number(props.min));
+        .filter((point) => point >= +min && point <= +max)
+      return list
+    })
+    const scope = computed(() => Number(props.max) - Number(props.min))
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}-disabled`]: disabled.value,
         [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
-      };
-    });
+      }
+    })
     const containerClasses = computed(() => {
-      const prefixCls = 'nut-range-container';
+      const prefixCls = 'nut-range-container'
       return {
         [prefixCls]: true,
         [`${prefixCls}-vertical`]: props.vertical
-      };
-    });
+      }
+    })
     const wrapperStyle = computed(() => {
       return {
         background: props.inactiveColor
-      };
-    });
+      }
+    })
 
     const buttonStyle = computed(() => {
       return {
         borderColor: props.buttonColor
-      };
-    });
+      }
+    })
 
-    const isRange = (val: unknown): val is number[] => !!props.range && Array.isArray(val);
+    const isRange = (val: unknown): val is number[] => !!props.range && Array.isArray(val)
 
     const calcMainAxis = () => {
-      const { modelValue, min } = props;
+      const { modelValue, min } = props
       if (isRange(modelValue)) {
-        return `${((modelValue[1] - modelValue[0]) * 100) / scope.value}%`;
+        return `${((modelValue[1] - modelValue[0]) * 100) / scope.value}%`
       }
-      return `${((modelValue - Number(min)) * 100) / scope.value}%`;
-    };
+      return `${((modelValue - Number(min)) * 100) / scope.value}%`
+    }
 
     const calcOffset = () => {
-      const { modelValue, min } = props;
+      const { modelValue, min } = props
       if (isRange(modelValue)) {
-        return `${((modelValue[0] - Number(min)) * 100) / scope.value}%`;
+        return `${((modelValue[0] - Number(min)) * 100) / scope.value}%`
       }
-      return `0%`;
-    };
+      return `0%`
+    }
 
     const barStyle = computed<CSSProperties>(() => {
       if (props.vertical) {
@@ -204,185 +204,185 @@ export default create({
           top: calcOffset(),
           background: props.activeColor,
           transition: dragStatus.value ? 'none' : undefined
-        };
+        }
       } else {
         return {
           width: calcMainAxis(),
           left: calcOffset(),
           background: props.activeColor,
           transition: dragStatus.value ? 'none' : undefined
-        };
+        }
       }
-    });
+    })
     const markClassName = (mark: number) => {
-      const classPrefix = 'nut-range-mark';
-      const { modelValue, max, min } = props;
-      let lowerBound = Number(min);
-      let upperBound: number | number[] = Number(max);
+      const classPrefix = 'nut-range-mark'
+      const { modelValue, max, min } = props
+      let lowerBound = Number(min)
+      let upperBound: number | number[] = Number(max)
       if (props.range) {
-        const [left, right] = modelValue as number[];
-        lowerBound = left;
-        upperBound = right;
+        const [left, right] = modelValue as number[]
+        lowerBound = left
+        upperBound = right
       } else {
-        upperBound = modelValue;
+        upperBound = modelValue
       }
-      let isActive = mark <= +upperBound && mark >= lowerBound;
+      let isActive = mark <= +upperBound && mark >= lowerBound
       return {
         [`${classPrefix}-text`]: true,
         [`${classPrefix}-text-active`]: isActive
-      };
-    };
+      }
+    }
     const marksStyle = (mark: number) => {
-      const { min, vertical } = props;
+      const { min, vertical } = props
       let style: CSSProperties = {
         left: `${((mark - Number(min)) / scope.value) * 100}%`
-      };
+      }
       if (vertical) {
         style = {
           top: `${((mark - Number(min)) / scope.value) * 100}%`
-        };
+        }
       }
-      return style;
-    };
+      return style
+    }
     const tickStyle = (mark: number) => {
-      const { modelValue, max, min } = props;
-      let lowerBound = Number(min);
-      let upperBound = Number(max);
+      const { modelValue, max, min } = props
+      let lowerBound = Number(min)
+      let upperBound = Number(max)
       if (props.range) {
-        const [left, right] = modelValue as number[];
-        lowerBound = left;
-        upperBound = right;
+        const [left, right] = modelValue as number[]
+        lowerBound = left
+        upperBound = right
       }
-      let isActive = mark <= upperBound && mark >= lowerBound;
+      let isActive = mark <= upperBound && mark >= lowerBound
       let style: CSSProperties = {
         background: !isActive ? props.inactiveColor : props.activeColor
-      };
+      }
 
-      return style;
-    };
+      return style
+    }
     const format = (value: number) => {
-      const { min, max, step } = props;
-      value = Math.max(+min, Math.min(value, +max));
-      return Math.round(value / +step) * +step;
-    };
+      const { min, max, step } = props
+      value = Math.max(+min, Math.min(value, +max))
+      return Math.round(value / +step) * +step
+    }
 
     const isSameValue = (newValue: SliderValue, oldValue: SliderValue) =>
-      JSON.stringify(newValue) === JSON.stringify(oldValue);
+      JSON.stringify(newValue) === JSON.stringify(oldValue)
 
     const handleOverlap = (value: number[]) => {
       if (value[0] > value[1]) {
-        return value.slice(0).reverse();
+        return value.slice(0).reverse()
       }
-      return value;
-    };
+      return value
+    }
 
     const updateValue = (value: SliderValue, end?: boolean) => {
       if (isRange(value)) {
-        value = handleOverlap(value).map(format);
+        value = handleOverlap(value).map(format)
       } else {
-        value = format(value);
+        value = format(value)
       }
 
       if (!isSameValue(value, props.modelValue)) {
-        emit('update:modelValue', value);
+        emit('update:modelValue', value)
       }
 
       if (end && !isSameValue(value, startValue)) {
-        emit('change', value);
+        emit('change', value)
       }
-    };
+    }
 
     const onClick = (event: MouseEvent) => {
       if (disabled.value) {
-        return;
+        return
       }
 
-      const { min, modelValue } = props;
-      const rect = useRect(root);
-      let delta = event.clientX - rect.left;
-      let total = rect.width;
+      const { min, modelValue } = props
+      const rect = useRect(root)
+      let delta = event.clientX - rect.left
+      let total = rect.width
       if (props.vertical) {
-        delta = event.clientY - rect.top;
-        total = rect.height;
+        delta = event.clientY - rect.top
+        total = rect.height
       }
-      const value = Number(min) + (delta / total) * scope.value;
+      const value = Number(min) + (delta / total) * scope.value
       if (isRange(modelValue)) {
-        const [left, right] = modelValue;
-        const middle = (left + right) / 2;
+        const [left, right] = modelValue
+        const middle = (left + right) / 2
         if (value <= middle) {
-          updateValue([value, right], true);
+          updateValue([value, right], true)
         } else {
-          updateValue([left, value], true);
+          updateValue([left, value], true)
         }
       } else {
-        updateValue(value, true);
+        updateValue(value, true)
       }
-    };
+    }
 
     const onTouchStart = (event: TouchEvent) => {
       if (disabled.value) {
-        return;
+        return
       }
 
-      touch.start(event);
-      currentValue = props.modelValue;
+      touch.start(event)
+      currentValue = props.modelValue
 
       if (isRange(currentValue)) {
-        startValue = currentValue.map(format);
+        startValue = currentValue.map(format)
       } else {
-        startValue = format(currentValue);
+        startValue = format(currentValue)
       }
 
-      dragStatus.value = 'start';
-    };
+      dragStatus.value = 'start'
+    }
 
     const onTouchMove = (event: TouchEvent) => {
       if (disabled.value) {
-        return;
+        return
       }
 
       if (dragStatus.value === 'start') {
-        emit('dragStart');
+        emit('dragStart')
       }
 
-      touch.move(event);
-      dragStatus.value = 'draging';
+      touch.move(event)
+      dragStatus.value = 'draging'
 
-      const rect = useRect(root);
-      let delta = touch.deltaX.value;
-      let total = rect.width;
-      let diff = (delta / total) * scope.value;
+      const rect = useRect(root)
+      let delta = touch.deltaX.value
+      let total = rect.width
+      let diff = (delta / total) * scope.value
       if (props.vertical) {
-        delta = touch.deltaY.value;
-        total = rect.height;
-        diff = (delta / total) * scope.value;
+        delta = touch.deltaY.value
+        total = rect.height
+        diff = (delta / total) * scope.value
       }
       if (isRange(startValue)) {
-        (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
+        ;(currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff
       } else {
-        currentValue = startValue + diff;
+        currentValue = startValue + diff
       }
-      updateValue(currentValue);
-    };
+      updateValue(currentValue)
+    }
 
     const onTouchEnd = () => {
       if (disabled.value) {
-        return;
+        return
       }
       if (dragStatus.value === 'draging') {
-        updateValue(currentValue, true);
-        emit('dragEnd');
+        updateValue(currentValue, true)
+        emit('dragEnd')
       }
-      dragStatus.value = '';
-    };
+      dragStatus.value = ''
+    }
 
     const curValue = (idx?: number): number => {
       const value =
         isArray(props.modelValue) && typeof idx === 'number'
           ? (props.modelValue as number[])[idx]
-          : Number(props.modelValue);
-      return value;
-    };
+          : Number(props.modelValue)
+      return value
+    }
 
     return {
       root,
@@ -403,7 +403,7 @@ export default create({
       marksList,
       tickStyle,
       disabled
-    };
+    }
   }
-});
+})
 </script>

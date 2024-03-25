@@ -8,9 +8,9 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Theme from './theme.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Theme from './theme.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -21,5 +21,5 @@ const t = useTranslate({
     basic: 'Basic Usage',
     theme: 'Custom Theme'
   }
-});
+})
 </script>

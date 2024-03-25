@@ -3,9 +3,9 @@
   <nut-action-sheet v-model:visible="show" :menu-items="menuItems" @choose="choose" />
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const val = ref('');
+import { ref } from 'vue'
+const show = ref(false)
+const val = ref('')
 const menuItems = [
   {
     name: 'A'
@@ -16,11 +16,11 @@ const menuItems = [
   {
     name: 'C'
   }
-];
+]
 const click = () => {
-  show.value = true;
-};
+  show.value = true
+}
 const choose = (item) => {
-  val.value = item.name;
-};
+  val.value = item.name
+}
 </script>

@@ -46,19 +46,19 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('category-pane');
+import { PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('category-pane')
 
 export type ChildType = {
-  catName?: string;
-  catType?: number;
-  [key: string]: any;
-};
+  catName?: string
+  catType?: number
+  [key: string]: any
+}
 export type CustomType = {
-  catName?: string;
-  [key: string]: any;
-};
+  catName?: string
+  [key: string]: any
+}
 
 export default create({
   props: {
@@ -83,12 +83,12 @@ export default create({
 
   setup(props, { emit }) {
     const onChange = (sku: string) => {
-      emit('onChange', sku);
-    };
+      emit('onChange', sku)
+    }
 
     return {
       onChange
-    };
+    }
   }
-});
+})
 </script>

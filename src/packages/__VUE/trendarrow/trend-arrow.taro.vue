@@ -15,25 +15,25 @@
   </view>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
-import { myFixed } from '@/packages/utils/util';
-import { TriangleUp, TriangleDown } from '@nutui/icons-vue-taro';
+import { computed } from 'vue'
+import { myFixed } from '@/packages/utils/util'
+import { TriangleUp, TriangleDown } from '@nutui/icons-vue-taro'
 
 defineOptions({
   name: 'NutTrendArrow'
-});
+})
 
 export type TrendArrowProps = Partial<{
-  rate: number;
-  digits: number;
-  showSign: boolean;
-  showZero: boolean;
-  arrowLeft: boolean;
-  syncTextColor: boolean;
-  textColor: string;
-  riseColor: string;
-  dropColor: string;
-}>;
+  rate: number
+  digits: number
+  showSign: boolean
+  showZero: boolean
+  arrowLeft: boolean
+  syncTextColor: boolean
+  textColor: string
+  riseColor: string
+  dropColor: string
+}>
 
 const props = withDefaults(defineProps<TrendArrowProps>(), {
   rate: 0,
@@ -45,23 +45,23 @@ const props = withDefaults(defineProps<TrendArrowProps>(), {
   textColor: '#333',
   riseColor: '#fa2c19',
   dropColor: '#64b578'
-});
+})
 
 const isPositive = computed(() => {
-  return props.rate > 0 ? true : false;
-});
+  return props.rate > 0 ? true : false
+})
 const calcRate = computed(() => {
-  const absRate = Math.abs(props.rate);
+  const absRate = Math.abs(props.rate)
   if (!props.showZero && props.rate === 0) {
-    return '--';
+    return '--'
   }
   let resultRate = `${props.showSign && props.rate !== 0 ? (isPositive.value ? '+' : '-') : ''}${myFixed(
     Number(absRate),
     props.digits
-  )}%`;
+  )}%`
 
-  return resultRate;
-});
+  return resultRate
+})
 const calcStyle = computed(() => {
   return {
     color:
@@ -72,6 +72,6 @@ const calcStyle = computed(() => {
             ? props.riseColor
             : props.dropColor
           : props.textColor
-  };
-});
+  }
+})
 </script>

@@ -28,9 +28,9 @@
   </Transition>
 </template>
 <script lang="ts">
-import { reactive, computed, watch, onMounted, PropType, Component } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
-const { create } = createComponent('toast');
+import { reactive, computed, watch, onMounted, PropType, Component } from 'vue'
+import { createComponent, renderIcon } from '@/packages/utils/create'
+const { create } = createComponent('toast')
 export default create({
   components: {},
   props: {
@@ -94,57 +94,57 @@ export default create({
   },
   emits: ['close'],
   setup(props, { emit }) {
-    let timer: null | number | undefined;
+    let timer: null | number | undefined
     const state = reactive({
       mounted: false
-    });
+    })
     onMounted(() => {
-      state.mounted = true;
-    });
+      state.mounted = true
+    })
     const clearTimer = () => {
       if (timer) {
-        clearTimeout(timer);
-        timer = null;
+        clearTimeout(timer)
+        timer = null
       }
-    };
+    }
     const hide = () => {
-      state.mounted = false;
-    };
+      state.mounted = false
+    }
     const show = () => {
-      clearTimer();
+      clearTimer()
       if (props.duration) {
         timer = window.setTimeout(() => {
-          hide();
-        }, props.duration);
+          hide()
+        }, props.duration)
       }
-    };
+    }
     const clickCover = () => {
       if (props.closeOnClickOverlay) {
-        hide();
-        emit('close');
+        hide()
+        emit('close')
       }
-    };
+    }
 
     if (props.duration) {
-      show();
+      show()
     }
 
     watch(
       () => props.duration,
       (val) => {
         if (val) {
-          show();
+          show()
         }
       }
-    );
+    )
 
     const hasIcon = computed(() => {
       if (props.type !== 'text') {
-        return true;
+        return true
       } else {
-        return props.icon !== null;
+        return props.icon !== null
       }
-    });
+    })
     const toastBodyClass = computed(() => {
       return [
         'nut-toast',
@@ -154,16 +154,16 @@ export default create({
         { 'nut-toast-loading': props.type === 'loading' },
         props.customClass,
         'nut-toast-' + props.size
-      ];
-    });
+      ]
+    })
     const toastIconWrapperClass = computed(() => {
-      return ['nut-toast-icon-wrapper', { 'nut-toast-icon-no-animation': !props.loadingRotate }];
-    });
+      return ['nut-toast-icon-wrapper', { 'nut-toast-icon-no-animation': !props.loadingRotate }]
+    })
     const onAfterLeave = () => {
-      clearTimer();
-      props.unmount?.(props.id);
-      props.onClose && props.onClose();
-    };
+      clearTimer()
+      props.unmount?.(props.id)
+      props.onClose && props.onClose()
+    }
 
     return {
       state,
@@ -174,7 +174,7 @@ export default create({
       toastIconWrapperClass,
       onAfterLeave,
       renderIcon
-    };
+    }
   }
-});
+})
 </script>

@@ -18,8 +18,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
+import { ref } from 'vue'
+const show = ref(false)
 const steps = ref([
   {
     content: '京东风格的轻量级移动端组件库，覆盖移动端主流场景',
@@ -39,5 +39,5 @@ const steps = ref([
     target: 'tour5-4',
     location: 'top-end'
   }
-]);
+])
 </script>

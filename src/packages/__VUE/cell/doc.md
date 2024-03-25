@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Cell, CellGroup } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Cell, CellGroup } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Cell);
-app.use(CellGroup);
+const app = createApp()
+app.use(Cell)
+app.use(CellGroup)
 ```
 
 ### 基础用法

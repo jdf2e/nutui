@@ -9,11 +9,11 @@ The popup box component supports function call and component call.
 ### Install
 
 ```js
-import { createApp, createVNode } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { createApp, createVNode } from 'vue'
+import { Dialog } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Dialog);
+const app = createApp()
+app.use(Dialog)
 ```
 
 ### Function use
@@ -33,23 +33,23 @@ app.use(Dialog);
   </nut-cell-group>
 </template>
 <script setup>
-import { ref, createVNode } from 'vue';
-import { showDialog } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/dialog/style';
+import { ref, createVNode } from 'vue'
+import { showDialog } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/dialog/style'
 const onCancel = () => {
-  console.log('event cancel');
-};
+  console.log('event cancel')
+}
 const onOk = () => {
-  console.log('event ok');
-};
+  console.log('event ok')
+}
 const baseClick = () => {
   showDialog({
     title: 'Basic spring frame',
     content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
     onCancel,
     onOk
-  });
-};
+  })
+}
 const transparentClick = () => {
   showDialog({
     overlayStyle: { background: 'rgba(0,0,0,0)' },
@@ -57,8 +57,8 @@ const transparentClick = () => {
     content: 'Content',
     onCancel,
     onOk
-  });
-};
+  })
+}
 const htmlClick = () => {
   showDialog({
     title: 'Use html',
@@ -66,8 +66,8 @@ const htmlClick = () => {
       "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
     onCancel,
     onOk
-  });
-};
+  })
+}
 const beforeCloseClick = () => {
   showDialog({
     title: 'Before Close',
@@ -77,19 +77,19 @@ const beforeCloseClick = () => {
     beforeClose: (action) => {
       return new Promise((r) => {
         setTimeout(() => {
-          r(action == 'ok');
-        }, 1000);
-      });
+          r(action == 'ok')
+        }, 1000)
+      })
     }
-  });
-};
+  })
+}
 const noTitleClick = () => {
   showDialog({
     content: 'Content',
     onCancel,
     onOk
-  });
-};
+  })
+}
 const tipsClick = () => {
   showDialog({
     title: 'Title',
@@ -97,8 +97,8 @@ const tipsClick = () => {
     noCancelBtn: true,
     onCancel,
     onOk
-  });
-};
+  })
+}
 const verticalClick = () => {
   showDialog({
     title: 'Title',
@@ -106,8 +106,8 @@ const verticalClick = () => {
     footerDirection: 'vertical',
     onCancel,
     onOk
-  });
-};
+  })
+}
 </script>
 ```
 
@@ -140,15 +140,15 @@ const verticalClick = () => {
   </nut-cell-group>
 </template>
 <script setup>
-import { ref } from 'vue';
-const visible = ref(false);
-const visible1 = ref(false);
+import { ref } from 'vue'
+const visible = ref(false)
+const visible1 = ref(false)
 const componentClick = () => {
-  visible.value = true;
-};
+  visible.value = true
+}
 const componentvVrticalClick = () => {
-  visible1.value = true;
-};
+  visible1.value = true
+}
 </script>
 ```
 
@@ -167,11 +167,11 @@ const componentvVrticalClick = () => {
   </nut-cell-group>
 </template>
 <script setup>
-import { showDialog } from '@nutui/nutui';
-import '@nutui/nutui/dist/packages/dialog/style';
+import { showDialog } from '@nutui/nutui'
+import '@nutui/nutui/dist/packages/dialog/style'
 const onCancel = () => {
-  console.log('event cancel');
-};
+  console.log('event cancel')
+}
 const teleportClick = (teleport) => {
   showDialog({
     teleport,
@@ -179,8 +179,8 @@ const teleportClick = (teleport) => {
     content: 'Open the developer tool and take a look at the Elements tab',
     noCancelBtn: true,
     onCancel
-  });
-};
+  })
+}
 </script>
 ```
 

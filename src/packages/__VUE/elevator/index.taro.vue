@@ -53,13 +53,13 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, watch, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { ElevatorData } from './type';
-const { create } = createComponent('elevator');
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { ElevatorData } from './type'
+const { create } = createComponent('elevator')
 
-import Taro from '@tarojs/taro';
-import NutScrollView from '../scroll-view/index.taro.vue';
+import Taro from '@tarojs/taro'
+import NutScrollView from '../scroll-view/index.taro.vue'
 
 export default create({
   components: {
@@ -77,7 +77,7 @@ export default create({
     indexList: {
       type: Array as PropType<any[]>,
       default: () => {
-        return [];
+        return []
       }
     },
     isSticky: {
@@ -95,8 +95,8 @@ export default create({
   },
   emits: ['clickItem', 'clickIndex', 'change'],
   setup(props, { emit, expose }) {
-    const spaceHeight = 23;
-    const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>;
+    const spaceHeight = 23
+    const listview: Ref<HTMLElement> = ref() as Ref<HTMLElement>
     const state = reactive({
       anchorIndex: 0,
       codeIndex: 0,
@@ -113,120 +113,120 @@ export default create({
       currentData: {} as ElevatorData,
       currentKey: '',
       scrollY: 0
-    });
+    })
 
     const clientHeight = computed(() => {
-      return listview.value.clientHeight;
-    });
+      return listview.value.clientHeight
+    })
 
     const fixedStyle = computed(() => {
       return {
         height: `${state.listHeight[state.listGroup.length - 1]}px`
-      };
-    });
+      }
+    })
 
     const getData = (el: HTMLElement): string | void => {
       if (!el.dataset.index) {
-        return '0';
+        return '0'
       }
-      return el.dataset.index as string;
-    };
+      return el.dataset.index as string
+    }
 
     const setListGroup = (el: any) => {
       nextTick(() => {
         if (!state.listGroup.includes(el) && el != null) {
-          state.listGroup.push(el);
+          state.listGroup.push(el)
         }
-      });
-    };
+      })
+    }
 
     const calculateHeight = () => {
-      state.listHeight = [];
-      let height = 0;
-      state.listHeight.push(height);
+      state.listHeight = []
+      let height = 0
+      state.listHeight.push(height)
       for (let i = 0; i < state.listGroup.length; i++) {
-        state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
+        state.query.selectAll(`.elevator__item__${i}`).boundingClientRect()
         state.query.exec((res) => {
-          height += Math.floor(res[i][0].height);
-          state.listHeight.push(height);
-        });
+          height += Math.floor(res[i][0].height)
+          state.listHeight.push(height)
+        })
       }
-    };
+    }
 
     const scrollTo = (index: number) => {
       if (!index && index !== 0) {
-        return;
+        return
       }
-      if (index < 0) index = 0;
-      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
-      state.codeIndex = index;
-      state.scrollTop = state.listHeight[index];
-    };
+      if (index < 0) index = 0
+      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2
+      state.codeIndex = index
+      state.scrollTop = state.listHeight[index]
+    }
 
     const touchStart = (e: TouchEvent) => {
-      state.scrollStart = true;
-      let index = getData(e.target as HTMLElement);
-      let firstTouch = e.touches[0];
-      state.touchState.y1 = firstTouch.pageY;
-      state.anchorIndex = +index;
-      state.codeIndex = +index;
-      scrollTo(+index);
-    };
+      state.scrollStart = true
+      let index = getData(e.target as HTMLElement)
+      let firstTouch = e.touches[0]
+      state.touchState.y1 = firstTouch.pageY
+      state.anchorIndex = +index
+      state.codeIndex = +index
+      scrollTo(+index)
+    }
 
     const touchMove = (e: TouchEvent) => {
-      let firstTouch = e.touches[0];
-      state.touchState.y2 = firstTouch.pageY;
-      let delta = ((state.touchState.y2 - state.touchState.y1) / spaceHeight) | 0;
-      state.codeIndex = state.anchorIndex + delta;
-      scrollTo(state.currentIndex);
-    };
+      let firstTouch = e.touches[0]
+      state.touchState.y2 = firstTouch.pageY
+      let delta = ((state.touchState.y2 - state.touchState.y1) / spaceHeight) | 0
+      state.codeIndex = state.anchorIndex + delta
+      scrollTo(state.currentIndex)
+    }
 
     const touchEnd = () => {
-      state.scrollStart = false;
-    };
+      state.scrollStart = false
+    }
 
     const handleClickItem = (key: string, item: ElevatorData) => {
-      emit('clickItem', key, item);
-      state.currentData = item;
-      state.currentKey = key;
-    };
+      emit('clickItem', key, item)
+      state.currentData = item
+      state.currentKey = key
+    }
 
     const handleClickIndex = (key: string) => {
-      emit('clickIndex', key);
-    };
+      emit('clickIndex', key)
+    }
 
     const listViewScroll = (e: Event) => {
-      let target = e.target as Element;
-      let scrollTop = target.scrollTop;
-      const listHeight = state.listHeight;
-      state.scrollY = Math.floor(scrollTop);
+      let target = e.target as Element
+      let scrollTop = target.scrollTop
+      const listHeight = state.listHeight
+      state.scrollY = Math.floor(scrollTop)
       for (let i = 0; i < listHeight.length - 1; i++) {
-        let height1 = listHeight[i];
-        let height2 = listHeight[i + 1];
+        let height1 = listHeight[i]
+        let height2 = listHeight[i + 1]
         if (state.scrollY >= height1 && state.scrollY < height2) {
-          state.currentIndex = i;
-          return;
+          state.currentIndex = i
+          return
         }
       }
-    };
+    }
 
     expose({
       scrollTo
-    });
+    })
 
     watch(
       () => state.listGroup.length,
       () => {
-        Taro.nextTick(calculateHeight);
+        Taro.nextTick(calculateHeight)
       }
-    );
+    )
 
     watch(
       () => state.currentIndex,
       (newVal: number) => {
-        emit('change', newVal);
+        emit('change', newVal)
       }
-    );
+    )
 
     return {
       ...toRefs(state),
@@ -240,7 +240,7 @@ export default create({
       handleClickItem,
       handleClickIndex,
       listViewScroll
-    };
+    }
   }
-});
+})
 </script>

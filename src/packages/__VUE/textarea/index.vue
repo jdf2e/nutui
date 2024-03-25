@@ -23,17 +23,17 @@
 </template>
 <!-- eslint-disable @typescript-eslint/no-non-null-assertion -->
 <script lang="ts">
-import { watch, ref, computed, onMounted, nextTick, toRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
-import { useFormDisabled } from '../form/common';
+import { watch, ref, computed, onMounted, nextTick, toRef } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useLocale } from '@/packages/utils/useLocale'
+import { useFormDisabled } from '../form/common'
 
 export interface InputTarget extends HTMLInputElement {
-  composing: boolean;
+  composing: boolean
 }
 
-const { create } = createComponent('textarea');
-const cN = 'NutTextarea';
+const { create } = createComponent('textarea')
+const cN = 'NutTextarea'
 
 export default create({
   props: {
@@ -82,108 +82,108 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const disabled = useFormDisabled(toRef(props, 'disabled'));
-    const translate = useLocale(cN);
-    const textareaRef = ref();
+    const disabled = useFormDisabled(toRef(props, 'disabled'))
+    const translate = useLocale(cN)
+    const textareaRef = ref()
     const classes = computed(() => {
-      const prefixCls = 'nut-textarea';
+      const prefixCls = 'nut-textarea'
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: disabled.value
-      };
-    });
+      }
+    })
 
     onMounted(() => {
       if (props.modelValue) {
-        emitChange(String(props.modelValue));
+        emitChange(String(props.modelValue))
       }
       if (props.autosize) {
-        nextTick(getContentHeight);
+        nextTick(getContentHeight)
       }
-    });
+    })
 
     const styles: any = computed(() => {
       return {
         textAlign: props.textAlign
         // resize: props.autosize ? 'vertical' : 'none'
-      };
-    });
+      }
+    })
 
     const getContentHeight = () => {
-      let textarea = textareaRef.value;
-      textarea.style.height = 'auto';
-      let height = textarea.scrollHeight;
+      let textarea = textareaRef.value
+      textarea.style.height = 'auto'
+      let height = textarea.scrollHeight
       if (typeof props.autosize === 'object') {
-        const { maxHeight, minHeight } = props.autosize;
+        const { maxHeight, minHeight } = props.autosize
         if (maxHeight !== undefined) {
-          height = Math.min(height, maxHeight);
+          height = Math.min(height, maxHeight)
         }
         if (minHeight !== undefined) {
-          height = Math.max(height, minHeight);
+          height = Math.max(height, minHeight)
         }
       }
       if (height) {
-        textarea.style.height = height + 'px';
+        textarea.style.height = height + 'px'
       }
-    };
+    }
 
     watch(
       () => props.modelValue,
       () => {
         if (props.autosize) {
-          nextTick(getContentHeight);
+          nextTick(getContentHeight)
         }
       }
-    );
+    )
 
     const emitChange = (value: string, event?: Event) => {
       if (props.maxLength && value.length > Number(props.maxLength)) {
-        value = value.substring(0, Number(props.maxLength));
+        value = value.substring(0, Number(props.maxLength))
       }
-      emit('update:modelValue', value, event);
-      emit('change', value, event);
-    };
+      emit('update:modelValue', value, event)
+      emit('change', value, event)
+    }
 
     const change = (event: Event) => {
       if (!(event.target as InputTarget)!.composing) {
-        const input = event.target as HTMLInputElement;
-        let value = input.value;
+        const input = event.target as HTMLInputElement
+        let value = input.value
         if (props.maxLength && value.length > Number(props.maxLength)) {
-          value = value.slice(0, Number(props.maxLength));
+          value = value.slice(0, Number(props.maxLength))
         }
-        emitChange(input.value, event);
+        emitChange(input.value, event)
       }
       // const input = event.target as HTMLInputElement;
       // emitChange(input.value, event);
-    };
+    }
 
     const focus = (event: Event) => {
-      if (disabled.value) return;
-      if (props.readonly) return;
-      emit('focus', event);
-    };
+      if (disabled.value) return
+      if (props.readonly) return
+      emit('focus', event)
+    }
 
     const blur = (event: Event) => {
-      if (disabled.value) return;
-      if (props.readonly) return;
-      const input = event.target as HTMLInputElement;
+      if (disabled.value) return
+      if (props.readonly) return
+      const input = event.target as HTMLInputElement
 
-      let value = input.value;
+      let value = input.value
 
-      emitChange(value, event);
-      emit('blur', { value, event });
-    };
+      emitChange(value, event)
+      emit('blur', { value, event })
+    }
 
     const startComposing = ({ target }: Event) => {
-      (target as InputTarget)!.composing = true;
-    };
+      ;(target as InputTarget)!.composing = true
+    }
 
     const endComposing = ({ target }: Event) => {
       if ((target as InputTarget)!.composing) {
-        (target as InputTarget)!.composing = false;
-        (target as InputTarget)!.dispatchEvent(new Event('input'));
+        ;(target as InputTarget)!.composing = false
+        ;(target as InputTarget)!.dispatchEvent(new Event('input'))
       }
-    };
+    }
 
     return {
       textareaRef,
@@ -196,7 +196,7 @@ export default create({
       translate,
       startComposing,
       endComposing
-    };
+    }
   }
-});
+})
 </script>

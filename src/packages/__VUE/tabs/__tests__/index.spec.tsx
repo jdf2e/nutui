@@ -1,25 +1,25 @@
-import { config, mount } from '@vue/test-utils';
-import { nextTick, reactive } from 'vue';
-import { JoySmile, Dongdong } from '@nutui/icons-vue';
-import { Sticky as NutSticky, Tabs, TabPane } from '@nutui/nutui';
+import { config, mount } from '@vue/test-utils'
+import { nextTick, reactive } from 'vue'
+import { JoySmile, Dongdong } from '@nutui/icons-vue'
+import { Sticky as NutSticky, Tabs, TabPane } from '@nutui/nutui'
 
 beforeAll(() => {
   config.global.components = {
     JoySmile,
     NutSticky,
     Dongdong
-  };
-});
+  }
+})
 
 afterAll(() => {
-  config.global.components = {};
-});
+  config.global.components = {}
+})
 
 test('base Tabs', () => {
-  const wrapper = mount(Tabs);
-  const rate = wrapper.find('.nut-tabs');
-  expect(rate.exists()).toBe(true);
-});
+  const wrapper = mount(Tabs)
+  const rate = wrapper.find('.nut-tabs')
+  expect(rate.exists()).toBe(true)
+})
 
 test('base tabs props', async () => {
   const wrapper = mount(Tabs, {
@@ -36,19 +36,19 @@ test('base tabs props', async () => {
       'nut-tabs': Tabs,
       'nut-tab-pane': TabPane
     }
-  });
-  await nextTick();
-  const stepItem = wrapper.find('.nut-tabs__titles');
-  expect((stepItem.element as HTMLElement).style.background).toEqual('#f5f5f5');
-  const _stepItem = wrapper.findAll('.horizontal');
-  expect(_stepItem.length).toBe(1);
-  const _stepItem1 = wrapper.findAll('.nut-tabs__titles')[0];
-  expect(_stepItem1.classes()).toContain('smile');
-  const _stepItem2 = wrapper.findAll('.nut-tabs__titles')[0];
-  expect(_stepItem2.classes()).toContain('large');
-  const _stepItem3 = wrapper.findAll('.nut-tabs__titles')[0];
-  expect(_stepItem3.classes()).toContain('scrollable');
-});
+  })
+  await nextTick()
+  const stepItem = wrapper.find('.nut-tabs__titles')
+  expect((stepItem.element as HTMLElement).style.background).toEqual('#f5f5f5')
+  const _stepItem = wrapper.findAll('.horizontal')
+  expect(_stepItem.length).toBe(1)
+  const _stepItem1 = wrapper.findAll('.nut-tabs__titles')[0]
+  expect(_stepItem1.classes()).toContain('smile')
+  const _stepItem2 = wrapper.findAll('.nut-tabs__titles')[0]
+  expect(_stepItem2.classes()).toContain('large')
+  const _stepItem3 = wrapper.findAll('.nut-tabs__titles')[0]
+  expect(_stepItem3.classes()).toContain('scrollable')
+})
 
 test('base other props', async () => {
   const wrapper = mount({
@@ -62,13 +62,13 @@ test('base other props', async () => {
         <nut-tab-pane paneKey="2">456</nut-tab-pane>
       </nut-tabs>
     `
-  });
-  await nextTick();
-  const stepItem = wrapper.find('.nut-tabs__content');
-  expect((stepItem.element as HTMLElement).style.transitionDuration).toEqual('500ms');
-  const stepItem1 = wrapper.find('.nut-tabs__titles-item');
-  expect((stepItem1.element as HTMLElement).style.marginLeft).toEqual('20px');
-});
+  })
+  await nextTick()
+  const stepItem = wrapper.find('.nut-tabs__content')
+  expect((stepItem.element as HTMLElement).style.transitionDuration).toEqual('500ms')
+  const stepItem1 = wrapper.find('.nut-tabs__titles-item')
+  expect((stepItem1.element as HTMLElement).style.marginLeft).toEqual('20px')
+})
 
 test('base Tabs Slots', async () => {
   const wrapper = mount({
@@ -116,22 +116,22 @@ test('base Tabs Slots', async () => {
             paneKey: 'c3'
           }
         ]
-      });
-      return { state };
+      })
+      return { state }
     }
-  });
-  await nextTick();
-  const tab1 = wrapper.find('.nut-tabs__titles');
-  expect(tab1.exists()).toBe(true);
-  const tab2 = wrapper.findAll('.nut-tabs__titles-item');
-  expect(tab2.length).toBe(3);
-  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text');
-  expect(tab3[0].html()).toContain('自定义 1');
-  expect(tab3[1].html()).toContain('自定义 2');
-  expect(tab3[2].html()).toContain('自定义 3');
-  const tab4 = wrapper.find('.nut-tabs__content');
-  expect(tab4.exists()).toBe(true);
-});
+  })
+  await nextTick()
+  const tab1 = wrapper.find('.nut-tabs__titles')
+  expect(tab1.exists()).toBe(true)
+  const tab2 = wrapper.findAll('.nut-tabs__titles-item')
+  expect(tab2.length).toBe(3)
+  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text')
+  expect(tab3[0].html()).toContain('自定义 1')
+  expect(tab3[1].html()).toContain('自定义 2')
+  expect(tab3[2].html()).toContain('自定义 3')
+  const tab4 = wrapper.find('.nut-tabs__content')
+  expect(tab4.exists()).toBe(true)
+})
 
 test('base Tabpane Props', async () => {
   const wrapper = mount({
@@ -149,20 +149,20 @@ test('base Tabpane Props', async () => {
     setup() {
       const state = reactive({
         tab2value: '0'
-      });
-      return { state };
+      })
+      return { state }
     }
-  });
-  await nextTick();
-  const tab = wrapper.findAll('.nut-tabs__titles-item');
-  expect(tab.length).toBe(3);
-  const tab1 = wrapper.findAll('.nut-tabs__titles-item')[1];
-  expect(tab1.classes()).toContain('disabled');
-  const tab2 = wrapper.findAll('.nut-tabs__titles-item')[0];
-  expect(tab2.classes()).toContain('active');
-  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text');
-  expect(tab3[0].html()).toContain('Tab 1');
-});
+  })
+  await nextTick()
+  const tab = wrapper.findAll('.nut-tabs__titles-item')
+  expect(tab.length).toBe(3)
+  const tab1 = wrapper.findAll('.nut-tabs__titles-item')[1]
+  expect(tab1.classes()).toContain('disabled')
+  const tab2 = wrapper.findAll('.nut-tabs__titles-item')[0]
+  expect(tab2.classes()).toContain('active')
+  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text')
+  expect(tab3[0].html()).toContain('Tab 1')
+})
 
 test('base Tabpane disabled swipeable', async () => {
   const wrapper = mount({
@@ -180,20 +180,20 @@ test('base Tabpane disabled swipeable', async () => {
     setup() {
       const state = reactive({
         tab2value: '0'
-      });
-      return { state };
+      })
+      return { state }
     }
-  });
-  await nextTick();
-  const tab = wrapper.findAll('.nut-tabs__titles-item');
-  expect(tab.length).toBe(3);
-  const tab1 = wrapper.findAll('.nut-tabs__titles-item')[1];
-  expect(tab1.classes()).toContain('disabled');
-  const tab2 = wrapper.findAll('.nut-tabs__titles-item')[0];
-  expect(tab2.classes()).toContain('active');
-  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text');
-  expect(tab3[0].html()).toContain('Tab 1');
-});
+  })
+  await nextTick()
+  const tab = wrapper.findAll('.nut-tabs__titles-item')
+  expect(tab.length).toBe(3)
+  const tab1 = wrapper.findAll('.nut-tabs__titles-item')[1]
+  expect(tab1.classes()).toContain('disabled')
+  const tab2 = wrapper.findAll('.nut-tabs__titles-item')[0]
+  expect(tab2.classes()).toContain('active')
+  const tab3 = wrapper.findAll('.nut-tabs__titles-item__text')
+  expect(tab3[0].html()).toContain('Tab 1')
+})
 
 test('base click', async () => {
   const wrapper = mount({
@@ -211,17 +211,17 @@ test('base click', async () => {
     setup() {
       const state = reactive({
         tab1value: '0'
-      });
-      return { state };
+      })
+      return { state }
     }
-  });
-  await nextTick();
-  const tab = wrapper.find('.nut-tabs__titles-item');
-  expect(tab.classes()).toContain('active');
-  tab.trigger('click');
-  const tab1 = wrapper.find('.nut-tabs__content');
-  expect((tab1.element as HTMLElement).style.transform).toEqual('translate3d(-0%, 0, 0)');
-});
+  })
+  await nextTick()
+  const tab = wrapper.find('.nut-tabs__titles-item')
+  expect(tab.classes()).toContain('active')
+  tab.trigger('click')
+  const tab1 = wrapper.find('.nut-tabs__content')
+  expect((tab1.element as HTMLElement).style.transform).toEqual('translate3d(-0%, 0, 0)')
+})
 
 test('Tabs: direction=vertical & title-gutter', async () => {
   const wrapper = mount({
@@ -239,11 +239,11 @@ test('Tabs: direction=vertical & title-gutter', async () => {
     setup() {
       const state = reactive({
         tab1value: '0'
-      });
-      return { state };
+      })
+      return { state }
     }
-  });
-  await nextTick();
-  const tab = wrapper.find('.nut-tabs__titles-item');
-  expect(tab.html()).includes('margin-top: 10px');
-});
+  })
+  await nextTick()
+  const tab = wrapper.find('.nut-tabs__titles-item')
+  expect(tab.html()).includes('margin-top: 10px')
+})

@@ -7,12 +7,12 @@ It is used for data entry and verification. It supports input box, radio box, ch
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Form, FormItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Form, FormItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Form);
-app.use(FormItem);
+const app = createApp()
+app.use(Form)
+app.use(FormItem)
 ```
 
 ### Basic Usage

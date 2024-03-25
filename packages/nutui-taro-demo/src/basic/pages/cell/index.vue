@@ -33,17 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Size from './size.vue';
-import SlotDemo from './slot.vue';
-import Desc from './desc.vue';
-import Title from './title.vue';
-import Group from './group.vue';
-import Link from './link.vue';
-import IconDemo from './icon.vue';
-import Align from './align.vue';
-import Center from './center.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Size from './size.vue'
+import SlotDemo from './slot.vue'
+import Desc from './desc.vue'
+import Title from './title.vue'
+import Group from './group.vue'
+import Link from './link.vue'
+import IconDemo from './icon.vue'
+import Align from './align.vue'
+import Center from './center.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -70,5 +70,5 @@ const t = useTranslate({
     align: 'Align Left',
     center: 'Vertical Center'
   }
-});
+})
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
-import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { CHECKBOX_KEY } from '../checkbox/types';
-const { create, componentName } = createComponent('checkbox-group');
+import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { CHECKBOX_KEY } from '../checkbox/types'
+const { create, componentName } = createComponent('checkbox-group')
 
 export default create({
   props: {
@@ -23,45 +23,45 @@ export default create({
   setup(props, { slots, emit, expose }) {
     const state = reactive({
       children: [] as ComponentPublicInstance[]
-    });
+    })
 
     const link = (child: ComponentInternalInstance) => {
-      child.proxy && state.children.push(child.proxy);
-    };
+      child.proxy && state.children.push(child.proxy)
+    }
 
     const unlink = (child: ComponentInternalInstance) => {
-      child.proxy && (state.children = state.children.filter((p) => p !== child.proxy));
-    };
+      child.proxy && (state.children = state.children.filter((p) => p !== child.proxy))
+    }
 
     const updateValue = (value: string[]) => {
-      emit('update:modelValue', value);
-      emit('change', value);
-    };
+      emit('update:modelValue', value)
+      emit('change', value)
+    }
 
     const toggleAll = (checked: boolean) => {
-      const values: string[] = [];
+      const values: string[] = []
       if (checked) {
         state.children.forEach((item: any) => {
           if (!item?.disabled) {
-            values.push(item?.label);
+            values.push(item?.label)
           }
-        });
+        })
       }
-      emit('update:modelValue', values);
-    };
+      emit('update:modelValue', values)
+    }
 
     const toggleReverse = () => {
       const value = state.children
         .filter((item: any) => {
           if (item?.disabled) {
-            return false;
+            return false
           } else {
-            return !props.modelValue.includes(item.label);
+            return !props.modelValue.includes(item.label)
           }
         })
-        .map((item: any) => item.label);
-      emit('update:modelValue', value);
-    };
+        .map((item: any) => item.label)
+      emit('update:modelValue', value)
+    }
 
     provide(CHECKBOX_KEY, {
       value: computed(() => props.modelValue),
@@ -70,16 +70,16 @@ export default create({
       updateValue,
       link,
       unlink
-    });
+    })
 
     watch(
       () => props.modelValue,
       (value) => {
-        emit('change', value);
+        emit('change', value)
       }
-    );
+    )
 
-    expose({ toggleAll, toggleReverse });
+    expose({ toggleAll, toggleReverse })
 
     return () => {
       return h(
@@ -88,8 +88,8 @@ export default create({
           class: componentName
         },
         slots.default?.()
-      );
-    };
+      )
+    }
   }
-});
+})
 </script>

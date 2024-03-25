@@ -101,10 +101,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { AddressData } from './type';
-import { HeartFill, Heart1 } from '@nutui/icons-vue';
+import { onMounted, reactive, ref } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
+import { AddressData } from './type'
+import { HeartFill, Heart1 } from '@nutui/icons-vue'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -128,33 +128,33 @@ const translate = useTranslate({
     change: 'Custom Or Exist',
     textAddress: 'Balizhuang Street, Chaoyang District, Beijing'
   }
-});
+})
 
 interface CalBack {
-  next: string;
-  value: string;
-  custom: string;
+  next: string
+  value: string
+  custom: string
 }
 interface CalResult {
-  type: string;
-  data: AddressResult;
+  type: string
+  data: AddressResult
 }
 interface AddressList {
-  id: string | number;
-  provinceName: string;
-  cityName: string;
-  countyName: string;
-  townName: string;
-  addressDetail: string;
-  selectedAddress: boolean;
+  id: string | number
+  provinceName: string
+  cityName: string
+  countyName: string
+  townName: string
+  addressDetail: string
+  selectedAddress: boolean
 }
 interface AddressResult extends AddressList {
-  addressIdStr?: string;
-  addressStr?: string;
-  province: AddressData[];
-  city: AddressData[];
-  country: AddressData[];
-  town: AddressData[];
+  addressIdStr?: string
+  addressStr?: string
+  province: AddressData[]
+  city: AddressData[]
+  country: AddressData[]
+  town: AddressData[]
 }
 const address = reactive({
   province: [] as AddressData[],
@@ -172,7 +172,7 @@ const address = reactive({
     { id: 4, name: '常营乡', title: 'C' }
   ],
   town: [] as AddressData[]
-});
+})
 
 onMounted(() => {
   setTimeout(() => {
@@ -182,13 +182,13 @@ onMounted(() => {
       { id: 3, name: '江西', title: 'J' },
       { id: 4, name: '四川', title: 'S' },
       { id: 5, name: '浙江', title: 'Z' }
-    ];
-  }, 1000);
-});
+    ]
+  }, 1000)
+})
 
-const placeholder = ref(['请选择省', '请选择市', '请选择县']);
-const value = ref([1, 7, 3]);
-const value2 = ref([1, 7, 3]);
+const placeholder = ref(['请选择省', '请选择市', '请选择县'])
+const value = ref([1, 7, 3])
+const value2 = ref([1, 7, 3])
 
 const showPopup = reactive({
   normal: false,
@@ -197,7 +197,7 @@ const showPopup = reactive({
   customImg: false,
   other: false,
   select: false
-});
+})
 
 const existAddress = ref([
   {
@@ -233,7 +233,7 @@ const existAddress = ref([
     name: '探探鱼',
     phone: '182****1718'
   }
-]);
+])
 
 const text = reactive({
   one: translate('title'),
@@ -242,97 +242,97 @@ const text = reactive({
   four: translate('title'),
   five: translate('textAddress'),
   six: translate('textAddress')
-});
+})
 
 const showAddress = () => {
-  showPopup.normal = !showPopup.normal;
-};
+  showPopup.normal = !showPopup.normal
+}
 
 const showAddress2 = () => {
-  showPopup.normal2 = !showPopup.normal2;
-};
+  showPopup.normal2 = !showPopup.normal2
+}
 
 const showSelected = () => {
-  showPopup.select = !showPopup.select;
-};
+  showPopup.select = !showPopup.select
+}
 
 const onChange = (cal: CalBack, tag: string) => {
-  console.log('地址选择', cal);
-  const name = (address as any)[cal.next];
+  console.log('地址选择', cal)
+  const name = (address as any)[cal.next]
   if (!name) {
-    (showPopup as any)[tag] = false;
+    ;(showPopup as any)[tag] = false
   }
-};
+}
 const close1 = (val: CalResult) => {
-  text.one = val.data.addressStr;
-};
+  text.one = val.data.addressStr
+}
 
 const close5 = (val: any) => {
-  text.five = val.data.addressStr;
-  value2.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.five = val.data.addressStr
+  value2.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 
 const close6 = (val: any) => {
-  text.six = val.data.addressStr;
-  value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.six = val.data.addressStr
+  value.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 
 const showAddressExist = () => {
-  showPopup.exist = true;
-};
+  showPopup.exist = true
+}
 
 const close2 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.two = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.two = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.two = val.data.addressStr;
+    text.two = val.data.addressStr
   }
-};
+}
 const selected = (prevExistAdd: AddressList, nowExistAdd: AddressData) => {
-  console.log(prevExistAdd);
-  console.log(nowExistAdd);
-};
+  console.log(prevExistAdd)
+  console.log(nowExistAdd)
+}
 
 const showAddressOther = () => {
-  showPopup.other = true;
-};
+  showPopup.other = true
+}
 const showCustomImg = () => {
-  showPopup.customImg = true;
-};
+  showPopup.customImg = true
+}
 
 const close3 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.three = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.three = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.three = val.data.addressStr;
+    text.three = val.data.addressStr
   }
-};
+}
 
 const close4 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.four = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.four = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.four = val.data.addressStr;
+    text.four = val.data.addressStr
   }
-};
+}
 
 const switchModule = (val: CalResult) => {
   if (val.type == 'custom') {
-    console.log('点击了“选择其他地址”按钮');
+    console.log('点击了“选择其他地址”按钮')
   } else {
-    console.log('点击了自定义地址左上角的返回按钮');
+    console.log('点击了自定义地址左上角的返回按钮')
   }
-};
+}
 
 const closeMask = (val: CalResult) => {
-  console.log('关闭弹层', val);
-};
+  console.log('关闭弹层', val)
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { FixedNav } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { FixedNav } from '@nutui/nutui'
 
-const app = createApp();
-app.use(FixedNav);
+const app = createApp()
+app.use(FixedNav)
 ```
 
 ### 基础用法

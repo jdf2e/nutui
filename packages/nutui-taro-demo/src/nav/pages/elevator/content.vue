@@ -9,8 +9,8 @@
   </nut-elevator>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Locationg3 } from '@nutui/icons-vue-taro';
+import { ref } from 'vue'
+import { Locationg3 } from '@nutui/icons-vue-taro'
 const data = ref([
   {
     title: 'A',
@@ -56,5 +56,5 @@ const data = ref([
       }
     ]
   }
-]);
+])
 </script>

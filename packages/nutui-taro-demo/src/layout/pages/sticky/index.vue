@@ -8,9 +8,9 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Top from './top.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Top from './top.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -21,5 +21,5 @@ const t = useTranslate({
     basic: 'Basic Usage',
     top: 'Top Distance'
   }
-});
+})
 </script>

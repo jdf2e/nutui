@@ -23,35 +23,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const formData = ref({
   name: '',
   tels: []
-});
-const formRef = ref(null);
+})
+const formRef = ref(null)
 
 const add = () => {
   formData.value.tels.push({
     key: Date.now(),
     value: ''
-  });
-};
+  })
+}
 
 const remove = () => {
-  formData.value.tels.pop();
-};
+  formData.value.tels.pop()
+}
 
 const submit = () => {
   formRef.value?.validate().then(({ valid, errors }) => {
     if (valid) {
-      console.log('success:', formData.value);
+      console.log('success:', formData.value)
     } else {
-      console.warn('error:', errors);
+      console.warn('error:', errors)
     }
-  });
-};
+  })
+}
 
 const reset = () => {
-  formRef.value?.reset();
-};
+  formRef.value?.reset()
+}
 </script>

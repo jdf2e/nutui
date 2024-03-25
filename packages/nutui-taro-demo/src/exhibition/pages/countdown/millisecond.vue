@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-const time = Date.now() + 60 * 1000;
+const time = Date.now() + 60 * 1000
 </script>

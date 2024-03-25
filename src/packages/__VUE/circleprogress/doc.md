@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { CircleProgress } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { CircleProgress } from '@nutui/nutui'
 
-const app = createApp();
-app.use(CircleProgress);
+const app = createApp()
+app.use(CircleProgress)
 ```
 
 ### 基础用法

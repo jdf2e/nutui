@@ -21,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-import { onUnmounted } from 'vue';
-import { showToast } from './index';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { onUnmounted } from 'vue'
+import { showToast } from './index'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -49,48 +49,48 @@ const translate = useTranslate({
     toastBottom: 'Custom Bottom Height',
     toastTransparent: 'Loading Transparent Cover'
   }
-});
+})
 const textToast = (msg: string) => {
-  showToast.text(msg);
-};
+  showToast.text(msg)
+}
 const titleToast = (msg: string) => {
   showToast.text(msg, {
     title: translate('toastTitle')
-  });
-};
+  })
+}
 const successToast = (msg: string) => {
-  showToast.success(msg);
-};
+  showToast.success(msg)
+}
 const errorToast = (msg: string) => {
-  showToast.fail(msg);
-};
+  showToast.fail(msg)
+}
 const warningToast = (msg: string) => {
-  showToast.warn(msg);
-};
+  showToast.warn(msg)
+}
 const loadingToast = (msg: string) => {
-  showToast.loading(msg);
-};
-let t: any;
+  showToast.loading(msg)
+}
+let t: any
 const NoToast = (msg: string) => {
   t = showToast.text(msg, {
     duration: 0
-  });
-};
+  })
+}
 
 onUnmounted(() => {
-  t && t.hide();
-});
+  t && t.hide()
+})
 
 const BottomToast = (msg: string) => {
   showToast.text(msg, {
     id: 'taset11',
     center: false,
     bottom: '10%'
-  });
-};
+  })
+}
 const NoLoading = (msg: string) => {
   showToast.loading(msg, {
     cover: true
-  });
-};
+  })
+}
 </script>

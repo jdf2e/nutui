@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Overlay } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Overlay } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Overlay);
+const app = createApp()
+app.use(Overlay)
 ```
 
 ### 基础用法

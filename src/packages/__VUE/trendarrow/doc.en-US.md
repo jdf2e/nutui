@@ -5,11 +5,11 @@
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { TrendArrow } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { TrendArrow } from '@nutui/nutui'
 
-const app = createApp();
-app.use(TrendArrow);
+const app = createApp()
+app.use(TrendArrow)
 ```
 
 ### Basic Usage
@@ -70,7 +70,7 @@ app.use(TrendArrow);
 The component exports the following type definitions:
 
 ```ts
-import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui';
+import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui'
 ```
 
 ## Theming

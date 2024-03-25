@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
-import { Comment } from '@nutui/nutui';
-import CommentData from '../comment_data.json';
+import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
+import { Comment } from '@nutui/nutui'
+import CommentData from '../comment_data.json'
 
 test('comment init render', async () => {
   const wrapper = mount(Comment, {
@@ -10,10 +10,10 @@ test('comment init render', async () => {
       videos: CommentData.Comment.videos,
       info: CommentData.Comment.info
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-comment__main').exists()).toBeTruthy();
-});
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-comment__main').exists()).toBeTruthy()
+})
 
 test('comment mutli images', async () => {
   const wrapper = mount(Comment, {
@@ -24,7 +24,7 @@ test('comment mutli images', async () => {
       videos: CommentData.Comment.videos,
       info: CommentData.Comment.info
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-comment-images__mask').exists()).toBeTruthy();
-});
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-comment-images__mask').exists()).toBeTruthy()
+})

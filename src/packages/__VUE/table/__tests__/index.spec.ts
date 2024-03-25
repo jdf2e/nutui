@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
-import { nextTick, h } from 'vue';
-import { Button, Table } from '@nutui/nutui';
-import { Dongdong } from '@nutui/icons-vue';
+import { mount } from '@vue/test-utils'
+import { nextTick, h } from 'vue'
+import { Button, Table } from '@nutui/nutui'
+import { Dongdong } from '@nutui/icons-vue'
 
 const columns = [
   {
@@ -17,7 +17,7 @@ const columns = [
     title: '学历',
     key: 'record'
   }
-];
+]
 
 const data = [
   {
@@ -35,7 +35,7 @@ const data = [
     sex: '男',
     record: '高中'
   }
-];
+]
 
 const column2 = [
   {
@@ -55,7 +55,7 @@ const column2 = [
     title: '操作',
     key: 'render'
   }
-];
+]
 
 const data2 = [
   {
@@ -70,7 +70,7 @@ const data2 = [
           type: 'primary'
         },
         () => h('div', {}, 'Hello')
-      );
+      )
     }
   },
   {
@@ -78,7 +78,7 @@ const data2 = [
     sex: '女',
     record: '本科',
     render: () => {
-      return h(Dongdong, { width: '14px', height: '14px' });
+      return h(Dongdong, { width: '14px', height: '14px' })
     }
   },
   {
@@ -92,14 +92,14 @@ const data2 = [
           type: 'success',
           size: 'small',
           onClick: () => {
-            window.open('https://www.jd.com');
+            window.open('https://www.jd.com')
           }
         },
         () => h('div', {}, '跳转到京东')
-      );
+      )
     }
   }
-];
+]
 
 test('render bordered props', async () => {
   const wrapper = mount(Table, {
@@ -108,14 +108,14 @@ test('render bordered props', async () => {
       columns,
       data
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const headBorder = wrapper.findAll('.nut-table__main__head__tr--border');
+  const headBorder = wrapper.findAll('.nut-table__main__head__tr--border')
 
-  expect(headBorder.length).toBeGreaterThan(0);
-});
+  expect(headBorder.length).toBeGreaterThan(0)
+})
 
 test('render align props', async () => {
   const wrapper = mount(Table, {
@@ -124,18 +124,18 @@ test('render align props', async () => {
       columns,
       data
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const headTh = wrapper.findAll('.nut-table__main__head__tr__th');
-  const bodyTd = wrapper.findAll('.nut-table__main__body__tr__td');
+  const headTh = wrapper.findAll('.nut-table__main__head__tr__th')
+  const bodyTd = wrapper.findAll('.nut-table__main__body__tr__td')
 
-  expect(headTh[0].classes()).toContain('nut-table__main__head__tr--aligncenter');
-  expect(bodyTd[0].classes()).toContain('nut-table__main__head__tr--aligncenter');
-  expect(bodyTd[3].classes()).toContain('nut-table__main__head__tr--aligncenter');
-  expect(bodyTd[6].classes()).toContain('nut-table__main__head__tr--aligncenter');
-});
+  expect(headTh[0].classes()).toContain('nut-table__main__head__tr--aligncenter')
+  expect(bodyTd[0].classes()).toContain('nut-table__main__head__tr--aligncenter')
+  expect(bodyTd[3].classes()).toContain('nut-table__main__head__tr--aligncenter')
+  expect(bodyTd[6].classes()).toContain('nut-table__main__head__tr--aligncenter')
+})
 
 test('show summary', async () => {
   const wrapper = mount(Table, {
@@ -147,17 +147,17 @@ test('show summary', async () => {
         return {
           value: '这是总结栏',
           colspan: 5
-        };
+        }
       }
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const tableSummary = wrapper.find('.nut-table__summary');
+  const tableSummary = wrapper.find('.nut-table__summary')
 
-  expect(tableSummary.exists()).toBe(true);
-});
+  expect(tableSummary.exists()).toBe(true)
+})
 
 test('render striped props', async () => {
   const wrapper = mount(Table, {
@@ -167,14 +167,14 @@ test('render striped props', async () => {
       data,
       striped: true
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const tableMain = wrapper.find('.nut-table__main');
+  const tableMain = wrapper.find('.nut-table__main')
 
-  expect(tableMain.classes()).toContain('nut-table__main--striped');
-});
+  expect(tableMain.classes()).toContain('nut-table__main--striped')
+})
 
 test('render no data', async () => {
   const wrapper = mount(Table, {
@@ -183,18 +183,18 @@ test('render no data', async () => {
       columns,
       data
     }
-  });
+  })
 
   wrapper.setProps({
     data: []
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const tableNoData = wrapper.find('.nut-table__nodata');
+  const tableNoData = wrapper.find('.nut-table__nodata')
 
-  expect(tableNoData.exists()).toBe(true);
-});
+  expect(tableNoData.exists()).toBe(true)
+})
 
 test('render no data of user defined', async () => {
   const wrapper = mount(Table, {
@@ -206,18 +206,18 @@ test('render no data of user defined', async () => {
     slots: {
       nodata: h('div', { class: 'no-data' }, '这里是自定义展示')
     }
-  });
+  })
 
   wrapper.setProps({
     data: []
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const tableNoData = wrapper.find('.no-data');
+  const tableNoData = wrapper.find('.no-data')
 
-  expect(tableNoData.html()).toContain('这里是自定义展示');
-});
+  expect(tableNoData.html()).toContain('这里是自定义展示')
+})
 
 test('user defined td content', async () => {
   const wrapper = mount(Table, {
@@ -226,14 +226,14 @@ test('user defined td content', async () => {
       columns: column2,
       data: data2
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const bodyTd = wrapper.findAll('.nut-table__main__body__tr__td');
+  const bodyTd = wrapper.findAll('.nut-table__main__body__tr__td')
 
-  expect(bodyTd[3].find('.nut-button').exists()).toBe(true);
-});
+  expect(bodyTd[3].find('.nut-button').exists()).toBe(true)
+})
 
 test('render async', async () => {
   const wrapper = mount(Table, {
@@ -242,21 +242,21 @@ test('render async', async () => {
       columns: columns,
       data: []
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const bodyTr = wrapper.findAll('.nut-table__main__body__tr');
+  const bodyTr = wrapper.findAll('.nut-table__main__body__tr')
 
-  expect(bodyTr.length).toBe(0);
+  expect(bodyTr.length).toBe(0)
 
-  await nextTick();
+  await nextTick()
 
   wrapper.setProps({
     data
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  expect(wrapper.findAll('.nut-table__main__body__tr').length).toBe(3);
-});
+  expect(wrapper.findAll('.nut-table__main__body__tr').length).toBe(3)
+})

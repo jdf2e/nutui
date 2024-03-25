@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, inject, computed, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('time-detail');
+import { reactive, toRefs, inject, computed, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('time-detail')
 export default create({
   name: 'timedetail',
   props: {
@@ -22,38 +22,38 @@ export default create({
   },
   emits: ['select'],
   setup: (props, { emit }) => {
-    const currentKey = inject('currentKey');
-    const currentTime = inject('currentTime');
+    const currentKey = inject('currentKey')
+    const currentTime = inject('currentTime')
 
     const state = reactive({
       currentKey,
       currentTime: currentTime as any[]
-    });
+    })
 
     const getClass = (item: string) => {
-      let find = state.currentTime.find((item: any) => item.key == state.currentKey);
+      let find = state.currentTime.find((item: any) => item.key == state.currentKey)
       if (find) {
         return {
           'nut-time-detail__detail__list__item': true,
           'nut-time-detail__detail__list__item--curr': find.list.filter((value: string) => value === item).length > 0
-        };
+        }
       }
-    };
+    }
 
     const renderData = computed(() => {
-      return props.times.find((time: any) => time.key == state.currentKey)['list'];
-    });
+      return props.times.find((time: any) => time.key == state.currentKey)['list']
+    })
 
     const handleTime = (time: string) => {
-      emit('select', time);
-    };
+      emit('select', time)
+    }
 
     return {
       ...toRefs(state),
       getClass,
       renderData,
       handleTime
-    };
+    }
   }
-});
+})
 </script>

@@ -148,7 +148,7 @@ export const categoryChild = [
     showPic: true,
     showVideo: false
   }
-];
+]
 
 export const categoryInfo = {
   level: 1,
@@ -1890,7 +1890,7 @@ export const categoryInfo = {
       ]
     }
   ]
-};
+}
 
 export const customCategory = [
   {
@@ -1923,4 +1923,4 @@ export const customCategory = [
     showPic: false,
     showVideo: false
   }
-];
+]

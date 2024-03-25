@@ -9,7 +9,7 @@
   </nut-input>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { Ask } from '@nutui/icons-vue';
-const val = ref('');
+import { ref } from 'vue'
+import { Ask } from '@nutui/icons-vue'
+const val = ref('')
 </script>

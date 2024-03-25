@@ -1,4 +1,4 @@
-import { ComponentDesc } from './componentDesc';
+import { ComponentDesc } from './componentDesc'
 
 export const componentMap: Record<string, ComponentDesc> = {
   'action-sheet': {
@@ -413,4 +413,4 @@ export const componentMap: Record<string, ComponentDesc> = {
     site: '/zh-CN/component/watermark',
     props: ["width=''"]
   }
-};
+}

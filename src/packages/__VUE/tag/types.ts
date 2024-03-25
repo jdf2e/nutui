@@ -1,1 +1,1 @@
-export type TagType = 'primary' | 'success' | 'danger' | 'warning' | 'default';
+export type TagType = 'primary' | 'success' | 'danger' | 'warning' | 'default'

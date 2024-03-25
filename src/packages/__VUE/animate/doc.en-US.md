@@ -7,11 +7,11 @@ Add animation effects to child elements
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Animate } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Animate } from '@nutui/nutui'
 
-const app = createApp(Animate);
-app.use(Animate);
+const app = createApp(Animate)
+app.use(Animate)
 ```
 
 ### Trigger animation through show

@@ -7,11 +7,11 @@ Audio Playing
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Audio } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Audio } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Audio);
+const app = createApp()
+app.use(Audio)
 ```
 
 ### Basic Usage

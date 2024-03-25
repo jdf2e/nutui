@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { TrendArrow } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { TrendArrow } from '@nutui/nutui'
 
-const app = createApp();
-app.use(TrendArrow);
+const app = createApp()
+app.use(TrendArrow)
 ```
 
 ### 基础用法
@@ -70,7 +70,7 @@ app.use(TrendArrow);
 组件导出以下类型定义：
 
 ```ts
-import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui';
+import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui'
 ```
 
 ## 主题定制

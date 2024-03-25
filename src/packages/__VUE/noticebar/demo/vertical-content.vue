@@ -5,6 +5,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const list = ref(['Radio 单选框', 'Checkbox 复选框', 'DatePicker 日期选择器', 'CalendarCard 日历卡片']);
+import { ref } from 'vue'
+const list = ref(['Radio 单选框', 'Checkbox 复选框', 'DatePicker 日期选择器', 'CalendarCard 日历卡片'])
 </script>

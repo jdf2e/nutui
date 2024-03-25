@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Menu, MenuItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Menu, MenuItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Menu);
-app.use(MenuItem);
+const app = createApp()
+app.use(Menu)
+app.use(MenuItem)
 ```
 
 ### 基础用法

@@ -8,5 +8,5 @@
   </nut-collapse>
 </template>
 <script setup lang="ts">
-import { Notice, Follow } from '@nutui/icons-vue-taro';
+import { Notice, Follow } from '@nutui/icons-vue-taro'
 </script>

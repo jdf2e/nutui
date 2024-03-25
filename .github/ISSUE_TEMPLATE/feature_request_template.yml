@@ -1,7 +1,7 @@
 name: 🚀 新功能请求 Feature Request
 description: 对组件库或者仓库本身的建议和想法。
-title: "[FR]: "
-labels: ["Feature Request"]
+title: '[FR]: '
+labels: ['Feature Request']
 body:
   - type: markdown
     attributes:
@@ -13,7 +13,7 @@ body:
         - 查看组件文档 [@nutui/nutui](https://nutui.jd.com/h5/vue/4x/#/zh-CN/guide/intro) [@nutui/nutui-taro](https://nutui.jd.com/taro/vue/4x/#/zh-CN/guide/intro)
         - 在 [Issue](https://github.com/jdf2e/nutui/issues) 列表中查找解决方案
         - 查看 [常见问题 QA](https://github.com/jdf2e/nutui/issues/2461)
-  
+
   - type: dropdown
     id: npm
     attributes:
@@ -21,8 +21,8 @@ body:
       multiple: true
       description: 选择使用的 NutUI NPM 包名
       options:
-        - "@nutui/nutui"
-        - "@nutui/nutui-taro"
+        - '@nutui/nutui'
+        - '@nutui/nutui-taro'
     validations:
       required: true
 

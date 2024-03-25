@@ -4,9 +4,9 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, CSSProperties, inject } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('tab-pane');
+import { computed, CSSProperties, inject } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('tab-pane')
 
 export default create({
   props: {
@@ -25,17 +25,17 @@ export default create({
   },
   emits: ['click'],
   setup(props) {
-    const parentOption = inject('tabsOpiton') as any;
+    const parentOption = inject('tabsOpiton') as any
     const paneStyle = computed(() => {
       return {
         display:
           parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? 'none' : undefined
-      } as CSSProperties;
-    });
+      } as CSSProperties
+    })
     return {
       ...parentOption,
       paneStyle
-    };
+    }
   }
-});
+})
 </script>

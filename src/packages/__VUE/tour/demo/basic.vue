@@ -7,13 +7,13 @@
   <nut-tour v-model="show" :steps="steps" type="tile" location="bottom-end"></nut-tour>
 </template>
 <script setup>
-import { ref } from 'vue';
-const val = ref(false);
-const show = ref(false);
+import { ref } from 'vue'
+const val = ref(false)
+const show = ref(false)
 const steps = ref([
   {
     content: '京东风格的轻量级移动端组件库',
     target: 'tour1'
   }
-]);
+])
 </script>

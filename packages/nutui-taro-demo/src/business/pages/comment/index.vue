@@ -62,17 +62,17 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import Taro from '@tarojs/taro';
-let cmt = ref({});
+import { onMounted, ref } from 'vue'
+import Taro from '@tarojs/taro'
+let cmt = ref({})
 
 const handleclick = (info: any) => {
-  console.log('进行跳转', info);
-};
+  console.log('进行跳转', info)
+}
 
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 
 const getData = () => {
   Taro.request({
@@ -80,13 +80,13 @@ const getData = () => {
     url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json',
     success: (res) => {
       res.data.Comment.info.avatar =
-        'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png';
-      cmt.value = res.data.Comment;
+        'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
+      cmt.value = res.data.Comment
     }
-  });
-};
+  })
+}
 
 const clickImages = (imgs: any) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>

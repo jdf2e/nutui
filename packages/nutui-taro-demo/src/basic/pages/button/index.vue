@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Type from './type.vue';
-import Plain from './plain.vue';
-import Disabled from './disabled.vue';
-import Shape from './shape.vue';
-import Loading from './loading.vue';
-import IconDemo from './icon.vue';
-import Size from './size.vue';
-import BlockDemo from './block.vue';
-import Color from './color.vue';
+import { useTranslate } from '../../../utils'
+import Type from './type.vue'
+import Plain from './plain.vue'
+import Disabled from './disabled.vue'
+import Shape from './shape.vue'
+import Loading from './loading.vue'
+import IconDemo from './icon.vue'
+import Size from './size.vue'
+import BlockDemo from './block.vue'
+import Color from './color.vue'
 const t = useTranslate({
   'zh-CN': {
     type: '按钮类型',
@@ -63,7 +63,7 @@ const t = useTranslate({
     block: 'Block',
     color: 'Custom Color'
   }
-});
+})
 </script>
 
 <style lang="scss">

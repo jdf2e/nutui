@@ -7,11 +7,11 @@ Provides a quick return to the top function for long pages.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Backtop } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Backtop } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Backtop);
+const app = createApp()
+app.use(Backtop)
 ```
 
 ### Basic Usage
@@ -57,7 +57,7 @@ app.use(Backtop);
 The component exports the following type definitions:
 
 ```ts
-import type { BacktopProps, BacktopInstance } from '@nutui/nutui';
+import type { BacktopProps, BacktopInstance } from '@nutui/nutui'
 ```
 
 ## Theming

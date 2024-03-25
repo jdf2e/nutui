@@ -27,15 +27,15 @@
 </template>
 
 <script lang="ts" setup>
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Name from './name.vue';
-import IconDemo from './icon.vue';
-import Check from './check.vue';
-import Badge from './badge.vue';
-import Color from './color.vue';
-import Quantity from './quantity.vue';
-import Fixed from './fixed.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Name from './name.vue'
+import IconDemo from './icon.vue'
+import Check from './check.vue'
+import Badge from './badge.vue'
+import Color from './color.vue'
+import Quantity from './quantity.vue'
+import Fixed from './fixed.vue'
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -57,5 +57,5 @@ const t = useTranslate({
     quantity: 'Custom Quantity',
     fixed: 'Fixed Bottom'
   }
-});
+})
 </script>

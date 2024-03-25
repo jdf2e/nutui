@@ -1,1 +1,1 @@
-export type DragDirection = 'all' | 'x' | 'y';
+export type DragDirection = 'all' | 'x' | 'y'

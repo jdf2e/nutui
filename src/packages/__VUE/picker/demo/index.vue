@@ -26,15 +26,15 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Vmodel from './vmodel.vue';
-import Popup from './popup.vue';
-import ThreeD from './three-d.vue';
-import Columns from './columns.vue';
-import Cascader from './cascader.vue';
-import Async from './async.vue';
-import Field from './field.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Vmodel from './vmodel.vue'
+import Popup from './popup.vue'
+import ThreeD from './three-d.vue'
+import Columns from './columns.vue'
+import Cascader from './cascader.vue'
+import Async from './async.vue'
+import Field from './field.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -57,5 +57,5 @@ const t = useTranslate({
     async: 'Async',
     field: 'Custom Field Names'
   }
-});
+})
 </script>

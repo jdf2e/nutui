@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Countdown } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Countdown } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Countdown);
+const app = createApp()
+app.use(Countdown)
 ```
 
 ### 基础用法

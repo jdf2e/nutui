@@ -1,8 +1,8 @@
-import { CascaderOption } from './../types';
-import { mount } from '@vue/test-utils';
-import { Cascader } from '@nutui/nutui';
-import Tree from '../tree';
-import { formatTree, convertListToOptions } from '../helper';
+import { CascaderOption } from './../types'
+import { mount } from '@vue/test-utils'
+import { Cascader } from '@nutui/nutui'
+import Tree from '../tree'
+import { formatTree, convertListToOptions } from '../helper'
 
 const mountCascader = (options = {}) =>
   mount(Cascader, {
@@ -13,8 +13,8 @@ const mountCascader = (options = {}) =>
       }
     },
     ...options
-  });
-const later = (t = 0) => new Promise((r) => setTimeout(r, t));
+  })
+const later = (t = 0) => new Promise((r) => setTimeout(r, t))
 const mockOptions = [
   {
     value: '浙江',
@@ -58,7 +58,7 @@ const mockOptions = [
       }
     ]
   }
-];
+]
 const mockKeyConfigOptions = [
   {
     name: '浙江',
@@ -87,14 +87,14 @@ const mockKeyConfigOptions = [
       }
     ]
   }
-];
+]
 const mockConvertOptions = [
   { value: '北京', text: '北京', nodeId: 1, nodePid: 0, sort: 2 },
   { value: '朝阳区', text: '朝阳区', nodeId: 11, nodePid: 1 },
   { value: '亦庄', text: '亦庄', nodeId: 111, nodePid: 11 },
   { value: '广东省', text: '广东省', nodeId: 2, nodePid: 0, sort: 1 },
   { value: '广州市', text: '广州市', nodeId: 21, nodePid: 2 }
-];
+]
 
 describe('helpers', () => {
   test('formatTree', () => {
@@ -102,10 +102,10 @@ describe('helpers', () => {
       children: 'items',
       text: 'name',
       value: 'name'
-    });
+    })
 
-    expect(fromatedTree).toMatchObject(mockOptions);
-  });
+    expect(fromatedTree).toMatchObject(mockOptions)
+  })
 
   test('convertListToOptions', () => {
     const convertList = convertListToOptions(mockConvertOptions, {
@@ -113,7 +113,7 @@ describe('helpers', () => {
       idKey: 'nodeId',
       pidKey: 'nodePid',
       sortKey: 'sort'
-    });
+    })
     expect(convertList).toMatchObject([
       {
         nodePid: 0,
@@ -144,9 +144,9 @@ describe('helpers', () => {
           }
         ]
       }
-    ]);
-  });
-});
+    ])
+  })
+})
 
 describe('Tree', () => {
   test('tree', () => {
@@ -159,7 +159,7 @@ describe('Tree', () => {
         text: '福建',
         value: '福建'
       }
-    ]);
+    ])
     expect(tree.nodes).toMatchObject([
       {
         text: '浙江',
@@ -169,76 +169,76 @@ describe('Tree', () => {
         text: '福建',
         value: '福建'
       }
-    ]);
-  });
+    ])
+  })
 
   test('tree with config', () => {
     const tree = new Tree(mockKeyConfigOptions, {
       value: 'name',
       text: 'name',
       children: 'items'
-    });
-    expect(tree.nodes).toMatchObject(mockOptions);
-  });
+    })
+    expect(tree.nodes).toMatchObject(mockOptions)
+  })
 
-  const tree = new Tree(mockOptions);
+  const tree = new Tree(mockOptions)
 
   test('getPathNodesByValue', () => {
-    const pathNodes = tree.getPathNodesByValue(['浙江', '杭州', '西湖区']);
+    const pathNodes = tree.getPathNodesByValue(['浙江', '杭州', '西湖区'])
     const mappedPathNodes = pathNodes.map(({ text, value }) => ({
       text,
       value
-    }));
+    }))
 
     expect(mappedPathNodes).toMatchObject([
       { text: '浙江', value: '浙江' },
       { text: '杭州', value: '杭州' },
       { text: '西湖区', value: '西湖区' }
-    ]);
-  });
+    ])
+  })
 
   test('isLeaf', () => {
-    const node = tree.getNodeByValue('西湖区');
+    const node = tree.getNodeByValue('西湖区')
 
-    let isLeaf = tree.isLeaf(node as CascaderOption, false);
-    expect(isLeaf).toBeTruthy();
+    let isLeaf = tree.isLeaf(node as CascaderOption, false)
+    expect(isLeaf).toBeTruthy()
 
-    isLeaf = tree.isLeaf(node as CascaderOption, true);
-    expect(isLeaf).toBeFalsy();
-  });
+    isLeaf = tree.isLeaf(node as CascaderOption, true)
+    expect(isLeaf).toBeFalsy()
+  })
 
   test('hasChildren', () => {
-    let node = tree.getNodeByValue('西湖区');
+    let node = tree.getNodeByValue('西湖区')
 
-    let hasChildren = tree.hasChildren(node as CascaderOption, false);
-    expect(hasChildren).toBeFalsy();
+    let hasChildren = tree.hasChildren(node as CascaderOption, false)
+    expect(hasChildren).toBeFalsy()
 
-    hasChildren = tree.hasChildren(node as CascaderOption, true);
-    expect(hasChildren).toBeFalsy();
+    hasChildren = tree.hasChildren(node as CascaderOption, true)
+    expect(hasChildren).toBeFalsy()
 
-    node = tree.getNodeByValue('杭州');
+    node = tree.getNodeByValue('杭州')
 
-    hasChildren = tree.hasChildren(node as CascaderOption, false);
-    expect(hasChildren).toBeTruthy();
+    hasChildren = tree.hasChildren(node as CascaderOption, false)
+    expect(hasChildren).toBeTruthy()
 
-    hasChildren = tree.hasChildren(node as CascaderOption, true);
-    expect(hasChildren).toBeTruthy();
-  });
+    hasChildren = tree.hasChildren(node as CascaderOption, true)
+    expect(hasChildren).toBeTruthy()
+  })
 
   test('updateChildren', () => {
-    let node = tree.getNodeByValue('福建');
-    expect(node).toBeTruthy();
+    let node = tree.getNodeByValue('福建')
+    expect(node).toBeTruthy()
 
-    tree.updateChildren([{ text: '福州', value: '福州' }], node as CascaderOption);
-    node = tree.getNodeByValue('福州') as CascaderOption;
-    expect(node).toBeTruthy();
-    expect(node.value).toBe('福州');
+    tree.updateChildren([{ text: '福州', value: '福州' }], node as CascaderOption)
+    node = tree.getNodeByValue('福州') as CascaderOption
+    expect(node).toBeTruthy()
+    expect(node.value).toBe('福州')
 
-    tree.updateChildren([{ text: '鼓楼区', value: '鼓楼区' }], node as CascaderOption);
-    node = tree.getNodeByValue('鼓楼区') as CascaderOption;
-    expect(node).toBeTruthy();
-    expect(node.value).toBe('鼓楼区');
-  });
+    tree.updateChildren([{ text: '鼓楼区', value: '鼓楼区' }], node as CascaderOption)
+    node = tree.getNodeByValue('鼓楼区') as CascaderOption
+    expect(node).toBeTruthy()
+    expect(node.value).toBe('鼓楼区')
+  })
 
   test('updateChildren with CascaderConfig', () => {
     const tree = new Tree(
@@ -253,26 +253,26 @@ describe('Tree', () => {
         text: 'name',
         children: 'items'
       }
-    );
+    )
     expect(tree.nodes).toMatchObject([
       {
         text: '福建',
         value: '福建',
         children: [{ text: '福州', value: '福州' }]
       }
-    ]);
+    ])
 
-    let node = tree.getNodeByValue('福州') as CascaderOption;
-    expect(node).toBeTruthy();
-    tree.updateChildren([{ name: '鼓楼区' }], node);
-    node = tree.getNodeByValue('鼓楼区') as CascaderOption;
-    expect(node).toBeTruthy();
+    let node = tree.getNodeByValue('福州') as CascaderOption
+    expect(node).toBeTruthy()
+    tree.updateChildren([{ name: '鼓楼区' }], node)
+    node = tree.getNodeByValue('鼓楼区') as CascaderOption
+    expect(node).toBeTruthy()
     expect(node).toMatchObject({
       text: '鼓楼区',
       value: '鼓楼区'
-    });
-  });
-});
+    })
+  })
+})
 
 describe('Cascader', () => {
   it('options', async () => {
@@ -281,10 +281,10 @@ describe('Cascader', () => {
         modelValue: ['福建', '福州', '鼓楼区'],
         options: mockOptions
       }
-    });
-    await wrapper.vm.$nextTick();
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    await wrapper.vm.$nextTick()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('options with valueKey/textKey/childrenKey', async () => {
     const wrapper = mountCascader({
@@ -295,10 +295,10 @@ describe('Cascader', () => {
         textKey: 'name',
         childrenKey: 'items'
       }
-    });
-    await wrapper.vm.$nextTick();
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    await wrapper.vm.$nextTick()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('options with convertConfig', async () => {
     const wrapper = mountCascader({
@@ -312,10 +312,10 @@ describe('Cascader', () => {
           sortKey: 'sort'
         }
       }
-    });
-    await wrapper.vm.$nextTick();
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    await wrapper.vm.$nextTick()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('visible', async () => {
     const wrapper = mountCascader({
@@ -324,16 +324,16 @@ describe('Cascader', () => {
         modelValue: [],
         options: mockOptions
       }
-    });
-    await wrapper.vm.$nextTick();
+    })
+    await wrapper.vm.$nextTick()
 
-    expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(false);
+    expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(false)
 
     await wrapper.setProps({
       visible: true
-    });
-    expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(true);
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(true)
+    expect(wrapper.html()).toMatchSnapshot()
 
     // TODO: 无法通过，每次更新props都重新执行了setup，原因待发现
     // // value为空时，会保留上次的选择记录
@@ -354,8 +354,8 @@ describe('Cascader', () => {
     // 点击叶子节点时关闭popup
     await wrapper.setProps({
       modelValue: ['福建', '福州', '台江区']
-    });
-    await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click');
+    })
+    await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click')
     // expect((wrapper.emitted('update:visible') as any)[0][0]).toBe(false);
     expect(
       wrapper
@@ -363,8 +363,8 @@ describe('Cascader', () => {
         .find('.nut-cascader-item.active')
         .find('.nut-cascader-item__title')
         .html()
-    ).toContain('鼓楼区');
-  });
+    ).toContain('鼓楼区')
+  })
 
   it('modelValue', async () => {
     const wrapper = mountCascader({
@@ -372,64 +372,64 @@ describe('Cascader', () => {
         modelValue: [],
         options: mockOptions
       }
-    });
+    })
 
-    expect(wrapper.findAll('.nut-cascader-item[aria-checked="true"]').length).toBe(0);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.findAll('.nut-cascader-item[aria-checked="true"]').length).toBe(0)
+    expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setProps({
       modelValue: ['福建', '福州', '鼓楼区']
-    });
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setProps({
       modelValue: ['湖南']
-    });
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setProps({
       modelValue: []
-    });
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('select', async () => {
     const wrapper = mountCascader({
       props: {
         options: mockOptions
       }
-    });
+    })
 
     // 模拟点击
-    await wrapper.findAll('.nut-cascader-item')[2].trigger('click');
-    let pathChange: any = wrapper.emitted().pathChange[0];
-    expect(pathChange[0][0].value).toBe('福建');
-    expect(wrapper.html()).toMatchSnapshot();
+    await wrapper.findAll('.nut-cascader-item')[2].trigger('click')
+    let pathChange: any = wrapper.emitted().pathChange[0]
+    expect(pathChange[0][0].value).toBe('福建')
+    expect(wrapper.html()).toMatchSnapshot()
     await wrapper.setProps({
       modelValue: ['福建']
-    });
-    await wrapper.findAll('.nut-cascader-pane')[1].find('.nut-cascader-item').trigger('click');
-    pathChange = wrapper.emitted().pathChange[1];
-    expect(pathChange[0][1].value).toBe('福州');
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    await wrapper.findAll('.nut-cascader-pane')[1].find('.nut-cascader-item').trigger('click')
+    pathChange = wrapper.emitted().pathChange[1]
+    expect(pathChange[0][1].value).toBe('福州')
+    expect(wrapper.html()).toMatchSnapshot()
     await wrapper.setProps({
       modelValue: ['福建', '福州']
-    });
-    await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click');
-    pathChange = wrapper.emitted().pathChange[2];
-    expect(pathChange[0][2].value).toBe('鼓楼区');
-    expect(wrapper.emitted().pathChange.length).toBe(3);
-    expect(wrapper.emitted().change.length).toBe(1);
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click')
+    pathChange = wrapper.emitted().pathChange[2]
+    expect(pathChange[0][2].value).toBe('鼓楼区')
+    expect(wrapper.emitted().pathChange.length).toBe(3)
+    expect(wrapper.emitted().change.length).toBe(1)
+    expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setProps({
       modelValue: []
-    });
-    await wrapper.findAll('.nut-cascader-item')[1].trigger('click');
-    expect(wrapper.emitted().pathChange.length).toBe(3);
-    expect(wrapper.emitted().change.length).toBe(1);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    await wrapper.findAll('.nut-cascader-item')[1].trigger('click')
+    expect(wrapper.emitted().pathChange.length).toBe(3)
+    expect(wrapper.emitted().change.length).toBe(1)
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('modelValue with lazy', async () => {
     const wrapper = mountCascader({
@@ -444,30 +444,30 @@ describe('Cascader', () => {
                 { value: 'A0', text: 'A0' },
                 { value: 'B0', text: 'B0' },
                 { value: 'C0', text: 'C0' }
-              ]);
+              ])
             } else {
-              const { value, level } = node;
-              const text = value.substring(0, 1);
-              const value1 = `${text}${level + 1}1`;
-              const value2 = `${text}${level + 1}2`;
+              const { value, level } = node
+              const text = value.substring(0, 1)
+              const value1 = `${text}${level + 1}1`
+              const value2 = `${text}${level + 1}2`
               resolve([
                 { value: value1, text: value1, leaf: level >= 1 },
                 { value: value2, text: value2, leaf: level >= 1 }
-              ]);
+              ])
             }
-          }, 50);
+          }, 50)
         }
       }
-    });
-    await later(60);
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    await later(60)
+    expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.setProps({
       modelValue: ['A0', 'A12', 'A21']
-    });
-    await later(160);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    })
+    await later(160)
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('select with lazy', async () => {
     const wrapper = mountCascader({
@@ -480,67 +480,67 @@ describe('Cascader', () => {
               resolve([
                 { value: 'A0', text: 'A0' },
                 { value: 'B0', text: 'B0' }
-              ]);
+              ])
             } else {
-              const { value, level } = node;
-              const text = value.substring(0, 1);
-              const value1 = `${text}${level + 1}1`;
-              const value2 = `${text}${level + 1}2`;
+              const { value, level } = node
+              const text = value.substring(0, 1)
+              const value1 = `${text}${level + 1}1`
+              const value2 = `${text}${level + 1}2`
               resolve([
                 { value: value1, text: value1, leaf: level >= 1 },
                 { value: value2, text: value2, leaf: level >= 1 }
-              ]);
+              ])
             }
-          }, 50);
+          }, 50)
         }
       }
-    });
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    expect(wrapper.html()).toMatchSnapshot()
 
-    await later(60);
+    await later(60)
 
     // 模拟点击
-    expect(wrapper.html()).toMatchSnapshot();
-    await wrapper.findAll('.nut-cascader-item')[1].trigger('click');
-    await later(10);
-    await wrapper.findAll('.nut-cascader-item')[0].trigger('click');
-    await later(60);
-    let pathChange: any = wrapper.emitted().pathChange[0];
-    expect(pathChange[0][0].value).toBe('A0');
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.findAll('.nut-cascader-item')[1].trigger('click')
+    await later(10)
+    await wrapper.findAll('.nut-cascader-item')[0].trigger('click')
+    await later(60)
+    let pathChange: any = wrapper.emitted().pathChange[0]
+    expect(pathChange[0][0].value).toBe('A0')
+    expect(wrapper.html()).toMatchSnapshot()
     await wrapper.setProps({
       modelValue: ['A0']
-    });
-    await later();
-    await wrapper.findAll('.nut-cascader-pane')[1].findAll('.nut-cascader-item')[0].trigger('click');
-    await later(10);
-    await wrapper.findAll('.nut-cascader-pane')[1].findAll('.nut-cascader-item')[1].trigger('click');
-    await later(60);
-    pathChange = wrapper.emitted().pathChange[1];
-    expect(pathChange[0][1].value).toBe('A12');
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    await later()
+    await wrapper.findAll('.nut-cascader-pane')[1].findAll('.nut-cascader-item')[0].trigger('click')
+    await later(10)
+    await wrapper.findAll('.nut-cascader-pane')[1].findAll('.nut-cascader-item')[1].trigger('click')
+    await later(60)
+    pathChange = wrapper.emitted().pathChange[1]
+    expect(pathChange[0][1].value).toBe('A12')
+    expect(wrapper.html()).toMatchSnapshot()
     await wrapper.setProps({
       modelValue: ['A0', 'A12']
-    });
-    await later();
-    await wrapper.findAll('.nut-cascader-pane')[2].findAll('.nut-cascader-item')[0].trigger('click');
-    pathChange = wrapper.emitted().pathChange[2];
-    expect(pathChange[0][2].value).toBe('A21');
-    expect(wrapper.emitted().pathChange.length).toBe(3);
-    expect(wrapper.emitted().change.length).toBe(1);
-    expect(wrapper.html()).toMatchSnapshot();
+    })
+    await later()
+    await wrapper.findAll('.nut-cascader-pane')[2].findAll('.nut-cascader-item')[0].trigger('click')
+    pathChange = wrapper.emitted().pathChange[2]
+    expect(pathChange[0][2].value).toBe('A21')
+    expect(wrapper.emitted().pathChange.length).toBe(3)
+    expect(wrapper.emitted().change.length).toBe(1)
+    expect(wrapper.html()).toMatchSnapshot()
 
     await wrapper.setProps({
       modelValue: []
-    });
-    await later();
-    expect(wrapper.html()).toMatchSnapshot();
-    await wrapper.findAll('.nut-cascader-item')[1].trigger('click');
-    await later(60);
-    expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.emitted().pathChange.length).toBe(4);
-    expect(wrapper.emitted().change.length).toBe(1);
-  });
+    })
+    await later()
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.findAll('.nut-cascader-item')[1].trigger('click')
+    await later(60)
+    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.emitted().pathChange.length).toBe(4)
+    expect(wrapper.emitted().change.length).toBe(1)
+  })
 
   it('change tab', async () => {
     const wrapper = mountCascader({
@@ -549,29 +549,29 @@ describe('Cascader', () => {
         modelValue: ['福建', '福州', '鼓楼区'],
         options: mockOptions
       }
-    });
-    await wrapper.vm.$nextTick();
+    })
+    await wrapper.vm.$nextTick()
 
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot()
 
-    await wrapper.findAll('.nut-tabs__titles-item__text')[1].trigger('click');
-    expect(wrapper.html()).toMatchSnapshot();
+    await wrapper.findAll('.nut-tabs__titles-item__text')[1].trigger('click')
+    expect(wrapper.html()).toMatchSnapshot()
 
-    await wrapper.findAll('.nut-tabs__titles-item__text')[0].trigger('click');
-    expect(wrapper.html()).toMatchSnapshot();
+    await wrapper.findAll('.nut-tabs__titles-item__text')[0].trigger('click')
+    expect(wrapper.html()).toMatchSnapshot()
 
-    await wrapper.find('.nut-tabs__content .nut-cascader-item').trigger('click');
-    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(2);
+    await wrapper.find('.nut-tabs__content .nut-cascader-item').trigger('click')
+    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(2)
 
     await wrapper.setProps({
       visible: false
-    });
+    })
 
     // 重新打开时，绑定值和显示一致
     await wrapper.setProps({
       visible: true
-    });
-    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(3);
-    expect(wrapper.findAll('.nut-tabs__titles-item__text')[2].text()).toBe('鼓楼区');
-  });
-});
+    })
+    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(3)
+    expect(wrapper.findAll('.nut-tabs__titles-item__text')[2].text()).toBe('鼓楼区')
+  })
+})

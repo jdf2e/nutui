@@ -1,6 +1,6 @@
-import { h, Component } from 'vue';
+import { h, Component } from 'vue'
 
 export const renderIcon = (icon: Component, props?: any) => {
-  if (icon) return h(icon, props);
-  return '';
-};
+  if (icon) return h(icon, props)
+  return ''
+}

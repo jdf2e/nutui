@@ -31,21 +31,21 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted, PropType } from 'vue';
+import { ref, watch, onMounted, PropType } from 'vue'
 
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('comment-images');
-import { Right } from '@nutui/icons-vue-taro';
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('comment-images')
+import { Right } from '@nutui/icons-vue-taro'
 
 interface VideosType {
-  id?: number | string;
-  mainUrl: string;
-  videoUrl: string;
+  id?: number | string
+  mainUrl: string
+  videoUrl: string
 }
 interface ImagesType {
-  smallImgUrl: string;
-  bigImgUrl: string;
-  imgUrl: string;
+  smallImgUrl: string
+  bigImgUrl: string
+  imgUrl: string
 }
 export default create({
   props: {
@@ -66,44 +66,44 @@ export default create({
   emits: ['click', 'clickImages'],
 
   setup(props, { emit }) {
-    const isShowImage = ref(false);
-    const initIndex = ref(1);
-    const totalImages = ref<(VideosType | ImagesType)[]>([]);
+    const isShowImage = ref(false)
+    const initIndex = ref(1)
+    const totalImages = ref<(VideosType | ImagesType)[]>([])
 
     watch(
       () => [props.videos, props.images],
       (value) => {
         if (value[0].length > 0) {
           value[0].forEach((el: any) => {
-            el.type = 'video';
-          });
+            el.type = 'video'
+          })
         }
-        totalImages.value = (value[0] as any).concat(value[1]);
+        totalImages.value = (value[0] as any).concat(value[1])
       },
       { deep: true }
-    );
+    )
 
     onMounted(() => {
       if (props.videos.length > 0) {
         props.videos.forEach((el: any) => {
-          el.type = 'video';
-        });
+          el.type = 'video'
+        })
       }
-      totalImages.value = (props.videos as any).concat(props.images);
-    });
+      totalImages.value = (props.videos as any).concat(props.images)
+    })
 
     const showImages = (type: string, index: string | number) => {
-      const { videos, images } = props;
+      const { videos, images } = props
 
-      const i = type == 'img' ? (index as number) - videos.length : index;
+      const i = type == 'img' ? (index as number) - videos.length : index
       emit('clickImages', {
         type,
         index: i,
         value: type == 'img' ? images[i as number] : videos[i as number]
-      });
-    };
+      })
+    }
 
-    return { isShowImage, initIndex, showImages, totalImages };
+    return { isShowImage, initIndex, showImages, totalImages }
   }
-});
+})
 </script>

@@ -7,12 +7,12 @@ Often used in a group of pictures or card rotation.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Swiper, SwiperItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Swiper, SwiperItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Swiper);
-app.use(SwiperItem);
+const app = createApp()
+app.use(Swiper)
+app.use(SwiperItem)
 ```
 
 ### Basic Usage

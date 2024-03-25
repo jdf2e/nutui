@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Form, FormItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Form, FormItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Form);
-app.use(FormItem);
+const app = createApp()
+app.use(Form)
+app.use(FormItem)
 ```
 
 ### 基础用法

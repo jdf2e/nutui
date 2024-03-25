@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Notify } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Notify } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Notify);
+const app = createApp()
+app.use(Notify)
 ```
 
 ### 基础用法
@@ -31,9 +31,9 @@ app.use(Notify);
   </nut-cell-group>
 </template>
 <script setup>
-import { reactive } from 'vue';
-const onClosed = () => console.log('closed');
-const onClick = () => console.log('click');
+import { reactive } from 'vue'
+const onClosed = () => console.log('closed')
+const onClick = () => console.log('click')
 
 const baseState = {
   state: reactive({
@@ -42,10 +42,10 @@ const baseState = {
   }),
   methods: {
     cellClick() {
-      baseState.state.show = true;
+      baseState.state.show = true
     }
   }
-};
+}
 </script>
 ```
 

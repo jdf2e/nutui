@@ -12,12 +12,12 @@
   </nut-calendar>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show = ref(false);
-const date = ref('');
+import { ref } from 'vue'
+const show = ref(false)
+const date = ref('')
 const choose = (param) => {
-  date.value = param[3];
-};
+  date.value = param[3]
+}
 const disabledDate = (date) => {
   const disabledDate = {
     '2022-01-05': true,
@@ -27,7 +27,7 @@ const disabledDate = (date) => {
     '2022-01-12': true,
     '2022-01-13': true,
     '2022-01-14': true
-  };
-  return disabledDate[date];
-};
+  }
+  return disabledDate[date]
+}
 </script>

@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'ConfigProvider' };
+export default { navigationBarTitleText: 'ConfigProvider' }

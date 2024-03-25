@@ -8,9 +8,9 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('barrage');
+import { onMounted, onUnmounted, ref, watch, nextTick, useSlots } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('barrage')
 
 export default create({
   name: 'barrage',
@@ -41,127 +41,127 @@ export default create({
     }
   },
   setup(props) {
-    const classTime = new Date().getTime();
-    const slotDefault = !!useSlots().default;
+    const classTime = new Date().getTime()
+    const slotDefault = !!useSlots().default
 
-    let dmBody = ref<HTMLDivElement>(document.createElement('div'));
-    let dmContainer = ref<HTMLDivElement>(document.createElement('div'));
+    let dmBody = ref<HTMLDivElement>(document.createElement('div'))
+    let dmContainer = ref<HTMLDivElement>(document.createElement('div'))
 
-    let timer: NodeJS.Timeout | null | undefined = null;
-    const danmuList: any = ref(props.danmu);
-    const rows = ref<number>(props.rows);
-    const top = ref<number>(props.top);
-    const index = ref<number>(0);
-    const speeds = props.speeds;
-    const danmuCWidth = ref(0);
+    let timer: NodeJS.Timeout | null | undefined = null
+    const danmuList: any = ref(props.danmu)
+    const rows = ref<number>(props.rows)
+    const top = ref<number>(props.top)
+    const index = ref<number>(0)
+    const speeds = props.speeds
+    const danmuCWidth = ref(0)
 
     onMounted(() => {
-      init();
+      init()
       if (slotDefault) {
         document.addEventListener('visibilitychange', function () {
           if (document.visibilityState === 'hidden') {
-            clearTime();
-            index.value = 0;
-            eleSlot('hidden');
+            clearTime()
+            index.value = 0
+            eleSlot('hidden')
           } else if (document.visibilityState === 'visible') {
-            init();
+            init()
           }
-        });
+        })
       }
-    });
+    })
 
     onUnmounted(() => {
-      danmuList.value = [];
-      clearTime();
-    });
+      danmuList.value = []
+      clearTime()
+    })
 
     const init = () => {
-      danmuCWidth.value = dmBody.value.offsetWidth;
+      danmuCWidth.value = dmBody.value.offsetWidth
       if (slotDefault) {
-        eleSlot('init');
+        eleSlot('init')
       }
       setTimeout(() => {
-        dmBody.value?.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
-        run();
-      }, 300);
-    };
+        dmBody.value?.style.setProperty('--move-distance', `-${danmuCWidth.value}px`)
+        run()
+      }, 300)
+    }
 
     const eleSlot = (flag?: string) => {
-      const list = document.getElementsByClassName('slotBody' + classTime);
-      let childrens = list?.[0]?.children || [];
-      const dmList: any[] = [];
+      const list = document.getElementsByClassName('slotBody' + classTime)
+      let childrens = list?.[0]?.children || []
+      const dmList: any[] = []
       if (childrens) {
         Array.from(childrens).forEach((item: any) => {
           if (flag == 'init') {
-            item.style.opacity = '0';
-            dmList.push(item);
+            item.style.opacity = '0'
+            dmList.push(item)
           } else {
-            item.classList = '';
-            item.style = {};
+            item.classList = ''
+            item.style = {}
           }
-        });
+        })
       }
       if (flag == 'init') {
-        danmuList.value = dmList;
+        danmuList.value = dmList
       }
-    };
+    }
 
     const clearTime = () => {
       if (timer) {
-        clearTimeout(timer);
-        timer = null;
+        clearTimeout(timer)
+        timer = null
       }
-    };
+    }
 
     watch(
       () => props.danmu,
       (newValue) => {
         if (props.danmu.length > 0) {
-          danmuList.value = [...newValue];
+          danmuList.value = [...newValue]
         }
       }
-    );
+    )
 
     const add = (word: string) => {
-      const _index = index.value % danmuList.value.length;
+      const _index = index.value % danmuList.value.length
       if (!props.loop && index.value === danmuList.value.length) {
-        danmuList.value.splice(danmuList.value.length, 0, word);
+        danmuList.value.splice(danmuList.value.length, 0, word)
       } else {
-        danmuList.value.splice(_index, 0, word);
+        danmuList.value.splice(_index, 0, word)
       }
-    };
+    }
 
     const run = () => {
-      clearTime();
+      clearTime()
       timer = setTimeout(() => {
-        play();
-      }, props.frequency);
-    };
+        play()
+      }, props.frequency)
+    }
     const play = () => {
-      const _index = props.loop ? index.value % danmuList.value.length : index.value;
-      let el = document.createElement(`view`);
+      const _index = props.loop ? index.value % danmuList.value.length : index.value
+      let el = document.createElement(`view`)
 
       if (slotDefault && typeof danmuList.value[_index] == 'object') {
-        el = danmuList.value[_index];
-        el?.classList?.add('nut-barrage__item');
+        el = danmuList.value[_index]
+        el?.classList?.add('nut-barrage__item')
       } else {
-        el.innerHTML = danmuList.value[_index] as string;
-        el.classList.add('nut-barrage__item');
-        dmContainer.value.appendChild(el);
+        el.innerHTML = danmuList.value[_index] as string
+        el.classList.add('nut-barrage__item')
+        dmContainer.value.appendChild(el)
       }
       // let el = document.createElement(`div`);
       // el.innerHTML = danmuList.value[_index] as string;
       // el.classList.add('nut-barrage__item');
       // dmContainer.value.appendChild(el);
       nextTick(() => {
-        const height = el.offsetHeight;
-        el?.classList?.add('move');
-        el.style.animationDuration = `${speeds}ms`;
-        el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px';
-        el.style.opacity = '1';
+        const height = el.offsetHeight
+        el?.classList?.add('move')
+        el.style.animationDuration = `${speeds}ms`
+        el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px'
+        el.style.opacity = '1'
         if (!slotDefault) {
-          const width = el.offsetWidth;
-          el.style.width = width + 20 + 'px';
+          const width = el.offsetWidth
+          el.style.width = width + 20 + 'px'
         }
         // el.style.left = '-' + (_index % rows.value) + 'px';
         // el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
@@ -170,25 +170,25 @@ export default create({
 
         el.addEventListener('animationend', () => {
           if (slotDefault) {
-            el.classList.remove('move');
+            el.classList.remove('move')
           } else {
-            dmContainer.value.removeChild(el);
+            dmContainer.value.removeChild(el)
           }
-        });
+        })
         if (!props.loop && index.value >= danmuList.value.length - 1) {
-          return;
+          return
         }
-        index.value++;
+        index.value++
         if (index.value >= danmuList.value.length) {
-          index.value = 0;
+          index.value = 0
         }
         el.removeEventListener('animationend', () => {
           // 回调
-        });
-        run();
-      });
-    };
-    return { classTime, danmuList, dmBody, dmContainer, add };
+        })
+        run()
+      })
+    }
+    return { classTime, danmuList, dmBody, dmContainer, add }
   }
-});
+})
 </script>

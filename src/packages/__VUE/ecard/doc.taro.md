@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Ecard } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Ecard } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Ecard);
+const app = createApp()
+app.use(Ecard)
 ```
 
 ### 基础用法

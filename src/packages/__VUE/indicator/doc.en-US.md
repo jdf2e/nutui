@@ -7,11 +7,11 @@ Displays the progress of a task or process, which is often used to open a proces
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Indicator } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Indicator } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Indicator);
+const app = createApp()
+app.use(Indicator)
 ```
 
 ### Basic Usage

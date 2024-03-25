@@ -1,102 +1,102 @@
 export abstract class BaseLang {
-  abstract save: string;
-  abstract confirm: string;
-  abstract cancel: string;
-  abstract done: string;
-  abstract noData: string;
-  abstract placeholder: string;
-  abstract select: string;
+  abstract save: string
+  abstract confirm: string
+  abstract cancel: string
+  abstract done: string
+  abstract noData: string
+  abstract placeholder: string
+  abstract select: string
   abstract video: {
-    errorTip: string;
-    clickRetry: string;
-  };
+    errorTip: string
+    clickRetry: string
+  }
   abstract fixednav: {
-    activeText: string;
-    unActiveText: string;
-  };
+    activeText: string
+    unActiveText: string
+  }
   abstract pagination: {
-    prev: string;
-    next: string;
-  };
+    prev: string
+    next: string
+  }
   abstract calendaritem: {
-    weekdays: Array<string>;
-    end: string;
-    start: string;
-    title: string;
-    monthTitle: Function;
-    today: string;
-  };
+    weekdays: Array<string>
+    end: string
+    start: string
+    title: string
+    monthTitle: Function
+    today: string
+  }
   abstract calendarcard: {
-    weekdays: Array<string>;
-    end: string;
-    start: string;
-    title: string;
-    monthTitle: Function;
-    today: string;
-  };
+    weekdays: Array<string>
+    end: string
+    start: string
+    title: string
+    monthTitle: Function
+    today: string
+  }
   abstract shortpassword: {
-    title: string;
-    desc: string;
-    tips: string;
-  };
+    title: string
+    desc: string
+    tips: string
+  }
   abstract uploader: {
-    ready: string;
-    readyUpload: string;
-    waitingUpload: string;
-    uploading: string;
-    success: string;
-    error: string;
-  };
+    ready: string
+    readyUpload: string
+    waitingUpload: string
+    uploading: string
+    success: string
+    error: string
+  }
   abstract countdown: {
-    day: string;
-    hour: string;
-    minute: string;
-    second: string;
-  };
+    day: string
+    hour: string
+    minute: string
+    second: string
+  }
   abstract address: {
-    selectRegion: string;
-    deliveryTo: string;
-    chooseAnotherAddress: string;
-  };
+    selectRegion: string
+    deliveryTo: string
+    chooseAnotherAddress: string
+  }
   abstract signature: {
-    reSign: string;
-    unSupportTpl: string;
-  };
+    reSign: string
+    unSupportTpl: string
+  }
   abstract ecard: {
-    chooseText: string;
-    otherValueText: string;
-    placeholder: string;
-  };
+    chooseText: string
+    otherValueText: string
+    placeholder: string
+  }
   abstract timeselect: {
-    pickupTime: string;
-  };
+    pickupTime: string
+  }
   abstract sku: {
-    buyNow: string;
-    buyNumber: string;
-    addToCart: string;
-  };
+    buyNow: string
+    buyNumber: string
+    addToCart: string
+  }
   abstract skuheader: {
-    skuId: string;
-  };
+    skuId: string
+  }
   abstract addresslist: {
-    addAddress: string;
-    default: string;
-  };
+    addAddress: string
+    default: string
+  }
   abstract comment: {
-    complaintsText: string;
-    additionalReview: Function;
-    additionalImages: Function;
-  };
+    complaintsText: string
+    additionalReview: Function
+    additionalImages: Function
+  }
   abstract infiniteloading: {
-    loading: string;
-    pullTxt: string;
-    loadMoreTxt: string;
-  };
+    loading: string
+    pullTxt: string
+    loadMoreTxt: string
+  }
   abstract pullrefresh: {
-    pulling: string;
-    loosing: string;
-    loading: string;
-    complete: string;
-  };
+    pulling: string
+    loosing: string
+    loading: string
+    complete: string
+  }
 }
-export default BaseLang;
+export default BaseLang

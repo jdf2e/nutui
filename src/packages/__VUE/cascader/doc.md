@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Cascader } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Cascader } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Cascader);
+const app = createApp()
+app.use(Cascader)
 ```
 
 ### 基础用法

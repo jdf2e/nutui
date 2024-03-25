@@ -7,12 +7,12 @@ Place the content in multiple folded panels, and click the panel title to expand
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Collapse, CollapseItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Collapse, CollapseItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Collapse);
-app.use(CollapseItem);
+const app = createApp()
+app.use(Collapse)
+app.use(CollapseItem)
 ```
 
 ### Basic Usage

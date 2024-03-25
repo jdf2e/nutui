@@ -24,9 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { showNotify } from './index';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { ref } from 'vue'
+import { showNotify } from './index'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -54,40 +54,40 @@ const translate = useTranslate({
     warningNotify: 'Warning Notify',
     cusBgNotify: 'Customize background and font colors'
   }
-});
+})
 const baseNotify = (msg: string) => {
   showNotify.text(msg, {
     onClose: () => {
-      console.log('close');
+      console.log('close')
     },
     onClick: () => {
-      console.log('click');
+      console.log('click')
     }
-  });
-};
+  })
+}
 const primaryNotify = (msg: string) => {
-  showNotify.primary(msg, { duration: 1000 });
-};
+  showNotify.primary(msg, { duration: 1000 })
+}
 const successNotify = (msg: string) => {
-  showNotify.success(msg);
-};
+  showNotify.success(msg)
+}
 const errorNotify = (msg: string) => {
-  showNotify.danger(msg);
-};
+  showNotify.danger(msg)
+}
 const warningNotify = (msg: string) => {
-  showNotify.warn(msg);
-};
+  showNotify.warn(msg)
+}
 const cusBgNotify = (msg: string) => {
-  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-};
+  showNotify.text(msg, { color: '#ad0000', background: '#ffe1e1' })
+}
 const timeNotify = (msg: string) => {
-  showNotify.text(msg, { duration: 1000 });
-};
+  showNotify.text(msg, { duration: 1000 })
+}
 const positionNotify = (msg: string) => {
-  showNotify.text(msg, { position: 'bottom' });
-};
-const show = ref(false);
+  showNotify.text(msg, { position: 'bottom' })
+}
+const show = ref(false)
 const onClick = () => {
-  show.value = true;
-};
+  show.value = true
+}
 </script>

@@ -7,12 +7,12 @@ The cell is a single display item in the list.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Cell, CellGroup } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Cell, CellGroup } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Cell);
-app.use(CellGroup);
+const app = createApp()
+app.use(Cell)
+app.use(CellGroup)
 ```
 
 ### Basic Usage

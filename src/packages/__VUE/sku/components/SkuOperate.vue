@@ -16,9 +16,9 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('sku-operate');
+import { PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('sku-operate')
 
 export default create({
   props: {
@@ -57,22 +57,22 @@ export default create({
         confirm: props.confirmText,
         cart: props.addCartText,
         buy: props.buyText
-      };
+      }
 
-      return mapD[type];
-    };
+      return mapD[type]
+    }
 
-    const getSlots = (name: string) => slots[name];
+    const getSlots = (name: string) => slots[name]
 
     const clickBtnOperate = (btn: string) => {
-      emit('clickBtnOperate', btn);
-    };
+      emit('clickBtnOperate', btn)
+    }
 
     return {
       getBtnDesc,
       clickBtnOperate,
       getSlots
-    };
+    }
   }
-});
+})
 </script>

@@ -3,6 +3,6 @@
 </template>
 <script setup lang="ts">
 const onClick = () => {
-  console.log('[Navbar]: on click title');
-};
+  console.log('[Navbar]: on click title')
+}
 </script>

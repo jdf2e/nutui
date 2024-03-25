@@ -1,13 +1,13 @@
-import Progress from './progress.taro.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import Progress from './progress.taro.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(Progress);
+withInstall(Progress)
 
-export type { ProgressProps } from './progress.taro.vue';
+export type { ProgressProps } from './progress.taro.vue'
 
-export type { ProgressSize, ProgressStatus } from './types';
+export type { ProgressSize, ProgressStatus } from './types'
 
-export type ProgressInstance = ComponentPublicInstance & InstanceType<typeof Progress>;
+export type ProgressInstance = ComponentPublicInstance & InstanceType<typeof Progress>
 
-export { Progress, Progress as default };
+export { Progress, Progress as default }

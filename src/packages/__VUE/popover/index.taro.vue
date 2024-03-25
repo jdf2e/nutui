@@ -39,13 +39,13 @@
   </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue';
-import { createComponent, renderIcon } from '@/packages/utils/create';
-import { useTaroRect, useTaroRectById } from '@/packages/utils/useTaroRect';
-import { PopoverList, PopoverTheme, PopoverLocation, PopoverRootPosition } from './type';
-import NutPopup from '../popup/index.taro.vue';
-import Taro from '@tarojs/taro';
-const { create } = createComponent('popover');
+import { onMounted, computed, watch, ref, PropType, CSSProperties } from 'vue'
+import { createComponent, renderIcon } from '@/packages/utils/create'
+import { useTaroRect, useTaroRectById } from '@/packages/utils/useTaroRect'
+import { PopoverList, PopoverTheme, PopoverLocation, PopoverRootPosition } from './type'
+import NutPopup from '../popup/index.taro.vue'
+import Taro from '@tarojs/taro'
+const { create } = createComponent('popover')
 export default create({
   components: {
     NutPopup
@@ -71,125 +71,125 @@ export default create({
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
-    const popoverRef = ref();
-    const popoverContentRef = ref();
-    const showPopup = ref(props.visible);
+    const popoverRef = ref()
+    const popoverContentRef = ref()
+    const showPopup = ref(props.visible)
 
-    const rootPosition = ref<PopoverRootPosition>();
+    const rootPosition = ref<PopoverRootPosition>()
 
     const elRect = ref({
       width: 0,
       height: 0
-    });
+    })
 
     const popoverArrow = computed(() => {
-      const prefixCls = 'nut-popover-arrow';
-      const loca = props.location;
-      const direction = loca.split('-')[0];
-      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`;
-    });
+      const prefixCls = 'nut-popover-arrow'
+      const loca = props.location
+      const direction = loca.split('-')[0]
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`
+    })
 
     const popoverArrowStyle = computed(() => {
-      const styles: CSSProperties = {};
-      const { bgColor, arrowOffset, location } = props;
-      const direction = location.split('-')[0];
-      const skew = location.split('-')[1];
-      const base = 16;
+      const styles: CSSProperties = {}
+      const { bgColor, arrowOffset, location } = props
+      const direction = location.split('-')[0]
+      const skew = location.split('-')[1]
+      const base = 16
 
       if (bgColor) {
-        styles[`border${upperCaseFirst(direction)}Color` as any] = bgColor;
+        styles[`border${upperCaseFirst(direction)}Color` as any] = bgColor
       }
 
       if (props.arrowOffset != 0) {
         if (['bottom', 'top'].includes(direction)) {
           if (!skew) {
-            styles.left = `calc(50% + ${arrowOffset}px)`;
+            styles.left = `calc(50% + ${arrowOffset}px)`
           }
           if (skew == 'start') {
-            styles.left = `${base + arrowOffset}px`;
+            styles.left = `${base + arrowOffset}px`
           }
           if (skew == 'end') {
-            styles.right = `${base - arrowOffset}px`;
+            styles.right = `${base - arrowOffset}px`
           }
         }
 
         if (['left', 'right'].includes(direction)) {
           if (!skew) {
-            styles.top = `calc(50% - ${arrowOffset}px)`;
+            styles.top = `calc(50% - ${arrowOffset}px)`
           }
           if (skew == 'start') {
-            styles.top = `${base - arrowOffset}px`;
+            styles.top = `${base - arrowOffset}px`
           }
           if (skew == 'end') {
-            styles.bottom = `${base + arrowOffset}px`;
+            styles.bottom = `${base + arrowOffset}px`
           }
         }
       }
-      return styles;
-    });
+      return styles
+    })
 
     const upperCaseFirst = (str: string) => {
-      str = str.toLowerCase();
-      str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1));
-      return str;
-    };
+      str = str.toLowerCase()
+      str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1))
+      return str
+    }
 
     const getRootPosition = computed(() => {
-      const styles: CSSProperties = {};
+      const styles: CSSProperties = {}
       if (!rootPosition.value) {
-        styles.visibility = 'hidden';
-        return styles;
+        styles.visibility = 'hidden'
+        return styles
       }
 
-      const contentWidth = elRect.value.width;
-      const contentHeight = elRect.value.height;
-      const { width, height, left, top, right } = rootPosition.value;
-      const { location, offset } = props;
-      const direction = location?.split('-')[0];
-      const skew = location?.split('-')[1];
-      let cross = 0;
-      let parallel = 0;
+      const contentWidth = elRect.value.width
+      const contentHeight = elRect.value.height
+      const { width, height, left, top, right } = rootPosition.value
+      const { location, offset } = props
+      const direction = location?.split('-')[0]
+      const skew = location?.split('-')[1]
+      let cross = 0
+      let parallel = 0
       if (Array.isArray(offset) && offset?.length === 2) {
-        cross += Number(offset[1]);
-        parallel += Number(offset[0]);
+        cross += Number(offset[1])
+        parallel += Number(offset[0])
       }
       if (width) {
         if (['bottom', 'top'].includes(direction)) {
-          const h = direction === 'bottom' ? height + cross : -(contentHeight + cross);
-          styles.top = `${top + h}px`;
+          const h = direction === 'bottom' ? height + cross : -(contentHeight + cross)
+          styles.top = `${top + h}px`
 
           if (!skew) {
-            styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`;
+            styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
           }
           if (skew === 'start') {
-            styles.left = `${left + parallel}px`;
+            styles.left = `${left + parallel}px`
           }
           if (skew === 'end') {
-            styles.left = `${right + parallel}px`;
+            styles.left = `${right + parallel}px`
           }
         }
         if (['left', 'right'].includes(direction)) {
-          const contentW = direction === 'left' ? -(contentWidth + cross) : width + cross;
-          styles.left = `${left + contentW}px`;
+          const contentW = direction === 'left' ? -(contentWidth + cross) : width + cross
+          styles.left = `${left + contentW}px`
           if (!skew) {
-            styles.top = `${top - contentHeight / 2 + height / 2 - 4 + parallel}px`;
+            styles.top = `${top - contentHeight / 2 + height / 2 - 4 + parallel}px`
           }
           if (skew === 'start') {
-            styles.top = `${top + parallel}px`;
+            styles.top = `${top + parallel}px`
           }
           if (skew === 'end') {
-            styles.top = `${top + height + parallel}px`;
+            styles.top = `${top + height + parallel}px`
           }
         }
       }
 
       if (elRect.value.width === 0) {
-        styles.visibility = 'hidden';
+        styles.visibility = 'hidden'
       } else {
-        styles.visibility = 'initial';
+        styles.visibility = 'initial'
       }
-      return styles;
-    });
+      return styles
+    })
 
     const getPopoverContentW = async () => {
       useTaroRect(popoverContentRef).then(
@@ -197,18 +197,18 @@ export default create({
           elRect.value = {
             height: rect.height,
             width: rect.width
-          };
+          }
         },
         () => {}
-      );
-    };
+      )
+    }
 
     // 获取宽度
     const getContentWidth = () => {
       Taro.createSelectorQuery()
         .selectViewport()
         .scrollOffset((res) => {
-          const distance = res.scrollTop;
+          const distance = res.scrollTop
 
           if (props.targetId) {
             useTaroRectById(props.targetId).then(
@@ -219,10 +219,10 @@ export default create({
                   left: rect?.left,
                   top: rect?.top + distance,
                   right: rect?.right
-                };
+                }
               },
               () => {}
-            );
+            )
           } else {
             useTaroRect(popoverRef).then(
               (rect: any) => {
@@ -232,65 +232,65 @@ export default create({
                   left: rect?.left,
                   top: rect?.top + distance,
                   right: rect?.right
-                };
+                }
               },
               () => {}
-            );
+            )
           }
         })
-        .exec();
+        .exec()
       setTimeout(() => {
-        getPopoverContentW();
-      }, 300);
-    };
+        getPopoverContentW()
+      }, 300)
+    }
 
     onMounted(() => {
       setTimeout(() => {
-        getContentWidth();
-      }, 300);
-    });
+        getContentWidth()
+      }, 300)
+    })
 
     watch(
       () => props.visible,
       (value) => {
-        showPopup.value = value;
+        showPopup.value = value
         if (value) {
           Taro.nextTick(() => {
-            getContentWidth();
-          });
+            getContentWidth()
+          })
         }
       }
-    );
+    )
 
     watch(
       () => props.location,
       () => {
-        getContentWidth();
+        getContentWidth()
       }
-    );
+    )
     const update = (val: boolean) => {
-      emit('update', val);
-      emit('update:visible', val);
-    };
+      emit('update', val)
+      emit('update:visible', val)
+    }
     const openPopover = () => {
-      update(!props.visible);
-      emit('open');
-    };
+      update(!props.visible)
+      emit('open')
+    }
     const closePopover = () => {
-      emit('update:visible', false);
-      emit('close');
-    };
+      emit('update:visible', false)
+      emit('close')
+    }
     const chooseItem = (item: any, index: number) => {
-      !item.disabled && emit('choose', item, index);
+      !item.disabled && emit('choose', item, index)
       if (props.closeOnClickAction) {
-        closePopover();
+        closePopover()
       }
-    };
+    }
     const clickAway = () => {
-      props.closeOnClickOutside && closePopover();
-    };
+      props.closeOnClickOutside && closePopover()
+    }
 
-    const refRandomId = Math.random().toString(36).slice(-8);
+    const refRandomId = Math.random().toString(36).slice(-8)
 
     return {
       showPopup,
@@ -305,7 +305,7 @@ export default create({
       renderIcon,
       refRandomId,
       clickAway
-    };
+    }
   }
-});
+})
 </script>

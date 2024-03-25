@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { PullRefresh } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { PullRefresh } from '@nutui/nutui'
 
-const app = createApp();
-app.use(PullRefresh);
+const app = createApp()
+app.use(PullRefresh)
 ```
 
 ### 基础用法
@@ -29,13 +29,13 @@ app.use(PullRefresh);
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>
@@ -72,13 +72,13 @@ const refreshFun = () => {
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>
@@ -107,13 +107,13 @@ PullRefresh 的触发条件是：父级滚动元素的滚动条在顶部位置�
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const refresh = ref(false);
+import { ref } from 'vue'
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-  }, 3000);
-};
+    refresh.value = false
+  }, 3000)
+}
 </script>
 
 <style>

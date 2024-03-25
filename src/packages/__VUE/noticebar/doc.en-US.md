@@ -7,11 +7,11 @@ Used to display a group of message notifications in a continuons loop.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Noticebar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Noticebar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Noticebar);
+const app = createApp()
+app.use(Noticebar)
 ```
 
 ### Basic Usage

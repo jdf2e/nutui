@@ -24,14 +24,14 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Col from './col.vue';
-import Color from './color.vue';
-import IconDemo from './icon.vue';
-import Up from './up.vue';
-import Disabled from './disabled.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Col from './col.vue'
+import Color from './color.vue'
+import IconDemo from './icon.vue'
+import Up from './up.vue'
+import Disabled from './disabled.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -52,5 +52,5 @@ const t = useTranslate({
     up: 'Expand Direction',
     disabled: 'Disable Menu'
   }
-});
+})
 </script>

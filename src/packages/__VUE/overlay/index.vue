@@ -6,10 +6,10 @@
   </Transition>
 </template>
 <script lang="ts">
-import { CSSProperties, PropType, computed, watchEffect, ComputedRef } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLockScroll } from '@/packages/utils/useLockScroll';
-const { componentName, create } = createComponent('overlay');
+import { CSSProperties, PropType, computed, watchEffect, ComputedRef } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { useLockScroll } from '@/packages/utils/useLockScroll'
+const { componentName, create } = createComponent('overlay')
 
 export default create({
   props: {
@@ -45,36 +45,36 @@ export default create({
   emits: ['click', 'update:visible'],
 
   setup(props, { emit }) {
-    const [lock, unlock] = useLockScroll(() => props.lockScroll);
+    const [lock, unlock] = useLockScroll(() => props.lockScroll)
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [props.overlayClass]: true
-      };
-    });
+      }
+    })
 
     const style: ComputedRef = computed(() => {
       return {
         transitionDuration: `${props.duration}s`,
         zIndex: props.zIndex,
         ...props.overlayStyle
-      };
-    });
+      }
+    })
 
     watchEffect(() => {
-      props.visible ? lock() : unlock();
-    });
+      props.visible ? lock() : unlock()
+    })
 
     const onClick = (e: MouseEvent) => {
-      emit('click', e);
+      emit('click', e)
       if (props.closeOnClickOverlay) {
-        emit('update:visible', false);
+        emit('update:visible', false)
       }
-    };
+    }
 
-    return { classes, style, onClick };
+    return { classes, style, onClick }
   }
-});
+})
 </script>

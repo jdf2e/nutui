@@ -18,12 +18,12 @@
   </nut-form>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 const formData = ref({
   name: '',
   age: '',
   tel: '',
   addr: '',
   info: ''
-});
+})
 </script>

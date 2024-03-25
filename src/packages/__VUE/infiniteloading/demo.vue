@@ -27,8 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, reactive } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { onMounted, ref, reactive } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
 
 const translate = useTranslate({
   'zh-CN': {
@@ -45,7 +45,7 @@ const translate = useTranslate({
     none: 'No more',
     success: 'Refresh success'
   }
-});
+})
 
 const letter: string[] = [
   'A',
@@ -73,10 +73,10 @@ const letter: string[] = [
   'X',
   'Y',
   'Z'
-];
+]
 
-const hasMore = ref(true);
-const customHasMore = ref(true);
+const hasMore = ref(true)
+const customHasMore = ref(true)
 
 const data = reactive({
   tabsValue: 0,
@@ -85,43 +85,43 @@ const data = reactive({
   defaultList: [] as string[],
   customList: [] as string[],
   refreshList: []
-});
+})
 
-let cycle = 0;
-let cycle2 = 0;
+let cycle = 0
+let cycle2 = 0
 
 const loadMore = () => {
   setTimeout(() => {
-    data.defaultList = data.defaultList.concat(letter);
-    cycle++;
-    if (cycle > 2) hasMore.value = false;
-    data.infinityValue = false;
-  }, 1000);
-};
+    data.defaultList = data.defaultList.concat(letter)
+    cycle++
+    if (cycle > 2) hasMore.value = false
+    data.infinityValue = false
+  }, 1000)
+}
 
 const customLoadMore = () => {
   setTimeout(() => {
-    data.customList = data.customList.concat(letter);
-    cycle2++;
+    data.customList = data.customList.concat(letter)
+    cycle2++
 
-    console.log(cycle2, data.customList);
-    if (cycle2 > 2) customHasMore.value = false;
+    console.log(cycle2, data.customList)
+    if (cycle2 > 2) customHasMore.value = false
 
-    data.infinityValue2 = false;
-  }, 1000);
-};
+    data.infinityValue2 = false
+  }, 1000)
+}
 
 const chagetabs = () => {
-  data.defaultList = letter.slice();
-  data.customList = letter.slice();
-  data.infinityValue2 = false;
-  data.infinityValue = false;
-  customHasMore.value = true;
-  hasMore.value = true;
-};
+  data.defaultList = letter.slice()
+  data.customList = letter.slice()
+  data.infinityValue2 = false
+  data.infinityValue = false
+  customHasMore.value = true
+  hasMore.value = true
+}
 onMounted(() => {
-  chagetabs();
-});
+  chagetabs()
+})
 </script>
 
 <style lang="scss">

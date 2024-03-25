@@ -1,28 +1,28 @@
-import { DOMWrapper, mount } from '@vue/test-utils';
-import { Input } from '@nutui/nutui';
-import { nextTick, ref } from 'vue';
+import { DOMWrapper, mount } from '@vue/test-utils'
+import { Input } from '@nutui/nutui'
+import { nextTick, ref } from 'vue'
 
 test('base', () => {
-  const wrapper = mount(Input, { props: { modelValue: '3' } });
-  const input = wrapper.find('input');
-  expect(input.exists()).toBe(true);
-  expect(input.element.value).toBe('3');
-});
+  const wrapper = mount(Input, { props: { modelValue: '3' } })
+  const input = wrapper.find('input')
+  expect(input.exists()).toBe(true)
+  expect(input.element.value).toBe('3')
+})
 test('should emit focuse event when input is focus', () => {
-  const wrapper = mount(Input);
-  wrapper.find('input').trigger('focus');
-  expect(wrapper.emitted('focus')).toBeTruthy();
-});
+  const wrapper = mount(Input)
+  wrapper.find('input').trigger('focus')
+  expect(wrapper.emitted('focus')).toBeTruthy()
+})
 test('should emit blur event when input is blur', () => {
-  const wrapper = mount(Input);
-  wrapper.find('input').trigger('blur');
-  expect(wrapper.emitted('blur')).toBeTruthy();
-});
+  const wrapper = mount(Input)
+  wrapper.find('input').trigger('blur')
+  expect(wrapper.emitted('blur')).toBeTruthy()
+})
 test('should emit confirm event when input is confirm', () => {
-  const wrapper = mount(Input);
-  wrapper.find('input').trigger('keyup', { keyCode: 13, key: 'Enter' });
-  expect(wrapper.emitted('keyup')).toBeTruthy();
-});
+  const wrapper = mount(Input)
+  wrapper.find('input').trigger('keyup', { keyCode: 13, key: 'Enter' })
+  expect(wrapper.emitted('keyup')).toBeTruthy()
+})
 test('trigger ref select', async () => {
   const wrapper = mount({
     components: {
@@ -34,27 +34,27 @@ test('trigger ref select', async () => {
     `,
     setup() {
       const inputRef = ref<{
-        select: () => void;
-      } | null>(null);
-      const value = ref('Hello');
+        select: () => void
+      } | null>(null)
+      const value = ref('Hello')
       const onSelect = () => {
-        inputRef.value?.select();
-      };
+        inputRef.value?.select()
+      }
       return {
         inputRef,
         value,
         onSelect
-      };
+      }
     }
-  });
-  const selectButton: DOMWrapper<Element> = wrapper.find('.select-button');
-  selectButton.trigger('click');
-  await nextTick();
-  expect(selectButton.exists()).toBe(true);
-  const inputElement = wrapper.find('input');
-  expect(inputElement.element.selectionStart).toBe(0);
-  expect(inputElement.element.selectionEnd).toBe(inputElement.element.value.length);
-});
+  })
+  const selectButton: DOMWrapper<Element> = wrapper.find('.select-button')
+  selectButton.trigger('click')
+  await nextTick()
+  expect(selectButton.exists()).toBe(true)
+  const inputElement = wrapper.find('input')
+  expect(inputElement.element.selectionStart).toBe(0)
+  expect(inputElement.element.selectionEnd).toBe(inputElement.element.value.length)
+})
 
 test('should render clear icon when using clearable prop', async () => {
   const wrapper = mount(Input, {
@@ -62,13 +62,13 @@ test('should render clear icon when using clearable prop', async () => {
       clearable: true,
       modelValue: 'test'
     }
-  });
-  const input = wrapper.find('input');
-  await input.trigger('focus');
-  wrapper.find('.nut-input-clear').trigger('click');
-  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
-  expect((wrapper.emitted('clear') as any)[0][0]).toBe('');
-});
+  })
+  const input = wrapper.find('input')
+  await input.trigger('focus')
+  wrapper.find('.nut-input-clear').trigger('click')
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('')
+  expect((wrapper.emitted('clear') as any)[0][0]).toBe('')
+})
 
 test('should clear when event clear', async () => {
   const wrapper = mount(Input, {
@@ -76,15 +76,15 @@ test('should clear when event clear', async () => {
       clearable: true,
       modelValue: 'test'
     }
-  });
-  const input = wrapper.find('input');
-  const clear: any = wrapper.find('.nut-input-clear-box');
-  wrapper.find('input').trigger('input');
-  expect(input.element.value).toBe('test');
-  clear.trigger('click');
-  expect(clear.element.style.display).toBe('none');
-  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
-});
+  })
+  const input = wrapper.find('input')
+  const clear: any = wrapper.find('.nut-input-clear-box')
+  wrapper.find('input').trigger('input')
+  expect(input.element.value).toBe('test')
+  clear.trigger('click')
+  expect(clear.element.style.display).toBe('none')
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('')
+})
 // 测试只能是数字
 test('should format input value when type is number', async () => {
   const wrapper = mount(Input, {
@@ -92,21 +92,21 @@ test('should format input value when type is number', async () => {
       type: 'number',
       modelValue: ''
     }
-  });
-  const input = wrapper.find('input');
+  })
+  const input = wrapper.find('input')
 
-  input.element.value = '1';
-  input.trigger('input');
-  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
+  input.element.value = '1'
+  input.trigger('input')
+  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1'])
 
-  input.element.value = '1.1.';
-  input.trigger('input');
-  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1.1']);
+  input.element.value = '1.1.'
+  input.trigger('input')
+  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1.1'])
 
-  input.element.value = '111qwe';
-  input.trigger('input');
-  expect(wrapper.emitted()['update:modelValue'][2]).toEqual(['111']);
-});
+  input.element.value = '111qwe'
+  input.trigger('input')
+  expect(wrapper.emitted()['update:modelValue'][2]).toEqual(['111'])
+})
 
 // 测试整数
 test('should format input value when type is digit', () => {
@@ -115,47 +115,47 @@ test('should format input value when type is digit', () => {
       type: 'digit',
       modelValue: ''
     }
-  });
-  const input = wrapper.find('input');
+  })
+  const input = wrapper.find('input')
 
-  input.element.value = '1';
-  input.trigger('input');
-  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
+  input.element.value = '1'
+  input.trigger('input')
+  expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1'])
 
-  input.element.value = '1.1';
-  input.trigger('input');
-  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1']);
-});
+  input.element.value = '1.1'
+  input.trigger('input')
+  expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['1'])
+})
 
 test('should require', () => {
   const wrapper = mount(Input, {
     props: {
       required: true
     }
-  });
-  const input = wrapper.find('.nut-input');
-  expect(input.classes()).toContain('nut-input--required');
-});
+  })
+  const input = wrapper.find('.nut-input')
+  expect(input.classes()).toContain('nut-input--required')
+})
 
 test('should disabled', () => {
   const wrapper = mount(Input, {
     props: {
       disabled: true
     }
-  });
-  const input = wrapper.find('input');
-  expect(input.attributes('disabled')).toBe('');
-});
+  })
+  const input = wrapper.find('input')
+  expect(input.attributes('disabled')).toBe('')
+})
 
 test('should readonly', () => {
   const wrapper = mount(Input, {
     props: {
       readonly: true
     }
-  });
-  const input = wrapper.find('input');
-  expect(input.attributes('readonly')).toBe('');
-});
+  })
+  const input = wrapper.find('input')
+  expect(input.attributes('readonly')).toBe('')
+})
 
 test('should render word limit correctly', () => {
   const wrapper = mount(Input, {
@@ -164,9 +164,9 @@ test('should render word limit correctly', () => {
       maxlength: 3,
       showWordLimit: true
     }
-  });
-  expect(wrapper.find('.nut-input-box').html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.find('.nut-input-box').html()).toMatchSnapshot()
+})
 
 test('should render word limit correctly when modelValue is null', () => {
   const wrapper = mount(Input, {
@@ -175,9 +175,9 @@ test('should render word limit correctly when modelValue is null', () => {
       maxlength: 3,
       showWordLimit: true
     }
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should inputAlign', () => {
   const wrapper = mount(Input, {
@@ -185,7 +185,7 @@ test('should inputAlign', () => {
       label: '文本',
       inputAlign: 'right'
     }
-  });
-  const input: any = wrapper.find('.input-text');
-  expect(input.element.style.textAlign).toEqual('right');
-});
+  })
+  const input: any = wrapper.find('.input-text')
+  expect(input.element.style.textAlign).toEqual('right')
+})

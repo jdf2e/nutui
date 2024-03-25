@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Custom from './custom.vue';
-import Scrollable from './scrollable.vue';
-import Close from './close.vue';
-import Content from './content.vue';
-import Wrap from './wrap.vue';
-import Vertical from './vertical.vue';
-import VerticalContent from './vertical-content.vue';
-import Right from './right.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Custom from './custom.vue'
+import Scrollable from './scrollable.vue'
+import Close from './close.vue'
+import Content from './content.vue'
+import Wrap from './wrap.vue'
+import Vertical from './vertical.vue'
+import VerticalContent from './vertical-content.vue'
+import Right from './right.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -64,5 +64,5 @@ const t = useTranslate({
     verticalContent: 'Vertical Scroll Custom Style',
     right: 'Vertical Scroll Custom Right Icon'
   }
-});
+})
 </script>

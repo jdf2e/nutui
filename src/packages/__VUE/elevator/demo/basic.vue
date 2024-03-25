@@ -2,7 +2,7 @@
   <nut-elevator :index-list="data" :height="260" @click-item="clickItem" @click-index="clickIndex" />
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 const data = ref([
   {
     title: 'A',
@@ -26,13 +26,13 @@ const data = ref([
       { name: '湖北', id: 6 }
     ]
   }
-]);
+])
 
 const clickItem = (key: string, item: any) => {
-  console.log(key, item);
-};
+  console.log(key, item)
+}
 
 const clickIndex = (key: string) => {
-  console.log(key);
-};
+  console.log(key)
+}
 </script>

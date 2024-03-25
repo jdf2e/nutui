@@ -4,7 +4,7 @@
   </nut-table>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 const columns = ref([
   {
     title: '姓名',
@@ -26,9 +26,9 @@ const columns = ref([
     title: '地址',
     key: 'address'
   }
-]);
+])
 
-const data = ref<Array<any>>([]);
+const data = ref<Array<any>>([])
 onMounted(() => {
   setTimeout(() => {
     data.value = [
@@ -53,7 +53,7 @@ onMounted(() => {
         age: 4,
         address: '杭州'
       }
-    ];
-  }, 5000);
-});
+    ]
+  }, 5000)
+})
 </script>

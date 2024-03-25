@@ -7,11 +7,11 @@ Labels for tagging and classification.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Tag } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tag } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tag);
+const app = createApp()
+app.use(Tag)
 ```
 
 ### Basic Usage

@@ -5,8 +5,8 @@
   </nut-tabbar>
 </template>
 <script setup>
-import { h, ref } from 'vue';
-import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
+import { h, ref } from 'vue'
+import { Home, Category, Find, Cart, My } from '@nutui/icons-vue'
 
 const List = [
   {
@@ -29,6 +29,6 @@ const List = [
     title: 'My',
     icon: h(My)
   }
-];
-const active = ref(0);
+]
+const active = ref(0)
 </script>

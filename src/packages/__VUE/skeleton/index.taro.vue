@@ -16,11 +16,11 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import NutAvatar from '../avatar/index.taro.vue';
-import { AvatarShape } from '../avatar/types';
-import { CSSProperties, PropType, computed, toRefs } from 'vue';
-const { create } = createComponent('skeleton');
+import { createComponent } from '@/packages/utils/create'
+import NutAvatar from '../avatar/index.taro.vue'
+import { AvatarShape } from '../avatar/types'
+import { CSSProperties, PropType, computed, toRefs } from 'vue'
+const { create } = createComponent('skeleton')
 export default create({
   components: {
     NutAvatar
@@ -81,42 +81,42 @@ export default create({
   },
 
   setup(props) {
-    const { avatarShape, round, avatarSize } = toRefs(props);
+    const { avatarShape, round, avatarSize } = toRefs(props)
 
     const avatarClass = computed(() => {
-      const prefixCls = 'avatarClass';
+      const prefixCls = 'avatarClass'
       return {
         [prefixCls]: true,
         [`${prefixCls}--${avatarShape.value}`]: avatarShape.value
-      };
-    });
+      }
+    })
 
     const getBlockClass = (prefixCls: string) => {
       return {
         [prefixCls]: true,
         [`${prefixCls}--round`]: round.value
-      };
-    };
+      }
+    }
 
     const getStyle = (): CSSProperties => {
       if (avatarSize.value) {
         return {
           width: avatarSize.value,
           height: avatarSize.value
-        };
+        }
       }
       return {
         width: '50px',
         height: '50px'
-      };
-    };
+      }
+    }
 
     return {
       avatarShape,
       avatarClass,
       getBlockClass,
       getStyle
-    };
+    }
   }
-});
+})
 </script>

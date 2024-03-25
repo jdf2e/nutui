@@ -7,11 +7,11 @@ The picker component is usually used with Popup Component.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Picker } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Picker } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Picker);
+const app = createApp()
+app.use(Picker)
 ```
 
 ### Basic Usage

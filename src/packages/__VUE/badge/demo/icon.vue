@@ -22,5 +22,5 @@
 </template>
 
 <script setup lang="ts">
-import { Check, Link, Download } from '@nutui/icons-vue';
+import { Check, Link, Download } from '@nutui/icons-vue'
 </script>

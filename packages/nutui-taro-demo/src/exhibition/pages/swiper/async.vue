@@ -6,9 +6,9 @@
   </nut-swiper>
 </template>
 <script setup>
-import { onMounted } from 'vue';
-import { ref } from 'vue';
-const list = ref();
+import { onMounted } from 'vue'
+import { ref } from 'vue'
+const list = ref()
 
 onMounted(() => {
   setTimeout(() => {
@@ -17,7 +17,7 @@ onMounted(() => {
       'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
       'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
       'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-    ];
-  }, 3000);
-});
+    ]
+  }, 3000)
+})
 </script>

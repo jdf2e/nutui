@@ -104,9 +104,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-import { showToast } from '@nutui/nutui';
+import { reactive, ref, onMounted } from 'vue'
+import { useTranslate } from '@/sites/assets/util/useTranslate'
+import { showToast } from '@nutui/nutui'
 const translate = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -120,26 +120,26 @@ const translate = useTranslate({
     customStepper: 'Custom Stepper',
     slots: 'Custom Slots'
   }
-});
+})
 
 interface Skus {
-  id: number;
-  name: string;
-  list: SkuItem[];
-  [key: string]: any;
+  id: number
+  name: string
+  list: SkuItem[]
+  [key: string]: any
 }
 
 interface SkuItem {
-  id: number;
-  name: string;
-  imagePath: string;
-  [key: string]: any;
+  id: number
+  name: string
+  imagePath: string
+  [key: string]: any
 }
 
 interface Data {
-  skuData: Skus[];
-  goodsInfo: any;
-  imagePathMap: any;
+  skuData: Skus[]
+  goodsInfo: any
+  imagePathMap: any
 }
 const popup = reactive({
   base: false,
@@ -148,20 +148,20 @@ const popup = reactive({
   customBySlot: false,
 
   showAddressPopup: false
-});
+})
 
 const data = reactive<Data>({
   skuData: [],
   goodsInfo: {},
   imagePathMap: {}
-});
+})
 
 const stepperExtraText = () => {
-  return `<div style="width:100%;text-align:right;color:#F00">2 件起售</div>`;
-};
+  return `<div style="width:100%;text-align:right;color:#F00">2 件起售</div>`
+}
 
-const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
-const addressDesc = ref('(配送地会影响库存，请先确认)');
+const btnExtraText = ref('抱歉，此商品在所选区域暂无存货')
+const addressDesc = ref('(配送地会影响库存，请先确认)')
 const existAddress = ref([
   {
     id: 1,
@@ -199,70 +199,70 @@ const existAddress = ref([
     selectedAddress: false,
     townName: ''
   }
-]);
+])
 
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/data.js')
     .then((response) => response.json())
     .then((res) => {
-      const { Sku, Goods, imagePathMap } = res;
-      data.skuData = Sku;
-      data.goodsInfo = Goods;
-      data.imagePathMap = imagePathMap;
+      const { Sku, Goods, imagePathMap } = res
+      data.skuData = Sku
+      data.goodsInfo = Goods
+      data.imagePathMap = imagePathMap
     }) //执行结果是 resolve就调用then方法
-    .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
-};
+    .catch((err) => console.log('Oh, error', err)) //执行结果是 reject就调用catch方法
+}
 const selectSku = (s: any) => {
-  const { sku, parentIndex } = s;
+  const { sku, parentIndex } = s
 
-  if (sku.disable) return false;
+  if (sku.disable) return false
 
   data.skuData[parentIndex].list.forEach((s) => {
-    s.active = s.id == sku.id;
-  });
+    s.active = s.id == sku.id
+  })
 
   data.goodsInfo = {
     skuId: sku.id,
     price: '4599.00' // 商品信息展示区，商品价格
-  };
+  }
 
   data.skuData[0].list.forEach((el) => {
     if (el.active && !el.disable) {
-      data.goodsInfo.imagePath = data.imagePathMap[el.id];
+      data.goodsInfo.imagePath = data.imagePathMap[el.id]
     }
-  });
-};
+  })
+}
 
 // stepper 更改
 const changeStepper = (count: number) => {
-  console.log('购买数量', count);
-};
+  console.log('购买数量', count)
+}
 
 // stepper 极限值
 const overLimit = (val: any) => {
   if (val.action == 'reduce') {
-    showToast.text(`至少买${val.value}件哦`);
+    showToast.text(`至少买${val.value}件哦`)
   } else {
-    showToast.text(`最多买${val.value}件哦`);
+    showToast.text(`最多买${val.value}件哦`)
   }
-};
+}
 
 const clickBtnOperate = (op: string) => {
-  console.log('点击了操作按钮', op);
-};
+  console.log('点击了操作按钮', op)
+}
 // 关闭弹框
 const close = () => {
-  console.log('选择弹框关闭');
-};
+  console.log('选择弹框关闭')
+}
 
 const selectedAddress = (_prevExistAdd: any, nowExistAdd: any) => {
-  const { provinceName, countyName, cityName } = nowExistAdd;
-  addressDesc.value = `${provinceName}${countyName}${cityName}`;
-};
+  const { provinceName, countyName, cityName } = nowExistAdd
+  addressDesc.value = `${provinceName}${countyName}${cityName}`
+}
 </script>
 
 <style lang="scss" scoped>

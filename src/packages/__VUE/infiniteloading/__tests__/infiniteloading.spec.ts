@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
-import { InfiniteLoading } from '@nutui/nutui';
-import { toRefs, reactive, ref, onMounted } from 'vue';
+import { mount } from '@vue/test-utils'
+import { InfiniteLoading } from '@nutui/nutui'
+import { toRefs, reactive, ref, onMounted } from 'vue'
 
 test('infiniteloading base', async () => {
   const wrapper = mount({
@@ -19,32 +19,32 @@ test('infiniteloading base', async () => {
     </div>
     `,
     setup() {
-      const hasMore = ref(true);
-      const infiteValue = ref(false);
+      const hasMore = ref(true)
+      const infiteValue = ref(false)
       const data = reactive({
         defultList: []
-      });
+      })
       const init = () => {
         for (let i = 0; i < 10; i++) {
-          (data.defultList as any).push(i);
+          ;(data.defultList as any).push(i)
         }
-      };
+      }
       const loadMore = () => {
         setTimeout(() => {
-          const curLen = data.defultList.length;
+          const curLen = data.defultList.length
           for (let i = curLen; i < curLen + 10; i++) {
-            (data.defultList as any).push(i);
+            ;(data.defultList as any).push(i)
           }
-          if (data.defultList.length > 30) hasMore.value = false;
-        }, 500);
-      };
+          if (data.defultList.length > 30) hasMore.value = false
+        }, 500)
+      }
       onMounted(() => {
-        init();
-      });
+        init()
+      })
 
-      return { ...toRefs(data), infiteValue, hasMore, loadMore };
+      return { ...toRefs(data), infiteValue, hasMore, loadMore }
     }
-  });
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})

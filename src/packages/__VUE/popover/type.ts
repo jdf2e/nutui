@@ -1,14 +1,14 @@
-import { Component } from 'vue';
+import { Component } from 'vue'
 
 export interface PopoverRootPosition {
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-  right: number;
+  width: number
+  height: number
+  left: number
+  top: number
+  right: number
 }
 
-export type PopoverTheme = 'light' | 'dark';
+export type PopoverTheme = 'light' | 'dark'
 
 export type PopoverLocation =
   | 'bottom'
@@ -22,12 +22,12 @@ export type PopoverLocation =
   | 'left-start'
   | 'left-end'
   | 'right-start'
-  | 'right-end';
+  | 'right-end'
 
 export type PopoverList = {
-  name: string;
-  icon?: Component;
-  disabled?: boolean;
-  className?: any;
-  [key: PropertyKey]: any;
-};
+  name: string
+  icon?: Component
+  disabled?: boolean
+  className?: any
+  [key: PropertyKey]: any
+}

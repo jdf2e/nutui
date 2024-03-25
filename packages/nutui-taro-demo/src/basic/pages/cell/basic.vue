@@ -6,6 +6,6 @@
 </template>
 <script setup lang="ts">
 const onClick = () => {
-  console.log('click');
-};
+  console.log('click')
+}
 </script>

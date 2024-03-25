@@ -1,14 +1,14 @@
-import { DOMWrapper, mount } from '@vue/test-utils';
-import { nextTick, ref } from 'vue';
-import { Form, FormItem, Button, Textarea, Switch, Checkbox, Rate, InputNumber, Range, Uploader } from '@nutui/nutui';
+import { DOMWrapper, mount } from '@vue/test-utils'
+import { nextTick, ref } from 'vue'
+import { Form, FormItem, Button, Textarea, Switch, Checkbox, Rate, InputNumber, Range, Uploader } from '@nutui/nutui'
 
 test('base Form', () => {
   const wrapper = mount(() => {
-    return <Form />;
-  });
-  const form = wrapper.find('.nut-form');
-  expect(form.exists()).toBe(true);
-});
+    return <Form />
+  })
+  const form = wrapper.find('.nut-form')
+  expect(form.exists()).toBe(true)
+})
 
 test('base Form usage', async () => {
   const wrapper = mount(() => {
@@ -30,14 +30,14 @@ test('base Form usage', async () => {
           <Textarea placeholder="请输入备注" />
         </FormItem>
       </Form>
-    );
-  });
-  await nextTick();
-  const form = wrapper.find('.nut-cell-group__wrap');
-  expect(form.exists()).toBe(true);
-  const formItems = wrapper.findAll('.nut-form-item');
-  expect(formItems.length).toBe(5);
-});
+    )
+  })
+  await nextTick()
+  const form = wrapper.find('.nut-cell-group__wrap')
+  expect(form.exists()).toBe(true)
+  const formItems = wrapper.findAll('.nut-form-item')
+  expect(formItems.length).toBe(5)
+})
 
 test('base Dynamic Form', async () => {
   const val = ref({
@@ -46,8 +46,8 @@ test('base Dynamic Form', async () => {
       key: 1,
       value: ''
     })
-  });
-  const formRef = ref();
+  })
+  const formRef = ref()
   const submit = () => {
     formRef.value.validate().then(({ valid }: any) => {
       if (valid) {
@@ -55,20 +55,20 @@ test('base Dynamic Form', async () => {
       } else {
         // console.log('error submit!!', errors);
       }
-    });
-  };
+    })
+  }
   const reset = () => {
-    formRef.value.reset();
-  };
+    formRef.value.reset()
+  }
   const remove = () => {
-    val.value.tels.pop();
-  };
+    val.value.tels.pop()
+  }
   const add = () => {
     val.value.tels.push({
       key: Date.now(),
       value: ''
-    });
-  };
+    })
+  }
   const wrapper = mount(() => {
     return (
       <Form modelValue={val.value} ref={formRef}>
@@ -96,60 +96,60 @@ test('base Dynamic Form', async () => {
             >
               <input v-model={item.value} placeholder={'请输入联系方式' + index} type="text" />
             </FormItem>
-          );
+          )
         })}
         <Button class="add" onClick={add} />
         <Button class="remove" onClick={remove} />
         <Button class="submit" onClick={submit} />
         <Button class="reset" onClick={reset} />
       </Form>
-    );
-  });
-  await nextTick();
-  let formItems = wrapper.findAll('.nut-form-item');
-  expect(formItems.length).toBe(2);
+    )
+  })
+  await nextTick()
+  let formItems = wrapper.findAll('.nut-form-item')
+  expect(formItems.length).toBe(2)
 
-  const form1 = wrapper.find('.nut-cell__title');
-  expect(form1.classes()).toContain('required');
-  expect((form1.element as HTMLElement).style.textAlign).toEqual('');
-  expect((form1.element as HTMLElement).style.width).toEqual('90px');
+  const form1 = wrapper.find('.nut-cell__title')
+  expect(form1.classes()).toContain('required')
+  expect((form1.element as HTMLElement).style.textAlign).toEqual('')
+  expect((form1.element as HTMLElement).style.width).toEqual('90px')
 
-  const form2 = wrapper.find('.nut-form-item__body__slots');
-  expect((form2.element as HTMLElement).style.textAlign).toEqual('center');
+  const form2 = wrapper.find('.nut-form-item__body__slots')
+  expect((form2.element as HTMLElement).style.textAlign).toEqual('center')
 
-  const submitBtn = wrapper.find('.submit');
-  submitBtn.trigger('click');
+  const submitBtn = wrapper.find('.submit')
+  submitBtn.trigger('click')
 
-  await nextTick();
-  const form3 = wrapper.find('.nut-form-item__body__tips');
-  expect(form3.exists()).toBe(true);
-  const form5 = wrapper.find('.nut-form-item.error.line::before');
-  expect(form5.exists()).toBe(false);
+  await nextTick()
+  const form3 = wrapper.find('.nut-form-item__body__tips')
+  expect(form3.exists()).toBe(true)
+  const form5 = wrapper.find('.nut-form-item.error.line::before')
+  expect(form5.exists()).toBe(false)
 
-  const addBtn = wrapper.find('.add');
-  addBtn.trigger('click');
-  await nextTick();
-  formItems = wrapper.findAll('.nut-form-item');
-  expect(formItems.length).toBe(3);
+  const addBtn = wrapper.find('.add')
+  addBtn.trigger('click')
+  await nextTick()
+  formItems = wrapper.findAll('.nut-form-item')
+  expect(formItems.length).toBe(3)
 
-  const removeBtn = wrapper.find('.remove');
-  removeBtn.trigger('click');
-  await nextTick();
-  formItems = wrapper.findAll('.nut-form-item');
-  expect(formItems.length).toBe(2);
+  const removeBtn = wrapper.find('.remove')
+  removeBtn.trigger('click')
+  await nextTick()
+  formItems = wrapper.findAll('.nut-form-item')
+  expect(formItems.length).toBe(2)
 
-  const resetBtn = wrapper.find('.reset');
-  resetBtn.trigger('click');
-  await nextTick();
-  const form9 = wrapper.find('.nut-form-item__body__tips');
-  expect(form9.exists()).toBe(false);
-});
+  const resetBtn = wrapper.find('.reset')
+  resetBtn.trigger('click')
+  await nextTick()
+  const form9 = wrapper.find('.nut-form-item__body__tips')
+  expect(form9.exists()).toBe(false)
+})
 
 test('base Form verification', async () => {
   const formData = ref({
     name: '1234'
-  });
-  const formRef = ref();
+  })
+  const formRef = ref()
   const submit = () => {
     formRef.value.validate().then(({ valid }: any) => {
       if (valid) {
@@ -157,25 +157,25 @@ test('base Form verification', async () => {
       } else {
         // console.log('error submit!!!', errors);
       }
-    });
-  };
+    })
+  }
   const reset = () => {
-    formRef.value.reset();
-  };
+    formRef.value.reset()
+  }
   const customValidator = (val: string) => {
     if (/^\d+$/.test(val)) {
-      return Promise.resolve();
+      return Promise.resolve()
     } else {
-      return Promise.reject('必须输入数字');
+      return Promise.reject('必须输入数字')
     }
-  };
+  }
   const customRulePropValidator = (val: string, rule: any) => {
     if (rule.reg.test(val)) {
-      return Promise.resolve();
+      return Promise.resolve()
     } else {
-      return Promise.reject('必须输入数字');
+      return Promise.reject('必须输入数字')
     }
-  };
+  }
   const wrapper = mount(() => {
     return (
       <Form modelValue={formData.value} ref={formRef} rules={{ name: [{ required: true, message: '请填写姓名' }] }}>
@@ -194,22 +194,22 @@ test('base Form verification', async () => {
         <Button class="submit" onClick={submit} />
         <Button class="reset" onClick={reset} />
       </Form>
-    );
-  });
+    )
+  })
 
-  const form1 = wrapper.find('.nut-cell__title');
-  expect(form1.classes()).toContain('required');
-  const formItem2: DOMWrapper<Element> = wrapper.find('.nut-form-item__body__tips');
+  const form1 = wrapper.find('.nut-cell__title')
+  expect(form1.classes()).toContain('required')
+  const formItem2: DOMWrapper<Element> = wrapper.find('.nut-form-item__body__tips')
 
-  const submitBtn = wrapper.find('.submit');
-  submitBtn.trigger('click');
-  await nextTick();
-  expect(submitBtn.exists()).toBe(true);
+  const submitBtn = wrapper.find('.submit')
+  submitBtn.trigger('click')
+  await nextTick()
+  expect(submitBtn.exists()).toBe(true)
 
-  const resetBtn = wrapper.find('.reset');
-  resetBtn.trigger('click');
-  expect(formItem2.exists()).toBe(false);
-});
+  const resetBtn = wrapper.find('.reset')
+  resetBtn.trigger('click')
+  expect(formItem2.exists()).toBe(false)
+})
 
 test('base Form Type', async () => {
   const formData = ref({
@@ -235,7 +235,7 @@ test('base Form Type', async () => {
         type: 'image'
       }
     ]
-  });
+  })
   const wrapper = mount(() => {
     return (
       <Form>
@@ -258,21 +258,21 @@ test('base Form Type', async () => {
           <Uploader url="http://服务地址" v-model:file-list={formData.value.defaultFileList} maximum={3} multiple />
         </FormItem>
       </Form>
-    );
-  });
-  await nextTick();
-  const formItem = wrapper.findAll('.nut-form-item');
-  expect(formItem.length).toBe(6);
-  const formItem1 = wrapper.find('.nut-switch');
-  expect(formItem1.exists()).toBe(true);
-  const formItem2 = wrapper.find('.nut-checkbox');
-  expect(formItem2.exists()).toBe(true);
-  const formItem3 = wrapper.find('.nut-rate');
-  expect(formItem3.exists()).toBe(true);
-  const formItem4 = wrapper.find('.nut-input-number');
-  expect(formItem4.exists()).toBe(true);
-  const formItem5 = wrapper.find('.nut-range');
-  expect(formItem5.exists()).toBe(true);
-  const formItem6 = wrapper.find('.nut-uploader');
-  expect(formItem6.exists()).toBe(true);
-});
+    )
+  })
+  await nextTick()
+  const formItem = wrapper.findAll('.nut-form-item')
+  expect(formItem.length).toBe(6)
+  const formItem1 = wrapper.find('.nut-switch')
+  expect(formItem1.exists()).toBe(true)
+  const formItem2 = wrapper.find('.nut-checkbox')
+  expect(formItem2.exists()).toBe(true)
+  const formItem3 = wrapper.find('.nut-rate')
+  expect(formItem3.exists()).toBe(true)
+  const formItem4 = wrapper.find('.nut-input-number')
+  expect(formItem4.exists()).toBe(true)
+  const formItem5 = wrapper.find('.nut-range')
+  expect(formItem5.exists()).toBe(true)
+  const formItem6 = wrapper.find('.nut-uploader')
+  expect(formItem6.exists()).toBe(true)
+})

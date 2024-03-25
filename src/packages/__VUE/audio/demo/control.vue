@@ -24,24 +24,24 @@
   </nut-audio>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop } from '@nutui/icons-vue';
-const url = '//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav';
-const playing = ref(false);
+import { ref } from 'vue'
+import { PlayDoubleBack, PlayDoubleForward, PlayStart, PlayStop } from '@nutui/icons-vue'
+const url = '//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav'
+const playing = ref(false)
 const fastBack = () => {
-  console.log('Backwards');
-};
+  console.log('Backwards')
+}
 const forward = (progress: string) => {
-  console.log('Fast forward', 'Current Time' + progress);
-};
+  console.log('Fast forward', 'Current Time' + progress)
+}
 const changeStatus = (status: boolean) => {
-  console.log('Current play status', status);
-  playing.value = status;
-};
+  console.log('Current play status', status)
+  playing.value = status
+}
 const ended = () => {
-  console.log('Playing ended');
-};
+  console.log('Playing ended')
+}
 const changeProgress = (val: string) => {
-  console.log('Change progress', val);
-};
+  console.log('Change progress', val)
+}
 </script>

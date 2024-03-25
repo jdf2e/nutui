@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Direction from './direction.vue';
-import Attract from './attract.vue';
-import Boundary from './boundary.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Direction from './direction.vue'
+import Attract from './attract.vue'
+import Boundary from './boundary.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -34,5 +34,5 @@ const t = useTranslate({
     attract: 'Attract',
     boundary: 'Limit Boundaries'
   }
-});
+})
 </script>

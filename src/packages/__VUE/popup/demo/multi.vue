@@ -6,7 +6,7 @@
   <nut-popup v-model:visible="show2" :style="{ padding: '30px 50px' }">正文</nut-popup>
 </template>
 <script setup>
-import { ref } from 'vue';
-const show1 = ref(false);
-const show2 = ref(false);
+import { ref } from 'vue'
+const show1 = ref(false)
+const show2 = ref(false)
 </script>

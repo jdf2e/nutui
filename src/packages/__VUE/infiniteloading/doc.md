@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { InfiniteLoading } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { InfiniteLoading } from '@nutui/nutui'
 
-const app = createApp();
-app.use(InfiniteLoading);
+const app = createApp()
+app.use(InfiniteLoading)
 ```
 
 ### 基础用法
@@ -26,20 +26,20 @@ app.use(InfiniteLoading);
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const cycle = ref(0);
-const tabsValue = ref(0);
-const sum = ref(24);
-const infinityValue = ref(false);
-const hasMore = ref(true);
+import { ref } from 'vue'
+const cycle = ref(0)
+const tabsValue = ref(0)
+const sum = ref(24)
+const infinityValue = ref(false)
+const hasMore = ref(true)
 const loadMore = (done) => {
   setTimeout(() => {
-    sum.value = sum.value + 24;
-    cycle.value++;
-    if (cycle.value > 2) hasMore.value = false;
-    infinityValue.value = false;
-  }, 1000);
-};
+    sum.value = sum.value + 24
+    cycle.value++
+    if (cycle.value > 2) hasMore.value = false
+    infinityValue.value = false
+  }, 1000)
+}
 </script>
 
 <style>
@@ -70,20 +70,20 @@ const loadMore = (done) => {
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const cycle = ref(0);
-const tabsValue = ref(0);
-const sum = ref(24);
-const infinityValue = ref(false);
-const hasMore = ref(true);
+import { ref } from 'vue'
+const cycle = ref(0)
+const tabsValue = ref(0)
+const sum = ref(24)
+const infinityValue = ref(false)
+const hasMore = ref(true)
 const loadMore = (done) => {
   setTimeout(() => {
-    sum.value = sum.value + 24;
-    cycle.value++;
-    if (cycle.value > 2) hasMore.value = false;
-    infinityValue.value = false;
-  }, 1000);
-};
+    sum.value = sum.value + 24
+    cycle.value++
+    if (cycle.value > 2) hasMore.value = false
+    infinityValue.value = false
+  }, 1000)
+}
 </script>
 
 <style>
@@ -110,27 +110,27 @@ const loadMore = (done) => {
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const cycle = ref(0);
-const tabsValue = ref(0);
-const sum = ref(24);
-const infinityValue = ref(false);
-const hasMore = ref(true);
+import { ref } from 'vue'
+const cycle = ref(0)
+const tabsValue = ref(0)
+const sum = ref(24)
+const infinityValue = ref(false)
+const hasMore = ref(true)
 const loadMore = (done) => {
   setTimeout(() => {
-    sum.value = sum.value + 24;
-    cycle.value++;
-    if (cycle.value > 2) hasMore.value = false;
-    infinityValue.value = false;
-  }, 1000);
-};
-const refresh = ref(false);
+    sum.value = sum.value + 24
+    cycle.value++
+    if (cycle.value > 2) hasMore.value = false
+    infinityValue.value = false
+  }, 1000)
+}
+const refresh = ref(false)
 const refreshFun = () => {
   setTimeout(() => {
-    refresh.value = false;
-    sum.value = 24;
-  }, 3000);
-};
+    refresh.value = false
+    sum.value = 24
+  }, 3000)
+}
 </script>
 
 <style>

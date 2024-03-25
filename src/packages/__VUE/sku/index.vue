@@ -62,17 +62,17 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { ref, watch, PropType } from 'vue';
-import SkuHeader from './components/SkuHeader.vue';
-import SkuSelect from './components/SkuSelect.vue';
-import SkuStepper from './components/SkuStepper.vue';
-import SkuOperate from './components/SkuOperate.vue';
-import NutPopup from '../popup/index.vue';
-import { createComponent } from '@/packages/utils/create';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('sku');
+import { ref, watch, PropType } from 'vue'
+import SkuHeader from './components/SkuHeader.vue'
+import SkuSelect from './components/SkuSelect.vue'
+import SkuStepper from './components/SkuStepper.vue'
+import SkuOperate from './components/SkuOperate.vue'
+import NutPopup from '../popup/index.vue'
+import { createComponent } from '@/packages/utils/create'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('sku')
 
-const cN = 'NutSku';
+const cN = 'NutSku'
 
 export default create({
   props: {
@@ -171,84 +171,84 @@ export default create({
   },
 
   setup(props, { emit, slots }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
 
-    const showPopup = ref(props.visible);
+    const showPopup = ref(props.visible)
 
-    const goodsCount = ref(props.stepperMin);
+    const goodsCount = ref(props.stepperMin)
 
     watch(
       () => props.visible,
       (value) => {
-        showPopup.value = value;
+        showPopup.value = value
       }
-    );
+    )
 
     watch(
       () => showPopup.value,
       (value) => {
         if (value == false) {
-          close();
+          close()
         }
       }
-    );
+    )
 
-    const getSlots = (name: string) => slots[name];
+    const getSlots = (name: string) => slots[name]
 
     // 商品规格 sku 选择
     const selectSku = (skus: any) => {
-      emit('selectSku', skus);
-    };
+      emit('selectSku', skus)
+    }
 
     // 数量计步器变化
     const changeStepper = (value: number) => {
-      goodsCount.value = value;
+      goodsCount.value = value
 
-      emit('changeStepper', value);
-    };
+      emit('changeStepper', value)
+    }
 
     // 修改购买数量 add 加  reduce 减
     const add = (value: number) => {
-      emit('add', value);
-    };
+      emit('add', value)
+    }
 
     const reduce = (value: number) => {
-      emit('reduce', value);
-    };
+      emit('reduce', value)
+    }
 
     // 触发极限值
     const stepperOverLimit = (count: any) => {
-      emit('overLimit', count);
-    };
+      emit('overLimit', count)
+    }
 
     // 点击 button 操作
     const clickBtnOperate = (btn: string) => {
       emit('clickBtnOperate', {
         type: btn,
         value: goodsCount.value
-      });
-    };
+      })
+    }
 
     // 关闭
     const closePopup = (type: string) => {
       if (type == 'icon') {
-        emit('clickCloseIcon');
+        emit('clickCloseIcon')
       }
 
       if (type == 'overlay') {
-        emit('clickOverlay');
+        emit('clickOverlay')
       }
 
       if (type == 'close') {
-        emit('close');
+        emit('close')
       }
 
-      showPopup.value = false;
-    };
+      showPopup.value = false
+    }
 
     const close = () => {
-      emit('update:visible', false);
-    };
+      emit('update:visible', false)
+    }
 
     return {
       showPopup,
@@ -261,7 +261,7 @@ export default create({
       reduce,
       getSlots,
       translate
-    };
+    }
   }
-});
+})
 </script>

@@ -7,11 +7,11 @@ It is used for the rotation display of words and phrases, which is suitable for 
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Barrage } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Barrage } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Barrage);
+const app = createApp()
+app.use(Barrage)
 ```
 
 ### Basic usage

@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const isLoading = ref(false);
+import { ref } from 'vue'
+const isLoading = ref(false)
 const onChange = () => {
-  isLoading.value = true;
+  isLoading.value = true
   setTimeout(() => {
-    isLoading.value = false;
-  }, 3000);
-};
+    isLoading.value = false
+  }, 3000)
+}
 </script>

@@ -2,6 +2,6 @@
   <nut-textarea v-model="val" :rows="3" autosize />
 </template>
 <script setup>
-import { ref } from 'vue';
-const val = ref('');
+import { ref } from 'vue'
+const val = ref('')
 </script>

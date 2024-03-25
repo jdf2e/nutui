@@ -6,5 +6,5 @@
   </nut-grid>
 </template>
 <script setup lang="ts">
-import { Dongdong } from '@nutui/icons-vue-taro';
+import { Dongdong } from '@nutui/icons-vue-taro'
 </script>

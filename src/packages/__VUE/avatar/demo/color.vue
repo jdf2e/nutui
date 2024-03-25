@@ -5,5 +5,5 @@
   <nut-avatar color="white" bg-color="blue">小明</nut-avatar>
 </template>
 <script setup lang="ts">
-import { My } from '@nutui/icons-vue';
+import { My } from '@nutui/icons-vue'
 </script>

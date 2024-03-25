@@ -7,11 +7,11 @@ Provide navigation function, often used at the top of the page.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Navbar } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Navbar } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Navbar);
+const app = createApp()
+app.use(Navbar)
 ```
 
 ### Basic Usage

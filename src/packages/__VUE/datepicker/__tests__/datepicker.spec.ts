@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
-import { DatePicker } from '@nutui/nutui';
+import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
+import { DatePicker } from '@nutui/nutui'
 
 test('Do not display Chinese', async () => {
   const wrapper = mount(DatePicker, {
@@ -10,11 +10,11 @@ test('Do not display Chinese', async () => {
       visible: true,
       isShowChinese: false
     }
-  });
-  await nextTick();
-  expect(wrapper.find('.nut-picker__right').exists()).toBeTruthy();
-  const confirm = wrapper.find('.nut-picker__right');
-  confirm.trigger('click');
+  })
+  await nextTick()
+  expect(wrapper.find('.nut-picker__right').exists()).toBeTruthy()
+  const confirm = wrapper.find('.nut-picker__right')
+  confirm.trigger('click')
   expect(wrapper.emitted().confirm[0]).toEqual([
     {
       selectedValue: ['2020', '01'],
@@ -23,8 +23,8 @@ test('Do not display Chinese', async () => {
         { text: '01', value: '01' }
       ]
     }
-  ]);
-});
+  ])
+})
 
 test('min date & max date', async () => {
   const wrapper = mount(DatePicker, {
@@ -34,11 +34,11 @@ test('min date & max date', async () => {
       maxDate: new Date(2022, 10, 1),
       visible: true
     }
-  });
-  await nextTick();
-  const yearItem = wrapper.find('.nut-picker__list').findAll('.nut-picker-roller-item');
-  expect(yearItem.length).toBe(3);
-});
+  })
+  await nextTick()
+  const yearItem = wrapper.find('.nut-picker__list').findAll('.nut-picker-roller-item')
+  expect(yearItem.length).toBe(3)
+})
 
 test('Increment step setting', async () => {
   const wrapper = mount(DatePicker, {
@@ -47,8 +47,8 @@ test('Increment step setting', async () => {
       minuteStep: 5,
       visible: true
     }
-  });
-  await nextTick();
-  const yearItem = wrapper.findAll('.nut-picker__list')[1].findAll('.nut-picker-roller-item');
-  expect(yearItem.length).toBe(12);
-});
+  })
+  await nextTick()
+  const yearItem = wrapper.findAll('.nut-picker__list')[1].findAll('.nut-picker-roller-item')
+  expect(yearItem.length).toBe(12)
+})

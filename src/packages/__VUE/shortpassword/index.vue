@@ -35,14 +35,14 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutPopup from '../popup/index.vue';
-import { Tips } from '@nutui/icons-vue';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('short-password');
+import { ref, computed, watch } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutPopup from '../popup/index.vue'
+import { Tips } from '@nutui/icons-vue'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('short-password')
 
-const cN = 'NutShortPassword';
+const cN = 'NutShortPassword'
 
 export default create({
   components: {
@@ -89,40 +89,40 @@ export default create({
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'tips', 'close', 'focus'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const realInput = ref(props.modelValue);
-    const comLen = computed(() => range(Number(props.length)));
-    const show = ref(props.visible);
+    const translate = useLocale(cN)
+    const realInput = ref(props.modelValue)
+    const comLen = computed(() => range(Number(props.length)))
+    const show = ref(props.visible)
     // 方法
     const onTouchStart = (event: TouchEvent) => {
-      event.stopPropagation();
-      emit('focus');
-    };
+      event.stopPropagation()
+      emit('focus')
+    }
     watch(
       () => props.visible,
       (value) => {
-        show.value = value;
+        show.value = value
       }
-    );
+    )
     watch(
       () => props.modelValue,
       (value) => {
-        realInput.value = value;
+        realInput.value = value
         if (String(value).length === comLen.value) {
-          emit('complete', value);
+          emit('complete', value)
         }
       }
-    );
+    )
     const close = () => {
-      emit('update:visible', false);
-      emit('close');
-    };
+      emit('update:visible', false)
+      emit('close')
+    }
     const range = (val: number) => {
-      return Math.min(Math.max(4, val), 6);
-    };
+      return Math.min(Math.max(4, val), 6)
+    }
     const onTips = () => {
-      emit('tips');
-    };
+      emit('tips')
+    }
     return {
       comLen,
       realInput,
@@ -132,7 +132,7 @@ export default create({
       onTips,
       show,
       translate
-    };
+    }
   }
-});
+})
 </script>

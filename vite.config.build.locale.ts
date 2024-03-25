@@ -1,14 +1,14 @@
-import { defineConfig } from 'vite';
-import path from 'path';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import path from 'path'
+import vue from '@vitejs/plugin-vue'
 
 let input = {
   index: `./src/packages/locale/index`
-};
+}
 // 动态读取file name
-['zh-CN', 'zh-TW', 'en-US', 'id-ID'].map((file) => {
-  input[file] = `./src/packages/locale/lang/${file}`;
-});
+;['zh-CN', 'zh-TW', 'en-US', 'id-ID'].map((file) => {
+  input[file] = `./src/packages/locale/lang/${file}`
+})
 
 export default defineConfig({
   plugins: [vue()],
@@ -33,4 +33,4 @@ export default defineConfig({
     },
     emptyOutDir: false
   }
-});
+})

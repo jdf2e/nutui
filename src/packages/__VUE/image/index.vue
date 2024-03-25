@@ -32,12 +32,12 @@ import {
   ref,
   onMounted,
   onBeforeUnmount
-} from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '../../utils/pxCheck';
-import { ImageFit, ImagePosition } from './type';
-import { Image, ImageError } from '@nutui/icons-vue';
-const { componentName, create } = createComponent('image');
+} from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { pxCheck } from '../../utils/pxCheck'
+import { ImageFit, ImagePosition } from './type'
+import { Image, ImageError } from '@nutui/icons-vue'
+const { componentName, create } = createComponent('image')
 export default create({
   props: {
     src: String,
@@ -91,95 +91,95 @@ export default create({
       isError: false,
       slotLoding: useSlots().loading,
       slotError: useSlots().error
-    });
+    })
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}-round`]: props.round
-      };
-    });
+      }
+    })
 
     // 图片懒加载
-    const observer = ref<any>(null);
-    const show = ref(false);
-    const imgRef = ref(null);
+    const observer = ref<any>(null)
+    const show = ref(false)
+    const imgRef = ref(null)
     const initObserver = () => {
       const options = {
         threshold: [0],
         rootMargin: '0px'
-      };
+      }
       observer.value = new IntersectionObserver((entires) => {
         entires.forEach((item) => {
           if (item.isIntersecting) {
-            show.value = true;
-            observer.value.disconnect();
+            show.value = true
+            observer.value.disconnect()
           }
-        });
-      }, options);
-      imgRef.value && observer.value.observe(imgRef.value);
-    };
+        })
+      }, options)
+      imgRef.value && observer.value.observe(imgRef.value)
+    }
 
     onMounted(() => {
-      props.lazyLoad && initObserver();
-    });
+      props.lazyLoad && initObserver()
+    })
 
     onBeforeUnmount(() => {
-      observer.value && observer.value.disconnect();
-    });
+      observer.value && observer.value.disconnect()
+    })
 
     const stylebox = computed(() => {
       let style: {
-        height?: string;
-        width?: string;
-        overflow?: string;
-        borderRadius?: any;
-      } = {};
+        height?: string
+        width?: string
+        overflow?: string
+        borderRadius?: any
+      } = {}
 
-      if (props.width) style.width = pxCheck(props.width);
-      if (props.height) style.height = pxCheck(props.height);
+      if (props.width) style.width = pxCheck(props.width)
+      if (props.height) style.height = pxCheck(props.height)
 
       if (props.radius !== undefined && props.radius !== null) {
-        style.overflow = 'hidden';
-        style.borderRadius = pxCheck(props.radius);
+        style.overflow = 'hidden'
+        style.borderRadius = pxCheck(props.radius)
       }
 
-      return style;
-    });
+      return style
+    })
     const styles = computed(() => {
       let styless: CSSProperties = {
         objectFit: props.fit,
         objectPosition: props.position
-      };
+      }
 
-      return styless;
-    });
+      return styless
+    })
 
     watch(
       () => props.src,
       () => {
-        (state.isError = false), (state.loading = true);
+        ;(state.isError = false), (state.loading = true)
       }
-    );
+    )
     // 图片加载
     const load = () => {
-      state.isError = false;
-      state.loading = false;
-      emit('load');
-    };
+      state.isError = false
+      state.loading = false
+      emit('load')
+    }
     // 图片加载失败
     const error = () => {
-      state.isError = true;
-      state.loading = false;
-      emit('error');
-    };
+      state.isError = true
+      state.loading = false
+      emit('error')
+    }
 
     const imageClick = (event: Event) => {
-      emit('click', event);
-    };
+      emit('click', event)
+    }
 
-    return { ...toRefs(state), imageClick, classes, styles, stylebox, error, load, show, imgRef };
+    return { ...toRefs(state), imageClick, classes, styles, stylebox, error, load, show, imgRef }
   }
-});
+})
 </script>

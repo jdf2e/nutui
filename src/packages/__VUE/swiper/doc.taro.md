@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Swiper, SwiperItem } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Swiper, SwiperItem } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Swiper);
-app.use(SwiperItem);
+const app = createApp()
+app.use(Swiper)
+app.use(SwiperItem)
 ```
 
 ### 基础用法

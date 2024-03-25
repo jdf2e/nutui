@@ -29,16 +29,16 @@
   </Demo>
 </template>
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Size from './size.vue';
-import Shape from './shape.vue';
-import Color from './color.vue';
-import Badge from './badge.vue';
-import Click from './click.vue';
-import Group from './group.vue';
-import Zindex from './zindex.vue';
-import Count from './count.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Size from './size.vue'
+import Shape from './shape.vue'
+import Color from './color.vue'
+import Badge from './badge.vue'
+import Click from './click.vue'
+import Group from './group.vue'
+import Zindex from './zindex.vue'
+import Count from './count.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -63,5 +63,5 @@ const t = useTranslate({
     click: 'Click Event',
     count: 'Dynamically change count'
   }
-});
+})
 </script>

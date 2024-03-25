@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const show = ref(false);
-const value = ref(null);
+import { ref } from 'vue'
+const show = ref(false)
+const value = ref(null)
 const onChange = (val: Date) => {
-  console.log(val);
-};
+  console.log(val)
+}
 </script>

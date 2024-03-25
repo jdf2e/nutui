@@ -1,11 +1,11 @@
-import Navbar from './navbar.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import Navbar from './navbar.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(Navbar);
+withInstall(Navbar)
 
-export type { NavbarProps } from './navbar.vue';
+export type { NavbarProps } from './navbar.vue'
 
-export type NavbarInstance = ComponentPublicInstance & InstanceType<typeof Navbar>;
+export type NavbarInstance = ComponentPublicInstance & InstanceType<typeof Navbar>
 
-export { Navbar, Navbar as default };
+export { Navbar, Navbar as default }

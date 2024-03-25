@@ -6,5 +6,5 @@
   </nut-cell>
 </template>
 <script setup lang="ts">
-import { My } from '@nutui/icons-vue';
+import { My } from '@nutui/icons-vue'
 </script>

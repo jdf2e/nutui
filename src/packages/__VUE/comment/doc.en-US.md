@@ -7,11 +7,11 @@ Used to display the comment list
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Comment } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Comment } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Comment);
+const app = createApp()
+app.use(Comment)
 ```
 
 ### Single Line Image
@@ -39,22 +39,22 @@ By default, images of reviews for individual items are displayed in a single sli
   </nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const handleclick = (info) => {
-  console.log('进行跳转', info);
-};
+  console.log('进行跳转', info)
+}
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -94,19 +94,19 @@ The value of `headerType` allows you to set the image to be displayed in multipl
   </nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -128,19 +128,19 @@ const clickImages = (imgs) => {
   ></nut-comment>
 </template>
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-let cmt = ref({});
+import { reactive, ref, onMounted } from 'vue'
+let cmt = ref({})
 onMounted(() => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
     .then((response) => response.json())
     .then((res) => {
-      cmt.value = res.Comment;
+      cmt.value = res.Comment
     })
-    .catch((err) => console.log('Oh, error', err));
-});
+    .catch((err) => console.log('Oh, error', err))
+})
 const clickImages = (imgs) => {
-  console.log('进行图片展示', imgs);
-};
+  console.log('进行图片展示', imgs)
+}
 </script>
 ```
 
@@ -187,7 +187,7 @@ const images = [
     bigImgUrl: '', // Big picture, big picture display use
     imgUrl: '' // Out figure
   }
-];
+]
 ```
 
 ### videos data
@@ -198,7 +198,7 @@ const videos = [
     mainUrl: '', // Video mask image
     videoUrl: '' // Video url
   }
-];
+]
 ```
 
 ### info data
@@ -213,7 +213,7 @@ const info = {
   size: '', // Comment good size
   replay: 23, // Number of replies to this comment
   like: 1 // Number of likes for this comment
-};
+}
 ```
 
 ### follow data
@@ -225,7 +225,7 @@ const follow = {
   days: 0, // Review how many days after purchase
   content: '', // Review content
   images: [] // Review images
-};
+}
 ```
 
 ## Theming

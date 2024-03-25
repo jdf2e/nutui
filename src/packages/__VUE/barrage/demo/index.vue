@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -16,5 +16,5 @@ const t = useTranslate({
   'en-US': {
     basic: 'Basic Usage'
   }
-});
+})
 </script>

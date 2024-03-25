@@ -15,8 +15,8 @@
   </nut-tabs>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const value = ref('c1');
+import { ref } from 'vue'
+const value = ref('c1')
 const list = ref([
   {
     title: 'Tab 1',
@@ -30,7 +30,7 @@ const list = ref([
     title: 'Tab 3',
     paneKey: 'c3'
   }
-]);
+])
 </script>
 <style>
 .custom-tab-item {

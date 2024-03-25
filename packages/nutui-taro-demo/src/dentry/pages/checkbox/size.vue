@@ -5,7 +5,7 @@
   </nut-cell>
 </template>
 <script setup>
-import { ref } from 'vue';
-const val1 = ref(false);
-const val2 = ref(false);
+import { ref } from 'vue'
+const val1 = ref(false)
+const val2 = ref(false)
 </script>

@@ -3,6 +3,6 @@
 </template>
 
 <script setup>
-const start = Date.now();
-const end = Date.now() + 60 * 1000;
+const start = Date.now()
+const end = Date.now() + 60 * 1000
 </script>

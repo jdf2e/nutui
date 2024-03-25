@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Max from './max.vue';
-import Color from './color.vue';
-import IconDemo from './icon.vue';
-import Position from './position.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Max from './max.vue'
+import Color from './color.vue'
+import IconDemo from './icon.vue'
+import Position from './position.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -40,7 +40,7 @@ const t = useTranslate({
     icon: 'Custom Content',
     position: 'Custom Position '
   }
-});
+})
 </script>
 
 <style lang="scss">

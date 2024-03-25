@@ -60,7 +60,7 @@
           taro
           @change="
             (option: any) => {
-              changeHandler(columnIndex, option);
+              changeHandler(columnIndex, option)
             }
           "
         ></nut-picker-column>
@@ -70,17 +70,17 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-import Taro from '@tarojs/taro';
-import { ref, reactive, computed, CSSProperties, toRefs } from 'vue';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { usePicker } from './usePicker';
-import NutPickerColumn from './Column.vue';
-import baseProps from './baseProps';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('picker');
+import { createComponent } from '@/packages/utils/create'
+import Taro from '@tarojs/taro'
+import { ref, reactive, computed, CSSProperties, toRefs } from 'vue'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { usePicker } from './usePicker'
+import NutPickerColumn from './Column.vue'
+import baseProps from './baseProps'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('picker')
 
-const cN = 'NutPicker';
+const cN = 'NutPicker'
 
 export default create({
   components: {
@@ -89,7 +89,7 @@ export default create({
   props: baseProps,
   emits: ['cancel', 'change', 'confirm', 'update:modelValue'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
     const {
       changeHandler,
       confirm,
@@ -99,71 +99,71 @@ export default create({
       columnsType,
       columnFieldNames,
       cancel
-    } = usePicker(props, emit);
+    } = usePicker(props, emit)
     const state = reactive({
       show: false,
       picking: false,
       ENV: Taro.getEnv(),
       ENV_TYPE: Taro.ENV_TYPE
-    });
+    })
 
-    const pickerColumn = ref<any[]>([]);
+    const pickerColumn = ref<any[]>([])
 
     const swipeRef = (el: any) => {
       if (el && pickerColumn.value.length < columnsList.value.length) {
-        pickerColumn.value.push(el);
+        pickerColumn.value.push(el)
       }
-    };
+    }
 
     const confirmHandler = () => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         pickerColumn.value.length > 0 &&
           pickerColumn.value.forEach((column) => {
-            column.stopMomentum();
-          });
-        confirm();
+            column.stopMomentum()
+          })
+        confirm()
       } else {
         if (state.picking) {
           setTimeout(() => {
-            confirm();
-          }, 0);
+            confirm()
+          }, 0)
         } else {
-          confirm();
+          confirm()
         }
       }
-    };
+    }
 
     const pickerViewStyles = computed(() => {
-      const styles: CSSProperties = {};
-      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`;
-      styles['--lineHeight'] = `${+props.optionHeight}px`;
-      return styles;
-    });
+      const styles: CSSProperties = {}
+      styles.height = `${+props.visibleOptionNum * +props.optionHeight}px`
+      styles['--lineHeight'] = `${+props.optionHeight}px`
+      return styles
+    })
 
     // 平铺展示时，滚动选择
     const tileChange = (data: any) => {
-      const prevDefaultValue = defaultIndexes.value;
-      let changeIndex = 0;
+      const prevDefaultValue = defaultIndexes.value
+      let changeIndex = 0
       // 判断变化的是第几个
       for (let i = 0; i < data.detail.value?.length; i++) {
         if (prevDefaultValue[i] !== data.detail.value?.[i]) {
-          changeIndex = i;
-          break;
+          changeIndex = i
+          break
         }
       }
 
       // 选择的是哪个 option
-      changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]]);
-    };
+      changeHandler(changeIndex, columnsList.value[changeIndex][data.detail.value[changeIndex]])
+    }
 
     // 开始滚动
     const handlePickstart = () => {
-      state.picking = true;
-    };
+      state.picking = true
+    }
     // 开始滚动
     const handlePickend = () => {
-      state.picking = false;
-    };
+      state.picking = false
+    }
 
     return {
       ...toRefs(state),
@@ -183,7 +183,7 @@ export default create({
       handlePickend,
       pickerViewStyles,
       pxCheck
-    };
+    }
   }
-});
+})
 </script>

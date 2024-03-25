@@ -15,9 +15,9 @@ npm i --save @nutui/icons-vue
 Use mode of on-demand loading components, see @nutui/icons-vue/dist/types/index.d.ts
 
 ```js
-import { Add } from '@nutui/icons-vue';
+import { Add } from '@nutui/icons-vue'
 // template
-<Add color="red" />;
+;<Add color="red" />
 ```
 
 <icon-demo />
@@ -45,11 +45,11 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 ## Use: Full use of IconFont
 
 ```js
-import { createApp } from 'vue';
-import { IconFont } from '@nutui/icons-vue';
-import '@nutui/icons-vue/dist/style_iconfont.css';
-const app = createApp();
-app.use(IconFont);
+import { createApp } from 'vue'
+import { IconFont } from '@nutui/icons-vue'
+import '@nutui/icons-vue/dist/style_iconfont.css'
+const app = createApp()
+app.use(IconFont)
 ```
 
 Use `name` prop to set icon name or icon URL.

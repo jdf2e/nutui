@@ -27,15 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Shape from './shape.vue';
-import Left from './left.vue';
-import Right from './right.vue';
-import Background from './background.vue';
-import Focus from './focus.vue';
-import Clear from './clear.vue';
-import All from './all.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Shape from './shape.vue'
+import Left from './left.vue'
+import Right from './right.vue'
+import Background from './background.vue'
+import Focus from './focus.vue'
+import Clear from './clear.vue'
+import All from './all.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -58,5 +58,5 @@ const t = useTranslate({
     clear: 'Clear Icon',
     all: 'Complete Display'
   }
-});
+})
 </script>

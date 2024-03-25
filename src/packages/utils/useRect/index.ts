@@ -8,27 +8,27 @@
   bottom	底部与视图窗口左上角的距离	number
  */
 
-import { Ref, unref } from 'vue';
+import { Ref, unref } from 'vue'
 
 function isWindow(val: unknown): val is Window {
-  return typeof window !== 'undefined' && val === window;
+  return typeof window !== 'undefined' && val === window
 }
 
 export interface rect {
-  top: number;
-  left: number;
-  right: number;
-  bottom: number;
-  width: number;
-  height: number;
+  top: number
+  left: number
+  right: number
+  bottom: number
+  width: number
+  height: number
 }
 
 export const useRect = (elementRef: (Element | Window) | Ref<Element | Window | undefined>) => {
-  const element = unref(elementRef);
+  const element = unref(elementRef)
 
   if (isWindow(element)) {
-    const width = element.innerWidth;
-    const height = element.innerHeight;
+    const width = element.innerWidth
+    const height = element.innerHeight
 
     return {
       top: 0,
@@ -37,11 +37,11 @@ export const useRect = (elementRef: (Element | Window) | Ref<Element | Window | 
       bottom: height,
       width,
       height
-    };
+    }
   }
 
   if (element && element.getBoundingClientRect) {
-    return element.getBoundingClientRect();
+    return element.getBoundingClientRect()
   }
 
   return {
@@ -51,5 +51,5 @@ export const useRect = (elementRef: (Element | Window) | Ref<Element | Window | 
     bottom: 0,
     width: 0,
     height: 0
-  };
-};
+  }
+}

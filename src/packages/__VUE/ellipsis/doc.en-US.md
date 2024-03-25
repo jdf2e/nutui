@@ -7,11 +7,11 @@ Display space is insufficient, hidden part of the content and "..." Alternative.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Ellipsis } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Ellipsis } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Ellipsis);
+const app = createApp()
+app.use(Ellipsis)
 ```
 
 ### Start

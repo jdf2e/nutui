@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
-import { Indicator } from '@nutui/nutui';
+import { mount } from '@vue/test-utils'
+import { Indicator } from '@nutui/nutui'
 
 test('Indicator: should be shown when passing size and current', async () => {
   const wrapper = mount(Indicator, {
@@ -7,13 +7,13 @@ test('Indicator: should be shown when passing size and current', async () => {
       size: 5,
       current: 3
     }
-  });
+  })
 
-  expect(wrapper.findAll('.nut-indicator--dot').length).toBe(4);
-  expect(wrapper.findAll('.nut-indicator--number').length).toBe(1);
-  const number = wrapper.find(':nth-of-type(3)');
-  expect(number.classes()).toContain('nut-indicator--number');
-});
+  expect(wrapper.findAll('.nut-indicator--dot').length).toBe(4)
+  expect(wrapper.findAll('.nut-indicator--number').length).toBe(1)
+  const number = wrapper.find(':nth-of-type(3)')
+  expect(number.classes()).toContain('nut-indicator--number')
+})
 
 test('Indicator: should be shown when passing block and align and fillZero', () => {
   const wrapper = mount(Indicator, {
@@ -24,11 +24,11 @@ test('Indicator: should be shown when passing block and align and fillZero', () 
       align: 'right',
       fillZero: false
     }
-  });
+  })
 
-  const indicator = wrapper.find('.nut-indicator');
-  expect(indicator.classes()).toContain('nut-indicator--block');
-  expect(indicator.classes()).toContain('nut-indicator--align__right');
-  const firstChild = wrapper.findAll('.nut-indicator--number')[0];
-  expect(firstChild.text()).toBe('3');
-});
+  const indicator = wrapper.find('.nut-indicator')
+  expect(indicator.classes()).toContain('nut-indicator--block')
+  expect(indicator.classes()).toContain('nut-indicator--align__right')
+  const firstChild = wrapper.findAll('.nut-indicator--number')[0]
+  expect(firstChild.text()).toBe('3')
+})

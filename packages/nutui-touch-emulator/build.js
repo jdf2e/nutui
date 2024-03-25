@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require('fs')
 
 if (!fs.existsSync('./dist')) {
-  fs.mkdirSync('./dist');
+  fs.mkdirSync('./dist')
 }
-fs.copyFileSync('./src/index.js', './dist/index.js');
+fs.copyFileSync('./src/index.js', './dist/index.js')

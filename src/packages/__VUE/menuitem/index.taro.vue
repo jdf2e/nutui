@@ -54,14 +54,14 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('menu-item');
-import NutPopup from '../popup/index.taro.vue';
-import { Check } from '@nutui/icons-vue-taro';
-import NutScrollView from '../scroll-view/index.taro.vue';
-import { useParent } from '@/packages/utils';
-import { MENU_KEY, MenuItemOption } from '../menu/types';
+import { reactive, PropType, computed } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('menu-item')
+import NutPopup from '../popup/index.taro.vue'
+import { Check } from '@nutui/icons-vue-taro'
+import NutScrollView from '../scroll-view/index.taro.vue'
+import { useParent } from '@/packages/utils'
+import { MENU_KEY, MenuItemOption } from '../menu/types'
 
 export default create({
   props: {
@@ -92,58 +92,58 @@ export default create({
     const state = reactive({
       showPopup: false,
       showWrapper: false
-    });
+    })
 
-    const { parent } = useParent(MENU_KEY);
+    const { parent } = useParent(MENU_KEY)
 
     const style = computed(() => {
       return parent.props.direction === 'down'
         ? { top: parent.offset.value + 'px' }
-        : { bottom: parent.offset.value + 'px' };
-    });
+        : { bottom: parent.offset.value + 'px' }
+    })
 
     const placeholderElementStyle = computed(() => {
-      const heightStyle = { height: parent.offset.value + 'px' };
+      const heightStyle = { height: parent.offset.value + 'px' }
       if (parent.props.direction === 'down') {
-        return { ...heightStyle, top: '0px' };
+        return { ...heightStyle, top: '0px' }
       } else {
-        return { ...heightStyle, bottom: '0px' };
+        return { ...heightStyle, bottom: '0px' }
       }
-    });
+    })
 
     const toggle = (show = !state.showPopup) => {
       if (show === state.showPopup) {
-        return;
+        return
       }
-      state.showPopup = show;
+      state.showPopup = show
       if (show) {
-        state.showWrapper = true;
+        state.showWrapper = true
       }
-    };
+    }
 
     const renderTitle = () => {
       if (props.title) {
-        return props.title;
+        return props.title
       }
-      const match: any = props.options?.find((option: any) => option.value === props.modelValue);
-      return match ? match.text : '';
-    };
+      const match: any = props.options?.find((option: any) => option.value === props.modelValue)
+      return match ? match.text : ''
+    }
 
     const onClick = (option: MenuItemOption) => {
-      state.showPopup = false;
+      state.showPopup = false
       if (option.value !== props.modelValue) {
-        emit('update:modelValue', option.value);
-        emit('change', option.value);
+        emit('update:modelValue', option.value)
+        emit('change', option.value)
       }
-    };
+    }
 
     const handleClose = () => {
-      state.showWrapper = false;
-    };
+      state.showWrapper = false
+    }
 
     const handleClickOutside = () => {
-      state.showPopup = false;
-    };
+      state.showPopup = false
+    }
 
     return {
       style,
@@ -155,7 +155,7 @@ export default create({
       onClick,
       handleClose,
       handleClickOutside
-    };
+    }
   }
-});
+})
 </script>

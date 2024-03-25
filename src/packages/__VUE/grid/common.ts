@@ -1,14 +1,14 @@
-import { h, computed } from 'vue';
-import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { useProvide } from '@/packages/utils/useRelation/useProvide';
+import { h, computed } from 'vue'
+import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { useProvide } from '@/packages/utils/useRelation/useProvide'
 
-const { componentName } = createComponent('grid');
+const { componentName } = createComponent('grid')
 
-export const GRID_KEY = Symbol('grid');
+export const GRID_KEY = Symbol('grid')
 
-export type GridDirection = 'horizontal' | 'vertical';
+export type GridDirection = 'horizontal' | 'vertical'
 
 export const gridProps = {
   // 列数
@@ -50,32 +50,32 @@ export const gridProps = {
     type: Boolean,
     default: false
   }
-};
+}
 
-export type GridProps = ExtractPropTypes<typeof gridProps>;
+export type GridProps = ExtractPropTypes<typeof gridProps>
 
 export const component = {
   props: gridProps,
   setup(props: GridProps, { slots }: SetupContext): RenderFunction {
-    useProvide(GRID_KEY, `NutGridItem`)({ props });
+    useProvide(GRID_KEY, `NutGridItem`)({ props })
 
     const rootClass = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         [`${prefixCls}--border`]: props.border && !props.gutter
-      };
-    });
+      }
+    })
 
     const rootStyle = computed(() => {
-      const style: import('vue').CSSProperties = {};
+      const style: import('vue').CSSProperties = {}
 
       if (props.gutter) {
-        style.paddingLeft = pxCheck(props.gutter);
+        style.paddingLeft = pxCheck(props.gutter)
       }
 
-      return style;
-    });
+      return style
+    })
 
     return () => {
       return h(
@@ -85,7 +85,7 @@ export const component = {
           style: rootStyle.value
         },
         slots.default?.()
-      );
-    };
+      )
+    }
   }
-};
+}

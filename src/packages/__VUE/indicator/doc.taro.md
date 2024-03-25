@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Indicator } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Indicator } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Indicator);
+const app = createApp()
+app.use(Indicator)
 ```
 
 ### 基础用法

@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ### 基础用法

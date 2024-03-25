@@ -7,15 +7,15 @@
   </nut-space>
 </template>
 <script setup>
-import { ref } from 'vue';
-const Countdown = ref(null);
+import { ref } from 'vue'
+const Countdown = ref(null)
 const start = () => {
-  Countdown.value.start();
-};
+  Countdown.value.start()
+}
 const pause = () => {
-  Countdown.value.pause();
-};
+  Countdown.value.pause()
+}
 const reset = () => {
-  Countdown.value.reset();
-};
+  Countdown.value.reset()
+}
 </script>

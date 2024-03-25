@@ -1,1 +1,1 @@
-export default { navigationBarTitleText: 'Watermark' };
+export default { navigationBarTitleText: 'Watermark' }

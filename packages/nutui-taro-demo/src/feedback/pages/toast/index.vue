@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 const page = {
   state: reactive({
     msg: 'toast',
@@ -56,15 +56,15 @@ const page = {
       bottom: string = '',
       center: boolean = true
     ) => {
-      page.state.show = true;
-      page.state.msg = msg;
-      page.state.type = type;
-      page.state.cover = cover;
-      page.state.title = title;
-      page.state.bottom = bottom;
-      page.state.center = center;
+      page.state.show = true
+      page.state.msg = msg
+      page.state.type = type
+      page.state.cover = cover
+      page.state.title = title
+      page.state.bottom = bottom
+      page.state.center = center
     },
     onClosed: () => console.log('closed')
   }
-};
+}
 </script>

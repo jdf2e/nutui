@@ -36,18 +36,18 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Smile from './smile.vue';
-import AnimatedTime from './animated-time.vue';
-import AutoHeight from './auto-height.vue';
-import Swipeable from './swipeable.vue';
-import Scroll from './scroll.vue';
-import Vertical from './vertical.vue';
-import VerticalSmile from './vertical-smile.vue';
-import Size from './size.vue';
-import Custom from './custom.vue';
-import LeftAlign from './left-align.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Smile from './smile.vue'
+import AnimatedTime from './animated-time.vue'
+import AutoHeight from './auto-height.vue'
+import Swipeable from './swipeable.vue'
+import Scroll from './scroll.vue'
+import Vertical from './vertical.vue'
+import VerticalSmile from './vertical-smile.vue'
+import Size from './size.vue'
+import Custom from './custom.vue'
+import LeftAlign from './left-align.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -76,5 +76,5 @@ const t = useTranslate({
     size: 'FontSize',
     custom: 'Custom Tab'
   }
-});
+})
 </script>

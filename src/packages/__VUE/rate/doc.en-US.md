@@ -7,11 +7,11 @@ Use for quick rating actions, or to showcase reviews.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Rate } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Rate } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Rate);
+const app = createApp()
+app.use(Rate)
 ```
 
 ### Basic Usage

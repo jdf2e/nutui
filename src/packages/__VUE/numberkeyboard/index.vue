@@ -77,17 +77,17 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watch, Ref, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutPopup from '../popup/index.vue';
-import { useLocale } from '@/packages/utils/useLocale';
-import { NumberKeyboardType } from './types';
-const { create } = createComponent('number-keyboard');
+import { computed, ref, watch, Ref, PropType } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutPopup from '../popup/index.vue'
+import { useLocale } from '@/packages/utils/useLocale'
+import { NumberKeyboardType } from './types'
+const { create } = createComponent('number-keyboard')
 export interface keys {
-  id: number | string;
-  type: string;
+  id: number | string
+  type: string
 }
-const cN = 'NutNumberKeyboard';
+const cN = 'NutNumberKeyboard'
 export default create({
   components: {
     NutPopup
@@ -136,121 +136,121 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'blur', 'update:modelValue', 'update:visible'],
   setup(props, { emit }) {
-    const translate = useLocale(cN);
-    const clickKeyIndex: Ref<string | undefined | number> = ref(undefined);
-    const show = ref(props.visible);
-    const root = ref();
+    const translate = useLocale(cN)
+    const clickKeyIndex: Ref<string | undefined | number> = ref(undefined)
+    const show = ref(props.visible)
+    const root = ref()
     function defaultKey() {
-      const { customKey } = props;
+      const { customKey } = props
       let object = {
         id: 'lock',
         type: 'lock'
-      };
-      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      }
+      let customKeys = Array.isArray(customKey) ? customKey : [customKey]
       if (customKeys.length === 1) {
         object = {
           id: customKeys[0],
           type: 'custom'
-        };
+        }
       }
-      return [...getBasicKeys(), object, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' }];
+      return [...getBasicKeys(), object, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' }]
     }
 
     function getBasicKeys() {
-      const keys: keys[] = [];
+      const keys: keys[] = []
       for (let i = 1; i <= 9; i++) {
-        keys.push({ id: i, type: 'number' });
+        keys.push({ id: i, type: 'number' })
       }
       if (props.randomKeys) {
-        return keys.sort(() => (Math.random() > 0.5 ? 1 : -1));
+        return keys.sort(() => (Math.random() > 0.5 ? 1 : -1))
       }
 
-      return keys;
+      return keys
     }
 
     function genCustomKeys() {
-      const keys = getBasicKeys();
-      const { customKey } = props;
-      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      const keys = getBasicKeys()
+      const { customKey } = props
+      let customKeys = Array.isArray(customKey) ? customKey : [customKey]
       if (customKeys.length > 2) {
-        customKeys = [customKeys[0], customKeys[1]];
+        customKeys = [customKeys[0], customKeys[1]]
       }
       if (customKeys.length == 2 && props.title && props.type != 'rightColumn') {
-        customKeys = [customKeys[0]];
+        customKeys = [customKeys[0]]
       }
       if (customKeys.length === 1) {
         if (props.title && props.type != 'rightColumn') {
-          keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' });
+          keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' })
         } else {
-          keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' });
+          keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' })
         }
       } else if (customKeys.length === 2) {
         keys.push(
           { id: customKeys[0], type: 'custom' },
           { id: 0, type: 'number' },
           { id: customKeys[1], type: 'custom' }
-        );
+        )
       }
-      return keys;
+      return keys
     }
     const keysList = computed(() => {
       if (props.type == 'rightColumn' || props.title != '') {
-        return genCustomKeys();
+        return genCustomKeys()
       }
-      return defaultKey();
-    });
+      return defaultKey()
+    })
     const onBlur = () => {
       if (props.visible) {
-        emit('blur');
+        emit('blur')
       }
-    };
+    }
     const clickAway = (event: Event) => {
-      const element = root.value;
-      let el = element && !element.contains(event.target);
+      const element = root.value
+      let el = element && !element.contains(event.target)
       if (el) {
-        onBlur();
+        onBlur()
       }
-    };
+    }
     watch(
       () => props.visible,
       (value) => {
-        show.value = value;
+        show.value = value
         if (value) {
-          window.addEventListener('touchstart', clickAway, false);
+          window.addEventListener('touchstart', clickAway, false)
         } else {
-          window.removeEventListener('touchstart', clickAway, false);
+          window.removeEventListener('touchstart', clickAway, false)
         }
       }
-    );
+    )
 
     function onTouchstart(item: { id: string | number; type: string }, event: TouchEvent) {
-      event.stopPropagation();
-      clickKeyIndex.value = item.id;
+      event.stopPropagation()
+      clickKeyIndex.value = item.id
       if (item.type == 'number' || item.type == 'custom') {
-        emit('input', item.id);
+        emit('input', item.id)
         if (props.modelValue.length < +props.maxlength) {
-          emit('update:modelValue', props.modelValue + item.id);
+          emit('update:modelValue', props.modelValue + item.id)
         }
       }
       if (item.type == 'lock') {
-        closeBoard();
+        closeBoard()
       }
       if (item.type == 'delete') {
-        emit('delete');
-        emit('update:modelValue', props.modelValue.slice(0, props.modelValue.length - 1));
+        emit('delete')
+        emit('update:modelValue', props.modelValue.slice(0, props.modelValue.length - 1))
       }
     }
     function onTouchMove(event: TouchEvent) {
-      event.stopPropagation();
+      event.stopPropagation()
     }
     function onTouchEnd(event: TouchEvent) {
-      event.preventDefault();
-      clickKeyIndex.value = undefined;
+      event.preventDefault()
+      clickKeyIndex.value = undefined
     }
 
     function closeBoard() {
-      emit('update:visible', false);
-      emit('close');
+      emit('update:visible', false)
+      emit('close')
     }
 
     return {
@@ -266,7 +266,7 @@ export default create({
       root,
       show,
       translate
-    };
+    }
   }
-});
+})
 </script>

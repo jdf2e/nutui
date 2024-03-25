@@ -24,14 +24,14 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, computed, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Taro, { usePageScroll } from '@tarojs/taro';
-import { useTaroRect } from '@/packages/utils/useTaroRect';
-const { componentName, create } = createComponent('menu');
-import { RectUp, RectDown } from '@nutui/icons-vue-taro';
-import { useChildren } from '@/packages/utils';
-import { MENU_KEY, MenuDirection } from './types';
+import { PropType, computed, ref } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import Taro, { usePageScroll } from '@tarojs/taro'
+import { useTaroRect } from '@/packages/utils/useTaroRect'
+const { componentName, create } = createComponent('menu')
+import { RectUp, RectDown } from '@nutui/icons-vue-taro'
+import { useChildren } from '@/packages/utils'
+import { MENU_KEY, MenuDirection } from './types'
 
 export default create({
   components: {
@@ -73,22 +73,22 @@ export default create({
     }
   },
   setup(props) {
-    const barRef = ref<HTMLElement>();
-    const refRandomId = Math.random().toString(36).slice(-8);
-    const offset = ref(0);
-    const isScrollFixed = ref(false);
+    const barRef = ref<HTMLElement>()
+    const refRandomId = Math.random().toString(36).slice(-8)
+    const offset = ref(0)
+    const isScrollFixed = ref(false)
 
-    const { children, linkChildren } = useChildren(MENU_KEY);
+    const { children, linkChildren } = useChildren(MENU_KEY)
 
-    const opened = computed(() => children.some((item) => item.state.showWrapper));
+    const opened = computed(() => children.some((item) => item.state.showWrapper))
 
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = componentName
       return {
         [prefixCls]: true,
         'scroll-fixed': isScrollFixed.value
-      };
-    });
+      }
+    })
 
     const updateOffset = (children: any) => {
       if (barRef.value) {
@@ -96,60 +96,60 @@ export default create({
           useTaroRect(barRef).then(
             (rect: any) => {
               if (props.direction === 'down') {
-                offset.value = rect.bottom;
+                offset.value = rect.bottom
               } else {
-                offset.value = Taro.getSystemInfoSync().windowHeight - rect.top;
+                offset.value = Taro.getSystemInfoSync().windowHeight - rect.top
               }
-              children.toggle();
+              children.toggle()
             },
             () => {}
-          );
-        }, 100);
+          )
+        }, 100)
       }
-    };
+    }
 
-    linkChildren({ props, offset });
+    linkChildren({ props, offset })
 
     const toggleItem = (active: number) => {
       children.forEach((item, index) => {
         if (index === active) {
-          updateOffset(item);
+          updateOffset(item)
         } else if (item.state.showPopup) {
-          item.toggle(false, { immediate: true });
+          item.toggle(false, { immediate: true })
         }
-      });
-    };
+      })
+    }
 
     const onScroll = (res: { scrollTop: number }) => {
-      const { scrollFixed } = props;
+      const { scrollFixed } = props
 
-      const scrollTop = res.scrollTop;
+      const scrollTop = res.scrollTop
 
-      isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed));
-    };
+      isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
+    }
 
     const getClasses = (showPopup: boolean) => {
-      let str = '';
-      const { titleClass } = props;
+      let str = ''
+      const { titleClass } = props
 
       if (showPopup) {
-        str += 'active';
+        str += 'active'
       }
 
       if (titleClass) {
-        str += ` ${titleClass}`;
+        str += ` ${titleClass}`
       }
 
-      return str;
-    };
+      return str
+    }
 
     usePageScroll((res) => {
-      const { scrollFixed } = props;
+      const { scrollFixed } = props
 
       if (scrollFixed) {
-        onScroll(res);
+        onScroll(res)
       }
-    });
+    })
 
     return {
       toggleItem,
@@ -159,7 +159,7 @@ export default create({
       barRef,
       refRandomId,
       getClasses
-    };
+    }
   }
-});
+})
 </script>

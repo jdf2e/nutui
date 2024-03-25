@@ -8,10 +8,10 @@
   </nut-config-provider>
 </template>
 <script setup>
-import { ref } from 'vue';
-const val = ref();
+import { ref } from 'vue'
+const val = ref()
 const themeVars = ref({
   primaryColor: '#008000',
   primaryColorEnd: '#008000'
-});
+})
 </script>

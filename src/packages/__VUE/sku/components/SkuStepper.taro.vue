@@ -16,10 +16,10 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutInputNumber from '../../inputnumber/index.taro';
-const { create } = createComponent('sku-stepper');
+import { ref, onMounted } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutInputNumber from '../../inputnumber/index.taro'
+const { create } = createComponent('sku-stepper')
 
 export default create({
   props: {
@@ -53,45 +53,45 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const goodsCount = ref(props.stepperMin);
+    const goodsCount = ref(props.stepperMin)
 
     onMounted(() => {
-      goodsCount.value = props.stepperMin;
-    });
+      goodsCount.value = props.stepperMin
+    })
 
     const getExtraText = () => {
-      const { stepperExtraText } = props;
+      const { stepperExtraText } = props
 
       if (stepperExtraText) {
         if (stepperExtraText === true) {
-          return '';
+          return ''
         }
-        return stepperExtraText?.();
+        return stepperExtraText?.()
       }
-    };
+    }
 
     // 修改购买数量 add 加  reduce 减
     const add = (value: number) => {
-      emit('add', value);
-    };
+      emit('add', value)
+    }
 
     const reduce = (value: number) => {
-      emit('reduce', value);
-    };
+      emit('reduce', value)
+    }
 
     // stepper 极限值
     const overlimit = (e: Event, action: string) => {
       emit('overLimit', {
         action,
         value: parseInt(goodsCount.value + '')
-      });
-    };
+      })
+    }
     // stepper 发生了改变
     const changeStepper = (value: number) => {
-      goodsCount.value = value;
+      goodsCount.value = value
 
-      emit('changeStepper', value);
-    };
+      emit('changeStepper', value)
+    }
 
     return {
       goodsCount,
@@ -100,7 +100,7 @@ export default create({
       overlimit,
       getExtraText,
       changeStepper
-    };
+    }
   }
-});
+})
 </script>

@@ -94,26 +94,26 @@ import {
   nextTick,
   CSSProperties,
   PropType
-} from 'vue';
-import NutSticky from '../sticky/index.vue';
-import { JoySmile } from '@nutui/icons-vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
-import { TypeOfFun } from '@/packages/utils/util';
-import { useRect } from '@/packages/utils/useRect';
-import raf from '@/packages/utils/raf';
-import { useTabContentTouch } from './hooks';
-import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
+} from 'vue'
+import NutSticky from '../sticky/index.vue'
+import { JoySmile } from '@nutui/icons-vue'
+import { createComponent } from '@/packages/utils/create'
+import { pxCheck } from '@/packages/utils/pxCheck'
+import { TypeOfFun } from '@/packages/utils/util'
+import { useRect } from '@/packages/utils/useRect'
+import raf from '@/packages/utils/raf'
+import { useTabContentTouch } from './hooks'
+import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types'
 
 export class Title {
-  title = '';
-  titleSlot?: VNode[];
-  paneKey = '';
-  disabled = false;
+  title = ''
+  titleSlot?: VNode[]
+  paneKey = ''
+  disabled = false
   constructor() {}
 }
 
-const { create } = createComponent('tabs');
+const { create } = createComponent('tabs')
 
 export default create({
   components: { NutSticky, JoySmile },
@@ -182,194 +182,194 @@ export default create({
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props, { emit, slots }: any) {
-    const container = ref<any>(null);
-    let stickyFixed: boolean;
+    const container = ref<any>(null)
+    let stickyFixed: boolean
     provide('tabsOpiton', {
       activeKey: computed(() => props.modelValue || '0'),
       autoHeight: computed(() => props.autoHeight),
       animatedTime: computed(() => props.animatedTime)
-    });
+    })
 
-    const titles: Ref<Title[]> = ref([]);
+    const titles: Ref<Title[]> = ref([])
     const renderTitles = (vnodes: VNode[]) => {
       vnodes.forEach((vnode: VNode, index: number) => {
-        let type = vnode.type;
-        type = (type as any).name || type;
+        let type = vnode.type
+        type = (type as any).name || type
         if (type == 'NutTabPane') {
-          let title = new Title();
+          let title = new Title()
           if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
-            let paneKeyType = TypeOfFun(vnode.props?.['pane-key']);
+            let paneKeyType = TypeOfFun(vnode.props?.['pane-key'])
             let paneIndex =
-              paneKeyType == 'number' || paneKeyType == 'string' ? String(vnode.props?.['pane-key']) : null;
-            let camelPaneKeyType = TypeOfFun(vnode.props?.['paneKey']);
+              paneKeyType == 'number' || paneKeyType == 'string' ? String(vnode.props?.['pane-key']) : null
+            let camelPaneKeyType = TypeOfFun(vnode.props?.['paneKey'])
             let camelPaneIndex =
-              camelPaneKeyType == 'number' || camelPaneKeyType == 'string' ? String(vnode.props?.['paneKey']) : null;
-            title.title = vnode.props?.title;
-            title.paneKey = paneIndex || camelPaneIndex || String(index);
-            title.disabled = vnode.props?.disabled;
+              camelPaneKeyType == 'number' || camelPaneKeyType == 'string' ? String(vnode.props?.['paneKey']) : null
+            title.title = vnode.props?.title
+            title.paneKey = paneIndex || camelPaneIndex || String(index)
+            title.disabled = vnode.props?.disabled
           } else {
             // title.titleSlot = vnode.children?.title() as VNode[];
           }
-          titles.value.push(title);
+          titles.value.push(title)
         } else {
           if (vnode.children == ' ') {
-            return;
+            return
           }
-          renderTitles(vnode.children as VNode[]);
+          renderTitles(vnode.children as VNode[])
         }
-      });
-    };
+      })
+    }
 
-    const currentIndex = ref((props.modelValue as number) || 0);
+    const currentIndex = ref((props.modelValue as number) || 0)
     const findTabsIndex = (value: string | number) => {
-      let index = titles.value.findIndex((item) => item.paneKey == value);
+      let index = titles.value.findIndex((item) => item.paneKey == value)
       if (titles.value.length == 0) {
         // console.warn('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
       } else if (index == -1) {
         // console.warn('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
       } else {
-        currentIndex.value = index;
+        currentIndex.value = index
       }
-    };
+    }
 
     const getScrollY = computed(() => {
-      return props.titleScroll && props.direction === 'vertical';
-    });
-    const navRef = ref<HTMLElement>();
-    const titleRef = ref([]) as Ref<HTMLElement[]>;
+      return props.titleScroll && props.direction === 'vertical'
+    })
+    const navRef = ref<HTMLElement>()
+    const titleRef = ref([]) as Ref<HTMLElement[]>
     const scrollIntoView = (immediate?: boolean) => {
-      const nav = navRef.value;
-      const _titles = titleRef.value;
+      const nav = navRef.value
+      const _titles = titleRef.value
       if (!nav || !_titles || !_titles[currentIndex.value]) {
-        return;
+        return
       }
-      const title = _titles[currentIndex.value];
+      const title = _titles[currentIndex.value]
 
-      let to = 0;
+      let to = 0
       if (props.direction === 'vertical') {
-        const runTop = title.offsetTop - nav.offsetTop + 10;
-        to = runTop - (nav.offsetHeight - title.offsetHeight) / 2;
+        const runTop = title.offsetTop - nav.offsetTop + 10
+        to = runTop - (nav.offsetHeight - title.offsetHeight) / 2
       } else {
-        to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
+        to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
       }
 
-      scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction);
-    };
+      scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction)
+    }
 
     const scrollDirection = (nav: any, to: number, duration: number, direction: 'horizontal' | 'vertical') => {
-      let count = 0;
-      const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop;
-      const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
+      let count = 0
+      const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop
+      const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
 
       function animate() {
         if (direction === 'horizontal') {
-          nav.scrollLeft += (to - from) / frames;
+          nav.scrollLeft += (to - from) / frames
         } else {
-          nav.scrollTop += (to - from) / frames;
+          nav.scrollTop += (to - from) / frames
         }
 
         if (++count < frames) {
-          raf(animate);
+          raf(animate)
         }
       }
 
-      animate();
-    };
+      animate()
+    }
     const init = (vnodes: VNode[] = slots.default?.()) => {
-      titles.value = [];
-      vnodes = vnodes?.filter((item) => typeof item.children !== 'string');
+      titles.value = []
+      vnodes = vnodes?.filter((item) => typeof item.children !== 'string')
       if (vnodes && vnodes.length) {
-        renderTitles(vnodes);
+        renderTitles(vnodes)
       }
-      findTabsIndex(props.modelValue);
+      findTabsIndex(props.modelValue)
       nextTick(() => {
-        scrollIntoView();
-      });
-    };
+        scrollIntoView()
+      })
+    }
     const onStickyScroll = (params: { top: number; fixed: boolean }) => {
-      stickyFixed = params.fixed;
-    };
+      stickyFixed = params.fixed
+    }
 
     watch(
       () => slots.default?.(),
       (vnodes: VNode[]) => {
-        init(vnodes);
+        init(vnodes)
       }
-    );
+    )
     const getScrollTopRoot = () => {
-      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    };
+      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    }
     watch(
       () => props.modelValue,
       (value: string | number) => {
-        findTabsIndex(value);
-        scrollIntoView();
+        findTabsIndex(value)
+        scrollIntoView()
         if (stickyFixed) {
-          let top = useRect(container.value!).top + getScrollTopRoot();
-          let value = Math.ceil(top - props.top);
+          let top = useRect(container.value!).top + getScrollTopRoot()
+          let value = Math.ceil(top - props.top)
           window.scrollTo({
             top: value,
             behavior: 'smooth'
-          });
+          })
         }
       }
-    );
-    onMounted(init);
-    onActivated(init);
+    )
+    onMounted(init)
+    onActivated(init)
     const tabMethods = {
       isBegin: () => {
-        return currentIndex.value == 0;
+        return currentIndex.value == 0
       },
       isEnd: () => {
-        return currentIndex.value == titles.value.length - 1;
+        return currentIndex.value == titles.value.length - 1
       },
       next: () => {
-        currentIndex.value += 1;
-        const nextDisabled = titles.value[currentIndex.value].disabled;
+        currentIndex.value += 1
+        const nextDisabled = titles.value[currentIndex.value].disabled
         if (tabMethods.isEnd() && nextDisabled) {
-          tabMethods.prev();
-          return;
+          tabMethods.prev()
+          return
         }
         if (nextDisabled && currentIndex.value < titles.value.length - 1) {
-          tabMethods.next();
-          return;
+          tabMethods.next()
+          return
         }
-        tabMethods.updateValue(titles.value[currentIndex.value]);
+        tabMethods.updateValue(titles.value[currentIndex.value])
       },
       prev: () => {
-        currentIndex.value -= 1;
-        const prevDisabled = titles.value[currentIndex.value].disabled;
+        currentIndex.value -= 1
+        const prevDisabled = titles.value[currentIndex.value].disabled
         if (tabMethods.isBegin() && prevDisabled) {
-          tabMethods.next();
-          return;
+          tabMethods.next()
+          return
         }
         if (prevDisabled && currentIndex.value > 0) {
-          tabMethods.prev();
-          return;
+          tabMethods.prev()
+          return
         }
-        tabMethods.updateValue(titles.value[currentIndex.value]);
+        tabMethods.updateValue(titles.value[currentIndex.value])
       },
       updateValue: (item: Title) => {
-        emit('update:modelValue', item.paneKey);
-        emit('change', item);
+        emit('update:modelValue', item.paneKey)
+        emit('change', item)
       },
       tabChange: (item: Title, index: number) => {
-        emit('click', item);
+        emit('click', item)
         if (item.disabled || currentIndex.value == index) {
-          return;
+          return
         }
-        currentIndex.value = index;
-        tabMethods.updateValue(item);
+        currentIndex.value = index
+        tabMethods.updateValue(item)
       },
       setTabItemRef: (el: HTMLElement, index: number) => {
-        titleRef.value[index] = el;
+        titleRef.value[index] = el
       }
-    };
-    const { tabsContentRef, touchState, touchMethods } = useTabContentTouch(props, tabMethods);
+    }
+    const { tabsContentRef, touchState, touchMethods } = useTabContentTouch(props, tabMethods)
     const contentStyle = computed(() => {
-      let offsetPercent = currentIndex.value * 100;
+      let offsetPercent = currentIndex.value * 100
       if (touchState.moving) {
-        offsetPercent += touchState.offset;
+        offsetPercent += touchState.offset
       }
       let style: CSSProperties = {
         transform:
@@ -377,31 +377,31 @@ export default create({
             ? `translate3d(-${offsetPercent}%, 0, 0)`
             : `translate3d( 0,-${offsetPercent}%, 0)`,
         transitionDuration: touchState.moving ? undefined : `${props.animatedTime}ms`
-      };
-      if (props.animatedTime == 0) {
-        style = {};
       }
-      return style;
-    });
+      if (props.animatedTime == 0) {
+        style = {}
+      }
+      return style
+    })
     const tabsNavStyle = computed(() => {
       return {
         background: props.background
-      };
-    });
+      }
+    })
     const tabsActiveStyle = computed(() => {
       return {
         color: props.type == 'smile' ? props.color : '',
         background: props.type == 'line' ? props.color : ''
-      };
-    });
-    const titleStyle = computed(() => {
-      if (!props.titleGutter) return {};
-      const px = pxCheck(props.titleGutter);
-      if (props.direction === 'vertical') {
-        return { marginTop: px, marginBottom: px };
       }
-      return { marginLeft: px, marginRight: px };
-    });
+    })
+    const titleStyle = computed(() => {
+      if (!props.titleGutter) return {}
+      const px = pxCheck(props.titleGutter)
+      if (props.direction === 'vertical') {
+        return { marginTop: px, marginBottom: px }
+      }
+      return { marginLeft: px, marginRight: px }
+    })
 
     return {
       navRef,
@@ -416,7 +416,7 @@ export default create({
       onStickyScroll,
       ...tabMethods,
       ...touchMethods
-    };
+    }
   }
-});
+})
 </script>

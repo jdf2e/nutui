@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '../../../utils';
-import Basic from './basic.vue';
-import Mask from './mask.vue';
-import Duration from './duration.vue';
-import Lock from './lock.vue';
-import Nest from './nest.vue';
-import Close from './close.vue';
+import { useTranslate } from '../../../utils'
+import Basic from './basic.vue'
+import Mask from './mask.vue'
+import Duration from './duration.vue'
+import Lock from './lock.vue'
+import Nest from './nest.vue'
+import Close from './close.vue'
 
 const t = useTranslate({
   'zh-CN': {
@@ -46,5 +46,5 @@ const t = useTranslate({
     nest: 'Nested content',
     close: 'Click the mask not to close'
   }
-});
+})
 </script>

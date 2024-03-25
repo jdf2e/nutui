@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Elevator } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Elevator } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Elevator);
+const app = createApp()
+app.use(Elevator)
 ```
 
 ### 基础用法

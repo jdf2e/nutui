@@ -7,12 +7,12 @@ It is often used for the storage and display of large blocks of content in the l
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Tabs, TabPane } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Tabs, TabPane } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Tabs);
-app.use(TabPane);
+const app = createApp()
+app.use(Tabs)
+app.use(TabPane)
 ```
 
 ### Basic Usage

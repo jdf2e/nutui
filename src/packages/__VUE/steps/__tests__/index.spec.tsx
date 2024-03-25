@@ -1,17 +1,17 @@
-import { mount } from '@vue/test-utils';
-import { Button, Step, Steps } from '@nutui/nutui';
-import { Service, People, Location2 } from '@nutui/icons-vue';
-import { nextTick, toRefs, reactive } from 'vue';
+import { mount } from '@vue/test-utils'
+import { Button, Step, Steps } from '@nutui/nutui'
+import { Service, People, Location2 } from '@nutui/icons-vue'
+import { nextTick, toRefs, reactive } from 'vue'
 
 test('should render horizontal class when props direction is to be horizontal', () => {
   const wrapper = mount(Steps, {
     props: {
       direction: 'horizontal'
     }
-  });
+  })
 
-  expect(wrapper.classes()).toContain('nut-steps-horizontal');
-});
+  expect(wrapper.classes()).toContain('nut-steps-horizontal')
+})
 
 test('should first step checked when props current is to be 1', async () => {
   const wrapper = mount({
@@ -26,23 +26,23 @@ test('should first step checked when props current is to be 1', async () => {
         <nut-step title="步骤三">3</nut-step>
       </nut-steps>
     `
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const stepItem = wrapper.findAll('.nut-step')[0];
-  expect(stepItem.classes()).toContain('nut-step-process');
-});
+  const stepItem = wrapper.findAll('.nut-step')[0]
+  expect(stepItem.classes()).toContain('nut-step-process')
+})
 
 test('should render dot class when props progressDot is to be true', async () => {
   const wrapper = mount(Steps, {
     props: {
       progressDot: true
     }
-  });
+  })
 
-  expect(wrapper.classes()).toContain('nut-steps-dot');
-});
+  expect(wrapper.classes()).toContain('nut-steps-dot')
+})
 
 test('step props and icon slots', async () => {
   const wrapper = mount({
@@ -66,23 +66,23 @@ test('step props and icon slots', async () => {
         </nut-step>
       </nut-steps>
     `
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const stepItemTitle = wrapper.findAll('.nut-step-title')[0];
+  const stepItemTitle = wrapper.findAll('.nut-step-title')[0]
 
-  expect(stepItemTitle.element.innerHTML).toEqual('<span>已完成</span>');
+  expect(stepItemTitle.element.innerHTML).toEqual('<span>已完成</span>')
 
-  const stepItemContent = wrapper.findAll('.nut-step-content')[1];
+  const stepItemContent = wrapper.findAll('.nut-step-content')[1]
 
-  expect(stepItemContent.element.innerHTML).toEqual('<span>您的订单正在配送途中</span>');
+  expect(stepItemContent.element.innerHTML).toEqual('<span>您的订单正在配送途中</span>')
 
-  const stepItemIcons = wrapper.findAll('.nut-icon');
-  const icon = stepItemIcons[0];
-  expect(stepItemIcons.length).toEqual(3);
-  expect((icon.element as HTMLElement).tagName).matchSnapshot();
-});
+  const stepItemIcons = wrapper.findAll('.nut-icon')
+  const icon = stepItemIcons[0]
+  expect(stepItemIcons.length).toEqual(3)
+  expect((icon.element as HTMLElement).tagName).matchSnapshot()
+})
 
 test('should props current changes when trigger click', async () => {
   const wrapper = mount({
@@ -102,32 +102,32 @@ test('should props current changes when trigger click', async () => {
     setup() {
       const state = reactive({
         current: 1
-      });
+      })
 
       const handleClick = () => {
         if (state.current >= 3) {
-          state.current = 1;
+          state.current = 1
         } else {
-          state.current += 1;
+          state.current += 1
         }
-      };
+      }
 
-      return { ...toRefs(state), handleClick };
+      return { ...toRefs(state), handleClick }
     }
-  });
+  })
 
-  const button = wrapper.find('.nut-button');
-  await button.trigger('click');
-  await nextTick();
-  expect(wrapper.vm.current).toBe(2);
+  const button = wrapper.find('.nut-button')
+  await button.trigger('click')
+  await nextTick()
+  expect(wrapper.vm.current).toBe(2)
 
-  const stepItem = wrapper.findAll('.nut-step')[1];
-  expect(stepItem.classes()).toContain('nut-step-process');
+  const stepItem = wrapper.findAll('.nut-step')[1]
+  expect(stepItem.classes()).toContain('nut-step-process')
 
-  await button.trigger('click');
-  await nextTick();
-  expect(wrapper.vm.current).toBe(3);
-});
+  await button.trigger('click')
+  await nextTick()
+  expect(wrapper.vm.current).toBe(3)
+})
 
 test('should emited click when step trigger', async () => {
   const wrapper = mount({
@@ -145,16 +145,16 @@ test('should emited click when step trigger', async () => {
     setup() {
       const state = reactive({
         current: 1
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  await nextTick();
-  await wrapper.vm.$emit('click-step');
-  expect(wrapper.emitted('click-step')).toBeTruthy();
-});
+  await nextTick()
+  await wrapper.vm.$emit('click-step')
+  expect(wrapper.emitted('click-step')).toBeTruthy()
+})
 
 test('render step slot', async () => {
   const wrapper = mount({
@@ -177,12 +177,12 @@ test('render step slot', async () => {
     setup() {
       const state = reactive({
         current: 1
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  expect(wrapper.html()).toContain('步骤一');
-  expect(wrapper.html()).toContain('北京市经济技术开发区科创十一街18号院京东大厦');
-});
+  expect(wrapper.html()).toContain('步骤一')
+  expect(wrapper.html()).toContain('北京市经济技术开发区科创十一街18号院京东大厦')
+})

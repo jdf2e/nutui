@@ -7,11 +7,11 @@ Buttons are used to trigger an action, such as submitting a form.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Button } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Button } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Button);
+const app = createApp()
+app.use(Button)
 ```
 
 ### Type

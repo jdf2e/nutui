@@ -4,7 +4,7 @@ const Utils = {
    * @return {Boolse} true|false
    */
   isLeapYear: function (y: number): boolean {
-    return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
+    return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
   },
 
   /**
@@ -12,10 +12,10 @@ const Utils = {
    * @return {String}
    */
   getWhatDay: function (year: number, month: number, day: number): string {
-    const date = new Date(year + '/' + month + '/' + day);
-    const index = date.getDay();
-    const dayNames = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-    return dayNames[index];
+    const date = new Date(year + '/' + month + '/' + day)
+    const index = date.getDay()
+    const dayNames = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+    return dayNames[index]
   },
 
   /**
@@ -23,12 +23,12 @@ const Utils = {
    * @return {Number}
    */
   getMonthPreDay: function (year: number, month: number): number {
-    const date = new Date(year + '/' + month + '/01');
-    let day = date.getDay();
+    const date = new Date(year + '/' + month + '/01')
+    let day = date.getDay()
     if (day == 0) {
-      day = 7;
+      day = 7
     }
-    return day;
+    return day
   },
 
   /**
@@ -37,11 +37,11 @@ const Utils = {
    */
   getMonthDays: function (year: string, month: string): number {
     if (/^0/.test(month)) {
-      month = month.split('')[1];
+      month = month.split('')[1]
     }
     return ([0, 31, this.isLeapYear(Number(year)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] as number[])[
       month as any
-    ];
+    ]
   },
 
   /**
@@ -49,8 +49,8 @@ const Utils = {
    * @return {string}
    */
   getNumTwoBit: function (n: number): string {
-    n = Number(n);
-    return (n > 9 ? '' : '0') + n;
+    n = Number(n)
+    return (n > 9 ? '' : '0') + n
   },
 
   /**
@@ -58,11 +58,11 @@ const Utils = {
    * @return {string}
    */
   date2Str: function (date: Date, split?: string): string {
-    split = split || '-';
-    const y = date.getFullYear();
-    const m = this.getNumTwoBit(date.getMonth() + 1);
-    const d = this.getNumTwoBit(date.getDate());
-    return [y, m, d].join(split);
+    split = split || '-'
+    const y = date.getFullYear()
+    const m = this.getNumTwoBit(date.getMonth() + 1)
+    const d = this.getNumTwoBit(date.getDate())
+    return [y, m, d].join(split)
   },
 
   /**
@@ -71,11 +71,11 @@ const Utils = {
    * @return {string} '2014-12-31'
    */
   getDay: function (i: number): string {
-    i = i || 0;
-    let date = new Date();
-    const diff = i * (1000 * 60 * 60 * 24);
-    date = new Date(date.getTime() + diff);
-    return this.date2Str(date);
+    i = i || 0
+    let date = new Date()
+    const diff = i * (1000 * 60 * 60 * 24)
+    date = new Date(date.getTime() + diff)
+    return this.date2Str(date)
   },
 
   /**
@@ -83,12 +83,12 @@ const Utils = {
    * @return {Boolean}
    */
   compareDate: function (date1: string, date2: string): boolean {
-    const startTime = new Date(date1.replace('-', '/').replace('-', '/'));
-    const endTime = new Date(date2.replace('-', '/').replace('-', '/'));
+    const startTime = new Date(date1.replace('-', '/').replace('-', '/'))
+    const endTime = new Date(date2.replace('-', '/').replace('-', '/'))
     if (startTime >= endTime) {
-      return false;
+      return false
     }
-    return true;
+    return true
   },
 
   /**
@@ -96,65 +96,65 @@ const Utils = {
    * @return {Boolean}
    */
   isEqual: function (date1: string, date2: string): boolean {
-    const startTime = new Date(date1).getTime();
-    const endTime = new Date(date2).getTime();
+    const startTime = new Date(date1).getTime()
+    const endTime = new Date(date2).getTime()
     if (startTime == endTime) {
-      return true;
+      return true
     }
-    return false;
+    return false
   },
   getMonthWeek: function (year: string, month: string, date: string, firstDayOfWeek: number = 0): number {
-    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
-    let w = dateNow.getDay(); //星期数
-    let d = dateNow.getDate();
-    let remainder = 6 - w;
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
+    let w = dateNow.getDay() //星期数
+    let d = dateNow.getDate()
+    let remainder = 6 - w
     if (firstDayOfWeek !== 0) {
-      w = w == 0 ? 7 : w;
-      remainder = 7 - w;
+      w = w == 0 ? 7 : w
+      remainder = 7 - w
     }
-    return Math.ceil((d + remainder) / 7);
+    return Math.ceil((d + remainder) / 7)
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getYearWeek: function (year: string, month: string, date: string, firstDayOfWeek: number = 0): number {
-    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
-    const dateFirst = new Date(Number(year), 0, 1);
-    const dataNumber = Math.round((dateNow.valueOf() - dateFirst.valueOf()) / 86400000);
-    return Math.ceil((dataNumber + (dateFirst.getDay() + 1 - 1)) / 7);
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
+    const dateFirst = new Date(Number(year), 0, 1)
+    const dataNumber = Math.round((dateNow.valueOf() - dateFirst.valueOf()) / 86400000)
+    return Math.ceil((dataNumber + (dateFirst.getDay() + 1 - 1)) / 7)
   },
   getWeekDate: function (year: string, month: string, date: string, firstDayOfWeek: number = 0): string[] {
-    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
-    const nowTime = dateNow.getTime();
-    let day = dateNow.getDay();
+    const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
+    const nowTime = dateNow.getTime()
+    let day = dateNow.getDay()
     if (firstDayOfWeek === 0) {
-      const oneDayTime = 24 * 60 * 60 * 1000;
+      const oneDayTime = 24 * 60 * 60 * 1000
       //显示周日
-      const SundayTime = nowTime - day * oneDayTime; //本周的周日
+      const SundayTime = nowTime - day * oneDayTime //本周的周日
       //显示周六
-      const SaturdayTime = nowTime + (6 - day) * oneDayTime; //本周的周六
+      const SaturdayTime = nowTime + (6 - day) * oneDayTime //本周的周六
 
-      const sunday = this.date2Str(new Date(SundayTime));
-      const saturday = this.date2Str(new Date(SaturdayTime));
-      return [sunday, saturday];
+      const sunday = this.date2Str(new Date(SundayTime))
+      const saturday = this.date2Str(new Date(SaturdayTime))
+      return [sunday, saturday]
     } else {
-      day = day == 0 ? 7 : day;
-      const oneDayTime = 24 * 60 * 60 * 1000;
+      day = day == 0 ? 7 : day
+      const oneDayTime = 24 * 60 * 60 * 1000
       //显示周一
-      const MondayTime = nowTime - (day - 1) * oneDayTime; //本周的周一
+      const MondayTime = nowTime - (day - 1) * oneDayTime //本周的周一
       //显示周日
-      const SundayTime = nowTime + (7 - day) * oneDayTime; //本周的周日
+      const SundayTime = nowTime + (7 - day) * oneDayTime //本周的周日
 
-      const monday = this.date2Str(new Date(MondayTime));
-      const sunday = this.date2Str(new Date(SundayTime));
-      return [monday, sunday];
+      const monday = this.date2Str(new Date(MondayTime))
+      const sunday = this.date2Str(new Date(SundayTime))
+      return [monday, sunday]
     }
   },
   formatResultDate: function (date: string) {
-    let days = [...date.split('-')];
-    days[2] = Utils.getNumTwoBit(Number(days[2]));
-    days[3] = `${days[0]}-${days[1]}-${days[2]}`;
-    days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
-    return days;
+    let days = [...date.split('-')]
+    days[2] = Utils.getNumTwoBit(Number(days[2]))
+    days[3] = `${days[0]}-${days[1]}-${days[2]}`
+    days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
+    return days
   }
-};
+}
 
-export default Utils;
+export default Utils

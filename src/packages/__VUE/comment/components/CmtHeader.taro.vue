@@ -32,9 +32,9 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { create } = createComponent('comment-header');
-import NutRate from '../../rate/index.taro';
+import { createComponent } from '@/packages/utils/create'
+const { create } = createComponent('comment-header')
+import NutRate from '../../rate/index.taro'
 
 export default create({
   components: {
@@ -54,10 +54,10 @@ export default create({
 
   setup(props, { emit }) {
     const handleClick = () => {
-      emit('handleClick');
-    };
+      emit('handleClick')
+    }
 
-    return { handleClick };
+    return { handleClick }
   }
-});
+})
 </script>

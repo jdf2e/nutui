@@ -7,11 +7,11 @@ Video player implemented by native video
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Video, Button } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Video, Button } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Video);
+const app = createApp()
+app.use(Video)
 ```
 
 ### Basic Usage

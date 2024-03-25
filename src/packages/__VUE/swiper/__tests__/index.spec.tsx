@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
-import { Swiper, SwiperItem } from '@nutui/nutui';
-import { nextTick, toRefs, reactive } from 'vue';
-import { sleep } from '@/packages/utils/unit';
+import { mount } from '@vue/test-utils'
+import { Swiper, SwiperItem } from '@nutui/nutui'
+import { nextTick, toRefs, reactive } from 'vue'
+import { sleep } from '@/packages/utils/unit'
 
 test('should render width and height', async () => {
   const wrapper = mount({
@@ -27,20 +27,20 @@ test('should render width and height', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  await nextTick();
-  await nextTick();
+  await nextTick()
+  await nextTick()
 
-  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
+  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement
 
-  expect(swiperItem.style.height).toEqual(`500px`);
-  expect(swiperItem.style.width).toEqual(`${300 * 4}px`);
-});
+  expect(swiperItem.style.height).toEqual(`500px`)
+  expect(swiperItem.style.width).toEqual(`${300 * 4}px`)
+})
 
 test('should render initpage', async () => {
   const wrapper = mount({
@@ -65,18 +65,18 @@ test('should render initpage', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  await nextTick();
-  await nextTick();
-  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
+  await nextTick()
+  await nextTick()
+  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement
 
-  expect(swiperItem.style.transform).toEqual(`translateX(-${375 * 2}px)`);
-});
+  expect(swiperItem.style.transform).toEqual(`translateX(-${375 * 2}px)`)
+})
 
 test('should render direction', async () => {
   const wrapper = mount({
@@ -102,19 +102,19 @@ test('should render direction', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  await nextTick();
-  await nextTick();
+  await nextTick()
+  await nextTick()
 
-  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
+  const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement
 
-  expect(swiperItem.style.transform).toEqual(`translateY(-${300 * 1}px)`);
-});
+  expect(swiperItem.style.transform).toEqual(`translateY(-${300 * 1}px)`)
+})
 
 test('should render pagination', async () => {
   const wrapper = mount({
@@ -140,22 +140,22 @@ test('should render pagination', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
-      return { ...toRefs(state) };
+      return { ...toRefs(state) }
     }
-  });
+  })
 
-  await nextTick();
-  await nextTick();
+  await nextTick()
+  await nextTick()
 
-  const swiperPagination = wrapper.find('.nut-swiper-pagination');
-  expect(swiperPagination.exists()).toBe(true);
-  expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
-});
+  const swiperPagination = wrapper.find('.nut-swiper-pagination')
+  expect(swiperPagination.exists()).toBe(true)
+  expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red')
+})
 
 test('should render loop and auto-play', async () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn()
   const wrapper = mount({
     props: {
       onChange
@@ -183,40 +183,40 @@ test('should render loop and auto-play', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
       const change = (index: number) => {
-        state.page = index;
-      };
+        state.page = index
+      }
 
-      return { ...toRefs(state), change };
+      return { ...toRefs(state), change }
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  await sleep(200);
+  await sleep(200)
   // const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
-  expect(wrapper.vm.page).toBe(1);
+  expect(wrapper.vm.page).toBe(1)
   // expect(swiperItem.style.transform).toEqual(`translateX(-${wrapper.vm.width * wrapper.vm.page}px)`);
   // await sleep(200);
   // expect(wrapper.vm.page).toBe(2);
-});
+})
 
 test('should not allow to drag when touchable is false', async () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn()
   const wrapper = mount(Swiper, {
     props: {
       onChange,
       touchable: false
     }
-  });
+  })
 
-  const track = wrapper.find('.nut-swiper-inner');
+  const track = wrapper.find('.nut-swiper-inner')
 
-  track.trigger('drag');
-  expect(onChange).toHaveBeenCalledTimes(0);
-});
+  track.trigger('drag')
+  expect(onChange).toHaveBeenCalledTimes(0)
+})
 
 test('should not allow to drag when loop is false', async () => {
   const wrapper = mount({
@@ -244,21 +244,21 @@ test('should not allow to drag when loop is false', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
       const change = (index: number) => {
-        state.page = index;
-      };
+        state.page = index
+      }
 
-      return { ...toRefs(state), change };
+      return { ...toRefs(state), change }
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  await sleep(200);
-  expect(wrapper.vm.page).toBe(3);
-});
+  await sleep(200)
+  expect(wrapper.vm.page).toBe(3)
+})
 
 test('should swiper to prev swiper after calling prev method', async () => {
   const wrapper = mount({
@@ -283,23 +283,23 @@ test('should swiper to prev swiper after calling prev method', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
       const change = (index: number) => {
-        state.page = index;
-      };
+        state.page = index
+      }
 
-      return { ...toRefs(state), change };
+      return { ...toRefs(state), change }
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const { swiper } = wrapper.vm.$refs as any;
-  swiper.prev();
-  await sleep(100);
-  expect(wrapper.vm.page).toBe(2);
-});
+  const { swiper } = wrapper.vm.$refs as any
+  swiper.prev()
+  await sleep(100)
+  expect(wrapper.vm.page).toBe(2)
+})
 
 test('should swiper to swiper after calling to method', async () => {
   const wrapper = mount({
@@ -324,34 +324,34 @@ test('should swiper to swiper after calling to method', async () => {
           'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
           'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
         ]
-      });
+      })
 
       const change = (index: number) => {
-        state.page = index;
-      };
+        state.page = index
+      }
 
-      return { ...toRefs(state), change };
+      return { ...toRefs(state), change }
     }
-  });
+  })
 
-  await nextTick();
+  await nextTick()
 
-  const { swiper } = wrapper.vm.$refs as any;
-  swiper.to(1);
-  await sleep(100);
-  expect(wrapper.vm.page).toBe(1);
-});
+  const { swiper } = wrapper.vm.$refs as any
+  swiper.to(1)
+  await sleep(100)
+  expect(wrapper.vm.page).toBe(1)
+})
 
 test('should change props height', async () => {
   const wrapper = mount(Swiper, {
     props: {
       height: 200
     }
-  });
+  })
   wrapper.setProps({
     height: 300
-  });
-  await nextTick();
-  await sleep(100);
-  expect(wrapper.vm.state.height).toBe(300);
-});
+  })
+  await nextTick()
+  await sleep(100)
+  expect(wrapper.vm.state.height).toBe(300)
+})

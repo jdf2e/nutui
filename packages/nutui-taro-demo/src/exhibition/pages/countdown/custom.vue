@@ -13,14 +13,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const end = ref(Date.now() + 1000 * 60 * 60 * 24 * 12);
+import { ref } from 'vue'
+const end = ref(Date.now() + 1000 * 60 * 60 * 24 * 12)
 const time = ref({
   d: '1',
   h: '00',
   m: '00',
   s: '00'
-});
+})
 </script>
 
 <style>

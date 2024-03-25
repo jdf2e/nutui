@@ -107,37 +107,37 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-import { HeartFill, Heart1 } from '@nutui/icons-vue-taro';
+import { reactive, ref } from 'vue'
+import { HeartFill, Heart1 } from '@nutui/icons-vue-taro'
 interface CalBack {
-  next: string;
-  value: string;
-  custom: string;
+  next: string
+  value: string
+  custom: string
 }
 interface RegionData {
-  name: string;
-  [key: string]: any;
+  name: string
+  [key: string]: any
 }
 interface CalResult {
-  type: string;
-  data: AddressResult;
+  type: string
+  data: AddressResult
 }
 interface AddressList {
-  id?: string | number;
-  provinceName: string;
-  cityName: string;
-  countyName: string;
-  townName: string;
-  addressDetail: string;
-  selectedAddress: boolean;
+  id?: string | number
+  provinceName: string
+  cityName: string
+  countyName: string
+  townName: string
+  addressDetail: string
+  selectedAddress: boolean
 }
 interface AddressResult extends AddressList {
-  addressIdStr: string;
-  addressStr: string;
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
+  addressIdStr: string
+  addressStr: string
+  province: RegionData[]
+  city: RegionData[]
+  country: RegionData[]
+  town: RegionData[]
 }
 const address = reactive({
   province: [
@@ -162,11 +162,11 @@ const address = reactive({
     { id: 4, name: '常营乡', title: 'C' }
   ],
   town: []
-});
+})
 
-const placeholder = ref(['请选择省', '请选择市', '请选择县']);
-const value = ref([1, 7, 3]);
-const value2 = ref([1, 7, 3]);
+const placeholder = ref(['请选择省', '请选择市', '请选择县'])
+const value = ref([1, 7, 3])
+const value2 = ref([1, 7, 3])
 
 const showPopup = reactive({
   normal: false,
@@ -175,14 +175,14 @@ const showPopup = reactive({
   customImg: false,
   other: false,
   select: false
-});
+})
 
 const icon = reactive({
   selectedIcon: 'heart-fill',
   defaultIcon: 'heart1',
   closeBtnIcon: 'close',
   backBtnIcon: 'left'
-});
+})
 
 const existAddress = ref([
   {
@@ -218,7 +218,7 @@ const existAddress = ref([
     name: '探探鱼',
     phone: '182****1718'
   }
-]);
+])
 
 const text = reactive({
   one: '请选择地址',
@@ -227,97 +227,97 @@ const text = reactive({
   four: '请选择地址',
   five: '请选择地址',
   six: '请选择地址'
-});
+})
 
 const showAddress = () => {
-  showPopup.normal = !showPopup.normal;
-};
+  showPopup.normal = !showPopup.normal
+}
 
 const showAddress2 = () => {
-  showPopup.normal2 = !showPopup.normal2;
-};
+  showPopup.normal2 = !showPopup.normal2
+}
 
 const showSelected = () => {
-  showPopup.select = !showPopup.select;
-};
+  showPopup.select = !showPopup.select
+}
 
 const onChange = (cal: CalBack, tag: string) => {
-  const name = (address as any)[cal.next];
+  const name = (address as any)[cal.next]
   if (name?.length < 1) {
-    (showPopup as any)[tag] = false;
+    ;(showPopup as any)[tag] = false
   }
-};
+}
 const close1 = (val: CalResult) => {
-  console.log(val);
-  text.one = val.data.addressStr;
-};
+  console.log(val)
+  text.one = val.data.addressStr
+}
 
 const close5 = (val: CalResult) => {
-  text.five = val.data.addressStr;
-  value2.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.five = val.data.addressStr
+  value2.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 
 const close6 = (val: CalResult) => {
-  text.six = val.data.addressStr;
-  value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
-};
+  text.six = val.data.addressStr
+  value.value = [val.data.province.id, val.data.city.id, val.data.country.id]
+}
 
 const showAddressExist = () => {
-  showPopup.exist = true;
-};
+  showPopup.exist = true
+}
 
 const close2 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.two = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.two = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.two = val.data.addressStr;
+    text.two = val.data.addressStr
   }
-};
+}
 const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData) => {
-  console.log(prevExistAdd);
-  console.log(nowExistAdd);
-};
+  console.log(prevExistAdd)
+  console.log(nowExistAdd)
+}
 
 const showAddressOther = () => {
-  showPopup.other = true;
-};
+  showPopup.other = true
+}
 const showCustomImg = () => {
-  showPopup.customImg = true;
-};
+  showPopup.customImg = true
+}
 
 const close3 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.three = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.three = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.three = val.data.addressStr;
+    text.three = val.data.addressStr
   }
-};
+}
 
 const close4 = (val: CalResult) => {
-  console.log(val);
+  console.log(val)
   if (val.type == 'exist') {
-    const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
-    text.four = provinceName + cityName + countyName + townName + addressDetail;
+    const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+    text.four = provinceName + cityName + countyName + townName + addressDetail
   } else {
-    text.four = val.data.addressStr;
+    text.four = val.data.addressStr
   }
-};
+}
 
 const switchModule = (val: CalResult) => {
   if (val.type == 'custom') {
-    console.log('点击了“选择其他地址”按钮');
+    console.log('点击了“选择其他地址”按钮')
   } else {
-    console.log('点击了自定义地址左上角的返回按钮');
+    console.log('点击了自定义地址左上角的返回按钮')
   }
-};
+}
 
 const closeMask = (val: CalResult) => {
-  console.log('关闭弹层', val);
-};
+  console.log('关闭弹层', val)
+}
 </script>
 
 <style lang="scss">

@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useTranslate } from '@/sites/utils';
-import Basic from './basic.vue';
-import Gap from './gap.vue';
-import Flex from './flex.vue';
+import { useTranslate } from '@/sites/utils'
+import Basic from './basic.vue'
+import Gap from './gap.vue'
+import Flex from './flex.vue'
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -27,5 +27,5 @@ const t = useTranslate({
     gap: 'Column spacing',
     flex: 'Flex layout'
   }
-});
+})
 </script>

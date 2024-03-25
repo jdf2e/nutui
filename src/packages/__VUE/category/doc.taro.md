@@ -7,12 +7,12 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { Category, CategoryPane } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { Category, CategoryPane } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(Category);
-app.use(CategoryPane);
+const app = createApp()
+app.use(Category)
+app.use(CategoryPane)
 ```
 
 ### 经典分类模式
@@ -29,37 +29,37 @@ data 数据格式可参考
   </nut-category>
 </template>
 <script setup>
-import { reactive, toRefs, onMounted } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue'
 const data = reactive({
   categoryInfo: {},
   category: [{}],
   categoryChild: [{}]
-});
+})
 
 onMounted(() => {
   setTimeout(() => {
-    getData();
-  }, 500);
-});
+    getData()
+  }, 500)
+})
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
     .then((response) => response.json())
     .then((res) => {
-      const { categoryInfo, categoryChild } = res;
-      data.categoryInfo = categoryInfo;
-      data.category = categoryInfo.category;
-      data.categoryChild = categoryChild;
+      const { categoryInfo, categoryChild } = res
+      data.categoryInfo = categoryInfo
+      data.category = categoryInfo.category
+      data.categoryChild = categoryChild
     })
-    .catch((err) => console.log('Oh, error', err));
-};
+    .catch((err) => console.log('Oh, error', err))
+}
 
 const change = (index) => {
-  data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children);
-};
+  data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children)
+}
 const onChange = () => {
-  console.log('当前分类数据');
-};
+  console.log('当前分类数据')
+}
 </script>
 ```
 
@@ -76,39 +76,39 @@ const onChange = () => {
   ></nut-category>
 </template>
 <script setup>
-import { reactive, toRefs, onMounted } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue'
 const data = reactive({
   categoryInfo: {},
   category: [{}],
   categoryChild: [{}]
-});
+})
 
 onMounted(() => {
   setTimeout(() => {
-    getData();
-  }, 500);
-});
+    getData()
+  }, 500)
+})
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
     .then((response) => response.json())
     .then((res) => {
-      console.log('res', res);
-      const { categoryInfo, categoryChild } = res;
-      data.categoryInfo = categoryInfo;
-      data.category = categoryInfo.category;
-      data.categoryChild = categoryChild;
+      console.log('res', res)
+      const { categoryInfo, categoryChild } = res
+      data.categoryInfo = categoryInfo
+      data.category = categoryInfo.category
+      data.categoryChild = categoryChild
     })
-    .catch((err) => console.log('Oh, error', err));
-};
+    .catch((err) => console.log('Oh, error', err))
+}
 
 const changeText = (index) => {
-  data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children);
-};
+  data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children)
+}
 
 const onChange = () => {
-  console.log('当前分类数据');
-};
+  console.log('当前分类数据')
+}
 </script>
 ```
 
@@ -126,27 +126,27 @@ const onChange = () => {
   ></nut-category>
 </template>
 <script setup>
-import { reactive, toRefs, onMounted } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue'
 const data = reactive({
   customCategory: [{}]
-});
+})
 onMounted(() => {
   setTimeout(() => {
-    getData();
-  }, 500);
-});
+    getData()
+  }, 500)
+})
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
     .then((response) => response.json())
     .then((res) => {
-      const { customCategory } = res;
-      data.customCategory = customCategory;
+      const { customCategory } = res
+      data.customCategory = customCategory
     })
-    .catch((err) => console.log('Oh, error', err));
-};
+    .catch((err) => console.log('Oh, error', err))
+}
 const changeCustom = () => {
-  console.log('点击分类数据');
-};
+  console.log('点击分类数据')
+}
 </script>
 ```
 

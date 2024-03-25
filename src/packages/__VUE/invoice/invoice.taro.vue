@@ -37,38 +37,38 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import NutForm from '../form/index.taro';
-import NutFormItem from '../formitem/index.taro';
-import NutRadio from '../radio/index.taro.vue';
-import NutRadioGroup from '../radiogroup/index.taro.vue';
-import NutButton from '../button/index.taro';
-import NutInput from '../input/index.taro.vue';
-import type { InvoiceDataItem } from './types';
+import { ref } from 'vue'
+import NutForm from '../form/index.taro'
+import NutFormItem from '../formitem/index.taro'
+import NutRadio from '../radio/index.taro.vue'
+import NutRadioGroup from '../radiogroup/index.taro.vue'
+import NutButton from '../button/index.taro'
+import NutInput from '../input/index.taro.vue'
+import type { InvoiceDataItem } from './types'
 
 defineOptions({
   name: 'NutInvoice'
-});
+})
 
 export type InvoiceProps = Partial<{
-  data: InvoiceDataItem[];
-  formValue: any;
-  submit: boolean;
-}>;
+  data: InvoiceDataItem[]
+  formValue: any
+  submit: boolean
+}>
 
 withDefaults(defineProps<InvoiceProps>(), {
   data: () => [],
   formValue: () => {},
   submit: true
-});
+})
 
-const emit = defineEmits(['submit', 'scrollBottom']);
+const emit = defineEmits(['submit', 'scrollBottom'])
 
-const formRef = ref();
+const formRef = ref()
 
 const submitFun = () => {
   formRef.value.validate().then(({ valid, errors }: any) => {
-    emit('submit', valid, errors);
-  });
-};
+    emit('submit', valid, errors)
+  })
+}
 </script>

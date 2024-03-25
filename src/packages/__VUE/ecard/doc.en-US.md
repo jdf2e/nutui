@@ -7,11 +7,11 @@ Virtual e-card selection
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Ecard } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Ecard } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Ecard);
+const app = createApp()
+app.use(Ecard)
 ```
 
 ### Basic

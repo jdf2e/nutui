@@ -1,13 +1,13 @@
-import CircleProgress from './circle-progress.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import CircleProgress from './circle-progress.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(CircleProgress);
+withInstall(CircleProgress)
 
-export type { CircleProgressProps } from './circle-progress.vue';
+export type { CircleProgressProps } from './circle-progress.vue'
 
-export type { CircleProgressStrokeLinecap } from './types';
+export type { CircleProgressStrokeLinecap } from './types'
 
-export type CircleProgressInstance = ComponentPublicInstance & InstanceType<typeof CircleProgress>;
+export type CircleProgressInstance = ComponentPublicInstance & InstanceType<typeof CircleProgress>
 
-export { CircleProgress, CircleProgress as default };
+export { CircleProgress, CircleProgress as default }

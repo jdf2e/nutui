@@ -7,11 +7,11 @@
 ### 安装
 
 ```js
-import { createApp } from 'vue';
-import { ConfigProvider } from '@nutui/nutui-taro';
+import { createApp } from 'vue'
+import { ConfigProvider } from '@nutui/nutui-taro'
 
-const app = createApp();
-app.use(ConfigProvider);
+const app = createApp()
+app.use(ConfigProvider)
 ```
 
 ### 深色模式

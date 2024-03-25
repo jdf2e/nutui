@@ -2,8 +2,8 @@
   <nut-picker v-model="value" :columns="columns" title="城市选择" @confirm="confirm" />
 </template>
 <script setup>
-import { ref } from 'vue';
-const value = ref(['Beijing', 'Daxing', 'Jinghai']);
+import { ref } from 'vue'
+const value = ref(['Beijing', 'Daxing', 'Jinghai'])
 const columns = ref([
   {
     text: '江苏',
@@ -49,9 +49,9 @@ const columns = ref([
       }
     ]
   }
-]);
+])
 
 const confirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue, selectedOptions);
-};
+  console.log(selectedValue, selectedOptions)
+}
 </script>

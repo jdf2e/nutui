@@ -7,11 +7,11 @@ CalendarCard. Available in `NutUI` >= 4.3.0.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { CalendarCard } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { CalendarCard } from '@nutui/nutui'
 
-const app = createApp();
-app.use(CalendarCard);
+const app = createApp()
+app.use(CalendarCard)
 ```
 
 ### Select a single date

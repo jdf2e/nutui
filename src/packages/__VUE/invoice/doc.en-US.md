@@ -7,11 +7,11 @@ Display the application invoice page.
 ### Install
 
 ```js
-import { createApp } from 'vue';
-import { Invoice } from '@nutui/nutui';
+import { createApp } from 'vue'
+import { Invoice } from '@nutui/nutui'
 
-const app = createApp();
-app.use(Invoice);
+const app = createApp()
+app.use(Invoice)
 ```
 
 ### Basic Usage

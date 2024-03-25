@@ -1,4 +1,4 @@
 export interface ComponentDesc {
-  site: string;
-  props?: string[];
+  site: string
+  props?: string[]
 }

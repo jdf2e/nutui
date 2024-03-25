@@ -29,13 +29,13 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { computed, provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import NutPopup from '../popup/index.vue';
-import { useLocale } from '@/packages/utils/useLocale';
-const { create } = createComponent('time-select');
+import { computed, provide } from 'vue'
+import { createComponent } from '@/packages/utils/create'
+import NutPopup from '../popup/index.vue'
+import { useLocale } from '@/packages/utils/useLocale'
+const { create } = createComponent('time-select')
 
-const cN = 'NutTimeSelect';
+const cN = 'NutTimeSelect'
 
 export default create({
   components: {
@@ -61,7 +61,7 @@ export default create({
     currentTime: {
       type: Array,
       default: () => {
-        return [];
+        return []
       }
     },
     lockScroll: {
@@ -75,31 +75,31 @@ export default create({
   },
   emits: ['update:visible', 'select'],
   setup: (props, { emit }) => {
-    const translate = useLocale(cN);
+    const translate = useLocale(cN)
     const popStyle = computed(() => {
       return {
         width: '100%',
         height: props.height
-      };
-    });
+      }
+    })
 
-    const currentKey = computed(() => props.currentKey);
+    const currentKey = computed(() => props.currentKey)
 
-    const currentTime = computed(() => props.currentTime);
+    const currentTime = computed(() => props.currentTime)
 
     const close = () => {
-      emit('update:visible', false);
-      emit('select', currentTime.value);
-    };
+      emit('update:visible', false)
+      emit('select', currentTime.value)
+    }
 
-    provide('currentKey', currentKey);
-    provide('currentTime', currentTime);
+    provide('currentKey', currentKey)
+    provide('currentTime', currentTime)
 
     return {
       popStyle,
       close,
       translate
-    };
+    }
   }
-});
+})
 </script>

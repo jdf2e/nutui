@@ -32,8 +32,8 @@ bun add @nutui/auto-import-resolver unplugin-vue-components -D
 
 ```ts
 // vite.config.ts
-import Components from 'unplugin-vue-components/vite';
-import NutUIResolver from '@nutui/auto-import-resolver';
+import Components from 'unplugin-vue-components/vite'
+import NutUIResolver from '@nutui/auto-import-resolver'
 
 export default defineConfig({
   plugins: [
@@ -41,15 +41,15 @@ export default defineConfig({
       resolvers: [NutUIResolver()]
     })
   ]
-});
+})
 ```
 
 ### Vue CLI
 
 ```ts
 // vue.config.js
-import Components from 'unplugin-vue-components/webpack';
-const NutUIResolver = require('@nutui/auto-import-resolver');
+import Components from 'unplugin-vue-components/webpack'
+const NutUIResolver = require('@nutui/auto-import-resolver')
 
 module.exports = {
   configureWebpack: {
@@ -59,15 +59,15 @@ module.exports = {
       })
     ]
   }
-};
+}
 ```
 
 ### Webpack
 
 ```ts
 // webpack.config.js
-import Components from 'unplugin-vue-components/webpack';
-const NutUIResolver = require('@nutui/auto-import-resolver');
+import Components from 'unplugin-vue-components/webpack'
+const NutUIResolver = require('@nutui/auto-import-resolver')
 
 module.exports = {
   plugins: [
@@ -75,7 +75,7 @@ module.exports = {
       resolvers: [NutUIResolver()]
     })
   ]
-};
+}
 ```
 
 ## 使用 Sass
@@ -84,8 +84,8 @@ module.exports = {
 
 ```ts
 // vite.config.ts
-import Components from 'unplugin-vue-components/vite';
-import NutUIResolver from '@nutui/auto-import-resolver';
+import Components from 'unplugin-vue-components/vite'
+import NutUIResolver from '@nutui/auto-import-resolver'
 
 export default defineConfig({
   plugins: [
@@ -101,15 +101,15 @@ export default defineConfig({
       }
     }
   }
-});
+})
 ```
 
 ### Vue CLI
 
 ```ts
 // vue.config.js
-import Components from 'unplugin-vue-components/webpack';
-const NutUIResolver = require('@nutui/auto-import-resolver');
+import Components from 'unplugin-vue-components/webpack'
+const NutUIResolver = require('@nutui/auto-import-resolver')
 
 module.exports = {
   configureWebpack: {
@@ -127,15 +127,15 @@ module.exports = {
       }
     }
   }
-};
+}
 ```
 
 ### Webpack
 
 ```ts
 // webpack.config.js
-import Components from 'unplugin-vue-components/webpack';
-const NutUIResolver = require('@nutui/auto-import-resolver');
+import Components from 'unplugin-vue-components/webpack'
+const NutUIResolver = require('@nutui/auto-import-resolver')
 
 module.exports = {
   plugins: [
@@ -161,5 +161,5 @@ module.exports = {
       }
     ]
   }
-};
+}
 ```
