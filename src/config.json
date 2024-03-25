@@ -626,6 +626,7 @@
           "version": "3.0.0",
           "name": "Empty",
           "cName": "空状态",
+          "setup": true,
           "desc": "空状态时占位提示",
           "author": "wujia8"
         },
