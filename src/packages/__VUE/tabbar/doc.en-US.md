@@ -73,8 +73,8 @@ The bardge logo component is used internally and its properties can be applied d
 | tab-title | title | string | -- |
 | name | Identifier | string | `Item index` |
 | icon | icon name | string | -- |
-| href | Jump links for tabs | string | -- |
-| to | Target route of the link, same as to of vue-router | string \| object | -- |
+| href `deprecated` | Jump links for tabs | string | -- |
+| to `deprecated` | Target route of the link, same as to of vue-router | string \| object | -- |
 
 ### TabbarItem Slots
 

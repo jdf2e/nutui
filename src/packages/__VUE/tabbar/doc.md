@@ -73,8 +73,8 @@ app.use(TabbarItem);
 | tab-title | 标签页的标题 | string | -- |
 | name | 标签名称，作为匹配的标识符 | string | `当前标签的索引值` |
 | icon | 标签页显示的[图标](#/zh-CN/component/icon) | Component | -- |
-| href | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to` | string | -- |
-| to | 标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -- |
+| href `deprecated` | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to` | string | -- |
+| to `deprecated` | 标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string \| object | -- |
 
 ### TabbarItem Slots
 
