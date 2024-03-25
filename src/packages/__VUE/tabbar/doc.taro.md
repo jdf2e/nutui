@@ -91,7 +91,7 @@ app.use(TabbarItem);
 组件导出以下类型定义：
 
 ```js
-import type { TabbarProps, TabbarInstance, TabbarItem, TabbarItemInstance } from '@nutui/nutui-taro';
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui-taro';
 ```
 
 ## 主题定制

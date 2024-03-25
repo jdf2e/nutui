@@ -93,7 +93,7 @@ The bardge logo component is used internally and its properties can be applied d
 The component exports the following type definitions:
 
 ```js
-import type { TabbarProps, TabbarInstance, TabbarItem, TabbarItemInstance } from '@nutui/nutui';
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
 ```
 
 ## Theming

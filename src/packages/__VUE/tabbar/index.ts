@@ -4,7 +4,7 @@ import { withInstall } from '@/packages/utils';
 
 withInstall(Tabbar);
 
-export type { tabbarProps } from './tabbar.vue';
+export type { TabbarProps } from './tabbar.vue';
 
 export type TabbarInstance = ComponentPublicInstance & InstanceType<typeof Tabbar>;
 

@@ -43,7 +43,7 @@ defineOptions({
   name: 'NutTabbarItem'
 });
 
-export type tabbarItemProps = Partial<{
+export type TabbarItemProps = Partial<{
   tabTitle: string;
   name: string;
   icon: any;
@@ -51,7 +51,7 @@ export type tabbarItemProps = Partial<{
   to: string | Record<never, any>;
 }>;
 
-const props = withDefaults(defineProps<tabbarItemProps>(), {
+const props = withDefaults(defineProps<TabbarItemProps>(), {
   tabTitle: '',
   href: ''
 });

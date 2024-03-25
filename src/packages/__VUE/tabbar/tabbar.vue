@@ -15,7 +15,7 @@ defineOptions({
   name: 'NutTabbar'
 });
 
-export type tabbarProps = Partial<{
+export type TabbarProps = Partial<{
   modelValue: number | string;
   bottom: boolean;
   unactiveColor: string;
@@ -24,7 +24,7 @@ export type tabbarProps = Partial<{
   placeholder: boolean;
 }>;
 
-const props = withDefaults(defineProps<tabbarProps>(), {
+const props = withDefaults(defineProps<TabbarProps>(), {
   modelValue: 0,
   bottom: false,
   unactiveColor: '',

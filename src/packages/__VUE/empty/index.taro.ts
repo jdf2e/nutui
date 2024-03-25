@@ -4,7 +4,7 @@ import { withInstall } from '@/packages/utils';
 
 withInstall(Empty);
 
-export type { emptyProps } from './empty.taro.vue';
+export type { EmptyProps } from './empty.taro.vue';
 export type { EmptyImage } from './types';
 
 export type EmptyInstance = ComponentPublicInstance & InstanceType<typeof Empty>;
