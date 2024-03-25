@@ -1,5 +1,5 @@
 <template>
-  <nut-tabbar @tab-switch="tabSwitch">
+  <nut-tabbar v-model="active" @tab-switch="tabSwitch">
     <nut-tabbar-item tab-title="Home">
       <template #icon>
         <Home></Home>
@@ -29,7 +29,11 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { Home, Category, Find, Cart, My } from '@nutui/icons-vue';
+
+const active = ref(0);
+
 const tabSwitch = (item: Record<string, unknown>, index: number) => {
   console.log(item, index);
 };

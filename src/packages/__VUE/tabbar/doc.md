@@ -88,6 +88,14 @@ app.use(TabbarItem);
 | --- | --- | --- |
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量
