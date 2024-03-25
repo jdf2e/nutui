@@ -194,6 +194,7 @@ const _sfc_main = create({
         if (state.state.playing) {
           try {
             setTimeout(() => {
+              ;
               state.videoElm.play();
             }, 200);
             state.videoElm.addEventListener("progress", () => {

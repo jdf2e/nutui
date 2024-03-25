@@ -77,10 +77,7 @@ const usePicker = (props, emit) => {
         result = state.formattedColumns;
         break;
       case "cascade":
-        result = formatCascade(
-          state.formattedColumns,
-          defaultValues.value ? defaultValues.value : []
-        );
+        result = formatCascade(state.formattedColumns, defaultValues.value ? defaultValues.value : []);
         break;
       default:
         result = [state.formattedColumns];

@@ -6175,10 +6175,7 @@ const Bo = Symbol("nut-checkbox"), { create: Pf, componentName: tt } = X("checkb
         u = n.formattedColumns;
         break;
       case "cascade":
-        u = v(
-          n.formattedColumns,
-          o.value ? o.value : []
-        );
+        u = v(n.formattedColumns, o.value ? o.value : []);
         break;
       default:
         u = [n.formattedColumns];

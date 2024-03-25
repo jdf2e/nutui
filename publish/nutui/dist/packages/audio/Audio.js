@@ -83,10 +83,12 @@ const _sfc_main = create({
         for (let i = 0; i < arr.length; i++) {
           document.addEventListener(arr[i], () => {
             if (document.hidden) {
+              ;
               audioRef.value.pause();
             } else {
               if (audioData.playing) {
                 setTimeout(() => {
+                  ;
                   audioRef.value.play();
                 }, 200);
               }

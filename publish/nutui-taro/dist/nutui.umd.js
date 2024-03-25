@@ -7111,10 +7111,7 @@ var __async = (__this, __arguments, generator) => {
           result = state.formattedColumns;
           break;
         case "cascade":
-          result = formatCascade(
-            state.formattedColumns,
-            defaultValues.value ? defaultValues.value : []
-          );
+          result = formatCascade(state.formattedColumns, defaultValues.value ? defaultValues.value : []);
           break;
         default:
           result = [state.formattedColumns];
@@ -16188,11 +16185,7 @@ var __async = (__this, __arguments, generator) => {
               if (props.direction === "middle") {
                 const end = props.content.length;
                 ellipsis.leading = tailorContent(0, rowNum * (Number(props.rows) + 0.5), "end");
-                ellipsis.tailing = tailorContent(
-                  props.content.length - rowNum * (Number(props.rows) + 0.5),
-                  end,
-                  "start"
-                );
+                ellipsis.tailing = tailorContent(props.content.length - rowNum * (Number(props.rows) + 0.5), end, "start");
               } else if (props.direction === "end") {
                 const end = rowNum * (Number(props.rows) + 0.5);
                 ellipsis.leading = tailorContent(0, end);
