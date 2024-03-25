@@ -24,11 +24,11 @@ defineOptions({
   name: 'NutEmpty'
 });
 
-export type emptyProps = {
+export type emptyProps = Partial<{
   image: EmptyImage;
   imageSize: number | string;
   description: string;
-};
+}>;
 
 const props = withDefaults(defineProps<emptyProps>(), {
   image: 'empty',
