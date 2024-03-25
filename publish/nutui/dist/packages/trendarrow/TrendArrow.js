@@ -17,103 +17,71 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, computed, toRefs, resolveComponent, openBlock, createElementBlock, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, createVNode } from "vue";
+import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, createVNode, unref } from "vue";
 import { m as myFixed } from "../util-6wYEjmEl.js";
-import { c as createComponent } from "../component-DQf3CENX.js";
 import { TriangleUp, TriangleDown } from "@nutui/icons-vue";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { create } = createComponent("trend-arrow");
-const _sfc_main = create({
-  components: { TriangleUp, TriangleDown },
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = { class: "nut-trend-arrow" };
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutTrendArrow"
+}), {
+  __name: "trend-arrow",
   props: {
-    rate: {
-      type: Number,
-      default: 0
-    },
-    digits: {
-      type: Number,
-      default: 2
-    },
-    showSign: {
-      type: Boolean,
-      default: false
-    },
-    showZero: {
-      type: Boolean,
-      default: false
-    },
-    arrowLeft: {
-      type: Boolean,
-      default: false
-    },
-    syncTextColor: {
-      type: Boolean,
-      default: true
-    },
-    textColor: {
-      type: String,
-      default: "#333"
-    },
-    riseColor: {
-      type: String,
-      default: "#fa2c19"
-    },
-    dropColor: {
-      type: String,
-      default: "#64b578"
-    }
+    rate: { default: 0 },
+    digits: { default: 2 },
+    showSign: { type: Boolean, default: false },
+    showZero: { type: Boolean, default: false },
+    arrowLeft: { type: Boolean, default: false },
+    syncTextColor: { type: Boolean, default: true },
+    textColor: { default: "#333" },
+    riseColor: { default: "#fa2c19" },
+    dropColor: { default: "#64b578" }
   },
-  setup(props) {
-    const state = reactive({
-      rateTrend: props.rate > 0 ? true : false
+  setup(__props) {
+    const props = __props;
+    const isPositive = computed(() => {
+      return props.rate > 0 ? true : false;
     });
     const calcRate = computed(() => {
-      const { rate, digits, showSign, showZero } = props;
-      state.rateTrend = rate > 0 ? true : false;
-      const absRate = Math.abs(rate);
-      if (!showZero && rate === 0) {
+      const absRate = Math.abs(props.rate);
+      if (!props.showZero && props.rate === 0) {
         return "--";
       }
-      let resultRate = `${showSign && rate !== 0 ? state.rateTrend ? "+" : "-" : ""}${myFixed(
+      let resultRate = `${props.showSign && props.rate !== 0 ? isPositive.value ? "+" : "-" : ""}${myFixed(
         Number(absRate),
-        digits
+        props.digits
       )}%`;
       return resultRate;
     });
     const calcStyle = computed(() => {
-      const { dropColor, riseColor, syncTextColor, textColor, rate } = props;
-      let style = {
-        color: rate === 0 ? textColor : syncTextColor ? state.rateTrend ? riseColor : dropColor : textColor
+      return {
+        color: props.rate === 0 ? props.textColor : props.syncTextColor ? isPositive.value ? props.riseColor : props.dropColor : props.textColor
       };
-      return style;
     });
-    return __spreadProps(__spreadValues({}, toRefs(state)), { calcRate, calcStyle });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", _hoisted_1, [
+        !_ctx.arrowLeft ? (openBlock(), createElementBlock("span", {
+          key: 0,
+          class: "nut-trend-arrow-icon-before nut-trend-arrow-rate",
+          style: normalizeStyle(calcStyle.value)
+        }, toDisplayString(calcRate.value), 5)) : createCommentVNode("", true),
+        Number(_ctx.rate) !== 0 && isPositive.value ? renderSlot(_ctx.$slots, "up-icon", { key: 1 }, () => [
+          createVNode(unref(TriangleUp), { color: _ctx.riseColor }, null, 8, ["color"])
+        ]) : createCommentVNode("", true),
+        Number(_ctx.rate) !== 0 && !isPositive.value ? renderSlot(_ctx.$slots, "down-icon", { key: 2 }, () => [
+          createVNode(unref(TriangleDown), { color: _ctx.dropColor }, null, 8, ["color"])
+        ]) : createCommentVNode("", true),
+        _ctx.arrowLeft ? (openBlock(), createElementBlock("span", {
+          key: 3,
+          class: "nut-trend-arrow-icon-after nut-trend-arrow-rate",
+          style: normalizeStyle(calcStyle.value)
+        }, toDisplayString(calcRate.value), 5)) : createCommentVNode("", true)
+      ]);
+    };
   }
-});
-const _hoisted_1 = { class: "nut-trend-arrow" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_TriangleUp = resolveComponent("TriangleUp");
-  const _component_TriangleDown = resolveComponent("TriangleDown");
-  return openBlock(), createElementBlock("view", _hoisted_1, [
-    !_ctx.arrowLeft ? (openBlock(), createElementBlock("span", {
-      key: 0,
-      class: "nut-trend-arrow-icon-before nut-trend-arrow-rate",
-      style: normalizeStyle(_ctx.calcStyle)
-    }, toDisplayString(_ctx.calcRate), 5)) : createCommentVNode("", true),
-    Number(_ctx.rate) !== 0 && _ctx.rateTrend ? renderSlot(_ctx.$slots, "up-icon", { key: 1 }, () => [
-      createVNode(_component_TriangleUp, { color: _ctx.riseColor }, null, 8, ["color"])
-    ]) : createCommentVNode("", true),
-    Number(_ctx.rate) !== 0 && !_ctx.rateTrend ? renderSlot(_ctx.$slots, "down-icon", { key: 2 }, () => [
-      createVNode(_component_TriangleDown, { color: _ctx.dropColor }, null, 8, ["color"])
-    ]) : createCommentVNode("", true),
-    _ctx.arrowLeft ? (openBlock(), createElementBlock("span", {
-      key: 3,
-      class: "nut-trend-arrow-icon-after nut-trend-arrow-rate",
-      style: normalizeStyle(_ctx.calcStyle)
-    }, toDisplayString(_ctx.calcRate), 5)) : createCommentVNode("", true)
-  ]);
-}
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index as default
+  _sfc_main as TrendArrow,
+  _sfc_main as default
 };
