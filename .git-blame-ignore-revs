@@ -1,0 +1,5 @@
+# Apply with:
+# `git config --local blame.ignoreRevsFile .git-blame-ignore-revs`
+
+# [chore: prettier format](https://github.com/jdf2e/nutui/pull/2995)
+41772b4225c020af0893516081e57c1389d8b387
