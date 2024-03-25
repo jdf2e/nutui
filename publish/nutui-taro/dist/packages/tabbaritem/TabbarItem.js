@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { getCurrentInstance, reactive, computed, openBlock, createElementBlock, withDirectives, createElementVNode, normalizeStyle, renderSlot, vShow, createTextVNode, normalizeClass, toDisplayString, defineComponent, useSlots, createVNode, normalizeProps, guardReactiveProps, withCtx, createCommentVNode, createBlock, resolveDynamicComponent, unref } from "vue";
+import { getCurrentInstance, reactive, computed, openBlock, createElementBlock, withDirectives, createElementVNode, normalizeStyle, renderSlot, vShow, createTextVNode, normalizeClass, toDisplayString, defineComponent, createVNode, normalizeProps, guardReactiveProps, withCtx, createCommentVNode, createBlock, resolveDynamicComponent, unref } from "vue";
 import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
@@ -139,7 +139,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
   },
   setup(__props) {
     const props = __props;
-    const slots = useSlots();
     const router = useRouter();
     const { parent, index } = useParent(TABBAR_KEY);
     const active = computed(() => {
@@ -147,9 +146,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       return ((_a = props.name) != null ? _a : index.value) === parent.activeIndex.value;
     });
     const activeColor = computed(() => active.value ? parent.props.activeColor : parent.props.unactiveColor);
-    const isHaveSlot = (slot) => {
-      return slots[slot];
-    };
     const change = () => {
       var _a, _b, _c;
       const key = (_a = props.name) != null ? _a : index.value;
@@ -178,19 +174,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         createVNode(NutBadge, normalizeProps(guardReactiveProps(_ctx.$attrs)), {
           default: withCtx(() => [
             createElementVNode("view", _hoisted_1, [
-              isHaveSlot("icon") ? (openBlock(), createElementBlock("div", _hoisted_2, [
+              _ctx.$slots.icon ? (openBlock(), createElementBlock("div", _hoisted_2, [
                 renderSlot(_ctx.$slots, "icon", { active: active.value })
               ])) : createCommentVNode("", true),
               createTextVNode(),
-              _ctx.icon && !isHaveSlot("icon") ? (openBlock(), createElementBlock("view", _hoisted_3, [
+              _ctx.icon && !_ctx.$slots.icon ? (openBlock(), createElementBlock("view", _hoisted_3, [
                 (openBlock(), createBlock(resolveDynamicComponent(unref(renderIcon)(_ctx.icon)), { class: "nut-popover-item-img" }))
               ])) : createCommentVNode("", true),
               createTextVNode(),
               createElementVNode("view", {
-                class: normalizeClass([
-                  "nut-tabbar-item_icon-box_nav-word",
-                  { "nut-tabbar-item_icon-box_big-word": !_ctx.icon && !isHaveSlot("icon") }
-                ])
+                class: normalizeClass(["nut-tabbar-item_icon-box_nav-word", { "nut-tabbar-item_icon-box_big-word": !_ctx.icon && !_ctx.$slots.icon }])
               }, [
                 renderSlot(_ctx.$slots, "default", {}, () => [
                   _ctx.tabTitle ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.tabTitle), 1)) : createCommentVNode("", true)

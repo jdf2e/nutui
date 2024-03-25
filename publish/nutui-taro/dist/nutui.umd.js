@@ -2534,7 +2534,6 @@ var __async = (__this, __arguments, generator) => {
     },
     setup(__props) {
       const props = __props;
-      const slots = vue.useSlots();
       const router = useRouter();
       const { parent, index } = useParent(TABBAR_KEY);
       const active = vue.computed(() => {
@@ -2542,9 +2541,6 @@ var __async = (__this, __arguments, generator) => {
         return ((_a = props.name) != null ? _a : index.value) === parent.activeIndex.value;
       });
       const activeColor = vue.computed(() => active.value ? parent.props.activeColor : parent.props.unactiveColor);
-      const isHaveSlot = (slot) => {
-        return slots[slot];
-      };
       const change = () => {
         var _a, _b, _c;
         const key = (_a = props.name) != null ? _a : index.value;
@@ -2573,19 +2569,16 @@ var __async = (__this, __arguments, generator) => {
           vue.createVNode(NutBadge, vue.normalizeProps(vue.guardReactiveProps(_ctx.$attrs)), {
             default: vue.withCtx(() => [
               vue.createElementVNode("view", _hoisted_1$18, [
-                isHaveSlot("icon") ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2$X, [
+                _ctx.$slots.icon ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2$X, [
                   vue.renderSlot(_ctx.$slots, "icon", { active: active.value })
                 ])) : vue.createCommentVNode("", true),
                 vue.createTextVNode(),
-                _ctx.icon && !isHaveSlot("icon") ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_3$J, [
+                _ctx.icon && !_ctx.$slots.icon ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_3$J, [
                   (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(renderIcon)(_ctx.icon)), { class: "nut-popover-item-img" }))
                 ])) : vue.createCommentVNode("", true),
                 vue.createTextVNode(),
                 vue.createElementVNode("view", {
-                  class: vue.normalizeClass([
-                    "nut-tabbar-item_icon-box_nav-word",
-                    { "nut-tabbar-item_icon-box_big-word": !_ctx.icon && !isHaveSlot("icon") }
-                  ])
+                  class: vue.normalizeClass(["nut-tabbar-item_icon-box_nav-word", { "nut-tabbar-item_icon-box_big-word": !_ctx.icon && !_ctx.$slots.icon }])
                 }, [
                   vue.renderSlot(_ctx.$slots, "default", {}, () => [
                     _ctx.tabTitle ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_4$C, vue.toDisplayString(_ctx.tabTitle), 1)) : vue.createCommentVNode("", true)
