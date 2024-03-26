@@ -37,7 +37,7 @@ export interface InputTarget extends HTMLInputElement {
 
 export type TextareaProps = Partial<{
   modelValue: string
-  textAlign: 'left' | 'center' | 'right' | 'justify'
+  textAlign: 'left' | 'center' | 'right'
   limitShow: boolean
   maxLength: string | number
   rows: string | number
