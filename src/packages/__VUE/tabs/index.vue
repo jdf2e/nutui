@@ -398,9 +398,9 @@ export default create({
       if (!props.titleGutter) return {}
       const px = pxCheck(props.titleGutter)
       if (props.direction === 'vertical') {
-        return { marginTop: px, marginBottom: px }
+        return { paddingTop: px, paddingBottom: px }
       }
-      return { marginLeft: px, marginRight: px }
+      return { paddingLeft: px, paddingRight: px }
     })
 
     return {
