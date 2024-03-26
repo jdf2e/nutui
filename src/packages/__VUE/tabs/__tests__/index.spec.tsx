@@ -1,5 +1,5 @@
 import { config, mount } from '@vue/test-utils'
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 import { JoySmile, Dongdong } from '@nutui/icons-vue'
 import { Sticky as NutSticky, Tabs, TabPane } from '@nutui/nutui'
 
@@ -15,27 +15,19 @@ afterAll(() => {
   config.global.components = {}
 })
 
-test('base Tabs', () => {
-  const wrapper = mount(Tabs)
-  const rate = wrapper.find('.nut-tabs')
-  expect(rate.exists()).toBe(true)
-})
-
-test('base tabs props', async () => {
-  const wrapper = mount(Tabs, {
-    props: {
-      modelValue: '0',
-      background: '#f5f5f5',
-      color: '#f5f5f5',
-      direction: 'horizontal',
-      type: 'smile',
-      size: 'large',
-      'title-scroll': true
-    },
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    }
+test('Tabs: base tabs props', async () => {
+  const wrapper = mount(() => {
+    return (
+      <Tabs
+        modelValue={0}
+        background="#f5f5f5"
+        color="#f5f5f5"
+        direction="horizontal"
+        type="smile"
+        size="large"
+        titleScroll
+      ></Tabs>
+    )
   })
   await nextTick()
   const stepItem = wrapper.find('.nut-tabs__titles')
@@ -50,27 +42,24 @@ test('base tabs props', async () => {
   expect(_stepItem3.classes()).toContain('scrollable')
 })
 
-test('base other props', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    },
-    template: `
-      <nut-tabs animatedTime="500" titleGutter="20">
-        <nut-tab-pane paneKey="1">123</nut-tab-pane>
-        <nut-tab-pane paneKey="2">456</nut-tab-pane>
-      </nut-tabs>
-    `
+test('Tabs: base other props', async () => {
+  const wrapper = mount(() => {
+    return (
+      <Tabs animatedTime={500} titleGutter={20}>
+        <TabPane paneKey={1}>123</TabPane>
+        <TabPane paneKey={2}>456</TabPane>
+      </Tabs>
+    )
   })
   await nextTick()
   const stepItem = wrapper.find('.nut-tabs__content')
   expect((stepItem.element as HTMLElement).style.transitionDuration).toEqual('500ms')
   const stepItem1 = wrapper.find('.nut-tabs__titles-item')
-  expect((stepItem1.element as HTMLElement).style.marginLeft).toEqual('20px')
+  expect((stepItem1.element as HTMLElement).style.paddingLeft).toEqual('20px')
 })
 
-test('base Tabs Slots', async () => {
+test('Tabs: base Tabs Slots', async () => {
+  // TODO: template -> tsx
   const wrapper = mount({
     components: {
       'nut-tabs': Tabs,
@@ -133,25 +122,24 @@ test('base Tabs Slots', async () => {
   expect(tab4.exists()).toBe(true)
 })
 
-test('base Tabpane Props', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    },
-    template: `
-    <nut-tabs v-model="state.tab2value">
-      <nut-tab-pane title="Tab 1" pane-key="0"> </nut-tab-pane>
-      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
-      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-    </nut-tabs>
-    `,
-    setup() {
-      const state = reactive({
-        tab2value: '0'
-      })
-      return { state }
-    }
+test('Tabs: base Tabpane Props', async () => {
+  const val = ref('0')
+  const wrapper = mount(() => {
+    return (
+      <Tabs v-model={val.value}>
+        <TabPane title="Tab 1" pane-key="0">
+          {' '}
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1" disabled>
+          {' '}
+          Tab 2{' '}
+        </TabPane>
+        <TabPane title="Tab 3" pane-key="2">
+          {' '}
+          Tab 3{' '}
+        </TabPane>
+      </Tabs>
+    )
   })
   await nextTick()
   const tab = wrapper.findAll('.nut-tabs__titles-item')
@@ -164,25 +152,24 @@ test('base Tabpane Props', async () => {
   expect(tab3[0].html()).toContain('Tab 1')
 })
 
-test('base Tabpane disabled swipeable', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    },
-    template: `
-    <nut-tabs v-model="state.tab2value" swipeable>
-      <nut-tab-pane title="Tab 1" pane-key="0"> </nut-tab-pane>
-      <nut-tab-pane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tab-pane>
-      <nut-tab-pane title="Tab 3" pane-key="2"> Tab 3 </nut-tab-pane>
-    </nut-tabs>
-    `,
-    setup() {
-      const state = reactive({
-        tab2value: '0'
-      })
-      return { state }
-    }
+test('Tabs: base Tabpane disabled swipeable', async () => {
+  const val = ref('0')
+  const wrapper = mount(() => {
+    return (
+      <Tabs v-model={val.value} swipeable>
+        <TabPane title="Tab 1" pane-key="0">
+          {' '}
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1" disabled>
+          {' '}
+          Tab 2{' '}
+        </TabPane>
+        <TabPane title="Tab 3" pane-key="2">
+          {' '}
+          Tab 3{' '}
+        </TabPane>
+      </Tabs>
+    )
   })
   await nextTick()
   const tab = wrapper.findAll('.nut-tabs__titles-item')
@@ -195,25 +182,24 @@ test('base Tabpane disabled swipeable', async () => {
   expect(tab3[0].html()).toContain('Tab 1')
 })
 
-test('base click', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    },
-    template: `
-    <nut-tabs v-model="state.tab1value">
-      <nut-tab-pane title="Tab 1"> Tab 1 </nut-tab-pane>
-      <nut-tab-pane title="Tab 2"> Tab 2 </nut-tab-pane>
-      <nut-tab-pane title="Tab 3"> Tab 3 </nut-tab-pane>
-    </nut-tabs>
-    `,
-    setup() {
-      const state = reactive({
-        tab1value: '0'
-      })
-      return { state }
-    }
+test('Tabs: base click', async () => {
+  const val = ref('0')
+  const wrapper = mount(() => {
+    return (
+      <Tabs v-model={val.value} swipeable>
+        <TabPane title="Tab 1" pane-key="0">
+          {' '}
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1">
+          {' '}
+          Tab 2{' '}
+        </TabPane>
+        <TabPane title="Tab 3" pane-key="2">
+          {' '}
+          Tab 3{' '}
+        </TabPane>
+      </Tabs>
+    )
   })
   await nextTick()
   const tab = wrapper.find('.nut-tabs__titles-item')
@@ -223,27 +209,25 @@ test('base click', async () => {
   expect((tab1.element as HTMLElement).style.transform).toEqual('translate3d(-0%, 0, 0)')
 })
 
-test('Tabs: direction=vertical & title-gutter', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-tabs': Tabs,
-      'nut-tab-pane': TabPane
-    },
-    template: `
-    <nut-tabs direction="vertical" title-gutter="10">
-      <nut-tab-pane pane-key="1" title="Tab 1"> Tab 1 </nut-tab-pane>
-      <nut-tab-pane pane-key="2" title="Tab 2"> Tab 2 </nut-tab-pane>
-      <nut-tab-pane pane-key="3" title="Tab 3"> Tab 3 </nut-tab-pane>
-    </nut-tabs>
-    `,
-    setup() {
-      const state = reactive({
-        tab1value: '0'
-      })
-      return { state }
-    }
+test('Tabs: Tabs: direction=vertical & title-gutter', async () => {
+  const wrapper = mount(() => {
+    return (
+      <Tabs direction="vertical" title-gutter="10">
+        <TabPane title="Tab 1" pane-key="0">
+          {' '}
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1">
+          {' '}
+          Tab 2{' '}
+        </TabPane>
+        <TabPane title="Tab 3" pane-key="2">
+          {' '}
+          Tab 3{' '}
+        </TabPane>
+      </Tabs>
+    )
   })
   await nextTick()
   const tab = wrapper.find('.nut-tabs__titles-item')
-  expect(tab.html()).includes('margin-top: 10px')
+  expect(tab.html()).includes('padding-top: 10px')
 })

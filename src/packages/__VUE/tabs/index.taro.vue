@@ -266,10 +266,9 @@ export default create({
 
           let to = 0
           if (props.direction === 'vertical') {
-            const DEFAULT_PADDING = 11
             const top = titleRects
               .slice(0, currentIndex.value)
-              .reduce((prev: number, curr: RectItem) => prev + curr?.height, DEFAULT_PADDING)
+              .reduce((prev: number, curr: RectItem) => prev + curr?.height, 0)
             to = top - (navRectRef.value?.height - titleRect?.height) / 2
           } else {
             const left = titleRects
