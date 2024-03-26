@@ -1,6 +1,13 @@
 # NutUI 贡献指南
 
-## 1、安装项目依赖
+## 1、选择参与贡献的议题
+
+- 带有 [PR Welcome](https://github.com/jdf2e/nutui/issues?q=is%3Aissue+is%3Aopen+label%3A%22PR+Welcome%22) 标签的 issue，它主要包含了以下两种类型：
+  - 1. 可复现的 bug
+  - 2. 计划实现的功能
+- #2220
+
+## 2、安装项目依赖
 
 本项目为 pnpm monorepo 仓库，要求使用 pnpm 安装项目依赖。
 
@@ -10,7 +17,7 @@
 pnpm i
 ```
 
-## 2、项目开发环境
+## 3、项目开发环境
 
 #### A、启动文档与 H5(@nutui/nutui) demo
 
@@ -45,7 +52,7 @@ pnpm dev:taro tt
   - 文档: `doc.taro.md`
 - demo 项目: `packages/nutui-taro-demo`
 
-## 3、项目构建
+## 4、项目构建
 
 ```bash
 # 构建 @nutui/nutui，目标产物在 `publish/nutui` 目录下
@@ -64,7 +71,7 @@ pnpm build:h5
 pnpm build:weapp
 ```
 
-## 4、在 PR 提交前
+## 5、在 PR 提交前
 
 所有代码改动在进行 commit 之前都应该通过以下测试：
 
@@ -80,7 +87,7 @@ pnpm lint
 
 若 commit 提交失败，请再次执行上面的命令，确保可以顺序通过后再提交。
 
-## 5、PR 提交后
+## 6、PR 提交后
 
 GitHub Action 将会自动进行以下 Job
 
@@ -101,15 +108,9 @@ GitHub Action 将会自动进行以下 Job
 
 可以通过 `pnpm test:c` 执行测试并生成单元测试覆盖率数据。
 
-### 2、文档与 demo 的关系
+### 2、文档中演示代码与 demo 源码之间的映射关系
 
-文档的改造正在进行中，部分组件已经完成。
-
-- 改造前：demo 与文档无直接关联
-  - 修改 `demo.vue` 时，需要手动更新 `doc.md`、`doc.en-US.md`
-  - 修改 Taro demo 时，需要手动更新 `doc.taro.md`
-- 改造后：文档中的代码示例由 demo 源文件直接生成
-  - 中英文文档：需要指定【组件名称 示例名称】
-  - `> demo: button plain` --> `src/packages/__VUE/button/demo/plain.vue`
-  - Taro 文档：需要指定【组件名称 示例名称 组件类别】
-  - `> demo: button plain basic` --> `packages/nutui-taro-demo/src/basic/pages/button/plain.vue`
+- 中英文文档
+- `> demo: button plain` --> `src/packages/__VUE/button/demo/plain.vue`
+- Taro 文档
+- `> demo: button plain basic` --> `packages/nutui-taro-demo/src/basic/pages/button/plain.vue`
