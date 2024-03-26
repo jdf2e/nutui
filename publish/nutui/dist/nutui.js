@@ -3642,7 +3642,7 @@ const { create: Nc } = q("tabs"), Dc = Nc({
       if (!e.titleGutter)
         return {};
       const C = Be(e.titleGutter);
-      return e.direction === "vertical" ? { marginTop: C, marginBottom: C } : { marginLeft: C, marginRight: C };
+      return e.direction === "vertical" ? { paddingTop: C, paddingBottom: C } : { paddingLeft: C, paddingRight: C };
     });
     return Z(Z({
       navRef: f,

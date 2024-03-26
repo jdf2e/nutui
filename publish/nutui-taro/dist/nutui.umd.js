@@ -3366,12 +3366,10 @@ var __async = (__this, __arguments, generator) => {
             const titleRect = titleRectRef.value[currentIndex.value];
             let to = 0;
             if (props.direction === "vertical") {
-              const DEFAULT_PADDING = 11;
-              const top = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.height) + 0, DEFAULT_PADDING);
+              const top = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.height), 0);
               to = top - (((_c = navRectRef.value) == null ? void 0 : _c.height) - (titleRect == null ? void 0 : titleRect.height)) / 2;
             } else {
-              const DEFAULT_PADDING = 31;
-              const left2 = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.width) + 20, DEFAULT_PADDING);
+              const left2 = titleRects.slice(0, currentIndex.value).reduce((prev, curr) => prev + (curr == null ? void 0 : curr.width), 0);
               to = left2 - (((_d = navRectRef.value) == null ? void 0 : _d.width) - (titleRect == null ? void 0 : titleRect.width)) / 2;
             }
             vue.nextTick(() => {
@@ -3488,9 +3486,9 @@ var __async = (__this, __arguments, generator) => {
           return {};
         const px = pxCheck(props.titleGutter);
         if (props.direction === "vertical") {
-          return { marginTop: px, marginBottom: px };
+          return { paddingTop: px, paddingBottom: px };
         }
-        return { marginLeft: px, marginRight: px };
+        return { paddingLeft: px, paddingRight: px };
       });
       return __spreadValues(__spreadValues({
         titles,
