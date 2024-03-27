@@ -117,3 +117,17 @@ test('should emit blur event when textarea is blur', () => {
   wrapper.find('textarea').trigger('blur')
   expect(wrapper.emitted('blur')).toBeTruthy()
 })
+
+test('should set height when autosize is object', async () => {
+  const wrapper = mount(Textarea, {
+    props: {
+      autosize: {
+        minHeight: 200,
+        maxHeight: 300
+      }
+    }
+  })
+  await nextTick()
+  const txtWrapper = wrapper.find('.nut-textarea__textarea').element as HTMLTextAreaElement
+  expect(txtWrapper.style.height).toBe('200px')
+})

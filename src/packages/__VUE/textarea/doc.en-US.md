@@ -59,6 +59,14 @@ app.use(Textarea)
 | focus | Triggered when focusing | `event` |
 | blur | Triggered when out of focus | `value,event` |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type { TextareaProps, TextareaInstance } from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
