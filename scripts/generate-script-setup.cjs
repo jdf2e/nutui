@@ -13,34 +13,34 @@ let pascal = camelize(kebab).split('')
 pascal[0] = pascal[0].toUpperCase()
 pascal = pascal.join('')
 
-const indexTs = `import ${pascal} from './${kebab}.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+const indexTs = `import ${pascal} from './${kebab}.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(${pascal});
+withInstall(${pascal})
 
-export type { ${pascal}Props } from './${kebab}.vue';
+export type { ${pascal}Props } from './${kebab}.vue'
 
-export type {  } from './types';
+export type {  } from './types'
 
-export type ${pascal}Instance = ComponentPublicInstance & InstanceType<typeof ${pascal}>;
+export type ${pascal}Instance = ComponentPublicInstance & InstanceType<typeof ${pascal}>
 
-export { ${pascal}, ${pascal} as default };
+export { ${pascal}, ${pascal} as default }
 `
 
-const indexTaroTs = `import ${pascal} from './${kebab}.taro.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+const indexTaroTs = `import ${pascal} from './${kebab}.taro.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(${pascal});
+withInstall(${pascal})
 
-export type { ${pascal}Props } from './${kebab}.taro.vue';
+export type { ${pascal}Props } from './${kebab}.taro.vue'
 
-export type {  } from './types';
+export type {  } from './types'
 
-export type ${pascal}Instance = ComponentPublicInstance & InstanceType<typeof ${pascal}>;
+export type ${pascal}Instance = ComponentPublicInstance & InstanceType<typeof ${pascal}>
 
-export { ${pascal}, ${pascal} as default };
+export { ${pascal}, ${pascal} as default }
 `
 
 fs.writeFileSync(
