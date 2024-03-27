@@ -22,6 +22,8 @@ module.exports = {
     TaroGeneral: true
   },
   rules: {
+    // basic
+    semi: [2, 'never'],
     // @typescript-eslint
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-types': 'off',
