@@ -1,4 +1,4 @@
-export type InputAlignType = 'left' | 'center' | 'right' // text-align
+export type InputAlign = 'left' | 'center' | 'right' // text-align
 
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
 
@@ -38,7 +38,7 @@ export type InputRule = {
   required?: boolean
 }
 
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputTarget extends HTMLInputElement {
   composing?: boolean
