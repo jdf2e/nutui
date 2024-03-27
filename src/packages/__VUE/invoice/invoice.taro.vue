@@ -43,7 +43,7 @@ import NutFormItem from '../formitem/index.taro'
 import NutRadio from '../radio/index.taro.vue'
 import NutRadioGroup from '../radiogroup/index.taro.vue'
 import NutButton from '../button/index.taro'
-import NutInput from '../input/index.taro.vue'
+import NutInput from '../input/index.taro'
 import type { InvoiceDataItem } from './types'
 
 defineOptions({

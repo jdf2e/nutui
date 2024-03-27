@@ -121,6 +121,21 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | blur `4.0.6` | Blur |
 | select `4.0.6` | Selct |
 
+### Types version
+
+The component exports the following type definitions:
+
+```ts
+import type {
+  InputType,
+  InputAlign,
+  InputConfirmType,
+  InputFormatTrigger,
+  InputProps,
+  InputInstance
+} from '@nutui/nutui'
+```
+
 ## Theming
 
 ### CSS Variables

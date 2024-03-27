@@ -132,6 +132,21 @@ app.use(Input)
 | blur `4.0.6` | 失去焦点 |
 | select `4.0.6` | 选择文字 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```ts
+import type {
+  InputType,
+  InputAlign,
+  InputConfirmType,
+  InputFormatTrigger,
+  InputProps,
+  InputInstance
+} from '@nutui/nutui'
+```
+
 ## 主题定制
 
 ### 样式变量

@@ -130,6 +130,21 @@ app.use(Input)
 | left `4.0.1` | 自定义输入框左侧插槽内容 |
 | right `4.0.1` | 自定义输入框右侧插槽内容 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```ts
+import type {
+  InputType,
+  InputAlign,
+  InputConfirmType,
+  InputFormatTrigger,
+  InputProps,
+  InputInstance
+} from '@nutui/nutui-taro'
+```
+
 ## 主题定制
 
 ### 样式变量
