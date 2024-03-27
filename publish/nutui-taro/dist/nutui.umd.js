@@ -621,8 +621,8 @@ var __async = (__this, __arguments, generator) => {
       return isNaN(Number(value)) ? String(value) : `${value}px`;
     }
   };
-  const { componentName: componentName$i, create: create$1l } = createComponent("cell");
-  const _sfc_main$1L = create$1l({
+  const { componentName: componentName$i, create: create$1k } = createComponent("cell");
+  const _sfc_main$1L = create$1k({
     components: { Right: iconsVueTaro.Right },
     props: {
       title: { type: String, default: "" },
@@ -689,7 +689,7 @@ var __async = (__this, __arguments, generator) => {
   };
   const _hoisted_3$P = { class: "title" };
   const _hoisted_4$H = { class: "nut-cell__title-desc" };
-  function _sfc_render$1c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Right = vue.resolveComponent("Right");
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(_ctx.classes),
@@ -732,9 +732,9 @@ var __async = (__this, __arguments, generator) => {
       ])
     ], 6);
   }
-  const Cell = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["render", _sfc_render$1c]]);
-  const { create: create$1k } = createComponent("cell-group");
-  const _sfc_main$1K = create$1k({
+  const Cell = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["render", _sfc_render$1b]]);
+  const { create: create$1j } = createComponent("cell-group");
+  const _sfc_main$1K = create$1j({
     props: {
       title: { type: String, default: "" },
       desc: { type: String, default: "" }
@@ -750,7 +750,7 @@ var __async = (__this, __arguments, generator) => {
     class: "nut-cell-group__desc"
   };
   const _hoisted_4$G = { class: "nut-cell-group__wrap" };
-  function _sfc_render$1b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1a(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$1i, [
       _ctx.$slots.title ? vue.renderSlot(_ctx.$slots, "title", { key: 0 }) : _ctx.title ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_2$11, vue.toDisplayString(_ctx.title), 1)) : vue.createCommentVNode("", true),
       vue.createTextVNode(),
@@ -761,9 +761,9 @@ var __async = (__this, __arguments, generator) => {
       ])
     ]);
   }
-  const CellGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["render", _sfc_render$1b]]);
-  const { componentName: componentName$h, create: create$1j } = createComponent("overlay");
-  const _sfc_main$1J = create$1j({
+  const CellGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["render", _sfc_render$1a]]);
+  const { componentName: componentName$h, create: create$1i } = createComponent("overlay");
+  const _sfc_main$1J = create$1i({
     props: {
       visible: {
         type: Boolean,
@@ -818,7 +818,7 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const _hoisted_1$1h = ["catch-move"];
-  function _sfc_render$1a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$19(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock(vue.Transition, { name: "overlay-fade" }, {
       default: vue.withCtx(() => [
         vue.withDirectives(vue.createElementVNode("view", {
@@ -835,7 +835,7 @@ var __async = (__this, __arguments, generator) => {
       _: 3
     });
   }
-  const Overlay = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["render", _sfc_render$1a]]);
+  const Overlay = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["render", _sfc_render$19]]);
   const popupProps = {
     visible: {
       type: Boolean,
@@ -914,10 +914,10 @@ var __async = (__this, __arguments, generator) => {
       default: () => ({})
     }
   };
-  const { componentName: componentName$g, create: create$1i } = createComponent("popup");
+  const { componentName: componentName$g, create: create$1h } = createComponent("popup");
   const initIndex = 2e3;
   let _zIndex = initIndex;
-  const _sfc_main$1I = create$1i({
+  const _sfc_main$1I = create$1h({
     components: {
       NutOverlay: Overlay,
       Close: iconsVueTaro.Close
@@ -1022,7 +1022,7 @@ var __async = (__this, __arguments, generator) => {
       });
     }
   });
-  function _sfc_render$19(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$18(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_nut_overlay = vue.resolveComponent("nut-overlay");
     const _component_Close = vue.resolveComponent("Close");
     return vue.openBlock(), vue.createElementBlock("view", null, [
@@ -1067,7 +1067,7 @@ var __async = (__this, __arguments, generator) => {
       }, 8, ["name", "onAfterEnter", "onAfterLeave"])
     ]);
   }
-  const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["render", _sfc_render$19]]);
+  const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["render", _sfc_render$18]]);
   const component$1 = (tag) => {
     return {
       props: {
@@ -1125,10 +1125,10 @@ var __async = (__this, __arguments, generator) => {
       }
     };
   };
-  const { create: create$1h } = createComponent("config-provider");
-  const _sfc_main$1H = create$1h(component$1("view"));
-  const { create: create$1g } = createComponent("layout");
-  const _sfc_main$1G = create$1g({});
+  const { create: create$1g } = createComponent("config-provider");
+  const _sfc_main$1H = create$1g(component$1("view"));
+  const { create: create$1f } = createComponent("layout");
+  const _sfc_main$1G = create$1f({});
   withInstall(_sfc_main$1G);
   const LAYOUT_KEY = Symbol("nut-layout");
   const prefixCls$1 = "nut-col";
@@ -1268,8 +1268,8 @@ var __async = (__this, __arguments, generator) => {
       }
     });
   };
-  const { create: create$1f } = createComponent("sticky");
-  const _sfc_main$1D = create$1f({
+  const { create: create$1e } = createComponent("sticky");
+  const _sfc_main$1D = create$1e({
     props: {
       top: {
         type: [Number, String],
@@ -1336,7 +1336,7 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const _hoisted_1$1g = ["id"];
-  function _sfc_render$18(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$17(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       id: "rootRef-" + _ctx.refRandomId,
       ref: "rootRef",
@@ -1351,7 +1351,7 @@ var __async = (__this, __arguments, generator) => {
       ], 4)
     ], 12, _hoisted_1$1g);
   }
-  const Sticky = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["render", _sfc_render$18]]);
+  const Sticky = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["render", _sfc_render$17]]);
   const _sfc_main$1C = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
     name: "NutDivider"
   }), {
@@ -1531,8 +1531,8 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   };
-  const { create: create$1e } = createComponent("grid");
-  const _sfc_main$1B = create$1e(component);
+  const { create: create$1d } = createComponent("grid");
+  const _sfc_main$1B = create$1d(component);
   function useInject(key) {
     const parent = vue.inject(key, null);
     if (parent) {
@@ -1551,8 +1551,8 @@ var __async = (__this, __arguments, generator) => {
       index: vue.ref(-1)
     };
   }
-  const { create: create$1d, componentName: componentName$e } = createComponent("grid-item");
-  const _sfc_main$1A = create$1d({
+  const { create: create$1c, componentName: componentName$e } = createComponent("grid-item");
+  const _sfc_main$1A = create$1c({
     props: {
       text: {
         type: String
@@ -1622,7 +1622,7 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const _hoisted_1$1f = { class: "nut-grid-item__text" };
-  function _sfc_render$17(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$16(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(_ctx.rootClass),
       style: vue.normalizeStyle(_ctx.rootStyle),
@@ -1641,9 +1641,9 @@ var __async = (__this, __arguments, generator) => {
       ], 2)
     ], 6);
   }
-  const GridItem = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["render", _sfc_render$17]]);
-  const { create: create$1c, componentName: componentName$d } = createComponent("space");
-  const _sfc_main$1z = create$1c({
+  const GridItem = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["render", _sfc_render$16]]);
+  const { create: create$1b, componentName: componentName$d } = createComponent("space");
+  const _sfc_main$1z = create$1b({
     props: {
       align: String,
       direction: {
@@ -1894,9 +1894,9 @@ var __async = (__this, __arguments, generator) => {
       return isFunction(res) ? res(...args) : res;
     };
   };
-  const { create: create$1b } = createComponent("fixed-nav");
+  const { create: create$1a } = createComponent("fixed-nav");
   const cN$n = "NutFixedNav";
-  const _sfc_main$1x = create$1b({
+  const _sfc_main$1x = create$1a({
     components: {
       NutOverlay: Overlay,
       Left: iconsVueTaro.Left
@@ -1974,7 +1974,7 @@ var __async = (__this, __arguments, generator) => {
     class: "b"
   };
   const _hoisted_6$l = { class: "text" };
-  function _sfc_render$16(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$15(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_nut_overlay = vue.resolveComponent("nut-overlay");
     const _component_Left = vue.resolveComponent("Left");
     return vue.openBlock(), vue.createElementBlock("view", {
@@ -2020,10 +2020,10 @@ var __async = (__this, __arguments, generator) => {
       ])
     ], 6);
   }
-  const FixedNav = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["render", _sfc_render$16]]);
+  const FixedNav = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["render", _sfc_render$15]]);
   const MENU_KEY = Symbol("nut-menu");
-  const { componentName: componentName$c, create: create$1a } = createComponent("menu");
-  const _sfc_main$1w = create$1a({
+  const { componentName: componentName$c, create: create$19 } = createComponent("menu");
+  const _sfc_main$1w = create$19({
     components: {
       RectUp: iconsVueTaro.RectUp,
       RectDown: iconsVueTaro.RectDown
@@ -2141,7 +2141,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_2$_ = ["onClick"];
   const _hoisted_3$L = { class: "nut-menu__title-text" };
   const _hoisted_4$D = { class: "nut-menu__title-icon" };
-  function _sfc_render$15(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$14(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_RectUp = vue.resolveComponent("RectUp");
     const _component_RectDown = vue.resolveComponent("RectDown");
     return vue.openBlock(), vue.createElementBlock("view", {
@@ -2177,7 +2177,7 @@ var __async = (__this, __arguments, generator) => {
       vue.renderSlot(_ctx.$slots, "default")
     ], 2);
   }
-  const Menu = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["render", _sfc_render$15]]);
+  const Menu = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["render", _sfc_render$14]]);
   const _sfc_main$1v = /* @__PURE__ */ vue.defineComponent({
     __name: "index.taro",
     setup(__props) {
@@ -2190,8 +2190,8 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const { create: create$19 } = createComponent("menu-item");
-  const _sfc_main$1u = create$19({
+  const { create: create$18 } = createComponent("menu-item");
+  const _sfc_main$1u = create$18({
     props: {
       title: String,
       options: {
@@ -2279,7 +2279,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_1$1b = ["catch-move"];
   const _hoisted_2$Z = { class: "nut-menu-item__content" };
   const _hoisted_3$K = ["onClick"];
-  function _sfc_render$14(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Check = vue.resolveComponent("Check");
     const _component_nut_scroll_view = vue.resolveComponent("nut-scroll-view");
     const _component_nut_popup = vue.resolveComponent("nut-popup");
@@ -2351,7 +2351,7 @@ var __async = (__this, __arguments, generator) => {
       [vue.vShow, _ctx.state.showWrapper]
     ]);
   }
-  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["render", _sfc_render$14]]);
+  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["render", _sfc_render$13]]);
   const TABBAR_KEY = Symbol("nut-tabbar");
   const _hoisted_1$1a = ["id"];
   const _sfc_main$1t = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
@@ -2423,8 +2423,8 @@ var __async = (__this, __arguments, generator) => {
     const proxy = vue.getCurrentInstance().proxy;
     return proxy.$router || null;
   }
-  const { create: create$18 } = createComponent("badge");
-  const _sfc_main$1s = create$18({
+  const { create: create$17 } = createComponent("badge");
+  const _sfc_main$1s = create$17({
     props: {
       value: {
         type: [String, Number]
@@ -2491,7 +2491,7 @@ var __async = (__this, __arguments, generator) => {
   });
   const _hoisted_1$19 = { class: "nut-badge" };
   const _hoisted_2$Y = ["textContent"];
-  function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$19, [
       vue.withDirectives(vue.createElementVNode("view", {
         class: "nut-badge__icon",
@@ -2513,7 +2513,7 @@ var __async = (__this, __arguments, generator) => {
       ])
     ]);
   }
-  const NutBadge = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["render", _sfc_render$13]]);
+  const NutBadge = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["render", _sfc_render$12]]);
   const _hoisted_1$18 = { class: "nut-tabbar-item_icon-box" };
   const _hoisted_2$X = {
     key: 0,
@@ -2593,8 +2593,8 @@ var __async = (__this, __arguments, generator) => {
     }
   }));
   withInstall(_sfc_main$1r);
-  const { create: create$17 } = createComponent("elevator");
-  const _sfc_main$1q = create$17({
+  const { create: create$16 } = createComponent("elevator");
+  const _sfc_main$1q = create$16({
     components: {
       NutScrollView: _sfc_main$1v
     },
@@ -2769,7 +2769,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_6$k = { class: "nut-elevator__list__fixed-title" };
   const _hoisted_7$i = { class: "nut-elevator__bars__inner" };
   const _hoisted_8$d = ["data-index", "onClick"];
-  function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_nut_scroll_view = vue.resolveComponent("nut-scroll-view");
     return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$17, [
       vue.createVNode(_component_nut_scroll_view, {
@@ -2847,10 +2847,10 @@ var __async = (__this, __arguments, generator) => {
       ], 32)
     ]);
   }
-  const Elevator = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["render", _sfc_render$12]]);
-  const { create: create$16 } = createComponent("pagination");
+  const Elevator = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["render", _sfc_render$11]]);
+  const { create: create$15 } = createComponent("pagination");
   const cN$m = "NutPagination";
-  const _sfc_main$1p = create$16({
+  const _sfc_main$1p = create$15({
     props: {
       modelValue: {
         type: Number,
@@ -2968,7 +2968,7 @@ var __async = (__this, __arguments, generator) => {
     class: "nut-pagination-contain"
   };
   const _hoisted_5$p = { class: "nut-pagination-simple" };
-  function _sfc_render$11(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$16, [
       vue.createElementVNode("view", {
         class: vue.normalizeClass(["nut-pagination-prev", _ctx.mode == "multi" ? "" : "simple-border", _ctx.modelValue == 1 ? "disabled" : ""]),
@@ -3007,7 +3007,7 @@ var __async = (__this, __arguments, generator) => {
       ], 2)
     ]);
   }
-  const Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["render", _sfc_render$11]]);
+  const Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["render", _sfc_render$10]]);
   const _window = window;
   function requestAniFrame() {
     if (typeof _window !== "undefined") {
@@ -3198,8 +3198,8 @@ var __async = (__this, __arguments, generator) => {
       __publicField(this, "disabled", false);
     }
   }
-  const { create: create$15 } = createComponent("tabs");
-  const _sfc_main$1o = create$15({
+  const { create: create$14 } = createComponent("tabs");
+  const _sfc_main$1o = create$14({
     components: {
       JoySmile: iconsVueTaro.JoySmile,
       NutScrollView: _sfc_main$1v
@@ -3514,7 +3514,7 @@ var __async = (__this, __arguments, generator) => {
     class: "nut-tabs__titles-placeholder"
   };
   const _hoisted_3$G = ["id"];
-  function _sfc_render$10(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_JoySmile = vue.resolveComponent("JoySmile");
     const _component_nut_scroll_view = vue.resolveComponent("nut-scroll-view");
     return vue.openBlock(), vue.createElementBlock("view", {
@@ -3589,9 +3589,9 @@ var __async = (__this, __arguments, generator) => {
       ], 44, _hoisted_3$G)
     ], 2);
   }
-  const Tabs = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$10]]);
-  const { create: create$14 } = createComponent("tab-pane");
-  const _sfc_main$1n = create$14({
+  const Tabs = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$$]]);
+  const { create: create$13 } = createComponent("tab-pane");
+  const _sfc_main$1n = create$13({
     props: {
       title: {
         type: [String, Number],
@@ -3619,7 +3619,7 @@ var __async = (__this, __arguments, generator) => {
       });
     }
   });
-  function _sfc_render$$(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["nut-tab-pane", { inactive: _ctx.paneKey != _ctx.activeKey && _ctx.autoHeight }]),
       style: vue.normalizeStyle(_ctx.paneStyle)
@@ -3627,43 +3627,7 @@ var __async = (__this, __arguments, generator) => {
       vue.renderSlot(_ctx.$slots, "default")
     ], 6);
   }
-  const TabPane = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["render", _sfc_render$$]]);
-  const { create: create$13 } = createComponent("indicator");
-  const _sfc_main$1m = create$13({
-    props: {
-      size: {
-        type: Number,
-        default: 3
-      },
-      current: {
-        type: Number,
-        default: 1
-      },
-      block: {
-        type: Boolean,
-        default: false
-      },
-      align: {
-        type: String,
-        default: "center"
-      },
-      fillZero: {
-        type: Boolean,
-        default: true
-      }
-    },
-    setup(props) {
-      const classes = vue.computed(() => {
-        const prefixCls2 = "nut-indicator";
-        return {
-          [prefixCls2]: true,
-          [`${prefixCls2}--block`]: props.block,
-          [`${prefixCls2}--align__${props.align}`]: props.block && props.align
-        };
-      });
-      return { classes, padZero };
-    }
-  });
+  const TabPane = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["render", _sfc_render$_]]);
   const _hoisted_1$14 = {
     key: 0,
     class: "nut-indicator--number"
@@ -3672,18 +3636,41 @@ var __async = (__this, __arguments, generator) => {
     key: 1,
     class: "nut-indicator--dot"
   };
-  function _sfc_render$_(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: vue.normalizeClass(_ctx.classes)
-    }, [
-      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.size, (item) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: item }, [
-          item === _ctx.current ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_1$14, vue.toDisplayString(_ctx.fillZero && _ctx.padZero(item) || item), 1)) : (vue.openBlock(), vue.createElementBlock("view", _hoisted_2$T))
-        ], 64);
-      }), 128))
-    ], 2);
-  }
-  const Indicator = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$_]]);
+  const _sfc_main$1m = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
+    name: "NutIndicator"
+  }), {
+    __name: "indicator.taro",
+    props: {
+      size: { default: 3 },
+      current: { default: 1 },
+      block: { type: Boolean, default: false },
+      align: { default: "center" },
+      fillZero: { type: Boolean, default: true }
+    },
+    setup(__props) {
+      const props = __props;
+      const classes = vue.computed(() => {
+        const prefixCls2 = "nut-indicator";
+        return {
+          [prefixCls2]: true,
+          [`${prefixCls2}--block`]: props.block,
+          [`${prefixCls2}--align__${props.align}`]: props.block && props.align
+        };
+      });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", {
+          class: vue.normalizeClass(classes.value)
+        }, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.size, (item) => {
+            return vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: item }, [
+              item === _ctx.current ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_1$14, vue.toDisplayString(_ctx.fillZero && vue.unref(padZero)(item) || item), 1)) : (vue.openBlock(), vue.createElementBlock("view", _hoisted_2$T))
+            ], 64);
+          }), 128))
+        ], 2);
+      };
+    }
+  }));
+  withInstall(_sfc_main$1m);
   const { create: create$12 } = createComponent("side-navbar");
   const _sfc_main$1l = create$12({
     props: {
@@ -20577,7 +20564,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const AvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   function install(app) {
-    const packages = [_sfc_main$1M, Cell, CellGroup, Overlay, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, GridItem, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, Indicator, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, Input, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, Textarea, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, Step, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, Countdown, Badge, _sfc_main$y, Popover, Skeleton, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
+    const packages = [_sfc_main$1M, Cell, CellGroup, Overlay, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, GridItem, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, _sfc_main$1m, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, Input, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, Textarea, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, Step, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, Countdown, Badge, _sfc_main$y, Popover, Skeleton, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
     packages.forEach((item) => {
       if (item.install) {
         app.use(item);
@@ -20631,7 +20618,7 @@ var __async = (__this, __arguments, generator) => {
   exports2.Grid = _sfc_main$1B;
   exports2.GridItem = GridItem;
   exports2.ImagePreview = ImagePreview;
-  exports2.Indicator = Indicator;
+  exports2.Indicator = _sfc_main$1m;
   exports2.Input = Input;
   exports2.InputNumber = _sfc_main$16;
   exports2.Invoice = _sfc_main$1;
