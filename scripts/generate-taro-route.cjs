@@ -7,7 +7,7 @@ const taroConfig = `${targetBaseUrl}/packages/nutui-taro-demo/src/app.config.ts`
 const createConfig = async () => {
   let configRef = []
 
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     config.nav.map((item) => {
       let co = {
         root: item.enName,
@@ -33,7 +33,7 @@ const create = async () => {
   fse.writeFileSync(
     taroConfig,
     `
-const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
+const subPackages = ${JSON.stringify(subpackages, null, 2)}\n
 export default {
   pages: ['pages/index/index'],
   subPackages,

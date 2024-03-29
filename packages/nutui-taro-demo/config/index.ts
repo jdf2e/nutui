@@ -1,4 +1,7 @@
-const path = require('path')
+import path from 'path'
+import dev from './dev'
+import prod from './prod'
+
 const config = {
   projectName: '@nutui/nutui-taro-demo',
   date: '2021-5-29',
@@ -10,7 +13,7 @@ const config = {
     375: 2 / 1
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'h5' : process.env.TARO_ENV}`,
   plugins: [
     '@tarojs/plugin-html',
     [
@@ -99,9 +102,9 @@ const config = {
   }
 }
 
-module.exports = function (merge) {
+export default function (merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, dev)
   }
-  return merge({}, config, require('./prod'))
+  return merge({}, config, prod)
 }

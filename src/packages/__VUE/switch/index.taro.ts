@@ -1,11 +1,11 @@
-import Switch from './switch.taro.vue';
-import type { ComponentPublicInstance } from 'vue';
-import { withInstall } from '@/packages/utils';
+import Switch from './switch.taro.vue'
+import type { ComponentPublicInstance } from 'vue'
+import { withInstall } from '@/packages/utils'
 
-withInstall(Switch);
+withInstall(Switch)
 
-export type { SwitchProps } from './switch.taro.vue';
+export type { SwitchProps } from './switch.taro.vue'
 
-export type SwitchInstance = ComponentPublicInstance & InstanceType<typeof Switch>;
+export type SwitchInstance = ComponentPublicInstance & InstanceType<typeof Switch>
 
-export { Switch, Switch as default };
+export { Switch, Switch as default }
