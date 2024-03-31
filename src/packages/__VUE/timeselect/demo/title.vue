@@ -43,7 +43,7 @@ const onChange = (pannelKey) => {
 }
 
 const onSelect = (item) => {
-  let curTimeIndex = time.value[0]['list'].findIndex((time) => time === item)
+  let curTimeIndex = time.value[0]['list'].findIndex(time => time === item)
   if (curTimeIndex === -1) {
     time.value[0]['list'].push(item)
   } else {

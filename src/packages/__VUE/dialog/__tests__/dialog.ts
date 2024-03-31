@@ -8,7 +8,7 @@ export class DialogOptions {
   textAlign?: string = 'center'
   teleport?: String | HTMLElement = 'body'
   id?: string | number = new Date().getTime()
-  footerDirection?: string = 'horizontal' //使用横纵方向 可选值 horizontal、vertical
+  footerDirection?: string = 'horizontal' // 使用横纵方向 可选值 horizontal、vertical
 
   // function
   onUpdate?: Function = () => {}
@@ -30,9 +30,9 @@ class DialogFunction {
   options: DialogOptions = new DialogOptions()
 
   constructor(_options: DialogOptions) {
-    let options = Object.assign(this.options, _options)
+    const options = Object.assign(this.options, _options)
     let elWrap: HTMLElement = document.body
-    let teleport = options.teleport as string
+    const teleport = options.teleport as string
     if (teleport != 'body') {
       if (typeof teleport == 'string') {
         elWrap = document.querySelector(teleport) as HTMLElement

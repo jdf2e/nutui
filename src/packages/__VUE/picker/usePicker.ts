@@ -25,7 +25,7 @@ export const usePicker = (props: any, emit: any) => {
   const defaultIndexes = computed(() => {
     const fields = columnFieldNames.value
     return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      const targetIndex = column.findIndex((item) => item[fields.value] === defaultValues.value[index])
+      const targetIndex = column.findIndex(item => item[fields.value] === defaultValues.value[index])
       return targetIndex === -1 ? 0 : targetIndex
     })
   })
@@ -41,7 +41,7 @@ export const usePicker = (props: any, emit: any) => {
   const selectedOptions = computed(() => {
     const fields = columnFieldNames.value
     return (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-      return column.find((item) => item[fields.value] === defaultValues.value[index]) || column[0]
+      return column.find(item => item[fields.value] === defaultValues.value[index]) || column[0]
     })
   })
 
@@ -92,7 +92,7 @@ export const usePicker = (props: any, emit: any) => {
     while (cursor && cursor[fields.children]) {
       const options: PickerOption[] = cursor[fields.children]
       const value = defaultValues[columnIndex]
-      let index = options.findIndex((columnItem) => columnItem[fields.value] === value)
+      let index = options.findIndex(columnItem => columnItem[fields.value] === value)
       if (index === -1) index = 0
       cursor = cursor[fields.children][index]
 

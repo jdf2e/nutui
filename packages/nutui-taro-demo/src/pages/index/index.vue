@@ -49,7 +49,7 @@ export default {
   // onShareTimeline() {
   //   return {
   //     title: '京东风格的轻量级小程序组件库',
-  // 	  success: function(res) {}
+  //    success: function(res) {}
   //   }
   // },
   setup() {

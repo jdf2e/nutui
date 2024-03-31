@@ -10,9 +10,9 @@
       <template v-if="getSlots('sku-header-extra')">
         <slot name="sku-header-extra"></slot>
       </template>
-      <view v-if="goods.skuId && !getSlots('sku-header-extra')" class="nut-sku-header-right-extra"
-        >{{ translate('skuId') }}&nbsp;:&nbsp;{{ goods.skuId }}</view
-      >
+      <view v-if="goods.skuId && !getSlots('sku-header-extra')" class="nut-sku-header-right-extra">
+        {{ translate('skuId') }}&nbsp;:&nbsp;{{ goods.skuId }}
+      </view>
     </view>
   </view>
 </template>

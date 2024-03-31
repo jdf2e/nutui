@@ -254,7 +254,7 @@ export default create({
     }
     const submit = () => {
       Promise.all(uploadQueue.value).then((res) => {
-        res.forEach((i) => i.upload())
+        res.forEach(i => i.upload())
       })
     }
 

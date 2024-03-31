@@ -40,14 +40,18 @@
                       v-if="active != 0 && showPrevStep"
                       class="nut-tour-content-bottom-operate-btn"
                       @click="changeStep('prev')"
-                      >{{ prevStepTxt }}</view
+                    >
+                      {{ prevStepTxt }}
+                    </view
                     >
                   </slot>
                   <view
                     v-if="steps.length - 1 == active"
                     class="nut-tour-content-bottom-operate-btn active"
                     @click="close"
-                    >{{ completeTxt }}</view
+                  >
+                    {{ completeTxt }}
+                  </view
                   >
 
                   <slot name="next-step">
@@ -55,7 +59,9 @@
                       v-if="steps.length - 1 != active"
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="changeStep('next')"
-                      >{{ nextStepTxt }}</view
+                    >
+                      {{ nextStepTxt }}
+                    </view
                     >
                   </slot>
                 </view>

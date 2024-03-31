@@ -74,14 +74,14 @@ export default create({
     options: {
       type: Object,
       default: {
-        autoplay: false, //是否自动播放
+        autoplay: false, // 是否自动播放
         volume: 0.5,
         poster: '',
         loop: false,
         controls: true,
-        muted: false, //是否静音
-        disabled: false, //禁止操作
-        playsinline: false, //行内展示
+        muted: false, // 是否静音
+        disabled: false, // 禁止操作
+        playsinline: false, // 行内展示
         touchPlay: false,
         preload: ''
       },
@@ -99,8 +99,8 @@ export default create({
     const translate = useLocale(cN)
     const state = reactive({
       videoElm: null,
-      initial: true, //控制封面的显示
-      showToolbox: false, //控制控制器和标题的显示
+      initial: true, // 控制封面的显示
+      showToolbox: false, // 控制控制器和标题的显示
       // 视频容器元素
       player: {
         $player: null,
@@ -123,10 +123,10 @@ export default create({
       },
       state: {
         controlShow: true,
-        vol: 0.5, //音量
-        currentTime: 0, //当前时间
+        vol: 0.5, // 音量
+        currentTime: 0, // 当前时间
         fullScreen: false,
-        playing: false, //是否正在播放
+        playing: false, // 是否正在播放
         isLoading: false,
         isEnd: false,
         isError: false,
@@ -144,7 +144,7 @@ export default create({
       (newValue) => {
         if (newValue.src) {
           nextTick(() => {
-            ;(state.videoElm as any).load()
+            (state.videoElm as any).load()
           })
         }
       },
@@ -159,11 +159,11 @@ export default create({
       { immediate: true }
     )
     const init = () => {
-      ;(state.videoElm as any) = root.value
+      (state.videoElm as any) = root.value
 
       if (props.options.autoplay) {
         setTimeout(() => {
-          ;(state.videoElm as any).play()
+          (state.videoElm as any).play()
         }, 200)
       }
 
@@ -172,7 +172,7 @@ export default create({
       }
 
       if (props.options.playsinline) {
-        ;(state.videoElm as any).setAttribute('playsinline', props.options.playsinline)
+        (state.videoElm as any).setAttribute('playsinline', props.options.playsinline)
         ;(state.videoElm as any).setAttribute('webkit-playsinline', props.options.playsinline)
         ;(state.videoElm as any).setAttribute('x5-video-player-type', 'h5-page')
         ;(state.videoElm as any).setAttribute('x5-video-player-fullscreen', false)
@@ -182,7 +182,7 @@ export default create({
       if (state.showToolbox) {
         customerInit()
       } else {
-        ;(state.videoElm as any).addEventListener('play', () => {
+        (state.videoElm as any).addEventListener('play', () => {
           state.state.playing = true
           emit('play', state.videoElm as any)
         })
@@ -216,7 +216,7 @@ export default create({
         if (state.state.playing) {
           try {
             setTimeout(() => {
-              ;(state.videoElm as any).play()
+              (state.videoElm as any).play()
             }, 200)
 
             // 监听缓存进度
@@ -232,10 +232,8 @@ export default create({
             // 捕获url异常出现的错误
             handleError()
           }
-        }
-        // 停止状态
-        else {
-          ;(state.videoElm as any).pause()
+        } else {
+          (state.videoElm as any).pause()
           emit('pause', state.videoElm)
         }
       }
@@ -328,7 +326,7 @@ export default create({
     }
 
     const setPlayTime = (percent: number, totalTime: number) => {
-      ;(state.videoElm as any).currentTime = Math.floor(percent * totalTime)
+      (state.videoElm as any).currentTime = Math.floor(percent * totalTime)
     }
 
     const retry = () => {

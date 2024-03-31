@@ -19,9 +19,11 @@
     </view>
 
     <!-- 省略号 symbol  -->
-    <view :id="'symbolContain' + refRandomId" ref="symbolContain" class="nut-ellipsis__copy" style="display: inline">{{
-      symbolText
-    }}</view>
+    <view :id="'symbolContain' + refRandomId" ref="symbolContain" class="nut-ellipsis__copy" style="display: inline">
+      {{
+        symbolText
+      }}
+    </view>
 
     <!-- 数字 9 英文 W  -->
   </view>
@@ -85,16 +87,16 @@ export default create({
     const rootId = ref('root' + refRandomId)
     let widthRef = ref('auto')
     const state = reactive({
-      exceeded: false, //是否超出
-      expanded: false //是否折叠
+      exceeded: false, // 是否超出
+      expanded: false // 是否折叠
     })
 
     let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
     let symbolTextWidth = widthBase[0] * 0.7921
     const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
     const digitReg = /^[0-9]+$/ // 数字
-    const letterUpperReg = /^[A-Z]+$/ //字母
-    const letterLowerReg = /^[a-z]+$/ //字母
+    const letterUpperReg = /^[A-Z]+$/ // 字母
+    const letterLowerReg = /^[a-z]+$/ // 字母
 
     const symbolText = computed(() => {
       if (props.direction == 'end' || props.direction == 'middle') {
@@ -121,31 +123,31 @@ export default create({
 
     const getReference = async () => {
       const query = Taro.createSelectorQuery()
-      query.select(`#${rootId.value}`) &&
-        query
-          .select(`#${rootId.value}`)
-          .fields(
-            {
-              computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom', 'fontSize']
-            },
-            (res) => {
-              lineHeight = pxToNumber(res.lineHeight === 'normal' ? props.lineHeight : res.lineHeight)
-              maxHeight = Math.floor(
-                lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)
-              )
+      query.select(`#${rootId.value}`)
+      && query
+        .select(`#${rootId.value}`)
+        .fields(
+          {
+            computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom', 'fontSize']
+          },
+          (res) => {
+            lineHeight = pxToNumber(res.lineHeight === 'normal' ? props.lineHeight : res.lineHeight)
+            maxHeight = Math.floor(
+              lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)
+            )
 
-              originHeight = pxToNumber(res.height)
+            originHeight = pxToNumber(res.height)
 
-              widthRef.value = res.width
+            widthRef.value = res.width
 
-              // 设置基础字符
-              const bsize = pxToNumber(res.fontSize)
-              widthBase = [bsize, bsize * 0.72, bsize * 0.53, bsize * 0.4, bsize * 0.75]
+            // 设置基础字符
+            const bsize = pxToNumber(res.fontSize)
+            widthBase = [bsize, bsize * 0.72, bsize * 0.53, bsize * 0.4, bsize * 0.75]
 
-              calcEllipse()
-            }
-          )
-          .exec()
+            calcEllipse()
+          }
+        )
+        .exec()
     }
 
     // 计算省略号的位置

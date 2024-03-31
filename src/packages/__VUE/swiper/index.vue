@@ -54,7 +54,7 @@ export default create({
     },
     direction: {
       type: String,
-      default: 'horizontal' //horizontal and vertical
+      default: 'horizontal' // horizontal and vertical
     },
     paginationVisible: {
       type: Boolean,
@@ -438,7 +438,7 @@ export default create({
     watch(
       () => props.autoPlay,
       (val) => {
-        ;+val > 0 ? autoplay() : stopAutoPlay()
+        +val > 0 ? autoplay() : stopAutoPlay()
       }
     )
 

@@ -88,7 +88,7 @@ const state = reactive({
 // };
 
 const showFn = (i: number) => {
-  ;(state as any)['showPreview' + i] = true
+  (state as any)['showPreview' + i] = true
 }
 
 // const fnShow = () => {
@@ -100,7 +100,7 @@ const showFn = (i: number) => {
 // };
 
 const hideFn = (i: number) => {
-  ;(state as any)['showPreview' + i] = false
+  (state as any)['showPreview' + i] = false
 }
 
 const longPress = (image: { src: string }) => {

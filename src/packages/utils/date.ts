@@ -105,8 +105,8 @@ const Utils = {
   },
   getMonthWeek: function (year: string, month: string, date: string, firstDayOfWeek: number = 0): number {
     const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
-    let w = dateNow.getDay() //星期数
-    let d = dateNow.getDate()
+    let w = dateNow.getDay() // 星期数
+    const d = dateNow.getDate()
     let remainder = 6 - w
     if (firstDayOfWeek !== 0) {
       w = w == 0 ? 7 : w
@@ -127,10 +127,10 @@ const Utils = {
     let day = dateNow.getDay()
     if (firstDayOfWeek === 0) {
       const oneDayTime = 24 * 60 * 60 * 1000
-      //显示周日
-      const SundayTime = nowTime - day * oneDayTime //本周的周日
-      //显示周六
-      const SaturdayTime = nowTime + (6 - day) * oneDayTime //本周的周六
+      // 显示周日
+      const SundayTime = nowTime - day * oneDayTime // 本周的周日
+      // 显示周六
+      const SaturdayTime = nowTime + (6 - day) * oneDayTime // 本周的周六
 
       const sunday = this.date2Str(new Date(SundayTime))
       const saturday = this.date2Str(new Date(SaturdayTime))
@@ -138,10 +138,10 @@ const Utils = {
     } else {
       day = day == 0 ? 7 : day
       const oneDayTime = 24 * 60 * 60 * 1000
-      //显示周一
-      const MondayTime = nowTime - (day - 1) * oneDayTime //本周的周一
-      //显示周日
-      const SundayTime = nowTime + (7 - day) * oneDayTime //本周的周日
+      // 显示周一
+      const MondayTime = nowTime - (day - 1) * oneDayTime // 本周的周一
+      // 显示周日
+      const SundayTime = nowTime + (7 - day) * oneDayTime // 本周的周日
 
       const monday = this.date2Str(new Date(MondayTime))
       const sunday = this.date2Str(new Date(SundayTime))
@@ -149,7 +149,7 @@ const Utils = {
     }
   },
   formatResultDate: function (date: string) {
-    let days = [...date.split('-')]
+    const days = [...date.split('-')]
     days[2] = Utils.getNumTwoBit(Number(days[2]))
     days[3] = `${days[0]}-${days[1]}-${days[2]}`
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])

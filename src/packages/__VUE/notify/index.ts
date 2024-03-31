@@ -24,8 +24,8 @@ let optsMap: TDOptions[] = []
 const clearNotify = (id?: string) => {
   if (id) {
     const container = document.getElementById(id)
-    optsMap = optsMap.filter((item) => item.id !== id)
-    idsMap = idsMap.filter((item) => item !== id)
+    optsMap = optsMap.filter(item => item.id !== id)
+    idsMap = idsMap.filter(item => item !== id)
     if (container) {
       document.body.removeChild(container)
     }
@@ -44,7 +44,7 @@ const clearNotify = (id?: string) => {
 const updateNotify = (opts: TDOptions) => {
   const container = document.getElementById(opts.id as string)
   if (container) {
-    const currentOpt = optsMap.find((item) => item.id === opts.id)
+    const currentOpt = optsMap.find(item => item.id === opts.id)
     if (currentOpt) {
       opts = { ...defaultOptions, ...currentOpt, ...opts }
     } else {
@@ -61,7 +61,7 @@ const mountNotify = (opts: TDOptions) => {
   let _id
   if (opts.id) {
     _id = opts.id
-    if (idsMap.find((item) => item === opts.id)) {
+    if (idsMap.find(item => item === opts.id)) {
       return updateNotify(opts)
     }
   } else {

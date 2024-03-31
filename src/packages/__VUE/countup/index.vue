@@ -27,11 +27,11 @@
               height: numHeight + 'px',
               left:
                 numWidth *
-                  (index > num_total_len - pointNum - 1
-                    ? index == num_total_len - pointNum
-                      ? index * 1.5
-                      : index * 1.3
-                    : index) +
+                (index > num_total_len - pointNum - 1
+                  ? index == num_total_len - pointNum
+                    ? index * 1.5
+                    : index * 1.3
+                  : index) +
                 'px',
               backgroundImage: 'url(' + customBgImg + ')',
               backgroundPositionX: '0',
@@ -49,7 +49,9 @@
               left: numWidth * (num_total_len - pointNum) * 1.1 + 'px',
               fontSize: '30px'
             }"
-            >.</view
+          >
+            .
+          </view
           >
         </view>
       </template>
@@ -98,7 +100,9 @@
             top: 0,
             left: numWidth * (num_total_len - pointNum) + 'px'
           }"
-          >.</view
+        >
+          .
+        </view
         >
       </view>
       <template v-else>
@@ -122,11 +126,11 @@ interface IData {
   to0_10: number[]
   to10_0: Array<number>
   timer: null | any
-  totalCount: number //正整数
-  pointNum: number //小数位
-  numberVal: number //数字
-  num_total_len: number //数字长度
-  relNum: number //去除小数点
+  totalCount: number // 正整数
+  pointNum: number // 小数位
+  numberVal: number // 数字
+  num_total_len: number // 数字长度
+  relNum: number // 去除小数点
   customNumber: number
   prizeLevelTrun: number
   prizeY: Array<any>
@@ -230,11 +234,11 @@ export default create({
       to0_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
       to10_0: [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1],
       timer: null,
-      totalCount: 0, //正整数
-      pointNum: 0, //小数位
-      numberVal: 0, //数字
-      num_total_len: 0, //数字长度
-      relNum: 0, //去除小数点
+      totalCount: 0, // 正整数
+      pointNum: 0, // 小数位
+      numberVal: 0, // 数字
+      num_total_len: 0, // 数字长度
+      relNum: 0, // 去除小数点
       customNumber: 1,
       prizeLevelTrun: 0,
       prizeY: [],
@@ -313,14 +317,14 @@ export default create({
     // 数字滚动-top值
     const topNumber = (index: number) => {
       let { num_total_len, pointNum, initDigit1, initDigit2, sortFlag } = data
-      let idx1 =
-        sortFlag == 'add' || sortFlag == 'equal'
+      let idx1
+        = sortFlag == 'add' || sortFlag == 'equal'
           ? String(initDigit2)[index - (num_total_len - pointNum)]
           : 10 - Number(String(initDigit2)[index - (num_total_len - pointNum)])
-      let idx2 =
-        sortFlag == 'add' || sortFlag == 'equal' ? String(initDigit1)[index] : 10 - Number(String(initDigit1)[index])
-      let num =
-        index > num_total_len - pointNum - 1
+      let idx2
+        = sortFlag == 'add' || sortFlag == 'equal' ? String(initDigit1)[index] : 10 - Number(String(initDigit1)[index])
+      let num
+        = index > num_total_len - pointNum - 1
           ? -idx1 * 100 + '%'
           : index <= String(initDigit1).length - 1
             ? -idx2 * 100 + '%'
@@ -334,8 +338,8 @@ export default create({
     const turnNumber = (index: number) => {
       let { num_total_len, pointNum, initDigit1, initDigit2 } = data
       let idx1 = String(initDigit2)[index - (num_total_len - pointNum)]
-      let num =
-        index > num_total_len - pointNum - 1
+      let num
+        = index > num_total_len - pointNum - 1
           ? idx1
             ? idx1
             : 0
@@ -349,9 +353,9 @@ export default create({
       let { endNum, initNum, speed, toFixed } = props
       let countTimer = setInterval(() => {
         if (initNum > endNum) {
-          //减少
+          // 减少
           if (Number(data.current) <= endNum || Number(data.current) <= speed) {
-            //数字减小，有可能导致current小于speed
+            // 数字减小，有可能导致current小于speed
             data.current = endNum.toFixed(toFixed)
             clearInterval(countTimer)
             emit('scrollEnd')
@@ -361,7 +365,7 @@ export default create({
             data.current = num.toFixed(toFixed)
           }
         } else {
-          //增加
+          // 增加
           if (Number(data.current) >= endNum) {
             data.current = endNum.toFixed(toFixed)
             clearInterval(countTimer)
@@ -419,13 +423,13 @@ export default create({
 
       // --------------
       if (initNum > endNum) {
-        //减少
+        // 减少
         data.sortFlag = 'reduce'
         data.to0_10 = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
         data.totalCount = calculation(initNum, endNum, '-')
         data.numberVal = Number(String(initNum))
       } else if (initNum < endNum) {
-        //增加
+        // 增加
         data.sortFlag = 'add'
         data.to0_10 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
         data.totalCount = calculation(endNum, initNum, '-')
@@ -433,7 +437,7 @@ export default create({
       } else {
         data.sortFlag = 'equal'
       }
-      //将小数位数计算后，补0
+      // 将小数位数计算后，补0
       var unit = 1
       for (let i = 0; i < data.pointNum; i++) {
         unit *= 10
@@ -442,9 +446,9 @@ export default create({
       data.relNum = rel_big
       // this.totalCount = rel_big;
       if (toFixed != 0) {
-        //计算小数点后的位数，小数位
+        // 计算小数点后的位数，小数位
         data.pointNum = String(data.numberVal).split('.')[1] ? String(data.numberVal).split('.')[1].length : 0
-        //数字长度
+        // 数字长度
         data.num_total_len = String(rel_big).length
       }
       if (String(initNum).indexOf('.') > -1) {
@@ -477,8 +481,8 @@ export default create({
       if (data.pointNum != 0) {
         m = 1 / Math.pow(10, data.pointNum)
       }
-      //设置定时器
-      ;(data.timer as any) = setInterval(() => {
+      // 设置定时器
+      (data.timer as any) = setInterval(() => {
         runStep(el)
         data.totalCount = calculation(data.totalCount, m, '-')
         // that.totalCount--;
@@ -529,7 +533,7 @@ export default create({
         runStep(el.previousSibling as HTMLElement)
       }
     }
-    const reset = (el: { style: { top: string }; previousSibling: HTMLElement }, turningNum: number) => {
+    const reset = (el: { style: { top: string }, previousSibling: HTMLElement }, turningNum: number) => {
       setTimeout(() => {
         // 前面数字的滚动，用于递增
         if (turningNum == 10) {
@@ -550,7 +554,7 @@ export default create({
         // setTimeout(() => {
         //   data.relNum = calculation(data.relNum, m * props.speed, '+');
         // }, props.during);
-        ;(runNumberImg.value as any).addEventListener('webkitTransitionEnd', () => {
+        (runNumberImg.value as any).addEventListener('webkitTransitionEnd', () => {
           emit('scrollEnd')
           data.valFlag = false
           // setTimeout(() => {
@@ -586,8 +590,8 @@ export default create({
             data.prizeY[i] = data.prizeYPrev[i]
           }
           let local = data.prizeYPrev[i] ? data.prizeYPrev[i] : 0
-          let newLocation =
-            turn + local + (props.machinePrizeNum - data.prizeLevelTrun + 1) * props.numHeight + (distance - local)
+          let newLocation
+            = turn + local + (props.machinePrizeNum - data.prizeLevelTrun + 1) * props.numHeight + (distance - local)
           if (data.prizeLevelTrun < 0) {
             newLocation += props.numHeight * data.notPrize[i]
           }

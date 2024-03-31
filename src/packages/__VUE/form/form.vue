@@ -156,7 +156,7 @@ const validate = (customProp = '') => {
       })
 
       Promise.all(errors).then((errorRes) => {
-        errorRes = errorRes.filter((item) => item !== true)
+        errorRes = errorRes.filter(item => item !== true)
         const res = { valid: true, errors: [] }
         if (errorRes.length) {
           res.valid = false

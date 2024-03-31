@@ -16,6 +16,6 @@ import { ref } from 'vue'
 const show = ref(false)
 const date = ref([])
 const choose = (param) => {
-  date.value = param.map((item) => item[3])
+  date.value = param.map(item => item[3])
 }
 </script>

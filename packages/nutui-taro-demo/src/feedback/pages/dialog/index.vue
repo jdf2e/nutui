@@ -37,7 +37,7 @@ const visible3 = ref(false)
 const visible4 = ref(false)
 const visible5 = ref(false)
 const closeContent = ref('')
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000))
+const sleep = () => new Promise(resolve => setTimeout(resolve, 1000))
 const countDown = (second: number) => `倒计时 ${second} 秒`
 
 const onCancel = () => {

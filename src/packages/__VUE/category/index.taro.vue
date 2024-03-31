@@ -28,13 +28,13 @@ export type CategoryType = {
 
 export default create({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: 'classify'
     },
 
-    //左侧导航栏
+    // 左侧导航栏
     category: {
       type: Array as PropType<CategoryType>,
       default: () => []
@@ -43,7 +43,7 @@ export default create({
 
   setup(props, { emit }) {
     const checkIndex = ref(0)
-    const categoryLeft = ref(false) //是否显示slot
+    const categoryLeft = ref(false) // 是否显示slot
 
     const getChildList = (index: any) => {
       checkIndex.value = index

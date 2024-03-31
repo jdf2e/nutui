@@ -19,8 +19,9 @@
           :key="index"
           class="nut-calendar__weekday"
           :class="{ weekend: item.weekend }"
-          >{{ item.day }}</view
         >
+          {{ item.day }}
+        </view>
       </view>
     </view>
     <!-- content-->
@@ -62,9 +63,11 @@
                     >
                       {{ startText || translate('start') }}
                     </view>
-                    <view v-if="isEndTip(day, month)" class="nut-calendar__day-tip">{{
-                      endText || translate('end')
-                    }}</view>
+                    <view v-if="isEndTip(day, month)" class="nut-calendar__day-tip">
+                      {{
+                        endText || translate('end')
+                      }}
+                    </view>
                   </view>
                 </template>
               </view>
@@ -259,8 +262,8 @@ export default create({
     const getClass = (day: Day, month: MonthInfo, index?: number) => {
       const res = []
       if (
-        typeof index === 'number' &&
-        ((index + 1 + props.firstDayOfWeek) % 7 === 0 || (index + props.firstDayOfWeek) % 7 === 0)
+        typeof index === 'number'
+        && ((index + 1 + props.firstDayOfWeek) % 7 === 0 || (index + props.firstDayOfWeek) % 7 === 0)
       ) {
         res.push('weekend')
       }
@@ -268,23 +271,23 @@ export default create({
       const { type } = props
       if (day.type == 'curr') {
         if (
-          Utils.isEqual(state.currDate as string, currDate) ||
-          ((type == 'range' || type == 'week') && (isStart(currDate) || isEnd(currDate))) ||
-          (type == 'multiple' && isMultiple(currDate))
+          Utils.isEqual(state.currDate as string, currDate)
+          || ((type == 'range' || type == 'week') && (isStart(currDate) || isEnd(currDate)))
+          || (type == 'multiple' && isMultiple(currDate))
         ) {
           res.push(`${state.dayPrefix}--active`)
         } else if (
-          (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
-          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate)) ||
-          (props.disabledDate && props.disabledDate(currDate))
+          (state.propStartDate && Utils.compareDate(currDate, state.propStartDate))
+          || (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
+          || (props.disabledDate && props.disabledDate(currDate))
         ) {
           res.push(`${state.dayPrefix}--disabled`)
         } else if (
-          (type == 'range' || type == 'week') &&
-          Array.isArray(state.currDate) &&
-          Object.values(state.currDate).length == 2 &&
-          Utils.compareDate(state.currDate[0], currDate) &&
-          Utils.compareDate(currDate, state.currDate[1])
+          (type == 'range' || type == 'week')
+          && Array.isArray(state.currDate)
+          && Object.values(state.currDate).length == 2
+          && Utils.compareDate(state.currDate[0], currDate)
+          && Utils.compareDate(currDate, state.currDate[1])
         ) {
           res.push(`${state.dayPrefix}--choose`)
         }
@@ -331,10 +334,10 @@ export default create({
               state.chooseData.push([...days])
             } else {
               if (hasIndex !== undefined) {
-                ;(state.currDate as StringArr).splice(hasIndex, 1)
+                (state.currDate as StringArr).splice(hasIndex, 1)
                 state.chooseData.splice(hasIndex, 1)
               } else {
-                ;(state.currDate as StringArr).push(days[3])
+                (state.currDate as StringArr).push(days[3])
                 state.chooseData.push([...days])
               }
             }
@@ -469,7 +472,7 @@ export default create({
         preMonth = 12
         preYear += 1
       }
-      //当月天数与上个月天数
+      // 当月天数与上个月天数
       const currMonthDays = Utils.getMonthDays(String(curData[0]), String(curData[1]))
       const preCurrMonthDays = Utils.getMonthDays(preYear + '', preMonth + '')
 
@@ -505,16 +508,16 @@ export default create({
       let cssScrollHeight = 0
 
       if (state.monthsData.length > 0) {
-        cssScrollHeight =
-          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssScrollHeight +
-          (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssHeight
+        cssScrollHeight
+          = (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssScrollHeight
+          + (state.monthsData[state.monthsData.length - 1] as MonthInfo).cssHeight
       }
       monthInfo.cssScrollHeight = cssScrollHeight
       if (type == 'next') {
         // 判断当前日期 是否大于 最后一天
         if (
-          !state.endData ||
-          !Utils.compareDate(
+          !state.endData
+          || !Utils.compareDate(
             `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(state.endData[0], state.endData[1])}`,
             `${curData[0]}-${curData[1]}-${curData[2]}`
           )
@@ -524,8 +527,8 @@ export default create({
       } else {
         // 判断当前日期 是否小于 第一天
         if (
-          !state.startData ||
-          !Utils.compareDate(
+          !state.startData
+          || !Utils.compareDate(
             `${curData[0]}-${curData[1]}-${curData[2]}`,
             `${state.startData[0]}-${state.startData[1]}-01`
           )
@@ -549,8 +552,8 @@ export default create({
 
       // 根据是否存在默认时间，初始化当前日期,
       if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
-        state.currDate =
-          props.type !== 'one' ? ([...props.defaultValue] as StringArr) : (props.defaultValue as string | StringArr)
+        state.currDate
+          = props.type !== 'one' ? ([...props.defaultValue] as StringArr) : (props.defaultValue as string | StringArr)
       }
 
       // 判断时间范围内存在多少个月
@@ -595,10 +598,10 @@ export default create({
           let obj: any = {}
           state.currDate.forEach((item: string) => {
             if (
-              propStartDate &&
-              !Utils.compareDate(item, propStartDate) &&
-              propEndDate &&
-              !Utils.compareDate(propEndDate, item)
+              propStartDate
+              && !Utils.compareDate(item, propStartDate)
+              && propEndDate
+              && !Utils.compareDate(propEndDate, item)
             ) {
               if (!Object.hasOwnProperty.call(obj, item)) {
                 defaultArr.push(item)
@@ -658,7 +661,7 @@ export default create({
         } else if (props.type == 'week') {
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true)
         } else if (props.type == 'multiple') {
-          ;[...state.currDate].forEach((item: string) => {
+          [...state.currDate].forEach((item: string) => {
             let dateArr = splitDate(item)
             let current = state.currentIndex
             state.monthsData.forEach((item, index) => {
@@ -733,9 +736,9 @@ export default create({
     // 区间选择&&当前月&&选中态
     const isActive = (day: Day, month: MonthInfo) => {
       return (
-        (props.type == 'range' || props.type == 'week') &&
-        day.type == 'curr' &&
-        getClass(day, month).includes('nut-calendar__day--active')
+        (props.type == 'range' || props.type == 'week')
+        && day.type == 'curr'
+        && getClass(day, month).includes('nut-calendar__day--active')
       )
     }
 
@@ -814,7 +817,7 @@ export default create({
       })
     })
 
-    //监听 默认值更改
+    // 监听 默认值更改
     watch(
       () => props.defaultValue,
       (val) => {

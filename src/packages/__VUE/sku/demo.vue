@@ -207,14 +207,14 @@ onMounted(() => {
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/data.js')
-    .then((response) => response.json())
+    .then(response => response.json())
     .then((res) => {
       const { Sku, Goods, imagePathMap } = res
       data.skuData = Sku
       data.goodsInfo = Goods
       data.imagePathMap = imagePathMap
-    }) //执行结果是 resolve就调用then方法
-    .catch((err) => console.log('Oh, error', err)) //执行结果是 reject就调用catch方法
+    }) // 执行结果是 resolve就调用then方法
+    .catch(err => console.log('Oh, error', err)) // 执行结果是 reject就调用catch方法
 }
 const selectSku = (s: any) => {
   const { sku, parentIndex } = s

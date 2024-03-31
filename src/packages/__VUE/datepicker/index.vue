@@ -287,7 +287,7 @@ export default create({
           index++
         }
       }
-      ;(state.selectedValue as any)[columnIndex] = arr[index].value
+      (state.selectedValue as any)[columnIndex] = arr[index].value
       return props.filter ? props.filter(type, arr) : arr
     }
 
@@ -352,7 +352,7 @@ export default create({
         time.getMinutes(),
         time.getSeconds()
       ]
-      return generateList(res.map((i) => String(i)))
+      return generateList(res.map(i => String(i)))
     }
 
     onBeforeMount(() => {

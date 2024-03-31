@@ -14,12 +14,12 @@ export const useChildren = (key: symbol) => {
 
     const unlink = (child: any) => {
       if (child.proxy) {
-        let internalIndex = internalChildren.indexOf(child)
+        const internalIndex = internalChildren.indexOf(child)
         if (internalIndex > -1) {
           internalChildren.splice(internalIndex, 1)
         }
 
-        let publicIndex = publicChildren.indexOf(child.proxy)
+        const publicIndex = publicChildren.indexOf(child.proxy)
         if (internalIndex > -1) {
           publicChildren.splice(publicIndex, 1)
         }

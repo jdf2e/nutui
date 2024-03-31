@@ -7,7 +7,7 @@ const findComponentName = (name: string) => {
   for (const key in nav) {
     if (Object.prototype.hasOwnProperty.call(nav, key)) {
       const element = nav[key]
-      const idx = element.packages.findIndex((i) => i.name.toLowerCase() === name)
+      const idx = element.packages.findIndex(i => i.name.toLowerCase() === name)
       if (idx !== -1) {
         return element.packages[idx].name
       }
