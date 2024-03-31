@@ -3,31 +3,31 @@ import { ComponentDesc } from './componentDesc'
 export const componentMap: Record<string, ComponentDesc> = {
   'action-sheet': {
     site: '/zh-CN/component/actionsheet',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   address: {
     site: '/zh-CN/component/address',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   'address-list': {
     site: '/zh-CN/component/addresslist',
-    props: ["data=''"]
+    props: ['data=\'\'']
   },
   animate: {
     site: '/zh-CN/component/animate',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   audio: {
     site: '/zh-CN/component/audio',
-    props: ["url=''"]
+    props: ['url=\'\'']
   },
   'audio-operate': {
     site: '/zh-CN/component/audiooperate',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   avatar: {
     site: '/zh-CN/component/avatar',
-    props: ["size=''"]
+    props: ['size=\'\'']
   },
   'avatar-group': {
     site: '',
@@ -35,23 +35,23 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   backtop: {
     site: '/zh-CN/component/backtop',
-    props: ["el-id=''"]
+    props: ['el-id=\'\'']
   },
   badge: {
     site: '/zh-CN/component/badge',
-    props: ["value=''"]
+    props: ['value=\'\'']
   },
   barrage: {
     site: '/zh-CN/component/barrage',
-    props: ["danmu=''"]
+    props: ['danmu=\'\'']
   },
   button: {
     site: '/zh-CN/component/button',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   calendar: {
     site: '/zh-CN/component/calendar',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   'calendar-item': {
     site: '',
@@ -59,15 +59,15 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   card: {
     site: '/zh-CN/component/card',
-    props: ["img-url=''"]
+    props: ['img-url=\'\'']
   },
   cascader: {
     site: '/zh-CN/component/cascader',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   category: {
     site: '/zh-CN/component/category',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   'category-pane': {
     site: '',
@@ -75,7 +75,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   cell: {
     site: '/zh-CN/component/cell',
-    props: ["title=''"]
+    props: ['title=\'\'']
   },
   'cell-group': {
     site: '',
@@ -83,7 +83,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   checkbox: {
     site: '/zh-CN/component/checkbox',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'checkbox-group': {
     site: '',
@@ -91,7 +91,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   'circle-progress': {
     site: '/zh-CN/component/circleprogress',
-    props: ["progress=''"]
+    props: ['progress=\'\'']
   },
   col: {
     site: '',
@@ -99,7 +99,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   collapse: {
     site: '/zh-CN/component/collapse',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'collapse-item': {
     site: '',
@@ -107,59 +107,59 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   comment: {
     site: '/zh-CN/component/comment',
-    props: ["header-type=''"]
+    props: ['header-type=\'\'']
   },
   'config-provider': {
     site: '/zh-CN/component/configprovider',
-    props: ["theme=''"]
+    props: ['theme=\'\'']
   },
   countdown: {
     site: '/zh-CN/component/countdown',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   countup: {
     site: '/zh-CN/component/countup',
-    props: ["init-num=''"]
+    props: ['init-num=\'\'']
   },
   'date-picker': {
     site: '/zh-CN/component/datepicker',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   dialog: {
     site: '/zh-CN/component/dialog',
-    props: ["title=''"]
+    props: ['title=\'\'']
   },
   divider: {
     site: '/zh-CN/component/divider',
-    props: ["dashed=''"]
+    props: ['dashed=\'\'']
   },
   drag: {
     site: '/zh-CN/component/drag',
-    props: ["attract=''"]
+    props: ['attract=\'\'']
   },
   ecard: {
     site: '/zh-CN/component/ecard',
-    props: ["modelValue=''"]
+    props: ['modelValue=\'\'']
   },
   elevator: {
     site: '/zh-CN/component/elevator',
-    props: ["height=''"]
+    props: ['height=\'\'']
   },
   ellipsis: {
     site: '/zh-CN/component/ellipsis',
-    props: ["content=''"]
+    props: ['content=\'\'']
   },
   empty: {
     site: '/zh-CN/component/empty',
-    props: ["image=''"]
+    props: ['image=\'\'']
   },
   'fixed-nav': {
     site: '/zh-CN/component/fixednav',
-    props: ["visible=''"]
+    props: ['visible=\'\'']
   },
   form: {
     site: '/zh-CN/component/form',
-    props: ["model-value=''"]
+    props: ['model-value=\'\'']
   },
   'form-item': {
     site: '',
@@ -167,7 +167,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   grid: {
     site: '/zh-CN/component/grid',
-    props: ["column-num=''"]
+    props: ['column-num=\'\'']
   },
   'grid-item': {
     site: '',
@@ -175,47 +175,47 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   icon: {
     site: '/zh-CN/component/icon',
-    props: ["name=''"]
+    props: ['name=\'\'']
   },
   image: {
     site: '/zh-CN/component/image',
-    props: ["src=''"]
+    props: ['src=\'\'']
   },
   'image-preview': {
     site: '/zh-CN/component/imagepreview',
-    props: ["show=''"]
+    props: ['show=\'\'']
   },
   indicator: {
     site: '/zh-CN/component/indicator',
-    props: ["current=''"]
+    props: ['current=\'\'']
   },
   'infinite-loading': {
     site: '/zh-CN/component/infiniteloading',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   input: {
     site: '/zh-CN/component/input',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'input-number': {
     site: '/zh-CN/component/inputnumber',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   invoice: {
     site: '/zh-CN/component/invoice',
-    props: ["data=''"]
+    props: ['data=\'\'']
   },
   layout: {
     site: '/zh-CN/component/layout',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   list: {
     site: '/zh-CN/component/list',
-    props: ["height=''"]
+    props: ['height=\'\'']
   },
   menu: {
     site: '/zh-CN/component/menu',
-    props: ["active-color=''"]
+    props: ['active-color=\'\'']
   },
   'menu-item': {
     site: '',
@@ -223,55 +223,55 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   navbar: {
     site: '/zh-CN/component/navbar',
-    props: ["title=''"]
+    props: ['title=\'\'']
   },
   noticebar: {
     site: '/zh-CN/component/noticebar',
-    props: ["direction=''"]
+    props: ['direction=\'\'']
   },
   notify: {
     site: '/zh-CN/component/notify',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   'number-keyboard': {
     site: '/zh-CN/component/numberkeyboard',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   overlay: {
     site: '/zh-CN/component/overlay',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   pagination: {
     site: '/zh-CN/component/pagination',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   picker: {
     site: '/zh-CN/component/picker',
-    props: ["v-model:value=''"]
+    props: ['v-model:value=\'\'']
   },
   popover: {
     site: '/zh-CN/component/popover',
-    props: ["list=''"]
+    props: ['list=\'\'']
   },
   popup: {
     site: '/zh-CN/component/popup',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   price: {
     site: '/zh-CN/component/price',
-    props: ["price=''"]
+    props: ['price=\'\'']
   },
   progress: {
     site: '/zh-CN/component/progress',
-    props: ["percentage=''"]
+    props: ['percentage=\'\'']
   },
   'pull-refresh': {
     site: '/zh-CN/component/pullrefresh',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   radio: {
     site: '/zh-CN/component/radio',
-    props: ["disabled=''"]
+    props: ['disabled=\'\'']
   },
   'radio-group': {
     site: '',
@@ -279,11 +279,11 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   range: {
     site: '/zh-CN/component/range',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   rate: {
     site: '/zh-CN/component/rate',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   row: {
     site: '',
@@ -291,15 +291,15 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   searchbar: {
     site: '/zh-CN/component/searchbar',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'short-password': {
     site: '/zh-CN/component/shortpassword',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'side-navbar': {
     site: '/zh-CN/component/sidenavbar',
-    props: ["offset=''"]
+    props: ['offset=\'\'']
   },
   'side-navbar-item': {
     site: '',
@@ -307,15 +307,15 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   signature: {
     site: '/zh-CN/component/signature',
-    props: ["custom-class=''"]
+    props: ['custom-class=\'\'']
   },
   skeleton: {
     site: '/zh-CN/component/skeleton',
-    props: ["loading=''"]
+    props: ['loading=\'\'']
   },
   sku: {
     site: '/zh-CN/component/sku',
-    props: ["v-model:visible=''"]
+    props: ['v-model:visible=\'\'']
   },
   step: {
     site: '',
@@ -323,11 +323,11 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   steps: {
     site: '/zh-CN/component/steps',
-    props: ["direction=''"]
+    props: ['direction=\'\'']
   },
   sticky: {
     site: '/zh-CN/component/sticky',
-    props: ["position=''"]
+    props: ['position=\'\'']
   },
   'sub-side-navbar': {
     site: '',
@@ -335,11 +335,11 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   swipe: {
     site: '/zh-CN/component/swipe',
-    props: ["name=''"]
+    props: ['name=\'\'']
   },
   swiper: {
     site: '/zh-CN/component/swiper',
-    props: ["width=''"]
+    props: ['width=\'\'']
   },
   'swiper-item': {
     site: '/zh-CN/component/swiperitem',
@@ -347,11 +347,11 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   switch: {
     site: '/zh-CN/component/switch',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   tabbar: {
     site: '/zh-CN/component/tabbar',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'tabbar-item': {
     site: '',
@@ -359,7 +359,7 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   table: {
     site: '/zh-CN/component/table',
-    props: ["bordered=''"]
+    props: ['bordered=\'\'']
   },
   'tab-pane': {
     site: '',
@@ -367,50 +367,50 @@ export const componentMap: Record<string, ComponentDesc> = {
   },
   tabs: {
     site: '/zh-CN/component/tabs',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   tag: {
     site: '/zh-CN/component/tag',
-    props: ["type=''"]
+    props: ['type=\'\'']
   },
   textarea: {
     site: '/zh-CN/component/textarea',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'time-detail': {
     site: '/zh-CN/component/timedetail',
-    props: ["height=''"]
+    props: ['height=\'\'']
   },
   'time-pannel': {
     site: '/zh-CN/component/timepannel',
-    props: ["height=''"]
+    props: ['height=\'\'']
   },
   'time-select': {
     site: '/zh-CN/component/timeselect',
-    props: ["visible=''"]
+    props: ['visible=\'\'']
   },
   toast: {
     site: '/zh-CN/component/toast',
-    props: ["showToast.text=''"]
+    props: ['showToast.text=\'\'']
   },
   tour: {
     site: '/zh-CN/component/tour',
-    props: ["v-model=''"]
+    props: ['v-model=\'\'']
   },
   'trend-arrow': {
     site: '/zh-CN/component/trendarrow',
-    props: ["rate=''"]
+    props: ['rate=\'\'']
   },
   uploader: {
     site: '/zh-CN/component/uploader',
-    props: ["auto-upload=''"]
+    props: ['auto-upload=\'\'']
   },
   video: {
     site: '/zh-CN/component/video',
-    props: ["source=''"]
+    props: ['source=\'\'']
   },
   watermark: {
     site: '/zh-CN/component/watermark',
-    props: ["width=''"]
+    props: ['width=\'\'']
   }
 }

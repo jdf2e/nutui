@@ -172,11 +172,11 @@ export default create({
           let title = new Title()
           if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
             let paneKeyType = TypeOfFun(vnode.props?.['pane-key'])
-            let paneIndex =
-              paneKeyType == 'number' || paneKeyType == 'string' ? String(vnode.props?.['pane-key']) : null
+            let paneIndex
+              = paneKeyType == 'number' || paneKeyType == 'string' ? String(vnode.props?.['pane-key']) : null
             let camelPaneKeyType = TypeOfFun(vnode.props?.['paneKey'])
-            let camelPaneIndex =
-              camelPaneKeyType == 'number' || camelPaneKeyType == 'string' ? String(vnode.props?.['paneKey']) : null
+            let camelPaneIndex
+              = camelPaneKeyType == 'number' || camelPaneKeyType == 'string' ? String(vnode.props?.['paneKey']) : null
             title.title = vnode.props?.title
             title.paneKey = paneIndex || camelPaneIndex || String(index)
             title.disabled = vnode.props?.disabled
@@ -195,7 +195,7 @@ export default create({
 
     const currentIndex = ref((props.modelValue as number) || 0)
     const findTabsIndex = (value: string | number) => {
-      let index = titles.value.findIndex((item) => item.paneKey == value)
+      let index = titles.value.findIndex(item => item.paneKey == value)
       if (titles.value.length == 0) {
         // console.warn('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
       } else if (index == -1) {
@@ -307,7 +307,7 @@ export default create({
     }
     const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = []
-      vnodes = vnodes?.filter((item) => typeof item.children !== 'string')
+      vnodes = vnodes?.filter(item => typeof item.children !== 'string')
       if (vnodes && vnodes.length) {
         renderTitles(vnodes)
       }

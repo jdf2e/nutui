@@ -136,13 +136,13 @@ export default create({
             if (document.hidden) {
               // 页面被挂起
               // 这里要根据用户当前播放状态，做音频暂停操作
-              ;(audioRef.value as any).pause()
+              (audioRef.value as any).pause()
             } else {
               // 页面呼出
               if (audioData.playing) {
                 setTimeout(() => {
                   // 这里要 根据页面挂起前音频的播放状态，做音频播放操作
-                  ;(audioRef.value as any).play()
+                  (audioRef.value as any).play()
                 }, 200)
               }
             }
@@ -169,22 +169,22 @@ export default create({
       emit('canPlay', e)
     }
 
-    //播放时间
+    // 播放时间
     const onTimeupdate = (e: any) => {
       audioData.currentTime = parseInt(e.target.currentTime)
     }
 
-    //后退
+    // 后退
     const fastBack = () => {
       if (audioData.currentTime > 0) {
         audioData.currentTime--
       }
-      ;(audioRef.value as any).currentTime = audioData.currentTime
+      (audioRef.value as any).currentTime = audioData.currentTime
 
       emit('fastBack', audioData.currentTime)
     }
 
-    //改变播放状态
+    // 改变播放状态
     const changeStatus = () => {
       const audioR = audioRef.value as any
       if (audioData.playing) {
@@ -200,7 +200,7 @@ export default create({
       emit('play', audioData.playing)
     }
 
-    //快进
+    // 快进
     const forward = () => {
       audioData.currentTime++
       ;(audioRef.value as any).currentTime = audioData.currentTime
@@ -208,19 +208,19 @@ export default create({
       emit('forward', audioData.currentTime)
     }
 
-    //处理
+    // 处理
     const handle = (val: number | string) => {
-      //毫秒数转为时分秒
+      // 毫秒数转为时分秒
       audioData.currentDuration = formatSeconds(val as string)
       audioData.percent = ((val as number) / audioData.second) * 100
     }
-    //播放结束 修改播放状态
+    // 播放结束 修改播放状态
     const audioEnd = () => {
       audioData.playing = false
       emit('ended')
     }
 
-    //点击进度条
+    // 点击进度条
     const progressChange = (val: number) => {
       const ar = audioRef.value as any
       ar.currentTime = (audioData.second * val) / 100

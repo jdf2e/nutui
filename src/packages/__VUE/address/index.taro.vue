@@ -67,8 +67,9 @@
               >
                 <div>
                   <slot v-if="selectedRegion[tabIndex]?.id == item.id" name="icon">
-                    <Check class="nut-address-select-icon" width="13px"></Check> </slot
-                  >{{ item.name }}
+                    <Check class="nut-address-select-icon" width="13px"></Check>
+                  </slot>
+                  {{ item.name }}
                 </div>
               </div>
             </nut-scroll-view>
@@ -118,9 +119,11 @@
           </ul>
         </div>
         <div v-if="isShowCustomAddress" class="nut-address__exist-choose" @click="switchModule">
-          <div class="nut-address__exist-choose-btn">{{
-            customAndExistTitle || translate('chooseAnotherAddress')
-          }}</div>
+          <div class="nut-address__exist-choose-btn">
+            {{
+              customAndExistTitle || translate('chooseAnotherAddress')
+            }}
+          </div>
         </div>
         <template v-if="!isShowCustomAddress">
           <slot name="bottom"></slot>
@@ -360,7 +363,7 @@ export default create({
       }
       emit('change', callBackParams)
     }
-    //切换地区Tab
+    // 切换地区Tab
     const changeRegionTab = (item: AddressData, index: number) => {
       prevTabIndex.value = tabIndex.value
       if (getTabName(item, index)) {
@@ -421,7 +424,7 @@ export default create({
       }
 
       if (['custom', 'custom2'].includes(privateType.value)) {
-        ;[0, 1, 2, 3].forEach((i) => {
+        [0, 1, 2, 3].forEach((i) => {
           const item = selectedRegion.value[i]
           data.addressIdStr += `${i ? '_' : ''}${(item && item.id) || 0}`
           data.addressStr += (item && item.name) || ''

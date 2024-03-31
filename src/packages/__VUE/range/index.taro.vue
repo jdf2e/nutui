@@ -155,7 +155,7 @@ export default create({
       const list = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
-        .filter((point) => point >= +min && point <= +max)
+        .filter(point => point >= +min && point <= +max)
       return list
     })
     const scope = computed(() => Number(props.max) - Number(props.min))
@@ -390,7 +390,7 @@ export default create({
         diff = (delta / total) * scope.value
       }
       if (isRange(startValue)) {
-        ;(currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff
+        (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff
       } else {
         currentValue = startValue + diff
       }
@@ -409,8 +409,8 @@ export default create({
       preventDefault(event, true)
     }
     const curValue = (idx?: number): number => {
-      const value =
-        Array.isArray(props.modelValue) && typeof idx === 'number'
+      const value
+        = Array.isArray(props.modelValue) && typeof idx === 'number'
           ? (props.modelValue as number[])[idx]
           : Number(props.modelValue)
       return value

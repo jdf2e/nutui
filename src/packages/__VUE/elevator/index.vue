@@ -20,9 +20,11 @@
     <view v-show="scrollY > 0 && isSticky" class="nut-elevator__list__fixed">
       <view class="nut-elevator__list__fixed-title">{{ indexList?.[currentIndex]?.[acceptKey] }}</view>
     </view>
-    <view v-show="scrollStart" v-if="indexList.length" class="nut-elevator__code--current">{{
-      indexList[codeIndex][acceptKey]
-    }}</view>
+    <view v-show="scrollStart" v-if="indexList.length" class="nut-elevator__code--current">
+      {{
+        indexList[codeIndex][acceptKey]
+      }}
+    </view>
     <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
       <view class="nut-elevator__bars__inner">
         <view
@@ -32,7 +34,9 @@
           :class="{ active: item[acceptKey] === indexList[currentIndex][acceptKey] }"
           :data-index="index"
           @click="handleClickIndex(item[acceptKey])"
-          >{{ item[acceptKey] }}</view
+        >
+          {{ item[acceptKey] }}
+        </view
         >
       </view>
     </view>

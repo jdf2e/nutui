@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import type { App } from 'vue'
-const camelize = (s: string) => s.replace(/-./g, (x) => x[1].toUpperCase())
+const camelize = (s: string) => s.replace(/-./g, x => x[1].toUpperCase())
 
 export function createComponent(name: string) {
   // TODO: It will be deprecated someday.

@@ -74,17 +74,17 @@ const extractStyle = (style: string) => {
   // comment
   style = style
     .split('\n')
-    .filter((str) => !/^(\s+)?\/\//.test(str))
+    .filter(str => !/^(\s+)?\/\//.test(str))
     .join('\n')
   // todo: parse mixin
   style = style
     .split('\n')
-    .filter((str) => !/^(\s+)?@include/.test(str))
+    .filter(str => !/^(\s+)?@include/.test(str))
     .join('\n')
 
   style = style.replace(/(?:({|;|\s|\n))[\w-]+:([^;{}]|;base64)+;(?!base64)/g, (matched) => {
     const matchedKey = matched.match(/\$[\w-]+\b/g)
-    if (matchedKey && matchedKey.some((k) => store.variablesMap[k])) {
+    if (matchedKey && matchedKey.some(k => store.variablesMap[k])) {
       return matched
     }
     return ''
@@ -113,7 +113,7 @@ const parseSassVariables = (text: string, components: string[]) => {
 
   const baseVariablesReg = new RegExp(
     `\\$(?!(${matchedComponentVariables
-      .map((item) => (item && `${item.name}|${item.lowerCaseName}`) || '')
+      .map(item => (item && `${item.name}|${item.lowerCaseName}`) || '')
       .join('|')})\\b)[\\w-]+:[^:]+;`,
     'g'
   )
@@ -200,34 +200,34 @@ export const useThemeEditor = function () {
       clearTimeout(timer)
       timer = setTimeout(() => {
         const Sass = (window as any).Sass
-        let beginTime = new Date().getTime()
+        const beginTime = new Date().getTime()
         console.log('sass编译开始', beginTime)
-        Sass &&
-          Sass.compile(css, async (res: Obj) => {
-            const iframe = window as any
-            if (res.text && iframe) {
-              console.log('sass编译成功', new Date().getTime() - beginTime)
-              try {
-                if (!iframe.__styleEl) {
-                  const style = iframe.document.createElement('style')
-                  style.id = 'theme'
-                  iframe.__styleEl = style
-                }
-                iframe.__styleEl.innerHTML = res.text
-                iframe.document.head.appendChild(iframe.__styleEl)
-                console.info('insert success！')
-              } catch (error) {
-                console.error(error)
+        Sass
+        && Sass.compile(css, async (res: Obj) => {
+          const iframe = window as any
+          if (res.text && iframe) {
+            console.log('sass编译成功', new Date().getTime() - beginTime)
+            try {
+              if (!iframe.__styleEl) {
+                const style = iframe.document.createElement('style')
+                style.id = 'theme'
+                iframe.__styleEl = style
               }
-            } else {
-              console.log('sass编译失败', new Date().getTime() - beginTime)
-              console.error(res)
+              iframe.__styleEl.innerHTML = res.text
+              iframe.document.head.appendChild(iframe.__styleEl)
+              console.info('insert success！')
+            } catch (error) {
+              console.error(error)
             }
+          } else {
+            console.log('sass编译失败', new Date().getTime() - beginTime)
+            console.error(res)
+          }
 
-            if (res.status !== 0 && res.message) {
-              console.log(res.message)
-            }
-          })
+          if (res.status !== 0 && res.message) {
+            console.log(res.message)
+          }
+        })
       }, 300)
     },
     { immediate: true }

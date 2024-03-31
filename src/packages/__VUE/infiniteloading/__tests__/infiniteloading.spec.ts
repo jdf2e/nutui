@@ -26,14 +26,14 @@ test('infiniteloading base', async () => {
       })
       const init = () => {
         for (let i = 0; i < 10; i++) {
-          ;(data.defultList as any).push(i)
+          (data.defultList as any).push(i)
         }
       }
       const loadMore = () => {
         setTimeout(() => {
           const curLen = data.defultList.length
           for (let i = curLen; i < curLen + 10; i++) {
-            ;(data.defultList as any).push(i)
+            (data.defultList as any).push(i)
           }
           if (data.defultList.length > 30) hasMore.value = false
         }, 500)

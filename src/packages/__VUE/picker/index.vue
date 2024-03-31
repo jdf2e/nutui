@@ -71,10 +71,10 @@ export default create({
     })
 
     const confirmHandler = () => {
-      pickerColumn.value.length > 0 &&
-        pickerColumn.value.forEach((column) => {
-          column.stopMomentum()
-        })
+      pickerColumn.value.length > 0
+      && pickerColumn.value.forEach((column) => {
+        column.stopMomentum()
+      })
 
       confirm()
     }

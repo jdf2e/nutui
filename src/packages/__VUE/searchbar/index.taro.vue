@@ -230,7 +230,7 @@ export default create({
     const inputsearch: Ref<HTMLElement | null> = ref(null)
     onMounted(() => {
       if (props.autofocus) {
-        ;(inputsearch.value as HTMLElement).focus()
+        (inputsearch.value as HTMLElement).focus()
       }
     })
 

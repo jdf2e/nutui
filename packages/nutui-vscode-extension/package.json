@@ -1,50 +1,50 @@
 {
-	"name": "nutui-vscode-extension",
-	"private": true,
-	"displayName": "nutui-vscode-extension",
-	"description": "nutui extension for vscode",
-	"version": "1.0.2",
-	"icon": "src/nutui.png",
-	"engines": {
-		"vscode": "^1.66.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jdf2e/nutui.git",
-		"directory": "src/packages/vscode-extension"
-	},
-	"categories": [
-		"Other"
-	],
-	"publisher": "nutui",
-	"activationEvents": [
-		"onLanguage:vue",
-		"onLanguage:javascript",
-		"onLanguage:typescript",
-		"onLanguage:javascriptreact",
-		"onLanguage:typescriptreact"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": []
-	},
-	"scripts": {
-		"build": "webpack --mode production --devtool hidden-source-map",
-		"package": "yarn gen && yarn build && vsce package",
-		"publish": "vsce publish",
-		"unpublish": "vsce unpublish nutui.nutui-vscode-extension",
-		"gen": "node ./scripts/createComponentMap.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/vscode": "^1.85.0",
-		"@vscode/test-electron": "^2.3.8",
-		"@vscode/vsce": "^2.22.0",
-		"glob": "^7.2.3",
-		"mocha": "^9.2.2",
-		"ts-loader": "^9.5.1",
-		"webpack": "^5.89.0",
-		"webpack-cli": "^5.1.4"
-	}
+  "name": "nutui-vscode-extension",
+  "private": true,
+  "displayName": "nutui-vscode-extension",
+  "description": "nutui extension for vscode",
+  "version": "1.0.2",
+  "icon": "src/nutui.png",
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdf2e/nutui.git",
+    "directory": "src/packages/vscode-extension"
+  },
+  "categories": [
+    "Other"
+  ],
+  "publisher": "nutui",
+  "activationEvents": [
+    "onLanguage:vue",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": []
+  },
+  "scripts": {
+    "build": "webpack --mode production --devtool hidden-source-map",
+    "package": "yarn gen && yarn build && vsce package",
+    "publish": "vsce publish",
+    "unpublish": "vsce unpublish nutui.nutui-vscode-extension",
+    "gen": "node ./scripts/createComponentMap.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.22.0",
+    "glob": "^7.2.3",
+    "mocha": "^9.2.2",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
 }

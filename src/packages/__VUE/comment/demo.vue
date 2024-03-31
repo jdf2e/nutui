@@ -89,13 +89,13 @@ onMounted(() => {
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/comment_data.json')
-    .then((response) => response.json())
+    .then(response => response.json())
     .then((res) => {
-      res.Comment.info.avatar =
-        'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
+      res.Comment.info.avatar
+        = 'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
       cmt.value = res.Comment
-    }) //执行结果是 resolve就调用then方法
-    .catch((err) => console.log('Oh, error', err)) //执行结果是 reject就调用catch方法
+    }) // 执行结果是 resolve就调用then方法
+    .catch(err => console.log('Oh, error', err)) // 执行结果是 reject就调用catch方法
 }
 
 const clickImages = (imgs: any) => {

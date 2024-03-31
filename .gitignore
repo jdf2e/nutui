@@ -39,3 +39,6 @@ pnpm-debug.log*
 
 # vitest
 /html
+
+# packages/nutui-taro-demo
+/packages/nutui-taro-demo/src/app.config.ts

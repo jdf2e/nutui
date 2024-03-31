@@ -14,7 +14,7 @@ const mountCascader = (options = {}) =>
     },
     ...options
   })
-const later = (t = 0) => new Promise((r) => setTimeout(r, t))
+const later = (t = 0) => new Promise(r => setTimeout(r, t))
 const mockOptions = [
   {
     value: '浙江',

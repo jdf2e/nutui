@@ -103,7 +103,7 @@ export default create({
 
     const tick = () => {
       if (window !== undefined) {
-        ;(state.timer as any) = requestAnimationFrame(() => {
+        (state.timer as any) = requestAnimationFrame(() => {
           if (state.counting) {
             const currentTime = Date.now() - state.diffTime
             const remainTime = Math.max(state.handleEndTime - currentTime, 0)
@@ -152,7 +152,7 @@ export default create({
       return type == 'custom' ? rest : parseFormat({ ...rest })
     }
 
-    const parseFormat = (time: { d: number; h: number; m: number; s: number; ms: number }) => {
+    const parseFormat = (time: { d: number, h: number, m: number, s: number, ms: number }) => {
       let { d, h, m, s, ms } = time
       let format = props.format
 
@@ -212,7 +212,7 @@ export default create({
       emit('onPaused', state.restTime)
     }
 
-    //重置
+    // 重置
     const reset = () => {
       if (!props.autoStart) {
         pause()

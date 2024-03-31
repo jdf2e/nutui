@@ -145,7 +145,7 @@ export default create({
 
       if (isLazy.value && Array.isArray(currentValue) && currentValue.length) {
         needToSync = []
-        let parent = tree.value.nodes.find((node) => node.value === currentValue[0])
+        let parent = tree.value.nodes.find(node => node.value === currentValue[0])
 
         if (parent) {
           needToSync = [parent.value]
@@ -155,7 +155,7 @@ export default create({
             const parent = await p
 
             await invokeLazyLoad(parent)
-            const node = parent?.children?.find((item) => item.value === value)
+            const node = parent?.children?.find(item => item.value === value)
 
             if (node) {
               needToSync.push(value)
@@ -220,7 +220,7 @@ export default create({
     }
 
     const emitChange = (pathNodes: CascaderOption[]) => {
-      const emitValue = pathNodes.map((node) => node.value)
+      const emitValue = pathNodes.map(node => node.value)
 
       innerValue.value = emitValue
       emit('change', emitValue, pathNodes)
@@ -242,7 +242,7 @@ export default create({
           panes.value = panes.value.slice(0, (node.level as number) + 1)
 
           if (!silent) {
-            const pathNodes = panes.value.map((pane) => pane.selectedNode)
+            const pathNodes = panes.value.map(pane => pane.selectedNode)
 
             emitChange(pathNodes as CascaderOption[])
             emit('pathChange', pathNodes)
@@ -263,7 +263,7 @@ export default create({
           tabsCursor.value = level
 
           if (!silent) {
-            const pathNodes = panes.value.map((pane) => pane.selectedNode)
+            const pathNodes = panes.value.map(pane => pane.selectedNode)
             emit('pathChange', pathNodes)
           }
           return

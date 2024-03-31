@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { Pagination } from '@nutui/nutui'
 
-//测试 totalItems itemsPerPage currentPage @change
+// 测试 totalItems itemsPerPage currentPage @change
 test('should render five items and should not emit change event after clicking disabled option', async () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -12,7 +12,7 @@ test('should render five items and should not emit change event after clicking d
   expect(wrapper.findAll('.nut-pagination-item')).toHaveLength(5)
 })
 
-//测试 mode pageCount
+// 测试 mode pageCount
 test('should render simple mode', async () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -24,7 +24,7 @@ test('should render simple mode', async () => {
   expect(wrapper.findAll('.nut-pagination-simple')).toHaveLength(1)
 })
 
-//测试 forceEllipses showPageSize
+// 测试 forceEllipses showPageSize
 test('should render forceEllipses and should emit change event after clicking forceEllipses option', async () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -36,7 +36,7 @@ test('should render forceEllipses and should emit change event after clicking fo
   expect(wrapper.findAll('.nut-pagination-item')).toHaveLength(4)
 })
 
-//测试 click visible
+// 测试 click visible
 test('should emit change event after clicking visible option', async () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -51,7 +51,7 @@ test('should emit change event after clicking visible option', async () => {
   expect(wrapper.emitted('change')).toBeTruthy()
 })
 
-//测试 click disable
+// 测试 click disable
 test('should not emit change event after clicking disable option', async () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -66,7 +66,7 @@ test('should not emit change event after clicking disable option', async () => {
   expect(wrapper.emitted('change')).toBeFalsy()
 })
 
-//测试slot
+// 测试slot
 test('should render prev-text、next-text slot correctly', () => {
   const wrapper = mount(Pagination, {
     props: {
@@ -82,7 +82,7 @@ test('should render prev-text、next-text slot correctly', () => {
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-//测试slot
+// 测试slot
 test('should render page slot correctly', () => {
   const wrapper = mount(Pagination, {
     props: {

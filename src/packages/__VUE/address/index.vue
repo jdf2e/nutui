@@ -62,8 +62,9 @@
             >
               <div>
                 <slot v-if="selectedRegion[tabIndex]?.id == item.id" name="icon">
-                  <Check class="nut-address-select-icon" size="13px"></Check> </slot
-                >{{ item.name }}
+                  <Check class="nut-address-select-icon" size="13px"></Check>
+                </slot>
+                {{ item.name }}
               </div>
             </li>
           </ul>
@@ -110,9 +111,11 @@
         </div>
 
         <div v-if="isShowCustomAddress" class="nut-address__exist-choose" @click="switchModule">
-          <div class="nut-address__exist-choose-btn">{{
-            customAndExistTitle || translate('chooseAnotherAddress')
-          }}</div>
+          <div class="nut-address__exist-choose-btn">
+            {{
+              customAndExistTitle || translate('chooseAnotherAddress')
+            }}
+          </div>
         </div>
       </view>
 
@@ -258,7 +261,7 @@ export default create({
       return newData
     }
 
-    //已选择的 省、市、县、镇
+    // 已选择的 省、市、县、镇
     let selectedRegion = ref<AddressData[]>([])
 
     let selectedExistAddress = reactive({}) // 当前选择的地址
@@ -412,7 +415,7 @@ export default create({
       }
 
       if (['custom', 'custom2'].includes(privateType.value)) {
-        ;[0, 1, 2, 3].forEach((i) => {
+        [0, 1, 2, 3].forEach((i) => {
           const item = selectedRegion.value[i]
           data.addressIdStr += `${i ? '_' : ''}${(item && item.id) || 0}`
           data.addressStr += (item && item.name) || ''

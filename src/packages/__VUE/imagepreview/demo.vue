@@ -107,7 +107,7 @@ const onClose = () => {
 }
 
 const showFn = (i: number) => {
-  ;(resData as any)['showPreview' + i] = true
+  (resData as any)['showPreview' + i] = true
 }
 
 const fnShow = () => {
@@ -119,6 +119,6 @@ const fnShow = () => {
 }
 
 const hideFn = (i: number) => {
-  ;(resData as any)['showPreview' + i] = false
+  (resData as any)['showPreview' + i] = false
 }
 </script>

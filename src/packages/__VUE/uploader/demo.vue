@@ -155,7 +155,7 @@ const defaultFileList1 = reactive([
 const fileToDataURL = (file: Blob): Promise<any> => {
   return new Promise((resolve) => {
     const reader = new FileReader()
-    reader.onloadend = (e) => resolve((e.target as FileReader).result)
+    reader.onloadend = e => resolve((e.target as FileReader).result)
     reader.readAsDataURL(file)
   })
 }
@@ -167,7 +167,7 @@ const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
   })
 }
 const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
-  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
+  return new Promise(resolve => canvas.toBlob(blob => resolve(blob), type, quality))
 }
 const onOversize = () => {
   showToast.text('oversize 触发 文件大小不能超过 50kb')
@@ -191,7 +191,7 @@ const beforeUpload = async (file: File[]) => {
   context.clearRect(0, 0, img.width, img.height)
   context.drawImage(img, 0, 0, img.width, img.height)
 
-  let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob //quality:0.5可根据实际情况计算
+  let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob // quality:0.5可根据实际情况计算
   const f = await new File([blob], fileName)
   return [f]
 }

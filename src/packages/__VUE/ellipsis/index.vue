@@ -2,7 +2,8 @@
   <view ref="root" class="nut-ellipsis" @click="handleClick">
     <view v-if="!exceeded">{{ content }}</view>
     <view v-if="exceeded && !expanded"
-      >{{ ellipsis && ellipsis.leading
+    >
+      {{ ellipsis && ellipsis.leading
       }}<span v-if="expandText" class="nut-ellipsis__text" @click.stop="clickHandle(1)">{{ expandText }}</span
       >{{ ellipsis && ellipsis.tailing }}
     </view>
@@ -62,8 +63,8 @@ export default create({
     let maxHeight = 0 // 当行的最大高度
     const ellipsis = ref<EllipsisedValue>()
     const state = reactive({
-      exceeded: false, //是否超出
-      expanded: false //是否折叠
+      exceeded: false, // 是否超出
+      expanded: false // 是否折叠
     })
 
     watch(
@@ -101,9 +102,9 @@ export default create({
       container.style.display = 'block'
       const lineHeight = pxToNumber(originStyle.lineHeight === 'normal' ? props.lineHeight : originStyle.lineHeight)
       maxHeight = Math.floor(
-        lineHeight * (Number(props.rows) + 0.5) +
-          pxToNumber(originStyle.paddingTop) +
-          pxToNumber(originStyle.paddingBottom)
+        lineHeight * (Number(props.rows) + 0.5)
+        + pxToNumber(originStyle.paddingTop)
+        + pxToNumber(originStyle.paddingBottom)
       )
 
       container.innerText = props.content
@@ -182,12 +183,12 @@ export default create({
       const leftPartMiddle = Math.floor((leftPart[0] + leftPart[1]) / 2)
       const rightPartMiddle = Math.ceil((rightPart[0] + rightPart[1]) / 2)
 
-      container.innerText =
-        props.content.slice(0, leftPartMiddle) +
-        props.symbol +
-        actionText +
-        props.symbol +
-        props.content.slice(rightPartMiddle, end)
+      container.innerText
+        = props.content.slice(0, leftPartMiddle)
+        + props.symbol
+        + actionText
+        + props.symbol
+        + props.content.slice(rightPartMiddle, end)
 
       if (container.offsetHeight <= maxHeight) {
         return tailorMiddle([leftPartMiddle, leftPart[1]], [rightPart[0], rightPartMiddle])

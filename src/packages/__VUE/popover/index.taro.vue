@@ -5,8 +5,10 @@
     ref="popoverRef"
     class="nut-popover-wrapper"
     @click="openPopover"
-    ><slot name="reference"></slot
-  ></view>
+  >
+    <slot name="reference"></slot
+    >
+  </view>
   <view :class="['nut-popover', `nut-popover--${theme}`, `${customClass}`]" :style="getRootPosition">
     <nut-popup
       v-model:visible="showPopup"
@@ -130,7 +132,7 @@ export default create({
 
     const upperCaseFirst = (str: string) => {
       str = str.toLowerCase()
-      str = str.replace(/\b\w+\b/g, (word) => word.substring(0, 1).toUpperCase() + word.substring(1))
+      str = str.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1))
       return str
     }
 
@@ -193,7 +195,7 @@ export default create({
 
     const getPopoverContentW = async () => {
       useTaroRect(popoverContentRef).then(
-        (rect: { width: number; height: number }) => {
+        (rect: { width: number, height: number }) => {
           elRect.value = {
             height: rect.height,
             width: rect.width

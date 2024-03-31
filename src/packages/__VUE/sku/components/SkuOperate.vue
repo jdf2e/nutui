@@ -10,8 +10,9 @@
         :key="i"
         :class="[`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn-item']"
         @click="clickBtnOperate(btn)"
-        >{{ getBtnDesc(btn) }}</view
       >
+        {{ getBtnDesc(btn) }}
+      </view>
     </view>
   </view>
 </template>

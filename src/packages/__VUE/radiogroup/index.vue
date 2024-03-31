@@ -31,7 +31,7 @@ export default create({
 
     watch(
       () => props.modelValue,
-      (value) => emit('change', value)
+      value => emit('change', value)
     )
 
     return () => {

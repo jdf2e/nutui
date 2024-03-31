@@ -28,10 +28,10 @@ export const CreateComponent = (options: any, component: any) => {
 
   const componens = component.components
 
-  componens &&
-    componens.forEach((comp: Component) => {
-      instance.use(comp)
-    })
+  componens
+  && componens.forEach((comp: Component) => {
+    instance.use(comp)
+  })
 
   elWrap.appendChild(root)
 

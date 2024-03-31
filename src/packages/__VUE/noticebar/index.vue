@@ -24,7 +24,8 @@
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkit-animation-end="onAnimationEnd"
-          ><slot>{{ text }}</slot>
+        >
+          <slot>{{ text }}</slot>
         </view>
       </view>
       <view v-if="closeMode || $slots['right-icon']" class="nut-noticebar__page-righticon" @click.stop="onClickIcon">
@@ -334,7 +335,7 @@ export default create({
     }
 
     const startRoll = () => {
-      ;(state.timer as any) = setInterval(
+      (state.timer as any) = setInterval(
         () => {
           let chunk = 100
           for (let i = 0; i < chunk; i++) {

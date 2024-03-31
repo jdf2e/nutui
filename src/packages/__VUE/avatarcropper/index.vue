@@ -163,7 +163,7 @@ export default create({
     const fileToDataURL = (file: Blob): Promise<any> => {
       return new Promise((resolve) => {
         const reader = new FileReader()
-        reader.onloadend = (e) => resolve((e.target as FileReader).result)
+        reader.onloadend = e => resolve((e.target as FileReader).result)
         reader.readAsDataURL(file)
       })
     }

@@ -324,7 +324,7 @@ export default create({
     }
     const submit = () => {
       Promise.all(uploadQueue.value).then((res) => {
-        res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()))
+        res.forEach(i => i.uploadTaro(Taro.uploadFile, Taro.getEnv()))
       })
     }
     interface TFileType {

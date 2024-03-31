@@ -5,9 +5,9 @@ export const inBrowser = typeof window !== 'undefined'
 function requestAniFrame() {
   if (typeof _window !== 'undefined') {
     return (
-      _window.requestAnimationFrame ||
-      _window.webkitRequestAnimationFrame ||
-      function (callback: Function) {
+      _window.requestAnimationFrame
+      || _window.webkitRequestAnimationFrame
+      || function (callback: Function) {
         _window.setTimeout(callback, 1000 / 60)
       }
     )

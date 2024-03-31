@@ -40,7 +40,9 @@
                         v-if="active != 0 && showPrevStep"
                         class="nut-tour-content-bottom-operate-btn"
                         @click="changeStep('prev')"
-                        >{{ prevStepTxt }}</div
+                      >
+                        {{ prevStepTxt }}
+                      </div
                       >
                     </slot>
 
@@ -48,14 +50,18 @@
                       v-if="steps.length - 1 == active"
                       class="nut-tour-content-bottom-operate-btn active"
                       @click="close"
-                      >{{ completeTxt }}</div
+                    >
+                      {{ completeTxt }}
+                    </div
                     >
                     <slot name="next-step">
                       <div
                         v-if="steps.length - 1 != active"
                         class="nut-tour-content-bottom-operate-btn active"
                         @click="changeStep('next')"
-                        >{{ nextStepTxt }}</div
+                      >
+                        {{ nextStepTxt }}
+                      </div
                       >
                     </slot>
                   </div>
@@ -174,8 +180,8 @@ export default create({
     const maskRect = ref<
       | DOMRect
       | {
-          [props: string]: number
-        }
+        [props: string]: number
+      }
     >({})
 
     const classes = computed(() => {
