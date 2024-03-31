@@ -1,7 +1,7 @@
 import { computed, provide, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, createElementBlock, toDisplayString, renderSlot, createTextVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
-import { u as useLocale } from "../index-CV7DiiiD.js";
+import { u as useLocale } from "../index-5sMqqUcW.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("time-select");
 const cN = "NutTimeSelect";

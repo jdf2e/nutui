@@ -19,18 +19,18 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, ref, computed, watch, nextTick, onMounted, toRefs, openBlock, createElementBlock, createElementVNode, createCommentVNode, withDirectives, vShow, normalizeClass, toDisplayString, normalizeStyle, withModifiers } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-BRldzYir.js";
+import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 function throttle(fn, delay) {
   let timer = null;
   let startTime = Date.now();
-  return function() {
-    let now = Date.now();
-    let remaining = delay - (now - startTime);
+  return function(...args) {
+    const now = Date.now();
+    const remaining = delay - (now - startTime);
     if (timer)
       clearTimeout(timer);
     if (remaining <= 0) {
-      fn.apply(null, arguments);
+      fn(...args);
       startTime = Date.now();
     } else {
       timer = setTimeout(fn, remaining);
@@ -49,17 +49,17 @@ const _sfc_main = create({
       type: Object,
       default: {
         autoplay: false,
-        //是否自动播放
+        // 是否自动播放
         volume: 0.5,
         poster: "",
         loop: false,
         controls: true,
         muted: false,
-        //是否静音
+        // 是否静音
         disabled: false,
-        //禁止操作
+        // 禁止操作
         playsinline: false,
-        //行内展示
+        // 行内展示
         touchPlay: false,
         preload: ""
       },
@@ -77,9 +77,9 @@ const _sfc_main = create({
     const state = reactive({
       videoElm: null,
       initial: true,
-      //控制封面的显示
+      // 控制封面的显示
       showToolbox: false,
-      //控制控制器和标题的显示
+      // 控制控制器和标题的显示
       // 视频容器元素
       player: {
         $player: null,
@@ -109,12 +109,12 @@ const _sfc_main = create({
       state: {
         controlShow: true,
         vol: 0.5,
-        //音量
+        // 音量
         currentTime: 0,
-        //当前时间
+        // 当前时间
         fullScreen: false,
         playing: false,
-        //是否正在播放
+        // 是否正在播放
         isLoading: false,
         isEnd: false,
         isError: false,
@@ -194,7 +194,6 @@ const _sfc_main = create({
         if (state.state.playing) {
           try {
             setTimeout(() => {
-              ;
               state.videoElm.play();
             }, 200);
             state.videoElm.addEventListener("progress", () => {

@@ -3,7 +3,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import Taro, { usePageScroll } from "@tarojs/taro";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
 import { RectUp, RectDown } from "@nutui/icons-vue-taro";
-import { u as useChildren } from "../useChildren-4flBkurC.js";
+import { u as useChildren } from "../useChildren-BZ4-J79J.js";
 import { M as MENU_KEY } from "../types-CkPfROfI.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { componentName, create } = createComponent("menu");

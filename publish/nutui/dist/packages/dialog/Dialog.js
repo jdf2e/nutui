@@ -23,13 +23,13 @@ var __publicField = (obj, key, value) => {
 };
 import { ref, onMounted, watch, computed, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, normalizeClass, createElementBlock, renderSlot, Fragment, createTextVNode, toDisplayString, createCommentVNode, resolveDynamicComponent, nextTick, h } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { f as funInterceptor } from "../Interceptor-jb1ujGqh.js";
+import { f as funInterceptor } from "../Interceptor-DlY2h6Y7.js";
 import { N as NutPopup, p as popupProps } from "../index-uHBD4dfS.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
-import { u as useLocale } from "../index-BRldzYir.js";
+import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import NutOverlay from "../overlay/Overlay.js";
-import { C as CreateComponent } from "../mountComponent-CaxfPAi_.js";
+import { C as CreateComponent } from "../mountComponent-DBQ88Fjz.js";
 const { create } = createComponent("dialog");
 const cN = "NutDialog";
 const _sfc_main = create({
@@ -90,7 +90,7 @@ const _sfc_main = create({
     footerDirection: {
       type: String,
       default: "horizontal"
-      //vertical
+      // vertical
     },
     customClass: {
       type: String,
@@ -263,7 +263,7 @@ class DialogOptions {
     __publicField(this, "teleport", "body");
     __publicField(this, "id", (/* @__PURE__ */ new Date()).getTime());
     __publicField(this, "footerDirection", "horizontal");
-    //使用横纵方向 可选值 horizontal、vertical
+    // 使用横纵方向 可选值 horizontal、vertical
     // function
     __publicField(this, "onUpdate");
     __publicField(this, "onOk");

@@ -61,7 +61,7 @@ import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_l
 import { Loading, Checklist } from "@nutui/icons-vue-taro";
 import NutTabs from "../tabs/Tabs.js";
 import NutTabPane from "../tabpane/TabPane.js";
-import { u as useLocale } from "../index-CV7DiiiD.js";
+import { u as useLocale } from "../index-5sMqqUcW.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const formatTree = (tree, parent, config) => tree.map((node) => {
   const { value: valueKey = "value", text: textKey = "text", children: childrenKey = "children" } = config;

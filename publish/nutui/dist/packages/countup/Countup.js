@@ -121,15 +121,15 @@ const _sfc_main = create({
       to10_0: [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1],
       timer: null,
       totalCount: 0,
-      //正整数
+      // 正整数
       pointNum: 0,
-      //小数位
+      // 小数位
       numberVal: 0,
-      //数字
+      // 数字
       num_total_len: 0,
-      //数字长度
+      // 数字长度
       relNum: 0,
-      //去除小数点
+      // 去除小数点
       customNumber: 1,
       prizeLevelTrun: 0,
       prizeY: [],
@@ -532,7 +532,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             left: _ctx.numWidth * (_ctx.num_total_len - _ctx.pointNum) * 1.1 + "px",
             fontSize: "30px"
           })
-        }, ".", 4)) : createCommentVNode("", true)
+        }, " . ", 4)) : createCommentVNode("", true)
       ], 4))
     ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
       _ctx.scrolling ? (openBlock(), createElementBlock("view", {
@@ -579,7 +579,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             top: 0,
             left: _ctx.numWidth * (_ctx.num_total_len - _ctx.pointNum) + "px"
           })
-        }, ".", 4)) : createCommentVNode("", true)
+        }, " . ", 4)) : createCommentVNode("", true)
       ], 4)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
         createTextVNode(toDisplayString(_ctx.current), 1)
       ], 64))

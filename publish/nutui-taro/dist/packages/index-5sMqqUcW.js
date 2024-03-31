@@ -1,5 +1,5 @@
 import locale from "@nutui/nutui-taro/dist/packages/locale/lang";
-import { g as getPropByPath, i as isFunction } from "./util-CyCQsn5J.js";
+import { g as getPropByPath, i as isFunction } from "./util-7oDGftbO.js";
 const useLocale = (name = "") => {
   return (keyPath, ...args) => {
     name = name.toLocaleLowerCase();

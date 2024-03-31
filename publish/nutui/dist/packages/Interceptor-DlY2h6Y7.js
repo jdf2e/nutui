@@ -1,11 +1,11 @@
-import { f as isPromise } from "./util-6wYEjmEl.js";
+import { f as isPromise } from "./util-DnfK0Qan.js";
 const funInterceptor = (interceptor, {
   args = [],
   done,
   canceled
 }) => {
   if (interceptor) {
-    const returnVal = interceptor.apply(null, args);
+    const returnVal = interceptor(...args);
     if (isPromise(returnVal)) {
       returnVal.then((value) => {
         if (value) {

@@ -2,7 +2,7 @@ import { computed, ref, resolveComponent, openBlock, createElementBlock, normali
 import { Left } from "@nutui/icons-vue";
 import NutOverlay from "../overlay/Overlay.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-BRldzYir.js";
+import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("fixed-nav");
 const cN = "NutFixedNav";

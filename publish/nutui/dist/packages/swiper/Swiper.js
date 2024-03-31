@@ -1,6 +1,6 @@
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, nextTick, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { e as clamp } from "../util-6wYEjmEl.js";
+import { e as clamp } from "../util-DnfK0Qan.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { r as requestAniFrame } from "../raf-c01wDYCo.js";
 import { S as SWIPER_KEY } from "../types-DUkJysbi.js";
@@ -17,7 +17,7 @@ const _sfc_main = create({
     direction: {
       type: String,
       default: "horizontal"
-      //horizontal and vertical
+      // horizontal and vertical
     },
     paginationVisible: {
       type: Boolean,

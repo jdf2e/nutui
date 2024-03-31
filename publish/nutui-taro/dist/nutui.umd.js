@@ -305,7 +305,7 @@ var __async = (__this, __arguments, generator) => {
     canceled
   }) => {
     if (interceptor) {
-      const returnVal = interceptor.apply(null, args);
+      const returnVal = interceptor(...args);
       if (isPromise(returnVal)) {
         returnVal.then((value) => {
           if (value) {
@@ -374,8 +374,8 @@ var __async = (__this, __arguments, generator) => {
     }
   };
   const floatData = (format, dataOp, mapOps) => {
-    let mergeFormat = Object.assign({}, format);
-    let mergeMapOps = Object.assign({}, mapOps);
+    const mergeFormat = Object.assign({}, format);
+    const mergeMapOps = Object.assign({}, mapOps);
     if (Object.keys(dataOp).length > 0) {
       Object.keys(mergeFormat).forEach((keys) => {
         if (Object.prototype.hasOwnProperty.call(mergeMapOps, keys)) {
@@ -397,8 +397,8 @@ var __async = (__this, __arguments, generator) => {
   };
   const deepMerge = (target, newObj) => {
     Object.keys(newObj).forEach((key) => {
-      let targetValue = target[key];
-      let newObjValue = newObj[key];
+      const targetValue = target[key];
+      const newObjValue = newObj[key];
       if (isObject(targetValue) && isObject(newObjValue)) {
         deepMerge(targetValue, newObjValue);
       } else {
@@ -548,11 +548,11 @@ var __async = (__this, __arguments, generator) => {
       };
       const unlink = (child) => {
         if (child.proxy) {
-          let internalIndex = internalChildren.indexOf(child);
+          const internalIndex = internalChildren.indexOf(child);
           if (internalIndex > -1) {
             internalChildren.splice(internalIndex, 1);
           }
-          let publicIndex = publicChildren.indexOf(child.proxy);
+          const publicIndex = publicChildren.indexOf(child.proxy);
           if (internalIndex > -1) {
             publicChildren.splice(publicIndex, 1);
           }
@@ -5202,7 +5202,7 @@ var __async = (__this, __arguments, generator) => {
     getMonthWeek: function(year, month, date, firstDayOfWeek = 0) {
       const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
       let w = dateNow.getDay();
-      let d = dateNow.getDate();
+      const d = dateNow.getDate();
       let remainder = 6 - w;
       if (firstDayOfWeek !== 0) {
         w = w == 0 ? 7 : w;
@@ -5239,7 +5239,7 @@ var __async = (__this, __arguments, generator) => {
       }
     },
     formatResultDate: function(date) {
-      let days = [...date.split("-")];
+      const days = [...date.split("-")];
       days[2] = Utils.getNumTwoBit(Number(days[2]));
       days[3] = `${days[0]}-${days[1]}-${days[2]}`;
       days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
@@ -8906,7 +8906,7 @@ var __async = (__this, __arguments, generator) => {
       },
       length: {
         type: [String, Number],
-        //4～6
+        // 4～6
         default: 6
       },
       lockScroll: {
@@ -11251,7 +11251,7 @@ var __async = (__this, __arguments, generator) => {
       footerDirection: {
         type: String,
         default: "horizontal"
-        //vertical
+        // vertical
       },
       customClass: {
         type: String,
@@ -13039,7 +13039,7 @@ var __async = (__this, __arguments, generator) => {
       direction: {
         type: String,
         default: "horizontal"
-        //horizontal and vertical
+        // horizontal and vertical
       },
       paginationVisible: {
         type: Boolean,
@@ -13986,15 +13986,15 @@ var __async = (__this, __arguments, generator) => {
         to10_0: [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1],
         timer: null,
         totalCount: 0,
-        //正整数
+        // 正整数
         pointNum: 0,
-        //小数位
+        // 小数位
         numberVal: 0,
-        //数字
+        // 数字
         num_total_len: 0,
-        //数字长度
+        // 数字长度
         relNum: 0,
-        //去除小数点
+        // 去除小数点
         customNumber: 1,
         prizeLevelTrun: 0,
         prizeY: [],
@@ -14389,7 +14389,7 @@ var __async = (__this, __arguments, generator) => {
               left: _ctx.numWidth * (_ctx.num_total_len - _ctx.pointNum) * 1.1 + "px",
               fontSize: "30px"
             })
-          }, ".", 4)) : vue.createCommentVNode("", true)
+          }, "\n            .\n          ", 4)) : vue.createCommentVNode("", true)
         ], 4))
       ], 64)) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
         _ctx.scrolling ? (vue.openBlock(), vue.createElementBlock("view", {
@@ -14438,7 +14438,7 @@ var __async = (__this, __arguments, generator) => {
               top: 0,
               left: _ctx.numWidth * (_ctx.num_total_len - _ctx.pointNum) + "px"
             })
-          }, ".", 4)) : vue.createCommentVNode("", true)
+          }, "\n          .\n        ", 4)) : vue.createCommentVNode("", true)
         ], 4)) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
           vue.createTextVNode(vue.toDisplayString(_ctx.current), 1)
         ], 64))
@@ -15399,52 +15399,52 @@ var __async = (__this, __arguments, generator) => {
       NutAvatar: Avatar
     },
     props: {
-      //每行宽度
+      // 每行宽度
       width: {
         type: String,
         default: "100px"
       },
-      //每行高度
+      // 每行高度
       height: {
         type: String,
         default: "15px"
       },
-      //是否显示动画
+      // 是否显示动画
       animated: {
         type: Boolean,
         default: false
       },
-      //头像
+      // 头像
       avatar: {
         type: Boolean,
         default: false
       },
-      //头像形状：正方形/圆形
+      // 头像形状：正方形/圆形
       avatarShape: {
         type: String,
         default: "round"
       },
-      //头像大小
+      // 头像大小
       avatarSize: {
         type: String,
         default: "50px"
       },
-      //是否显示骨架屏
+      // 是否显示骨架屏
       loading: {
         type: Boolean,
         default: true
       },
-      //标题/段落 圆角风格
+      // 标题/段落 圆角风格
       round: {
         type: Boolean,
         default: false
       },
-      //显示段落行数
+      // 显示段落行数
       row: {
         type: String,
         default: "1"
       },
-      //是否显示段落标题
+      // 是否显示段落标题
       title: {
         type: Boolean,
         default: true
@@ -16073,9 +16073,9 @@ var __async = (__this, __arguments, generator) => {
       let widthRef = vue.ref("auto");
       const state = vue.reactive({
         exceeded: false,
-        //是否超出
+        // 是否超出
         expanded: false
-        //是否折叠
+        // 是否折叠
       });
       let widthBase = [14, 10, 7, 8.4, 10];
       let symbolTextWidth = widthBase[0] * 0.7921;
@@ -17319,7 +17319,7 @@ var __async = (__this, __arguments, generator) => {
                               width: "13px"
                             })
                           ]) : vue.createCommentVNode("", true),
-                          vue.createTextVNode(vue.toDisplayString(item.name), 1)
+                          vue.createTextVNode(" " + vue.toDisplayString(item.name), 1)
                         ])
                       ], 10, _hoisted_11$1);
                     }), 128))
@@ -19234,12 +19234,12 @@ var __async = (__this, __arguments, generator) => {
   const { create: create$6 } = createComponent("category");
   const _sfc_main$7 = create$6({
     props: {
-      //分类模式
+      // 分类模式
       type: {
         type: String,
         default: "classify"
       },
-      //左侧导航栏
+      // 左侧导航栏
       category: {
         type: Array,
         default: () => []
@@ -19288,17 +19288,17 @@ var __async = (__this, __arguments, generator) => {
   const { create: create$5 } = createComponent("category-pane");
   const _sfc_main$6 = create$5({
     props: {
-      //分类模式
+      // 分类模式
       type: {
         type: String,
         default: "classify"
       },
-      //右侧导航数据
+      // 右侧导航数据
       categoryChild: {
         type: Array,
         default: () => []
       },
-      //模式传入自定义数据
+      // 模式传入自定义数据
       customCategory: {
         type: Array,
         default: () => []
@@ -19716,7 +19716,7 @@ var __async = (__this, __arguments, generator) => {
       headerType: {
         type: String,
         default: "default"
-        //头部展示风格 default，complex
+        // 头部展示风格 default，complex
       },
       imagesRows: {
         type: String,
@@ -19945,8 +19945,8 @@ var __async = (__this, __arguments, generator) => {
   }));
   withInstall(_sfc_main$1);
   const compareVersion = (v1Old, v2Old) => {
-    let v1 = v1Old.split(".");
-    let v2 = v2Old.split(".");
+    const v1 = v1Old.split(".");
+    const v2 = v2Old.split(".");
     const len = Math.max(v1.length, v2.length);
     while (v1.length < len) {
       v1.push("0");

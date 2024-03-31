@@ -283,7 +283,7 @@ const nn = (e, {
   canceled: l
 }) => {
   if (e) {
-    const o = e.apply(null, t);
+    const o = e(...t);
     Xn(o) ? o.then((s) => {
       s ? n(s) : l && l();
     }).catch(() => {
@@ -321,7 +321,7 @@ const nn = (e, {
     return "";
   }
 }, $l = (e, t, n) => {
-  let l = Object.assign({}, e), o = Object.assign({}, n);
+  const l = Object.assign({}, e), o = Object.assign({}, n);
   return Object.keys(t).length > 0 ? (Object.keys(l).forEach((s) => {
     if (Object.prototype.hasOwnProperty.call(o, s)) {
       const a = Ut(o[s]);
@@ -330,7 +330,7 @@ const nn = (e, {
       t[s] && (l[s] = t[s]);
   }), l) : e;
 }, qn = (e, t) => (Object.keys(t).forEach((n) => {
-  let l = e[n], o = t[n];
+  const l = e[n], o = t[n];
   dt(l) && dt(o) ? qn(l, o) : e[n] = o;
 }), e);
 function wl(e, t = 2) {
@@ -1306,9 +1306,9 @@ const ci = { class: "nut-button__wrap" }, qe = /* @__PURE__ */ ke({
       ze(e, Z({
         unlink: (r) => {
           if (r.proxy) {
-            let i = n.indexOf(r);
+            const i = n.indexOf(r);
             i > -1 && n.splice(i, 1);
-            let p = t.indexOf(r.proxy);
+            const p = t.indexOf(r.proxy);
             i > -1 && t.splice(p, 1);
           }
         },
@@ -4907,7 +4907,9 @@ const Od = /* @__PURE__ */ ee(Ad, [["render", Vd]]), de = {
   },
   getMonthWeek: function(e, t, n, l = 0) {
     const o = new Date(Number(e), parseInt(t) - 1, Number(n));
-    let s = o.getDay(), a = o.getDate(), r = 6 - s;
+    let s = o.getDay();
+    const a = o.getDate();
+    let r = 6 - s;
     return l !== 0 && (s = s == 0 ? 7 : s, r = 7 - s), Math.ceil((a + r) / 7);
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -4928,7 +4930,7 @@ const Od = /* @__PURE__ */ ee(Ad, [["render", Vd]]), de = {
     }
   },
   formatResultDate: function(e) {
-    let t = [...e.split("-")];
+    const t = [...e.split("-")];
     return t[2] = de.getNumTwoBit(Number(t[2])), t[3] = `${t[0]}-${t[1]}-${t[2]}`, t[4] = de.getWhatDay(+t[0], +t[1], +t[2]), t;
   }
 }, { create: Hd } = q("calendar-item"), Rd = "NutCalendarItem", Fd = Hd({
@@ -7430,7 +7432,7 @@ const { create: wp } = q("short-password"), kp = "NutShortPassword", Cp = wp({
     },
     length: {
       type: [String, Number],
-      //4～6
+      // 4～6
       default: 6
     },
     lockScroll: {
@@ -8944,7 +8946,7 @@ const Y1 = /* @__PURE__ */ ee(F1, [["render", W1]]), { create: j1 } = q("dialog"
     footerDirection: {
       type: String,
       default: "horizontal"
-      //vertical
+      // vertical
     },
     customClass: {
       type: String,
@@ -9088,7 +9090,7 @@ class G1 {
     O(this, "teleport", "body");
     O(this, "id", (/* @__PURE__ */ new Date()).getTime());
     O(this, "footerDirection", "horizontal");
-    //使用横纵方向 可选值 horizontal、vertical
+    // 使用横纵方向 可选值 horizontal、vertical
     // function
     O(this, "onUpdate");
     O(this, "onOk");
@@ -9776,7 +9778,7 @@ const Rt = /* @__PURE__ */ ee(km, [["render", Tm]]), Qt = {
   msg: "",
   id: "",
   duration: 2e3,
-  //显示时间(毫秒)
+  // 显示时间(毫秒)
   center: !0,
   // 未实现
   type: "text",
@@ -9795,7 +9797,7 @@ const Rt = /* @__PURE__ */ ee(km, [["render", Tm]]), Qt = {
   // 未实现
   unmount: null,
   cover: !1,
-  //透明遮罩层 // 未实现
+  // 透明遮罩层 // 未实现
   coverColor: "",
   // 未实现
   closeOnClickOverlay: !1
@@ -10867,9 +10869,9 @@ const yh = /* @__PURE__ */ ee(ch, [["render", vh]]), bh = { class: "nut-empty" }
 Te(Uo);
 function Hn(e, t) {
   let n = null, l = Date.now();
-  return function() {
-    let o = Date.now(), s = t - (o - l);
-    n && clearTimeout(n), s <= 0 ? (e.apply(null, arguments), l = Date.now()) : n = setTimeout(e, s);
+  return function(...o) {
+    const s = Date.now(), a = t - (s - l);
+    n && clearTimeout(n), a <= 0 ? (e(...o), l = Date.now()) : n = setTimeout(e, a);
   };
 }
 const { create: kh } = q("video"), Ch = "NutVideo", Sh = kh({
@@ -10882,17 +10884,17 @@ const { create: kh } = q("video"), Ch = "NutVideo", Sh = kh({
       type: Object,
       default: {
         autoplay: !1,
-        //是否自动播放
+        // 是否自动播放
         volume: 0.5,
         poster: "",
         loop: !1,
         controls: !0,
         muted: !1,
-        //是否静音
+        // 是否静音
         disabled: !1,
-        //禁止操作
+        // 禁止操作
         playsinline: !1,
-        //行内展示
+        // 行内展示
         touchPlay: !1,
         preload: ""
       },
@@ -10909,9 +10911,9 @@ const { create: kh } = q("video"), Ch = "NutVideo", Sh = kh({
     const l = Se(Ch), o = fe({
       videoElm: null,
       initial: !0,
-      //控制封面的显示
+      // 控制封面的显示
       showToolbox: !1,
-      //控制控制器和标题的显示
+      // 控制控制器和标题的显示
       // 视频容器元素
       player: {
         $player: null,
@@ -10941,12 +10943,12 @@ const { create: kh } = q("video"), Ch = "NutVideo", Sh = kh({
       state: {
         controlShow: !0,
         vol: 0.5,
-        //音量
+        // 音量
         currentTime: 0,
-        //当前时间
+        // 当前时间
         fullScreen: !1,
         playing: !1,
-        //是否正在播放
+        // 是否正在播放
         isLoading: !1,
         isEnd: !1,
         isError: !1,
@@ -11292,7 +11294,7 @@ const e0 = /* @__PURE__ */ ee(Yh, [["render", xh]]), qo = Symbol("nut-swiper"), 
     direction: {
       type: String,
       default: "horizontal"
-      //horizontal and vertical
+      // horizontal and vertical
     },
     paginationVisible: {
       type: Boolean,
@@ -12065,15 +12067,15 @@ const { create: S0 } = q("countup"), T0 = S0({
       to10_0: [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1],
       timer: null,
       totalCount: 0,
-      //正整数
+      // 正整数
       pointNum: 0,
-      //小数位
+      // 小数位
       numberVal: 0,
-      //数字
+      // 数字
       num_total_len: 0,
-      //数字长度
+      // 数字长度
       relNum: 0,
-      //去除小数点
+      // 去除小数点
       customNumber: 1,
       prizeLevelTrun: 0,
       prizeY: [],
@@ -12285,7 +12287,7 @@ function _0(e, t, n, l, o, s) {
             left: e.numWidth * (e.num_total_len - e.pointNum) * 1.1 + "px",
             fontSize: "30px"
           })
-        }, ".", 4)) : T("", !0)
+        }, " . ", 4)) : T("", !0)
       ], 4))
     ], 64)) : (c(), d(Q, { key: 1 }, [
       e.scrolling ? (c(), d("view", {
@@ -12328,7 +12330,7 @@ function _0(e, t, n, l, o, s) {
             top: 0,
             left: e.numWidth * (e.num_total_len - e.pointNum) + "px"
           })
-        }, ".", 4)) : T("", !0)
+        }, " . ", 4)) : T("", !0)
       ], 4)) : (c(), d(Q, { key: 1 }, [
         he(E(e.current), 1)
       ], 64))
@@ -12703,52 +12705,52 @@ const Go = /* @__PURE__ */ ee(H0, [["render", Y0]]), { create: j0 } = q("skeleto
     NutAvatar: hn
   },
   props: {
-    //每行宽度
+    // 每行宽度
     width: {
       type: String,
       default: "100px"
     },
-    //每行高度
+    // 每行高度
     height: {
       type: String,
       default: "15px"
     },
-    //是否显示动画
+    // 是否显示动画
     animated: {
       type: Boolean,
       default: !1
     },
-    //头像
+    // 头像
     avatar: {
       type: Boolean,
       default: !1
     },
-    //头像形状：正方形/圆形
+    // 头像形状：正方形/圆形
     avatarShape: {
       type: String,
       default: "round"
     },
-    //头像大小
+    // 头像大小
     avatarSize: {
       type: String,
       default: "50px"
     },
-    //是否显示骨架屏
+    // 是否显示骨架屏
     loading: {
       type: Boolean,
       default: !0
     },
-    //标题/段落 圆角风格
+    // 标题/段落 圆角风格
     round: {
       type: Boolean,
       default: !1
     },
-    //显示段落行数
+    // 显示段落行数
     row: {
       type: String,
       default: "1"
     },
-    //是否显示段落标题
+    // 是否显示段落标题
     title: {
       type: Boolean,
       default: !0
@@ -13187,9 +13189,9 @@ const { create: Sg } = q("ellipsis"), Tg = Sg({
     let l = null, o = 0;
     const s = z(), a = fe({
       exceeded: !1,
-      //是否超出
+      // 是否超出
       expanded: !1
-      //是否折叠
+      // 是否折叠
     });
     x(
       () => e.content,
@@ -13998,7 +14000,7 @@ function yv(e, t, n, l, o, s) {
                         size: "13px"
                       })
                     ]) : T("", !0),
-                    he(E(v.name), 1)
+                    he(" " + E(v.name), 1)
                   ])
                 ], 10, rv);
               }), 128))
@@ -15461,12 +15463,12 @@ function z2(e, t, n, l, o, s) {
 }
 const V2 = /* @__PURE__ */ ee(E2, [["render", z2]]), { create: O2 } = q("category"), H2 = O2({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: "classify"
     },
-    //左侧导航栏
+    // 左侧导航栏
     category: {
       type: Array,
       default: []
@@ -15503,17 +15505,17 @@ function j2(e, t, n, l, o, s) {
 }
 const K2 = /* @__PURE__ */ ee(H2, [["render", j2]]), { create: U2 } = q("category-pane"), X2 = U2({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: "classify"
     },
-    //右侧导航数据
+    // 右侧导航数据
     categoryChild: {
       type: Array,
       default: () => []
     },
-    //模式传入自定义数据
+    // 模式传入自定义数据
     customCategory: {
       type: Array,
       default: () => []
@@ -15829,7 +15831,7 @@ const V3 = /* @__PURE__ */ ee(M3, [["render", z3]]), { create: O3 } = q("comment
     headerType: {
       type: String,
       default: "default"
-      //头部展示风格 default，complex
+      // 头部展示风格 default，complex
     },
     imagesRows: {
       type: String,

@@ -20,7 +20,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createTextVNode, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { c as clamp } from "../util-CyCQsn5J.js";
+import { c as clamp } from "../util-7oDGftbO.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
 import { r as requestAniFrame } from "../raf-CzJhCkQo.js";
@@ -39,7 +39,7 @@ const _sfc_main = create({
     direction: {
       type: String,
       default: "horizontal"
-      //horizontal and vertical
+      // horizontal and vertical
     },
     paginationVisible: {
       type: Boolean,

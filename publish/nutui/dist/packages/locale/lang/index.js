@@ -10,8 +10,8 @@ import Lang$1 from "./en-US.js";
 const isObject = (val) => val !== null && typeof val === "object";
 const deepMerge = (target, newObj) => {
   Object.keys(newObj).forEach((key) => {
-    let targetValue = target[key];
-    let newObjValue = newObj[key];
+    const targetValue = target[key];
+    const newObjValue = newObj[key];
     if (isObject(targetValue) && isObject(newObjValue)) {
       deepMerge(targetValue, newObjValue);
     } else {

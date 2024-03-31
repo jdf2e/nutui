@@ -60,9 +60,9 @@ const _sfc_main = create({
     const ellipsis = ref();
     const state = reactive({
       exceeded: false,
-      //是否超出
+      // 是否超出
       expanded: false
-      //是否折叠
+      // 是否折叠
     });
     watch(
       () => props.content,

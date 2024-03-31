@@ -48,8 +48,8 @@ const getPropByPath = (obj, keyPath) => {
   }
 };
 const floatData = (format, dataOp, mapOps) => {
-  let mergeFormat = Object.assign({}, format);
-  let mergeMapOps = Object.assign({}, mapOps);
+  const mergeFormat = Object.assign({}, format);
+  const mergeMapOps = Object.assign({}, mapOps);
   if (Object.keys(dataOp).length > 0) {
     Object.keys(mergeFormat).forEach((keys) => {
       if (Object.prototype.hasOwnProperty.call(mergeMapOps, keys)) {

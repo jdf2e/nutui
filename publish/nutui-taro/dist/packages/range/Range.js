@@ -40,7 +40,7 @@ var __async = (__this, __arguments, generator) => {
 import Taro, { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { toRef, ref, computed, onMounted, toRefs, openBlock, createElementBlock, normalizeClass, toDisplayString, createCommentVNode, createTextVNode, createElementVNode, normalizeStyle, withModifiers, Fragment, renderList, renderSlot } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { a as preventDefault } from "../util-CyCQsn5J.js";
+import { a as preventDefault } from "../util-7oDGftbO.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";

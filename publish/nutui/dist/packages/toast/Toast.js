@@ -21,7 +21,7 @@ import { reactive, onMounted, watch, computed, openBlock, createBlock, Transitio
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import { C as CreateComponent } from "../mountComponent-CaxfPAi_.js";
+import { C as CreateComponent } from "../mountComponent-DBQ88Fjz.js";
 import { Success, Failure, Tips, Loading } from "@nutui/icons-vue";
 const { create } = createComponent("toast");
 const _sfc_main = create({
@@ -217,7 +217,7 @@ const defaultOptions = {
   msg: "",
   id: "",
   duration: 2e3,
-  //显示时间(毫秒)
+  // 显示时间(毫秒)
   center: true,
   // 未实现
   type: "text",
@@ -236,7 +236,7 @@ const defaultOptions = {
   // 未实现
   unmount: null,
   cover: false,
-  //透明遮罩层 // 未实现
+  // 透明遮罩层 // 未实现
   coverColor: "",
   // 未实现
   closeOnClickOverlay: false

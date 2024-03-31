@@ -43,7 +43,7 @@ import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTi
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
 import { JoySmile } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { T as TypeOfFun } from "../util-CyCQsn5J.js";
+import { T as TypeOfFun } from "../util-7oDGftbO.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { r as requestAniFrame } from "../raf-CzJhCkQo.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";

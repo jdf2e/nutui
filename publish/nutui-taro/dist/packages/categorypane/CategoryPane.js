@@ -4,17 +4,17 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("category-pane");
 const _sfc_main = create({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: "classify"
     },
-    //右侧导航数据
+    // 右侧导航数据
     categoryChild: {
       type: Array,
       default: () => []
     },
-    //模式传入自定义数据
+    // 模式传入自定义数据
     customCategory: {
       type: Array,
       default: () => []

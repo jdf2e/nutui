@@ -4,12 +4,12 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("category");
 const _sfc_main = create({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: "classify"
     },
-    //左侧导航栏
+    // 左侧导航栏
     category: {
       type: Array,
       default: () => []

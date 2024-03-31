@@ -22,7 +22,7 @@ import { Location, Location2, Check, Close, Left } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup, p as popupProps } from "../index-uHBD4dfS.js";
 import NutElevator from "../elevator/Elevator.js";
-import { u as useLocale } from "../index-BRldzYir.js";
+import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("address");
 const cN = "NutAddress";
@@ -463,7 +463,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                         size: "13px"
                       })
                     ]) : createCommentVNode("", true),
-                    createTextVNode(toDisplayString(item.name), 1)
+                    createTextVNode(" " + toDisplayString(item.name), 1)
                   ])
                 ], 10, _hoisted_10);
               }), 128))

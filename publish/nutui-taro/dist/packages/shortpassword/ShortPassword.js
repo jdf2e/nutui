@@ -2,7 +2,7 @@ import { ref, computed, watch, onMounted, resolveComponent, openBlock, createEle
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
 import { Tips } from "@nutui/icons-vue-taro";
-import { u as useLocale } from "../index-CV7DiiiD.js";
+import { u as useLocale } from "../index-5sMqqUcW.js";
 import { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("short-password");
@@ -43,7 +43,7 @@ const _sfc_main = create({
     },
     length: {
       type: [String, Number],
-      //4～6
+      // 4～6
       default: 6
     },
     lockScroll: {

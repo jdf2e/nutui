@@ -88,9 +88,9 @@ const _sfc_main = create({
     let widthRef = ref("auto");
     const state = reactive({
       exceeded: false,
-      //是否超出
+      // 是否超出
       expanded: false
-      //是否折叠
+      // 是否折叠
     });
     let widthBase = [14, 10, 7, 8.4, 10];
     let symbolTextWidth = widthBase[0] * 0.7921;

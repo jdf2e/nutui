@@ -96,7 +96,7 @@ const Utils = {
   getMonthWeek: function(year, month, date, firstDayOfWeek = 0) {
     const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date));
     let w = dateNow.getDay();
-    let d = dateNow.getDate();
+    const d = dateNow.getDate();
     let remainder = 6 - w;
     if (firstDayOfWeek !== 0) {
       w = w == 0 ? 7 : w;
@@ -133,7 +133,7 @@ const Utils = {
     }
   },
   formatResultDate: function(date) {
-    let days = [...date.split("-")];
+    const days = [...date.split("-")];
     days[2] = Utils.getNumTwoBit(Number(days[2]));
     days[3] = `${days[0]}-${days[1]}-${days[2]}`;
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);

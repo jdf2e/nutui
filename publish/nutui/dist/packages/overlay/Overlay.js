@@ -16,7 +16,7 @@ var __spreadValues = (a, b) => {
 };
 import { computed, watchEffect, openBlock, createBlock, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, withModifiers, renderSlot, vShow } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { b as body } from "../util-6wYEjmEl.js";
+import { b as body } from "../util-DnfK0Qan.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 let count = 0;
 const CLSNAME = "nut-overflow-hidden";

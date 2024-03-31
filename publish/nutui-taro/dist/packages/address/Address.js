@@ -23,7 +23,7 @@ import { N as NutPopup, p as popupProps } from "../index.taro-D-ijfYRm.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import NutElevator from "../elevator/Elevator.js";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
-import { u as useLocale } from "../index-CV7DiiiD.js";
+import { u as useLocale } from "../index-5sMqqUcW.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const cN = "NutAddress";
 const { create } = createComponent("address");
@@ -471,7 +471,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                             width: "13px"
                           })
                         ]) : createCommentVNode("", true),
-                        createTextVNode(toDisplayString(item.name), 1)
+                        createTextVNode(" " + toDisplayString(item.name), 1)
                       ])
                     ], 10, _hoisted_11);
                   }), 128))

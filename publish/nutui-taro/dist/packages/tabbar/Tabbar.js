@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, unref, renderSlot } from "vue";
 import Taro from "@tarojs/taro";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
-import { u as useChildren } from "../useChildren-4flBkurC.js";
+import { u as useChildren } from "../useChildren-BZ4-J79J.js";
 import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["id"];

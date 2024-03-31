@@ -2,7 +2,7 @@ import { ref, computed, watch, resolveComponent, openBlock, createElementBlock, 
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index-uHBD4dfS.js";
 import { Tips } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-BRldzYir.js";
+import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("short-password");
 const cN = "NutShortPassword";
@@ -42,7 +42,7 @@ const _sfc_main = create({
     },
     length: {
       type: [String, Number],
-      //4～6
+      // 4～6
       default: 6
     },
     lockScroll: {

@@ -21,10 +21,10 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { reactive, computed, ref, watch, toRefs, onMounted, openBlock, createElementBlock, createElementVNode, normalizeStyle, Fragment, renderList, normalizeClass, toDisplayString, createCommentVNode, createTextVNode, resolveComponent, renderSlot, mergeProps, createVNode } from "vue";
 import Taro from "@tarojs/taro";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
-import { a as preventDefault, c as clamp } from "../util-CyCQsn5J.js";
+import { a as preventDefault, c as clamp } from "../util-7oDGftbO.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import { u as useLocale } from "../index-CV7DiiiD.js";
+import { u as useLocale } from "../index-5sMqqUcW.js";
 const DEFAULT_FILED_NAMES = {
   text: "text",
   value: "value",
