@@ -78,6 +78,9 @@ importers:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
+      eslint-config-flat-gitignore:
+        specifier: ^0.1.3
+        version: 0.1.3
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
@@ -8213,6 +8216,13 @@ packages:
       source-map: 0.6.1
     dev: true
 
+  /eslint-config-flat-gitignore@0.1.3:
+    resolution: {integrity: sha512-oQD+dEZv3RThN60tFqGFt+NJcO1DmssUcP+T/nlX+ZzEoEvVUYH0GU9X/VlmDXsbMsS9mONI1HrlxLgtKojw7w==}
+    dependencies:
+      find-up: 7.0.0
+      parse-gitignore: 2.0.0
+    dev: true
+
   /eslint-config-taro@3.6.24(@babel/core@7.24.3)(eslint@8.57.0)(typescript@5.3.3):
     resolution: {integrity: sha512-7iyBXIskrcoWYRq4r5QGxLvBJomwLQXKMsqe0aaOPhwSdhumO29hdvCou941z6j5P6q/NNR3yKonr1AjTJA31A==}
     peerDependencies:
@@ -12344,6 +12354,11 @@ packages:
       fs-exists-sync: 0.1.0
       git-config-path: 1.0.1
       ini: 1.3.8
+    dev: true
+
+  /parse-gitignore@2.0.0:
+    resolution: {integrity: sha512-RmVuCHWsfu0QPNW+mraxh/xjQVw/lhUCUru8Zni3Ctq3AoMhpDTq0OVdKS6iesd6Kqb7viCV3isAL43dciOSog==}
+    engines: {node: '>=14'}
     dev: true
 
   /parse-json@5.2.0:
