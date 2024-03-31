@@ -29,7 +29,7 @@ test('props v-model', async () => {
   expect(txtWrapper.value).toBe('618')
 })
 
-test('props placeholder	max-length rows limit-show', async () => {
+test('props placeholder max-length rows limit-show', async () => {
   const component = {
     template: `<nut-textarea v-model="value" :placeholder="placeholder" :max-length="maxLength" :limit-show="limitShow" :rows="rows"/>`,
     setup() {

@@ -34,7 +34,7 @@ const times = ref([
 
 const onChange = (pannelKey) => {
   key.value = pannelKey
-  const curTime = time.value.find((item) => item.key == pannelKey)
+  const curTime = time.value.find(item => item.key == pannelKey)
   if (!curTime) {
     time.value.push({
       key: pannelKey,
@@ -44,8 +44,8 @@ const onChange = (pannelKey) => {
 }
 
 const onSelect = (item) => {
-  let findIndex = time.value.findIndex((item) => item.key == key.value)
-  let curTimeIndex = time.value[findIndex]['list'].findIndex((time) => time === item)
+  let findIndex = time.value.findIndex(item => item.key == key.value)
+  let curTimeIndex = time.value[findIndex]['list'].findIndex(time => time === item)
   if (curTimeIndex === -1) {
     time.value[findIndex]['list'].push(item)
   } else {

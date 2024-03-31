@@ -175,12 +175,12 @@ export default create({
     }
 
     const startComposing = ({ target }: Event) => {
-      ;(target as InputTarget)!.composing = true
+      (target as InputTarget)!.composing = true
     }
 
     const endComposing = ({ target }: Event) => {
       if ((target as InputTarget)!.composing) {
-        ;(target as InputTarget)!.composing = false
+        (target as InputTarget)!.composing = false
         ;(target as InputTarget)!.dispatchEvent(new Event('input'))
       }
     }

@@ -5,7 +5,7 @@ export class RefData {
   public static getInstance(): RefData {
     if (this.instance == null) {
       this.instance = new RefData()
-      let localTheme = localStorage.getItem('nutui-theme-color')
+      const localTheme = localStorage.getItem('nutui-theme-color')
       if (localTheme) {
         this.instance.themeColor.value = localTheme
       }
@@ -19,6 +19,7 @@ export class RefData {
   public get themeColor(): Ref<string> {
     return this._themeColor
   }
+
   public set themeColor(v: Ref<string>) {
     this._themeColor = v
   }

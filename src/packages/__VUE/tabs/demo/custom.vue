@@ -7,8 +7,9 @@
           :class="{
             active: value === item.paneKey
           }"
-          >{{ item.title }}</div
         >
+          {{ item.title }}
+        </div>
       </div>
     </template>
     <nut-tab-pane v-for="item in list" :key="item.paneKey" :pane-key="item.paneKey"> {{ item.title }} </nut-tab-pane>

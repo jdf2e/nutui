@@ -26,7 +26,8 @@ test('Tabs: base tabs props', async () => {
         type="smile"
         size="large"
         titleScroll
-      ></Tabs>
+      >
+      </Tabs>
     )
   })
   await nextTick()
@@ -132,11 +133,13 @@ test('Tabs: base Tabpane Props', async () => {
         </TabPane>
         <TabPane title="Tab 2" pane-key="1" disabled>
           {' '}
-          Tab 2{' '}
+          Tab 2
+          {' '}
         </TabPane>
         <TabPane title="Tab 3" pane-key="2">
           {' '}
-          Tab 3{' '}
+          Tab 3
+          {' '}
         </TabPane>
       </Tabs>
     )
@@ -162,11 +165,13 @@ test('Tabs: base Tabpane disabled swipeable', async () => {
         </TabPane>
         <TabPane title="Tab 2" pane-key="1" disabled>
           {' '}
-          Tab 2{' '}
+          Tab 2
+          {' '}
         </TabPane>
         <TabPane title="Tab 3" pane-key="2">
           {' '}
-          Tab 3{' '}
+          Tab 3
+          {' '}
         </TabPane>
       </Tabs>
     )
@@ -192,11 +197,13 @@ test('Tabs: base click', async () => {
         </TabPane>
         <TabPane title="Tab 2" pane-key="1">
           {' '}
-          Tab 2{' '}
+          Tab 2
+          {' '}
         </TabPane>
         <TabPane title="Tab 3" pane-key="2">
           {' '}
-          Tab 3{' '}
+          Tab 3
+          {' '}
         </TabPane>
       </Tabs>
     )
@@ -218,11 +225,13 @@ test('Tabs: Tabs: direction=vertical & title-gutter', async () => {
         </TabPane>
         <TabPane title="Tab 2" pane-key="1">
           {' '}
-          Tab 2{' '}
+          Tab 2
+          {' '}
         </TabPane>
         <TabPane title="Tab 3" pane-key="2">
           {' '}
-          Tab 3{' '}
+          Tab 3
+          {' '}
         </TabPane>
       </Tabs>
     )

@@ -159,7 +159,7 @@ export default create({
     watch(
       () => props.src,
       () => {
-        ;(state.isError = false), (state.loading = true)
+        (state.isError = false), (state.loading = true)
       }
     )
     // 图片加载

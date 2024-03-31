@@ -84,7 +84,7 @@ export default create({
       defaultAddress: false,
       fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
     })
-    //磨平参数差异
+    // 磨平参数差异
     const trowelData = () => {
       if (Object.keys(props.dataOptions).length > 0) {
         dataArray.value = props.data.map((item) => {

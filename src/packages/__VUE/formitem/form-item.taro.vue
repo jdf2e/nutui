@@ -17,7 +17,8 @@
         <slot></slot>
       </view>
       <view v-if="parent[prop] && showErrorMessage" class="nut-form-item__body__tips" :style="errorMessageStyle">
-        {{ parent[prop] }}</view
+        {{ parent[prop] }}
+      </view
       >
     </view>
   </nut-cell>
@@ -68,7 +69,7 @@ const isRequired = computed(() => {
       formRequired = rules[key].some((rule: FormItemRule) => rule.required)
     }
   }
-  return props.required || props.rules.some((rule) => rule.required) || formRequired
+  return props.required || props.rules.some(rule => rule.required) || formRequired
 })
 
 const labelPositionClass = computed(() => {

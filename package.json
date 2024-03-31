@@ -55,8 +55,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:c": "vitest --coverage",
-    "lint": "eslint ./src ./packages/**/src --ext .vue,.ts,.tsx,.js,.jsx",
+    "lint": "eslint ./src ./packages/**/src",
     "lint:fix": "pnpm lint --fix",
+    "lint:ui": "pnpm eslint-config-inspector",
     "copydocs": "node ./scripts/copymd.cjs",
     "attrs": "node ./scripts/createAttributes.cjs",
     "attrs:taro": "node ./scripts/createAttributes.cjs taro",
@@ -80,6 +81,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
+    "@eslint/config-inspector": "^0.1.0",
+    "@eslint/eslintrc": "^3.0.2",
     "@nutui/eslint-config": "workspace:*",
     "@nutui/prettier-plugin": "workspace:*",
     "@nutui/vite-plugins": "workspace:*",
@@ -116,7 +119,7 @@
     "node": "^18.0.0 || >=20.0.0"
   },
   "nano-staged": {
-    "*.{ts,tsx,js,jsx,vue,scss,md}": "prettier --write",
+    "*.{css,scss,md}": "prettier --write",
     "*.{ts,tsx,js,jsx,vue}": "eslint --fix"
   },
   "repository": {

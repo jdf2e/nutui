@@ -356,7 +356,7 @@ export default create({
     }
 
     const startRoll = () => {
-      ;(state.timer as any) = setInterval(
+      (state.timer as any) = setInterval(
         () => {
           let chunk = 100
           for (let i = 0; i < chunk; i++) {

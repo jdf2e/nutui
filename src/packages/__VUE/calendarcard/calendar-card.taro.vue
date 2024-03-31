@@ -183,17 +183,17 @@ const isActive = (day: CalendarCardDay) => {
 
 const isStart = (day: CalendarCardDay) => {
   return (
-    (props.type === 'range' || props.type === 'week') &&
-    innerValue.value.length === 2 &&
-    isSameDay(day, innerValue.value[0])
+    (props.type === 'range' || props.type === 'week')
+    && innerValue.value.length === 2
+    && isSameDay(day, innerValue.value[0])
   )
 }
 
 const isEnd = (day: CalendarCardDay) => {
   return (
-    (props.type === 'range' || props.type === 'week') &&
-    innerValue.value.length === 2 &&
-    isSameDay(day, innerValue.value[1])
+    (props.type === 'range' || props.type === 'week')
+    && innerValue.value.length === 2
+    && isSameDay(day, innerValue.value[1])
   )
 }
 
@@ -304,9 +304,9 @@ const handleDayClick = (day: CalendarCardDay) => {
       break
     }
     case 'multiple': {
-      const t = innerValue.value.find((i) => isSameDay(i, day))
+      const t = innerValue.value.find(i => isSameDay(i, day))
       if (t) {
-        change(innerValue.value.filter((i) => i !== t))
+        change(innerValue.value.filter(i => i !== t))
       } else {
         change([...innerValue.value, day])
       }

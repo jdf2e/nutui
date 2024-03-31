@@ -14,12 +14,14 @@ export class Locale {
   static languages(): Lang {
     return langs[this.currentLang.value]
   }
+
   static use(lang: string, newLanguages?: any) {
     if (newLanguages) {
       langs[lang] = new newLanguages()
     }
     this.currentLang.value = lang
   }
+
   static merge(lang: string, newLanguages: any) {
     if (newLanguages) {
       if (langs[lang]) {

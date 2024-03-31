@@ -16,9 +16,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, watch } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { nav } from '@/config.json'
-import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router'
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router'
 import DocHeader from '@/sites/doc/components/DocHeader.vue'
 import DocNav from '@/sites/doc/components/Nav.vue'
 import DocDemoPreview from '@/sites/doc/components/DemoPreview.vue'

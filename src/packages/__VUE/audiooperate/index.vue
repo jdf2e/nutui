@@ -1,25 +1,30 @@
 <template>
   <!--配合进度条使用 播放时长、 兼容是否支持 、暂停、 开启-->
   <div class="nut-audio-operate">
-    <div v-if="type == 'back'" class="nut-audio-operate-item" @click="fastBack"
-      ><nut-button v-if="!customSlot" type="primary" size="small">{{ translate('back') }}</nut-button
-      ><slot></slot
-    ></div>
-    <div v-if="type == 'play'" class="nut-audio-operate-item" @click="changeStatus"
-      ><nut-button v-if="!customSlot" type="primary" size="small">{{
-        !audioData.playing ? `${translate('start')}` : `${translate('pause')}`
-      }}</nut-button>
-      <slot></slot
-    ></div>
-    <div v-if="type == 'forward'" class="nut-audio-operate-item" @click="forward"
-      ><nut-button v-if="!customSlot" type="primary" size="small">快进</nut-button><slot></slot
-    ></div>
-    <div v-if="type == 'mute'" class="nut-audio-operate-item" @click="handleMute"
-      ><nut-button v-if="!customSlot" :type="!audioData.hanMuted ? 'primary' : 'default'" size="small">{{
-        translate('mute')
-      }}</nut-button
-      ><slot></slot
-    ></div>
+    <div v-if="type == 'back'" class="nut-audio-operate-item" @click="fastBack">
+      <nut-button v-if="!customSlot" type="primary" size="small">{{ translate('back') }}</nut-button>
+      <slot></slot>
+    </div>
+    <div v-if="type == 'play'" class="nut-audio-operate-item" @click="changeStatus">
+      <nut-button v-if="!customSlot" type="primary" size="small">
+        {{
+          !audioData.playing ? `${translate('start')}` : `${translate('pause')}`
+        }}
+      </nut-button>
+      <slot></slot>
+    </div>
+    <div v-if="type == 'forward'" class="nut-audio-operate-item" @click="forward">
+      <nut-button v-if="!customSlot" type="primary" size="small">快进</nut-button>
+      <slot></slot>
+    </div>
+    <div v-if="type == 'mute'" class="nut-audio-operate-item" @click="handleMute">
+      <nut-button v-if="!customSlot" :type="!audioData.hanMuted ? 'primary' : 'default'" size="small">
+        {{
+          translate('mute')
+        }}
+      </nut-button>
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script lang="ts">

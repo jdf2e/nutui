@@ -21,6 +21,7 @@ export class Uploader {
   constructor(options: UploadOptions) {
     this.options = options
   }
+
   upload() {
     const options = this.options
     const xhr = new XMLHttpRequest()
@@ -64,6 +65,7 @@ export class UploaderTaro extends Uploader {
   constructor(options: UploadOptions) {
     super(options)
   }
+
   uploadTaro(uploadFile: Function, env: string) {
     const options = this.options
     if (env === 'WEB') {
@@ -82,7 +84,7 @@ export class UploaderTaro extends Uploader {
           }, //
           formData: options.formData,
           name: options.name,
-          success(response: { errMsg: any; statusCode: number; data: string }) {
+          success(response: { errMsg: any, statusCode: number, data: string }) {
             if (options.xhrState == response.statusCode) {
               options.onSuccess?.(response, options)
             } else {
@@ -94,7 +96,7 @@ export class UploaderTaro extends Uploader {
           }
         })
         options.onStart?.(options)
-        uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+        uploadTask.progress((res: { progress: any, totalBytesSent: any, totalBytesExpectedToSend: any }) => {
           options.onProgress?.(res, options)
         })
       }

@@ -89,8 +89,8 @@ export default create({
         const windowScrollTop = getScrollTopRoot()
 
         if (scroller.value) {
-          offsetDistance =
-            calculateTopPosition(scroller.value) + scroller.value.offsetHeight - windowScrollTop - window.innerHeight
+          offsetDistance
+            = calculateTopPosition(scroller.value) + scroller.value.offsetHeight - windowScrollTop - window.innerHeight
         }
 
         resScrollTop = windowScrollTop

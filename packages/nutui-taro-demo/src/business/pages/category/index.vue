@@ -7,13 +7,13 @@
 
     <h2>只显示文字</h2>
     <nut-category :category="data.category" @change="changeText">
-      <nut-category-pane type="text" :category-child="data.categoryChild2" @on-change="onChange"> </nut-category-pane
-    ></nut-category>
+      <nut-category-pane type="text" :category-child="data.categoryChild2" @on-change="onChange"> </nut-category-pane>
+    </nut-category>
 
     <h2>自定义分类</h2>
-    <nut-category
-      ><nut-category-pane type="custom" :custom-category="customCategory" @on-change="changeCustom"> </nut-category-pane
-    ></nut-category>
+    <nut-category>
+      <nut-category-pane type="custom" :custom-category="customCategory" @on-change="changeCustom"> </nut-category-pane>
+    </nut-category>
   </Demo>
 </template>
 

@@ -10,14 +10,17 @@ export abstract class BaseLang {
     errorTip: string
     clickRetry: string
   }
+
   abstract fixednav: {
     activeText: string
     unActiveText: string
   }
+
   abstract pagination: {
     prev: string
     next: string
   }
+
   abstract calendaritem: {
     weekdays: Array<string>
     end: string
@@ -26,6 +29,7 @@ export abstract class BaseLang {
     monthTitle: Function
     today: string
   }
+
   abstract calendarcard: {
     weekdays: Array<string>
     end: string
@@ -34,11 +38,13 @@ export abstract class BaseLang {
     monthTitle: Function
     today: string
   }
+
   abstract shortpassword: {
     title: string
     desc: string
     tips: string
   }
+
   abstract uploader: {
     ready: string
     readyUpload: string
@@ -47,51 +53,62 @@ export abstract class BaseLang {
     success: string
     error: string
   }
+
   abstract countdown: {
     day: string
     hour: string
     minute: string
     second: string
   }
+
   abstract address: {
     selectRegion: string
     deliveryTo: string
     chooseAnotherAddress: string
   }
+
   abstract signature: {
     reSign: string
     unSupportTpl: string
   }
+
   abstract ecard: {
     chooseText: string
     otherValueText: string
     placeholder: string
   }
+
   abstract timeselect: {
     pickupTime: string
   }
+
   abstract sku: {
     buyNow: string
     buyNumber: string
     addToCart: string
   }
+
   abstract skuheader: {
     skuId: string
   }
+
   abstract addresslist: {
     addAddress: string
     default: string
   }
+
   abstract comment: {
     complaintsText: string
     additionalReview: Function
     additionalImages: Function
   }
+
   abstract infiniteloading: {
     loading: string
     pullTxt: string
     loadMoreTxt: string
   }
+
   abstract pullrefresh: {
     pulling: string
     loosing: string

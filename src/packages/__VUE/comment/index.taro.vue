@@ -25,8 +25,10 @@
         v-if="follow.images && follow.images.length > 0"
         class="nut-comment__follow-img"
         @click="clickImages(follow.images)"
-        >{{ translate('additionalImages', follow.images.length) }} <Right size="12px"></Right
-      ></view>
+      >
+        {{ translate('additionalImages', follow.images.length) }} <Right size="12px"></Right
+        >
+      </view>
     </view>
 
     <comment-bottom
@@ -67,7 +69,7 @@ export default create({
   props: {
     headerType: {
       type: String,
-      default: 'default' //头部展示风格 default，complex
+      default: 'default' // 头部展示风格 default，complex
     },
 
     imagesRows: {

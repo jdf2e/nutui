@@ -32,26 +32,13 @@
 import { ref, onMounted } from 'vue'
 import { copyCodeHtml, decompressText } from './basedUtil'
 import { getParameters } from 'codesandbox/lib/api/define'
-import codesandboxPackage from './package.json' // 引入josn文件
-import codesandboxtsconfig from './tsconfig.json' // 引入ts文件
+import codesandboxPackage from './package.json?raw' // 引入josn文件
+import codesandboxtsconfig from './tsconfig.json?raw' // 引入ts文件
+import INDEX_HTML from './index.html?raw'
 
 const APP_VUE = `import { createApp } from "vue";
 import App from "./App.vue";
 createApp(App).mount("#app");`
-
-const INDEX_HTML = `<!DOCTYPE html> 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"><\/script>
-  </body>
-</html>`
 
 const VITE_CONFIG = `// vite.config.js
 import { defineConfig } from 'vite'

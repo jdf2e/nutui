@@ -218,7 +218,7 @@ test('Menu: menu item change props: value2 should be b after click', async () =>
     },
     methods: {
       handleChange(val: any) {
-        ;(this as any).value2 = val
+        (this as any).value2 = val
       }
     }
   })
@@ -310,10 +310,10 @@ test('Menu: menu item open and close events: should be both emitted', async () =
     },
     methods: {
       handleOpen() {
-        ;(this as any).value2 = 'b'
+        (this as any).value2 = 'b'
       },
       handleClose() {
-        ;(this as any).value2 = 'c'
+        (this as any).value2 = 'c'
       }
     }
   })

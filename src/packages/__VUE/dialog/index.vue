@@ -117,7 +117,7 @@ export default create({
     },
     footerDirection: {
       type: String,
-      default: 'horizontal' //vertical
+      default: 'horizontal' // vertical
     },
     customClass: {
       type: String,

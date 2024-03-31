@@ -77,7 +77,7 @@ export default create({
 
     const { children, linkChildren } = useChildren(MENU_KEY)
 
-    const opened = computed(() => children.some((item) => item.state.showWrapper))
+    const opened = computed(() => children.some(item => item.state.showWrapper))
 
     const classes = computed(() => {
       const prefixCls = componentName

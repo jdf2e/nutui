@@ -68,8 +68,8 @@ export default create({
         ? state.partialSelect
           ? 'nut-checkbox__icon--indeterminate'
           : !pValue.value
-            ? 'nut-checkbox__icon--unchecked'
-            : 'nut-checkbox__icon'
+              ? 'nut-checkbox__icon--unchecked'
+              : 'nut-checkbox__icon'
         : 'nut-checkbox__icon--disable'
     })
 
@@ -102,8 +102,8 @@ export default create({
       const iconNode: Component = state.partialSelect
         ? iconNodeMap.CheckDisabled
         : !pValue.value
-          ? iconNodeMap.CheckNormal
-          : iconNodeMap.Checked
+            ? iconNodeMap.CheckNormal
+            : iconNodeMap.Checked
       const size = pxCheck(iconSize)
       return h(iconNode, {
         width: size,

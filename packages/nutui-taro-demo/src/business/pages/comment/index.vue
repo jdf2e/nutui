@@ -79,8 +79,8 @@ const getData = () => {
     method: 'GET',
     url: 'https://storage.360buyimg.com/nutui/3x/comment_data.json',
     success: (res) => {
-      res.data.Comment.info.avatar =
-        'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
+      res.data.Comment.info.avatar
+        = 'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
       cmt.value = res.data.Comment
     }
   })

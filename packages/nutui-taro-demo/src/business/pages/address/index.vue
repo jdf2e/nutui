@@ -244,7 +244,7 @@ const showSelected = () => {
 const onChange = (cal: CalBack, tag: string) => {
   const name = (address as any)[cal.next]
   if (name?.length < 1) {
-    ;(showPopup as any)[tag] = false
+    (showPopup as any)[tag] = false
   }
 }
 const close1 = (val: CalResult) => {
