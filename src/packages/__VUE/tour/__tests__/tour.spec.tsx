@@ -107,7 +107,8 @@ test('Tour: slot render', async () => {
       return (
         <Tour modelValue={true} steps={steps4}>
           {' '}
-          Default Slot{' '}
+          Default Slot
+          {' '}
         </Tour>
       )
     },

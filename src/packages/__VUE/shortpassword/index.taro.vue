@@ -80,7 +80,7 @@ export default create({
       default: true
     },
     length: {
-      type: [String, Number], //4～6
+      type: [String, Number], // 4～6
       default: 6
     },
     lockScroll: {

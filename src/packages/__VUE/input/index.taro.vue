@@ -300,14 +300,14 @@ export default create({
 
     const startComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        ;(target as InputTarget)!.composing = true
+        (target as InputTarget)!.composing = true
       }
     }
 
     const endComposing = ({ target }: Event) => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         if ((target as InputTarget)!.composing) {
-          ;(target as InputTarget)!.composing = false
+          (target as InputTarget)!.composing = false
           ;(target as InputTarget)!.dispatchEvent(new Event('input'))
         }
       }

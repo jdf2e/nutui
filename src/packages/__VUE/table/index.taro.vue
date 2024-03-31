@@ -119,8 +119,8 @@ export default create({
     const handleSorterClick = (item: TableColumns) => {
       if (item.sorter) {
         emit('sorter', item)
-        state.curData =
-          typeof item.sorter === 'function'
+        state.curData
+          = typeof item.sorter === 'function'
             ? state.curData.sort(item.sorter)
             : item.sorter === 'default'
               ? state.curData.sort()

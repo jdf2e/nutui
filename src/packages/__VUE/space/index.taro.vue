@@ -60,12 +60,12 @@ export default create({
         }
       })
       return nodes.filter(
-        (c) =>
+        c =>
           !(
-            c &&
-            (c.type === Comment ||
-              (c.type === Fragment && c.children?.length === 0) ||
-              (c.type === Text && (c.children as string).trim() === ''))
+            c
+            && (c.type === Comment
+            || (c.type === Fragment && c.children?.length === 0)
+            || (c.type === Text && (c.children as string).trim() === ''))
           )
       )
     }

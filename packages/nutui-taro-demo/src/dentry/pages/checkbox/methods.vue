@@ -1,9 +1,11 @@
 <template>
   <nut-cell>
     <nut-checkbox-group ref="group" v-model="state.checkboxgroup3" @change="changeBox4">
-      <nut-checkbox v-for="item in state.checkboxsource" :key="item.label" :label="item.label">{{
-        item.value
-      }}</nut-checkbox>
+      <nut-checkbox v-for="item in state.checkboxsource" :key="item.label" :label="item.label">
+        {{
+          item.value
+        }}
+      </nut-checkbox>
     </nut-checkbox-group>
   </nut-cell>
   <nut-cell>

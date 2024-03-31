@@ -6,14 +6,13 @@
     </nut-category>
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="data.category" @change="changeText">
-      <nut-category-pane type="text" :category-child="data.categoryChild2" @on-change="onChange"> </nut-category-pane
-    ></nut-category>
+      <nut-category-pane type="text" :category-child="data.categoryChild2" @on-change="onChange"> </nut-category-pane>
+    </nut-category>
 
     <h2>{{ translate('title3') }}</h2>
-    <nut-category
-      ><nut-category-pane type="custom" :custom-category="data.customCategory" @on-change="changeCustom">
-      </nut-category-pane
-    ></nut-category>
+    <nut-category>
+      <nut-category-pane type="custom" :custom-category="data.customCategory" @on-change="changeCustom"></nut-category-pane>
+    </nut-category>
   </div>
 </template>
 
@@ -49,7 +48,7 @@ onMounted(() => {
 
 const getData = () => {
   fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-    .then((response) => response.json())
+    .then(response => response.json())
     .then((res) => {
       const { categoryInfo, categoryChild, customCategory } = res
       data.categoryInfo1 = categoryInfo
@@ -59,7 +58,7 @@ const getData = () => {
       data.categoryInfo2 = categoryInfo
       data.categoryChild2 = categoryChild
     })
-    .catch((err) => console.log('Oh, error', err))
+    .catch(err => console.log('Oh, error', err))
 }
 
 const change = (index: any) => {

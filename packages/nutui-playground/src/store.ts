@@ -101,6 +101,7 @@ export class NutUIStore extends ReplStore {
     this.state.mainFile = CONTAINER_FILE
     this.setActive(APP_FILE)
   }
+
   serialize() {
     const files = this.getFiles()
     delete files[IMPORTMAP_FILE]
@@ -109,11 +110,12 @@ export class NutUIStore extends ReplStore {
     delete files[INSTALL_FILE.replace('src/', '')]
     return '#' + utoa(JSON.stringify(files))
   }
+
   setNutUIVersion(v: string) {
     style.value = `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/style.css`
     const install = new File(INSTALL_FILE, installCode.value, true)
     this.addFile(install)
-    compileFile(this, install).then((errs) => this.state.errors.push(...errs))
+    compileFile(this, install).then(errs => this.state.errors.push(...errs))
     this.setImportMap({
       imports: {
         '@nutui/nutui': `https://cdn.jsdelivr.net/npm/@nutui/nutui@${v}/dist/nutui.js`,

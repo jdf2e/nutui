@@ -148,10 +148,10 @@ export default create({
     // 判断是否可以开启canvas2d，支付宝基础库2.7.0以上支持，微信基础库2.9.0以上支持
     const showCanvas2D = computed(() => {
       return (
-        (Taro.getEnv() === 'ALIPAY' && parseInt((Taro as any).SDKVersion.replace(/\./g, '')) >= 270) ||
-        (systemInfo.SDKVersion &&
-          parseInt(systemInfo.SDKVersion.replace(/\./g, '')) >= 290 &&
-          Taro.getEnv() === 'WEAPP')
+        (Taro.getEnv() === 'ALIPAY' && parseInt((Taro as any).SDKVersion.replace(/\./g, '')) >= 270)
+        || (systemInfo.SDKVersion
+        && parseInt(systemInfo.SDKVersion.replace(/\./g, '')) >= 290
+        && Taro.getEnv() === 'WEAPP')
       )
     })
     const showPixelRatio = Taro.getEnv() === 'WEB' || showCanvas2D.value
@@ -532,18 +532,18 @@ export default create({
       croppedCanvas.width = width
       croppedCanvas.height = height
       // 使用drawImage方法将原canvas中指定区域的内容绘制到新canvas上
-      canvas &&
-        croppedCtx.drawImage(
-          canvas,
-          props.space * pixelRatio,
-          (displayHeight - cropperWidth) / 2,
-          width,
-          height,
-          0,
-          0,
-          width,
-          height
-        )
+      canvas
+      && croppedCtx.drawImage(
+        canvas,
+        props.space * pixelRatio,
+        (displayHeight - cropperWidth) / 2,
+        width,
+        height,
+        0,
+        0,
+        width,
+        height
+      )
 
       // 将裁剪后的内容转换为图片格式
       const imageDataURL = croppedCanvas.toDataURL('image/png')

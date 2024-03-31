@@ -19,7 +19,7 @@ const confirm = ({ selectedValue }) => {
 }
 const filter = (type, options) => {
   if (type === 'hour') {
-    return options.filter((option) => Number(option.value) % 6 === 0)
+    return options.filter(option => Number(option.value) % 6 === 0)
   }
   return options
 }

@@ -62,19 +62,19 @@ export type CustomType = {
 
 export default create({
   props: {
-    //分类模式
+    // 分类模式
     type: {
       type: String,
       default: 'classify'
     },
 
-    //右侧导航数据
+    // 右侧导航数据
     categoryChild: {
       type: Array as PropType<ChildType>,
       default: () => []
     },
 
-    //模式传入自定义数据
+    // 模式传入自定义数据
     customCategory: {
       type: Array as PropType<CustomType>,
       default: () => []

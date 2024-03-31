@@ -1,7 +1,8 @@
 <template>
   <view class="nut-comment-bottom">
     <view class="nut-comment-bottom__lable" @click="handleClick">
-      <span v-if="type != 'complex'">{{ info.size }}</span></view
+      <span v-if="type != 'complex'">{{ info.size }}</span>
+    </view
     >
 
     <view class="nut-comment-bottom__cpx">
@@ -14,9 +15,11 @@
           </template>
           <template v-if="name == 'more'">
             <MoreX></MoreX>
-            <view v-if="showPopver" class="nut-comment-bottom__cpx-item-popover" @click="operate('popover')">{{
-              translate('complaintsText')
-            }}</view>
+            <view v-if="showPopver" class="nut-comment-bottom__cpx-item-popover" @click="operate('popover')">
+              {{
+                translate('complaintsText')
+              }}
+            </view>
           </template>
         </view>
       </template>
@@ -62,7 +65,7 @@ export default create({
       if (props.operation) {
         props.operation.forEach((name: string) => {
           if (deOp.includes(name)) {
-            ;(mergeOp.value as any).push(name)
+            (mergeOp.value as any).push(name)
           }
         })
       }

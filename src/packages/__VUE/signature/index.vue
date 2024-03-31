@@ -94,7 +94,7 @@ export default create({
       canvas.value.addEventListener(state.events[3], leaveEventHandler, false)
     }
 
-    const moveEventHandler = (event: { preventDefault: () => void; touches: any[] }) => {
+    const moveEventHandler = (event: { preventDefault: () => void, touches: any[] }) => {
       event.preventDefault()
 
       let evt = state.isSupportTouch ? event.touches[0] : event

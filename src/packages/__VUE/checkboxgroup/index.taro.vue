@@ -30,7 +30,7 @@ export default create({
     }
 
     const unlink = (child: ComponentInternalInstance) => {
-      child.proxy && (state.children = state.children.filter((p) => p !== child.proxy))
+      child.proxy && (state.children = state.children.filter(p => p !== child.proxy))
     }
 
     const updateValue = (value: string[]) => {

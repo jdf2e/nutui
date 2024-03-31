@@ -17,7 +17,7 @@ export class DialogOptions {
   popClass?: string = ''
   teleport?: string | HTMLElement = 'body'
   id?: string | number = new Date().getTime()
-  footerDirection?: string = 'horizontal' //使用横纵方向 可选值 horizontal、vertical
+  footerDirection?: string = 'horizontal' // 使用横纵方向 可选值 horizontal、vertical
 
   // function
   onUpdate?: (value: boolean) => any | void

@@ -42,7 +42,9 @@
           <view
             :class="[option.value === modelValue ? activeTitleClass : inactiveTitleClass]"
             :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
-            >{{ option.text }}</view
+          >
+            {{ option.text }}
+          </view
           >
         </view>
         <slot></slot>

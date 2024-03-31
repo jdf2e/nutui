@@ -9,7 +9,7 @@ test('CircleProgress: should change stoke when use width props', async () => {
       radius: 60
     }
   })
-  let element = wrapper.element as HTMLElement
+  const element = wrapper.element as HTMLElement
   expect(element.style.width).toEqual('120px')
   expect(element.style.height).toEqual('120px')
 })
@@ -20,7 +20,7 @@ test('CircleProgress: should change color when use color props', async () => {
       color: 'red'
     }
   })
-  let path = wrapper.findAll('path')
+  const path = wrapper.findAll('path')
   expect(path[1].html()).toContain('red')
 })
 test('CircleProgress: gradient', async () => {

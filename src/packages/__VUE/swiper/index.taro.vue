@@ -57,7 +57,7 @@ export default create({
     },
     direction: {
       type: String,
-      default: 'horizontal' //horizontal and vertical
+      default: 'horizontal' // horizontal and vertical
     },
     paginationVisible: {
       type: Boolean,

@@ -19,7 +19,7 @@ import config from '@/packages/../config.json'
 
 const isH5 = Taro.getEnv() === Taro.ENV_TYPE.WEB
 
-//返回demo页
+// 返回demo页
 const navigateTo = () => {
   Taro.navigateBack()
 }

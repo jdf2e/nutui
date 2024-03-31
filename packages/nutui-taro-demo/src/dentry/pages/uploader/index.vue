@@ -23,7 +23,7 @@
       :status="progressPercentage == 100 ? '' : 'active'"
     >
     </nut-progress>
-    <!-- 
+    <!--
       album 从相册选图
       camera 使用相机
       environment 使用后置摄像头(仅H5纯浏览器)
@@ -123,7 +123,7 @@ const clearUpload = () => {
 }
 
 const beforeXhrUpload = (taroUploadFile: any, options: any) => {
-  //taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
+  // taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
   const uploadTask = taroUploadFile({
     url: options.url,
     filePath: options.taroFilePath,
@@ -134,7 +134,7 @@ const beforeXhrUpload = (taroUploadFile: any, options: any) => {
     }, //
     formData: options.formData,
     name: options.name,
-    success(response: { errMsg: any; statusCode: number; data: string }) {
+    success(response: { errMsg: any, statusCode: number, data: string }) {
       if (options.xhrState == response.statusCode) {
         options.onSuccess?.(response, options)
       } else {
@@ -146,7 +146,7 @@ const beforeXhrUpload = (taroUploadFile: any, options: any) => {
     }
   })
   options.onStart?.(options)
-  uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+  uploadTask.progress((res: { progress: any, totalBytesSent: any, totalBytesExpectedToSend: any }) => {
     options.onProgress?.(res, options)
     // console.log('上传进度', res.progress);
     // console.log('已经上传的数据长度', res.totalBytesSent);

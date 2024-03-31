@@ -14,7 +14,8 @@
           <template v-for="_package in reorder(_nav.packages)" :key="_package">
             <li v-if="_package.show !== false">
               <router-link :to="`/zh-CN/${_package.name.toLowerCase()}`"
-                >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
+              >
+                {{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
               </router-link>
               <Right color="#979797" name="right"></Right>
             </li>

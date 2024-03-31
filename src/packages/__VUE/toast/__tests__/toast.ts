@@ -3,7 +3,7 @@ import Toast from '../index.vue'
 const defaultOptions = {
   msg: '',
   id: '',
-  duration: 2000, //显示时间(毫秒)
+  duration: 2000, // 显示时间(毫秒)
   center: true, // 未实现
   type: 'text',
   title: '',
@@ -17,7 +17,7 @@ const defaultOptions = {
   bgColor: 'rgba(0, 0, 0, .8)',
   onClose: null, // 未实现
   unmount: null,
-  cover: false, //透明遮罩层 // 未实现
+  cover: false, // 透明遮罩层 // 未实现
   coverColor: 'rgba(0, 0, 0, 0)', // 未实现
   closeOnClickOverlay: false // 未实现
 }
@@ -27,8 +27,8 @@ let optsMap: any[] = []
 const clearToast = (id?: string) => {
   if (id) {
     const container = document.getElementById(id)
-    optsMap = optsMap.filter((item) => item.id !== id)
-    idsMap = idsMap.filter((item) => item !== id)
+    optsMap = optsMap.filter(item => item.id !== id)
+    idsMap = idsMap.filter(item => item !== id)
     if (container) {
       document.body.removeChild(container)
     }
@@ -47,7 +47,7 @@ const clearToast = (id?: string) => {
 const updateToast = (opts: any) => {
   const container = document.getElementById(opts.id)
   if (container) {
-    const currentOpt = optsMap.find((item) => item.id === opts.id)
+    const currentOpt = optsMap.find(item => item.id === opts.id)
     if (currentOpt) {
       opts = { ...defaultOptions, ...currentOpt, ...opts }
     } else {
@@ -65,7 +65,7 @@ const mountToast = (opts: any) => {
   // 如果是更新已有的toast
   if (opts.id) {
     _id = opts.id
-    if (idsMap.find((item) => item === opts.id)) {
+    if (idsMap.find(item => item === opts.id)) {
       return updateToast(opts)
     }
   } else {

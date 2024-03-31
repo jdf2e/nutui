@@ -10,21 +10,21 @@ export const component = (tag: string) => {
 
     setup(props: any, { slots }: any) {
       const hexToRgb = (color: string) => {
-        //十六进制颜色值的正则表达式
+        // 十六进制颜色值的正则表达式
         const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/
         if (!reg.test(color)) return ''
         color = color.toLowerCase()
         // 如果是16进制颜色
         if (color.length === 4) {
-          color =
-            '#' +
-            color
+          color
+            = '#'
+            + color
               .slice(1)
               .split('')
-              .map((char) => char + char)
+              .map(char => char + char)
               .join('')
         }
-        //处理六位的颜色值
+        // 处理六位的颜色值
         const colors = []
         for (let i = 1; i < 7; i += 2) {
           colors.push(parseInt('0x' + color.slice(i, i + 2)))
@@ -44,12 +44,12 @@ export const component = (tag: string) => {
         // 为了处理一些组件的rgba透明颜色
         if (primaryColor) {
           const primaryColorRgb = hexToRgb(primaryColor)
-          cssVars['--nut-address-region-tab-line'] =
-            `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
-          cssVars['--nut-tabs-horizontal-tab-line-color'] =
-            `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
-          cssVars['--nut-tabs-vertical-tab-line-color'] =
-            `linear-gradient(180deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
+          cssVars['--nut-address-region-tab-line']
+            = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
+          cssVars['--nut-tabs-horizontal-tab-line-color']
+            = `linear-gradient(90deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
+          cssVars['--nut-tabs-vertical-tab-line-color']
+            = `linear-gradient(180deg, ${primaryColor} 0%, rgba(${primaryColorRgb}, 0.15) 100%)`
         }
 
         Object.keys(themeVars).forEach((key) => {

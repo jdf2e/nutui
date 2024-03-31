@@ -1,13 +1,17 @@
 <template>
   <view class="nut-picker">
     <view v-if="showToolbar" class="nut-picker__bar">
-      <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="cancel">{{
-        cancelText || translate('cancel')
-      }}</view>
+      <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="cancel">
+        {{
+          cancelText || translate('cancel')
+        }}
+      </view>
       <view class="nut-picker__title"> {{ title }}</view>
-      <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler">{{
-        okText || translate('confirm')
-      }}</view>
+      <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler">
+        {{
+          okText || translate('confirm')
+        }}
+      </view>
     </view>
     <slot name="top"></slot>
 
@@ -117,10 +121,10 @@ export default create({
 
     const confirmHandler = () => {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        pickerColumn.value.length > 0 &&
-          pickerColumn.value.forEach((column) => {
-            column.stopMomentum()
-          })
+        pickerColumn.value.length > 0
+        && pickerColumn.value.forEach((column) => {
+          column.stopMomentum()
+        })
         confirm()
       } else {
         if (state.picking) {

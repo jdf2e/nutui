@@ -2,8 +2,8 @@ import Taro from '@tarojs/taro'
 import CanvasContext = Taro.CanvasContext
 
 const compareVersion = (v1Old: string, v2Old: string) => {
-  let v1 = v1Old.split('.')
-  let v2 = v2Old.split('.')
+  const v1 = v1Old.split('.')
+  const v2 = v2Old.split('.')
   const len = Math.max(v1.length, v2.length)
 
   while (v1.length < len) {
@@ -32,7 +32,7 @@ const isWeapp = () => {
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//////// 微信小程序自1.9.90起废除若干个CanvasContext的函数，改为属性，以下为兼容代码
+/// ///// 微信小程序自1.9.90起废除若干个CanvasContext的函数，改为属性，以下为兼容代码
 //////////////////////////////////////////////////////////////////////////////////
 
 function _easyCanvasContextBase(

@@ -28,8 +28,10 @@
 
     <view v-if="showIndex" class="nut-image-preview-index"> {{ active + 1 }} / {{ images.length }} </view>
     <view v-if="closeable" class="nut-image-preview-close-icon" :style="styles" @click="onClose"
-      ><CircleClose color="#ffffff"></CircleClose
-    ></view>
+    >
+      <CircleClose color="#ffffff"></CircleClose
+      >
+    </view>
   </nut-popup>
 </template>
 <script lang="ts">
@@ -160,7 +162,7 @@ export default create({
     }
 
     // 计算两个点的距离
-    const getDistance = (first: { x: number; y: number }, second: { x: number; y: number }) => {
+    const getDistance = (first: { x: number, y: number }, second: { x: number, y: number }) => {
       return Math.hypot(Math.abs(second.x - first.x), Math.abs(second.y - first.y))
     }
 

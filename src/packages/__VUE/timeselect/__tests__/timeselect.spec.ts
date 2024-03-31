@@ -57,7 +57,7 @@ test('props test', async () => {
       }
 
       const selectTime1 = (item: string) => {
-        let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item)
+        const curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item)
         if (curTimeIndex === -1) {
           state.currentTime1[0]['list'].push(item)
         } else {
@@ -159,7 +159,7 @@ test('Events test', async () => {
       }
 
       const selectTime1 = (item: string) => {
-        let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item)
+        const curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item)
         if (curTimeIndex === -1) {
           state.currentTime1[0]['list'].push(item)
         } else {

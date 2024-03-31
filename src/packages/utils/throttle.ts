@@ -22,12 +22,12 @@ export function throttle(fn: Function, delay: number) {
   let timer: number | null = null
   let startTime = Date.now()
 
-  return function () {
-    let now = Date.now()
-    let remaining = delay - (now - startTime)
+  return function (...args: any) {
+    const now = Date.now()
+    const remaining = delay - (now - startTime)
     if (timer) clearTimeout(timer)
     if (remaining <= 0) {
-      fn.apply(null, arguments)
+      fn(...args)
       startTime = Date.now()
     } else {
       timer = setTimeout(fn, remaining)

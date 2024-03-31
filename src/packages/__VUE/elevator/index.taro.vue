@@ -46,7 +46,9 @@
           :class="{ active: item[acceptKey] === indexList[currentIndex][acceptKey] }"
           :data-index="index"
           @click="handleClickIndex(item[acceptKey])"
-          >{{ item[acceptKey] }}</view
+        >
+          {{ item[acceptKey] }}
+        </view
         >
       </view>
     </view>
