@@ -27,8 +27,9 @@ import { type CSSProperties, watch, ref, computed, onMounted, nextTick, toRef } 
 import { useLocale } from '@/packages/utils/useLocale'
 import { useFormDisabled } from '../form/common'
 
+const cN = 'NutTextarea'
 defineOptions({
-  name: 'NutTextarea'
+  name: cN
 })
 
 export interface InputTarget extends HTMLInputElement {
@@ -48,8 +49,6 @@ export type TextareaProps = Partial<{
   autofocus: boolean
 }>
 
-const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus'])
-
 const props = withDefaults(defineProps<TextareaProps>(), {
   modelValue: '',
   limitShow: false,
@@ -62,8 +61,10 @@ const props = withDefaults(defineProps<TextareaProps>(), {
   autofocus: false
 })
 
+const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus'])
+
 const disabled = useFormDisabled(toRef(props, 'disabled'))
-const translate = useLocale('NutTextarea')
+const translate = useLocale(cN)
 const textareaRef = ref<HTMLTextAreaElement | null>(null)
 
 const classes = computed(() => {
@@ -82,23 +83,27 @@ const styles = computed(() => {
 
 const setHeight = (height: string | number) => {
   const textarea = textareaRef.value
-  textarea!.style.height = typeof height === 'number' ? `${height}px` : height
+  if (textarea && textarea.style) {
+    textarea.style.height = typeof height === 'number' ? `${height}px` : height
+  }
 }
 
 const getContentHeight = () => {
   setHeight('auto')
-  let height = textareaRef.value!.scrollHeight
-  if (typeof props.autosize === 'object') {
-    const { maxHeight, minHeight } = props.autosize
-    if (maxHeight !== undefined) {
-      height = Math.min(height, maxHeight)
+  if (textareaRef.value) {
+    let height = textareaRef.value.scrollHeight
+    if (typeof props.autosize === 'object') {
+      const { maxHeight, minHeight } = props.autosize
+      if (maxHeight !== undefined) {
+        height = Math.min(height, maxHeight)
+      }
+      if (minHeight !== undefined) {
+        height = Math.max(height, minHeight)
+      }
     }
-    if (minHeight !== undefined) {
-      height = Math.max(height, minHeight)
+    if (height) {
+      setHeight(height)
     }
-  }
-  if (height) {
-    setHeight(height)
   }
 }
 

@@ -30,8 +30,11 @@ import Taro from '@tarojs/taro'
 import { useLocale } from '@/packages/utils/useLocale'
 import { useFormDisabled } from '../form/common'
 
+const cN = 'NutTextarea'
+
 defineOptions({
-  name: 'NutTextarea'
+  name: cN,
+  inheritAttrs: false
 })
 
 export interface InputTarget extends HTMLInputElement {
@@ -51,8 +54,6 @@ export type TextareaProps = Partial<{
   autofocus: boolean
 }>
 
-const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus'])
-
 const props = withDefaults(defineProps<TextareaProps>(), {
   modelValue: '',
   limitShow: false,
@@ -65,8 +66,10 @@ const props = withDefaults(defineProps<TextareaProps>(), {
   autofocus: false
 })
 
+const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus'])
+
 const disabled = useFormDisabled(toRef(props, 'disabled'))
-const translate = useLocale('NutTextarea')
+const translate = useLocale(cN)
 const textareaRef = ref<any>(null)
 const textareaHeight = ref(20)
 const heightSet = ref('auto')
@@ -232,7 +235,9 @@ const endComposing = ({ target }: Event) => {
   if (env === Taro.ENV_TYPE.WEB) {
     if (composing.value) {
       composing.value = false
-      target.dispatchEvent(new Event('input'))
+      if (target) {
+        target.dispatchEvent?.(new Event('input'))
+      }
     }
   }
 }
