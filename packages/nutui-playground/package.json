@@ -15,10 +15,10 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^18.19.26",
+    "@types/node": "^18.19.28",
     "@vitejs/plugin-vue": "^5.0.4",
     "rimraf": "^5.0.5",
-    "vite": "^5.2.6",
+    "vite": "^5.2.7",
     "vue": "^3.4.21"
   },
   "dependencies": {
