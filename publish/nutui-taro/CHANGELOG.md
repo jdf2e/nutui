@@ -1,3 +1,23 @@
+## v4.3.4
+
+`2024-04-01`
+
+Bug Fixes
+
+- tabs: 修复 vertical 方式 tab 数量过多时滚动定位不准确的问题 (#2996), close #2726 @eiinu
+
+Refactors
+
+- move to script setup
+  - empty, tabbar, textarea @subordon
+  - trend-arrow, switch, indicator @eiinu
+
+Other Changes
+
+- code style: move to ESLint Flat Config (#3003) @eiinu
+- site: highlight.js --> shiki (#2982) @eiinu
+- docs: update list use (#2985) @psrheartache
+
 ## v4.3.3
 
 `2024-03-20`
