@@ -65,7 +65,7 @@ app.use(TrendArrow)
 | up-icon | 自定义向上箭头图标，默认使用 `TriangleUp` |
 | down-icon | 自定义向下箭头图标，默认使用 `TriangleDown` |
 
-### 类型定义 version
+### 类型定义 v4.3.4
 
 组件导出以下类型定义：
 

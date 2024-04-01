@@ -75,7 +75,7 @@ app.use(Switch)
 | --- | --- | --- |
 | change | Emitted when check status changed | (value: boolean,event: Event) |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 

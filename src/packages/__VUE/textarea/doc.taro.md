@@ -61,7 +61,7 @@ app.use(Textarea)
 | focus | 聚焦时触发 | `event` |
 | blur | 失焦时触发 | `value,event` |
 
-### 类型定义 version
+### 类型定义 v4.3.4
 
 组件导出以下类型定义：
 

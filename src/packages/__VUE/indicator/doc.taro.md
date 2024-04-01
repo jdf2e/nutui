@@ -38,7 +38,7 @@ app.use(Indicator)
 | align | 对齐方式，仅在 `block` 为 `true` 时生效, 可选值 `left`, `right`, `center` | string | `left` |
 | fill-zero | 单数前面是否补 0 | boolean | `true` |
 
-### 类型定义 version
+### 类型定义 v4.3.4
 
 组件导出以下类型定义：
 

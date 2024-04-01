@@ -59,7 +59,7 @@ app.use(Textarea)
 | focus | Triggered when focusing | `event` |
 | blur | Triggered when out of focus | `value,event` |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 

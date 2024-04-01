@@ -38,7 +38,7 @@ app.use(Indicator)
 | align | Alignment, which takes effect only when `block` is `true`. optional value `left`, `right`, `center` | string | `left` |
 | fill-zero | Whether to add 0 before singular number | boolean | `true` |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 
