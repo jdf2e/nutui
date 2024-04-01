@@ -431,6 +431,7 @@
           "version": "3.0.0",
           "name": "Textarea",
           "cName": "文本域",
+          "setup": true,
           "desc": "文本输入",
           "author": "gx"
         },
