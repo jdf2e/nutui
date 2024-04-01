@@ -1,58 +1,55 @@
-import { toRef, ref, computed, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, toDisplayString, createCommentVNode } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, toRef, ref, computed, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, unref, toDisplayString, createCommentVNode } from "vue";
 import { u as useLocale } from "../index-CFigyH92.js";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { create } = createComponent("textarea");
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = ["rows", "disabled", "readonly", "value", "maxlength", "placeholder", "autofocus"];
+const _hoisted_2 = {
+  key: 0,
+  class: "nut-textarea__limit"
+};
 const cN = "NutTextarea";
-const _sfc_main = create({
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: cN
+}), {
+  __name: "textarea",
   props: {
-    modelValue: {
-      type: String,
-      default: ""
-    },
-    textAlign: {
-      type: String,
-      default: ""
-    },
-    limitShow: {
-      type: Boolean,
-      default: false
-    },
-    maxLength: {
-      type: [String, Number],
-      default: ""
-    },
-    rows: {
-      type: [String, Number],
-      default: "2"
-    },
-    placeholder: {
-      type: String,
-      default: ""
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    autosize: {
-      type: [Boolean, Object],
-      default: false
-    },
-    autofocus: {
-      type: Boolean,
-      default: false
-    }
+    modelValue: { default: "" },
+    textAlign: {},
+    limitShow: { type: Boolean, default: false },
+    maxLength: { default: "" },
+    rows: { default: "2" },
+    placeholder: { default: "" },
+    readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    autosize: { type: [Boolean, Object], default: false },
+    autofocus: { type: Boolean, default: false }
   },
   emits: ["update:modelValue", "change", "blur", "focus"],
-  setup(props, { emit }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const disabled = useFormDisabled(toRef(props, "disabled"));
     const translate = useLocale(cN);
-    const textareaRef = ref();
+    const textareaRef = ref(null);
     const classes = computed(() => {
       const prefixCls = "nut-textarea";
       return {
@@ -60,6 +57,35 @@ const _sfc_main = create({
         [`${prefixCls}--disabled`]: disabled.value
       };
     });
+    const styles = computed(() => {
+      return {
+        textAlign: props.textAlign
+      };
+    });
+    const setHeight = (height) => {
+      const textarea = textareaRef.value;
+      if (textarea && textarea.style) {
+        textarea.style.height = typeof height === "number" ? `${height}px` : height;
+      }
+    };
+    const getContentHeight = () => {
+      setHeight("auto");
+      if (textareaRef.value) {
+        let height = textareaRef.value.scrollHeight;
+        if (typeof props.autosize === "object") {
+          const { maxHeight, minHeight } = props.autosize;
+          if (maxHeight !== void 0) {
+            height = Math.min(height, maxHeight);
+          }
+          if (minHeight !== void 0) {
+            height = Math.max(height, minHeight);
+          }
+        }
+        if (height) {
+          setHeight(height);
+        }
+      }
+    };
     onMounted(() => {
       if (props.modelValue) {
         emitChange(String(props.modelValue));
@@ -68,29 +94,6 @@ const _sfc_main = create({
         nextTick(getContentHeight);
       }
     });
-    const styles = computed(() => {
-      return {
-        textAlign: props.textAlign
-        // resize: props.autosize ? 'vertical' : 'none'
-      };
-    });
-    const getContentHeight = () => {
-      let textarea = textareaRef.value;
-      textarea.style.height = "auto";
-      let height = textarea.scrollHeight;
-      if (typeof props.autosize === "object") {
-        const { maxHeight, minHeight } = props.autosize;
-        if (maxHeight !== void 0) {
-          height = Math.min(height, maxHeight);
-        }
-        if (minHeight !== void 0) {
-          height = Math.max(height, minHeight);
-        }
-      }
-      if (height) {
-        textarea.style.height = height + "px";
-      }
-    };
     watch(
       () => props.modelValue,
       () => {
@@ -107,8 +110,8 @@ const _sfc_main = create({
       emit("change", value, event);
     };
     const change = (event) => {
-      if (!event.target.composing) {
-        const input = event.target;
+      const input = event.target;
+      if (!input.composing) {
         let value = input.value;
         if (props.maxLength && value.length > Number(props.maxLength)) {
           value = value.slice(0, Number(props.maxLength));
@@ -117,76 +120,59 @@ const _sfc_main = create({
       }
     };
     const focus = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
+      if (disabled.value || props.readonly)
         return;
       emit("focus", event);
     };
     const blur = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
+      if (disabled.value || props.readonly)
         return;
       const input = event.target;
-      let value = input.value;
+      const value = input.value;
       emitChange(value, event);
       emit("blur", { value, event });
     };
     const startComposing = ({ target }) => {
-      target.composing = true;
+      const input = target;
+      input.composing = true;
     };
     const endComposing = ({ target }) => {
-      if (target.composing) {
-        target.composing = false;
-        target.dispatchEvent(new Event("input"));
+      const input = target;
+      if (input.composing) {
+        input.composing = false;
+        input.dispatchEvent(new Event("input"));
       }
     };
-    return {
-      textareaRef,
-      classes,
-      styles,
-      disabled,
-      change,
-      focus,
-      blur,
-      translate,
-      startComposing,
-      endComposing
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass(classes.value)
+      }, [
+        createElementVNode("textarea", {
+          ref_key: "textareaRef",
+          ref: textareaRef,
+          class: "nut-textarea__textarea",
+          style: normalizeStyle(styles.value),
+          rows: _ctx.rows,
+          disabled: unref(disabled),
+          readonly: _ctx.readonly,
+          value: _ctx.modelValue,
+          maxlength: _ctx.maxLength,
+          placeholder: _ctx.placeholder || unref(translate)("placeholder"),
+          autofocus: _ctx.autofocus,
+          onInput: change,
+          onBlur: blur,
+          onFocus: focus,
+          onChange: endComposing,
+          onCompositionend: endComposing,
+          onCompositionstart: startComposing
+        }, null, 44, _hoisted_1),
+        _ctx.limitShow ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.modelValue ? _ctx.modelValue.length : 0) + "/" + toDisplayString(_ctx.maxLength), 1)) : createCommentVNode("", true)
+      ], 2);
     };
   }
-});
-const _hoisted_1 = ["rows", "disabled", "readonly", "value", "maxlength", "placeholder", "autofocus"];
-const _hoisted_2 = {
-  key: 0,
-  class: "nut-textarea__limit"
-};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes)
-  }, [
-    createElementVNode("textarea", {
-      ref: "textareaRef",
-      class: "nut-textarea__textarea",
-      style: normalizeStyle(_ctx.styles),
-      rows: _ctx.rows,
-      disabled: _ctx.disabled,
-      readonly: _ctx.readonly,
-      value: _ctx.modelValue,
-      maxlength: _ctx.maxLength,
-      placeholder: _ctx.placeholder || _ctx.translate("placeholder"),
-      autofocus: _ctx.autofocus,
-      onInput: _cache[0] || (_cache[0] = (...args) => _ctx.change && _ctx.change(...args)),
-      onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.blur && _ctx.blur(...args)),
-      onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.focus && _ctx.focus(...args)),
-      onChange: _cache[3] || (_cache[3] = (...args) => _ctx.endComposing && _ctx.endComposing(...args)),
-      onCompositionend: _cache[4] || (_cache[4] = (...args) => _ctx.endComposing && _ctx.endComposing(...args)),
-      onCompositionstart: _cache[5] || (_cache[5] = (...args) => _ctx.startComposing && _ctx.startComposing(...args))
-    }, null, 44, _hoisted_1),
-    _ctx.limitShow ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.modelValue ? _ctx.modelValue.length : 0) + "/" + toDisplayString(_ctx.maxLength), 1)) : createCommentVNode("", true)
-  ], 2);
-}
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index as default
+  _sfc_main as Textarea,
+  _sfc_main as default
 };

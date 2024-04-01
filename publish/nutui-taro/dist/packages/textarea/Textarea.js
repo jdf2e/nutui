@@ -1,59 +1,61 @@
-import { toRef, computed, ref, watch, nextTick, onMounted, openBlock, createElementBlock, normalizeClass, createElementVNode, mergeProps, createTextVNode, toDisplayString, createCommentVNode, normalizeStyle } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, toRef, ref, computed, watch, nextTick, onMounted, openBlock, createElementBlock, normalizeClass, createElementVNode, mergeProps, unref, createTextVNode, toDisplayString, createCommentVNode, normalizeStyle } from "vue";
 import Taro from "@tarojs/taro";
 import { u as useLocale } from "../index-5sMqqUcW.js";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { create } = createComponent("textarea");
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = ["rows", "disabled", "value", "maxlength", "placeholder", "auto-focus"];
+const _hoisted_2 = {
+  key: 0,
+  class: "nut-textarea__limit"
+};
 const cN = "NutTextarea";
-const _sfc_main = create({
-  inheritAttrs: false,
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: cN,
+  inheritAttrs: false
+}), {
+  __name: "textarea.taro",
   props: {
-    modelValue: {
-      type: String,
-      default: ""
-    },
-    textAlign: {
-      type: String,
-      default: ""
-    },
-    limitShow: {
-      type: Boolean,
-      default: false
-    },
-    maxLength: {
-      type: [String, Number],
-      default: ""
-    },
-    rows: {
-      type: [String, Number],
-      default: ""
-    },
-    placeholder: {
-      type: String,
-      default: ""
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    autosize: {
-      type: [Boolean, Object],
-      default: false
-    },
-    autofocus: {
-      type: Boolean,
-      default: false
-    }
+    modelValue: { default: "" },
+    textAlign: {},
+    limitShow: { type: Boolean, default: false },
+    maxLength: { default: "" },
+    rows: { default: "2" },
+    placeholder: { default: "" },
+    readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    autosize: { type: [Boolean, Object], default: false },
+    autofocus: { type: Boolean, default: false }
   },
   emits: ["update:modelValue", "change", "blur", "focus"],
-  setup(props, { emit }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const disabled = useFormDisabled(toRef(props, "disabled"));
     const translate = useLocale(cN);
+    const textareaRef = ref(null);
+    const textareaHeight = ref(20);
+    const heightSet = ref("auto");
+    const composing = ref(false);
+    const env = Taro.getEnv();
     const classes = computed(() => {
       const prefixCls = "nut-textarea";
       return {
@@ -62,16 +64,17 @@ const _sfc_main = create({
       };
     });
     const styles = computed(() => {
-      const styleObj = {
-        textAlign: props.textAlign
-      };
+      const styleObj = {};
+      if (props.textAlign) {
+        styleObj["textAlign"] = props.textAlign;
+      }
       if (props.autosize) {
         styleObj["height"] = heightSet.value;
       }
       return styleObj;
     });
-    const copyTxtStyle = ref({
-      "word-break": "break-all",
+    const copyTextStyle = ref({
+      wordBreak: "break-all",
       width: "0"
     });
     const emitChange = (value, event) => {
@@ -82,7 +85,7 @@ const _sfc_main = create({
       emit("change", value, event);
     };
     const change = (event) => {
-      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+      if (env === Taro.ENV_TYPE.WEB) {
         if (!composing.value) {
           _onInput(event);
         }
@@ -99,25 +102,18 @@ const _sfc_main = create({
       emitChange(value, event);
     };
     const focus = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
+      if (disabled.value || props.readonly)
         return;
       emit("focus", event);
     };
     const blur = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
+      if (disabled.value || props.readonly)
         return;
       const input = event.target;
-      let value = input.value;
+      const value = input.value;
       emitChange(value, event);
       emit("blur", event);
     };
-    const textareaRef = ref(null);
-    const textareaHeight = ref(20);
-    const heightSet = ref("auto");
     const getContentHeight = () => {
       heightSet.value = "auto";
       let height = textareaHeight.value;
@@ -166,10 +162,10 @@ const _sfc_main = create({
         if (res[0] && textareaRef.value) {
           let _item = Array.from(res[0]).filter((item) => item.id == uid);
           if (_item[0]) {
-            if (Taro.getEnv() !== Taro.ENV_TYPE.WEAPP) {
+            if (env !== Taro.ENV_TYPE.WEAPP) {
               textareaHeight.value = _item[0]["height"] || 20;
             }
-            copyTxtStyle.value.width = _item[0]["width"] + "px";
+            copyTextStyle.value.width = _item[0]["width"] + "px";
           }
           nextTick(getContentHeight);
         }
@@ -180,16 +176,15 @@ const _sfc_main = create({
       query.select(".nut-textarea__textarea").boundingClientRect();
       query.exec((res) => {
         if (res[0] && textareaRef.value) {
-          copyTxtStyle.value.width = res[0]["width"] + "px";
+          copyTextStyle.value.width = res[0]["width"] + "px";
         }
       });
     };
-    const env = Taro.getEnv();
     onMounted(() => {
       if (props.autosize) {
         Taro.nextTick(() => {
           setTimeout(() => {
-            if (Taro.getEnv() === "ALIPAY" || Taro.getEnv() === "WEB") {
+            if (env === "ALIPAY" || env === "WEB") {
               getRefWidth();
               copyHeight();
             } else {
@@ -199,73 +194,60 @@ const _sfc_main = create({
         });
       }
     });
-    const composing = ref(false);
     const startComposing = () => {
-      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+      if (env === Taro.ENV_TYPE.WEB) {
         composing.value = true;
       }
     };
     const endComposing = ({ target }) => {
-      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+      var _a;
+      if (env === Taro.ENV_TYPE.WEB) {
         if (composing.value) {
           composing.value = false;
-          target.dispatchEvent(new Event("input"));
+          if (target) {
+            (_a = target.dispatchEvent) == null ? void 0 : _a.call(target, new Event("input"));
+          }
         }
       }
     };
-    return {
-      env,
-      textareaRef,
-      classes,
-      styles,
-      disabled,
-      change,
-      focus,
-      blur,
-      translate,
-      copyTxtStyle,
-      startComposing,
-      endComposing
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass(classes.value)
+      }, [
+        createElementVNode("textarea", mergeProps({
+          ref_key: "textareaRef",
+          ref: textareaRef
+        }, _ctx.$attrs, {
+          class: ["nut-textarea__textarea", unref(env) == "ALIPAY" && "nut-textarea__ali"],
+          style: styles.value,
+          rows: _ctx.rows,
+          disabled: unref(disabled) || _ctx.readonly,
+          value: _ctx.modelValue,
+          "show-count": false,
+          maxlength: _ctx.maxLength ? _ctx.maxLength : -1,
+          placeholder: _ctx.placeholder || unref(translate)("placeholder"),
+          "auto-focus": _ctx.autofocus,
+          onInput: change,
+          onBlur: blur,
+          onFocus: focus,
+          onChange: endComposing,
+          onCompositionend: endComposing,
+          onCompositionstart: startComposing
+        }), null, 16, _hoisted_1),
+        createTextVNode(),
+        _ctx.limitShow ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.modelValue ? _ctx.modelValue.length : 0) + "/" + toDisplayString(_ctx.maxLength), 1)) : createCommentVNode("", true),
+        createTextVNode(),
+        _ctx.autosize ? (openBlock(), createElementBlock("view", {
+          key: 1,
+          class: "nut-textarea__cpoyText",
+          style: normalizeStyle(copyTextStyle.value)
+        }, toDisplayString(_ctx.modelValue), 5)) : createCommentVNode("", true)
+      ], 2);
     };
   }
-});
-const _hoisted_1 = ["rows", "disabled", "value", "maxlength", "placeholder", "auto-focus"];
-const _hoisted_2 = {
-  key: 0,
-  class: "nut-textarea__limit"
-};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes)
-  }, [
-    createElementVNode("textarea", mergeProps({ ref: "textareaRef" }, _ctx.$attrs, {
-      class: ["nut-textarea__textarea", _ctx.env == "ALIPAY" && "nut-textarea__ali"],
-      style: _ctx.styles,
-      rows: _ctx.rows,
-      disabled: _ctx.disabled || _ctx.readonly,
-      value: _ctx.modelValue,
-      "show-count": false,
-      maxlength: _ctx.maxLength ? _ctx.maxLength : -1,
-      placeholder: _ctx.placeholder || _ctx.translate("placeholder"),
-      "auto-focus": _ctx.autofocus,
-      onInput: _cache[0] || (_cache[0] = (...args) => _ctx.change && _ctx.change(...args)),
-      onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.blur && _ctx.blur(...args)),
-      onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.focus && _ctx.focus(...args)),
-      onChange: _cache[3] || (_cache[3] = (...args) => _ctx.endComposing && _ctx.endComposing(...args)),
-      onCompositionend: _cache[4] || (_cache[4] = (...args) => _ctx.endComposing && _ctx.endComposing(...args)),
-      onCompositionstart: _cache[5] || (_cache[5] = (...args) => _ctx.startComposing && _ctx.startComposing(...args))
-    }), null, 16, _hoisted_1),
-    createTextVNode(),
-    _ctx.limitShow ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.modelValue ? _ctx.modelValue.length : 0) + "/" + toDisplayString(_ctx.maxLength), 1)) : createCommentVNode("", true),
-    createTextVNode(),
-    _ctx.autosize ? (openBlock(), createElementBlock("view", {
-      key: 1,
-      class: "nut-textarea__cpoyText",
-      style: normalizeStyle(_ctx.copyTxtStyle)
-    }, toDisplayString(_ctx.modelValue), 5)) : createCommentVNode("", true)
-  ], 2);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Textarea,
+  _sfc_main as default
 };
