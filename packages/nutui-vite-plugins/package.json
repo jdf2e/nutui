@@ -36,7 +36,7 @@
     "unplugin-vue-markdown": "^0.26.0"
   },
   "devDependencies": {
-    "@shikijs/markdown-it": "^1.2.2",
+    "@shikijs/markdown-it": "^1.2.3",
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it-container": "^2.0.9",
     "tsup": "^8.0.2",
