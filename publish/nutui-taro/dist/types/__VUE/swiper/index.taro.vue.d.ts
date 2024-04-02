@@ -76,12 +76,12 @@ declare const _default: Install< import("vue").DefineComponent<{
         offset: number;
         touchTime: number;
         autoplayTimer: {
+            ref: () => NodeJS.Timeout;
+            unref: () => NodeJS.Timeout;
             hasRef: () => boolean;
             refresh: () => NodeJS.Timeout;
             [Symbol.toPrimitive]: () => number;
             [Symbol.dispose]: () => void;
-            ref: () => NodeJS.Timeout;
-            unref: () => NodeJS.Timeout;
         } | null | undefined;
         children: ComponentPublicInstance[];
         childrenVNode: VNode<import("vue").RendererNode, import("vue").RendererElement, {
