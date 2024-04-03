@@ -52,8 +52,12 @@ app.use(Empty)
 
 The component exports the following type definitions:
 
-```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui'
+```js
+import type {
+  EmptyImage,
+  EmptyProps,
+  EmptyInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming

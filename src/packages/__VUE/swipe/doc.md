@@ -90,6 +90,12 @@ app.use(Swipe)
 
 组件导出以下类型定义：
 
-```ts
-import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui'
+```js
+import type {
+  SwipePosition,
+  SwipeProps,
+  SwipeInstance,
+  SwipeGroupProps,
+  SwipeGroupInstance
+} from '@nutui/nutui'
 ```

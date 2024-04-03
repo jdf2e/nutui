@@ -729,6 +729,7 @@
           "name": "Skeleton",
           "cName": "骨架屏",
           "desc": "骨架屏",
+          "setup": true,
           "author": "liqiong"
         },
         {

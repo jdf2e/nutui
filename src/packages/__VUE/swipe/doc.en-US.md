@@ -90,6 +90,12 @@ Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Swipe in
 
 The component exports the following type definitions:
 
-```ts
-import type { SwipePosition, SwipeProps, SwipeInstance, SwipeGroupProps, SwipeGroupInstance } from '@nutui/nutui'
+```js
+import type {
+  SwipePosition,
+  SwipeProps,
+  SwipeInstance,
+  SwipeGroupProps,
+  SwipeGroupInstance
+} from '@nutui/nutui'
 ```

@@ -52,8 +52,12 @@ app.use(Empty)
 
 组件导出以下类型定义：
 
-```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui-taro'
+```js
+import type {
+  EmptyImage,
+  EmptyProps,
+  EmptyInstance
+} from '@nutui/nutui-taro'
 ```
 
 ## 主题定制

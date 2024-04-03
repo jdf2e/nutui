@@ -69,8 +69,11 @@ app.use(TrendArrow)
 
 组件导出以下类型定义：
 
-```ts
-import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui-taro'
+```js
+import type {
+  TrendArrowProps,
+  TrendArrowInstance
+} from '@nutui/nutui-taro'
 ```
 
 ## 主题定制

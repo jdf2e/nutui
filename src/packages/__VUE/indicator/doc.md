@@ -42,8 +42,12 @@ app.use(Indicator)
 
 组件导出以下类型定义：
 
-```ts
-import type { IndicatorAlign, IndicatorProps, IndicatorInstance } from '@nutui/nutui'
+```js
+import type {
+  IndicatorAlign,
+  IndicatorProps,
+  IndicatorInstance
+} from '@nutui/nutui'
 ```
 
 ## 主题定制

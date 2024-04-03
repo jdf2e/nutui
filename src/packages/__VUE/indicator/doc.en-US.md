@@ -42,8 +42,12 @@ app.use(Indicator)
 
 The component exports the following type definitions:
 
-```ts
-import type { IndicatorAlign, IndicatorProps, IndicatorInstance } from '@nutui/nutui'
+```js
+import type {
+  IndicatorAlign,
+  IndicatorProps,
+  IndicatorInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming
