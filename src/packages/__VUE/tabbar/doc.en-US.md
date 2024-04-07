@@ -88,7 +88,7 @@ The bardge logo component is used internally and its properties can be applied d
 | --- | --- | --- |
 | tab-switch | Emitted when changing active tab | item,index |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 

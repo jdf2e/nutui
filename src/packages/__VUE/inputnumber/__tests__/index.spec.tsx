@@ -4,12 +4,9 @@ import { h, nextTick } from 'vue'
 import { Left, Right } from '@nutui/icons-vue'
 
 test('InputNumber: should render modelValue', () => {
-  const wrapper = mount(InputNumber, {
-    props: {
-      modelValue: 12
-    }
+  const wrapper = mount(() => {
+    return <InputNumber modelValue={12} />
   })
-
   const input = wrapper.find('input').element as HTMLInputElement
   expect(input.value).toBe('12')
 })
@@ -188,4 +185,16 @@ test('InputNumber: should change modelValue after props.min was changed', async 
   expect(input.attributes('min')).toBe('7')
   expect(wrapper.emitted()['update:modelValue']).toHaveLength(1)
   expect(wrapper.emitted()['update:modelValue'][0]).toStrictEqual(['7', {}])
+})
+
+test('InputNumber: v-bind="$attrs"', async () => {
+  const testClass = 'test-attr-class'
+  const customAttr = 'custom-attr'
+  const wrapper = mount(() => {
+    return <InputNumber modelValue={12} class={testClass} custom-attr={customAttr} />
+  })
+
+  const input = wrapper.find('input').element as HTMLInputElement
+  expect(input.getAttribute('class')).includes(testClass)
+  expect(input.getAttribute(customAttr)).includes(customAttr)
 })

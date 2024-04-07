@@ -65,12 +65,15 @@ app.use(TrendArrow)
 | up-icon | custom up icon |
 | down-icon | custom down icon |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 
-```ts
-import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui'
+```js
+import type {
+  TrendArrowProps,
+  TrendArrowInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming

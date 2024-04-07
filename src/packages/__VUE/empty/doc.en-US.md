@@ -48,12 +48,16 @@ app.use(Empty)
 | image | Custom image |
 | description | Custom description |
 
-### Types version
+### Types v4.3.4
 
 The component exports the following type definitions:
 
-```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui'
+```js
+import type {
+  EmptyImage,
+  EmptyProps,
+  EmptyInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming

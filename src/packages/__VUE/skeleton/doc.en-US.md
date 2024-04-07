@@ -61,6 +61,17 @@ app.use(Skeleton)
 | --- | --- |
 | default | Skeleton screen display content |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  SkeletonProps,
+  SkeletonInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

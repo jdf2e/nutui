@@ -16,6 +16,7 @@
       v-else
       class="nut-input-number__text--input"
       type="number"
+      v-bind="$attrs"
       :min="min"
       :max="max"
       :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
@@ -44,7 +45,8 @@ import { Minus, Plus } from '@nutui/icons-vue-taro'
 import { useFormDisabled } from '../form/common'
 
 defineOptions({
-  name: 'NutInputNumber'
+  name: 'NutInputNumber',
+  inheritAttrs: false
 })
 
 export type InputNumberProps = Partial<{

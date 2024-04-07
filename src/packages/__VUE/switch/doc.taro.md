@@ -75,12 +75,15 @@ app.use(Switch)
 | --- | --- | --- |
 | change | 切换开关时触发 | (value: boolean,event: Event) |
 
-### 类型定义 version
+### 类型定义 v4.3.4
 
 组件导出以下类型定义：
 
-```ts
-import type { SwitchProps, SwitchInstance } from '@nutui/nutui-taro'
+```js
+import type {
+  SwitchProps,
+  SwitchInstance
+} from '@nutui/nutui-taro'
 ```
 
 ## 主题定制

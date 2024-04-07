@@ -48,12 +48,16 @@ app.use(Empty)
 | image | 自定义图片 |
 | description | 自定义描述文字 |
 
-### 类型定义 version
+### 类型定义 v4.3.4
 
 组件导出以下类型定义：
 
-```ts
-import type { EmptyImage, EmptyProps, EmptyInstance } from '@nutui/nutui'
+```js
+import type {
+  EmptyImage,
+  EmptyProps,
+  EmptyInstance
+} from '@nutui/nutui'
 ```
 
 ## 主题定制
