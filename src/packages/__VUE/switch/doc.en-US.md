@@ -79,8 +79,11 @@ app.use(Switch)
 
 The component exports the following type definitions:
 
-```ts
-import type { SwitchProps, SwitchInstance } from '@nutui/nutui'
+```js
+import type {
+  SwitchProps,
+  SwitchInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming

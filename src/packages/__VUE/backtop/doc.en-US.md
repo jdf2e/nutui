@@ -56,8 +56,11 @@ app.use(Backtop)
 
 The component exports the following type definitions:
 
-```ts
-import type { BacktopProps, BacktopInstance } from '@nutui/nutui'
+```js
+import type {
+  BacktopProps,
+  BacktopInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming

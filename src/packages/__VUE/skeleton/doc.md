@@ -61,6 +61,17 @@ app.use(Skeleton)
 | --- | --- |
 | default | 骨架屏显示内容 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  SkeletonProps,
+  SkeletonInstance
+} from '@nutui/nutui';
+```
+
 ## 主题定制
 
 ### 样式变量

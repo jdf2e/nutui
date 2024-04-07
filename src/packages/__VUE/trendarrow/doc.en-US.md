@@ -69,8 +69,11 @@ app.use(TrendArrow)
 
 The component exports the following type definitions:
 
-```ts
-import type { TrendArrowProps, TrendArrowInstance } from '@nutui/nutui'
+```js
+import type {
+  TrendArrowProps,
+  TrendArrowInstance
+} from '@nutui/nutui'
 ```
 
 ## Theming
