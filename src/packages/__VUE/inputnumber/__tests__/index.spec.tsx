@@ -4,12 +4,9 @@ import { h, nextTick } from 'vue'
 import { Left, Right } from '@nutui/icons-vue'
 
 test('InputNumber: should render modelValue', () => {
-  const wrapper = mount(InputNumber, {
-    props: {
-      modelValue: 12
-    }
+  const wrapper = mount(() => {
+    return <InputNumber modelValue={12} />
   })
-
   const input = wrapper.find('input').element as HTMLInputElement
   expect(input.value).toBe('12')
 })
