@@ -2,7 +2,7 @@ var rl = Object.defineProperty, il = Object.defineProperties;
 var ul = Object.getOwnPropertyDescriptors;
 var Dt = Object.getOwnPropertySymbols;
 var wn = Object.prototype.hasOwnProperty, kn = Object.prototype.propertyIsEnumerable;
-var pt = Math.pow, Yt = (e, t, n) => t in e ? rl(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n, q = (e, t) => {
+var mt = Math.pow, Yt = (e, t, n) => t in e ? rl(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n, q = (e, t) => {
   for (var n in t || (t = {}))
     wn.call(t, n) && Yt(e, n, t[n]);
   if (Dt)
@@ -36,7 +36,7 @@ var Ge = (e, t, n) => new Promise((l, o) => {
   }, r = (i) => i.done ? l(i.value) : Promise.resolve(i.value).then(s, a);
   r((n = n.apply(e, t)).next());
 });
-import { reactive as fe, ref as z, defineComponent as ke, useSlots as at, h as we, openBlock as c, createBlock as J, computed as T, createElementBlock as f, normalizeClass as P, normalizeStyle as A, createElementVNode as g, createTextVNode as he, unref as ve, createCommentVNode as N, renderSlot as _, provide as ze, inject as Ee, getCurrentInstance as Ue, onUnmounted as Xe, createApp as cl, resolveComponent as U, Fragment as Q, toDisplayString as E, watchEffect as $t, Transition as xt, withCtx as ne, withDirectives as Ie, withModifiers as _e, vShow as Me, watch as x, toRefs as ye, Teleport as jn, mergeProps as wt, createVNode as oe, onMounted as be, onBeforeUnmount as en, shallowReactive as dl, markRaw as Cn, isVNode as fl, Comment as pl, Text as ml, nextTick as Ne, renderList as ie, normalizeProps as hl, guardReactiveProps as gl, resolveDynamicComponent as Oe, onActivated as Ct, toRef as xe, createSlots as kt, onBeforeMount as Kn, readonly as Sn, onDeactivated as St, render as tn, vModelText as vl } from "vue";
+import { reactive as fe, ref as z, defineComponent as ke, useSlots as at, h as we, openBlock as c, createBlock as J, computed as T, createElementBlock as f, normalizeClass as P, normalizeStyle as A, createElementVNode as g, createTextVNode as he, unref as ve, createCommentVNode as N, renderSlot as _, provide as ze, inject as Ee, getCurrentInstance as Ue, onUnmounted as Xe, createApp as cl, resolveComponent as U, Fragment as Q, toDisplayString as E, watchEffect as wt, Transition as xt, withCtx as ne, withDirectives as Ie, withModifiers as _e, vShow as Me, watch as x, toRefs as ye, Teleport as jn, mergeProps as ft, createVNode as oe, onMounted as be, onBeforeUnmount as en, shallowReactive as dl, markRaw as Cn, isVNode as fl, Comment as pl, Text as ml, nextTick as Ne, renderList as ie, normalizeProps as hl, guardReactiveProps as gl, resolveDynamicComponent as Oe, onActivated as Ct, toRef as xe, createSlots as kt, onBeforeMount as Kn, readonly as Sn, onDeactivated as St, render as tn, vModelText as vl } from "vue";
 class Un {
 }
 let yl = class extends Un {
@@ -336,7 +336,7 @@ const nn = (e, {
 function Sl(e, t = 2) {
   return Object.is(parseFloat(e), NaN) ? console.log(`传入的值：${e}不是一个数字`) : (e = parseFloat(e), (Math.round((e + Number.EPSILON) * Math.pow(10, t)) / Math.pow(10, t)).toFixed(t));
 }
-function ft(e, t) {
+function pt(e, t) {
   (typeof e.cancelable != "boolean" || e.cancelable) && e.preventDefault(), t && e.stopPropagation();
 }
 const Qe = (e, t = 2) => {
@@ -1494,18 +1494,18 @@ function Ii(e, t, n, l, o, s) {
   ]);
 }
 const so = /* @__PURE__ */ te(Si, [["render", Ii]]);
-let mt = 0;
+let ht = 0;
 const Dn = "nut-overflow-hidden", Bi = (e) => [() => {
   if (e())
     try {
-      !mt && Tn.classList.add(Dn), mt++;
+      !ht && Tn.classList.add(Dn), ht++;
     } catch (l) {
       console.warn("[NutUI] <useLockScroll>", l);
     }
 }, () => {
-  if (e() && mt)
+  if (e() && ht)
     try {
-      mt--, !mt && Tn.classList.remove(Dn);
+      ht--, !ht && Tn.classList.remove(Dn);
     } catch (l) {
       console.warn("[NutUI] <unlock>", l);
     }
@@ -1548,7 +1548,7 @@ const Dn = "nut-overflow-hidden", Bi = (e) => [() => {
       transitionDuration: `${e.duration}s`,
       zIndex: e.zIndex
     }, e.overlayStyle));
-    return $t(() => {
+    return wt(() => {
       e.visible ? n() : l();
     }), { classes: o, style: s, onClick: (r) => {
       t("click", r), e.closeOnClickOverlay && t("update:visible", !1);
@@ -1694,7 +1694,7 @@ const Vi = zi({
       () => {
         e.visible && !n && r(), !e.visible && n && i();
       }
-    ), $t(() => {
+    ), wt(() => {
       l.closed = e.closeable;
     }), ce(q({}, ye(l)), {
       popStyle: s,
@@ -1714,7 +1714,7 @@ function Oi(e, t, n, l, o, s) {
     to: e.teleport,
     disabled: !e.teleportDisable
   }, [
-    e.overlay ? (c(), J(a, wt({
+    e.overlay ? (c(), J(a, ft({
       key: 0,
       visible: e.visible,
       "close-on-click-overlay": e.closeOnClickOverlay,
@@ -2812,7 +2812,7 @@ function Uu(e, t, n, l, o, s) {
     }, null, 4), [
       [Me, e.state.showPopup]
     ]),
-    oe(r, wt(e.$attrs, {
+    oe(r, ft(e.$attrs, {
       visible: e.state.showPopup,
       "onUpdate:visible": t[1] || (t[1] = (i) => e.state.showPopup = i),
       style: { position: "absolute" },
@@ -2839,7 +2839,7 @@ function Uu(e, t, n, l, o, s) {
               class: P(["nut-menu-item__span", [i.value === e.modelValue ? e.activeTitleClass : e.inactiveTitleClass]])
             }, [
               _(e.$slots, "icon", {}, () => [
-                oe(a, wt(e.$attrs, {
+                oe(a, ft(e.$attrs, {
                   color: e.parent.props.activeColor
                 }), null, 16, ["color"])
               ])
@@ -3291,7 +3291,7 @@ const Co = /* @__PURE__ */ te(lc, [["render", pc]]), { create: mc } = Z("paginat
       }
       return y;
     });
-    return $t(() => {
+    return wt(() => {
       i(l.value, !1);
     }), {
       modelValue: l,
@@ -5521,7 +5521,7 @@ const rf = /* @__PURE__ */ te(jd, [["render", af]]), { create: uf } = Z("calenda
 });
 function df(e, t, n, l, o, s) {
   const a = U("nut-calendar-item"), r = U("nut-popup");
-  return e.poppable ? (c(), J(r, wt({
+  return e.poppable ? (c(), J(r, ft({
     key: 0,
     visible: e.visible,
     "onUpdate:visible": t[0] || (t[0] = (i) => e.visible = i),
@@ -5785,7 +5785,7 @@ const ff = /* @__PURE__ */ te(cf, [["render", df]]), pf = () => we(
       }));
       return [...L.slice(l.firstDayOfWeek, 7), ...L.slice(0, l.firstDayOfWeek)];
     }), d = z(l.modelValue ? Pn(l.modelValue) : []);
-    $t(() => {
+    wt(() => {
       const L = l.modelValue ? Pn(l.modelValue) : [];
       d.value = L;
     });
@@ -5798,7 +5798,7 @@ const ff = /* @__PURE__ */ te(cf, [["render", df]]), pf = () => we(
         o("update:modelValue", M), o("change", M);
       }
     };
-    $t(() => {
+    wt(() => {
       const L = wf(r.value, l.firstDayOfWeek);
       i.value = L, o("pageChange", r.value);
     });
@@ -6320,9 +6320,9 @@ const Lo = Symbol("nut-checkbox"), { create: Ef, componentName: tt } = Z("checkb
         } else
           l.scrollDistance = +V.slice(7, V.length - 1).split(", ")[5];
       }
-      ft(C, !0), l.touchParams.startY = n.deltaY.value, l.touchParams.startTime = Date.now(), l.transformY = l.scrollDistance;
+      pt(C, !0), l.touchParams.startY = n.deltaY.value, l.touchParams.startTime = Date.now(), l.transformY = l.scrollDistance;
     }, u = (C) => {
-      n.move(C), n.isVertical() && (s.value = !0, ft(C, !0)), l.touchParams.lastY = n.deltaY.value;
+      n.move(C), n.isVertical() && (s.value = !0, pt(C, !0)), l.touchParams.lastY = n.deltaY.value;
       let D = l.touchParams.lastY - l.touchParams.startY;
       B(D);
     }, m = () => {
@@ -6832,6 +6832,7 @@ function np(e, t, n, l, o, s) {
 }
 const op = /* @__PURE__ */ te(tp, [["render", np]]), lp = ["min", "max", "disabled", "readonly", "value"], Ot = /* @__PURE__ */ ke({
   name: "NutInputNumber",
+  inheritAttrs: !1,
   __name: "input-number",
   props: {
     modelValue: { default: 0 },
@@ -6903,18 +6904,17 @@ const op = /* @__PURE__ */ te(tp, [["render", np]]), lp = ["min", "max", "disabl
           }, null, 8, ["width", "height"])
         ])
       ], 2),
-      g("input", {
-        type: "number",
+      g("input", ft({ type: "number" }, u.$attrs, {
         min: u.min,
         max: u.max,
-        style: A({ width: ve(Be)(u.inputWidth), height: ve(Be)(u.buttonSize) }),
+        style: { width: ve(Be)(u.inputWidth), height: ve(Be)(u.buttonSize) },
         disabled: ve(o),
         readonly: u.readonly,
         value: u.modelValue,
         onInput: r,
         onBlur: w,
         onFocus: b
-      }, null, 44, lp),
+      }), null, 16, lp),
       g("view", {
         class: P(["nut-input-number__icon nut-input-number__right", { "nut-input-number__icon--disabled": !p() }]),
         onClick: v
@@ -7178,7 +7178,7 @@ function vp(e, t, n, l, o, s) {
           onClick: t[0] || (t[0] = (...r) => e.clear && e.clear(...r))
         }, [
           _(e.$slots, "clear", {}, () => [
-            oe(a, wt({ class: "nut-input-clear" }, e.$attrs, {
+            oe(a, ft({ class: "nut-input-clear" }, e.$attrs, {
               size: e.clearSize,
               width: e.clearSize,
               height: e.clearSize
@@ -9450,25 +9450,25 @@ const Ht = /* @__PURE__ */ te(hm, [["render", gm]]), Jt = {
   teleport: "",
   unmount: new Function()
 };
-let ut = [], yt = [];
+let ut = [], bt = [];
 const Wo = (e) => {
   if (e) {
     const t = document.getElementById(e);
-    yt = yt.filter((n) => n.id !== e), ut = ut.filter((n) => n !== e), t && document.body.removeChild(t);
+    bt = bt.filter((n) => n.id !== e), ut = ut.filter((n) => n !== e), t && document.body.removeChild(t);
   } else
     ut.forEach((t) => {
       const n = document.getElementById(t);
       n && document.body.removeChild(n);
-    }), yt = [], ut = [];
+    }), bt = [], ut = [];
 }, vm = (e) => {
   const t = document.getElementById(e.id);
   if (t) {
-    const n = yt.find((o) => o.id === e.id);
+    const n = bt.find((o) => o.id === e.id);
     n ? e = q(q(q({}, Jt), n), e) : e = q(q({}, Jt), e);
     const l = oe(Ht, e);
     return tn(l, t), l.component.data;
   }
-}, ht = (e) => {
+}, gt = (e) => {
   e.unmount = Wo;
   let t;
   if (e.id) {
@@ -9476,7 +9476,7 @@ const Wo = (e) => {
       return vm(e);
   } else
     t = (/* @__PURE__ */ new Date()).getTime() + "";
-  e = q(q({}, Jt), e), e.id = t, ut.push(e.id), yt.push(e);
+  e = q(q({}, Jt), e), e.id = t, ut.push(e.id), bt.push(e);
   const n = document.createElement("view");
   n.id = "notify-" + e.id;
   const o = oe({
@@ -9489,26 +9489,26 @@ const Wo = (e) => {
     }
   });
   document.body.appendChild(n), tn(o, n);
-}, gt = (e) => {
+}, vt = (e) => {
   if (!e) {
     console.warn("[NutUI Notify]: msg不能为空");
     return;
   }
 }, o4 = {
   text(e, t = {}) {
-    return gt(e), ht(ce(q({}, t), { msg: e }));
+    return vt(e), gt(ce(q({}, t), { msg: e }));
   },
   primary(e, t = {}) {
-    return gt(e), ht(ce(q({}, t), { msg: e, type: "primary" }));
+    return vt(e), gt(ce(q({}, t), { msg: e, type: "primary" }));
   },
   success(e, t = {}) {
-    return gt(e), ht(ce(q({}, t), { msg: e, type: "success" }));
+    return vt(e), gt(ce(q({}, t), { msg: e, type: "success" }));
   },
   danger(e, t = {}) {
-    return gt(e), ht(ce(q({}, t), { msg: e, type: "danger" }));
+    return vt(e), gt(ce(q({}, t), { msg: e, type: "danger" }));
   },
   warn(e, t = {}) {
-    return gt(e), ht(ce(q({}, t), { msg: e, type: "warning" }));
+    return vt(e), gt(ce(q({}, t), { msg: e, type: "warning" }));
   },
   hide() {
     Wo();
@@ -9764,25 +9764,25 @@ const Rt = /* @__PURE__ */ te($m, [["render", Cm]]), Qt = {
   closeOnClickOverlay: !1
   // 未实现
 };
-let ct = [], bt = [];
+let ct = [], $t = [];
 const jo = (e) => {
   if (e) {
     const t = document.getElementById(e);
-    bt = bt.filter((n) => n.id !== e), ct = ct.filter((n) => n !== e), t && document.body.removeChild(t);
+    $t = $t.filter((n) => n.id !== e), ct = ct.filter((n) => n !== e), t && document.body.removeChild(t);
   } else
     ct.forEach((t) => {
       const n = document.getElementById(t);
       n && document.body.removeChild(n);
-    }), bt = [], ct = [];
+    }), $t = [], ct = [];
 }, Sm = (e) => {
   const t = document.getElementById(e.id);
   if (t) {
-    const n = bt.find((o) => o.id === e.id);
+    const n = $t.find((o) => o.id === e.id);
     n ? e = q(q(q({}, Qt), n), e) : e = q(q({}, Qt), e);
     const l = oe(Rt, e);
     return tn(l, t), Ko;
   }
-}, vt = (e) => {
+}, yt = (e) => {
   e.unmount = jo;
   let t;
   if (e.id) {
@@ -9790,7 +9790,7 @@ const jo = (e) => {
       return Sm(e);
   } else
     t = (/* @__PURE__ */ new Date()).getTime() + "";
-  return e = q(q({}, Qt), e), e.id = t, ct.push(e.id), bt.push(e), an(e, {
+  return e = q(q({}, Qt), e), e.id = t, ct.push(e.id), $t.push(e), an(e, {
     wrapper: Rt
   }), Ko;
 }, Mt = (e) => {
@@ -9800,19 +9800,19 @@ const jo = (e) => {
   }
 }, Ko = {
   text(e, t = {}) {
-    return Mt(e), vt(ce(q({}, t), { type: "text", msg: e }));
+    return Mt(e), yt(ce(q({}, t), { type: "text", msg: e }));
   },
   success(e, t = {}) {
-    return Mt(e), vt(ce(q({ icon: Xr }, t), { msg: e, type: "success" }));
+    return Mt(e), yt(ce(q({ icon: Xr }, t), { msg: e, type: "success" }));
   },
   fail(e, t = {}) {
-    return Mt(e), vt(ce(q({ icon: no }, t), { msg: e, type: "fail" }));
+    return Mt(e), yt(ce(q({ icon: no }, t), { msg: e, type: "fail" }));
   },
   warn(e, t = {}) {
-    return Mt(e), vt(ce(q({ icon: oo }, t), { msg: e, type: "warn" }));
+    return Mt(e), yt(ce(q({ icon: oo }, t), { msg: e, type: "warn" }));
   },
   loading(e, t = {}) {
-    return vt(ce(q({
+    return yt(ce(q({
       icon: rt
     }, t), {
       msg: e,
@@ -11675,14 +11675,14 @@ const Jo = {
     }, y = () => {
       const C = n.scale > 1 ? 1 : 2;
       d(C), n.moveX = 0, n.moveY = 0;
-    }, v = (C) => Math.sqrt(pt(C[0].clientX - C[1].clientX, 2) + pt(C[0].clientY - C[1].clientY, 2));
+    }, v = (C) => Math.sqrt(mt(C[0].clientX - C[1].clientX, 2) + mt(C[0].clientY - C[1].clientY, 2));
     let b, w, k, u, m, h, $;
     const I = (C) => {
       const { touches: D } = C, { offsetX: V } = l;
       l.start(C), $ = D.length, b = n.moveX, w = n.moveY, h = Date.now(), n.moving = $ === 1 && n.scale !== 1, n.zooming = $ === 2 && !V.value, n.zooming && (k = n.scale, u = v(C.touches));
     }, B = (C) => {
       const { touches: D } = C;
-      if (l.move(C), (n.moving || n.zooming) && ft(C, !0), n.moving) {
+      if (l.move(C), (n.moving || n.zooming) && pt(C, !0), n.moving) {
         const { deltaX: V, deltaY: j } = l, X = V.value + b, le = j.value + w;
         n.moveX = Ve(X, -a.value, a.value), n.moveY = Ve(le, -r.value, r.value);
       }
@@ -11699,7 +11699,7 @@ const Jo = {
       }, j));
     }, M = (C) => {
       let D = !1;
-      (n.moving || n.zooming) && (D = !0, n.moving && b === n.moveX && w === n.moveY && (D = !1), C.touches.length || (n.zooming && (n.moveX = Ve(n.moveX, -a.value, a.value), n.moveY = Ve(n.moveY, -r.value, r.value), n.zooming = !1), n.moving = !1, b = 0, w = 0, k = 1, n.scale < 1 && p(), n.scale > e.maxZoom && (n.scale = +e.maxZoom))), ft(C, D), L(), l.reset();
+      (n.moving || n.zooming) && (D = !0, n.moving && b === n.moveX && w === n.moveY && (D = !1), C.touches.length || (n.zooming && (n.moveX = Ve(n.moveX, -a.value, a.value), n.moveY = Ve(n.moveY, -r.value, r.value), n.zooming = !1), n.moving = !1, b = 0, w = 0, k = 1, n.scale < 1 && p(), n.scale > e.maxZoom && (n.scale = +e.maxZoom))), pt(C, D), L(), l.reset();
     }, S = () => {
       t("close");
     };
@@ -16043,14 +16043,14 @@ const { create: Y3 } = Z("avatar-cropper"), j3 = Y3({
       B(l.defScale), l.moveX = 0, l.moveY = 0, l.angle = 0;
     }, B = (K) => {
       K = Ve(K, 0.3, +e.maxZoom + 1), K !== l.scale && (l.scale = K);
-    }, L = (K) => Math.sqrt(pt(K[0].clientX - K[1].clientX, 2) + pt(K[0].clientY - K[1].clientY, 2));
+    }, L = (K) => Math.sqrt(mt(K[0].clientX - K[1].clientX, 2) + mt(K[0].clientY - K[1].clientY, 2));
     let M, S, C, D, V;
     const j = (K) => {
       const { touches: se } = K, { offsetX: ue } = d;
       d.start(K), V = se.length, M = l.moveX, S = l.moveY, l.moving = V === 1, l.zooming = V === 2 && !ue.value, l.zooming && (C = l.scale, D = L(K.touches));
     }, X = (K) => {
       const { touches: se } = K;
-      if (d.move(K), (l.moving || l.zooming) && ft(K, !0), l.moving) {
+      if (d.move(K), (l.moving || l.zooming) && pt(K, !0), l.moving) {
         const { deltaX: ue, deltaY: pe } = d, Ce = ue.value * l.scale + M, Le = pe.value * l.scale + S;
         l.moveX = Ve(Ce, -b.value, b.value), l.moveY = Ve(Le, -w.value, w.value);
       }
@@ -16060,7 +16060,7 @@ const { create: Y3 } = Z("avatar-cropper"), j3 = Y3({
       }
     }, le = (K) => {
       let se = !1;
-      (l.moving || l.zooming) && (se = !(l.moving && M === l.moveX && S === l.moveY), K.touches.length || (l.zooming && (l.moveX = Ve(l.moveX, -b.value, b.value), l.moveY = Ve(l.moveY, -w.value, w.value), l.zooming = !1), l.moving = !1, M = 0, S = 0, C = l.defScale, l.scale < l.defScale && I(), l.scale > e.maxZoom && (l.scale = +e.maxZoom))), ft(K, se), d.reset();
+      (l.moving || l.zooming) && (se = !(l.moving && M === l.moveX && S === l.moveY), K.touches.length || (l.zooming && (l.moveX = Ve(l.moveX, -b.value, b.value), l.moveY = Ve(l.moveY, -w.value, w.value), l.zooming = !1), l.moving = !1, M = 0, S = 0, C = l.defScale, l.scale < l.defScale && I(), l.scale > e.maxZoom && (l.scale = +e.maxZoom))), pt(K, se), d.reset();
     }, W = () => {
       l.angle = 0;
     }, Y = () => {

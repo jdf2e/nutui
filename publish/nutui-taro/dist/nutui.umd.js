@@ -8094,7 +8094,8 @@ var __async = (__this, __arguments, generator) => {
   };
   const _hoisted_2$J = ["min", "max", "disabled", "readonly", "value"];
   const _sfc_main$16 = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
-    name: "NutInputNumber"
+    name: "NutInputNumber",
+    inheritAttrs: false
   }), {
     __name: "input-number.taro",
     props: {
@@ -8222,20 +8223,21 @@ var __async = (__this, __arguments, generator) => {
             ])
           ], 2),
           vue.createTextVNode(),
-          _ctx.readonly ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_1$V, vue.toDisplayString(_ctx.modelValue), 1)) : (vue.openBlock(), vue.createElementBlock("input", {
+          _ctx.readonly ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_1$V, vue.toDisplayString(_ctx.modelValue), 1)) : (vue.openBlock(), vue.createElementBlock("input", vue.mergeProps({
             key: 1,
             class: "nut-input-number__text--input",
-            type: "number",
+            type: "number"
+          }, _ctx.$attrs, {
             min: _ctx.min,
             max: _ctx.max,
-            style: vue.normalizeStyle({ width: vue.unref(pxCheck)(_ctx.inputWidth), height: vue.unref(pxCheck)(_ctx.buttonSize) }),
+            style: { width: vue.unref(pxCheck)(_ctx.inputWidth), height: vue.unref(pxCheck)(_ctx.buttonSize) },
             disabled: vue.unref(disabled),
             readonly: _ctx.readonly,
             value: _ctx.modelValue,
             onInput: change,
             onBlur: blur,
             onFocus: focus
-          }, null, 44, _hoisted_2$J)),
+          }), null, 16, _hoisted_2$J)),
           vue.createTextVNode(),
           vue.createElementVNode("view", {
             class: vue.normalizeClass(["nut-input-number__icon nut-input-number__right", { "nut-input-number__icon--disabled": !addAllow() }]),

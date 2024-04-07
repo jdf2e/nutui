@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { defineComponent, toRef, computed, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createVNode, unref, createTextVNode, toDisplayString, normalizeStyle } from "vue";
+import { defineComponent, toRef, computed, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createVNode, unref, createTextVNode, toDisplayString, mergeProps } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { Minus, Plus } from "@nutui/icons-vue-taro";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";
@@ -28,7 +28,8 @@ const _hoisted_1 = {
 };
 const _hoisted_2 = ["min", "max", "disabled", "readonly", "value"];
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
-  name: "NutInputNumber"
+  name: "NutInputNumber",
+  inheritAttrs: false
 }), {
   __name: "input-number.taro",
   props: {
@@ -156,20 +157,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           ])
         ], 2),
         createTextVNode(),
-        _ctx.readonly ? (openBlock(), createElementBlock("view", _hoisted_1, toDisplayString(_ctx.modelValue), 1)) : (openBlock(), createElementBlock("input", {
+        _ctx.readonly ? (openBlock(), createElementBlock("view", _hoisted_1, toDisplayString(_ctx.modelValue), 1)) : (openBlock(), createElementBlock("input", mergeProps({
           key: 1,
           class: "nut-input-number__text--input",
-          type: "number",
+          type: "number"
+        }, _ctx.$attrs, {
           min: _ctx.min,
           max: _ctx.max,
-          style: normalizeStyle({ width: unref(pxCheck)(_ctx.inputWidth), height: unref(pxCheck)(_ctx.buttonSize) }),
+          style: { width: unref(pxCheck)(_ctx.inputWidth), height: unref(pxCheck)(_ctx.buttonSize) },
           disabled: unref(disabled),
           readonly: _ctx.readonly,
           value: _ctx.modelValue,
           onInput: change,
           onBlur: blur,
           onFocus: focus
-        }, null, 44, _hoisted_2)),
+        }), null, 16, _hoisted_2)),
         createTextVNode(),
         createElementVNode("view", {
           class: normalizeClass(["nut-input-number__icon nut-input-number__right", { "nut-input-number__icon--disabled": !addAllow() }]),

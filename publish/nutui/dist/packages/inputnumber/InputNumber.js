@@ -17,14 +17,15 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { defineComponent, toRef, computed, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createVNode, unref, normalizeStyle } from "vue";
+import { defineComponent, toRef, computed, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createVNode, unref, mergeProps } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { Minus, Plus } from "@nutui/icons-vue";
 import { u as useFormDisabled } from "../common-DRG0ue26.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["min", "max", "disabled", "readonly", "value"];
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
-  name: "NutInputNumber"
+  name: "NutInputNumber",
+  inheritAttrs: false
 }), {
   __name: "input-number",
   props: {
@@ -152,18 +153,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, null, 8, ["width", "height"])
           ])
         ], 2),
-        createElementVNode("input", {
-          type: "number",
+        createElementVNode("input", mergeProps({ type: "number" }, _ctx.$attrs, {
           min: _ctx.min,
           max: _ctx.max,
-          style: normalizeStyle({ width: unref(pxCheck)(_ctx.inputWidth), height: unref(pxCheck)(_ctx.buttonSize) }),
+          style: { width: unref(pxCheck)(_ctx.inputWidth), height: unref(pxCheck)(_ctx.buttonSize) },
           disabled: unref(disabled),
           readonly: _ctx.readonly,
           value: _ctx.modelValue,
           onInput: change,
           onBlur: blur,
           onFocus: focus
-        }, null, 44, _hoisted_1),
+        }), null, 16, _hoisted_1),
         createElementVNode("view", {
           class: normalizeClass(["nut-input-number__icon nut-input-number__right", { "nut-input-number__icon--disabled": !addAllow() }]),
           onClick: add
