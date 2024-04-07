@@ -1,99 +1,25 @@
-import { c as createComponent } from "../component-DQf3CENX.js";
-import { toRefs, computed, resolveComponent, openBlock, createElementBlock, renderSlot, createCommentVNode, createElementVNode, createBlock, normalizeClass, normalizeStyle, Fragment, renderList } from "vue";
-import { N as NutAvatar } from "../index-Do4_KY74.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { create } = createComponent("skeleton");
-const _sfc_main = create({
-  components: {
-    NutAvatar
-  },
-  props: {
-    // 每行宽度
-    width: {
-      type: String,
-      default: "100px"
-    },
-    // 每行高度
-    height: {
-      type: String,
-      default: "15px"
-    },
-    // 是否显示动画
-    animated: {
-      type: Boolean,
-      default: false
-    },
-    // 头像
-    avatar: {
-      type: Boolean,
-      default: false
-    },
-    // 头像形状：正方形/圆形
-    avatarShape: {
-      type: String,
-      default: "round"
-    },
-    // 头像大小
-    avatarSize: {
-      type: String,
-      default: "50px"
-    },
-    // 是否显示骨架屏
-    loading: {
-      type: Boolean,
-      default: true
-    },
-    // 标题/段落 圆角风格
-    round: {
-      type: Boolean,
-      default: false
-    },
-    // 显示段落行数
-    row: {
-      type: String,
-      default: "1"
-    },
-    // 是否显示段落标题
-    title: {
-      type: Boolean,
-      default: true
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
     }
-  },
-  setup(props) {
-    const { avatarShape, round, avatarSize } = toRefs(props);
-    const avatarClass = computed(() => {
-      const prefixCls = "avatarClass";
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--${avatarShape.value}`]: avatarShape.value
-      };
-    });
-    const getBlockClass = (prefixCls) => {
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}--round`]: round.value
-      };
-    };
-    const getStyle = () => {
-      if (avatarSize.value) {
-        return {
-          width: avatarSize.value,
-          height: avatarSize.value
-        };
-      }
-      return {
-        width: "50px",
-        height: "50px"
-      };
-    };
-    return {
-      avatarShape,
-      avatarClass,
-      getBlockClass,
-      getStyle
-    };
-  }
-});
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, computed, openBlock, createElementBlock, renderSlot, createCommentVNode, createElementVNode, createBlock, normalizeClass, normalizeStyle, Fragment, renderList } from "vue";
+import { N as NutAvatar } from "../index-Do4_KY74.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { key: 0 };
 const _hoisted_2 = {
   key: 1,
@@ -104,40 +30,79 @@ const _hoisted_3 = {
   class: "nut-skeleton-animation"
 };
 const _hoisted_4 = { class: "nut-skeleton-content" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_nut_avatar = resolveComponent("nut-avatar");
-  return !_ctx.loading ? (openBlock(), createElementBlock("view", _hoisted_1, [
-    renderSlot(_ctx.$slots, "default")
-  ])) : (openBlock(), createElementBlock("view", _hoisted_2, [
-    _ctx.animated ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true),
-    createElementVNode("view", _hoisted_4, [
-      _ctx.avatar ? (openBlock(), createBlock(_component_nut_avatar, {
-        key: 0,
-        class: normalizeClass(_ctx.avatarClass),
-        shape: _ctx.avatarShape,
-        style: normalizeStyle(_ctx.getStyle())
-      }, null, 8, ["class", "shape", "style"])) : createCommentVNode("", true),
-      createElementVNode("view", {
-        class: "nut-skeleton-content__line",
-        style: normalizeStyle({ width: _ctx.width })
-      }, [
-        _ctx.title ? (openBlock(), createElementBlock("view", {
-          key: 0,
-          class: normalizeClass(_ctx.getBlockClass("nut-skeleton-blockTitle")),
-          style: normalizeStyle({ height: _ctx.height })
-        }, null, 6)) : createCommentVNode("", true),
-        (openBlock(true), createElementBlock(Fragment, null, renderList(Number(_ctx.row), (_) => {
-          return openBlock(), createElementBlock("view", {
-            key: _,
-            class: normalizeClass(_ctx.getBlockClass("nut-skeleton-blockLine")),
-            style: normalizeStyle({ height: _ctx.height })
-          }, null, 6);
-        }), 128))
-      ], 4)
-    ])
-  ]));
-}
-const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutSkeleton"
+}), {
+  __name: "skeleton",
+  props: {
+    width: { default: "100px" },
+    height: { default: "15px" },
+    animated: { type: Boolean, default: false },
+    avatar: { type: Boolean, default: false },
+    avatarShape: { default: "round" },
+    avatarSize: { default: "50px" },
+    loading: { type: Boolean, default: true },
+    round: { type: Boolean, default: false },
+    row: { default: "1" },
+    title: { type: Boolean, default: true }
+  },
+  setup(__props) {
+    const props = __props;
+    const avatarClass = computed(() => {
+      const prefixCls = "avatarClass";
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}--${props.avatarShape}`]: props.avatarShape
+      };
+    });
+    const getBlockClass = (prefixCls) => {
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}--round`]: props.round
+      };
+    };
+    const avatarStyle = computed(() => {
+      return {
+        width: props.avatarSize,
+        height: props.avatarSize
+      };
+    });
+    return (_ctx, _cache) => {
+      return !_ctx.loading ? (openBlock(), createElementBlock("view", _hoisted_1, [
+        renderSlot(_ctx.$slots, "default")
+      ])) : (openBlock(), createElementBlock("view", _hoisted_2, [
+        _ctx.animated ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true),
+        createElementVNode("view", _hoisted_4, [
+          _ctx.avatar ? (openBlock(), createBlock(NutAvatar, {
+            key: 0,
+            class: normalizeClass(avatarClass.value),
+            shape: _ctx.avatarShape,
+            style: normalizeStyle(avatarStyle.value)
+          }, null, 8, ["class", "shape", "style"])) : createCommentVNode("", true),
+          createElementVNode("view", {
+            class: "nut-skeleton-content__line",
+            style: normalizeStyle({ width: _ctx.width })
+          }, [
+            _ctx.title ? (openBlock(), createElementBlock("view", {
+              key: 0,
+              class: normalizeClass(getBlockClass("nut-skeleton-blockTitle")),
+              style: normalizeStyle({ height: _ctx.height })
+            }, null, 6)) : createCommentVNode("", true),
+            (openBlock(true), createElementBlock(Fragment, null, renderList(Number(_ctx.row), (_) => {
+              return openBlock(), createElementBlock("view", {
+                key: _,
+                class: normalizeClass(getBlockClass("nut-skeleton-blockLine")),
+                style: normalizeStyle({ height: _ctx.height })
+              }, null, 6);
+            }), 128))
+          ], 4)
+        ])
+      ]));
+    };
+  }
+}));
+withInstall(_sfc_main);
 export {
-  index as default
+  _sfc_main as Skeleton,
+  _sfc_main as default
 };
