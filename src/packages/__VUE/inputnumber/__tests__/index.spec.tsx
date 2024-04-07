@@ -189,3 +189,15 @@ test('InputNumber: should change modelValue after props.min was changed', async 
   expect(wrapper.emitted()['update:modelValue']).toHaveLength(1)
   expect(wrapper.emitted()['update:modelValue'][0]).toStrictEqual(['7', {}])
 })
+
+test('InputNumber: v-bind="$attrs"', async () => {
+  const testClass = 'test-attr-class'
+  const customAttr = 'custom-attr'
+  const wrapper = mount(() => {
+    return <InputNumber modelValue={12} class={testClass} custom-attr={customAttr} />
+  })
+
+  const input = wrapper.find('input').element as HTMLInputElement
+  expect(input.getAttribute('class')).includes(testClass)
+  expect(input.getAttribute(customAttr)).includes(customAttr)
+})

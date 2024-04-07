@@ -74,6 +74,10 @@ Set step size `step` 0.1 `decimal places` keep 1 decimal place
 | disabled | Disable all features | boolean | `false` |
 | readonly | Read only status disables input box operation behavior | boolean | `false` |
 
+### Attrs version
+
+The attributes on `InputNumber` will be inherited by `input` element.
+
 ### Slots
 
 | Name | Description |
