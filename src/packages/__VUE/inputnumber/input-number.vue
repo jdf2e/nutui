@@ -11,6 +11,7 @@
     </view>
     <input
       type="number"
+      v-bind="$attrs"
       :min="min"
       :max="max"
       :style="{ width: pxCheck(inputWidth), height: pxCheck(buttonSize) }"
@@ -39,7 +40,8 @@ import { Minus, Plus } from '@nutui/icons-vue'
 import { useFormDisabled } from '../form/common'
 
 defineOptions({
-  name: 'NutInputNumber'
+  name: 'NutInputNumber',
+  inheritAttrs: false
 })
 
 export type InputNumberProps = Partial<{
