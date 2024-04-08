@@ -27,7 +27,7 @@
 import { pxCheck } from '@/packages/utils/pxCheck'
 import { computed, inject, CSSProperties } from 'vue'
 import type { FormItemRule, FormLabelPosition, FormStarPosition } from '../form/types'
-import NutCell from '../cell/index.vue'
+import NutCell from '../cell'
 import { FORM_KEY } from '../form/common'
 import { useParent } from '@/packages/utils'
 
