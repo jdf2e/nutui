@@ -74,9 +74,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onOnClickIcon?: ((...args: any[]) => any) | undefined;
     onOnClickRight?: ((...args: any[]) => any) | undefined;
 }, {
+    fixed: boolean;
     title: string;
     desc: string;
-    fixed: boolean;
     zIndex: string | number;
     border: boolean;
     leftShow: boolean;

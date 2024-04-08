@@ -101,9 +101,9 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClick?: ((...args: any[]) => any) | undefined;
 }, {
     size: CellSize;
+    replace: boolean;
     title: string;
     desc: string;
-    replace: boolean;
     center: boolean;
     subTitle: string;
     descTextAlign: string;
