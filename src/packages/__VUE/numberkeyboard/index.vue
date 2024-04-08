@@ -35,9 +35,9 @@
                   { 'nut-key--lock': item.type == 'lock' },
                   { 'nut-key--delete': item.type == 'delete' }
                 ]"
-                @touchstart="(event) => onTouchstart(item, event)"
-                @touchmove="(event) => onTouchMove(event)"
-                @touchend="(event) => onTouchEnd(event)"
+                @touchstart="(event: TouchEvent) => onTouchstart(item, event)"
+                @touchmove="(event: TouchEvent) => onTouchMove(event)"
+                @touchend="(event: TouchEvent) => onTouchEnd(event)"
               >
                 <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
                 <img
@@ -55,8 +55,8 @@
             <div class="nut-key__wrapper">
               <div
                 :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
-                @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
-                @touchmove="(event) => onTouchMove(event)"
+                @touchstart="(event: TouchEvent) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
+                @touchmove="(event: TouchEvent) => onTouchMove(event)"
                 @touchend="onTouchEnd"
               >
                 <img

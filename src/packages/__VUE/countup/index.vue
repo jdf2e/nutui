@@ -68,7 +68,7 @@
       >
         <view
           v-for="(val, index) of num_total_len"
-          :ref="(el) => setRef(el)"
+          :ref="(el: any) => setRef(el)"
           :key="val"
           class="nut-countup__number-item"
           :style="{
