@@ -8,14 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@nutui/nutui": "^4.2.6",
-    "vue": "^3.4.2"
+    "@nutui/nutui": "^4.3.4",
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "unplugin-vue-components": "^0.26.0",
-    "@vitejs/plugin-vue": "^5.0.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8",
     "vue-tsc": "^1.8.27"
   }
 }

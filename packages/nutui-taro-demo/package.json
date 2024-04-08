@@ -50,7 +50,7 @@
     "eslint-config-taro": "3.6.24",
     "style-loader": "^3.3.4",
     "stylelint": "^16.3.1",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.4",
     "vue-loader": "^17.4.2",
     "webpack": "^5.91.0"
   }

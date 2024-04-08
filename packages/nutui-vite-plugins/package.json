@@ -40,6 +40,6 @@
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it-container": "^2.0.10",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.4"
   }
 }
