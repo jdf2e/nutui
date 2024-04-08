@@ -27,7 +27,7 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             @touchstart="
-              (e) => {
+              (e: TouchEvent) => {
                 if (typeof index === 'number') {
                   // 实时更新当前拖动的按钮索引
                   buttonIndex = index
@@ -38,7 +38,7 @@
             @touchmove="onTouchMove"
             @touchend="onTouchEnd"
             @touchcancel="onTouchEnd"
-            @click="(e) => e.stopPropagation()"
+            @click="(e: Event) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view v-else class="nut-range-button" :style="buttonStyle">
@@ -57,14 +57,14 @@
             aria-orientation="horizontal"
             :catch-move="true"
             @touchstart="
-              (e) => {
+              (e: TouchEvent) => {
                 onTouchStart(e)
               }
             "
             @touchmove="onTouchMove"
             @touchend="onTouchEnd"
             @touchcancel="onTouchEnd"
-            @click="(e) => e.stopPropagation()"
+            @click="(e: Event) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view v-else class="nut-range-button" :style="buttonStyle">

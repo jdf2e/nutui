@@ -49,7 +49,7 @@
           <view
             v-for="(item, index) in titles"
             :key="item.paneKey"
-            :ref="(e) => setTabItemRef(e as HTMLElement, index)"
+            :ref="(e: any) => setTabItemRef(e as HTMLElement, index)"
             class="nut-tabs__titles-item"
             :style="titleStyle"
             :class="{
