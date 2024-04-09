@@ -90,6 +90,17 @@ Paused and restarted the countdown with the `paused` attribute
 | pause | Count Down Pause |
 | reset | Count Down Reset |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  CountdownProps,
+  CountdownInstance
+} from '@nutui/nutui'
+```
+
 ## Theming
 
 ### CSS Variables

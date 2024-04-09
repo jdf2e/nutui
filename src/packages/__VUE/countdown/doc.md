@@ -92,6 +92,17 @@ app.use(Countdown)
 | pause | 暂停倒计时 |
 | reset | 重设倒计时，若 `auto-start`为 `true`，重设后会自动开始倒计时 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  CountdownProps,
+  CountdownInstance
+} from '@nutui/nutui'
+```
+
 ## 主题定制
 
 ### 样式变量

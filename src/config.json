@@ -699,6 +699,7 @@
         {
           "name": "Countdown",
           "cName": "倒计时",
+          "setup": true,
           "desc": "倒计时",
           "author": "yangxiaolu"
         },
