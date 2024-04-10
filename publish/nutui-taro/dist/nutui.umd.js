@@ -1079,8 +1079,8 @@ var __async = (__this, __arguments, generator) => {
             color = "#" + color.slice(1).split("").map((char) => char + char).join("");
           }
           const colors = [];
-          for (let i2 = 1; i2 < 7; i2 += 2) {
-            colors.push(parseInt("0x" + color.slice(i2, i2 + 2)));
+          for (let i = 1; i < 7; i += 2) {
+            colors.push(parseInt("0x" + color.slice(i, i + 2)));
           }
           return colors.join(",");
         };
@@ -1417,8 +1417,8 @@ var __async = (__this, __arguments, generator) => {
   }
   function sortChildren(parent, internalChildren, childName) {
     const vnodes = flattenVNodes(parent.subTree.children, childName);
-    internalChildren.sort((a2, b) => {
-      return vnodes.indexOf(a2.vnode) - vnodes.indexOf(b.vnode);
+    internalChildren.sort((a, b) => {
+      return vnodes.indexOf(a.vnode) - vnodes.indexOf(b.vnode);
     });
   }
   function useProvide(key, childName) {
@@ -1696,12 +1696,12 @@ var __async = (__this, __arguments, generator) => {
         var _a;
         const children = filterEmpty((_a = slots.default) == null ? void 0 : _a.call(slots));
         const renderChildren = () => {
-          return children.map((child, i2) => {
+          return children.map((child, i) => {
             return vue.h(
               "view",
               {
                 class: `${componentName$d}-item`,
-                style: getMarginStyle(i2 === children.length - 1)
+                style: getMarginStyle(i === children.length - 1)
               },
               child
             );
@@ -2666,10 +2666,10 @@ var __async = (__this, __arguments, generator) => {
         state.listHeight = [];
         let height = 0;
         state.listHeight.push(height);
-        for (let i2 = 0; i2 < state.listGroup.length; i2++) {
-          state.query.selectAll(`.elevator__item__${i2}`).boundingClientRect();
+        for (let i = 0; i < state.listGroup.length; i++) {
+          state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
           state.query.exec((res) => {
-            height += Math.floor(res[i2][0].height);
+            height += Math.floor(res[i][0].height);
             state.listHeight.push(height);
           });
         }
@@ -2717,11 +2717,11 @@ var __async = (__this, __arguments, generator) => {
         let scrollTop = target.scrollTop;
         const listHeight = state.listHeight;
         state.scrollY = Math.floor(scrollTop);
-        for (let i2 = 0; i2 < listHeight.length - 1; i2++) {
-          let height1 = listHeight[i2];
-          let height2 = listHeight[i2 + 1];
+        for (let i = 0; i < listHeight.length - 1; i++) {
+          let height1 = listHeight[i];
+          let height2 = listHeight[i + 1];
           if (state.scrollY >= height1 && state.scrollY < height2) {
-            state.currentIndex = i2;
+            state.currentIndex = i;
             return;
           }
         }
@@ -2921,8 +2921,8 @@ var __async = (__this, __arguments, generator) => {
             startPage = endPage - +pageSize + 1;
           }
         }
-        for (var i2 = startPage; i2 <= endPage; i2++) {
-          const page = setPage(i2, i2, modelValue.value == i2);
+        for (var i = startPage; i <= endPage; i++) {
+          const page = setPage(i, i, modelValue.value == i);
           items.push(page);
         }
         if (partialShow && pageSize > 0 && forceEllipses.value) {
@@ -3680,8 +3680,8 @@ var __async = (__this, __arguments, generator) => {
       });
       const setPaddingLeft = (nodeList, level = 1) => {
         var _a;
-        for (let i2 = 0; i2 < nodeList.length; i2++) {
-          let item = nodeList[i2];
+        for (let i = 0; i < nodeList.length; i++) {
+          let item = nodeList[i];
           if ((_a = item == null ? void 0 : item.children) == null ? void 0 : _a[0]) {
             item.children[0].style.paddingLeft = +props.offset * level + "px";
             if (!item.className.includes("nut-side-navbar-item")) {
@@ -3882,7 +3882,7 @@ var __async = (__this, __arguments, generator) => {
       const marksList = vue.computed(() => {
         const { marks, max, min } = props;
         const marksKeys = Object.keys(marks);
-        const list = marksKeys.map(parseFloat).sort((a2, b) => a2 - b).filter((point) => point >= +min && point <= +max);
+        const list = marksKeys.map(parseFloat).sort((a, b) => a - b).filter((point) => point >= +min && point <= +max);
         return list;
       });
       const scope = vue.computed(() => Number(props.max) - Number(props.min));
@@ -4556,9 +4556,9 @@ var __async = (__this, __arguments, generator) => {
     return newNode;
   });
   const eachTree = (tree, cb) => {
-    let i2 = 0;
+    let i = 0;
     let node;
-    while (node = tree[i2++]) {
+    while (node = tree[i++]) {
       if (cb(node) === true) {
         break;
       }
@@ -4589,9 +4589,9 @@ var __async = (__this, __arguments, generator) => {
       node.children = map[id] || (map[id] = []);
     });
     if (sortKey) {
-      Object.keys(map).forEach((i2) => {
-        if (map[i2].length > 1) {
-          map[i2].sort((a2, b) => a2[sortKey] - b[sortKey]);
+      Object.keys(map).forEach((i) => {
+        if (map[i].length > 1) {
+          map[i].sort((a, b) => a[sortKey] - b[sortKey]);
         }
       });
     }
@@ -4751,9 +4751,9 @@ var __async = (__this, __arguments, generator) => {
           if (parent) {
             needToSync = [parent.value];
             initLoading.value = true;
-            const last = yield currentValue.slice(1).reduce((p2, value) => __async(this, null, function* () {
+            const last = yield currentValue.slice(1).reduce((p, value) => __async(this, null, function* () {
               var _a2;
-              const parent2 = yield p2;
+              const parent2 = yield p;
               yield invokeLazyLoad(parent2);
               const node = (_a2 = parent2 == null ? void 0 : parent2.children) == null ? void 0 : _a2.find((item) => item.value === value);
               if (node) {
@@ -5153,19 +5153,19 @@ var __async = (__this, __arguments, generator) => {
     date2Str: function(date, split) {
       split = split || "-";
       const y = date.getFullYear();
-      const m2 = this.getNumTwoBit(date.getMonth() + 1);
+      const m = this.getNumTwoBit(date.getMonth() + 1);
       const d = this.getNumTwoBit(date.getDate());
-      return [y, m2, d].join(split);
+      return [y, m, d].join(split);
     },
     /**
      * 返回日期格式字符串
      * @param {Number} 0返回今天的日期、1返回明天的日期，2返回后天得日期，依次类推
      * @return {string} '2014-12-31'
      */
-    getDay: function(i2) {
-      i2 = i2 || 0;
+    getDay: function(i) {
+      i = i || 0;
       let date = /* @__PURE__ */ new Date();
-      const diff = i2 * (1e3 * 60 * 60 * 24);
+      const diff = i * (1e3 * 60 * 60 * 24);
       date = new Date(date.getTime() + diff);
       return this.date2Str(date);
     },
@@ -5427,7 +5427,7 @@ var __async = (__this, __arguments, generator) => {
         var _a, _b;
         if (!getClass(day, month).includes(`${state.dayPrefix}--disabled`)) {
           const { type } = props;
-          let [y, m2] = month.curData;
+          let [y, m] = month.curData;
           let days = [...month.curData];
           days[2] = Utils.getNumTwoBit(Number(day.day));
           days[3] = `${days[0]}-${days[1]}-${days[2]}`;
@@ -5476,7 +5476,7 @@ var __async = (__this, __arguments, generator) => {
               }
             }
           } else if (type == "week") {
-            let weekArr = Utils.getWeekDate(y, m2, day.day, props.firstDayOfWeek);
+            let weekArr = Utils.getWeekDate(y, m, day.day, props.firstDayOfWeek);
             if (state.propStartDate && Utils.compareDate(weekArr[0], state.propStartDate)) {
               weekArr.splice(0, 1, state.propStartDate);
             }
@@ -5507,11 +5507,11 @@ var __async = (__this, __arguments, generator) => {
         }
       };
       const handleWeekDate = (weekDate) => {
-        let [y, m2, d] = weekDate;
+        let [y, m, d] = weekDate;
         let obj = {
           date: weekDate,
-          monthWeekNum: Utils.getMonthWeek(y, m2, d, props.firstDayOfWeek),
-          yearWeekNum: Utils.getYearWeek(y, m2, d, props.firstDayOfWeek)
+          monthWeekNum: Utils.getMonthWeek(y, m, d, props.firstDayOfWeek),
+          yearWeekNum: Utils.getYearWeek(y, m, d, props.firstDayOfWeek)
         };
         return obj;
       };
@@ -5648,10 +5648,10 @@ var __async = (__this, __arguments, generator) => {
           monthsNum = 1;
         }
         getMonth(state.startData, "next");
-        let i2 = 1;
+        let i = 1;
         do {
           getMonth(getCurrData("next"), "next");
-        } while (i2++ < monthsNum);
+        } while (i++ < monthsNum);
         state.monthsNum = monthsNum;
         if (props.type == "range" && Array.isArray(state.currDate)) {
           if (state.currDate.length > 0) {
@@ -5680,8 +5680,8 @@ var __async = (__this, __arguments, generator) => {
           }
         } else if (props.type == "week" && Array.isArray(state.currDate)) {
           if (state.currDate.length > 0) {
-            let [y, m2, d] = splitDate(state.currDate[0]);
-            let weekArr = Utils.getWeekDate(y, m2, d, props.firstDayOfWeek);
+            let [y, m, d] = splitDate(state.currDate[0]);
+            let weekArr = Utils.getWeekDate(y, m, d, props.firstDayOfWeek);
             state.currDate = weekArr;
             if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
               state.currDate.splice(0, 1, propStartDate);
@@ -5984,10 +5984,10 @@ var __async = (__this, __arguments, generator) => {
                     vue.createElementVNode("view", {
                       class: vue.normalizeClass(["nut-calendar__days-item", _ctx.type === "range" ? "nut-calendar__days-item--range" : ""])
                     }, [
-                      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(month.monthData, (day, i2) => {
+                      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(month.monthData, (day, i) => {
                         return vue.openBlock(), vue.createElementBlock("view", {
-                          key: i2,
-                          class: vue.normalizeClass(["nut-calendar__day", _ctx.getClass(day, month, i2)]),
+                          key: i,
+                          class: vue.normalizeClass(["nut-calendar__day", _ctx.getClass(day, month, i)]),
                           onClick: ($event) => _ctx.chooseDay(day, month)
                         }, [
                           vue.createElementVNode("view", _hoisted_9$a, [
@@ -6447,17 +6447,17 @@ var __async = (__this, __arguments, generator) => {
   };
   const getDays = (month, firstDayOfWeek) => {
     const y = month.year;
-    const m2 = month.month;
-    const days = [...getPrevMonthDays(y, m2, firstDayOfWeek), ...getCurrentMonthDays(y, m2)];
+    const m = month.month;
+    const days = [...getPrevMonthDays(y, m, firstDayOfWeek), ...getCurrentMonthDays(y, m)];
     const size = days.length;
     const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year;
     const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1;
-    for (let i2 = 1; i2 <= 42 - size; i2++) {
+    for (let i = 1; i <= 42 - size; i++) {
       days.push({
         type: "next",
         year: yearOfNextMonth,
         month: monthOfNextMonth,
-        date: i2
+        date: i
       });
     }
     return days;
@@ -6624,12 +6624,12 @@ var __async = (__this, __arguments, generator) => {
         }
         return res;
       };
-      const jumpTo = (y, m2) => {
+      const jumpTo = (y, m) => {
         if (props.startDate) {
           const c = compareDay(
             {
               year: y,
-              month: m2,
+              month: m,
               date: 31
             },
             convertDateToDay(props.startDate)
@@ -6642,7 +6642,7 @@ var __async = (__this, __arguments, generator) => {
           const c = compareDay(
             {
               year: y,
-              month: m2,
+              month: m,
               date: 1
             },
             convertDateToDay(props.endDate)
@@ -6653,7 +6653,7 @@ var __async = (__this, __arguments, generator) => {
         }
         month.value = {
           year: y,
-          month: m2
+          month: m
         };
       };
       const jump = (step = 1) => {
@@ -6680,9 +6680,9 @@ var __async = (__this, __arguments, generator) => {
             break;
           }
           case "multiple": {
-            const t = innerValue.value.find((i2) => isSameDay(i2, day));
+            const t = innerValue.value.find((i) => isSameDay(i, day));
             if (t) {
-              change(innerValue.value.filter((i2) => i2 !== t));
+              change(innerValue.value.filter((i) => i !== t));
             } else {
               change([...innerValue.value, day]);
             }
@@ -6983,7 +6983,7 @@ var __async = (__this, __arguments, generator) => {
         child.proxy && state.children.push(child.proxy);
       };
       const unlink = (child) => {
-        child.proxy && (state.children = state.children.filter((p2) => p2 !== child.proxy));
+        child.proxy && (state.children = state.children.filter((p) => p !== child.proxy));
       };
       const updateValue = (value) => {
         emit("update:modelValue", value);
@@ -7591,9 +7591,9 @@ var __async = (__this, __arguments, generator) => {
         var _a, _b;
         const prevDefaultValue = defaultIndexes.value;
         let changeIndex = 0;
-        for (let i2 = 0; i2 < ((_a = data.detail.value) == null ? void 0 : _a.length); i2++) {
-          if (prevDefaultValue[i2] !== ((_b = data.detail.value) == null ? void 0 : _b[i2])) {
-            changeIndex = i2;
+        for (let i = 0; i < ((_a = data.detail.value) == null ? void 0 : _a.length); i++) {
+          if (prevDefaultValue[i] !== ((_b = data.detail.value) == null ? void 0 : _b[i])) {
+            changeIndex = i;
             break;
           }
         }
@@ -8011,7 +8011,7 @@ var __async = (__this, __arguments, generator) => {
           time.getMinutes(),
           time.getSeconds()
         ];
-        return generateList(res.map((i2) => String(i2)));
+        return generateList(res.map((i) => String(i)));
       };
       vue.onBeforeMount(() => {
         state.currentDate = formatValue(props.modelValue);
@@ -9710,7 +9710,7 @@ var __async = (__this, __arguments, generator) => {
       };
       const submit = () => {
         Promise.all(uploadQueue.value).then((res) => {
-          res.forEach((i2) => i2.uploadTaro(Taro.uploadFile, Taro.getEnv()));
+          res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()));
         });
       };
       const readFile = (files) => {
@@ -10016,8 +10016,8 @@ var __async = (__this, __arguments, generator) => {
       }
       function getBasicKeys() {
         const keys = [];
-        for (let i2 = 1; i2 <= 9; i2++) {
-          keys.push({ id: i2, type: "number" });
+        for (let i = 1; i <= 9; i++) {
+          keys.push({ id: i, type: "number" });
         }
         if (props.randomKeys) {
           return keys.sort(() => Math.random() > 0.5 ? 1 : -1);
@@ -10535,15 +10535,15 @@ var __async = (__this, __arguments, generator) => {
         offset: 0,
         moving: false
       });
-      const open = (p2 = "") => {
+      const open = (p = "") => {
         parent && parent.update(props.name);
         opened.value = true;
-        if (p2) {
-          state.offset = p2 === "left" ? -rightRefWidth.value : leftRefWidth.value;
+        if (p) {
+          state.offset = p === "left" ? -rightRefWidth.value : leftRefWidth.value;
         }
         emit("open", {
           name: props.name,
-          position: position || p2
+          position: position || p
         });
       };
       const close = () => {
@@ -11875,13 +11875,13 @@ var __async = (__this, __arguments, generator) => {
         let count = 0;
         const children = element.children;
         if (props.zIndex === "right") {
-          for (let i2 = 0; i2 < Number(props.maxCount); i2++) {
-            const child = children[i2];
-            child.style.zIndex = `${99 - i2}`;
+          for (let i = 0; i < Number(props.maxCount); i++) {
+            const child = children[i];
+            child.style.zIndex = `${99 - i}`;
           }
         }
-        for (let i2 = Number(props.maxCount); i2 < children.length; i2++) {
-          const child = children[i2];
+        for (let i = Number(props.maxCount); i < children.length; i++) {
+          const child = children[i];
           let className;
           if (Taro.getEnv() === "WEB") {
             className = child.className;
@@ -12063,12 +12063,12 @@ var __async = (__this, __arguments, generator) => {
       };
       const initCachedPosition = () => {
         state.cachePositions = [];
-        for (let i2 = 0; i2 < state.list.length; ++i2) {
-          state.cachePositions[i2] = {
-            index: i2,
+        for (let i = 0; i < state.list.length; ++i) {
+          state.cachePositions[i] = {
+            index: i,
             height: props.estimateRowHeight,
-            top: i2 * props.estimateRowHeight,
-            bottom: (i2 + 1) * (props.estimateRowHeight + props.margin),
+            top: i * props.estimateRowHeight,
+            bottom: (i + 1) * (props.estimateRowHeight + props.margin),
             dValue: 0
           };
         }
@@ -12104,10 +12104,10 @@ var __async = (__this, __arguments, generator) => {
         const cachedPositionsLen = state.cachePositions.length;
         let cumulativeDiffHeight = state.cachePositions[startIndex].dValue;
         state.cachePositions[startIndex].dValue = 0;
-        for (let i2 = startIndex + 1; i2 < cachedPositionsLen; ++i2) {
-          const item = state.cachePositions[i2];
-          state.cachePositions[i2].top = state.cachePositions[i2 - 1].bottom;
-          state.cachePositions[i2].bottom = state.cachePositions[i2].bottom - cumulativeDiffHeight;
+        for (let i = startIndex + 1; i < cachedPositionsLen; ++i) {
+          const item = state.cachePositions[i];
+          state.cachePositions[i].top = state.cachePositions[i - 1].bottom;
+          state.cachePositions[i].bottom = state.cachePositions[i].bottom - cumulativeDiffHeight;
           if (item.dValue !== 0) {
             cumulativeDiffHeight += item.dValue;
             item.dValue = 0;
@@ -12273,7 +12273,7 @@ var __async = (__this, __arguments, generator) => {
           return [];
         }
         let color = props.color;
-        const colorArr = Object.keys(color).sort((a2, b) => parseFloat(a2) - parseFloat(b));
+        const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
         let stopArr = [];
         colorArr.map((item) => {
           let obj = {
@@ -12558,8 +12558,8 @@ var __async = (__this, __arguments, generator) => {
         state.timer = setInterval(
           () => {
             let chunk = 100;
-            for (let i2 = 0; i2 < chunk; i2++) {
-              scroll(i2, i2 < chunk - 1 ? false : true);
+            for (let i = 0; i < chunk; i++) {
+              scroll(i, i < chunk - 1 ? false : true);
             }
           },
           props.standTime + 100 * props.speed
@@ -13118,10 +13118,10 @@ var __async = (__this, __arguments, generator) => {
           if (childrenVNodeLen > children.length) {
             state.children = state.children.filter((item) => child.proxy !== item);
           } else if (childrenVNodeLen < children.length) {
-            for (let i2 = 0; i2 < childrenVNodeLen; i2++) {
-              if (children[i2].key !== state.childrenVNode[i2].key) {
-                child.proxy && state.children.splice(i2, 0, child.proxy);
-                child.vnode && state.childrenVNode.splice(i2, 0, child.vnode);
+            for (let i = 0; i < childrenVNodeLen; i++) {
+              if (children[i].key !== state.childrenVNode[i].key) {
+                child.proxy && state.children.splice(i, 0, child.proxy);
+                child.vnode && state.childrenVNode.splice(i, 0, child.vnode);
                 break;
               }
             }
@@ -14022,8 +14022,8 @@ var __async = (__this, __arguments, generator) => {
           const n = Number((num1 * baseNum - num2 * baseNum).toFixed(0));
           return n / baseNum;
         } else {
-          const m2 = Number((num1 * baseNum + num2 * baseNum).toFixed(0));
-          return m2 / baseNum;
+          const m = Number((num1 * baseNum + num2 * baseNum).toFixed(0));
+          return m / baseNum;
         }
       };
       const topNumber = (index) => {
@@ -14120,7 +14120,7 @@ var __async = (__this, __arguments, generator) => {
           data.sortFlag = "equal";
         }
         var unit = 1;
-        for (let i2 = 0; i2 < data.pointNum; i2++) {
+        for (let i = 0; i < data.pointNum; i++) {
           unit *= 10;
         }
         var rel_big = data.numberVal * unit;
@@ -14154,13 +14154,13 @@ var __async = (__this, __arguments, generator) => {
       };
       const runTurn = (el) => {
         clearIntervalTime();
-        var m2 = 1;
+        var m = 1;
         if (data.pointNum != 0) {
-          m2 = 1 / Math.pow(10, data.pointNum);
+          m = 1 / Math.pow(10, data.pointNum);
         }
         data.timer = setInterval(() => {
           runStep(el);
-          data.totalCount = calculation(data.totalCount, m2, "-");
+          data.totalCount = calculation(data.totalCount, m, "-");
           if (data.totalCount <= 0) {
             clearIntervalTime();
             emit("scrollEnd");
@@ -14225,24 +14225,24 @@ var __async = (__this, __arguments, generator) => {
         if (data.prizeLevelTrun < 0) {
           generateRandom();
         }
-        for (let i2 = 0; i2 < props.machineNum; i2++) {
+        for (let i = 0; i < props.machineNum; i++) {
           setTimeout(() => {
-            let turn = distance * (i2 + 1 + parseFloat(String(machineTrunMoreNum)));
+            let turn = distance * (i + 1 + parseFloat(String(machineTrunMoreNum)));
             if (data.prizeYPrev.length != 0) {
-              data.prizeY[i2] = data.prizeYPrev[i2];
+              data.prizeY[i] = data.prizeYPrev[i];
             }
-            let local = data.prizeYPrev[i2] ? data.prizeYPrev[i2] : 0;
+            let local = data.prizeYPrev[i] ? data.prizeYPrev[i] : 0;
             let newLocation = turn + local + (props.machinePrizeNum - data.prizeLevelTrun + 1) * props.numHeight + (distance - local);
             if (data.prizeLevelTrun < 0) {
-              newLocation += props.numHeight * data.notPrize[i2];
+              newLocation += props.numHeight * data.notPrize[i];
             }
             scrollTime(
-              i2,
+              i,
               // parseFloat((this.machinePrizeNum-(this.prizeLevelTrun-1))*this.numHeight + turn + local),
               newLocation,
               local
             );
-          }, 500 * i2);
+          }, 500 * i);
         }
       };
       useExtend({ machineLuck });
@@ -14538,22 +14538,22 @@ var __async = (__this, __arguments, generator) => {
         return type == "custom" ? rest : parseFormat(__spreadValues({}, rest));
       };
       const parseFormat = (time) => {
-        let { d, h: h2, m: m2, s, ms } = time;
+        let { d, h, m, s, ms } = time;
         let format = props.format;
         if (format.includes("DD")) {
           format = format.replace("DD", padZero(d));
         } else {
-          h2 += Number(d) * 24;
+          h += Number(d) * 24;
         }
         if (format.includes("HH")) {
-          format = format.replace("HH", padZero(h2));
+          format = format.replace("HH", padZero(h));
         } else {
-          m2 += Number(h2) * 60;
+          m += Number(h) * 60;
         }
         if (format.includes("mm")) {
-          format = format.replace("mm", padZero(m2));
+          format = format.replace("mm", padZero(m));
         } else {
-          s += Number(m2) * 60;
+          s += Number(m) * 60;
         }
         if (format.includes("ss")) {
           format = format.replace("ss", padZero(s));
@@ -14751,220 +14751,6 @@ var __async = (__this, __arguments, generator) => {
     ]);
   }
   const Badge = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$s]]);
-  const h = /* @__PURE__ */ vue.defineComponent({
-    __name: "IconFont",
-    props: {
-      name: { type: String, default: "" },
-      size: { type: [String, Number], default: "" },
-      width: { type: [String, Number], default: "" },
-      height: { type: [String, Number], default: "" },
-      classPrefix: { type: String, default: "nut-icon" },
-      fontClassName: { type: String, default: "nutui-iconfont" },
-      color: { type: String, default: "" },
-      tag: { type: String, default: "i" }
-    },
-    setup(e) {
-      var c;
-      const t = e, a2 = "nut-icon", o = vue.useSlots(), s = () => t.name ? t.name.indexOf("/") !== -1 : false, r = (n) => {
-        if (n)
-          return isNaN(Number(n)) ? String(n) : n + "px";
-      }, i2 = s();
-      let l2 = vue.h(
-        i2 ? "img" : t.tag,
-        {
-          class: i2 ? `${a2}__img` : `${t.fontClassName} ${a2} ${t.classPrefix}-${t.name}`,
-          style: {
-            color: t.color,
-            fontSize: r(t.size),
-            width: r(t.width || t.size),
-            height: r(t.height || t.size)
-          },
-          src: i2 ? t.name : ""
-        },
-        (c = o.default) == null ? void 0 : c.call(o)
-      );
-      const u = () => l2;
-      return (n, y) => (vue.openBlock(), vue.createBlock(u));
-    }
-  });
-  function S(e) {
-    return e.name = "IconFont", e.install = (t) => {
-      t.component("IconFont", e);
-    }, e;
-  }
-  S(h);
-  const a$1 = (r) => vue.defineComponent({
-    props: {
-      class: { type: String, default: "" },
-      name: { type: String, default: r },
-      color: { type: String, default: "" },
-      width: { type: [String, Number], default: "" },
-      height: { type: [String, Number], default: "" }
-    },
-    setup(e) {
-      const n = (t) => {
-        if (t)
-          return isNaN(Number(t)) ? String(t) : t + "px";
-      }, o = vue.computed(() => {
-        const t = "nut-icon";
-        return {
-          [e.class]: e.class,
-          [t]: true,
-          [t + "-" + e.name]: e.name
-        };
-      }), c = vue.computed(() => {
-        const t = {};
-        return t.height = n(e.height), t.width = n(e.width), t.color = e.color, t;
-      });
-      return { classes: o, style: c };
-    }
-  }), l = (r, e) => {
-    const n = r.__vccOpts || r;
-    for (const [o, c] of e)
-      n[o] = c;
-    return n;
-  };
-  a$1("add");
-  a$1("addfollow");
-  a$1("arrow-down");
-  a$1("arrow-down2");
-  a$1("arrow-right");
-  a$1("arrow-right2");
-  a$1("arrow-up");
-  a$1("arrow-up2");
-  a$1("ask");
-  a$1("ask2");
-  a$1("cart");
-  a$1("cart2");
-  a$1("category");
-  a$1("check-checked");
-  a$1("check-disabled");
-  a$1("check-normal");
-  a$1("Check");
-  a$1("checked");
-  a$1("checklist");
-  a$1("circle-close");
-  a$1("clock");
-  a$1("close-little");
-  const a = a$1("close"), i = /* @__PURE__ */ vue.createElementVNode("path", {
-    d: "M981.577 1024c-11.703 0-23.406-2.926-32.183-11.703L13.166 76.07c-14.629-17.555-14.629-46.812 0-64.366 17.554-14.629 46.811-14.629 64.365 0L1013.76 947.93c17.554 17.555 17.554 43.886 0 61.44-8.777 11.703-20.48 14.629-32.183 14.629zm-936.228 0c-11.703 0-23.406-2.926-32.183-11.703-17.555-17.554-17.555-43.886 0-61.44L949.394 14.63c17.555-17.555 43.886-17.555 61.44 0 17.555 17.554 17.555 43.885 0 61.44L74.606 1012.297C68.754 1021.074 57.05 1024 45.349 1024z",
-    fill: "currentColor",
-    "fill-opacity": "0.9"
-  }, null, -1), p = [
-    i
-  ];
-  function m(e, _, d, f, u, h2) {
-    return vue.openBlock(), vue.createElementBlock("svg", {
-      class: vue.normalizeClass(e.classes),
-      style: vue.normalizeStyle(e.style),
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1026 1024",
-      role: "presentation"
-    }, p, 6);
-  }
-  const g = /* @__PURE__ */ l(a, [["render", m]]);
-  a$1("comment");
-  a$1("date");
-  a$1("del");
-  a$1("del2");
-  a$1("dongdong");
-  a$1("dou-arrow-up");
-  a$1("down-arrow");
-  a$1("download");
-  a$1("dshop");
-  a$1("edit");
-  a$1("eye");
-  a$1("fabulous");
-  a$1("failure");
-  a$1("find");
-  a$1("follow");
-  a$1("footprint");
-  a$1("github");
-  a$1("heart-fill-n");
-  a$1("heart-fill");
-  a$1("heart-fill1");
-  a$1("heart-fill2");
-  a$1("heart-fill3");
-  a$1("heart-n");
-  a$1("heart");
-  a$1("heart1");
-  a$1("heart2");
-  a$1("home");
-  a$1("horizontal-n");
-  a$1("horizontal");
-  a$1("image-error");
-  a$1("image");
-  a$1("issue");
-  a$1("JD");
-  a$1("jdl");
-  a$1("JIMI40");
-  a$1("joy-smile");
-  a$1("left");
-  a$1("link");
-  a$1("loading");
-  a$1("loading1");
-  a$1("location");
-  a$1("location2");
-  a$1("locationg3");
-  a$1("lower");
-  a$1("marshalling");
-  a$1("mask-close");
-  a$1("message");
-  a$1("microphone");
-  a$1("minus");
-  a$1("more-s");
-  a$1("more-x");
-  a$1("more");
-  a$1("my");
-  a$1("my2");
-  a$1("notice");
-  a$1("order");
-  a$1("people");
-  a$1("photograph");
-  a$1("play-circle-fill");
-  a$1("play-double-back");
-  a$1("play-double-forward");
-  a$1("play-start");
-  a$1("play-stop");
-  a$1("plus");
-  a$1("poweroff-circle-fill");
-  a$1("rect-down");
-  a$1("rect-left");
-  a$1("rect-right");
-  a$1("rect-up");
-  a$1("refresh");
-  a$1("refresh2");
-  a$1("retweet");
-  a$1("right");
-  a$1("s-follow");
-  a$1("scan");
-  a$1("scan2");
-  a$1("screen-little");
-  a$1("search");
-  a$1("search2");
-  a$1("service");
-  a$1("setting");
-  a$1("share-n");
-  a$1("share");
-  a$1("share1");
-  a$1("shop");
-  a$1("shop3");
-  a$1("star-fill-n");
-  a$1("star-fill");
-  a$1("star-fill1");
-  a$1("star-fill2");
-  a$1("star-n");
-  a$1("star");
-  a$1("star1");
-  a$1("star11");
-  a$1("star2");
-  a$1("success");
-  a$1("tips");
-  a$1("top");
-  a$1("triangle-down");
-  a$1("triangle-up");
-  a$1("uploader");
-  a$1("voice");
   const _sfc_main$y = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
     name: "NutTag"
   }), {
@@ -15021,11 +14807,10 @@ var __async = (__this, __arguments, generator) => {
         }, [
           vue.renderSlot(_ctx.$slots, "default"),
           vue.createTextVNode(),
-          _ctx.closeable ? (vue.openBlock(), vue.createBlock(vue.unref(g), {
+          _ctx.closeable ? (vue.openBlock(), vue.createBlock(vue.unref(iconsVueTaro.Close), {
             key: 0,
             class: "nut-tag--close",
-            width: "12px",
-            height: "12px",
+            size: "12px",
             onClick: vue.withModifiers(onClose, ["stop"])
           })) : vue.createCommentVNode("", true)
         ], 6);
@@ -15133,8 +14918,8 @@ var __async = (__this, __arguments, generator) => {
         }
         if (width) {
           if (["bottom", "top"].includes(direction)) {
-            const h2 = direction === "bottom" ? height + cross : -(contentHeight + cross);
-            styles.top = `${top + h2}px`;
+            const h = direction === "bottom" ? height + cross : -(contentHeight + cross);
+            styles.top = `${top + h}px`;
             if (!skew) {
               styles.left = `${-(contentWidth - width) / 2 + left2 + parallel}px`;
             }
@@ -16593,11 +16378,11 @@ var __async = (__this, __arguments, generator) => {
         const { width, height, left: left2, top } = maskRect[index];
         const center = [left2 + width / 2, top + height / 2];
         const w = Number(maskWidth ? maskWidth : width);
-        const h2 = Number(maskHeight ? maskHeight : height);
+        const h = Number(maskHeight ? maskHeight : height);
         const styles = {
           width: `${w + +offset[1] * 2}px`,
-          height: `${h2 + +offset[0] * 2}px`,
-          top: `${center[1] - h2 / 2 - +offset[0]}px`,
+          height: `${h + +offset[0] * 2}px`,
+          top: `${center[1] - h / 2 - +offset[0]}px`,
           left: `${center[0] - w / 2 - +offset[1]}px`
         };
         maskStyles.value[index] = styles;
@@ -16618,11 +16403,11 @@ var __async = (__this, __arguments, generator) => {
         emit("change", state.active);
       };
       const getRootPosition = () => {
-        props.steps.forEach((item, i2) => __async(this, null, function* () {
+        props.steps.forEach((item, i) => __async(this, null, function* () {
           useTaroRectById(item.target).then(
             (rect) => {
-              maskRect[i2] = rect;
-              maskStyle(i2);
+              maskRect[i] = rect;
+              maskStyle(i);
             },
             () => {
             }
@@ -16697,23 +16482,23 @@ var __async = (__this, __arguments, generator) => {
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClickMask && _ctx.handleClickMask(...args))
       })) : vue.createCommentVNode("", true),
       vue.createTextVNode(),
-      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.steps, (step, i2) => {
+      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.steps, (step, i) => {
         return vue.openBlock(), vue.createElementBlock("view", {
-          key: i2,
+          key: i,
           style: { "height": "0" }
         }, [
           _ctx.showTour ? (vue.openBlock(), vue.createElementBlock("view", {
             key: 0,
-            id: `nut-tour-popid${i2}${_ctx.refRandomId}`,
-            class: vue.normalizeClass(["nut-tour-mask", [_ctx.mask ? _ctx.showPopup[i2] ? "" : "nut-tour-mask-hidden" : "nut-tour-mask-none"]]),
-            style: vue.normalizeStyle(_ctx.maskStyles[i2])
+            id: `nut-tour-popid${i}${_ctx.refRandomId}`,
+            class: vue.normalizeClass(["nut-tour-mask", [_ctx.mask ? _ctx.showPopup[i] ? "" : "nut-tour-mask-hidden" : "nut-tour-mask-none"]]),
+            style: vue.normalizeStyle(_ctx.maskStyles[i])
           }, null, 14, _hoisted_1$n)) : vue.createCommentVNode("", true),
           vue.createTextVNode(),
           vue.createVNode(_component_nut_popover, {
-            visible: _ctx.showPopup[i2],
-            "onUpdate:visible": ($event) => _ctx.showPopup[i2] = $event,
+            visible: _ctx.showPopup[i],
+            "onUpdate:visible": ($event) => _ctx.showPopup[i] = $event,
             location: step.location || _ctx.location,
-            "target-id": `nut-tour-popid${i2}${_ctx.refRandomId}`,
+            "target-id": `nut-tour-popid${i}${_ctx.refRandomId}`,
             "bg-color": _ctx.bgColor,
             theme: _ctx.theme,
             "close-on-click-outside": false,
@@ -16896,8 +16681,8 @@ var __async = (__this, __arguments, generator) => {
           }
         });
         const newData = [];
-        data = data.sort((a2, b) => {
-          return a2.title.localeCompare(b.title);
+        data = data.sort((a, b) => {
+          return a.title.localeCompare(b.title);
         });
         data.forEach((item) => {
           const index = newData.findIndex((value) => value.title === item.title);
@@ -17019,9 +16804,9 @@ var __async = (__this, __arguments, generator) => {
           type: privateType.value
         };
         if (["custom", "custom2"].includes(privateType.value)) {
-          [0, 1, 2, 3].forEach((i2) => {
-            const item = selectedRegion.value[i2];
-            data.addressIdStr += `${i2 ? "_" : ""}${item && item.id || 0}`;
+          [0, 1, 2, 3].forEach((i) => {
+            const item = selectedRegion.value[i];
+            data.addressIdStr += `${i ? "_" : ""}${item && item.id || 0}`;
             data.addressStr += item && item.name || "";
           });
           callBackParams.data = data;
@@ -18128,9 +17913,9 @@ var __async = (__this, __arguments, generator) => {
       vue.renderSlot(_ctx.$slots, "operate-btn"),
       vue.createTextVNode(),
       !_ctx.getSlots("operate-btn") ? (vue.openBlock(), vue.createElementBlock("view", _hoisted_3$a, [
-        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.btnOptions, (btn, i2) => {
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.btnOptions, (btn, i) => {
           return vue.openBlock(), vue.createElementBlock("view", {
-            key: i2,
+            key: i,
             class: vue.normalizeClass([`nut-sku-operate-btn-${btn}`, "nut-sku-operate-btn-item"]),
             onClick: ($event) => _ctx.clickBtnOperate(btn)
           }, vue.toDisplayString(_ctx.getBtnDesc(btn)), 11, _hoisted_4$9);
@@ -19459,11 +19244,11 @@ var __async = (__this, __arguments, generator) => {
       });
       const showImages = (type, index) => {
         const { videos, images } = props;
-        const i2 = type == "img" ? index - videos.length : index;
+        const i = type == "img" ? index - videos.length : index;
         emit("clickImages", {
           type,
-          index: i2,
-          value: type == "img" ? images[i2] : videos[i2]
+          index: i,
+          value: type == "img" ? images[i] : videos[i]
         });
       };
       return { isShowImage, initIndex: initIndex2, showImages, totalImages };
@@ -19587,9 +19372,9 @@ var __async = (__this, __arguments, generator) => {
       ]),
       vue.createTextVNode(),
       vue.createElementVNode("view", _hoisted_3$2, [
-        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.mergeOp, (name, i2) => {
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.mergeOp, (name, i) => {
           return vue.openBlock(), vue.createElementBlock("view", {
-            key: i2,
+            key: i,
             class: vue.normalizeClass(["nut-comment-bottom__cpx-item", `nut-comment-bottom__cpx-item--${name}`]),
             onClick: ($event) => _ctx.operate(name)
           }, [
@@ -19859,9 +19644,9 @@ var __async = (__this, __arguments, generator) => {
     while (v2.length < len) {
       v2.push("0");
     }
-    for (let i2 = 0; i2 < len; i2++) {
-      const num1 = parseInt(v1[i2]);
-      const num2 = parseInt(v2[i2]);
+    for (let i = 0; i < len; i++) {
+      const num1 = parseInt(v1[i]);
+      const num2 = parseInt(v2[i]);
       if (num1 > num2) {
         return 1;
       } else if (num1 < num2) {
