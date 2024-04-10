@@ -11,7 +11,7 @@ export const useParent = (key: symbol) => {
     onUnmounted(() => {
       unlink(instance)
     })
-    const index = computed(() => internalChildren.indexOf(instance))
+    const index = computed<number>(() => internalChildren.indexOf(instance))
 
     return { parent, index }
   }
