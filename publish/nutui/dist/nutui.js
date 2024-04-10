@@ -16197,7 +16197,7 @@ function j3(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const K3 = "4.3.4", J3 = { install: j3, version: K3 };
+const K3 = "4.3.5", J3 = { install: j3, version: K3 };
 export {
   B1 as ActionSheet,
   av as Address,
