@@ -121,7 +121,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderInput: () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("success" | "progress" | "delete" | "change" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "success" | "progress" | "delete" | "change" | "start" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("success" | "progress" | "delete" | "start" | "change" | "oversize" | "failure" | "update:fileList" | "fileItemClick")[], "success" | "progress" | "delete" | "start" | "change" | "oversize" | "failure" | "update:fileList" | "fileItemClick", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     name: {
         type: StringConstructor;
         default: string;

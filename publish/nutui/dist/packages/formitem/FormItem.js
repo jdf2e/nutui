@@ -17,9 +17,9 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { defineComponent, computed, inject, openBlock, createBlock, normalizeClass, unref, normalizeStyle, withCtx, createElementBlock, renderSlot, createTextVNode, toDisplayString, createCommentVNode, createElementVNode } from "vue";
+import { defineComponent, computed, inject, openBlock, createBlock, unref, normalizeClass, normalizeStyle, withCtx, createElementBlock, renderSlot, createTextVNode, toDisplayString, createCommentVNode, createElementVNode } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
-import NutCell from "../cell/Cell.js";
+import { Cell as _sfc_main$1 } from "../cell/Cell.js";
 import { F as FORM_KEY } from "../common-DRG0ue26.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
@@ -85,7 +85,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       };
     });
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(NutCell, {
+      return openBlock(), createBlock(unref(_sfc_main$1), {
         class: normalizeClass(["nut-form-item", [{ error: unref(parent)[_ctx.prop], line: _ctx.showErrorLine }, _ctx.$attrs.class, labelPositionClass.value]]),
         style: normalizeStyle(_ctx.$attrs.style)
       }, {

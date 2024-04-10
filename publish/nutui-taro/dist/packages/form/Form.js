@@ -49,10 +49,10 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { defineComponent, computed, reactive, provide, watch, openBlock, createElementBlock, withModifiers, createVNode, withCtx, renderSlot } from "vue";
+import { defineComponent, computed, reactive, provide, watch, openBlock, createElementBlock, withModifiers, createVNode, unref, withCtx, renderSlot } from "vue";
 import { u as useChildren } from "../useChildren-BZ4-J79J.js";
 import { g as getPropByPath, d as isPromise } from "../util-7oDGftbO.js";
-import NutCellGroup from "../cellgroup/CellGroup.js";
+import { CellGroup as _sfc_main$1 } from "../cellgroup/CellGroup.js";
 import { F as FORM_KEY, a as FORM_DISABLED_KEY } from "../common-DRG0ue26.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
@@ -199,7 +199,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         action: "#",
         onSubmit: withModifiers(() => false, ["prevent"])
       }, [
-        createVNode(NutCellGroup, null, {
+        createVNode(unref(_sfc_main$1), null, {
           default: withCtx(() => [
             renderSlot(_ctx.$slots, "default")
           ]),
