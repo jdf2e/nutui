@@ -20,7 +20,7 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { Heart } from '@nutui/icons-vue'
+import { Heart } from '@nutui/icons-vue-taro'
 const show1 = ref(false)
 const show2 = ref(false)
 const show3 = ref(false)
