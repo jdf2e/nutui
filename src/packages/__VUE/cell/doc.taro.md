@@ -102,7 +102,7 @@ app.use(CellGroup)
 | title | 自定义 `title` 标题区域 |
 | desc | 自定义 `desc` 描述区域 |
 
-### 类型定义 version
+### 类型定义 v4.3.5
 
 组件导出以下类型定义：
 

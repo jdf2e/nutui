@@ -61,7 +61,7 @@ app.use(Skeleton)
 | --- | --- |
 | default | Skeleton screen display content |
 
-### Types version
+### Types v4.3.5
 
 The component exports the following type definitions:
 
