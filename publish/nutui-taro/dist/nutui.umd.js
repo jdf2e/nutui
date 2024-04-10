@@ -1275,7 +1275,7 @@ var __async = (__this, __arguments, generator) => {
       },
       scrollTop: {
         type: [Number, String],
-        defualt: -1
+        default: -1
       }
     },
     emits: ["change"],

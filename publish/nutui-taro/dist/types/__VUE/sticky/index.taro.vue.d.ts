@@ -14,7 +14,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     scrollTop: {
         type: (NumberConstructor | StringConstructor)[];
-        defualt: number;
+        default: number;
     };
 }, {
     rootRef: import("vue").Ref<HTMLElement | undefined>;
@@ -32,13 +32,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     scrollTop: {
         type: (NumberConstructor | StringConstructor)[];
-        defualt: number;
+        default: number;
     };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
 }, {
     top: string | number;
     zIndex: string | number;
+    scrollTop: string | number;
 }, {}>>;
 export default _default;
 
