@@ -397,6 +397,7 @@
           "name": "Radio",
           "cName": "单选按钮",
           "desc": "单选按钮",
+          "setup": true,
           "author": "Ymm0008"
         },
         {

@@ -40,7 +40,7 @@
 import { ref } from 'vue'
 import NutForm from '../form/index.taro'
 import NutFormItem from '../formitem/index.taro'
-import NutRadio from '../radio/index.taro.vue'
+import NutRadio from '../radio/index.taro'
 import NutRadioGroup from '../radiogroup/index.taro'
 import NutButton from '../button/index.taro'
 import NutInput from '../input/index.taro.vue'

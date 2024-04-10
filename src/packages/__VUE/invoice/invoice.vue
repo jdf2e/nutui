@@ -40,7 +40,7 @@
 import { ref } from 'vue'
 import NutForm from '../form'
 import NutFormItem from '../formitem'
-import NutRadio from '../radio/index.vue'
+import NutRadio from '../radio'
 import NutRadioGroup from '../radiogroup'
 import NutButton from '../button'
 import NutInput from '../input/index.vue'
