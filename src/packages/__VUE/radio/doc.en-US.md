@@ -94,6 +94,23 @@ Set the Radio size through `size`, which only takes effect when `shape` is `butt
 | --- | --- | --- |
 | change | Triggered when the value changes | Currently selected item value（label）【There is a value after setting `label`, which is empty by default】 |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  RadioShape,
+  RadioButtonSize,
+  RadioProps,
+  RadioInstance,
+  RadioGroupDirection,
+  RadioGroupTextPosition,
+  RadioGroupProps,
+  RadioGroupInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

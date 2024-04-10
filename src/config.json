@@ -397,6 +397,7 @@
           "name": "Radio",
           "cName": "单选按钮",
           "desc": "单选按钮",
+          "setup": true,
           "author": "Ymm0008"
         },
         {
@@ -405,6 +406,7 @@
           "cName": "单选按钮组",
           "desc": "单选按钮组",
           "show": false,
+          "setup": true,
           "author": "Ymm0008"
         },
         {
