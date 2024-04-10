@@ -192,7 +192,7 @@ Other Changes
 Bug Fixes
 
 - tabs: 修复 taro h5 下 placeholder 展示错误 (#2801) @eiinu
-- remove defualt font-family style (#2792) @eiinu
+- remove default font-family style (#2792) @eiinu
 
 Other Changes
 

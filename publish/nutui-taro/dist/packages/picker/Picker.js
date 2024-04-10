@@ -226,7 +226,7 @@ const _sfc_main$1 = create$1({
     // 特殊环境判断
     taro: {
       type: Boolean,
-      defualt: false
+      default: false
     }
   },
   emits: ["click", "change"],

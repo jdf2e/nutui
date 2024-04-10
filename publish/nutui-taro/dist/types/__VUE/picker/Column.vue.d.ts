@@ -33,7 +33,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     taro: {
         type: BooleanConstructor;
-        defualt: boolean;
+        default: boolean;
     };
 }, {
     setRollerStyle: (index: number) => string;
@@ -111,7 +111,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
     taro: {
         type: BooleanConstructor;
-        defualt: boolean;
+        default: boolean;
     };
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;

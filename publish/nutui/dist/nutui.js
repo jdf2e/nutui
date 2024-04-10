@@ -6268,7 +6268,7 @@ const Lo = Symbol("nut-checkbox"), { create: Df, componentName: tt } = Z("checkb
     // 特殊环境判断
     taro: {
       type: Boolean,
-      defualt: !1
+      default: !1
     }
   },
   emits: ["click", "change"],
