@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { reactive, computed, provide, watch } from 'vue'
 import { useChildren, getPropByPath, isPromise } from '@/packages/utils'
-import NutCellGroup from '../cellgroup/index.vue'
+import NutCellGroup from '../cellgroup'
 import type { FormErrorMessage, FormLabelPosition, FormRule, FormRules, FormStarPosition, FormItemRule } from './types'
 import { FORM_KEY, FORM_DISABLED_KEY } from './common'
 

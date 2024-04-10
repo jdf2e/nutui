@@ -80,6 +80,7 @@
           "name": "Cell",
           "cName": "单元格",
           "desc": "展示列表",
+          "setup": true,
           "author": "richard1015"
         },
         {
@@ -88,6 +89,7 @@
           "cName": "单元格组件",
           "show": false,
           "desc": "展示分组列表",
+          "setup": true,
           "author": "richard1015"
         },
         {
