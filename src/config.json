@@ -405,6 +405,7 @@
           "cName": "单选按钮组",
           "desc": "单选按钮组",
           "show": false,
+          "setup": true,
           "author": "Ymm0008"
         },
         {
