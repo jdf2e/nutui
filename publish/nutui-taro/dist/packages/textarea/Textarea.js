@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRef, ref, computed, watch, nextTick, onMounted, openBlock, createElementBlock, normalizeClass, createElementVNode, mergeProps, unref, createTextVNode, toDisplayString, createCommentVNode, normalizeStyle } from "vue";
 import Taro from "@tarojs/taro";
 import { u as useLocale } from "../index-5sMqqUcW.js";
-import { u as useFormDisabled } from "../common-DRG0ue26.js";
+import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["rows", "disabled", "value", "maxlength", "placeholder", "auto-focus"];
 const _hoisted_2 = {

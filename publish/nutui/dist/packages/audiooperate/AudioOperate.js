@@ -21,6 +21,7 @@ import { inject, reactive, ref, useSlots, toRefs, resolveComponent, openBlock, c
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-CFigyH92.js";
+import { A as AUDIO_KEY } from "../types-BMA1Y94E.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("audio-operate");
 const cN = "NutAudioOperate";
@@ -38,7 +39,7 @@ const _sfc_main = create({
   emits: ["click"],
   setup(props) {
     const translate = useLocale(cN);
-    const audio = inject("audioParent");
+    const audio = inject(AUDIO_KEY);
     const parent = reactive(audio);
     const customSlot = ref(useSlots().default);
     return __spreadProps(__spreadValues(__spreadValues({}, toRefs(props)), toRefs(parent)), { customSlot, translate });

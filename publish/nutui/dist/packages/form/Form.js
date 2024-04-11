@@ -53,7 +53,7 @@ import { defineComponent, computed, reactive, provide, watch, openBlock, createE
 import { u as useChildren } from "../useChildren-BZ4-J79J.js";
 import { g as getPropByPath, f as isPromise } from "../util-DnfK0Qan.js";
 import { CellGroup as _sfc_main$1 } from "../cellgroup/CellGroup.js";
-import { F as FORM_KEY, a as FORM_DISABLED_KEY } from "../common-DRG0ue26.js";
+import { F as FORM_TIP_KEY, a as FORM_KEY, b as FORM_DISABLED_KEY } from "../common-BH7uB7Cn.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
   name: "NutForm"
@@ -75,7 +75,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const { linkChildren: linkChildren2 } = useChildren(FORM_DISABLED_KEY);
     linkChildren2({ props });
     const formErrorTip = computed(() => reactive({}));
-    provide("formErrorTip", formErrorTip);
+    provide(FORM_TIP_KEY, formErrorTip);
     const clearErrorTips = () => {
       Object.keys(formErrorTip.value).forEach((item) => {
         formErrorTip.value[item] = "";

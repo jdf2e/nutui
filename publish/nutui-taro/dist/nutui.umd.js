@@ -3184,6 +3184,7 @@ var __async = (__this, __arguments, generator) => {
     };
     return { touchMethods, touchState, tabsContentRef };
   };
+  const TABS_KEY = Symbol("nut-tab");
   class Title {
     constructor() {
       __publicField(this, "title", "");
@@ -3264,7 +3265,7 @@ var __async = (__this, __arguments, generator) => {
     setup(props, { emit, slots }) {
       const refRandomId = Math.random().toString(36).slice(-8);
       const container = vue.ref(null);
-      vue.provide("tabsOpiton", {
+      vue.provide(TABS_KEY, {
         activeKey: vue.computed(() => props.modelValue || "0"),
         autoHeight: vue.computed(() => props.autoHeight),
         animatedTime: vue.computed(() => props.animatedTime)
@@ -3602,7 +3603,7 @@ var __async = (__this, __arguments, generator) => {
     },
     emits: ["click"],
     setup(props) {
-      const parentOption = vue.inject("tabsOpiton");
+      const parentOption = vue.inject(TABS_KEY);
       const paneStyle = vue.computed(() => {
         return {
           display: parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? "none" : void 0
@@ -3814,6 +3815,7 @@ var __async = (__this, __arguments, generator) => {
   const SubSideNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$V]]);
   const FORM_KEY = Symbol("nut-form");
   const FORM_DISABLED_KEY = Symbol("nut-form-disabled");
+  const FORM_TIP_KEY = Symbol("nut-form-tip");
   const useFormDisabled = (disabled) => {
     const { parent } = useParent(FORM_DISABLED_KEY);
     return vue.computed(() => {
@@ -10230,7 +10232,7 @@ var __async = (__this, __arguments, generator) => {
       const { linkChildren: linkChildren2 } = useChildren(FORM_DISABLED_KEY);
       linkChildren2({ props });
       const formErrorTip = vue.computed(() => vue.reactive({}));
-      vue.provide("formErrorTip", formErrorTip);
+      vue.provide(FORM_TIP_KEY, formErrorTip);
       const clearErrorTips = () => {
         Object.keys(formErrorTip.value).forEach((item) => {
           formErrorTip.value[item] = "";
@@ -10409,7 +10411,7 @@ var __async = (__this, __arguments, generator) => {
         const position = props.starPosition ? props.starPosition : starPosition;
         return position !== "left" ? `nut-form-item__star-${position}` : "";
       });
-      const parent = vue.inject("formErrorTip");
+      const parent = vue.inject(FORM_TIP_KEY);
       const labelStyle = vue.computed(() => {
         return {
           width: pxCheck(props.labelWidth),

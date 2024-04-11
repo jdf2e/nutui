@@ -1,5 +1,5 @@
 import { type PropType } from 'vue';
-import type { AudioOperateType } from './types';
+import { type AudioOperateType } from '../audio/types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;

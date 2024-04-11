@@ -22,7 +22,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { a as isArray } from "../util-DnfK0Qan.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useRect } from "../index-B1qsj2XR.js";
-import { u as useFormDisabled } from "../common-DRG0ue26.js";
+import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({

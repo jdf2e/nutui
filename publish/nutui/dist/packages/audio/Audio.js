@@ -21,6 +21,7 @@ import { ref, reactive, onMounted, watch, provide, toRefs, resolveComponent, ope
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { Service } from "@nutui/icons-vue";
 import NutRange from "../range/Range.js";
+import { A as AUDIO_KEY } from "../types-BMA1Y94E.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("audio");
 const _sfc_main = create({
@@ -172,7 +173,7 @@ const _sfc_main = create({
         handle(value);
       }
     );
-    provide("audioParent", {
+    provide(AUDIO_KEY, {
       children: [],
       props,
       audioData,

@@ -43,7 +43,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { a as preventDefault } from "../util-7oDGftbO.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
-import { u as useFormDisabled } from "../common-DRG0ue26.js";
+import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { componentName, create } = createComponent("range");
 const _sfc_main = create({

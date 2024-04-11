@@ -3,7 +3,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { CheckNormal, Checked, CheckDisabled } from "@nutui/icons-vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { C as CHECKBOX_KEY } from "../types-48N1bMrT.js";
-import { u as useFormDisabled } from "../common-DRG0ue26.js";
+import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 const { create, componentName } = createComponent("checkbox");
 const _sfc_main = create({
   props: {

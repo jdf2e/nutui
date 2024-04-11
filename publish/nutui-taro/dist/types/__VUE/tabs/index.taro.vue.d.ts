@@ -1,5 +1,5 @@
 import { VNode, Ref, CSSProperties, PropType } from 'vue';
-import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types';
+import { type TabsDirection, type TabsSize, type TabsType, type TabsAlign } from './types';
 export declare class Title {
     title: string;
     titleSlot?: VNode[];

@@ -19,6 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { inject, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
+import { T as TABS_KEY } from "../types-BXlnzugj.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("tab-pane");
 const _sfc_main = create({
@@ -38,7 +39,7 @@ const _sfc_main = create({
   },
   emits: ["click"],
   setup(props) {
-    const parentOption = inject("tabsOpiton");
+    const parentOption = inject(TABS_KEY);
     const paneStyle = computed(() => {
       return {
         display: parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? "none" : void 0

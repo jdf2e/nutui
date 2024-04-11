@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, inject, openBlock, createBlock, unref, normalizeClass, normalizeStyle, withCtx, createElementBlock, renderSlot, createTextVNode, toDisplayString, createCommentVNode, createElementVNode } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { Cell as _sfc_main$1 } from "../cell/Cell.js";
-import { F as FORM_KEY } from "../common-DRG0ue26.js";
+import { F as FORM_TIP_KEY, a as FORM_KEY } from "../common-BH7uB7Cn.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-cell__value nut-form-item__body" };
@@ -67,7 +67,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       const position = props.starPosition ? props.starPosition : starPosition;
       return position !== "left" ? `nut-form-item__star-${position}` : "";
     });
-    const parent = inject("formErrorTip");
+    const parent = inject(FORM_TIP_KEY);
     const labelStyle = computed(() => {
       return {
         width: pxCheck(props.labelWidth),
