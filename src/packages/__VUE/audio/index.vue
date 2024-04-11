@@ -64,7 +64,7 @@ import { toRefs, ref, onMounted, reactive, watch, provide, type PropType } from 
 import { createComponent } from '@/packages/utils/create'
 import { Service } from '@nutui/icons-vue'
 import NutRange from '../range/index.vue'
-import type { AudioType } from './types'
+import { AUDIO_KEY, type AudioType } from './types'
 const { create } = createComponent('audio')
 
 export default create({
@@ -257,7 +257,7 @@ export default create({
       }
     )
 
-    provide('audioParent', {
+    provide(AUDIO_KEY, {
       children: [],
       props,
       audioData,

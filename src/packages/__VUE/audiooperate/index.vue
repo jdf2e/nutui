@@ -32,7 +32,7 @@ import { toRefs, ref, useSlots, reactive, inject, type PropType } from 'vue'
 import { createComponent } from '@/packages/utils/create'
 import NutButton from '../button'
 import { useLocale } from '@/packages/utils/useLocale'
-import type { AudioOperateType } from './types'
+import { type AudioOperateType, AUDIO_KEY } from '../audio/types'
 
 const { create } = createComponent('audio-operate')
 const cN = 'NutAudioOperate'
@@ -52,7 +52,7 @@ export default create({
 
   setup(props) {
     const translate = useLocale(cN)
-    const audio: any = inject('audioParent')
+    const audio: any = inject(AUDIO_KEY)
     const parent: {
       children: []
       audioData: any

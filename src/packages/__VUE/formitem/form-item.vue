@@ -28,7 +28,7 @@ import { pxCheck } from '@/packages/utils/pxCheck'
 import { computed, inject, CSSProperties } from 'vue'
 import type { FormItemRule, FormLabelPosition, FormStarPosition } from '../form/types'
 import NutCell from '../cell'
-import { FORM_KEY } from '../form/common'
+import { FORM_KEY, FORM_TIP_KEY } from '../form/common'
 import { useParent } from '@/packages/utils'
 
 defineOptions({
@@ -84,7 +84,7 @@ const starPositionClass = computed(() => {
   return position !== 'left' ? `nut-form-item__star-${position}` : ''
 })
 
-const parent = inject('formErrorTip') as any
+const parent = inject(FORM_TIP_KEY) as any
 
 const labelStyle = computed(() => {
   return {
