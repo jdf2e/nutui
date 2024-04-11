@@ -79,7 +79,7 @@ const genaratorWebTypes = () => {
         const infoItem = inlineItem.length ? `${inlineItem[1]?.content}` : ''
         const typeItem = inlineItem.length ? `${inlineItem[2]?.content?.toLowerCase()}` : ''
         const defaultItem = inlineItem.length ? `${inlineItem[3]?.content}` : ''
-        attributes.push({
+        const attribute = {
           name: propItem,
           default: defaultItem,
           description: infoItem,
@@ -87,7 +87,17 @@ const genaratorWebTypes = () => {
             type: typeItem,
             kind: 'expression'
           }
-        })
+        }
+        if (propItem === 'v-model') {
+          // add `modelValue`
+          attributes.push({ ...attribute, name: 'modelValue' })
+          if (typeItem === 'boolean') {
+            // fix: warning `is not a valid value for v-model` in JetBrains IDE
+            // ref: https://github.com/JetBrains/web-types/issues/79#issuecomment-2045153333
+            attribute.value = { ...attribute.value, type: typeItem + ' ' }
+          }
+        }
+        attributes.push(attribute)
       }
       let compoName = kebabCase(getCompName(componentDir))
       typesData.contributions.html.tags.push({
