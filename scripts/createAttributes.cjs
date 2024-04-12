@@ -67,6 +67,7 @@ const genaratorWebTypes = () => {
         absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`)
       }
       let attributes = []
+      const events = []
       if (!fs.existsSync(absolutePath)) continue
       const data = fs.readFileSync(absolutePath, 'utf8')
       let sources = MarkdownIt.parse(data, {})
@@ -89,13 +90,24 @@ const genaratorWebTypes = () => {
           }
         }
         if (propItem === 'v-model') {
+          const modelValue = 'modelValue'
           // add `modelValue`
-          attributes.push({ ...attribute, name: 'modelValue' })
+          attributes.push({ ...attribute, name: modelValue })
           if (typeItem === 'boolean') {
             // fix: warning `is not a valid value for v-model` in JetBrains IDE
             // ref: https://github.com/JetBrains/web-types/issues/79#issuecomment-2045153333
             attribute.value = { ...attribute.value, type: typeItem + ' ' }
           }
+          events.push({
+            name: `update:${modelValue}`,
+            description: `${infoItem}\n\nEmitted when the value of \`${modelValue}\` prop changes.`,
+            arguments: [
+              {
+                name: modelValue,
+                type: typeItem
+              }
+            ]
+          })
         }
         attributes.push(attribute)
       }
@@ -103,7 +115,7 @@ const genaratorWebTypes = () => {
       typesData.contributions.html.tags.push({
         name: `nut-${compoName}`,
         slots: [],
-        events: [],
+        events,
         attributes: attributes.slice()
       })
     }
