@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "vue": "^3.4.21",
-    "@nutui/nutui": "^4.3.4",
+    "@nutui/nutui": "^4.3.5",
     "@nutui/touch-emulator": "^1.0.0"
   },
   "devDependencies": {
