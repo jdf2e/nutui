@@ -938,7 +938,18 @@
         {
           "name": "nut-calendar-card",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前选中值，单个日期 Date 格式，多个日期/范围选择 Date[] 格式\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "`date | date[]`"
+                }
+              ]
+            }
+          ],
           "attributes": [
             {
               "name": "type",
@@ -946,6 +957,15 @@
               "description": "类型，单个日期 `single`，多个日期 `multiple`，日期范围 `range`，周选择 `week`",
               "value": {
                 "type": "`string`",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "modelValue",
+              "default": "`-`",
+              "description": "当前选中值，单个日期 Date 格式，多个日期/范围选择 Date[] 格式",
+              "value": {
+                "type": "`date | date[]`",
                 "kind": "expression"
               }
             },
@@ -1078,8 +1098,28 @@
         {
           "name": "nut-cascader",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "选中值，双向绑定\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "array"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "选中值，双向绑定",
+              "value": {
+                "type": "array",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "-",
@@ -1252,14 +1292,34 @@
         {
           "name": "nut-checkbox",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "是否处于选中状态\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "boolean"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`false`",
+              "description": "是否处于选中状态",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`false`",
               "description": "是否处于选中状态",
               "value": {
-                "type": "boolean",
+                "type": "boolean ",
                 "kind": "expression"
               }
             },
@@ -1392,8 +1452,28 @@
         {
           "name": "nut-collapse",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前展开面板的 `name`\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "手风琴模式：string | number<br>非手风琴模式：(string | number)[]"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`-`",
+              "description": "当前展开面板的 `name`",
+              "value": {
+                "type": "手风琴模式：string | number<br>非手风琴模式：(string | number)[]",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`-`",
@@ -1530,8 +1610,28 @@
         {
           "name": "nut-countdown",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前时间，自定义展示内容时生效\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "object"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`{}`",
+              "description": "当前时间，自定义展示内容时生效",
+              "value": {
+                "type": "object",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`{}`",
@@ -1760,8 +1860,28 @@
         {
           "name": "nut-date-picker",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "初始值\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "date"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`null`",
+              "description": "初始值",
+              "value": {
+                "type": "date",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`null`",
@@ -2869,8 +2989,28 @@
         {
           "name": "nut-input",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "输入值，双向绑定\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "string | number"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "输入值，双向绑定",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "-",
@@ -3047,8 +3187,28 @@
         {
           "name": "nut-input-number",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "初始值\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "string | number"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "初始值",
+              "value": {
+                "type": "string | number",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "-",
@@ -3625,7 +3785,18 @@
         {
           "name": "nut-number-keyboard",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前输入值\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "string"
+                }
+              ]
+            }
+          ],
           "attributes": [
             {
               "name": "v-model:visible",
@@ -3633,6 +3804,15 @@
               "description": "是否显示键盘",
               "value": {
                 "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "当前输入值",
+              "value": {
+                "type": "string",
                 "kind": "expression"
               }
             },
@@ -3792,8 +3972,28 @@
         {
           "name": "nut-pagination",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前页码\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`1`",
+              "description": "当前页码",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`1`",
@@ -4531,8 +4731,28 @@
         {
           "name": "nut-range",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前进度百分比\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number | number[]"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`0`",
+              "description": "当前进度百分比",
+              "value": {
+                "type": "number | number[]",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`0`",
@@ -4655,8 +4875,28 @@
         {
           "name": "nut-rate",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前 `star` 数，可使用 `v-model` 双向绑定数据\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number | string"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "当前 `star` 数，可使用 `v-model` 双向绑定数据",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "-",
@@ -4752,8 +4992,28 @@
         {
           "name": "nut-searchbar",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "当前输入的值\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number | string"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`''`",
+              "description": "当前输入的值",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`''`",
@@ -4921,8 +5181,28 @@
         {
           "name": "nut-short-password",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "密码初始值\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "string"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "",
+              "description": "密码初始值",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "",
@@ -5567,8 +5847,28 @@
         {
           "name": "nut-switch",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "开关状态\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "boolean | string | number"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`false`",
+              "description": "开关状态",
+              "value": {
+                "type": "boolean | string | number",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`false`",
@@ -5664,8 +5964,28 @@
         {
           "name": "nut-tabbar",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "选中标签的索引值或者名称\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`0`",
+              "description": "选中标签的索引值或者名称",
+              "value": {
+                "type": "number",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`0`",
@@ -5777,8 +6097,28 @@
         {
           "name": "nut-tabs",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "绑定当前选中标签的标识符\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "number | string"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`0`",
+              "description": "绑定当前选中标签的标识符",
+              "value": {
+                "type": "number | string",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`0`",
@@ -5980,8 +6320,28 @@
         {
           "name": "nut-textarea",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "输入值，支持双向绑定\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "string"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "-",
+              "description": "输入值，支持双向绑定",
+              "value": {
+                "type": "string",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "-",
@@ -6307,14 +6667,34 @@
         {
           "name": "nut-tour",
           "slots": [],
-          "events": [],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "是否展示引导弹出层\n\nEmitted when the value of `modelValue` prop changes.",
+              "arguments": [
+                {
+                  "name": "modelValue",
+                  "type": "boolean"
+                }
+              ]
+            }
+          ],
           "attributes": [
+            {
+              "name": "modelValue",
+              "default": "`false`",
+              "description": "是否展示引导弹出层",
+              "value": {
+                "type": "boolean",
+                "kind": "expression"
+              }
+            },
             {
               "name": "v-model",
               "default": "`false`",
               "description": "是否展示引导弹出层",
               "value": {
-                "type": "boolean",
+                "type": "boolean ",
                 "kind": "expression"
               }
             },
