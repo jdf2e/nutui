@@ -1,11 +1,8 @@
 <template>
   <view class="nut-countdown">
-    <template v-if="$slots.default">
-      <slot></slot>
-    </template>
-    <template v-else>
+    <slot>
       <view class="nut-countdown__content" v-html="renderTime"></view>
-    </template>
+    </slot>
   </view>
 </template>
 
