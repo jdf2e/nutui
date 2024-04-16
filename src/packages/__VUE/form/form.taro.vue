@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import { reactive, computed, provide, watch } from 'vue'
 import { useChildren, getPropByPath, isPromise } from '@/packages/utils'
-import NutCellGroup from '../cellgroup/index.taro.vue'
+import NutCellGroup from '../cellgroup/index.taro'
 import type { FormErrorMessage, FormLabelPosition, FormRule, FormRules, FormStarPosition, FormItemRule } from './types'
-import { FORM_KEY, FORM_DISABLED_KEY } from './common'
+import { FORM_KEY, FORM_DISABLED_KEY, FORM_TIP_KEY } from './common'
 
 defineOptions({
   name: 'NutForm'
@@ -42,7 +42,7 @@ linkChildren2({ props })
 
 const formErrorTip = computed(() => reactive<any>({}))
 
-provide('formErrorTip', formErrorTip)
+provide(FORM_TIP_KEY, formErrorTip)
 const clearErrorTips = () => {
   Object.keys(formErrorTip.value).forEach((item) => {
     formErrorTip.value[item] = ''

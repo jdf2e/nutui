@@ -77,7 +77,7 @@ export default create({
     // 特殊环境判断
     taro: {
       type: Boolean,
-      defualt: false
+      default: false
     }
   },
 

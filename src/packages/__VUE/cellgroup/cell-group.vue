@@ -10,13 +10,18 @@
   </view>
 </template>
 
-<script lang="ts">
-import { createComponent } from '@/packages/utils/create'
-const { create } = createComponent('cell-group')
-export default create({
-  props: {
-    title: { type: String, default: '' },
-    desc: { type: String, default: '' }
-  }
+<script setup lang="ts">
+defineOptions({
+  name: 'NutCellGroup'
+})
+
+export type CellGroupProps = Partial<{
+  title: string
+  desc: string
+}>
+
+withDefaults(defineProps<CellGroupProps>(), {
+  title: '',
+  desc: ''
 })
 </script>

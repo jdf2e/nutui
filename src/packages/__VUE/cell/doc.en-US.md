@@ -105,6 +105,18 @@ You can center the left and right contents of the cell vertically through the 'c
 | title | Custom `title` slot |
 | desc | Custom `desc` slot |
 
+### Types v4.3.5
+
+The component exports the following type definitions:
+
+```js
+import type {
+  CellSize,
+  CellProps,
+  CellInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

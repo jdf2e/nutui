@@ -1,3 +1,23 @@
+## v4.3.5
+
+`2024-04-10`
+
+Features
+
+- input-number: 支持透传属性至 input 元素 (#3008) @eiinu
+
+Bug Fixes
+
+- tag: 修复图标引用问题 @eiinu
+
+Refactors
+
+- move to script setup: skeleton, cell @eiinu
+
+Other Changes
+
+- deps: typescript v5.4.4 (#3013) @eiinu
+
 ## v4.3.4
 
 `2024-04-01`
@@ -172,7 +192,7 @@ Other Changes
 Bug Fixes
 
 - tabs: 修复 taro h5 下 placeholder 展示错误 (#2801) @eiinu
-- remove defualt font-family style (#2792) @eiinu
+- remove default font-family style (#2792) @eiinu
 
 Other Changes
 

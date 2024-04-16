@@ -49,7 +49,7 @@
           <view
             v-for="(item, index) in titles"
             :key="item.paneKey"
-            :ref="(e) => setTabItemRef(e as HTMLElement, index)"
+            :ref="(e: any) => setTabItemRef(e as HTMLElement, index)"
             class="nut-tabs__titles-item"
             :style="titleStyle"
             :class="{
@@ -103,7 +103,7 @@ import { TypeOfFun } from '@/packages/utils/util'
 import { useRect } from '@/packages/utils/useRect'
 import raf from '@/packages/utils/raf'
 import { useTabContentTouch } from './hooks'
-import type { TabsDirection, TabsSize, TabsType, TabsAlign } from './types'
+import { type TabsDirection, type TabsSize, type TabsType, type TabsAlign, TABS_KEY } from './types'
 
 export class Title {
   title = ''
@@ -184,7 +184,7 @@ export default create({
   setup(props, { emit, slots }: any) {
     const container = ref<any>(null)
     let stickyFixed: boolean
-    provide('tabsOpiton', {
+    provide(TABS_KEY, {
       activeKey: computed(() => props.modelValue || '0'),
       autoHeight: computed(() => props.autoHeight),
       animatedTime: computed(() => props.animatedTime)
