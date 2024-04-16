@@ -74,7 +74,7 @@ import { TypeOfFun } from '@/packages/utils/util'
 import raf from '@/packages/utils/raf'
 import { useTabContentTouch } from './hooks'
 import { useTaroRect } from '@/packages/utils/useTaroRect'
-import type { RectItem, TabsDirection, TabsSize, TabsType, TabsAlign } from './types'
+import { type RectItem, type TabsDirection, type TabsSize, type TabsType, type TabsAlign, TABS_KEY } from './types'
 
 export class Title {
   title = ''
@@ -158,7 +158,7 @@ export default create({
   setup(props, { emit, slots }: any) {
     const refRandomId = Math.random().toString(36).slice(-8)
     const container = ref(null)
-    provide('tabsOpiton', {
+    provide(TABS_KEY, {
       activeKey: computed(() => props.modelValue || '0'),
       autoHeight: computed(() => props.autoHeight),
       animatedTime: computed(() => props.animatedTime)

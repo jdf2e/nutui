@@ -1,13 +1,13 @@
 <template>
   <view :class="classes" :style="style" @click="onClick">
     <slot></slot>
-    <Close v-if="closeable" class="nut-tag--close" width="12px" height="12px" @click.stop="onClose"></Close>
+    <Close v-if="closeable" class="nut-tag--close" size="12px" @click.stop="onClose"></Close>
   </view>
 </template>
 
 <script setup lang="ts">
 import { CSSProperties, computed } from 'vue'
-import { Close } from '@nutui/icons-vue'
+import { Close } from '@nutui/icons-vue-taro'
 import { TagType } from './types'
 
 defineOptions({

@@ -4,6 +4,7 @@ import type { ComputedRef, Ref } from 'vue'
 
 export const FORM_KEY = Symbol('nut-form')
 export const FORM_DISABLED_KEY = Symbol('nut-form-disabled')
+export const FORM_TIP_KEY = Symbol('nut-form-tip')
 
 export const useFormDisabled = (disabled: Ref<boolean>): ComputedRef<boolean> => {
   const { parent } = useParent(FORM_DISABLED_KEY)

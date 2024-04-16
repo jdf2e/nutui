@@ -74,7 +74,7 @@ app.use(InputNumber)
 | disabled | 禁用所有功能 | boolean | `false` |
 | readonly | 只读状态禁用输入框操作行为 | boolean | `false` |
 
-### Attrs version
+### Attrs v4.3.5
 
 支持透传属性至组件内部的 input 元素。
 
