@@ -94,6 +94,23 @@ app.use(RadioGroup)
 | --- | --- | --- |
 | change | 值变化时触发 | 当前选中项值（label）【设置 label 后有值、默认为空】 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  RadioShape,
+  RadioButtonSize,
+  RadioProps,
+  RadioInstance,
+  RadioGroupDirection,
+  RadioGroupTextPosition,
+  RadioGroupProps,
+  RadioGroupInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量

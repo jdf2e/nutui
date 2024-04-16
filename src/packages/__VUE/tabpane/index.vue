@@ -6,6 +6,7 @@
 <script lang="ts">
 import { computed, CSSProperties, inject } from 'vue'
 import { createComponent } from '@/packages/utils/create'
+import { TABS_KEY } from '../tabs/types'
 const { create } = createComponent('tab-pane')
 
 export default create({
@@ -25,7 +26,7 @@ export default create({
   },
   emits: ['click'],
   setup(props) {
-    const parentOption = inject('tabsOpiton') as any
+    const parentOption = inject(TABS_KEY) as any
     const paneStyle = computed(() => {
       return {
         display:

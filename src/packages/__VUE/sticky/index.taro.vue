@@ -23,7 +23,7 @@ export default create({
     },
     scrollTop: {
       type: [Number, String],
-      defualt: -1
+      default: -1
     }
   },
   emits: ['change'],
