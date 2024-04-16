@@ -17,11 +17,9 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, computed, onBeforeMount, watch, toRefs, openBlock, createElementBlock, renderSlot } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
+import { defineComponent, ref, computed, onBeforeMount, watch, openBlock, createElementBlock, renderSlot, createElementVNode } from "vue";
 import { p as padZero } from "../util-7oDGftbO.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const getTimeStamp = (timeStr) => {
   if (!timeStr)
     return Date.now();
@@ -29,54 +27,78 @@ const getTimeStamp = (timeStr) => {
   t = +t > 0 ? +t : t.toString().replace(/-/g, "/");
   return new Date(t).getTime();
 };
-const { create } = createComponent("countdown");
-const cN = "NutCountdown";
-const _sfc_main = create({
-  props: {
-    modelValue: {
-      type: Object,
-      default: () => {
-        return {};
-      }
-    },
-    paused: {
-      default: false,
-      type: Boolean
-    },
-    startTime: {
-      // 可以是服务器当前时间
-      type: [Number, String],
-      validator(v) {
-        const dateStr = new Date(v).toString().toLowerCase();
-        return dateStr !== "invalid date";
-      }
-    },
-    endTime: {
-      type: [Number, String],
-      validator(v) {
-        const dateStr = new Date(v).toString().toLowerCase();
-        return dateStr !== "invalid date";
-      }
-    },
-    // 是否开启毫秒
-    millisecond: {
-      default: false,
-      type: Boolean
-    },
-    // 时间格式化
-    format: {
-      type: String,
-      default: "HH:mm:ss"
-    },
-    autoStart: {
-      type: Boolean,
-      default: true
-    },
-    // 倒计时时长，单位毫秒
-    time: {
-      type: [Number, String],
-      default: 0
+const parseFormat = (time, format) => {
+  let { h, m, s, ms } = time;
+  const { d } = time;
+  if (format.includes("DD")) {
+    format = format.replace("DD", padZero(d));
+  } else {
+    h += Number(d) * 24;
+  }
+  if (format.includes("HH")) {
+    format = format.replace("HH", padZero(h));
+  } else {
+    m += Number(h) * 60;
+  }
+  if (format.includes("mm")) {
+    format = format.replace("mm", padZero(m));
+  } else {
+    s += Number(m) * 60;
+  }
+  if (format.includes("ss")) {
+    format = format.replace("ss", padZero(s));
+  } else {
+    ms += Number(s) * 1e3;
+  }
+  if (format.includes("S")) {
+    const msC = padZero(ms, 3).toString();
+    if (format.includes("SSS")) {
+      format = format.replace("SSS", msC);
+    } else if (format.includes("SS")) {
+      format = format.replace("SS", msC.slice(0, 2));
+    } else if (format.includes("S")) {
+      format = format.replace("S", msC.slice(0, 1));
     }
+  }
+  return format;
+};
+const formatRemainTime = (t, format, type) => {
+  const ts = t;
+  const rest = {
+    d: 0,
+    h: 0,
+    m: 0,
+    s: 0,
+    ms: 0
+  };
+  const SECOND = 1e3;
+  const MINUTE = 60 * SECOND;
+  const HOUR = 60 * MINUTE;
+  const DAY = 24 * HOUR;
+  if (ts > 0) {
+    rest.d = ts >= SECOND ? Math.floor(ts / DAY) : 0;
+    rest.h = Math.floor(ts % DAY / HOUR);
+    rest.m = Math.floor(ts % HOUR / MINUTE);
+    rest.s = Math.floor(ts % MINUTE / SECOND);
+    rest.ms = Math.floor(ts % SECOND);
+  }
+  return type == "custom" ? rest : parseFormat(__spreadValues({}, rest), format);
+};
+const _hoisted_1 = { class: "nut-countdown" };
+const _hoisted_2 = ["innerHTML"];
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutCountdown"
+}), {
+  __name: "countdown.taro",
+  props: {
+    modelValue: {},
+    paused: { type: Boolean, default: false },
+    startTime: { default: "" },
+    endTime: { default: "" },
+    millisecond: { type: Boolean, default: false },
+    format: { default: "HH:mm:ss" },
+    autoStart: { type: Boolean, default: true },
+    time: { default: 0 }
   },
   emits: [
     "input",
@@ -89,38 +111,33 @@ const _sfc_main = create({
     "onRestart",
     "onPaused"
   ],
-  setup(props, { emit, slots }) {
-    const translate = useLocale(cN);
-    const state = reactive({
-      restTime: 0,
-      // 倒计时剩余时间时间
-      timer: null,
-      counting: !props.paused && props.autoStart,
-      // 是否处于倒计时中
-      handleEndTime: Date.now(),
-      // 最终截止时间
-      diffTime: 0
-      // 设置了 startTime 时，与 date.now() 的差异
-    });
+  setup(__props, { expose: __expose, emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const restTime = ref(0);
+    const timer = ref(null);
+    const counting = ref(!props.paused && props.autoStart);
+    const handleEndTime = ref(Date.now());
+    const diffTime = ref(0);
     const renderTime = computed(() => {
-      return formatRemainTime(state.restTime);
+      return formatRemainTime(restTime.value, props.format);
     });
     const initTime = () => {
-      state.handleEndTime = Number(props.endTime);
-      state.diffTime = Date.now() - getTimeStamp(props.startTime);
-      if (!state.counting)
-        state.counting = true;
+      handleEndTime.value = Number(props.endTime);
+      diffTime.value = Date.now() - getTimeStamp(props.startTime);
+      if (!counting.value)
+        counting.value = true;
       tick();
     };
     const tick = () => {
       if (window !== void 0) {
-        state.timer = requestAnimationFrame(() => {
-          if (state.counting) {
-            const currentTime = Date.now() - state.diffTime;
-            const remainTime = Math.max(state.handleEndTime - currentTime, 0);
-            state.restTime = remainTime;
+        timer.value = requestAnimationFrame(() => {
+          if (counting.value) {
+            const currentTime = Date.now() - diffTime.value;
+            const remainTime = Math.max(handleEndTime.value - currentTime, 0);
+            restTime.value = remainTime;
             if (!remainTime) {
-              state.counting = false;
+              counting.value = false;
               pause();
               emit("end");
               emit("onEnd");
@@ -132,95 +149,43 @@ const _sfc_main = create({
         });
       }
     };
-    const formatRemainTime = (t, type) => {
-      const ts = t;
-      let rest = {
-        d: 0,
-        h: 0,
-        m: 0,
-        s: 0,
-        ms: 0
-      };
-      const SECOND = 1e3;
-      const MINUTE = 60 * SECOND;
-      const HOUR = 60 * MINUTE;
-      const DAY = 24 * HOUR;
-      if (ts > 0) {
-        rest.d = ts >= SECOND ? Math.floor(ts / DAY) : 0;
-        rest.h = Math.floor(ts % DAY / HOUR);
-        rest.m = Math.floor(ts % HOUR / MINUTE);
-        rest.s = Math.floor(ts % MINUTE / SECOND);
-        rest.ms = Math.floor(ts % SECOND);
-      }
-      return type == "custom" ? rest : parseFormat(__spreadValues({}, rest));
-    };
-    const parseFormat = (time) => {
-      let { d, h, m, s, ms } = time;
-      let format = props.format;
-      if (format.includes("DD")) {
-        format = format.replace("DD", padZero(d));
-      } else {
-        h += Number(d) * 24;
-      }
-      if (format.includes("HH")) {
-        format = format.replace("HH", padZero(h));
-      } else {
-        m += Number(h) * 60;
-      }
-      if (format.includes("mm")) {
-        format = format.replace("mm", padZero(m));
-      } else {
-        s += Number(m) * 60;
-      }
-      if (format.includes("ss")) {
-        format = format.replace("ss", padZero(s));
-      } else {
-        ms += Number(s) * 1e3;
-      }
-      if (format.includes("S")) {
-        const msC = padZero(ms, 3).toString();
-        if (format.includes("SSS")) {
-          format = format.replace("SSS", msC);
-        } else if (format.includes("SS")) {
-          format = format.replace("SS", msC.slice(0, 2));
-        } else if (format.includes("S")) {
-          format = format.replace("S", msC.slice(0, 1));
-        }
-      }
-      return format;
-    };
     const start = () => {
-      if (!state.counting && !props.autoStart) {
-        state.counting = true;
-        state.handleEndTime = Date.now() + Number(state.restTime);
+      if (!counting.value && !props.autoStart) {
+        counting.value = true;
+        handleEndTime.value = Date.now() + Number(restTime.value);
         tick();
-        emit("restart", state.restTime);
-        emit("onRestart", state.restTime);
+        emit("restart", restTime.value);
+        emit("onRestart", restTime.value);
       }
     };
     const pause = () => {
-      cancelAnimationFrame(state.timer);
-      state.counting = false;
-      emit("paused", state.restTime);
-      emit("onPaused", state.restTime);
+      cancelAnimationFrame(timer.value);
+      counting.value = false;
+      emit("restart", restTime.value);
+      emit("onRestart", restTime.value);
     };
     const reset = () => {
       if (!props.autoStart) {
         pause();
-        state.restTime = Number(props.time);
+        restTime.value = Number(props.time);
       }
     };
+    __expose({
+      start,
+      pause,
+      reset
+    });
     onBeforeMount(() => {
       if (props.autoStart) {
         initTime();
       } else {
-        state.restTime = Number(props.time);
+        restTime.value = Number(props.time);
       }
     });
     watch(
-      () => state.restTime,
+      () => restTime.value,
       (value) => {
-        let tranTime = formatRemainTime(value, "custom");
+        const tranTime = formatRemainTime(value, props.format, "custom");
         emit("update:modelValue", tranTime);
         emit("input", tranTime);
       }
@@ -229,17 +194,17 @@ const _sfc_main = create({
       () => props.paused,
       (v, ov) => {
         if (!ov) {
-          if (state.counting) {
+          if (counting.value) {
             pause();
           }
         } else {
-          if (!state.counting) {
-            state.counting = true;
-            state.handleEndTime = Date.now() + Number(state.restTime);
+          if (!counting.value) {
+            counting.value = true;
+            handleEndTime.value = Date.now() + Number(restTime.value);
             tick();
           }
-          emit("restart", state.restTime);
-          emit("onRestart", state.restTime);
+          emit("restart", restTime.value);
+          emit("onRestart", restTime.value);
         }
       }
     );
@@ -255,28 +220,20 @@ const _sfc_main = create({
         initTime();
       }
     );
-    return __spreadProps(__spreadValues({}, toRefs(props)), {
-      slots,
-      start,
-      pause,
-      renderTime,
-      translate,
-      reset
-    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", _hoisted_1, [
+        renderSlot(_ctx.$slots, "default", {}, () => [
+          createElementVNode("view", {
+            class: "nut-countdown__content",
+            innerHTML: renderTime.value
+          }, null, 8, _hoisted_2)
+        ])
+      ]);
+    };
   }
-});
-const _hoisted_1 = { class: "nut-countdown" };
-const _hoisted_2 = ["innerHTML"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", _hoisted_1, [
-    _ctx.slots.default ? renderSlot(_ctx.$slots, "default", { key: 0 }) : (openBlock(), createElementBlock("view", {
-      key: 1,
-      class: "nut-countdown__content",
-      innerHTML: _ctx.renderTime
-    }, null, 8, _hoisted_2))
-  ]);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Countdown,
+  _sfc_main as default
 };
