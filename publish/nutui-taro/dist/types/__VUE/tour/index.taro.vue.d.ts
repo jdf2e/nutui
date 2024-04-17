@@ -174,8 +174,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     current: number;
     modelValue: boolean;
     bgColor: string;
-    steps: StepOptions[];
     location: PopoverLocation;
+    steps: StepOptions[];
     nextStepTxt: string;
     prevStepTxt: string;
     completeTxt: string;
