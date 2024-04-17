@@ -154,6 +154,9 @@ test('should emited click when step trigger', async () => {
   await nextTick()
   await wrapper.vm.$emit('click-step')
   expect(wrapper.emitted('click-step')).toBeTruthy()
+  const stepItem = wrapper.findAll('.nut-step')[0]
+  await stepItem.trigger('click')
+  expect(wrapper.emitted('click-step')).toBeTruthy()
 })
 
 test('render step slot', async () => {
