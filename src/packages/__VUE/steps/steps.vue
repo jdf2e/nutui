@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useChildren } from '@/packages/utils'
-import { STEPS_KEY, StepsDirection } from './types'
+import { STEPS_KEY, type StepsDirection } from './types'
 
 defineOptions({
   name: 'NutSteps'

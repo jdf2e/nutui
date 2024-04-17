@@ -14,12 +14,14 @@
     </view>
     <view class="nut-step-main">
       <view class="nut-step-title">
-        <span v-if="!$slots.title">{{ title }}</span>
-        <slot name="title"></slot>
+        <slot name="title">
+          <span>{{ title }}</span>
+        </slot>
       </view>
       <view v-if="content || $slots.content" class="nut-step-content">
-        <span v-if="!$slots.content" v-html="content"></span>
-        <slot name="content"></slot>
+        <slot name="content">
+          <span v-html="content"></span>
+        </slot>
       </view>
     </view>
   </view>
@@ -46,13 +48,11 @@ withDefaults(defineProps<StepProps>(), {
 
 const { index, parent } = useParent(STEPS_KEY)
 
-const getCurrentStatus = () => {
+const status = computed(() => {
   const activeIndex = index.value + 1
   if (activeIndex < +parent.props.current) return 'finish'
   return activeIndex === +parent.props.current ? 'process' : 'wait'
-}
-
-const status = computed(() => getCurrentStatus())
+})
 
 const dot = computed(() => parent.props.progressDot)
 
