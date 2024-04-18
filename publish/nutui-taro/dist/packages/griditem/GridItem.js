@@ -1,58 +1,40 @@
-import { inject, getCurrentInstance, onUnmounted, computed, ref, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createTextVNode, Fragment, toDisplayString } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
-import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
-import { G as GRID_KEY } from "../common-Chr7cC9o.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-function useInject(key) {
-  const parent = inject(key, null);
-  if (parent) {
-    const instance = getCurrentInstance();
-    const { add, remove, internalChildren } = parent;
-    add(instance);
-    onUnmounted(() => remove(instance));
-    const index = computed(() => internalChildren.indexOf(instance));
-    return {
-      parent,
-      index
-    };
-  }
-  return {
-    parent: null,
-    index: ref(-1)
-  };
-}
-const { create, componentName } = createComponent("grid-item");
-const _sfc_main = create({
-  props: {
-    text: {
-      type: String
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
     }
-    // router
-    // to: {
-    //   type: [String, Object]
-    // },
-    // url: {
-    //   type: String,
-    //   default: ''
-    // },
-    // replace: {
-    //   type: Boolean,
-    //   default: false
-    // }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, createElementVNode, normalizeClass, renderSlot, createTextVNode, Fragment, toDisplayString } from "vue";
+import { u as useParent } from "../useParent-D6DiuxZZ.js";
+import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
+import { G as GRID_KEY } from "../types-CJeZIBld.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = { class: "nut-grid-item__text" };
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutGridItem"
+}), {
+  __name: "grid-item.taro",
+  props: {
+    text: {}
   },
   emits: ["click"],
-  setup(props, { emit }) {
-    const Parent = useInject(GRID_KEY);
-    if (!Parent.parent)
-      return {};
-    const index = Parent.index;
-    const parent = Parent.parent.props;
-    const rootClass = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
+  setup(__props, { emit: __emit }) {
+    const emit = __emit;
+    const { parent: parentObj, index } = useParent(GRID_KEY);
+    const parent = (parentObj == null ? void 0 : parentObj.props) || {};
     const rootStyle = computed(() => {
       const style = {
         flexBasis: `${100 / +parent.columnNum}%`
@@ -68,7 +50,7 @@ const _sfc_main = create({
       return style;
     });
     const contentClass = computed(() => {
-      const prefixCls = `${componentName}__content`;
+      const prefixCls = `nut-grid-item__content`;
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}--border`]: parent.border,
@@ -83,35 +65,29 @@ const _sfc_main = create({
     const handleClick = (event) => {
       emit("click", event);
     };
-    return {
-      rootClass,
-      rootStyle,
-      contentClass,
-      handleClick
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: "nut-grid-item",
+        style: normalizeStyle(rootStyle.value),
+        onClick: handleClick
+      }, [
+        createElementVNode("view", {
+          class: normalizeClass(contentClass.value)
+        }, [
+          renderSlot(_ctx.$slots, "default"),
+          createTextVNode(),
+          createElementVNode("view", _hoisted_1, [
+            _ctx.text ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+              createTextVNode(toDisplayString(_ctx.text), 1)
+            ], 64)) : renderSlot(_ctx.$slots, "text", { key: 1 })
+          ])
+        ], 2)
+      ], 4);
     };
   }
-});
-const _hoisted_1 = { class: "nut-grid-item__text" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.rootClass),
-    style: normalizeStyle(_ctx.rootStyle),
-    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
-  }, [
-    createElementVNode("view", {
-      class: normalizeClass(_ctx.contentClass)
-    }, [
-      renderSlot(_ctx.$slots, "default"),
-      createTextVNode(),
-      createElementVNode("view", _hoisted_1, [
-        _ctx.text ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-          createTextVNode(toDisplayString(_ctx.text), 1)
-        ], 64)) : renderSlot(_ctx.$slots, "text", { key: 1 })
-      ])
-    ], 2)
-  ], 6);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as GridItem,
+  _sfc_main as default
 };

@@ -596,12 +596,16 @@ var __async = (__this, __arguments, generator) => {
     };
     return _comp;
   };
-  withInstall(_sfc_main$1M);
   const pxCheck = (value) => {
     if (value !== void 0) {
       return isNaN(Number(value)) ? String(value) : `${value}px`;
     }
   };
+  function useRouter() {
+    const proxy = vue.getCurrentInstance().proxy;
+    return proxy.$router || null;
+  }
+  withInstall(_sfc_main$1M);
   const _hoisted_1$1j = {
     key: 0,
     class: "nut-cell__icon"
@@ -749,8 +753,8 @@ var __async = (__this, __arguments, generator) => {
       return vue.h(icon, props);
     return "";
   };
-  const { componentName: componentName$d, create: create$1b } = createComponent("overlay");
-  const _sfc_main$1J = create$1b({
+  const { componentName: componentName$b, create: create$19 } = createComponent("overlay");
+  const _sfc_main$1J = create$19({
     props: {
       visible: {
         type: Boolean,
@@ -783,7 +787,7 @@ var __async = (__this, __arguments, generator) => {
     emits: ["click", "update:visible"],
     setup(props, { emit }) {
       const classes = vue.computed(() => {
-        const prefixCls2 = componentName$d;
+        const prefixCls2 = componentName$b;
         return {
           [prefixCls2]: true,
           [props.overlayClass]: true
@@ -812,7 +816,7 @@ var __async = (__this, __arguments, generator) => {
     return target;
   };
   const _hoisted_1$1h = ["catch-move"];
-  function _sfc_render$15(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$14(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock(vue.Transition, { name: "overlay-fade" }, {
       default: vue.withCtx(() => [
         vue.withDirectives(vue.createElementVNode("view", {
@@ -829,7 +833,7 @@ var __async = (__this, __arguments, generator) => {
       _: 3
     });
   }
-  const Overlay = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["render", _sfc_render$15]]);
+  const Overlay = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["render", _sfc_render$14]]);
   const popupProps = {
     visible: {
       type: Boolean,
@@ -908,10 +912,10 @@ var __async = (__this, __arguments, generator) => {
       default: () => ({})
     }
   };
-  const { componentName: componentName$c, create: create$1a } = createComponent("popup");
+  const { componentName: componentName$a, create: create$18 } = createComponent("popup");
   const initIndex = 2e3;
   let _zIndex = initIndex;
-  const _sfc_main$1I = create$1a({
+  const _sfc_main$1I = create$18({
     components: {
       NutOverlay: Overlay,
       Close: iconsVueTaro.Close
@@ -926,7 +930,7 @@ var __async = (__this, __arguments, generator) => {
         closed: props.closeable
       });
       const classes = vue.computed(() => {
-        const prefixCls2 = componentName$c;
+        const prefixCls2 = componentName$a;
         return {
           [prefixCls2]: true,
           ["round"]: props.round,
@@ -1016,7 +1020,7 @@ var __async = (__this, __arguments, generator) => {
       });
     }
   });
-  function _sfc_render$14(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_nut_overlay = vue.resolveComponent("nut-overlay");
     const _component_Close = vue.resolveComponent("Close");
     return vue.openBlock(), vue.createElementBlock("view", null, [
@@ -1061,8 +1065,8 @@ var __async = (__this, __arguments, generator) => {
       }, 8, ["name", "onAfterEnter", "onAfterLeave"])
     ]);
   }
-  const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["render", _sfc_render$14]]);
-  const component$1 = (tag) => {
+  const Popup = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["render", _sfc_render$13]]);
+  const component = (tag) => {
     return {
       props: {
         theme: { type: String, default: "" },
@@ -1119,10 +1123,10 @@ var __async = (__this, __arguments, generator) => {
       }
     };
   };
-  const { create: create$19 } = createComponent("config-provider");
-  const _sfc_main$1H = create$19(component$1("view"));
-  const { create: create$18 } = createComponent("layout");
-  const _sfc_main$1G = create$18({});
+  const { create: create$17 } = createComponent("config-provider");
+  const _sfc_main$1H = create$17(component("view"));
+  const { create: create$16 } = createComponent("layout");
+  const _sfc_main$1G = create$16({});
   withInstall(_sfc_main$1G);
   const LAYOUT_KEY = Symbol("nut-layout");
   const prefixCls$1 = "nut-col";
@@ -1262,8 +1266,8 @@ var __async = (__this, __arguments, generator) => {
       }
     });
   };
-  const { create: create$17 } = createComponent("sticky");
-  const _sfc_main$1D = create$17({
+  const { create: create$15 } = createComponent("sticky");
+  const _sfc_main$1D = create$15({
     props: {
       top: {
         type: [Number, String],
@@ -1330,7 +1334,7 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const _hoisted_1$1g = ["id"];
-  function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       id: "rootRef-" + _ctx.refRandomId,
       ref: "rootRef",
@@ -1345,7 +1349,7 @@ var __async = (__this, __arguments, generator) => {
       ], 4)
     ], 12, _hoisted_1$1g);
   }
-  const Sticky = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["render", _sfc_render$13]]);
+  const Sticky = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["render", _sfc_render$12]]);
   const _sfc_main$1C = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
     name: "NutDivider"
   }), {
@@ -1387,119 +1391,27 @@ var __async = (__this, __arguments, generator) => {
     }
   }));
   withInstall(_sfc_main$1C);
-  function flattenVNodes(children, childName) {
-    const result = [];
-    const traverse = (children2) => {
-      if (!Array.isArray(children2))
-        return;
-      children2.forEach((child) => {
-        var _a;
-        if (!vue.isVNode(child))
-          return;
-        if (childName) {
-          if (child.type && child.type.name === childName) {
-            result.push(child);
-            return;
-          }
-        } else {
-          result.push(child);
-        }
-        if ((_a = child.component) == null ? void 0 : _a.subTree) {
-          traverse(child.component.subTree.children);
-        }
-        if (child.children) {
-          traverse(child.children);
-        }
-      });
-    };
-    traverse(children);
-    return result;
-  }
-  function sortChildren(parent, internalChildren, childName) {
-    const vnodes = flattenVNodes(parent.subTree.children, childName);
-    internalChildren.sort((a, b) => {
-      return vnodes.indexOf(a.vnode) - vnodes.indexOf(b.vnode);
-    });
-  }
-  function useProvide(key, childName) {
-    const internalChildren = vue.shallowReactive([]);
-    const parent = vue.getCurrentInstance();
-    const add = (child) => {
-      if (!child.proxy)
-        return;
-      internalChildren.push(vue.markRaw(child));
-      sortChildren(parent, internalChildren, childName);
-    };
-    const remove = (child) => {
-      internalChildren.splice(internalChildren.indexOf(vue.markRaw(child)), 1);
-    };
-    const extend = Object.assign;
-    return (value) => {
-      vue.provide(
-        key,
-        extend(
-          {
-            add,
-            remove,
-            internalChildren
-          },
-          value
-        )
-      );
-      return {
-        internalChildren
-      };
-    };
-  }
-  const { componentName: componentName$b } = createComponent("grid");
   const GRID_KEY = Symbol("grid");
-  const gridProps = {
-    // 列数
-    columnNum: {
-      type: [Number, String],
-      default: 4
+  const _sfc_main$1B = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
+    name: "NutGrid"
+  }), {
+    __name: "grid.taro",
+    props: {
+      columnNum: { default: 4 },
+      border: { type: Boolean, default: true },
+      gutter: { default: 0 },
+      center: { type: Boolean, default: true },
+      square: { type: Boolean, default: false },
+      reverse: { type: Boolean, default: false },
+      direction: {},
+      clickable: { type: Boolean, default: false }
     },
-    // 是否显示边框
-    border: {
-      type: Boolean,
-      default: true
-    },
-    // 格子之间间隔距离
-    gutter: {
-      type: [Number, String],
-      default: 0
-    },
-    // 是否内容居中
-    center: {
-      type: Boolean,
-      default: true
-    },
-    // 是否固定正方形
-    square: {
-      type: Boolean,
-      default: false
-    },
-    // 内容与文字翻转
-    reverse: {
-      type: Boolean,
-      default: false
-    },
-    // 内容排列方向
-    direction: {
-      type: String
-    },
-    // 是否开启点击反馈
-    clickable: {
-      type: Boolean,
-      default: false
-    }
-  };
-  const component = {
-    props: gridProps,
-    setup(props, { slots }) {
-      useProvide(GRID_KEY, `NutGridItem`)({ props });
+    setup(__props) {
+      const props = __props;
+      const { linkChildren } = useChildren(GRID_KEY);
+      linkChildren({ props });
       const rootClass = vue.computed(() => {
-        const prefixCls2 = componentName$b;
+        const prefixCls2 = "nut-grid";
         return {
           [prefixCls2]: true,
           [`${prefixCls2}--border`]: props.border && !props.gutter
@@ -1512,71 +1424,30 @@ var __async = (__this, __arguments, generator) => {
         }
         return style;
       });
-      return () => {
-        var _a;
-        return vue.h(
-          "view",
-          {
-            class: rootClass.value,
-            style: rootStyle.value
-          },
-          (_a = slots.default) == null ? void 0 : _a.call(slots)
-        );
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", {
+          class: vue.normalizeClass(rootClass.value),
+          style: vue.normalizeStyle(rootStyle.value)
+        }, [
+          vue.renderSlot(_ctx.$slots, "default")
+        ], 6);
       };
     }
-  };
-  const { create: create$16 } = createComponent("grid");
-  const _sfc_main$1B = create$16(component);
-  function useInject(key) {
-    const parent = vue.inject(key, null);
-    if (parent) {
-      const instance = vue.getCurrentInstance();
-      const { add, remove, internalChildren } = parent;
-      add(instance);
-      vue.onUnmounted(() => remove(instance));
-      const index = vue.computed(() => internalChildren.indexOf(instance));
-      return {
-        parent,
-        index
-      };
-    }
-    return {
-      parent: null,
-      index: vue.ref(-1)
-    };
-  }
-  const { create: create$15, componentName: componentName$a } = createComponent("grid-item");
-  const _sfc_main$1A = create$15({
+  }));
+  withInstall(_sfc_main$1B);
+  const _hoisted_1$1f = { class: "nut-grid-item__text" };
+  const _sfc_main$1A = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
+    name: "NutGridItem"
+  }), {
+    __name: "grid-item.taro",
     props: {
-      text: {
-        type: String
-      }
-      // router
-      // to: {
-      //   type: [String, Object]
-      // },
-      // url: {
-      //   type: String,
-      //   default: ''
-      // },
-      // replace: {
-      //   type: Boolean,
-      //   default: false
-      // }
+      text: {}
     },
     emits: ["click"],
-    setup(props, { emit }) {
-      const Parent = useInject(GRID_KEY);
-      if (!Parent.parent)
-        return {};
-      const index = Parent.index;
-      const parent = Parent.parent.props;
-      const rootClass = vue.computed(() => {
-        const prefixCls2 = componentName$a;
-        return {
-          [prefixCls2]: true
-        };
-      });
+    setup(__props, { emit: __emit }) {
+      const emit = __emit;
+      const { parent: parentObj, index } = useParent(GRID_KEY);
+      const parent = (parentObj == null ? void 0 : parentObj.props) || {};
       const rootStyle = vue.computed(() => {
         const style = {
           flexBasis: `${100 / +parent.columnNum}%`
@@ -1592,7 +1463,7 @@ var __async = (__this, __arguments, generator) => {
         return style;
       });
       const contentClass = vue.computed(() => {
-        const prefixCls2 = `${componentName$a}__content`;
+        const prefixCls2 = `nut-grid-item__content`;
         return {
           [`${prefixCls2}`]: true,
           [`${prefixCls2}--border`]: parent.border,
@@ -1607,35 +1478,28 @@ var __async = (__this, __arguments, generator) => {
       const handleClick = (event) => {
         emit("click", event);
       };
-      return {
-        rootClass,
-        rootStyle,
-        contentClass,
-        handleClick
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", {
+          class: "nut-grid-item",
+          style: vue.normalizeStyle(rootStyle.value),
+          onClick: handleClick
+        }, [
+          vue.createElementVNode("view", {
+            class: vue.normalizeClass(contentClass.value)
+          }, [
+            vue.renderSlot(_ctx.$slots, "default"),
+            vue.createTextVNode(),
+            vue.createElementVNode("view", _hoisted_1$1f, [
+              _ctx.text ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+                vue.createTextVNode(vue.toDisplayString(_ctx.text), 1)
+              ], 64)) : vue.renderSlot(_ctx.$slots, "text", { key: 1 })
+            ])
+          ], 2)
+        ], 4);
       };
     }
-  });
-  const _hoisted_1$1f = { class: "nut-grid-item__text" };
-  function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: vue.normalizeClass(_ctx.rootClass),
-      style: vue.normalizeStyle(_ctx.rootStyle),
-      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
-    }, [
-      vue.createElementVNode("view", {
-        class: vue.normalizeClass(_ctx.contentClass)
-      }, [
-        vue.renderSlot(_ctx.$slots, "default"),
-        vue.createTextVNode(),
-        vue.createElementVNode("view", _hoisted_1$1f, [
-          _ctx.text ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
-            vue.createTextVNode(vue.toDisplayString(_ctx.text), 1)
-          ], 64)) : vue.renderSlot(_ctx.$slots, "text", { key: 1 })
-        ])
-      ], 2)
-    ], 6);
-  }
-  const GridItem = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["render", _sfc_render$12]]);
+  }));
+  withInstall(_sfc_main$1A);
   const { create: create$14, componentName: componentName$9 } = createComponent("space");
   const _sfc_main$1z = create$14({
     props: {
@@ -2413,10 +2277,6 @@ var __async = (__this, __arguments, generator) => {
     }
   }));
   withInstall(_sfc_main$1t);
-  function useRouter() {
-    const proxy = vue.getCurrentInstance().proxy;
-    return proxy.$router || null;
-  }
   const { create: create$10 } = createComponent("badge");
   const _sfc_main$1s = create$10({
     props: {
@@ -20166,7 +20026,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const AvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   function install(app) {
-    const packages = [_sfc_main$1M, _sfc_main$1L, _sfc_main$1K, Overlay, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, GridItem, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, _sfc_main$1m, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, Input, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, _sfc_main$10, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, _sfc_main$G, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, _sfc_main$A, Badge, _sfc_main$y, Popover, _sfc_main$w, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
+    const packages = [_sfc_main$1M, _sfc_main$1L, _sfc_main$1K, Overlay, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, _sfc_main$1A, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, _sfc_main$1m, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, Input, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, _sfc_main$10, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, _sfc_main$G, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, _sfc_main$A, Badge, _sfc_main$y, Popover, _sfc_main$w, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
     packages.forEach((item) => {
       if (item.install) {
         app.use(item);
@@ -20218,7 +20078,7 @@ var __async = (__this, __arguments, generator) => {
   exports2.Form = _sfc_main$Y;
   exports2.FormItem = _sfc_main$X;
   exports2.Grid = _sfc_main$1B;
-  exports2.GridItem = GridItem;
+  exports2.GridItem = _sfc_main$1A;
   exports2.ImagePreview = ImagePreview;
   exports2.Indicator = _sfc_main$1m;
   exports2.Input = Input;
