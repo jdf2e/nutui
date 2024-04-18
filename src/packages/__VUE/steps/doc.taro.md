@@ -70,6 +70,20 @@ app.use(Step)
 | content | 步骤内容 |
 | icon | 步骤图标 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  StepsProps,
+  StepsInstance,
+  StepsDirection,
+  StepProps,
+  StepInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量

@@ -652,6 +652,7 @@
           "version": "3.0.0",
           "name": "Steps",
           "cName": "步骤条",
+          "setup": true,
           "desc": "步骤条",
           "author": "ailululu"
         },
@@ -659,6 +660,7 @@
           "version": "3.0.0",
           "name": "Step",
           "cName": "步骤条子组件",
+          "setup": true,
           "show": false,
           "desc": "步骤条子组件",
           "author": "ailululu"
@@ -704,6 +706,7 @@
         {
           "name": "Countdown",
           "cName": "倒计时",
+          "setup": true,
           "desc": "倒计时",
           "author": "yangxiaolu"
         },

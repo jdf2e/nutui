@@ -70,6 +70,20 @@ app.use(Step)
 | content | Step content |
 | icon | Step icon |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  StepsProps,
+  StepsInstance,
+  StepsDirection,
+  StepProps,
+  StepInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
