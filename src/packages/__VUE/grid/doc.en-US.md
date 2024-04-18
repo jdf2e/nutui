@@ -77,6 +77,18 @@ app.use(GridItem)
 | --- | --- | --- |
 | click | Emitted when component is clicked | event: Event |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  GridDirection,
+  GridProps,
+  GridInstance
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables

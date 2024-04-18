@@ -184,6 +184,7 @@
           "name": "Grid",
           "cName": "宫格",
           "desc": "用于分隔成等宽区块进行页面导航",
+          "setup": true,
           "author": "haiweilian"
         },
         {
@@ -192,6 +193,7 @@
           "cName": "宫格子组件",
           "desc": "",
           "show": false,
+          "setup": true,
           "author": "haiweilian"
         },
         {
