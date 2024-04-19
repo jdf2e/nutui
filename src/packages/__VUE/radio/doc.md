@@ -94,7 +94,7 @@ app.use(RadioGroup)
 | --- | --- | --- |
 | change | 值变化时触发 | 当前选中项值（label）【设置 label 后有值、默认为空】 |
 
-### 类型定义 version
+### 类型定义 v4.3.6
 
 组件导出以下类型定义：
 

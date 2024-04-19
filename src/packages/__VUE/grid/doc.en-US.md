@@ -77,7 +77,7 @@ app.use(GridItem)
 | --- | --- | --- |
 | click | Emitted when component is clicked | event: Event |
 
-### Types version
+### Types v4.3.6
 
 The component exports the following type definitions:
 

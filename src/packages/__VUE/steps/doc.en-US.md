@@ -70,7 +70,7 @@ app.use(Step)
 | content | Step content |
 | icon | Step icon |
 
-### Types version
+### Types v4.3.6
 
 The component exports the following type definitions:
 

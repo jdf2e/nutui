@@ -90,7 +90,7 @@ Paused and restarted the countdown with the `paused` attribute
 | pause | Count Down Pause |
 | reset | Count Down Reset |
 
-### Types version
+### Types v4.3.6
 
 The component exports the following type definitions:
 
