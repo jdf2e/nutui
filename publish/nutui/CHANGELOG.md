@@ -1,3 +1,22 @@
+## v4.3.6
+
+`2024-04-19`
+
+Bug Fixes
+
+- sticky: fix typo in index.taro.vue (#3023) @lainbo
+- type: fix warning of v-model in JetBrains IDE (#3029) @anyesu
+
+Refactors
+
+- move to script setup
+  - countdown, steps @subordon
+  - radio, grid @eiinu
+
+Other Changes
+
+- chore: 优化组件 provide/inject 使用 (#3027) @eiinu
+
 ## v4.3.5
 
 `2024-04-10`

@@ -15989,7 +15989,7 @@ function b3(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const $3 = "4.3.5", N3 = { install: b3, version: $3 };
+const $3 = "4.3.6", N3 = { install: b3, version: $3 };
 export {
   y1 as ActionSheet,
   Ag as Address,
