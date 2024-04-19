@@ -70,7 +70,7 @@ app.use(Input)
 
 ### 对齐方式
 
-> demo: input border
+> demo: input align
 
 ### 事件演示
 
