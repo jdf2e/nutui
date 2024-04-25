@@ -2184,7 +2184,7 @@ var __async = (__this, __arguments, generator) => {
                       class: vue.normalizeClass(["nut-menu-item__span", [option.value === _ctx.modelValue ? _ctx.activeTitleClass : _ctx.inactiveTitleClass]])
                     }, [
                       vue.renderSlot(_ctx.$slots, "icon", {}, () => [
-                        vue.createVNode(_component_Check, vue.mergeProps(_ctx.$attrs, {
+                        vue.createVNode(_component_Check, vue.mergeProps({ ref_for: true }, _ctx.$attrs, {
                           color: _ctx.parent.props.activeColor
                         }), null, 16, ["color"])
                       ])

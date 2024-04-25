@@ -2717,7 +2717,7 @@ function Iu(e, t, n, o, l, s) {
               class: B(["nut-menu-item__span", [i.value === e.modelValue ? e.activeTitleClass : e.inactiveTitleClass]])
             }, [
               _(e.$slots, "icon", {}, () => [
-                te(a, dt(e.$attrs, {
+                te(a, dt({ ref_for: !0 }, e.$attrs, {
                   color: e.parent.props.activeColor
                 }), null, 16, ["color"])
               ])

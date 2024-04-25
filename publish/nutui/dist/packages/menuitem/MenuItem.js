@@ -160,7 +160,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 class: normalizeClass(["nut-menu-item__span", [option.value === _ctx.modelValue ? _ctx.activeTitleClass : _ctx.inactiveTitleClass]])
               }, [
                 renderSlot(_ctx.$slots, "icon", {}, () => [
-                  createVNode(_component_Check, mergeProps(_ctx.$attrs, {
+                  createVNode(_component_Check, mergeProps({ ref_for: true }, _ctx.$attrs, {
                     color: _ctx.parent.props.activeColor
                   }), null, 16, ["color"])
                 ])
