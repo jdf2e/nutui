@@ -3466,7 +3466,7 @@ var __async = (__this, __arguments, generator) => {
       const parentOption = vue.inject(TABS_KEY);
       const paneStyle = vue.computed(() => {
         return {
-          display: parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? "none" : void 0
+          display: (parentOption == null ? void 0 : parentOption.animatedTime.value) == 0 && props.paneKey != (parentOption == null ? void 0 : parentOption.activeKey.value) ? "none" : void 0
         };
       });
       return __spreadProps(__spreadValues({}, parentOption), {

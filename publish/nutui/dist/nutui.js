@@ -3654,7 +3654,7 @@ const To = /* @__PURE__ */ oe(mc, [["render", vc]]), { create: yc } = ee("tab-pa
   emits: ["click"],
   setup(e) {
     const t = Ve(So), n = T(() => ({
-      display: t.animatedTime.value == 0 && e.paneKey != t.activeKey.value ? "none" : void 0
+      display: (t == null ? void 0 : t.animatedTime.value) == 0 && e.paneKey != (t == null ? void 0 : t.activeKey.value) ? "none" : void 0
     }));
     return fe(q({}, t), {
       paneStyle: n

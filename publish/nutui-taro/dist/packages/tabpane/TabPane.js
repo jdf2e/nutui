@@ -42,7 +42,7 @@ const _sfc_main = create({
     const parentOption = inject(TABS_KEY);
     const paneStyle = computed(() => {
       return {
-        display: parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? "none" : void 0
+        display: (parentOption == null ? void 0 : parentOption.animatedTime.value) == 0 && props.paneKey != (parentOption == null ? void 0 : parentOption.activeKey.value) ? "none" : void 0
       };
     });
     return __spreadProps(__spreadValues({}, parentOption), {
