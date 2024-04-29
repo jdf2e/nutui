@@ -58,14 +58,14 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))
       '@vitest/coverage-istanbul':
-        specifier: ^1.5.1
-        version: 1.5.1(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
+        specifier: ^1.5.2
+        version: 1.5.2(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
       '@vitest/coverage-v8':
-        specifier: ^1.5.1
-        version: 1.5.1(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
+        specifier: ^1.5.2
+        version: 1.5.2(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
       '@vitest/ui':
-        specifier: ^1.5.1
-        version: 1.5.1(vitest@1.5.1)
+        specifier: ^1.5.2
+        version: 1.5.2(vitest@1.5.2)
       '@vue/test-utils':
         specifier: ^2.4.5
         version: 2.4.5
@@ -91,8 +91,8 @@ importers:
         specifier: ^9.0.11
         version: 9.0.11
       inquirer:
-        specifier: ^9.2.19
-        version: 9.2.19
+        specifier: ^9.2.20
+        version: 9.2.20
       lzutf8:
         specifier: ^0.6.3
         version: 0.6.3
@@ -118,14 +118,14 @@ importers:
         specifier: ^5.2.10
         version: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
       vite-plugin-vue-devtools:
-        specifier: ^7.1.2
-        version: 7.1.2(rollup@4.14.3)(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))
+        specifier: ^7.1.3
+        version: 7.1.3(rollup@4.14.3)(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))
       vitest:
-        specifier: ^1.5.1
-        version: 1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+        specifier: ^1.5.2
+        version: 1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
       vitest-canvas-mock:
         specifier: ^0.3.3
-        version: 0.3.3(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
+        version: 0.3.3(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))
       vue:
         specifier: ^3.4.25
         version: 3.4.25(typescript@5.4.5)
@@ -2460,35 +2460,35 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
 
-  '@vitest/coverage-istanbul@1.5.1':
-    resolution: {integrity: sha512-E8H34Ul4djgxyF6yss767qbfqw+4HrXVfUUufolL9MdK6gVH568aWV/VYQCfnh3+AIwZyjZrdZZH9f2L6zYxig==}
+  '@vitest/coverage-istanbul@1.5.2':
+    resolution: {integrity: sha512-YGC+QSWOL8cQ2HQaTEFttmG9v3DGLy7lMZIGdqjtTgaW6omW17/uZPxuh6m2t69T0rFLqImduVthm5o/gYYWTQ==}
     peerDependencies:
-      vitest: 1.5.1
+      vitest: 1.5.2
 
-  '@vitest/coverage-v8@1.5.1':
-    resolution: {integrity: sha512-Zx+dYEDcZg+44ksjIWvWosIGlPLJB1PPpN3O8+Xrh/1qa7WSFA6Y8H7lsZJTYrxu4G2unk9tvP5TgjIGDliF1w==}
+  '@vitest/coverage-v8@1.5.2':
+    resolution: {integrity: sha512-QJqxRnbCwNtbbegK9E93rBmhN3dbfG1bC/o52Bqr0zGCYhQzwgwvrJBG7Q8vw3zilX6Ryy6oa/mkZku2lLJx1Q==}
     peerDependencies:
-      vitest: 1.5.1
+      vitest: 1.5.2
 
-  '@vitest/expect@1.5.1':
-    resolution: {integrity: sha512-w3Bn+VUMqku+oWmxvPhTE86uMTbfmBl35aGaIPlwVW7Q89ZREC/icfo2HBsEZ3AAW6YR9lObfZKPEzstw9tJOQ==}
+  '@vitest/expect@1.5.2':
+    resolution: {integrity: sha512-rf7MTD1WCoDlN3FfYJ9Llfp0PbdtOMZ3FIF0AVkDnKbp3oiMW1c8AmvRZBcqbAhDUAvF52e9zx4WQM1r3oraVA==}
 
-  '@vitest/runner@1.5.1':
-    resolution: {integrity: sha512-mt372zsz0vFR7L1xF/ert4t+teD66oSuXoTyaZbl0eJgilvyzCKP1tJ21gVa8cDklkBOM3DLnkE1ljj/BskyEw==}
+  '@vitest/runner@1.5.2':
+    resolution: {integrity: sha512-7IJ7sJhMZrqx7HIEpv3WrMYcq8ZNz9L6alo81Y6f8hV5mIE6yVZsFoivLZmr0D777klm1ReqonE9LyChdcmw6g==}
 
-  '@vitest/snapshot@1.5.1':
-    resolution: {integrity: sha512-h/1SGaZYXmjn6hULRBOlqam2z4oTlEe6WwARRzLErAPBqljAs6eX7tfdyN0K+MpipIwSZ5sZsubDWkCPAiVXZQ==}
+  '@vitest/snapshot@1.5.2':
+    resolution: {integrity: sha512-CTEp/lTYos8fuCc9+Z55Ga5NVPKUgExritjF5VY7heRFUfheoAqBneUlvXSUJHUZPjnPmyZA96yLRJDP1QATFQ==}
 
-  '@vitest/spy@1.5.1':
-    resolution: {integrity: sha512-vsqczk6uPJjmPLy6AEtqfbFqgLYcGBe9BTY+XL8L6y8vrGOhyE23CJN9P/hPimKXnScbqiZ/r/UtUSOQ2jIDGg==}
+  '@vitest/spy@1.5.2':
+    resolution: {integrity: sha512-xCcPvI8JpCtgikT9nLpHPL1/81AYqZy1GCy4+MCHBE7xi8jgsYkULpW5hrx5PGLgOQjUpb6fd15lqcriJ40tfQ==}
 
-  '@vitest/ui@1.5.1':
-    resolution: {integrity: sha512-QfSXZOWQUQBlmAflIeG/kBqfPSlMWAF3WazUGxEf46LV9yw3+HRSvGr0kkpaZ8QvXz7lqzens2xFUCoSkwvH7g==}
+  '@vitest/ui@1.5.2':
+    resolution: {integrity: sha512-pYDitwgCOn7i3FH7Ka94G70dmj85xpBA42BaWCx82blPehyVO8FU6OLHNP9iAKJIHaIOXwZ+bgOXYSj3wZCxFA==}
     peerDependencies:
-      vitest: 1.5.1
+      vitest: 1.5.2
 
-  '@vitest/utils@1.5.1':
-    resolution: {integrity: sha512-92pE17bBXUxA0Y7goPcvnATMCuq4NQLOmqsG0e2BtzRi7KLwZB5jpiELi/8ybY8IQNWemKjSD5rMoO7xTdv8ug==}
+  '@vitest/utils@1.5.2':
+    resolution: {integrity: sha512-sWOmyofuXLJ85VvXNsroZur7mOJGiQeM0JN3/0D1uU8U9bGFM69X1iqHaRXl6R8BwaLY6yPCogP257zxTzkUdA==}
 
   '@volar/language-core@1.11.1':
     resolution: {integrity: sha512-dOcNn3i9GgZAcJt43wuaEykSluAuOkQgzni1cuxLxTV0nJKanQztp7FxyswdRILaKH+P2XZMPRp2S4MV/pElCw==}
@@ -2554,16 +2554,16 @@ packages:
   '@vue/devtools-api@6.6.1':
     resolution: {integrity: sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==}
 
-  '@vue/devtools-core@7.1.2':
-    resolution: {integrity: sha512-yO2+xSnXkZPqSJAiWPigIwSdWQordROOg4nrLVA6ByJAzFowJmN6sAKysFtbhVg8Fb1e/DnI+1dJ4tp3zbvM7Q==}
+  '@vue/devtools-core@7.1.3':
+    resolution: {integrity: sha512-pVbWi8pf2Z/fZPioYOIgu+cv9pQG55k4D8bL31ec+Wfe+pQR0ImFDu0OhHfch1Ra8uvLLrAZTF4IKeGAkmzD4A==}
 
-  '@vue/devtools-kit@7.1.2':
-    resolution: {integrity: sha512-UTrcUSOhlI9eXqbPMHUWwA6NQiiPT3onzXsVk2JHGR8ZFFSkzsWTTpHyVA1woG8zvgu2HNV/wigW2k87p858zw==}
+  '@vue/devtools-kit@7.1.3':
+    resolution: {integrity: sha512-NFskFSJMVCBXTkByuk2llzI3KD3Blcm7WqiRorWjD6nClHPgkH5BobDH08rfulqq5ocRt5xV+3qOT1Q9FXJrwQ==}
     peerDependencies:
       vue: ^3.0.0
 
-  '@vue/devtools-shared@7.1.2':
-    resolution: {integrity: sha512-r9cUf93VMhKSsxF2/cBbf6Lm1nRBx+r1pRuji5CiAf3JIPYPOjeEqJ13OuwP1fauYh1tyBFcCxt3eJPvHT59gg==}
+  '@vue/devtools-shared@7.1.3':
+    resolution: {integrity: sha512-KJ3AfgjTn3tJz/XKF+BlVShNPecim3G21oHRue+YQOsooW+0s+qXvm09U09aO7yBza5SivL1QgxSrzAbiKWjhQ==}
 
   '@vue/language-core@1.8.27':
     resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
@@ -5307,8 +5307,8 @@ packages:
     resolution: {integrity: sha512-M1WuAmb7pn9zdFRtQYk26ZBoY043Sse0wVDdk4Bppr+JOXyQYybdtvK+l9wUibhtjdjvtoiNy8tk+EgsYIUqKg==}
     engines: {node: '>=12.0.0'}
 
-  inquirer@9.2.19:
-    resolution: {integrity: sha512-WpxOT71HGsFya6/mj5PUue0sWwbpbiPfAR+332zLj/siB0QA1PZM8v3GepegFV1Op189UxHUCF6y8AySdtOMVA==}
+  inquirer@9.2.20:
+    resolution: {integrity: sha512-SFwJJPS+Ms75NV+wzFBHjirG4z3tzvis31h+9NyH1tqjIu2c7vCavlXILZ73q/nPYy8/aw4W+DNzLH5MjfYXiA==}
     engines: {node: '>=18'}
 
   interpret@3.1.1:
@@ -8446,8 +8446,8 @@ packages:
     peerDependencies:
       vite: ^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0
 
-  vite-node@1.5.1:
-    resolution: {integrity: sha512-HNpfV7BrAsjkYVNWIcPleJwvJmydJqqJRrRbpoQ/U7QDwJKyEzNa4g5aYg8MjXJyKsk29IUCcMLFRcsEvqUIsA==}
+  vite-node@1.5.2:
+    resolution: {integrity: sha512-Y8p91kz9zU+bWtF7HGt6DVw2JbhyuB2RlZix3FPYAYmUyZ3n7iTp8eSyLyY6sxtPegvxQtmlTMhfPhUfCUF93A==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -8461,8 +8461,8 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  vite-plugin-vue-devtools@7.1.2:
-    resolution: {integrity: sha512-TQm0sLGlAI9zEG6wZSzadBqzLOJ0VVUOvgRv2uqx/O1cEfH7UHuGkkGMFaeSQfbRWzD1OnOsJHsTMaUZB6m8iQ==}
+  vite-plugin-vue-devtools@7.1.3:
+    resolution: {integrity: sha512-qv8Z4yok9RYo6TEs89WnIAlmTHby/+XTim8tlSnMs3lAPcQqqcl/wGRY8gAeYrGCANngOqO+VuabW3Jb1HZtyw==}
     engines: {node: '>=v14.21.3'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0-0 || ^5.0.0-0
@@ -8505,15 +8505,15 @@ packages:
     peerDependencies:
       vitest: '*'
 
-  vitest@1.5.1:
-    resolution: {integrity: sha512-3GvBMpoRnUNbZRX1L3mJCv3Ou3NAobb4dM48y8k9ZGwDofePpclTOyO+lqJFKSQpubH1V8tEcAEw/Y3mJKGJQQ==}
+  vitest@1.5.2:
+    resolution: {integrity: sha512-l9gwIkq16ug3xY7BxHwcBQovLZG75zZL0PlsiYQbf76Rz6QGs54416UWMtC0jXeihvHvcHrf2ROEjkQRVpoZYw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
       '@edge-runtime/vm': '*'
       '@types/node': ^18.0.0 || >=20.0.0
-      '@vitest/browser': 1.5.1
-      '@vitest/ui': 1.5.1
+      '@vitest/browser': 1.5.2
+      '@vitest/ui': 1.5.2
       happy-dom: '*'
       jsdom: '*'
     peerDependenciesMeta:
@@ -11380,7 +11380,7 @@ snapshots:
       vite: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
       vue: 3.4.25(typescript@5.4.5)
 
-  '@vitest/coverage-istanbul@1.5.1(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))':
+  '@vitest/coverage-istanbul@1.5.2(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))':
     dependencies:
       debug: 4.3.4
       istanbul-lib-coverage: 3.2.2
@@ -11391,11 +11391,11 @@ snapshots:
       magicast: 0.3.4
       picocolors: 1.0.0
       test-exclude: 6.0.0
-      vitest: 1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+      vitest: 1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@1.5.1(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))':
+  '@vitest/coverage-v8@1.5.2(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -11410,44 +11410,44 @@ snapshots:
       std-env: 3.7.0
       strip-literal: 2.1.0
       test-exclude: 6.0.0
-      vitest: 1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+      vitest: 1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/expect@1.5.1':
+  '@vitest/expect@1.5.2':
     dependencies:
-      '@vitest/spy': 1.5.1
-      '@vitest/utils': 1.5.1
+      '@vitest/spy': 1.5.2
+      '@vitest/utils': 1.5.2
       chai: 4.4.1
 
-  '@vitest/runner@1.5.1':
+  '@vitest/runner@1.5.2':
     dependencies:
-      '@vitest/utils': 1.5.1
+      '@vitest/utils': 1.5.2
       p-limit: 5.0.0
       pathe: 1.1.2
 
-  '@vitest/snapshot@1.5.1':
+  '@vitest/snapshot@1.5.2':
     dependencies:
       magic-string: 0.30.10
       pathe: 1.1.2
       pretty-format: 29.7.0
 
-  '@vitest/spy@1.5.1':
+  '@vitest/spy@1.5.2':
     dependencies:
       tinyspy: 2.2.1
 
-  '@vitest/ui@1.5.1(vitest@1.5.1)':
+  '@vitest/ui@1.5.2(vitest@1.5.2)':
     dependencies:
-      '@vitest/utils': 1.5.1
+      '@vitest/utils': 1.5.2
       fast-glob: 3.3.2
       fflate: 0.8.2
       flatted: 3.3.1
       pathe: 1.1.2
       picocolors: 1.0.0
       sirv: 2.0.4
-      vitest: 1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+      vitest: 1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
 
-  '@vitest/utils@1.5.1':
+  '@vitest/utils@1.5.2':
     dependencies:
       diff-sequences: 29.6.3
       estree-walker: 3.0.3
@@ -11661,10 +11661,10 @@ snapshots:
 
   '@vue/devtools-api@6.6.1': {}
 
-  '@vue/devtools-core@7.1.2(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))':
+  '@vue/devtools-core@7.1.3(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))':
     dependencies:
-      '@vue/devtools-kit': 7.1.2(vue@3.4.25(typescript@5.4.5))
-      '@vue/devtools-shared': 7.1.2
+      '@vue/devtools-kit': 7.1.3(vue@3.4.25(typescript@5.4.5))
+      '@vue/devtools-shared': 7.1.3
       mitt: 3.0.1
       nanoid: 3.3.7
       pathe: 1.1.2
@@ -11673,16 +11673,16 @@ snapshots:
       - vite
       - vue
 
-  '@vue/devtools-kit@7.1.2(vue@3.4.25(typescript@5.4.5))':
+  '@vue/devtools-kit@7.1.3(vue@3.4.25(typescript@5.4.5))':
     dependencies:
-      '@vue/devtools-shared': 7.1.2
+      '@vue/devtools-shared': 7.1.3
       hookable: 5.5.3
       mitt: 3.0.1
       perfect-debounce: 1.0.0
       speakingurl: 14.0.1
       vue: 3.4.25(typescript@5.4.5)
 
-  '@vue/devtools-shared@7.1.2':
+  '@vue/devtools-shared@7.1.3':
     dependencies:
       rfdc: 1.3.1
 
@@ -14735,7 +14735,7 @@ snapshots:
       through: 2.3.8
       wrap-ansi: 6.2.0
 
-  inquirer@9.2.19:
+  inquirer@9.2.20:
     dependencies:
       '@inquirer/figures': 1.0.1
       '@ljharb/through': 2.3.13
@@ -18068,7 +18068,7 @@ snapshots:
     dependencies:
       vite: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
 
-  vite-node@1.5.1(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3):
+  vite-node@1.5.2(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3):
     dependencies:
       cac: 6.7.14
       debug: 4.3.4
@@ -18101,11 +18101,11 @@ snapshots:
       - rollup
       - supports-color
 
-  vite-plugin-vue-devtools@7.1.2(rollup@4.14.3)(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5)):
+  vite-plugin-vue-devtools@7.1.3(rollup@4.14.3)(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5)):
     dependencies:
-      '@vue/devtools-core': 7.1.2(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))
-      '@vue/devtools-kit': 7.1.2(vue@3.4.25(typescript@5.4.5))
-      '@vue/devtools-shared': 7.1.2
+      '@vue/devtools-core': 7.1.3(vite@5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3))(vue@3.4.25(typescript@5.4.5))
+      '@vue/devtools-kit': 7.1.3(vue@3.4.25(typescript@5.4.5))
+      '@vue/devtools-shared': 7.1.3
       execa: 8.0.1
       sirv: 2.0.4
       vite: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
@@ -18125,7 +18125,7 @@ snapshots:
       '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.24.4)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.4)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.24.4)
-      '@vue/compiler-dom': 3.4.23
+      '@vue/compiler-dom': 3.4.25
       kolorist: 1.8.0
       magic-string: 0.30.10
       vite: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
@@ -18146,18 +18146,18 @@ snapshots:
       stylus: 0.55.0
       terser: 5.30.3
 
-  vitest-canvas-mock@0.3.3(vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)):
+  vitest-canvas-mock@0.3.3(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)):
     dependencies:
       jest-canvas-mock: 2.5.2
-      vitest: 1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+      vitest: 1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
 
-  vitest@1.5.1(@types/node@20.12.7)(@vitest/ui@1.5.1)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3):
+  vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(happy-dom@14.7.1)(jsdom@21.1.2)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3):
     dependencies:
-      '@vitest/expect': 1.5.1
-      '@vitest/runner': 1.5.1
-      '@vitest/snapshot': 1.5.1
-      '@vitest/spy': 1.5.1
-      '@vitest/utils': 1.5.1
+      '@vitest/expect': 1.5.2
+      '@vitest/runner': 1.5.2
+      '@vitest/snapshot': 1.5.2
+      '@vitest/spy': 1.5.2
+      '@vitest/utils': 1.5.2
       acorn-walk: 8.3.2
       chai: 4.4.1
       debug: 4.3.4
@@ -18171,11 +18171,11 @@ snapshots:
       tinybench: 2.7.0
       tinypool: 0.8.4
       vite: 5.2.10(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
-      vite-node: 1.5.1(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
+      vite-node: 1.5.2(@types/node@20.12.7)(less@4.2.0)(lightningcss@1.24.1)(sass@1.75.0)(stylus@0.55.0)(terser@5.30.3)
       why-is-node-running: 2.2.2
     optionalDependencies:
       '@types/node': 20.12.7
-      '@vitest/ui': 1.5.1(vitest@1.5.1)
+      '@vitest/ui': 1.5.2(vitest@1.5.2)
       happy-dom: 14.7.1
       jsdom: 21.1.2
     transitivePeerDependencies:
