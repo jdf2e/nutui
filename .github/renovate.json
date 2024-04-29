@@ -10,5 +10,5 @@
       "enabled": false
     }
   ],
-  "ignoreDeps": ["eslint-config-taro", "babel-preset-taro", "node", "typescript"]
+  "ignoreDeps": ["eslint-config-taro", "babel-preset-taro", "node", "typescript", "pnpm"]
 }
