@@ -128,6 +128,10 @@ export default create({
     },
     beforeClose: {
       type: Function
+    },
+    zIndex: {
+      type: Number,
+      default: 2000
     }
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],

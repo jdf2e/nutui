@@ -126,7 +126,11 @@ export default create({
     popStyle: {
       type: Object as PropType<CSSProperties>
     },
-    beforeClose: Function as PropType<Interceptor>
+    beforeClose: Function as PropType<Interceptor>,
+    zIndex: {
+      type: Number,
+      default: 2000
+    }
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {

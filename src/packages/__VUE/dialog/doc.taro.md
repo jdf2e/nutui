@@ -134,6 +134,7 @@ const verticalClick = () => {
 | pop-style | 自定义 `popup` 弹框样式 | CSSProperties | - |
 | custom-class | 自定义 `class` | string | - |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 `Promise` | Function(action: string) | - |
+| z-index | 堆叠顺序 | string \| number | `2000` |
 
 ### Events
 

@@ -243,6 +243,7 @@ const teleportClick = (teleport) => {
 | pop-style | Custom popup styles | CSSProperties | - |
 | custom-class | Custom dialog class | string | - |
 | before-close | Callback function before close support return `promise` | Function(action: string) | - |
+| z-index | Mask level | string \| number | `2000` |
 
 ### Events
 
