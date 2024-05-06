@@ -96,7 +96,7 @@
     "@vue/test-utils": "^2.4.5",
     "autoprefixer": "^10.4.19",
     "codesandbox": "^2.2.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "eslint-config-flat-gitignore": "^0.1.5",
     "fs-extra": "^11.2.0",
     "happy-dom": "^14.7.1",
