@@ -129,6 +129,7 @@
           "cName": "图片",
           "desc": "图片展示",
           "taro": false,
+          "setup": true,
           "author": "yangxiaolu"
         }
       ]

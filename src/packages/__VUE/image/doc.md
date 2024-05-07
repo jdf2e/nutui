@@ -108,3 +108,16 @@ Image 组件提供了默认的加载失败提示，支持通过 `error` 插槽�
 | click | 点击图片时触发 | event: Event |
 | load | 图片加载完后触发 | -- |
 | error | 图片加载失败后触发 | -- |
+
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  ImageFit,
+  ImagePosition,
+  ImageProps,
+  ImageInstance
+} from '@nutui/nutui';
+```
