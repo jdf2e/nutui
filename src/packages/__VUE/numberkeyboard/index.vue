@@ -1,13 +1,7 @@
 <template>
   <div ref="root">
-    <nut-popup
-      v-model:visible="show"
-      position="bottom"
-      :pop-class="popClass"
-      :overlay="false"
-      :lock-scroll="lockScroll"
-      :teleport-disable="false"
-    >
+    <nut-popup v-model:visible="show" position="bottom" :pop-class="popClass" :overlay="false" :lock-scroll="lockScroll"
+               :teleport-disable="false">
       <div class="nut-number-keyboard">
         <div v-if="title" class="nut-number-keyboard__header">
           <h3 class="nut-number-keyboard__title">{{ title }}</h3>
@@ -17,54 +11,39 @@
         </div>
         <div class="nut-number-keyboard__body">
           <div class="nut-number-keyboard__keys">
-            <div
-              v-for="item of keysList"
-              :key="'key' + item.id"
-              :class="[
-                'nut-key__wrapper',
-                {
-                  'nut-key__wrapper--wider':
-                    item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
-                }
-              ]"
-            >
-              <div
-                :class="[
-                  'nut-key',
-                  { 'nut-key--active': item.id == clickKeyIndex },
-                  { 'nut-key--lock': item.type == 'lock' },
-                  { 'nut-key--delete': item.type == 'delete' }
-                ]"
-                @touchstart="(event: TouchEvent) => onTouchstart(item, event)"
-                @touchmove="(event: TouchEvent) => onTouchMove(event)"
-                @touchend="(event: TouchEvent) => onTouchEnd(event)"
-              >
+            <div v-for="item of keysList" :key="'key' + item.id" :class="[
+              'nut-key__wrapper',
+              {
+                'nut-key__wrapper--wider':
+                  item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
+              }
+            ]">
+              <div :class="[
+                     'nut-key',
+                     { 'nut-key--active': item.id == clickKeyIndex },
+                     { 'nut-key--lock': item.type == 'lock' },
+                     { 'nut-key--delete': item.type == 'delete' }
+                   ]" @touchstart="(event: TouchEvent) => onTouchstart(item, event)"
+                   @touchmove="(event: TouchEvent) => onTouchMove(event)"
+                   @touchend="(event: TouchEvent) => onTouchEnd(event)">
                 <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
-                <img
-                  v-if="item.type == 'lock'"
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
-                />
-                <img
-                  v-if="item.type == 'delete'"
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
-                />
+                <img v-if="item.type == 'lock'"
+                     src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png" />
+                <img v-if="item.type == 'delete'"
+                     src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" />
               </div>
             </div>
           </div>
           <div v-if="type == 'rightColumn'" class="nut-number-keyboard__sidebar">
             <div class="nut-key__wrapper">
-              <div
-                :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
-                @touchstart="(event: TouchEvent) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
-                @touchmove="(event: TouchEvent) => onTouchMove(event)"
-                @touchend="onTouchEnd"
-              >
+              <div :class="['nut-key', { active: clickKeyIndex == 'delete' }]"
+                   @touchstart="(event: TouchEvent) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
+                   @touchmove="(event: TouchEvent) => onTouchMove(event)" @touchend="onTouchEnd">
                 <img
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
-                />
+                  src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" />
               </div>
             </div>
-            <div class="nut-key__wrapper nut-key__wrapper--finish" @click="closeBoard()">
+            <div class="nut-key__wrapper nut-key__wrapper--finish" @click="confirm">
               <div :class="['nut-key', 'nut-key--finish ', { activeFinsh: clickKeyIndex == 'finish' }]">
                 {{ confirmText || translate('done') }}
               </div>
@@ -134,7 +113,7 @@ export default create({
       default: true
     }
   },
-  emits: ['input', 'delete', 'close', 'blur', 'update:modelValue', 'update:visible'],
+  emits: ['input', 'delete', 'close', 'blur', 'confirm', 'update:modelValue', 'update:visible'],
   setup(props, { emit }) {
     const translate = useLocale(cN)
     const clickKeyIndex: Ref<string | undefined | number> = ref(undefined)
@@ -253,10 +232,15 @@ export default create({
       emit('close')
     }
 
+    const confirm = () => {
+      emit('confirm')
+    }
+
     return {
       clickKeyIndex,
       defaultKey,
       closeBoard,
+      confirm,
       onTouchEnd,
       onTouchMove,
       onTouchstart,

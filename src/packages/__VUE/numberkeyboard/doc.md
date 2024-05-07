@@ -62,6 +62,7 @@ app.use(NumberKeyboard)
 | delete | 点击删除键时触发 | - |
 | close | 点击关闭按钮时触发 | - |
 | blur | 点击关闭按钮或非键盘区域时触发 | - |
+| confirm `version` | 点击确认按钮 | - |
 
 ## 主题定制
 
