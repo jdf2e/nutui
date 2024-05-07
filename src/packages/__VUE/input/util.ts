@@ -1,5 +1,5 @@
 import type { HTMLAttributes, InputHTMLAttributes } from 'vue'
-import type { InputType } from './type'
+import type { InputType } from './types'
 
 function trimExtraChar(value: string, char: string, regExp: RegExp) {
   const index = value.indexOf(char)

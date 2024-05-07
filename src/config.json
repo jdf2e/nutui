@@ -392,6 +392,7 @@
           "name": "Input",
           "cName": "输入框",
           "desc": "输入框组件",
+          "setup": true,
           "author": "gxx158"
         },
         {

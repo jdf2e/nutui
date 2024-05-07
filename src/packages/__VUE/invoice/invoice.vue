@@ -43,7 +43,7 @@ import NutFormItem from '../formitem'
 import NutRadio from '../radio'
 import NutRadioGroup from '../radiogroup'
 import NutButton from '../button'
-import NutInput from '../input/index.vue'
+import NutInput from '../input'
 import type { InvoiceDataItem } from './types'
 
 defineOptions({
