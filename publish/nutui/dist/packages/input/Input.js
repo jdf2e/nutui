@@ -1,4 +1,6 @@
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -14,11 +16,11 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { toRef, ref, reactive, computed, watch, onMounted, h, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, normalizeStyle, toDisplayString, createTextVNode, withDirectives, createVNode, mergeProps, vShow } from "vue";
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, toRef, ref, reactive, computed, watch, onMounted, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, normalizeStyle, unref, toDisplayString, createTextVNode, withDirectives, createVNode, mergeProps, vShow, h } from "vue";
 import { MaskClose } from "@nutui/icons-vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
 import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 function trimExtraChar(value, char, regExp) {
   const index = value.indexOf(char);
   if (index === -1) {
@@ -58,90 +60,47 @@ function mapInputType(type) {
   }
   return { type };
 }
-const { componentName, create } = createComponent("input");
-const _sfc_main = create({
+const _hoisted_1 = { class: "nut-input-value" };
+const _hoisted_2 = { class: "nut-input-inner" };
+const _hoisted_3 = {
+  key: 0,
+  class: "nut-input-left-box"
+};
+const _hoisted_4 = { class: "nut-input-box" };
+const _hoisted_5 = {
+  key: 0,
+  class: "nut-input-word-limit"
+};
+const _hoisted_6 = { class: "nut-input-word-num" };
+const _hoisted_7 = { class: "nut-input-right-box" };
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutInput"
+}), {
+  __name: "input",
   props: {
-    type: {
-      type: String,
-      default: "text"
-    },
-    modelValue: {
-      type: [String, Number],
-      default: ""
-    },
-    placeholder: {
-      type: String,
-      default: ""
-    },
-    inputAlign: {
-      type: String,
-      default: "left"
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    maxLength: {
-      type: [String, Number],
-      default: ""
-    },
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    clearSize: {
-      type: [String, Number],
-      default: "14"
-    },
-    border: {
-      type: Boolean,
-      default: true
-    },
-    formatTrigger: {
-      type: String,
-      default: "onChange"
-    },
-    formatter: {
-      type: Function,
-      default: null
-    },
-    showWordLimit: {
-      type: Boolean,
-      default: false
-    },
-    autofocus: {
-      type: Boolean,
-      default: false
-    },
-    confirmType: {
-      type: String,
-      default: "done"
-    },
-    error: {
-      type: Boolean,
-      default: false
-    },
-    showClearIcon: {
-      type: Boolean,
-      default: false
-    },
-    class: {
-      type: String,
-      default: ""
-    }
+    type: { default: "text" },
+    modelValue: { default: "" },
+    placeholder: { default: "" },
+    inputAlign: { default: "left" },
+    required: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
+    maxLength: { default: "" },
+    clearable: { type: Boolean, default: false },
+    clearSize: { default: "14" },
+    border: { type: Boolean, default: true },
+    formatTrigger: { default: "onChange" },
+    formatter: {},
+    showWordLimit: { type: Boolean, default: false },
+    autofocus: { type: Boolean, default: false },
+    confirmType: { default: "done" },
+    error: { type: Boolean, default: false },
+    showClearIcon: { type: Boolean, default: false }
   },
-  components: { MaskClose },
   emits: ["update:modelValue", "blur", "focus", "clear", "keypress", "click", "clickInput", "confirm"],
-  expose: ["focus", "blur", "select"],
-  setup(props, { emit }) {
+  setup(__props, { expose: __expose, emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const disabled = useFormDisabled(toRef(props, "disabled"));
     const active = ref(false);
     const inputRef = ref();
@@ -158,14 +117,13 @@ const _sfc_main = create({
       // 校验信息
     });
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-input";
       return {
         [prefixCls]: true,
         [`${prefixCls}--disabled`]: disabled.value,
         [`${prefixCls}--required`]: props.required,
         [`${prefixCls}--error`]: props.error,
-        [`${prefixCls}--border`]: props.border,
-        [props.class]: !!props.class
+        [`${prefixCls}--border`]: props.border
       };
     });
     const styles = computed(() => {
@@ -279,103 +237,75 @@ const _sfc_main = create({
         emit("confirm", e);
       }
     };
-    return {
-      renderInput,
-      inputRef,
-      active,
-      classes,
-      styles,
-      disabled,
-      onInput,
-      onFocus,
-      onBlur,
-      clear,
-      startComposing,
-      endComposing,
-      onClick,
-      onClickInput,
+    __expose({
       focus,
       blur,
-      select,
-      onKeyup,
-      getModelValue
+      select
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass(classes.value),
+        onClick
+      }, [
+        createElementVNode("view", _hoisted_1, [
+          createElementVNode("view", _hoisted_2, [
+            _ctx.$slots.left ? (openBlock(), createElementBlock("view", _hoisted_3, [
+              renderSlot(_ctx.$slots, "left")
+            ])) : createCommentVNode("", true),
+            createElementVNode("view", _hoisted_4, [
+              (openBlock(), createBlock(resolveDynamicComponent(renderInput(_ctx.type)), {
+                ref_key: "inputRef",
+                ref: inputRef,
+                class: "input-text",
+                style: normalizeStyle(styles.value),
+                maxlength: _ctx.maxLength,
+                placeholder: _ctx.placeholder,
+                disabled: unref(disabled),
+                readonly: _ctx.readonly,
+                value: _ctx.modelValue,
+                "format-trigger": _ctx.formatTrigger,
+                autofocus: _ctx.autofocus,
+                enterkeyhint: _ctx.confirmType,
+                onInput,
+                onFocus,
+                onBlur,
+                onClick: onClickInput,
+                onChange: endComposing,
+                onCompositionend: endComposing,
+                onCompositionstart: startComposing,
+                onKeyup
+              }, null, 40, ["style", "maxlength", "placeholder", "disabled", "readonly", "value", "format-trigger", "autofocus", "enterkeyhint"])),
+              _ctx.showWordLimit && _ctx.maxLength ? (openBlock(), createElementBlock("view", _hoisted_5, [
+                createElementVNode("span", _hoisted_6, toDisplayString(getModelValue() ? getModelValue().length : 0), 1),
+                createTextVNode("/" + toDisplayString(_ctx.maxLength), 1)
+              ])) : createCommentVNode("", true)
+            ]),
+            _ctx.clearable && !_ctx.readonly ? withDirectives((openBlock(), createElementBlock("view", {
+              key: 1,
+              class: "nut-input-clear-box",
+              onClick: clear
+            }, [
+              renderSlot(_ctx.$slots, "clear", {}, () => [
+                createVNode(unref(MaskClose), mergeProps({ class: "nut-input-clear" }, _ctx.$attrs, {
+                  size: _ctx.clearSize,
+                  width: _ctx.clearSize,
+                  height: _ctx.clearSize
+                }), null, 16, ["size", "width", "height"])
+              ])
+            ], 512)), [
+              [vShow, (active.value || _ctx.showClearIcon) && getModelValue().length > 0]
+            ]) : createCommentVNode("", true),
+            createElementVNode("view", _hoisted_7, [
+              renderSlot(_ctx.$slots, "right")
+            ])
+          ])
+        ])
+      ], 2);
     };
   }
-});
-const _hoisted_1 = { class: "nut-input-value" };
-const _hoisted_2 = { class: "nut-input-inner" };
-const _hoisted_3 = {
-  key: 0,
-  class: "nut-input-left-box"
-};
-const _hoisted_4 = { class: "nut-input-box" };
-const _hoisted_5 = {
-  key: 0,
-  class: "nut-input-word-limit"
-};
-const _hoisted_6 = { class: "nut-input-word-num" };
-const _hoisted_7 = { class: "nut-input-right-box" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_MaskClose = resolveComponent("MaskClose");
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes),
-    onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-  }, [
-    createElementVNode("view", _hoisted_1, [
-      createElementVNode("view", _hoisted_2, [
-        _ctx.$slots.left ? (openBlock(), createElementBlock("view", _hoisted_3, [
-          renderSlot(_ctx.$slots, "left")
-        ])) : createCommentVNode("", true),
-        createElementVNode("view", _hoisted_4, [
-          (openBlock(), createBlock(resolveDynamicComponent(_ctx.renderInput(_ctx.type)), {
-            ref: "inputRef",
-            class: "input-text",
-            style: normalizeStyle(_ctx.styles),
-            maxlength: _ctx.maxLength,
-            placeholder: _ctx.placeholder,
-            disabled: _ctx.disabled,
-            readonly: _ctx.readonly,
-            value: _ctx.modelValue,
-            "format-trigger": _ctx.formatTrigger,
-            autofocus: _ctx.autofocus,
-            enterkeyhint: _ctx.confirmType,
-            onInput: _ctx.onInput,
-            onFocus: _ctx.onFocus,
-            onBlur: _ctx.onBlur,
-            onClick: _ctx.onClickInput,
-            onChange: _ctx.endComposing,
-            onCompositionend: _ctx.endComposing,
-            onCompositionstart: _ctx.startComposing,
-            onKeyup: _ctx.onKeyup
-          }, null, 40, ["style", "maxlength", "placeholder", "disabled", "readonly", "value", "format-trigger", "autofocus", "enterkeyhint", "onInput", "onFocus", "onBlur", "onClick", "onChange", "onCompositionend", "onCompositionstart", "onKeyup"])),
-          _ctx.showWordLimit && _ctx.maxLength ? (openBlock(), createElementBlock("view", _hoisted_5, [
-            createElementVNode("span", _hoisted_6, toDisplayString(_ctx.getModelValue() ? _ctx.getModelValue().length : 0), 1),
-            createTextVNode("/" + toDisplayString(_ctx.maxLength), 1)
-          ])) : createCommentVNode("", true)
-        ]),
-        _ctx.clearable && !_ctx.readonly ? withDirectives((openBlock(), createElementBlock("view", {
-          key: 1,
-          class: "nut-input-clear-box",
-          onClick: _cache[0] || (_cache[0] = (...args) => _ctx.clear && _ctx.clear(...args))
-        }, [
-          renderSlot(_ctx.$slots, "clear", {}, () => [
-            createVNode(_component_MaskClose, mergeProps({ class: "nut-input-clear" }, _ctx.$attrs, {
-              size: _ctx.clearSize,
-              width: _ctx.clearSize,
-              height: _ctx.clearSize
-            }), null, 16, ["size", "width", "height"])
-          ])
-        ], 512)), [
-          [vShow, (_ctx.active || _ctx.showClearIcon) && _ctx.getModelValue().length > 0]
-        ]) : createCommentVNode("", true),
-        createElementVNode("view", _hoisted_7, [
-          renderSlot(_ctx.$slots, "right")
-        ])
-      ])
-    ])
-  ], 2);
-}
-const NutInput = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  NutInput as default
+  _sfc_main as Input,
+  _sfc_main as default
 };

@@ -22,8 +22,8 @@ import { Form as _sfc_main$1 } from "../form/Form.js";
 import { FormItem as _sfc_main$2 } from "../formitem/FormItem.js";
 import { Radio as _sfc_main$4 } from "../radio/Radio.js";
 import { RadioGroup as _sfc_main$3 } from "../radiogroup/RadioGroup.js";
-import { Button as _sfc_main$5 } from "../button/Button.js";
-import NutInput from "../input/Input.js";
+import { Button as _sfc_main$6 } from "../button/Button.js";
+import { Input as _sfc_main$5 } from "../input/Input.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-invoice" };
 const _hoisted_2 = {
@@ -86,7 +86,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                       }), 128))
                     ]),
                     _: 2
-                  }, 1032, ["modelValue", "onUpdate:modelValue"])) : (openBlock(), createBlock(NutInput, {
+                  }, 1032, ["modelValue", "onUpdate:modelValue"])) : (openBlock(), createBlock(unref(_sfc_main$5), {
                     key: 1,
                     modelValue: _ctx.formValue[item.formItemProp],
                     "onUpdate:modelValue": ($event) => _ctx.formValue[item.formItemProp] = $event,
@@ -103,7 +103,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         }, 8, ["model-value"]),
         createTextVNode(),
         _ctx.submit ? (openBlock(), createElementBlock("div", _hoisted_2, [
-          createVNode(unref(_sfc_main$5), {
+          createVNode(unref(_sfc_main$6), {
             type: "primary",
             block: "",
             onClick: submitFun
