@@ -15881,7 +15881,7 @@ function d3(e) {
     n.install ? e.use(n) : n.name && e.component(n.name, n);
   });
 }
-const f3 = "4.3.6", y3 = { install: d3, version: f3 };
+const f3 = "4.3.7", y3 = { install: d3, version: f3 };
 export {
   c1 as ActionSheet,
   Nv as Address,
