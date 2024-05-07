@@ -9765,7 +9765,7 @@ var __async = (__this, __arguments, generator) => {
         default: true
       }
     },
-    emits: ["input", "delete", "close", "update:modelValue", "update:visible"],
+    emits: ["input", "delete", "close", "confirm", "update:modelValue", "update:visible"],
     setup(props, { emit }) {
       const translate = useLocale(cN$d);
       const clickKeyIndex = vue.ref(void 0);
@@ -9860,10 +9860,14 @@ var __async = (__this, __arguments, generator) => {
         emit("update:visible", false);
         emit("close");
       }
+      const confirm = () => {
+        emit("confirm");
+      };
       return {
         clickKeyIndex,
         defaultKey,
         closeBoard,
+        confirm,
         onTouchEnd,
         onTouchMove,
         onTouchstart,
@@ -9977,7 +9981,7 @@ var __async = (__this, __arguments, generator) => {
               vue.createTextVNode(),
               vue.createElementVNode("div", {
                 class: "nut-key__wrapper nut-key__wrapper--finish",
-                onClick: _cache[6] || (_cache[6] = ($event) => _ctx.closeBoard())
+                onClick: _cache[6] || (_cache[6] = (...args) => _ctx.confirm && _ctx.confirm(...args))
               }, [
                 vue.createElementVNode("div", {
                   class: vue.normalizeClass(["nut-key", "nut-key--finish ", { activeFinsh: _ctx.clickKeyIndex == "finish" }])

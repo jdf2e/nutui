@@ -57,6 +57,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     clickKeyIndex: Ref<string | number | undefined>;
     defaultKey: () => keys[];
     closeBoard: () => void;
+    confirm: () => void;
     onTouchEnd: () => void;
     onTouchMove: (event: TouchEvent) => void;
     onTouchstart: (item: {
@@ -69,7 +70,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     root: Ref<HTMLElement | undefined>;
     show: Ref<boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "close" | "update:visible" | "update:modelValue")[], "input" | "delete" | "close" | "update:visible" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "close" | "update:visible" | "update:modelValue" | "confirm")[], "input" | "delete" | "close" | "update:visible" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     confirmText: {
         type: StringConstructor;
         default: string;
@@ -119,6 +120,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onConfirm?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
 }, {
     type: NumberKeyboardType;

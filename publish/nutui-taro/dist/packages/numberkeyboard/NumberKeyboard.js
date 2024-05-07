@@ -55,7 +55,7 @@ const _sfc_main = create({
       default: true
     }
   },
-  emits: ["input", "delete", "close", "update:modelValue", "update:visible"],
+  emits: ["input", "delete", "close", "confirm", "update:modelValue", "update:visible"],
   setup(props, { emit }) {
     const translate = useLocale(cN);
     const clickKeyIndex = ref(void 0);
@@ -150,10 +150,14 @@ const _sfc_main = create({
       emit("update:visible", false);
       emit("close");
     }
+    const confirm = () => {
+      emit("confirm");
+    };
     return {
       clickKeyIndex,
       defaultKey,
       closeBoard,
+      confirm,
       onTouchEnd,
       onTouchMove,
       onTouchstart,
@@ -267,7 +271,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             createTextVNode(),
             createElementVNode("div", {
               class: "nut-key__wrapper nut-key__wrapper--finish",
-              onClick: _cache[6] || (_cache[6] = ($event) => _ctx.closeBoard())
+              onClick: _cache[6] || (_cache[6] = (...args) => _ctx.confirm && _ctx.confirm(...args))
             }, [
               createElementVNode("div", {
                 class: normalizeClass(["nut-key", "nut-key--finish ", { activeFinsh: _ctx.clickKeyIndex == "finish" }])
