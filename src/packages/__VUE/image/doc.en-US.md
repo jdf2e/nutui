@@ -106,3 +106,16 @@ The Image component provides a default loading failure warning and supports cust
 | click | Emitted when image is clicked | event: Event |
 | load | Emitted when image loaded | - |
 | error | Emitted when image load failed | - |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  ImageFit,
+  ImagePosition,
+  ImageProps,
+  ImageInstance
+} from '@nutui/nutui';
+```
