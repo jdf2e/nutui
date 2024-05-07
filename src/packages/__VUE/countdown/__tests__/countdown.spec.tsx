@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import { nextTick, toRefs, reactive } from 'vue'
+import { nextTick, ref } from 'vue'
 import { Button, Countdown } from '@nutui/nutui'
 import { sleep } from '@/packages/utils/unit'
 
-test('endTime props', async () => {
+test('Countdown: endTime props', async () => {
   const wrapper = mount(Countdown, {
     props: {
       endTime: Date.now() + 1 * 50
@@ -14,7 +14,7 @@ test('endTime props', async () => {
   expect(wrapper.emitted('end')).toBeTruthy()
 })
 
-test('format props', async () => {
+test('Countdown: format props', async () => {
   const wrapper = mount(Countdown, {
     props: {
       endTime: Date.now() + 1 * 50,
@@ -55,28 +55,19 @@ test('format props', async () => {
   expect(wrapper.find('.nut-countdown__content').text() == '000毫秒').toBe(true)
 })
 
-test('paused props', async () => {
-  const wrapper = mount({
-    components: {
-      'nut-countdown': Countdown,
-      'nut-button': Button
-    },
-    template: `
-      <nut-countdown  :end-time="endTime" :paused="paused" />
-      <nut-button  @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
-    `,
-    setup() {
-      const state = reactive({
-        endTime: Date.now() + 1 * 50,
-        paused: false
-      })
-
-      const toggle = () => {
-        state.paused = !state.paused
-      }
-
-      return { ...toRefs(state), toggle }
-    }
+test('Countdown: paused props', async () => {
+  const paused = ref(false)
+  const endTime = ref(Date.now() + 1 * 50)
+  const toggle = () => {
+    paused.value = !paused.value
+  }
+  const wrapper = mount(() => {
+    return (
+      <>
+        <Countdown endTime={endTime.value} paused={paused.value} />
+        <Button onClick={toggle}>{paused.value ? 'start' : 'stop'}</Button>
+      </>
+    )
   })
 
   const button = wrapper.find('.nut-button')
@@ -88,7 +79,19 @@ test('paused props', async () => {
   expect(prevSnapShot === laterShapShot).toBeTruthy()
 })
 
-test('should render slot correctly', async () => {
+test('Countdown: should render slot correctly', async () => {
+  const wrapper = mount(Countdown, {
+    props: {
+      endTime: Date.now() + 1 * 50
+    },
+    slots: {
+      default: () => 'slot content'
+    }
+  })
+  expect(wrapper.text()).toEqual('slot content')
+})
+
+test('Countdown: should render slot correctly', async () => {
   const wrapper = mount(Countdown, {
     props: {
       endTime: Date.now() + 1 * 50
