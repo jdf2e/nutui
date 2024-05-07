@@ -63,7 +63,7 @@ app.use(NumberKeyboard)
 | delete | Emitted when the delete key is pressed | - |
 | close | Emitted when the close button or non-keyboard area is clicked is clicked | - |
 | blur | Emitted when the close button is clicked or the keyboard is blurred | - |
-| confirm `version` | Emitted when the confirm button is clicked | - |
+| confirm `v4.3.7` | Emitted when the confirm button is clicked | - |
 
 ## Theming
 

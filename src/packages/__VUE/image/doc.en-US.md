@@ -107,7 +107,7 @@ The Image component provides a default loading failure warning and supports cust
 | load | Emitted when image loaded | - |
 | error | Emitted when image load failed | - |
 
-### Types version
+### Types v4.3.7
 
 The component exports the following type definitions:
 
