@@ -60,6 +60,8 @@ body:
         - 最小化：意味着它应该只包含与问题相关的代码与配置，而不是一个庞大的、难以排查问题的仓库。
         - 可复现：这是创建 issue 的基础要求。
 
+        [为什么要提供最小重现？](https://antfu.me/posts/why-reproductions-are-required-zh)
+
         1、你可以通过 [Playground](https://nutui.jd.com/playground/) 创建一个可复现实例，它基于组件库最新版本的代码。
 
         2、你也可以通过 [CodeSandbox](https://codesandbox.io/s/nutui4-vite-demo-2fw7xh?file=/src/App.vue) 创建一个可复现实例，它支持选择特定版本的 NutUI。

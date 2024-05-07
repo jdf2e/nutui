@@ -70,7 +70,7 @@ app.use(Step)
 | content | 步骤内容 |
 | icon | 步骤图标 |
 
-### 类型定义 version
+### 类型定义 v4.3.6
 
 组件导出以下类型定义：
 

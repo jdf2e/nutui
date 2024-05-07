@@ -74,7 +74,7 @@ app.use(Input)
 
 ### 对齐方式
 
-> demo: input border dentry
+> demo: input align dentry
 
 ### 事件演示
 

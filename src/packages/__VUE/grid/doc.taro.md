@@ -77,6 +77,18 @@ app.use(GridItem)
 | --- | --- | --- |
 | click | 点击格子时触发 | event: Event |
 
+### 类型定义 v4.3.6
+
+组件导出以下类型定义：
+
+```js
+import type {
+  GridDirection,
+  GridProps,
+  GridInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量

@@ -30,7 +30,7 @@ export default create({
     const paneStyle = computed(() => {
       return {
         display:
-          parentOption.animatedTime.value == 0 && props.paneKey != parentOption.activeKey.value ? 'none' : undefined
+          parentOption?.animatedTime.value == 0 && props.paneKey != parentOption?.activeKey.value ? 'none' : undefined
       } as CSSProperties
     })
     return {
