@@ -102,3 +102,51 @@ test('Countdown: should render slot correctly', async () => {
   })
   expect(wrapper.text()).toEqual('slot content')
 })
+
+test('Countdown: ref methods', async () => {
+  const countdownRef = ref()
+  const start = () => {
+    countdownRef.value.start()
+  }
+  const pause = () => {
+    countdownRef.value.pause()
+  }
+  const reset = () => {
+    countdownRef.value.reset()
+  }
+  const restart = vi.fn()
+  const paused = vi.fn()
+  const wrapper = mount(() => {
+    return (
+      <>
+        <Countdown
+          ref={countdownRef}
+          time="20000"
+          autoStart={false}
+          format="ss:SS"
+          onRestart={restart}
+          onPaused={paused}
+        />
+        <Button class="start" onClick={start} />
+        <Button class="pause" onClick={pause} />
+        <Button class="reset" onClick={reset} />
+      </>
+    )
+  })
+  const countdown = wrapper.find('.nut-countdown__content')
+  expect(countdown.text()).toBe('20:00')
+
+  const btn1 = wrapper.find('.start')
+  btn1.trigger('click')
+  expect(restart).toBeCalledTimes(1)
+  expect(paused).toBeCalledTimes(0)
+
+  const btn2 = wrapper.find('.pause')
+  btn2.trigger('click')
+  expect(restart).toBeCalledTimes(1)
+  expect(paused).toBeCalledTimes(1)
+
+  const btn3 = wrapper.find('.pause')
+  btn3.trigger('click')
+  expect(countdown.text()).toBe('20:00')
+})
