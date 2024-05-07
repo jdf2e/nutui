@@ -17,6 +17,9 @@ export default [
   ...pluginVue.configs['flat/recommended'],
   {
     rules: {
+      'no-empty': ['error', {
+        allowEmptyCatch: true
+      }],
       // typescript-eslint
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/ban-types': 'off',

@@ -49,7 +49,11 @@ app.use(TabbarItem)
 
 > demo: tabbar quantity
 
-### 固定底部，可自由跳转
+### 切换前的回调 version
+
+> demo: tabbar before-switch
+
+### 固定底部
 
 > demo: tabbar fixed
 
@@ -59,12 +63,13 @@ app.use(TabbarItem)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 选中标签的索引值或者名称 | number | `0` |
+| v-model | 选中标签的索引值或者名称 | string \| number | `0` |
 | bottom | 是否固定在页面底部 | boolean | `false` |
 | unactive-color | icon 未激活的颜色 | string | `#7d7e80` |
 | active-color | icon 激活的颜色 | string | `#1989fa` |
 | safe-area-inset-bottom | 是否开启 iphone 系列全面屏底部安全区适配 | boolean | `false` |
 | placeholder | 固定在底部时，是否在标签位置生成一个等高的占位元素 | boolean | `false` |
+| before-switch `version` | 切换前的回调函数，返回 false 时拦截切换操作 | `(data, value) => boolean \| Promise<boolean>` | `() => true` |
 
 ### TabbarItem Props
 
@@ -93,7 +98,12 @@ app.use(TabbarItem)
 组件导出以下类型定义：
 
 ```js
-import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
+import type {
+  TabbarProps,
+  TabbarInstance,
+  TabbarItemProps,
+  TabbarItemInstance
+} from '@nutui/nutui';
 ```
 
 ## 主题定制

@@ -1,12 +1,7 @@
 <template>
-  <div
-    class="nut-tabbar-item"
-    :class="{ 'nut-tabbar-item__icon--unactive': !active }"
-    :style="{
-      color: activeColor
-    }"
-    @click="change"
-  >
+  <div class="nut-tabbar-item" :class="{ 'nut-tabbar-item__icon--unactive': !active }" :style="{
+    color: activeColor
+  }" @click="change">
     <nut-badge v-bind="$attrs">
       <view class="nut-tabbar-item_icon-box">
         <div v-if="$slots.icon" class="nut-tabbar-item_icon-box_icon">
@@ -17,8 +12,7 @@
         </view>
 
         <view
-          :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !$slots.icon }]"
-        >
+          :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !$slots.icon }]">
           <slot>
             <view v-if="tabTitle">{{ tabTitle }}</view>
           </slot>
@@ -65,22 +59,24 @@ const { parent, index } = useParent(TABBAR_KEY)
 const active = computed(() => (props.name ?? index.value) === parent.activeIndex.value)
 const activeColor = computed(() => (active.value ? parent.props.activeColor : parent.props.unactiveColor))
 
-const change = () => {
-  const key = props.name ?? index.value
-  parent.changeIndex(index.value, key)
+const change = async () => {
+  try {
+    const key = props.name ?? index.value
+    await parent.changeIndex(index.value, key)
 
-  if (parent.children[index.value]?.href) {
-    window.location.href = parent.children[index.value].href
-    return
-  }
-
-  if (parent.children[index.value]?.to) {
-    const to = parent.children[index.value].to
-    if (to && router) {
-      router.push(to)
-    } else {
-      location.replace(to)
+    if (parent.children[index.value]?.href) {
+      window.location.href = parent.children[index.value].href
+      return
     }
-  }
+
+    if (parent.children[index.value]?.to) {
+      const to = parent.children[index.value].to
+      if (to && router) {
+        router.push(to)
+      } else {
+        location.replace(to)
+      }
+    }
+  } catch (err) { }
 }
 </script>
