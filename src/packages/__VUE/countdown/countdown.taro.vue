@@ -105,8 +105,8 @@ const start = () => {
 const pause = () => {
   cancelAnimationFrame(timer.value!)
   counting.value = false
-  emit('restart', restTime.value)
-  emit('onRestart', restTime.value)
+  emit('paused', restTime.value)
+  emit('onPaused', restTime.value)
 }
 
 // 重置
