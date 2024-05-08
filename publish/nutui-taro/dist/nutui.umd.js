@@ -14283,8 +14283,8 @@ var __async = (__this, __arguments, generator) => {
       const pause = () => {
         cancelAnimationFrame(timer.value);
         counting.value = false;
-        emit("restart", restTime.value);
-        emit("onRestart", restTime.value);
+        emit("paused", restTime.value);
+        emit("onPaused", restTime.value);
       };
       const reset = () => {
         if (!props.autoStart) {

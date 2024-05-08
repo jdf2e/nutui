@@ -12075,7 +12075,7 @@ const jh = /* @__PURE__ */ oe(Fh, [["render", Uh]]), Kh = (e) => {
     }, b = () => {
       !r.value && !o.autoStart && (r.value = !0, i.value = Date.now() + Number(s.value), g(), l("restart", s.value), l("onRestart", s.value));
     }, w = () => {
-      cancelAnimationFrame(a.value), r.value = !1, l("restart", s.value), l("onRestart", s.value);
+      cancelAnimationFrame(a.value), r.value = !1, l("paused", s.value), l("onPaused", s.value);
     };
     return t({
       start: b,

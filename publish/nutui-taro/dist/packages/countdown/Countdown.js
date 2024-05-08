@@ -161,8 +161,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const pause = () => {
       cancelAnimationFrame(timer.value);
       counting.value = false;
-      emit("restart", restTime.value);
-      emit("onRestart", restTime.value);
+      emit("paused", restTime.value);
+      emit("onPaused", restTime.value);
     };
     const reset = () => {
       if (!props.autoStart) {
