@@ -734,60 +734,26 @@ var __async = (__this, __arguments, generator) => {
     }
   }));
   withInstall(_sfc_main$1K);
-  const camelize = (s) => s.replace(/-./g, (x) => x[1].toUpperCase());
-  function createComponent(name) {
-    const componentName2 = "nut-" + name;
-    return {
-      componentName: componentName2,
-      create: function(_component) {
-        _component.name = "Nut" + camelize("-" + name);
-        _component.install = (vue2) => {
-          vue2.component(_component.name, _component);
-        };
-        return vue.defineComponent(_component);
-      }
-    };
-  }
-  const renderIcon = (icon, props) => {
-    if (icon)
-      return vue.h(icon, props);
-    return "";
-  };
-  const { componentName: componentName$a, create: create$18 } = createComponent("overlay");
-  const _sfc_main$1J = create$18({
+  const _hoisted_1$1h = ["catch-move"];
+  const _sfc_main$1J = /* @__PURE__ */ vue.defineComponent(__spreadProps(__spreadValues({}, {
+    name: "NutOverlay"
+  }), {
+    __name: "overlay.taro",
     props: {
-      visible: {
-        type: Boolean,
-        default: false
-      },
-      zIndex: {
-        type: [Number, String],
-        default: 2e3
-      },
-      duration: {
-        type: [Number, String],
-        default: 0.3
-      },
-      overlayClass: {
-        type: String,
-        default: ""
-      },
-      lockScroll: {
-        type: Boolean,
-        default: true
-      },
-      overlayStyle: {
-        type: Object
-      },
-      closeOnClickOverlay: {
-        type: Boolean,
-        default: true
-      }
+      visible: { type: Boolean, default: false },
+      zIndex: { default: 2e3 },
+      duration: { default: 0.3 },
+      lockScroll: { type: Boolean, default: true },
+      overlayClass: { default: "" },
+      overlayStyle: {},
+      closeOnClickOverlay: { type: Boolean, default: true }
     },
     emits: ["click", "update:visible"],
-    setup(props, { emit }) {
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const emit = __emit;
       const classes = vue.computed(() => {
-        const prefixCls2 = componentName$a;
+        const prefixCls2 = "nut-overlay";
         return {
           [prefixCls2]: true,
           [props.overlayClass]: true
@@ -805,35 +771,26 @@ var __async = (__this, __arguments, generator) => {
           emit("update:visible", false);
         }
       };
-      return { classes, style, onClick };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createBlock(vue.Transition, { name: "overlay-fade" }, {
+          default: vue.withCtx(() => [
+            vue.withDirectives(vue.createElementVNode("view", {
+              class: vue.normalizeClass(classes.value),
+              style: vue.normalizeStyle(style.value),
+              "catch-move": _ctx.lockScroll,
+              onClick
+            }, [
+              vue.renderSlot(_ctx.$slots, "default")
+            ], 14, _hoisted_1$1h), [
+              [vue.vShow, _ctx.visible]
+            ])
+          ]),
+          _: 3
+        });
+      };
     }
-  });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _hoisted_1$1h = ["catch-move"];
-  function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createBlock(vue.Transition, { name: "overlay-fade" }, {
-      default: vue.withCtx(() => [
-        vue.withDirectives(vue.createElementVNode("view", {
-          class: vue.normalizeClass(_ctx.classes),
-          style: vue.normalizeStyle(_ctx.style),
-          "catch-move": _ctx.lockScroll,
-          onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-        }, [
-          vue.renderSlot(_ctx.$slots, "default")
-        ], 14, _hoisted_1$1h), [
-          [vue.vShow, _ctx.visible]
-        ])
-      ]),
-      _: 3
-    });
-  }
-  const Overlay = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["render", _sfc_render$13]]);
+  }));
+  withInstall(_sfc_main$1J);
   const popupProps = {
     visible: {
       type: Boolean,
@@ -912,12 +869,31 @@ var __async = (__this, __arguments, generator) => {
       default: () => ({})
     }
   };
+  const camelize = (s) => s.replace(/-./g, (x) => x[1].toUpperCase());
+  function createComponent(name) {
+    const componentName2 = "nut-" + name;
+    return {
+      componentName: componentName2,
+      create: function(_component) {
+        _component.name = "Nut" + camelize("-" + name);
+        _component.install = (vue2) => {
+          vue2.component(_component.name, _component);
+        };
+        return vue.defineComponent(_component);
+      }
+    };
+  }
+  const renderIcon = (icon, props) => {
+    if (icon)
+      return vue.h(icon, props);
+    return "";
+  };
   const { componentName: componentName$9, create: create$17 } = createComponent("popup");
   const initIndex = 2e3;
   let _zIndex = initIndex;
   const _sfc_main$1I = create$17({
     components: {
-      NutOverlay: Overlay,
+      NutOverlay: _sfc_main$1J,
       Close: iconsVueTaro.Close
     },
     props: popupProps,
@@ -1020,6 +996,13 @@ var __async = (__this, __arguments, generator) => {
       });
     }
   });
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   function _sfc_render$12(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_nut_overlay = vue.resolveComponent("nut-overlay");
     const _component_Close = vue.resolveComponent("Close");
@@ -1756,7 +1739,7 @@ var __async = (__this, __arguments, generator) => {
   const cN$m = "NutFixedNav";
   const _sfc_main$1x = create$12({
     components: {
-      NutOverlay: Overlay,
+      NutOverlay: _sfc_main$1J,
       Left: iconsVueTaro.Left
     },
     props: {
@@ -19949,7 +19932,7 @@ var __async = (__this, __arguments, generator) => {
   }
   const AvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   function install(app) {
-    const packages = [_sfc_main$1M, _sfc_main$1L, _sfc_main$1K, Overlay, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, _sfc_main$1A, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, _sfc_main$1m, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, _sfc_main$15, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, _sfc_main$10, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, _sfc_main$G, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, _sfc_main$A, Badge, _sfc_main$y, Popover, _sfc_main$w, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
+    const packages = [_sfc_main$1M, _sfc_main$1L, _sfc_main$1K, _sfc_main$1J, Popup, _sfc_main$1H, _sfc_main$1G, _sfc_main$1F, _sfc_main$1E, Sticky, _sfc_main$1C, _sfc_main$1B, _sfc_main$1A, _sfc_main$1z, _sfc_main$1y, FixedNav, Menu, MenuItem, _sfc_main$1t, _sfc_main$1r, Elevator, Pagination, Tabs, TabPane, _sfc_main$1m, SideNavbar, SideNavbarItem, SubSideNavbar, Range, Searchbar, Cascader, Calendar, _sfc_main$1c, _sfc_main$1b, _sfc_main$1a, DatePicker, _sfc_main$16, _sfc_main$15, _sfc_main$14, _sfc_main$13, _sfc_main$12, Picker, ShortPassword, _sfc_main$10, Uploader, NumberKeyboard, _sfc_main$Y, _sfc_main$X, _sfc_main$W, _sfc_main$V, ActionSheet, _sfc_main$T, Drag, Dialog, Notify, _sfc_main$P, Toast, Avatar, AvatarGroup, List, _sfc_main$$, _sfc_main$K, Noticebar, _sfc_main$I, _sfc_main$H, _sfc_main$G, Swiper, SwiperItem, _sfc_main$D, ImagePreview, Countup, _sfc_main$A, Badge, _sfc_main$y, Popover, _sfc_main$w, _sfc_main$v, _sfc_main$u, Table, _sfc_main$s, Ellipsis, Watermark, _sfc_main$p, Tour, Address, Barrage, Signature, TimeSelect, TimePannel, TimeDetail, Sku, Card, Ecard, AddressList, Category, CategoryPane, Comment, _sfc_main$1, AvatarCropper];
     packages.forEach((item) => {
       if (item.install) {
         app.use(item);
@@ -20016,7 +19999,7 @@ var __async = (__this, __arguments, generator) => {
   exports2.Noticebar = Noticebar;
   exports2.Notify = Notify;
   exports2.NumberKeyboard = NumberKeyboard;
-  exports2.Overlay = Overlay;
+  exports2.Overlay = _sfc_main$1J;
   exports2.Pagination = Pagination;
   exports2.Picker = Picker;
   exports2.Popover = Popover;

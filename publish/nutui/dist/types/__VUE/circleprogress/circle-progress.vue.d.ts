@@ -48,9 +48,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>>>, {
     color: any;
     progress: string | number;
-    radius: string | number;
-    strokeWidth: string | number;
     strokeLinecap: CircleProgressStrokeLinecap;
+    strokeWidth: string | number;
+    radius: string | number;
     pathColor: string;
     clockwise: boolean;
 }, {}>, {

@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, computed, watch, watchEffect, toRefs, resolveComponent, openBlock, createElementBlock, createBlock, mergeProps, createCommentVNode, createTextVNode, createVNode, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, renderSlot, vShow } from "vue";
 import { Close } from "@nutui/icons-vue-taro";
-import NutOverlay from "./overlay/Overlay.js";
+import { Overlay as _sfc_main$1 } from "./overlay/Overlay.js";
 import { c as createComponent } from "./component-DQf3CENX.js";
 import { _ as _export_sfc } from "./_plugin-vue_export-helper-1tPrXgE0.js";
 const popupProps = {
@@ -105,7 +105,7 @@ const initIndex = 2e3;
 let _zIndex = initIndex;
 const _sfc_main = create({
   components: {
-    NutOverlay,
+    NutOverlay: _sfc_main$1,
     Close
   },
   props: popupProps,

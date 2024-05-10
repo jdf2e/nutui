@@ -125,8 +125,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }, {
     disabled: boolean;
     type: InputType;
-    error: boolean;
     border: boolean;
+    error: boolean;
     placeholder: string;
     modelValue: string | number;
     maxLength: string | number;

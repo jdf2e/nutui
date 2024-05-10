@@ -1,4 +1,6 @@
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -14,44 +16,29 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { computed, openBlock, createBlock, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, renderSlot, vShow } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { componentName, create } = createComponent("overlay");
-const _sfc_main = create({
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+import { defineComponent, computed, openBlock, createBlock, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, renderSlot, vShow } from "vue";
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _hoisted_1 = ["catch-move"];
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutOverlay"
+}), {
+  __name: "overlay.taro",
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    zIndex: {
-      type: [Number, String],
-      default: 2e3
-    },
-    duration: {
-      type: [Number, String],
-      default: 0.3
-    },
-    overlayClass: {
-      type: String,
-      default: ""
-    },
-    lockScroll: {
-      type: Boolean,
-      default: true
-    },
-    overlayStyle: {
-      type: Object
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true
-    }
+    visible: { type: Boolean, default: false },
+    zIndex: { default: 2e3 },
+    duration: { default: 0.3 },
+    lockScroll: { type: Boolean, default: true },
+    overlayClass: { default: "" },
+    overlayStyle: {},
+    closeOnClickOverlay: { type: Boolean, default: true }
   },
   emits: ["click", "update:visible"],
-  setup(props, { emit }) {
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
     const classes = computed(() => {
-      const prefixCls = componentName;
+      const prefixCls = "nut-overlay";
       return {
         [prefixCls]: true,
         [props.overlayClass]: true
@@ -69,28 +56,27 @@ const _sfc_main = create({
         emit("update:visible", false);
       }
     };
-    return { classes, style, onClick };
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Transition, { name: "overlay-fade" }, {
+        default: withCtx(() => [
+          withDirectives(createElementVNode("view", {
+            class: normalizeClass(classes.value),
+            style: normalizeStyle(style.value),
+            "catch-move": _ctx.lockScroll,
+            onClick
+          }, [
+            renderSlot(_ctx.$slots, "default")
+          ], 14, _hoisted_1), [
+            [vShow, _ctx.visible]
+          ])
+        ]),
+        _: 3
+      });
+    };
   }
-});
-const _hoisted_1 = ["catch-move"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Transition, { name: "overlay-fade" }, {
-    default: withCtx(() => [
-      withDirectives(createElementVNode("view", {
-        class: normalizeClass(_ctx.classes),
-        style: normalizeStyle(_ctx.style),
-        "catch-move": _ctx.lockScroll,
-        onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-      }, [
-        renderSlot(_ctx.$slots, "default")
-      ], 14, _hoisted_1), [
-        [vShow, _ctx.visible]
-      ])
-    ]),
-    _: 3
-  });
-}
-const NutOverlay = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  NutOverlay as default
+  _sfc_main as Overlay,
+  _sfc_main as default
 };

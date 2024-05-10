@@ -88,7 +88,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     dayInfo: import("vue").ComputedRef<import("vue").Slot<any> | undefined>;
     bottomInfo: import("vue").ComputedRef<import("vue").Slot<any> | undefined>;
     footerInfo: import("vue").ComputedRef<import("vue").Slot<any> | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "close" | "update:visible" | "choose")[], "select" | "close" | "update:visible" | "choose", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "update:visible" | "close" | "choose")[], "select" | "update:visible" | "close" | "choose", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -160,8 +160,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     disabledDate: FunctionConstructor;
 }>> & {
     onSelect?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
 }, {
     type: string;

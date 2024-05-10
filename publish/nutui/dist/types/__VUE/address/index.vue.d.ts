@@ -146,7 +146,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     height: Ref<string | number>;
     style: Ref<Record<string, any>>;
     transition: Ref<string>;
-    overlay: Ref<boolean>;
     visible: Ref<boolean>;
     zIndex: Ref<string | number>;
     duration: Ref<string | number>;
@@ -154,6 +153,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: Ref<string>;
     overlayStyle: Ref<Record<string, any>>;
     closeOnClickOverlay: Ref<boolean>;
+    overlay: Ref<boolean>;
     position: Ref<import("../popup/types").PopupPosition>;
     popClass: Ref<string>;
     closeable: Ref<boolean>;
@@ -174,8 +174,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     customAndExistTitle: Ref<string>;
     columnsPlaceholder: Ref<string | unknown[]>;
     onChange: Ref<((...args: any[]) => any) | undefined>;
-    onClose: Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:visible": Ref<((...args: any[]) => any) | undefined>;
+    onClose: Ref<((...args: any[]) => any) | undefined>;
     onSelected: Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:modelValue": Ref<((...args: any[]) => any) | undefined>;
     onType: Ref<((...args: any[]) => any) | undefined>;
@@ -204,7 +204,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
     initCustomSelected: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("type" | "update:visible" | "change" | "close" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "type" | "update:visible" | "change" | "close" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -338,8 +338,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onType?: ((...args: any[]) => any) | undefined;
@@ -351,7 +351,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     height: string | number;
     style: Record<string, any>;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
@@ -359,6 +358,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     position: import("../popup/types").PopupPosition;
     popClass: string;
     closeable: boolean;

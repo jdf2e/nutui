@@ -149,15 +149,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: import("vue").Ref<string>;
     style: import("vue").Ref<Record<string, any>>;
     transition: import("vue").Ref<string>;
-    overlay: import("vue").Ref<boolean>;
     visible: import("vue").Ref<boolean>;
     zIndex: import("vue").Ref<string | number>;
     duration: import("vue").Ref<string | number>;
-    overlayClass: import("vue").Ref<string>;
     lockScroll: import("vue").Ref<boolean>;
+    overlayClass: import("vue").Ref<string>;
     overlayStyle: import("vue").Ref<Record<string, any>>;
     closeOnClickOverlay: import("vue").Ref<boolean>;
+    overlay: import("vue").Ref<boolean>;
     position: import("vue").Ref<import("../popup/types").PopupPosition>;
+    height: import("vue").Ref<string | number>;
     popClass: import("vue").Ref<string>;
     closeable: import("vue").Ref<boolean>;
     closeIconPosition: import("vue").Ref<import("../popup/types").PopupCloseIconPosition>;
@@ -165,7 +166,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: import("vue").Ref<string | Element>;
     teleportDisable: import("vue").Ref<boolean>;
     safeAreaInsetBottom: import("vue").Ref<boolean>;
-    height: import("vue").Ref<string | number>;
     modelValue: import("vue").Ref<unknown[]>;
     customAddressTitle: import("vue").Ref<string>;
     isShowCustomAddress: import("vue").Ref<boolean>;
@@ -174,8 +174,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     customAndExistTitle: import("vue").Ref<string>;
     columnsPlaceholder: import("vue").Ref<string | unknown[]>;
     onChange: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onClose: import("vue").Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:visible": import("vue").Ref<((...args: any[]) => any) | undefined>;
+    onClose: import("vue").Ref<((...args: any[]) => any) | undefined>;
     onSelected: import("vue").Ref<((...args: any[]) => any) | undefined>;
     "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
     onType: import("vue").Ref<((...args: any[]) => any) | undefined>;
@@ -203,7 +203,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     clickOverlay: () => void;
     handClose: (type?: string) => void;
     handleElevatorItem: (key: string, item: AddressData) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "type" | "change" | "close" | "update:visible" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("type" | "update:visible" | "change" | "close" | "selected" | "update:modelValue" | "closeMask" | "switchModule")[], "type" | "update:visible" | "change" | "close" | "selected" | "update:modelValue" | "closeMask" | "switchModule", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: ArrayConstructor;
         default: () => never[];
@@ -337,8 +337,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onChange?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onSelected?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onType?: ((...args: any[]) => any) | undefined;
@@ -349,15 +349,16 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: string;
     style: Record<string, any>;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
-    overlayClass: string;
     lockScroll: boolean;
+    overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     position: import("../popup/types").PopupPosition;
+    height: string | number;
     popClass: string;
     closeable: boolean;
     closeIconPosition: import("../popup/types").PopupCloseIconPosition;
@@ -365,7 +366,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: string | Element;
     teleportDisable: boolean;
     safeAreaInsetBottom: boolean;
-    height: string | number;
     modelValue: unknown[];
     customAddressTitle: string;
     province: AddressData[];

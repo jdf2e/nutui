@@ -87,7 +87,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     }>;
     refRandomId: string;
     clickAway: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "choose" | "update")[], "close" | "update:visible" | "open" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "open" | "close" | "choose" | "update")[], "update:visible" | "open" | "close" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -156,19 +156,19 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;
 }, {
-    overlay: boolean;
     visible: boolean;
     duration: string | number;
     overlayClass: string;
     closeOnClickOverlay: boolean;
-    theme: PopoverTheme;
+    overlay: boolean;
     offset: unknown[];
+    theme: PopoverTheme;
     list: PopoverList[];
     customClass: string;
     bgColor: string;

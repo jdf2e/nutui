@@ -111,7 +111,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onPathChange: (pathNodes: CascaderOption[]) => void;
     innerValue: Ref<CascaderValue>;
     innerVisible: import("vue").WritableComputedRef<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:visible" | "update:modelValue" | "pathChange")[], "change" | "update:visible" | "update:modelValue" | "pathChange", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "change" | "update:modelValue" | "pathChange")[], "update:visible" | "change" | "update:modelValue" | "pathChange", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: ArrayConstructor;
     visible: BooleanConstructor;
     title: StringConstructor;
@@ -222,14 +222,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     round: boolean;
     style: Record<string, any>;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
-    overlayClass: string;
     lockScroll: boolean;
+    overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     position: import("../popup/types").PopupPosition;
     popClass: string;
     closeable: boolean;

@@ -33,9 +33,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>>>, {
     type: string;
     justify: string;
+    flexWrap: string;
     gutter: string | number;
     align: string;
-    flexWrap: string;
 }, {}>, {
     default?(_: {}): any;
 }>;

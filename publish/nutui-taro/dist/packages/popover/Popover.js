@@ -22,7 +22,7 @@ import { ref, computed, onMounted, watch, resolveComponent, openBlock, createEle
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { a as useTaroRectById, u as useTaroRect } from "../index-m0Wcof-q.js";
-import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
+import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
 import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("popover");

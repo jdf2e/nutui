@@ -170,8 +170,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     color: string;
     text: string;
     background: string;
-    height: number;
     direction: NoticebarDirection;
+    height: number;
     list: any[];
     standTime: number;
     complexAm: boolean;

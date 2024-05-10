@@ -21,8 +21,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     close: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
-    close: (...args: any[]) => void;
     open: (...args: any[]) => void;
+    close: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     name: string;
     touchMoveStopPropagation: boolean;

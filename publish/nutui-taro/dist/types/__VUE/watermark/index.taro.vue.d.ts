@@ -178,13 +178,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     image: string;
     zIndex: number;
     content: string | string[];
-    height: number;
-    width: number;
     fontFamily: string;
     fontSize: string | number;
     fontStyle: string;
     fontWeight: string;
+    height: number;
     rotate: number;
+    width: number;
     gapY: number;
     gapX: number;
     imageWidth: number;

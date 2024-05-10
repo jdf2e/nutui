@@ -81,10 +81,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    overlay: boolean;
     duration: string | number;
     lockScroll: boolean;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     direction: MenuDirection;
     activeColor: string;
     scrollFixed: string | number | boolean;

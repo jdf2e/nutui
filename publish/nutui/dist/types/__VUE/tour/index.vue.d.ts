@@ -172,8 +172,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     type: TourType;
     mask: boolean;
     closeOnClickOverlay: boolean;
-    theme: PopoverTheme;
     offset: Number[];
+    theme: PopoverTheme;
     current: number;
     modelValue: boolean;
     completeTxt: string;

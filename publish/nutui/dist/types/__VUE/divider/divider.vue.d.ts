@@ -28,9 +28,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     direction: string;
 }>>>, {
     dashed: boolean;
+    direction: DividerDirection;
     contentPosition: DividerPosition;
     hairline: boolean;
-    direction: DividerDirection;
 }, {}>, Readonly<Record<string, any>> & Record<string, any>>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;

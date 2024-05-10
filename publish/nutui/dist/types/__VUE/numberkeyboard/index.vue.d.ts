@@ -66,7 +66,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     root: Ref<any>;
     show: Ref<boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "blur" | "close" | "update:visible" | "update:modelValue" | "confirm")[], "input" | "delete" | "blur" | "close" | "update:visible" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("input" | "delete" | "update:visible" | "blur" | "close" | "update:modelValue" | "confirm")[], "input" | "delete" | "update:visible" | "blur" | "close" | "update:modelValue" | "confirm", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     confirmText: {
         type: StringConstructor;
         default: string;
@@ -110,8 +110,8 @@ declare const _default: Install< import("vue").DefineComponent<{
 }>> & {
     onBlur?: ((...args: any[]) => any) | undefined;
     onInput?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;

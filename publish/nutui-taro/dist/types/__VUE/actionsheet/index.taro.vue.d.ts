@@ -133,7 +133,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     cancelActionSheet: () => void;
     chooseItem: (item: ActionSheetMenuItems, index: number) => void;
     close: (e: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "close" | "update:visible" | "choose")[], "cancel" | "close" | "update:visible" | "choose", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "cancel" | "close" | "choose")[], "update:visible" | "cancel" | "close" | "choose", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     cancelTxt: {
         type: StringConstructor;
         default: string;
@@ -250,9 +250,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
+    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onCancel?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
-    "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
 }, {
     round: boolean;
@@ -260,14 +260,14 @@ declare const _default: Install< import("vue").DefineComponent<{
     style: Record<string, any>;
     title: string;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
-    overlayClass: string;
     lockScroll: boolean;
+    overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     position: import("../popup/types").PopupPosition;
     popClass: string;
     closeable: boolean;

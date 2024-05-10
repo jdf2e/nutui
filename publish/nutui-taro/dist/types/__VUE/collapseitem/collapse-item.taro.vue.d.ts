@@ -53,8 +53,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     title: string;
     icon: any;
     border: boolean;
-    value: string;
     rotate: string | number;
+    value: string;
 }, {}>, {
     title?(_: {}): any;
     value?(_: {}): any;

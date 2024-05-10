@@ -100,7 +100,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     zIndex: import("vue").Ref<string | number>;
     showSlot: import("vue").Ref<boolean>;
     closed: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "open" | "close" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "update:visible" | "open" | "close" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -181,8 +181,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
     onClickPop?: ((...args: any[]) => any) | undefined;
     onClickCloseIcon?: ((...args: any[]) => any) | undefined;
@@ -193,7 +193,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     round: boolean;
     style: Record<string, any>;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
@@ -201,6 +200,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     position: import("./types").PopupPosition;
     popClass: string;
     closeable: boolean;

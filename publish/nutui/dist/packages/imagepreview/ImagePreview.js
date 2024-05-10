@@ -31,11 +31,11 @@ import NutVideo from "../video/Video.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import { CircleClose } from "@nutui/icons-vue";
-import { N as NutPopup } from "../index-uHBD4dfS.js";
+import { N as NutPopup } from "../index-wLaOjIn1.js";
 import NutSwiper from "../swiper/Swiper.js";
 import { f as funInterceptor } from "../Interceptor-DlY2h6Y7.js";
 import { C as CreateComponent } from "../mountComponent-DBQ88Fjz.js";
-import NutOverlay from "../overlay/Overlay.js";
+import { Overlay as _sfc_main$2 } from "../overlay/Overlay.js";
 const baseProps = {
   show: { type: Boolean, default: false },
   initNo: { type: Number, default: 0 },
@@ -503,7 +503,7 @@ class ImagePreviewFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: "image-preview",
-      components: [NutPopup, NutVideo, NutSwiper, NutSwiperItem, NutOverlay],
+      components: [NutPopup, NutVideo, NutSwiper, NutSwiperItem, _sfc_main$2],
       wrapper: () => {
         return {
           setup() {

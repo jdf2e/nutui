@@ -90,8 +90,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     onSelected?: ((...args: any[]) => any) | undefined;
 }, {
     type: string;
-    overlay: boolean;
     visible: boolean;
+    overlay: boolean;
     position: Record<string, any>;
     navList: any[];
     activeColor: string;

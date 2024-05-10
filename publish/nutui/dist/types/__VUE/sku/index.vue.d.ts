@@ -67,7 +67,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     reduce: (value: number) => void;
     getSlots: (name: string) => import("vue").Slot<any> | undefined;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "add" | "close" | "update:visible" | "clickCloseIcon" | "clickOverlay" | "selectSku" | "changeStepper" | "overLimit" | "clickBtnOperate")[], "reduce" | "add" | "close" | "update:visible" | "clickCloseIcon" | "clickOverlay" | "selectSku" | "changeStepper" | "overLimit" | "clickBtnOperate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("reduce" | "add" | "update:visible" | "close" | "clickCloseIcon" | "clickOverlay" | "selectSku" | "changeStepper" | "overLimit" | "clickBtnOperate")[], "reduce" | "add" | "update:visible" | "close" | "clickCloseIcon" | "clickOverlay" | "selectSku" | "changeStepper" | "overLimit" | "clickBtnOperate", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -121,8 +121,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     onClickCloseIcon?: ((...args: any[]) => any) | undefined;
     onClickOverlay?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;

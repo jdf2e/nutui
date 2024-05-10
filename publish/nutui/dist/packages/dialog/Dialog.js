@@ -24,11 +24,11 @@ var __publicField = (obj, key, value) => {
 import { ref, onMounted, watch, computed, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, normalizeClass, createElementBlock, renderSlot, Fragment, createTextVNode, toDisplayString, createCommentVNode, resolveDynamicComponent, nextTick, h } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { f as funInterceptor } from "../Interceptor-DlY2h6Y7.js";
-import { N as NutPopup, p as popupProps } from "../index-uHBD4dfS.js";
+import { N as NutPopup, p as popupProps } from "../index-wLaOjIn1.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-CFigyH92.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import NutOverlay from "../overlay/Overlay.js";
+import { Overlay as _sfc_main$2 } from "../overlay/Overlay.js";
 import { C as CreateComponent } from "../mountComponent-DBQ88Fjz.js";
 const { create } = createComponent("dialog");
 const cN = "NutDialog";
@@ -290,7 +290,7 @@ class DialogFunction {
     const options = Object.assign(this.options, _options);
     const { unmount } = CreateComponent(options, {
       name: "dialog",
-      components: [NutPopup, _sfc_main$1, NutOverlay],
+      components: [NutPopup, _sfc_main$1, _sfc_main$2],
       wrapper: (elWrap, root) => {
         return {
           setup() {

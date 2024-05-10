@@ -151,7 +151,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickOverlay: () => void;
     contentStyle: import("vue").ComputedRef<CSSProperties>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("cancel" | "update:visible" | "opened" | "closed" | "update" | "ok")[], "cancel" | "update:visible" | "opened" | "closed" | "update" | "ok", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "cancel" | "opened" | "closed" | "update" | "ok")[], "update:visible" | "cancel" | "opened" | "closed" | "update" | "ok", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     closeOnClickOverlay: {
         type: BooleanConstructor;
         default: boolean;
@@ -290,8 +290,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: () => {};
     };
 }>> & {
-    onCancel?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onCancel?: ((...args: any[]) => any) | undefined;
     onOpened?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;
@@ -301,7 +301,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     style: Record<string, any>;
     title: string;
     transition: string;
-    overlay: boolean;
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
@@ -309,10 +308,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     overlayClass: string;
     overlayStyle: Record<string, any>;
     closeOnClickOverlay: boolean;
+    overlay: boolean;
     content: string | VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
     position: import("../popup/types").PopupPosition;
+    textAlign: TextAlign;
     popClass: string;
     closeable: boolean;
     closeIconPosition: import("../popup/types").PopupCloseIconPosition;
@@ -320,7 +321,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: string | Element;
     teleportDisable: boolean;
     safeAreaInsetBottom: boolean;
-    textAlign: TextAlign;
     cancelText: string;
     okText: string;
     noFooter: boolean;

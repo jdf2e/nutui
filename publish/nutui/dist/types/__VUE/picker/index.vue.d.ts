@@ -117,6 +117,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onConfirm?: ((...args: any[]) => any) | undefined;
 }, {
     title: string;
+    columns: (import("./types").PickerOption | import("./types").PickerOption[])[];
     modelValue: (string | number)[];
     threeDimensional: boolean;
     swipeDuration: string | number;
@@ -125,7 +126,6 @@ declare const _default: Install< import("vue").DefineComponent<{
     fieldNames: import("./types").PickerFieldNames;
     cancelText: string;
     okText: string;
-    columns: (import("./types").PickerOption | import("./types").PickerOption[])[];
     showToolbar: boolean;
 }, {}>>;
 export default _default;

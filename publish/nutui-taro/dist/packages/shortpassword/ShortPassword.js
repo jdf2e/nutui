@@ -1,6 +1,6 @@
 import { ref, computed, watch, onMounted, resolveComponent, openBlock, createElementBlock, createVNode, withCtx, createElementVNode, toDisplayString, createTextVNode, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
+import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
 import { Tips } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-5sMqqUcW.js";
 import { eventCenter, getCurrentInstance } from "@tarojs/taro";

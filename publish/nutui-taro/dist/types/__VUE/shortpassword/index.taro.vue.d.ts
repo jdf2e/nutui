@@ -48,7 +48,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     focus: (event: any) => void;
     show: import("vue").Ref<boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "focus" | "update:visible" | "update:modelValue" | "complete" | "tips")[], "close" | "focus" | "update:visible" | "update:modelValue" | "complete" | "tips", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "close" | "focus" | "update:modelValue" | "complete" | "tips")[], "update:visible" | "close" | "focus" | "update:modelValue" | "complete" | "tips", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -87,8 +87,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }>> & {
     onFocus?: ((...args: any[]) => any) | undefined;
-    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    onClose?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onTips?: ((...args: any[]) => any) | undefined;
     onComplete?: ((...args: any[]) => any) | undefined;

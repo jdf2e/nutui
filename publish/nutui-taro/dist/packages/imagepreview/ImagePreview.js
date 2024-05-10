@@ -22,7 +22,7 @@ import Taro from "@tarojs/taro";
 import { CircleClose } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { f as funInterceptor } from "../Interceptor-BbYzdoUK.js";
-import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
+import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
 import NutSwiper from "../swiper/Swiper.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";

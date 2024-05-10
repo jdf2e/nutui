@@ -1,6 +1,6 @@
 import { ref, watch, onUnmounted, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createElementBlock, Fragment, createTextVNode, toDisplayString } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-D-ijfYRm.js";
+import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("notify");
 const _sfc_main = create({
