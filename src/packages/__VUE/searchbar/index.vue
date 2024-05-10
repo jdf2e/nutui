@@ -254,4 +254,3 @@ export default create({
   }
 })
 </script>
-./types
