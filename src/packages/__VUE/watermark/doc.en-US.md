@@ -45,7 +45,18 @@ The content attribute is passed into a string array, showing a multi-line waterm
 | gap-x | Horizontal spacing between watermarks | number | `24` |
 | gap-y | Vertical spacing between watermarks | number | `48` |
 | full-page | Overwrite entire page | boolean | `true` |
-| font-family | Watermark text font family | boolean | `true` |
+| font-family | Watermark text font family | string | `PingFang SC` |
+
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  WatermarkProps,
+  WatermarkInstance
+} from '@nutui/nutui'
+```
 
 ## Theming
 
