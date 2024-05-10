@@ -46,6 +46,7 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "srcMiniprogramRoot": "dist/",
+  "libVersion": "widelyUsed",
   "packOptions": {
     "ignore": [],
     "include": []
