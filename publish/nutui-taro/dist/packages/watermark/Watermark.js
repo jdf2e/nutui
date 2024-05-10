@@ -37,104 +37,41 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-import { reactive, watch, computed, toRefs, openBlock, createElementBlock, normalizeClass, normalizeStyle } from "vue";
-import { c as createComponent } from "../component-DQf3CENX.js";
+import { defineComponent, ref, computed, watchEffect, openBlock, createElementBlock, normalizeClass, normalizeStyle } from "vue";
 import Taro from "@tarojs/taro";
-import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-const { componentName, create } = createComponent("watermark");
-const _sfc_main = create({
+import { w as withInstall } from "../with-install-Ch3FF0uS.js";
+const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
+  name: "NutWatermark"
+}), {
+  __name: "watermark.taro",
   props: {
-    name: {
-      type: String,
-      default: ""
-    },
-    gapY: {
-      type: Number,
-      default: 48
-    },
-    gapX: {
-      type: Number,
-      default: 24
-    },
-    zIndex: {
-      type: Number,
-      default: 2e3
-    },
-    width: {
-      type: Number,
-      default: 120
-    },
-    height: {
-      type: Number,
-      default: 64
-    },
-    rotate: {
-      type: Number,
-      default: -22
-    },
-    image: {
-      type: String,
-      default: ""
-    },
-    imageWidth: {
-      type: Number,
-      default: 120
-    },
-    imageHeight: {
-      type: Number,
-      default: 64
-    },
-    content: {
-      type: [String, Array],
-      default: ""
-    },
-    fontColor: {
-      type: String,
-      default: "rgba(0,0,0,.15)"
-    },
-    fontStyle: {
-      type: String,
-      default: "normal"
-    },
-    fontFamily: {
-      type: String,
-      default: "PingFang SC"
-    },
-    fontWeight: {
-      type: String,
-      default: "normal"
-    },
-    fontSize: {
-      type: [String, Number],
-      default: 14
-    },
-    fullPage: {
-      type: Boolean,
-      default: ""
-    }
+    gapX: { default: 24 },
+    gapY: { default: 48 },
+    zIndex: { default: 2e3 },
+    width: { default: 120 },
+    height: { default: 64 },
+    rotate: { default: -22 },
+    image: {},
+    imageWidth: { default: 120 },
+    imageHeight: { default: 64 },
+    content: { default: "" },
+    fontColor: { default: "rgba(0,0,0,.15)" },
+    fontStyle: { default: "normal" },
+    fontFamily: { default: "PingFang SC" },
+    fontWeight: { default: "normal" },
+    fontSize: { default: 14 },
+    fullPage: { type: Boolean, default: true }
   },
-  emits: ["click"],
-  setup(props) {
-    const state = reactive({
-      base64Url: ""
+  setup(__props) {
+    const props = __props;
+    const base64Url = ref("");
+    const classes = computed(() => {
+      const prefixCls = "nut-watermark";
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-full-page`]: props.fullPage
+      };
     });
-    const {
-      zIndex,
-      gapX,
-      gapY,
-      width,
-      height,
-      rotate,
-      image,
-      imageWidth,
-      imageHeight,
-      content,
-      fontStyle,
-      fontWeight,
-      fontColor,
-      fontSize,
-      fontFamily
-    } = props;
     const init = () => __async(this, null, function* () {
       let ratio = 1;
       Taro.getSystemInfo({
@@ -142,10 +79,10 @@ const _sfc_main = create({
           ratio = res.pixelRatio;
         }
       });
-      const canvasWidth = `${(gapX + width) * ratio}`;
-      const canvasHeight = `${(gapY + height) * ratio}`;
-      const markWidth = width * ratio;
-      const markHeight = height * ratio;
+      const canvasWidth = `${(props.gapX + props.width) * ratio}`;
+      const canvasHeight = `${(props.gapY + props.height) * ratio}`;
+      const markWidth = props.width * ratio;
+      const markHeight = props.height * ratio;
       const canvas = Taro.createOffscreenCanvas({
         type: "2d",
         width: Number(canvasWidth),
@@ -153,10 +90,10 @@ const _sfc_main = create({
       });
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        if (image) {
+        if (props.image) {
           const img = canvas.createImage();
           dealWithImage(ctx, img, ratio, ctx.canvas, markWidth, markHeight);
-        } else if (content) {
+        } else if (props.content) {
           dealWithText(ctx, ratio, ctx.canvas, markWidth, markHeight);
         }
       } else {
@@ -167,17 +104,18 @@ const _sfc_main = create({
       const canvas = document.createElement("canvas");
       const ratio = window.devicePixelRatio;
       const ctx = canvas.getContext("2d");
-      const canvasWidth = `${(gapX + width) * ratio}px`;
-      const canvasHeight = `${(gapY + height) * ratio}px`;
-      const markWidth = width * ratio;
-      const markHeight = height * ratio;
+      const canvasWidth = `${(props.gapX + props.width) * ratio}px`;
+      const canvasHeight = `${(props.gapY + props.height) * ratio}px`;
+      const markWidth = props.width * ratio;
+      const markHeight = props.height * ratio;
       canvas.setAttribute("width", canvasWidth);
       canvas.setAttribute("height", canvasHeight);
+      console.log(markWidth, markHeight, canvasWidth, canvasHeight, ratio);
       if (ctx) {
-        if (image) {
+        if (props.image) {
           const img = new Image();
           dealWithImage(ctx, img, ratio, canvas, markWidth, markHeight);
-        } else if (content) {
+        } else if (props.content) {
           dealWithText(ctx, ratio, canvas, markWidth, markHeight);
         }
       } else {
@@ -186,88 +124,61 @@ const _sfc_main = create({
     };
     const dealWithImage = (ctx, img, ratio, canvas, markWidth, markHeight) => {
       ctx.translate(markWidth / 2, markHeight / 2);
-      ctx.rotate(Math.PI / 180 * Number(rotate));
+      ctx.rotate(Math.PI / 180 * Number(props.rotate));
       img.crossOrigin = "anonymous";
       img.referrerPolicy = "no-referrer";
-      img.src = image;
+      img.src = props.image || "";
       img.onload = () => {
         ctx.drawImage(
           img,
-          -imageWidth * ratio / 2,
-          -imageHeight * ratio / 2,
-          imageWidth * ratio,
-          imageHeight * ratio
+          -props.imageWidth * ratio / 2,
+          -props.imageHeight * ratio / 2,
+          props.imageWidth * ratio,
+          props.imageHeight * ratio
         );
         ctx.restore();
-        state.base64Url = canvas.toDataURL();
+        base64Url.value = canvas.toDataURL();
       };
     };
     const dealWithText = (ctx, ratio, canvas, markWidth, markHeight) => {
       ctx.textBaseline = "middle";
       ctx.textAlign = "center";
       ctx.translate(markWidth / 2, markHeight / 2);
-      ctx.rotate(Math.PI / 180 * Number(rotate));
-      const markSize = Number(fontSize) * ratio;
-      ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
-      ctx.fillStyle = fontColor;
-      if (Array.isArray(content)) {
-        content.map((item, index) => {
+      ctx.rotate(Math.PI / 180 * Number(props.rotate));
+      const markSize = Number(props.fontSize) * ratio;
+      ctx.font = `${props.fontStyle} normal ${props.fontWeight} ${markSize}px/${markHeight}px ${props.fontFamily}`;
+      ctx.fillStyle = props.fontColor;
+      if (Array.isArray(props.content)) {
+        props.content.map((item, index) => {
           ctx.fillText(item, 0, (index - 1) * markSize);
         });
       } else {
-        ctx.fillText(content, 0, 0);
+        ctx.fillText(props.content, 0, 0);
       }
       ctx.restore();
-      state.base64Url = canvas.toDataURL();
+      base64Url.value = canvas.toDataURL();
     };
-    if (Taro.getEnv() === "WEB") {
-      initH5();
-    } else {
-      init();
-    }
-    watch(
-      () => [
-        zIndex,
-        gapX,
-        gapY,
-        width,
-        height,
-        rotate,
-        image,
-        imageWidth,
-        imageHeight,
-        content,
-        fontStyle,
-        fontWeight,
-        fontColor,
-        fontSize,
-        fontFamily
-      ],
-      () => {
+    watchEffect(() => {
+      if (Taro.getEnv() === "WEB") {
+        initH5();
+      } else {
         init();
       }
-    );
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}-full-page`]: props.fullPage
-      };
     });
-    return __spreadProps(__spreadValues({}, toRefs(state)), { classes });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("view", {
+        class: normalizeClass(classes.value),
+        style: normalizeStyle({
+          zIndex: _ctx.zIndex,
+          backgroundSize: `${_ctx.gapX + _ctx.width}px`,
+          backgroundImage: `url('${base64Url.value}')`
+        })
+      }, null, 6);
+    };
   }
-});
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("view", {
-    class: normalizeClass(_ctx.classes),
-    style: normalizeStyle({
-      zIndex: _ctx.zIndex,
-      backgroundSize: `${_ctx.gapX + _ctx.width}px`,
-      backgroundImage: `url('${_ctx.base64Url}')`
-    })
-  }, null, 6);
-}
-const index_taro = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+}));
+withInstall(_sfc_main);
 export {
-  index_taro as default
+  _sfc_main as Watermark,
+  _sfc_main as default
 };

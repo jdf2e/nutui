@@ -7684,10 +7684,10 @@
             },
             {
               "name": "font-family",
-              "default": "`true`",
+              "default": "`PingFang SC`",
               "description": "水印文字字体",
               "value": {
-                "type": "boolean",
+                "type": "string",
                 "kind": "expression"
               }
             }
