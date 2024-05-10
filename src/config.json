@@ -105,6 +105,7 @@
           "name": "Overlay",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
+          "setup": true,
           "author": "szg2008"
         },
         {

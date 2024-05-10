@@ -7,7 +7,7 @@ import NutPopup from '../popup/index.vue'
 import NutVideo from '../video/index.vue'
 import NutSwiper from '../swiper/index.vue'
 import NutSwiperItem from '../swiperitem/index.vue'
-import NutOverlay from '../overlay/index.vue'
+import NutOverlay from '../overlay'
 
 export class ImagePreviewOptions {
   show = false
