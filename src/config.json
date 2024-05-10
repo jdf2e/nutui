@@ -791,6 +791,7 @@
           "cType": "展示组件",
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
+          "setup": true,
           "author": "liukun"
         },
         {
