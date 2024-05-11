@@ -17,12 +17,12 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, createVNode, normalizeProps, guardReactiveProps, withCtx, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, unref, toDisplayString } from "vue";
+import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, createVNode, unref, normalizeProps, guardReactiveProps, withCtx, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, toDisplayString } from "vue";
 import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
 import { u as useRouter } from "../index-aiGQ-EiA.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";
-import NutBadge from "../badge/Badge.js";
+import { Badge as _sfc_main$1 } from "../badge/Badge.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-tabbar-item_icon-box" };
 const _hoisted_2 = {
@@ -76,7 +76,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         }),
         onClick: change
       }, [
-        createVNode(NutBadge, normalizeProps(guardReactiveProps(_ctx.$attrs)), {
+        createVNode(unref(_sfc_main$1), normalizeProps(guardReactiveProps(_ctx.$attrs)), {
           default: withCtx(() => [
             createElementVNode("view", _hoisted_1, [
               _ctx.$slots.icon ? (openBlock(), createElementBlock("div", _hoisted_2, [
