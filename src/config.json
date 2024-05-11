@@ -719,6 +719,7 @@
           "name": "Badge",
           "cName": "徽标",
           "desc": "徽标",
+          "setup": true,
           "author": "liqiong"
         },
         {

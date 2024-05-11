@@ -57,6 +57,17 @@ app.use(Badge)
 | default | 徽标包裹的子元素 |
 | icon | 徽标自定义 |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  BadgeProps,
+  BadgeInstance
+} from '@nutui/nutui'
+```
+
 ## 主题定制
 
 ### 样式变量
