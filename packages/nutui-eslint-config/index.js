@@ -22,7 +22,9 @@ export default [
       '@typescript-eslint/ban-types': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': ['error', {
+        caughtErrors: 'none'
+      }],
       '@typescript-eslint/ban-ts-comment': 'off',
       // eslint-plugin-vue
       'vue/v-on-event-hyphenation': [
@@ -37,6 +39,9 @@ export default [
       'vue/first-attribute-linebreak': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-v-text-v-html-on-component': 'off',
+      'vue/block-order': ['error', {
+        order: [['script', 'template'], 'style']
+      }],
       // TODO: will be removed
       'vue/html-self-closing': 'off',
       'vue/html-closing-bracket-newline': 'off',

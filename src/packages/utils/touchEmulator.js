@@ -1,4 +1,3 @@
-/* eslint-disable */
 /**
  * Emulate touch event
  * Source：https://github.com/hammerjs/touchemulator

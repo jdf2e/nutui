@@ -7,7 +7,7 @@ Object.defineProperty(window.HTMLElement.prototype, 'clientHeight', {
   value: 667
 })
 
-function mockStickyRect(wrapper: VueWrapper<ComponentPublicInstance<{}, any>>, rect: Partial<DOMRect>) {
+function mockStickyRect(wrapper: VueWrapper<ComponentPublicInstance<any, any>>, rect: Partial<DOMRect>) {
   const mocked = vi.spyOn(wrapper.element, 'getBoundingClientRect').mockReturnValue(rect as DOMRect)
 
   return () => mocked.mockRestore()
