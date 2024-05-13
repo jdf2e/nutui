@@ -54,7 +54,6 @@ ${code}
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function markdown(options: MarkdownOptions) {
   return [
     TransformMarkdownDemo(options),
