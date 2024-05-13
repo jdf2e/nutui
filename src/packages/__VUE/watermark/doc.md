@@ -49,7 +49,7 @@ app.use(Watermark)
 | full-page | 是否覆盖整个页面 | boolean | `true` |
 | font-family | 水印文字字体 | string | `PingFang SC` |
 
-### 类型定义 version
+### 类型定义 v4.3.8
 
 组件导出以下类型定义：
 

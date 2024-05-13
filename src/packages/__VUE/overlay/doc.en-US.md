@@ -76,7 +76,7 @@ Set `close on click override` to control whether the click mask is closed. If it
 | --- | --- |
 | default | Embedded Mask Content Customization |
 
-### Types version
+### Types v4.3.8
 
 The component exports the following type definitions:
 

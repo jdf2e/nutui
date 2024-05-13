@@ -57,7 +57,7 @@ app.use(Badge)
 | default | 徽标包裹的子元素 |
 | icon | 徽标自定义 |
 
-### 类型定义 version
+### 类型定义 v4.3.8
 
 组件导出以下类型定义：
 

@@ -47,7 +47,7 @@ The content attribute is passed into a string array, showing a multi-line waterm
 | full-page | Overwrite entire page | boolean | `true` |
 | font-family | Watermark text font family | string | `PingFang SC` |
 
-### Types version
+### Types v4.3.8
 
 The component exports the following type definitions:
 

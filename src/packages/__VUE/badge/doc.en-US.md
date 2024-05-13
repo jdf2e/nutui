@@ -57,7 +57,7 @@ app.use(Badge)
 | default | Default slot |
 | icon | Icon slot |
 
-### Types version
+### Types v4.3.8
 
 The component exports the following type definitions:
 
