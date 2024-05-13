@@ -65,7 +65,7 @@ export default create({
         emit('change', val)
       }
     )
-    if (props.scrollTop !== -1) {
+    if (props.scrollTop === -1) {
       usePageScroll(handleScroll)
     } else {
       watch(() => props.scrollTop, handleScroll)
