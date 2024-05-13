@@ -1,3 +1,20 @@
+## v4.3.8
+
+`2024-05-13`
+
+Bug Fixes
+
+- countdown: emit paused (#3062) @eiinu
+- sticky: 修复滚动事件的监听方式 (#3072) @eiinu
+
+Refactors
+
+- overlay, watermark, badge: move to script setup @eiinu
+
+Other Changes
+
+- searchbar: update unit test (#3070) @eiinu
+
 ## v4.3.7
 
 `2024-05-07`
