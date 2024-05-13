@@ -1307,7 +1307,7 @@ var __async = (__this, __arguments, generator) => {
           emit("change", val);
         }
       );
-      if (props.scrollTop !== -1) {
+      if (props.scrollTop === -1) {
         Taro.usePageScroll(handleScroll);
       } else {
         vue.watch(() => props.scrollTop, handleScroll);
