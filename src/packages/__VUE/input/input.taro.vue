@@ -180,8 +180,6 @@ const _onInput = (event: Event) => {
 }
 
 const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
-  // #2178 & Taro #2642
-  emit('update:modelValue', value)
   if (props.maxLength && value.length > Number(props.maxLength)) {
     value = value.slice(0, Number(props.maxLength))
   }
@@ -191,11 +189,15 @@ const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') =>
     value = formatNumber(value, isDigit, isDigit)
   }
   if (props.formatter && trigger === props.formatTrigger) {
-    value = props.formatter(value)
+    const tempValue = props.formatter(value)
+    if (tempValue !== value) {
+      // #2178 & Taro #2642
+      emit('update:modelValue', value)
+    }
+    value = tempValue
   }
   if (value !== props.modelValue) {
     emit('update:modelValue', value)
-    // emit('change', value);
   }
 }
 
@@ -205,7 +207,6 @@ const onFocus = (event: Event) => {
   }
   active.value = true
   emit('focus', event)
-  // emit('update:modelValue', value);
 }
 
 const onBlur = (event: Event) => {
@@ -215,22 +216,14 @@ const onBlur = (event: Event) => {
   setTimeout(() => {
     active.value = false
   }, 200)
-
-  const input = event.target as HTMLInputElement
-  let value = input.value
-  if (props.maxLength && value.length > Number(props.maxLength)) {
-    value = value.slice(0, Number(props.maxLength))
-  }
   updateValue(getModelValue(), 'onBlur')
   emit('blur', event)
-  // emit('update:modelValue', value);
 }
 
 const clear = (event: Event) => {
   event.stopPropagation()
   if (disabled.value) return
   emit('update:modelValue', '', event)
-  // emit('change', '', event);
   emit('clear', '', event)
 }
 
