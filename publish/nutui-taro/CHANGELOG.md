@@ -1,3 +1,40 @@
+## v4.3.8
+
+`2024-05-13`
+
+Bug Fixes
+
+- countdown: emit paused (#3062) @eiinu
+- sticky: 修复滚动事件的监听方式 (#3072) @eiinu
+
+Refactors
+
+- overlay, watermark, badge: move to script setup @eiinu
+
+Other Changes
+
+- searchbar: update unit test (#3070) @eiinu
+
+## v4.3.7
+
+`2024-05-07`
+
+Features
+
+- number-keyboard: add confirm event (#3059) @eiinu
+
+Bug Fixes
+
+- tabs: inject 数据增加 ?. (#3045) @2977938133
+
+Refactors
+
+- input, image: move to script setup @eiinu
+
+Other Changes
+
+- docs: input 更新 align demo 引用名称 (#3044) @ShuTianGit
+
 ## v4.3.6
 
 `2024-04-19`

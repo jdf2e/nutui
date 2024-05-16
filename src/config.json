@@ -105,6 +105,7 @@
           "name": "Overlay",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
+          "setup": true,
           "author": "szg2008"
         },
         {
@@ -718,6 +719,7 @@
           "name": "Badge",
           "cName": "徽标",
           "desc": "徽标",
+          "setup": true,
           "author": "liqiong"
         },
         {
@@ -790,6 +792,7 @@
           "cType": "展示组件",
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
+          "setup": true,
           "author": "liukun"
         },
         {

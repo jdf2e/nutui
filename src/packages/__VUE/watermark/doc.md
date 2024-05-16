@@ -47,7 +47,18 @@ app.use(Watermark)
 | gap-x | 水印之间的水平间距 | number | `24` |
 | gap-y | 水印之间的垂直间距 | number | `48` |
 | full-page | 是否覆盖整个页面 | boolean | `true` |
-| font-family | 水印文字字体 | boolean | `true` |
+| font-family | 水印文字字体 | string | `PingFang SC` |
+
+### 类型定义 v4.3.8
+
+组件导出以下类型定义：
+
+```js
+import type {
+  WatermarkProps,
+  WatermarkInstance
+} from '@nutui/nutui'
+```
 
 ## 主题定制
 

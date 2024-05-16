@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`should render watermark 1`] = `
-"<view class="nut-cell" style="">
-  <view class="nut-watermark" style="z-index: 2000; background-size: 144px; background-image: url(" data:image/png;base64,00");"></view>
-</view>"
-`;

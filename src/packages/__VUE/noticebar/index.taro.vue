@@ -208,7 +208,7 @@ export default create({
 
     const isEllipsis = computed(() => {
       if (state.isCanScroll == null) {
-        return false && !props.wrapable
+        return false
       } else {
         return !state.isCanScroll && !props.wrapable
       }

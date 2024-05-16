@@ -28,7 +28,7 @@ import { renderIcon } from '@/packages/utils/create'
 import { useRouter } from '@/packages/utils/useRoute'
 import { useParent } from '@/packages/utils'
 import { TABBAR_KEY } from '../tabbar/types'
-import NutBadge from '../badge/index.vue'
+import NutBadge from '../badge/index.taro'
 
 defineOptions({
   name: 'NutTabbarItem'

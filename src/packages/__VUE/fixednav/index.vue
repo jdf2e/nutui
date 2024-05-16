@@ -3,13 +3,8 @@
     <nut-overlay v-if="overlay" :visible="visible" :z-index="200" @click="updateValue(false)" />
     <slot name="list">
       <view class="nut-fixed-nav__list">
-        <view
-          v-for="(item, index) in navList"
-          :key="item.id || index"
-          class="nut-fixed-nav__list-item"
-          :class="{ active: item.id == current }"
-          @click="selected(item, $event)"
-        >
+        <view v-for="(item, index) in navList" :key="item.id || index" class="nut-fixed-nav__list-item"
+              :class="{ active: item.id == current }" @click="selected(item, $event)">
           <img :src="item.icon" />
           <view class="span">{{ item.text }}</view>
           <view v-if="item.num" class="b">{{ item.num }}</view>
@@ -29,7 +24,7 @@
 <script lang="ts">
 import { PropType, computed, ref } from 'vue'
 import { Left } from '@nutui/icons-vue'
-import NutOverlay from '../overlay/index.vue'
+import NutOverlay from '../overlay'
 import { createComponent } from '@/packages/utils/create'
 import { useLocale } from '@/packages/utils/useLocale'
 const { create } = createComponent('fixed-nav')

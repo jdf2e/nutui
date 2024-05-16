@@ -2,7 +2,7 @@ import Dialog from './index.vue'
 import { h, VNode, CSSProperties, Component, nextTick } from 'vue'
 import NutPopup from '../popup/index.vue'
 import NutButton from '../button'
-import NutOverlay from '../overlay/index.vue'
+import NutOverlay from '../overlay'
 import { CreateComponent } from '@/packages/utils/create'
 export class DialogOptions {
   title?: string = ''

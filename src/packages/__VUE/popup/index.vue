@@ -1,26 +1,13 @@
 <template>
   <Teleport :to="teleport" :disabled="!teleportDisable">
-    <nut-overlay
-      v-if="overlay"
-      :visible="visible"
-      :close-on-click-overlay="closeOnClickOverlay"
-      :z-index="zIndex"
-      :lock-scroll="lockScroll"
-      :duration="duration"
-      :overlay-class="overlayClass"
-      :overlay-style="overlayStyle"
-      v-bind="$attrs"
-      @click="onClickOverlay"
-    />
+    <nut-overlay v-if="overlay" :visible="visible" :close-on-click-overlay="closeOnClickOverlay" :z-index="zIndex"
+                 :lock-scroll="lockScroll" :duration="duration" :overlay-class="overlayClass" :overlay-style="overlayStyle"
+                 v-bind="$attrs" @click="onClickOverlay" />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
-        <view
-          v-if="closed"
-          class="nut-popup__close-icon"
-          :class="'nut-popup__close-icon--' + closeIconPosition"
-          @click="onClickCloseIcon"
-        >
+        <view v-if="closed" class="nut-popup__close-icon" :class="'nut-popup__close-icon--' + closeIconPosition"
+              @click="onClickCloseIcon">
           <slot name="close-icon">
             <Close height="12px"></Close>
           </slot>
@@ -32,7 +19,7 @@
 <script lang="ts">
 import { computed, reactive, toRefs, watch, watchEffect } from 'vue'
 import { Close } from '@nutui/icons-vue'
-import NutOverlay from '../overlay/index.vue'
+import NutOverlay from '../overlay'
 import { popupProps } from './props'
 import { createComponent } from '@/packages/utils/create'
 const { componentName, create } = createComponent('popup')

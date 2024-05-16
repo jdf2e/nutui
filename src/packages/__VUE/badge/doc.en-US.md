@@ -57,6 +57,17 @@ app.use(Badge)
 | default | Default slot |
 | icon | Icon slot |
 
+### Types v4.3.8
+
+The component exports the following type definitions:
+
+```js
+import type {
+  BadgeProps,
+  BadgeInstance
+} from '@nutui/nutui'
+```
+
 ## Theming
 
 ### CSS Variables

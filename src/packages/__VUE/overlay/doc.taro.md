@@ -76,6 +76,17 @@ app.use(Overlay)
 | --- | --- |
 | default | 内嵌遮罩内容自定义 |
 
+### 类型定义 v4.3.8
+
+组件导出以下类型定义：
+
+```js
+import type {
+  OverlayProps,
+  OverlayInstance
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量
