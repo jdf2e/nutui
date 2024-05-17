@@ -8962,7 +8962,7 @@ var __async = (__this, __arguments, generator) => {
             "show-count": false,
             maxlength: _ctx.maxLength ? _ctx.maxLength : -1,
             placeholder: _ctx.placeholder || vue.unref(translate)("placeholder"),
-            "auto-focus": _ctx.autofocus,
+            "auto-focus": _ctx.autofocus ? true : void 0,
             onInput: change,
             onBlur: blur,
             onFocus: focus,

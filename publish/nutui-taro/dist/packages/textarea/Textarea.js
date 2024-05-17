@@ -226,7 +226,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           "show-count": false,
           maxlength: _ctx.maxLength ? _ctx.maxLength : -1,
           placeholder: _ctx.placeholder || unref(translate)("placeholder"),
-          "auto-focus": _ctx.autofocus,
+          "auto-focus": _ctx.autofocus ? true : void 0,
           onInput: change,
           onBlur: blur,
           onFocus: focus,
