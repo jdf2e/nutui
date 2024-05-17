@@ -29,6 +29,10 @@
   flex-wrap: wrap;
   &.nut-menu-item__overflow {
     overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+    }
   }
 
   .nut-menu-item__option {
