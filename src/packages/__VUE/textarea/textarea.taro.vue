@@ -11,7 +11,7 @@
       :show-count="false"
       :maxlength="maxLength ? maxLength : -1"
       :placeholder="placeholder || translate('placeholder')"
-      :auto-focus="autofocus"
+      :auto-focus="autofocus ? true : undefined"
       @input="change"
       @blur="blur"
       @focus="focus"
