@@ -107,6 +107,30 @@ const verticalClick = () => {
 
 :::
 
+### lock-scroll
+
+`lock-scroll` 属性，锁定背景，禁止滚动穿透，默认值为 `true`。
+
+```vue
+<template>
+  <nut-dialog>
+    <view>在该内容区域溢出时，无法滑动</view>
+  </nut-dialog>
+</template>
+```
+
+如果需要内容支持溢出滚动，则需要包裹一层 `scroll-view` 组件。
+
+```vue
+<template>
+  <nut-dialog>
+    <scroll-view>
+      <view>在该内容溢出时，则可以正常滑动</view>
+    </scroll-view>
+  </nut-dialog>
+</template>
+```
+
 ## API
 
 ### Props
