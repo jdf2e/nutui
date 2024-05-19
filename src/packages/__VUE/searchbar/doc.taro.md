@@ -93,6 +93,20 @@ app.use(Searchbar)
 | rightin | 输入框内 右 icon |
 | rightout | 输入框外 右 icon |
 
+### 类型定义 version
+
+组件导出以下类型定义：
+
+```js
+import type {
+  SearchbarProps,
+  SearchbarInstance,
+  SearchbarInputAlign,
+  SearchbarConfirmType,
+  SearchbarShape,
+} from '@nutui/nutui-taro';
+```
+
 ## 主题定制
 
 ### 样式变量

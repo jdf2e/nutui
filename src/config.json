@@ -336,6 +336,7 @@
           "name": "Searchbar",
           "cName": "搜索栏",
           "desc": "搜索栏",
+          "setup": true,
           "author": "zongyue3"
         },
         {
