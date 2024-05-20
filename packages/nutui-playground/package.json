@@ -15,7 +15,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.12.12",
     "@vitejs/plugin-vue": "^5.0.4",
     "rimraf": "^5.0.7",
     "vite": "^5.2.11",
