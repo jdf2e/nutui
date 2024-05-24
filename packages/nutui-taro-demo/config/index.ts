@@ -21,7 +21,7 @@ const config = {
       {
         vueLoaderOption: {
           compilerOptions: {
-            isCustomElement: (tag) => tag.includes('taro-scroll-view-core'),
+            isCustomElement: tag => tag.includes('taro-scroll-view-core'),
             whitespace: 'preserve'
           }
         }
@@ -46,6 +46,9 @@ const config = {
     prebundle: { enable: false }
   },
   mini: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')]
+    },
     webpackChain(chain) {
       chain.merge({
         module: {
@@ -79,6 +82,9 @@ const config = {
     }
   },
   h5: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')]
+    },
     publicPath: '/',
     staticDirectory: 'static',
     chunkDirectory: 'chunk',
