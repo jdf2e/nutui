@@ -4,6 +4,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
 
   &-phantom {
     position: relative;
