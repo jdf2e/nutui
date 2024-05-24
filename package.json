@@ -129,6 +129,6 @@
     "url": "https://github.com/jdf2e/nutui.git"
   },
   "resolutions": {
-    "@typescript-eslint/utils": "^8.0.0-alpha.14"
+    "@typescript-eslint/utils": "^8.0.0-alpha.16"
   }
 }
