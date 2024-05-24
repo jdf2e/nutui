@@ -1,1 +1,1 @@
-.nut-list{width:100%;position:relative;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}.nut-list-phantom{position:relative;z-index:-1}.nut-list-container{position:absolute;top:0;left:0;right:0}.nut-list-item{overflow:hidden}
+.nut-list{width:100%;position:relative;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}.nut-list::-webkit-scrollbar{display:none;width:0}.nut-list-phantom{position:relative;z-index:-1}.nut-list-container{position:absolute;top:0;left:0;right:0}.nut-list-item{overflow:hidden}

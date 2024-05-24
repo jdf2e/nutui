@@ -22,6 +22,10 @@
     display: block;
     position: relative;
     overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+    }
     &__item {
       display: block;
       font-size: $elevator-list-item-font-size;
