@@ -3420,7 +3420,7 @@
               }
             },
             {
-              "name": "showClearIcon ",
+              "name": "show-clear-icon ",
               "default": "`false`",
               "description": "是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效",
               "value": {
