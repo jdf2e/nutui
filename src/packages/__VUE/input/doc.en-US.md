@@ -85,7 +85,7 @@ After setting the `maxlength` and `show-word-limit` attributes, word count will 
 | autofocus | Whether to auto focus, unsupported in iOS | boolean | `false` |
 | max-length | Max length of value | string ｜ number | - |
 | clearable | Whether to be clearable | boolean | `false` |
-| showClearIcon `4.0.2` | Whether to continue to display the clear button after losing focus, which will take effect when 'clearable' is set | boolean | `false` |
+| show-clear-icon `4.0.2` | Whether to continue to display the clear button after losing focus, which will take effect when 'clearable' is set | boolean | `false` |
 | clear-size | Clear Icon `font-size` | string | `14` |
 | show-word-limit | Whether to show word limit, need to set the `max-length` prop | boolean | `false` |
 | error | Whether to mark the input content in red | boolean | `false` |
