@@ -1,3 +1,12 @@
+## v4.3.9
+
+`2024-05-25`
+
+Bug Fixes
+
+- textarea: 修复 slot 嵌套使用 textarea 时的输入失焦问题 (#3084) @eiinu
+- style: hidden scrollbar by default (#3085) @eiinu
+
 ## v4.3.8
 
 `2024-05-13`
