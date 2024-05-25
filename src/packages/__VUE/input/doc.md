@@ -96,7 +96,7 @@ app.use(Input)
 | autofocus | 是否自动获得焦点，`iOS` 系统不支持该属性 | boolean | `false` |
 | max-length | 限制最长输入字符 | string ｜ number | - |
 | clearable | 展示清除 `Icon` | boolean | `false` |
-| showClearIcon `4.0.2` | 是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效 | boolean | `false` |
+| show-clear-icon `4.0.2` | 是否在失去焦点后，继续展示清除按钮，在设置 `clearable` 时生效 | boolean | `false` |
 | clear-size | 清除图标的 `font-size` 大小 | string | `14` |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false` |
 | error | 是否标红 | boolean | `false` |
