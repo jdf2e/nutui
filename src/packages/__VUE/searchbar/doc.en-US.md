@@ -91,6 +91,19 @@ app.use(Searchbar)
 | rightin | right icon in the input box |
 | rightout | right icon outside the input box |
 
+### Types version
+
+The component exports the following type definitions:
+
+```js
+import type {
+  SearchbarProps,
+  SearchbarInstance,
+  SearchbarInputAlign,
+  SearchbarShape,
+} from '@nutui/nutui';
+```
+
 ## Theming
 
 ### CSS Variables
