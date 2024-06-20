@@ -221,7 +221,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           class: ["nut-textarea__textarea", unref(env) == "ALIPAY" && "nut-textarea__ali"],
           style: styles.value,
           rows: _ctx.rows,
-          disabled: unref(disabled) || _ctx.readonly,
+          disabled: unref(disabled) || _ctx.readonly ? unref(disabled) || _ctx.readonly : void 0,
           value: _ctx.modelValue,
           "show-count": false,
           maxlength: _ctx.maxLength ? _ctx.maxLength : -1,
