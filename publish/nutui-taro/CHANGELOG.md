@@ -1,3 +1,15 @@
+## v4.3.10
+
+`2024-06-20`
+
+Bug Fixes
+
+- input, textarea: 修改只读禁用属性设置逻辑 (#3104) @eiinu
+
+Other Changes
+
+- docs(input): 修正参数名 (#3088) @hainuo
+
 ## v4.3.9
 
 `2024-05-25`
