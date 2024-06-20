@@ -6,7 +6,7 @@
       :class="['nut-textarea__textarea', env == 'ALIPAY' && 'nut-textarea__ali']"
       :style="styles"
       :rows="rows"
-      :disabled="disabled || readonly"
+      :disabled="(disabled || readonly) ? (disabled || readonly) : undefined"
       :value="modelValue"
       :show-count="false"
       :maxlength="maxLength ? maxLength : -1"
