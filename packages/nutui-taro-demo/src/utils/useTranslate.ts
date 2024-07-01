@@ -8,9 +8,9 @@ export const useTranslate = <
   },
   T2 extends T1
 >(object: {
-    'zh-CN': T1
-    'en-US': T2
-  }) => {
+  'zh-CN': T1
+  'en-US': T2
+}) => {
   for (const [key, value] of Object.entries(object)) {
     Locale.merge(key, value)
   }
