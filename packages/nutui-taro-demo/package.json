@@ -36,7 +36,7 @@
     "@tarojs/runtime": "3.6.30",
     "@tarojs/shared": "3.6.30",
     "@tarojs/taro": "3.6.30",
-    "vue": "^3.4.27"
+    "vue": "^3.4.31"
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",

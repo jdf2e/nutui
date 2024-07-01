@@ -7,7 +7,7 @@ exports[`Searchbar: basic usage 1`] = `
   <view class="nut-searchbar__search-input round">
     <!--v-if-->
     <view class="nut-searchbar__input-inner">
-      <form class="nut-searchbar__input-form" action="#"><input class="nut-searchbar__input-bar nut-searchbar__input-bar_clear" type="text" maxlength="9999" placeholder="请输入" style="text-align: left;"></form>
+      <form class="nut-searchbar__input-form" action="#"><input class="nut-searchbar__input-bar nut-searchbar__input-bar_clear" type="text" maxlength="9999" placeholder="请输入" style="text-align: left;" value="123"></form>
     </view>
     <view class="nut-searchbar__input-inner-icon">
       <view class="nut-searchbar__search-icon nut-searchbar__input-clear"><svg class="nut-icon nut-icon-circle-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="presentation">
