@@ -23,7 +23,7 @@ import { N as NutPopup, p as popupProps } from "../index.taro-V9Ta96_T.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import NutElevator from "../elevator/Elevator.js";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const cN = "NutAddress";
 const { create } = createComponent("address");
@@ -132,10 +132,8 @@ const _sfc_main = create({
       }
     });
     const transformData = (data) => {
-      if (!Array.isArray(data))
-        throw new TypeError("params muse be array.");
-      if (!data.length)
-        return [];
+      if (!Array.isArray(data)) throw new TypeError("params muse be array.");
+      if (!data.length) return [];
       data.forEach((item) => {
         if (!item.title) {
           console.warn("[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .");
@@ -184,8 +182,7 @@ const _sfc_main = create({
       }
     };
     const getTabName = (item, index) => {
-      if (item && item.name)
-        return item.name;
+      if (item && item.name) return item.name;
       if (tabIndex.value < index && item) {
         return item.name;
       } else {
@@ -238,8 +235,7 @@ const _sfc_main = create({
       const copyExistAdd = props.existAddress;
       let prevExistAdd = {};
       copyExistAdd.forEach((list) => {
-        if (list && list.selectedAddress)
-          prevExistAdd = list;
+        if (list && list.selectedAddress) prevExistAdd = list;
         list.selectedAddress = false;
       });
       item.selectedAddress = true;

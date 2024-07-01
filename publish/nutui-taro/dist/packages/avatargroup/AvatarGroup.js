@@ -86,8 +86,7 @@ const _sfc_main = create({
             break;
           }
         }
-        if (sig)
-          foldAvatar(element);
+        if (sig) foldAvatar(element);
       };
       const observer2 = new MutationObserver(callback);
       observer2.observe(element, config);

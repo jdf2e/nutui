@@ -21,10 +21,10 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { reactive, computed, ref, watch, toRefs, onMounted, openBlock, createElementBlock, createElementVNode, normalizeStyle, Fragment, renderList, normalizeClass, toDisplayString, createCommentVNode, createTextVNode, resolveComponent, renderSlot, mergeProps, createVNode } from "vue";
 import Taro from "@tarojs/taro";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
-import { a as preventDefault, c as clamp } from "../util-7oDGftbO.js";
+import { a as preventDefault, c as clamp } from "../util-2G3mRQeF.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 const DEFAULT_FILED_NAMES = {
   text: "text",
   value: "value",
@@ -99,8 +99,7 @@ const usePicker = (props, emit) => {
       const options = cursor[fields.children];
       const value = defaultValues2[columnIndex];
       let index = options.findIndex((columnItem) => columnItem[fields.value] === value);
-      if (index === -1)
-        index = 0;
+      if (index === -1) index = 0;
       cursor = cursor[fields.children][index];
       columnIndex++;
       formatted.push(options);

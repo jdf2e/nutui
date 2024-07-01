@@ -95,10 +95,8 @@ const _sfc_main = create({
       if (!index && index !== 0) {
         return;
       }
-      if (index < 0)
-        index = 0;
-      if (index > state.listHeight.length - 2)
-        index = state.listHeight.length - 2;
+      if (index < 0) index = 0;
+      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
       state.codeIndex = index;
       listview.value.scrollTo(0, state.listHeight[index]);
     };
@@ -166,11 +164,9 @@ const _sfc_main = create({
         const listHeight = state.listHeight;
         let fixedTop = newVal > 0 && newVal < props.titleHeight ? newVal - props.titleHeight : 0;
         if (state.scrollY + clientHeight.value === listHeight[listHeight.length - 1]) {
-          if (fixedTop !== 0)
-            fixedTop = 0;
+          if (fixedTop !== 0) fixedTop = 0;
         }
-        if (state.fixedTop === fixedTop)
-          return;
+        if (state.fixedTop === fixedTop) return;
         state.fixedTop = fixedTop;
       }
     );

@@ -41,7 +41,7 @@ var __async = (__this, __arguments, generator) => {
 import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, renderSlot, withDirectives, normalizeStyle, createVNode, withCtx, createTextVNode, toDisplayString, vShow } from "vue";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { d as preventDefault, e as clamp } from "../util-DnfK0Qan.js";
+import { d as preventDefault, e as clamp } from "../util-D1pvnUYu.js";
 import { Refresh2, Retweet } from "@nutui/icons-vue";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useRect } from "../index-B1qsj2XR.js";
@@ -169,8 +169,7 @@ const _sfc_main = create({
       const { img, width, height, x, y, swidth } = drawImage.value;
       const { moveX, moveY, scale } = state;
       const canvas = canvasRef.value;
-      if (!canvas)
-        return;
+      if (!canvas) return;
       const ctx = canvas.getContext("2d");
       canvas.width = state.displayWidth;
       canvas.height = state.displayHeight;
@@ -210,8 +209,7 @@ const _sfc_main = create({
       state.visible = true;
       const $el = event.target;
       let { files } = $el;
-      if (!(files == null ? void 0 : files.length))
-        return;
+      if (!(files == null ? void 0 : files.length)) return;
       const base64 = yield fileToDataURL(files[0]);
       const image = yield dataURLToImage(base64);
       setDrawImg(image);

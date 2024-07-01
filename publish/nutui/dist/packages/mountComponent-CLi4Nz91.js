@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { h as isString, i as isFunction } from "./util-DnfK0Qan.js";
+import { h as isString, i as isFunction } from "./util-D1pvnUYu.js";
 const CreateComponent = (options, component) => {
   let elWrap = document.body;
   const teleport = options.teleport || "body";

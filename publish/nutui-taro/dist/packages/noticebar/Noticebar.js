@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { h, ref, reactive, computed, watch, onMounted, onActivated, onDeactivated, onUnmounted, toRefs, resolveComponent, openBlock, createElementBlock, withDirectives, normalizeClass, normalizeStyle, renderSlot, createVNode, createCommentVNode, createTextVNode, createElementVNode, toDisplayString, withModifiers, vShow, Fragment, renderList, createBlock } from "vue";
 import { Notice, CircleClose } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
@@ -189,11 +189,9 @@ const _sfc_main = create({
         let wrapWidth = 0;
         let offsetWidth = 0;
         getRect(`.wrap${state.id}`).then((rect) => {
-          if ((rect == null ? void 0 : rect.width) > 0)
-            wrapWidth = rect.width;
+          if ((rect == null ? void 0 : rect.width) > 0) wrapWidth = rect.width;
           getRect(`.content${state.id}`).then((rect2) => {
-            if ((rect2 == null ? void 0 : rect2.width) > 0)
-              offsetWidth = rect2.width;
+            if ((rect2 == null ? void 0 : rect2.width) > 0) offsetWidth = rect2.width;
             state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
             if (state.isCanScroll) {
               state.wrapWidth = wrapWidth;
@@ -285,8 +283,7 @@ const _sfc_main = create({
       }
     });
     const updateSlotChild = () => {
-      if (slots.default)
-        state.scrollList = [].concat(slots.default()[0].children);
+      if (slots.default) state.scrollList = [].concat(slots.default()[0].children);
     };
     const watchSlots = () => {
       setTimeout(() => {

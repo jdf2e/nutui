@@ -18,13 +18,10 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import { reactive, computed, watch, toRefs, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, normalizeStyle, createElementBlock, createCommentVNode, ref, nextTick, onMounted, Fragment, renderList, toDisplayString, normalizeClass, renderSlot, createVNode, h } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { e as clamp, d as preventDefault, a as isArray } from "../util-DnfK0Qan.js";
+import { e as clamp, d as preventDefault, a as isArray } from "../util-D1pvnUYu.js";
 import { u as useRect } from "../index-B1qsj2XR.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import NutVideo from "../video/Video.js";
@@ -33,8 +30,8 @@ import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import { CircleClose } from "@nutui/icons-vue";
 import { N as NutPopup } from "../index-wLaOjIn1.js";
 import NutSwiper from "../swiper/Swiper.js";
-import { f as funInterceptor } from "../Interceptor-DlY2h6Y7.js";
-import { C as CreateComponent } from "../mountComponent-DBQ88Fjz.js";
+import { f as funInterceptor } from "../Interceptor-CBzqGJrl.js";
+import { C as CreateComponent } from "../mountComponent-CLi4Nz91.js";
 import { Overlay as _sfc_main$2 } from "../overlay/Overlay.js";
 const baseProps = {
   show: { type: Boolean, default: false },
@@ -387,8 +384,7 @@ const _sfc_main = create({
     watch(
       () => props.initNo,
       (val) => {
-        if (val != state.active)
-          setActive(val);
+        if (val != state.active) setActive(val);
       }
     );
     onMounted(() => {

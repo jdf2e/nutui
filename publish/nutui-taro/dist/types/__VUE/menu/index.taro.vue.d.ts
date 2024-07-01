@@ -39,7 +39,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     };
 }, {
     toggleItem: (active: number) => void;
-    children: any[];
+    children: import("vue").Reactive<any[]>;
     opened: import("vue").ComputedRef<boolean>;
     classes: import("vue").ComputedRef<{
         [x: string]: boolean;

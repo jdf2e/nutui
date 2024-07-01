@@ -19,11 +19,11 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, reactive, onMounted, onUnmounted, onActivated, onDeactivated, watch, toRefs, nextTick, resolveComponent, openBlock, createElementBlock, createElementVNode, renderSlot, createVNode, toDisplayString, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { j as getScrollTopRoot } from "../util-DnfK0Qan.js";
+import { j as getScrollTopRoot } from "../util-D1pvnUYu.js";
 import { u as useScrollParent } from "../index-BvmDLUYP.js";
 import { r as requestAniFrame } from "../raf-c01wDYCo.js";
 import { Loading } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("infinite-loading");
 const cN = "NutInfiniteLoading";

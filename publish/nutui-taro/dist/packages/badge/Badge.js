@@ -46,8 +46,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       };
     });
     const content = computed(() => {
-      if (props.dot)
-        return;
+      if (props.dot) return;
       const value = props.value;
       const max = props.max;
       if (typeof value === "number" && typeof max === "number") {

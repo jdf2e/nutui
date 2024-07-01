@@ -191,8 +191,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     };
     const clear = (event) => {
       event.stopPropagation();
-      if (disabled.value)
-        return;
+      if (disabled.value) return;
       emit("update:modelValue", "", event);
       emit("clear", "", event);
     };

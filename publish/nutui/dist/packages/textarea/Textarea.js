@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRef, ref, computed, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, unref, toDisplayString, createCommentVNode } from "vue";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = ["rows", "disabled", "readonly", "value", "maxlength", "placeholder", "autofocus"];
@@ -120,13 +120,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       }
     };
     const focus = (event) => {
-      if (disabled.value || props.readonly)
-        return;
+      if (disabled.value || props.readonly) return;
       emit("focus", event);
     };
     const blur = (event) => {
-      if (disabled.value || props.readonly)
-        return;
+      if (disabled.value || props.readonly) return;
       const input = event.target;
       const value = input.value;
       emitChange(value, event);

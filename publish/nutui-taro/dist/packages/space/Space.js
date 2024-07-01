@@ -22,8 +22,7 @@ const _sfc_main = create({
     };
     const getMarginStyle = (isLast) => {
       const style = {};
-      if (!props.gutter)
-        return style;
+      if (!props.gutter) return style;
       const marginRight = `${getMargin(Array.isArray(props.gutter) ? props.gutter[0] : props.gutter)}`;
       const marginBottom = `${getMargin(Array.isArray(props.gutter) ? props.gutter[1] : props.gutter)}`;
       if (isLast) {

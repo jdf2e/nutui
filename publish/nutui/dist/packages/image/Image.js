@@ -86,10 +86,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     });
     const stylebox = computed(() => {
       let style = {};
-      if (props.width)
-        style.width = pxCheck(props.width);
-      if (props.height)
-        style.height = pxCheck(props.height);
+      if (props.width) style.width = pxCheck(props.width);
+      if (props.height) style.height = pxCheck(props.height);
       if (props.radius !== void 0 && props.radius !== null) {
         style.overflow = "hidden";
         style.borderRadius = pxCheck(props.radius);

@@ -47,8 +47,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const { index, parent } = useParent(STEPS_KEY);
     const status = computed(() => {
       const activeIndex = index.value + 1;
-      if (activeIndex < +parent.props.current)
-        return "finish";
+      if (activeIndex < +parent.props.current) return "finish";
       return activeIndex === +parent.props.current ? "process" : "wait";
     });
     const dot = computed(() => parent.props.progressDot);

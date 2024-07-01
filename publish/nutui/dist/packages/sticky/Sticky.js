@@ -41,13 +41,11 @@ const _sfc_main = create({
       return props.position === "top" ? Number(props.top) : Number(props.bottom);
     });
     const rootStyle = computed(() => {
-      if (state.fixed)
-        return { height: `${state.height}px` };
+      if (state.fixed) return { height: `${state.height}px` };
       return {};
     });
     const stickyStyle = computed(() => {
-      if (!state.fixed)
-        return {};
+      if (!state.fixed) return {};
       return {
         [props.position]: `${threshold.value}px`,
         height: `${state.height}px`,
@@ -59,8 +57,7 @@ const _sfc_main = create({
     });
     const handleScroll = () => {
       const containerEle = props.container;
-      if (!rootRef.value && !containerEle)
-        return;
+      if (!rootRef.value && !containerEle) return;
       const rootRect = useRect(rootRef);
       const stCurrent = stickyRef.value;
       const stickyRect = useRect(stCurrent);

@@ -76,8 +76,7 @@ const _sfc_main = create({
       createContainer();
     });
     const createContainer = () => {
-      if (!root.value)
-        return;
+      if (!root.value) return;
       const originStyle = window.getComputedStyle(root.value);
       container = document.createElement("div");
       const styleNames = Array.prototype.slice.apply(originStyle);
@@ -169,8 +168,7 @@ const _sfc_main = create({
       }
     };
     const pxToNumber = (value) => {
-      if (!value)
-        return 0;
+      if (!value) return 0;
       const match = value.match(/^\d*(\.\d*)?/);
       return match ? Number(match[0]) : 0;
     };

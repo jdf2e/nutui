@@ -113,10 +113,8 @@ const _sfc_main = create({
       if (!index && index !== 0) {
         return;
       }
-      if (index < 0)
-        index = 0;
-      if (index > state.listHeight.length - 2)
-        index = state.listHeight.length - 2;
+      if (index < 0) index = 0;
+      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
       state.codeIndex = index;
       state.scrollTop = state.listHeight[index];
     };

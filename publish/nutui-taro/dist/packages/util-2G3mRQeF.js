@@ -61,8 +61,7 @@ const floatData = (format, dataOp, mapOps) => {
           mergeFormat[keys] = dataOp[mergeMapOps[keys]];
         }
       } else {
-        if (dataOp[keys])
-          mergeFormat[keys] = dataOp[keys];
+        if (dataOp[keys]) mergeFormat[keys] = dataOp[keys];
       }
     });
     return mergeFormat;

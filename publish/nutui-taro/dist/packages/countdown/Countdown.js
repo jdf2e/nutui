@@ -18,11 +18,10 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, ref, computed, onBeforeMount, watch, openBlock, createElementBlock, renderSlot, createElementVNode } from "vue";
-import { p as padZero } from "../util-7oDGftbO.js";
+import { p as padZero } from "../util-2G3mRQeF.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const getTimeStamp = (timeStr) => {
-  if (!timeStr)
-    return Date.now();
+  if (!timeStr) return Date.now();
   let t = timeStr;
   t = +t > 0 ? +t : t.toString().replace(/-/g, "/");
   return new Date(t).getTime();
@@ -125,8 +124,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const initTime = () => {
       handleEndTime.value = Number(props.endTime);
       diffTime.value = Date.now() - getTimeStamp(props.startTime);
-      if (!counting.value)
-        counting.value = true;
+      if (!counting.value) counting.value = true;
       tick();
     };
     const tick = () => {

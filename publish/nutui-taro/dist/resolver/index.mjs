@@ -15,10 +15,8 @@ function NutUIResolver(options = {}) {
     type: "component",
     resolve: (name) => {
       const { autoImport = false } = options;
-      if (autoImport && nutFunctions.includes(name))
-        return getNutResolved(name, options);
-      if (name.startsWith("Nut"))
-        return getNutResolved(name.slice(3), options);
+      if (autoImport && nutFunctions.includes(name)) return getNutResolved(name, options);
+      if (name.startsWith("Nut")) return getNutResolved(name.slice(3), options);
     }
   };
 }

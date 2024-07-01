@@ -3,7 +3,7 @@ import { Right, Fabulous, Comment, MoreX } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { Rate as _sfc_main$4 } from "../rate/Rate.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 const { create: create$3 } = createComponent("comment-header");
 const _sfc_main$3 = create$3({
   components: {
@@ -351,8 +351,7 @@ const _sfc_main = create({
   setup(props, { emit }) {
     const translate = useLocale(cN);
     const conEllipsis = computed(() => {
-      if (props.ellipsis)
-        return props.ellipsis;
+      if (props.ellipsis) return props.ellipsis;
       return props.headerType == "complex" ? 6 : 2;
     });
     const clickOperate = (t) => {

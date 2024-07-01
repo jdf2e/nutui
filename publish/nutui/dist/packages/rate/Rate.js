@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRef, ref, openBlock, createElementBlock, Fragment, renderList, unref, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createCommentVNode } from "vue";
 import { StarFillN } from "@nutui/icons-vue";
-import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
@@ -63,8 +63,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       emit("change", value);
     };
     const onClick = (e, index) => {
-      if (disabled.value || props.readonly)
-        return;
+      if (disabled.value || props.readonly) return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
         value = 0;
@@ -93,13 +92,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     };
     const touch = useTouch();
     const onTouchStart = (event) => {
-      if (!props.touchable || props.readonly)
-        return;
+      if (!props.touchable || props.readonly) return;
       touch.start(event);
     };
     const onTouchMove = (event) => {
-      if (!props.touchable)
-        return;
+      if (!props.touchable) return;
       touch.move(event);
       if (touch.isHorizontal()) {
         if (rateRefs.value) {

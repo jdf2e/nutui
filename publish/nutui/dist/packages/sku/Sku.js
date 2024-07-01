@@ -1,7 +1,7 @@
 import { resolveComponent, openBlock, createElementBlock, createElementVNode, renderSlot, createBlock, createCommentVNode, toDisplayString, ref, watch, onMounted, Fragment, renderList, normalizeClass, createVNode, withCtx, createSlots } from "vue";
 import { Price as _sfc_main$5 } from "../price/Price.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import { InputNumber as _sfc_main$6 } from "../inputnumber/InputNumber.js";
 import { N as NutPopup } from "../index-wLaOjIn1.js";

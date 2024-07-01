@@ -29,13 +29,11 @@ const _sfc_main = create({
       width: 0
     });
     const rootStyle = computed(() => {
-      if (state.fixed)
-        return { height: `${state.height}px` };
+      if (state.fixed) return { height: `${state.height}px` };
       return {};
     });
     const stickyStyle = computed(() => {
-      if (!state.fixed)
-        return {};
+      if (!state.fixed) return {};
       return {
         top: `${props.top}px`,
         height: `${state.height}px`,

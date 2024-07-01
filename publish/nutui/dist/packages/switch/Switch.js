@@ -61,8 +61,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     });
     let updateType = "";
     const onClick = (event) => {
-      if (props.loading || disabled.value)
-        return;
+      if (props.loading || disabled.value) return;
       const value = isActive.value ? props.inactiveValue : props.activeValue;
       updateType = "click";
       emit("update:modelValue", value);

@@ -19,7 +19,7 @@ var It = (e) => typeof e == "symbol" ? e : e + "", Yt = (e, t) => {
       t.indexOf(o) < 0 && _n.call(e, o) && (n[o] = e[o]);
   return n;
 };
-var H = (e, t, n) => (Wt(e, typeof t != "symbol" ? t + "" : t, n), n);
+var H = (e, t, n) => Wt(e, typeof t != "symbol" ? t + "" : t, n);
 var Ge = (e, t, n) => new Promise((o, l) => {
   var s = (r) => {
     try {
@@ -1732,16 +1732,14 @@ const Ae = /* @__PURE__ */ le(Mr, [["render", Lr]]), Pr = (e) => ({
   },
   setup(t, { slots: n }) {
     const o = (i) => {
-      if (!/^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(i))
-        return "";
+      if (!/^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(i)) return "";
       i = i.toLowerCase(), i.length === 4 && (i = "#" + i.slice(1).split("").map((p) => p + p).join(""));
       const f = [];
       for (let p = 1; p < 7; p += 2)
         f.push(parseInt("0x" + i.slice(p, p + 2)));
       return f.join(",");
     }, l = (i) => (i = i.replace(i.charAt(0), i.charAt(0).toLocaleLowerCase()), i.replace(/([a-z])([A-Z])/g, (r, f, p) => f + "-" + p.toLowerCase())), s = (i) => {
-      if (!i)
-        return;
+      if (!i) return;
       const r = {}, f = i == null ? void 0 : i.primaryColor;
       if (f) {
         const p = o(f);
@@ -2006,8 +2004,7 @@ const Ye = (e) => {
       zIndex: Number(e.zIndex)
     } : {}), r = () => {
       const f = e.container;
-      if (!n.value && !f)
-        return;
+      if (!n.value && !f) return;
       const p = Ye(n), y = o.value, v = Ye(y), b = Ye(f);
       l.height = p.height, l.width = p.width;
       const w = () => {
@@ -2191,8 +2188,7 @@ const { create: qr, componentName: lt } = ne("space"), Gr = qr({
   setup(e, { slots: t }) {
     const n = (p) => typeof p == "number" ? p + "px" : p, o = (p) => {
       const y = {};
-      if (!e.gutter)
-        return y;
+      if (!e.gutter) return y;
       const v = `${n(Array.isArray(e.gutter) ? e.gutter[0] : e.gutter)}`, b = `${n(Array.isArray(e.gutter) ? e.gutter[1] : e.gutter)}`;
       return p ? e.wrap ? { marginBottom: b } : {} : (e.direction === "horizontal" && (y.marginRight = v), (e.direction === "vertical" || e.wrap) && (y.marginBottom = b), y);
     }, l = (p = []) => {
@@ -2749,8 +2745,7 @@ const Su = { class: "nut-badge" }, un = /* @__PURE__ */ ve({
       zIndex: t.zIndex,
       background: t.color
     })), o = S(() => {
-      if (t.dot)
-        return;
+      if (t.dot) return;
       const l = t.value, s = t.max;
       return typeof l == "number" && typeof s == "number" && s < l ? `${s}+` : l;
     });
@@ -3061,8 +3056,7 @@ const To = /* @__PURE__ */ le(Bu, [["render", Ou]]), { create: Ru } = ne("pagina
     }), r = (y, v) => {
       y > i.value || y < 1 || (y != o.value && t("update:modelValue", y), v && t("change", y));
     }, f = (y, v, b = !1) => ({ number: y, text: v, active: b }), p = S(() => {
-      if (l.value == "simple")
-        return;
+      if (l.value == "simple") return;
       let y = [];
       const v = i.value, b = +s.value;
       let w = 1, C = v;
@@ -3432,8 +3426,7 @@ const { create: nc } = ne("tabs"), oc = nc({
       color: e.type == "smile" ? e.color : "",
       background: e.type == "line" ? e.color : ""
     })), M = S(() => {
-      if (!e.titleGutter)
-        return {};
+      if (!e.titleGutter) return {};
       const k = Be(e.titleGutter);
       return e.direction === "vertical" ? { paddingTop: k, paddingBottom: k } : { paddingLeft: k, paddingRight: k };
     });
@@ -6653,22 +6646,19 @@ const If = /* @__PURE__ */ le(Nf, [["render", Df]]), Bf = ["min", "max", "disabl
       let h = a(u);
       o("update:modelValue", h, m), Number(n.modelValue) !== Number(h) && o("change", h, m);
     }, f = (u = Number(n.modelValue)) => u < Number(n.max) && !l.value, p = (u = Number(n.modelValue)) => u > Number(n.min) && !l.value, y = (u) => {
-      if (l.value)
-        return;
+      if (l.value) return;
       o("reduce", u);
       let m = Number(n.modelValue) - Number(n.step);
       p() && m >= Number(n.min) ? r(m, u) : (r(Number(n.min), u), o("overlimit", u, "reduce"));
     }, v = (u) => {
-      if (l.value)
-        return;
+      if (l.value) return;
       o("add", u);
       let m = Number(n.modelValue) + Number(n.step);
       f() && m <= Number(n.max) ? r(m, u) : (r(Number(n.max), u), o("overlimit", u, "add"));
     }, b = (u) => {
       l.value || n.readonly || o("focus", u);
     }, w = (u) => {
-      if (l.value || n.readonly)
-        return;
+      if (l.value || n.readonly) return;
       const m = u.target;
       let h = Number(m.value);
       h < Number(n.min) ? h = Number(n.min) : h > Number(n.max) && (h = Number(n.max)), r(h, u), o("blur", u);
@@ -7028,8 +7018,7 @@ const Rf = ["id"], Ff = { class: "nut-rate-item__icon--full" }, Wf = {
     const n = e, o = t, l = Math.random().toString(36).slice(-8), s = qe(Je(n, "disabled")), a = z([]), i = (b) => {
       o("update:modelValue", b), o("change", b);
     }, r = (b, w) => {
-      if (s.value || n.readonly)
-        return;
+      if (s.value || n.readonly) return;
       let C = 0;
       w === 1 && n.modelValue === w ? C = 0 : (C = w, n.allowHalf && b == 2 && (C -= 0.5)), i(C);
     }, f = (b, w, C) => {
@@ -7293,8 +7282,7 @@ const tp = /* @__PURE__ */ le(Uf, [["render", ep]]), np = ["rows", "disabled", "
     }, b = (m) => {
       l.value || n.readonly || o("focus", m);
     }, w = (m) => {
-      if (l.value || n.readonly)
-        return;
+      if (l.value || n.readonly) return;
       const $ = m.target.value;
       y($, m), o("blur", { value: $, event: m });
     }, C = ({ target: m }) => {
@@ -9250,8 +9238,7 @@ const Yo = (e) => {
     }));
     let f = "";
     const p = (y) => {
-      if (n.loading || s.value)
-        return;
+      if (n.loading || s.value) return;
       const v = a.value ? n.inactiveValue : n.activeValue;
       f = "click", o("update:modelValue", v), o("change", v, y);
     };
@@ -10024,8 +10011,7 @@ const { create: gm } = ne("list"), ym = gm({
       m = Array.from(m).filter((B) => B.nodeType === 1);
       const h = m[0];
       m.forEach((B, M) => {
-        if (!B)
-          return;
+        if (!B) return;
         const k = Ye(B), { height: E } = k, j = a.cachePositions[M + a.start].height - E;
         j && (a.cachePositions[M + a.start].bottom -= j, a.cachePositions[M + a.start].height = E, a.cachePositions[M + a.start].dValue = j);
       });
@@ -11031,8 +11017,7 @@ const el = Symbol("nut-swiper"), { create: ch, componentName: Fn } = ne("swiper"
       const { active: x } = s;
       return R ? e.loop ? Ee(x + R, -1, v.value) : Ee(x + R, 0, v.value - 1) : x;
     }, A = ({ pace: R = 0, offset: x = 0, isEmit: U = !1 }) => {
-      if (v.value <= 1)
-        return;
+      if (v.value <= 1) return;
       const { active: se } = s, ue = P(R), fe = $(ue, x);
       if (e.loop) {
         if (s.children[0] && fe !== C.value) {
@@ -11084,8 +11069,7 @@ const el = Symbol("nut-swiper"), { create: ch, componentName: Fn } = ne("swiper"
         offset: p.value
       }));
     }, Y = () => {
-      if (!e.touchable || !s.moving)
-        return;
+      if (!e.touchable || !s.moving) return;
       const R = p.value / (Date.now() - s.touchTime);
       if ((Math.abs(R) > 0.3 || Math.abs(p.value) > +(b.value / 2).toFixed(2)) && y.value) {
         let U = 0;
@@ -11094,8 +11078,7 @@ const el = Symbol("nut-swiper"), { create: ch, componentName: Fn } = ne("swiper"
           pace: U,
           isEmit: !0
         });
-      } else
-        p.value && A({ pace: 0 });
+      } else p.value && A({ pace: 0 });
       s.moving = !1, m(), j();
     };
     return Re(el, {
@@ -11968,8 +11951,7 @@ function Vh(e, t, n, o, l, s) {
   ]);
 }
 const Hh = /* @__PURE__ */ le(Ah, [["render", Vh]]), Oh = (e) => {
-  if (!e)
-    return Date.now();
+  if (!e) return Date.now();
   let t = e;
   return t = +t > 0 ? +t : t.toString().replace(/-/g, "/"), new Date(t).getTime();
 }, Rh = (e, t) => {
@@ -12152,8 +12134,7 @@ const { create: Yh } = ne("popover"), Kh = Yh({
       return h && (m[`border${f(A)}Color`] = h), e.arrowOffset != 0 && (["bottom", "top"].includes(A) && (I || (m.left = `calc(50% + ${$}px)`), I == "start" && (m.left = `${B + $}px`), I == "end" && (m.right = `${B - $}px`)), ["left", "right"].includes(A) && (I || (m.top = `calc(50% - ${$}px)`), I == "start" && (m.top = `${B - $}px`), I == "end" && (m.bottom = `${B + $}px`))), m;
     }), f = (m) => (m = m.toLowerCase(), m = m.replace(/\b\w+\b/g, (h) => h.substring(0, 1).toUpperCase() + h.substring(1)), m), p = S(() => {
       const m = {};
-      if (!s.value)
-        return {};
+      if (!s.value) return {};
       const h = a.value.width, $ = a.value.height, { width: P, height: A, left: I, top: B, right: M } = s.value, { location: k, offset: E } = e, T = k == null ? void 0 : k.split("-")[0], j = k == null ? void 0 : k.split("-")[1];
       let K = 0, oe = 0;
       if (Array.isArray(E) && (E == null ? void 0 : E.length) === 2 && (K += Number(E[1]), oe += Number(E[0])), P) {
@@ -12735,8 +12716,7 @@ const { create: T0 } = ne("ellipsis"), _0 = T0({
       i();
     });
     const i = () => {
-      if (!n.value)
-        return;
+      if (!n.value) return;
       const w = window.getComputedStyle(n.value);
       o = document.createElement("div"), Array.prototype.slice.apply(w).forEach((m) => {
         o.style.setProperty(m, w.getPropertyValue(m));
@@ -12773,8 +12753,7 @@ const { create: T0 } = ne("ellipsis"), _0 = T0({
       const h = Math.floor((w[0] + w[1]) / 2), $ = Math.ceil((C[0] + C[1]) / 2);
       return o.innerText = e.content.slice(0, h) + e.symbol + u + e.symbol + e.content.slice($, m), o.offsetHeight <= l ? p([h, w[1]], [C[0], $]) : p([w[0], h], [$, C[1]]);
     }, y = (w) => {
-      if (!w)
-        return 0;
+      if (!w) return 0;
       const C = w.match(/^\d*(\.\d*)?/);
       return C ? Number(C[0]) : 0;
     }, v = (w) => {
@@ -13207,10 +13186,8 @@ const K0 = /* @__PURE__ */ le(A0, [["render", Y0]]), { create: j0 } = ne("addres
           return e.town;
       }
     }), w = (Y) => {
-      if (!Array.isArray(Y))
-        throw new TypeError("params muse be array.");
-      if (!Y.length)
-        return [];
+      if (!Array.isArray(Y)) throw new TypeError("params muse be array.");
+      if (!Y.length) return [];
       Y.forEach((x) => {
         if (!x.title) {
           console.warn("[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .");
@@ -15552,8 +15529,7 @@ const { create: j2 } = ne("avatar-cropper"), U2 = j2({
       ue.onload = () => se(ue), ue.src = U;
     }), m = () => {
       const { img: U, width: se, height: ue, x: fe, y: Ce, swidth: Le } = s.value, { moveX: O, moveY: q, scale: ae } = o, ie = i.value;
-      if (!ie)
-        return;
+      if (!ie) return;
       const me = ie.getContext("2d");
       ie.width = o.displayWidth, ie.height = o.displayHeight, me.clearRect(0, 0, ie.width, ie.height), me.fillStyle = "#666", me.fillRect(0, 0, ie.width, ie.height), me.fillStyle = "#000", me.fillRect(e.space * f, (ie.height - Le) / 2, Le, Le), me.translate(ie.width / 2 + O, ie.height / 2 + q), me.rotate(Math.PI / 180 * o.angle), me.scale(ae, ae), me.drawImage(U, fe, Ce, se, ue);
     }, h = (U) => {
@@ -15567,8 +15543,7 @@ const { create: j2 } = ne("avatar-cropper"), U2 = j2({
       o.visible = !0;
       const se = U.target;
       let { files: ue } = se;
-      if (!(ue != null && ue.length))
-        return;
+      if (!(ue != null && ue.length)) return;
       const fe = yield C(ue[0]), Ce = yield u(fe);
       h(Ce), m();
     }), P = () => {

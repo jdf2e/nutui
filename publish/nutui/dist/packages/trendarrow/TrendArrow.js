@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, createVNode, unref } from "vue";
-import { m as myFixed } from "../util-DnfK0Qan.js";
+import { m as myFixed } from "../util-D1pvnUYu.js";
 import { TriangleUp, TriangleDown } from "@nutui/icons-vue";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-trend-arrow" };

@@ -41,7 +41,7 @@ var __async = (__this, __arguments, generator) => {
 import { reactive, ref, computed, onMounted, watch, toRefs, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, renderSlot, createTextVNode, withModifiers, toDisplayString, withDirectives, normalizeStyle, createVNode, withCtx, vShow } from "vue";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { a as preventDefault, c as clamp } from "../util-7oDGftbO.js";
+import { a as preventDefault, c as clamp } from "../util-2G3mRQeF.js";
 import { IconFont } from "@nutui/icons-vue-taro";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import Taro, { useReady } from "@tarojs/taro";
@@ -249,8 +249,7 @@ const _sfc_main = create({
       });
     };
     const canvas2dDraw = (ctx) => {
-      if (!ctx)
-        return;
+      if (!ctx) return;
       const { width, height, x, y } = drawImage.value;
       const { moveX, moveY, scale, angle, displayWidth, displayHeight } = state;
       ctx.clearRect(0, 0, displayWidth, displayHeight);
@@ -290,8 +289,7 @@ const _sfc_main = create({
       const { moveX, moveY, scale, angle, displayWidth, displayHeight, cropperWidth } = state;
       const { cropperCanvasContext } = canvasAll;
       let ctx = cropperCanvasContext;
-      if (!ctx)
-        return;
+      if (!ctx) return;
       ctx.clearRect(0, 0, displayWidth, displayHeight);
       easySetFillStyle(systemInfo, ctx, "#666");
       ctx.fillRect(0, 0, displayWidth, displayHeight);

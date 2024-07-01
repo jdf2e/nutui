@@ -113,8 +113,7 @@ const _sfc_main = create({
     };
     const handleClick = () => {
       var _a, _b;
-      if (pDisabled.value)
-        return;
+      if (pDisabled.value) return;
       if (checked.value && state.partialSelect) {
         state.partialSelect = false;
         emitChange(checked.value, (_a = slots.default) == null ? void 0 : _a.call(slots)[0].children);

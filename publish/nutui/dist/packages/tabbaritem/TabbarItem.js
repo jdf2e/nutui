@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, createVNode, unref, normalizeProps, guardReactiveProps, withCtx, createElementVNode, renderSlot, createCommentVNode, createBlock, resolveDynamicComponent, toDisplayString } from "vue";
-import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { u as useRouter } from "../index-aiGQ-EiA.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { T as TABBAR_KEY } from "../types-MuhxzCWc.js";

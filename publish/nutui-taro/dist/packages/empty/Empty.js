@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, openBlock, createElementBlock, createElementVNode, normalizeStyle, renderSlot, createCommentVNode, createTextVNode, toDisplayString } from "vue";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-empty" };
 const _hoisted_2 = ["src"];

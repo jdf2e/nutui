@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, toRef, ref, openBlock, createElementBlock, Fragment, renderList, unref, normalizeStyle, createElementVNode, createBlock, resolveDynamicComponent, normalizeClass, createTextVNode, createCommentVNode } from "vue";
 import { StarFillN } from "@nutui/icons-vue-taro";
-import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
@@ -62,8 +62,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       emit("change", value);
     };
     const onClick = (e, index) => {
-      if (disabled.value || props.readonly)
-        return;
+      if (disabled.value || props.readonly) return;
       let value = 0;
       if (index === 1 && props.modelValue === index) {
         value = 0;

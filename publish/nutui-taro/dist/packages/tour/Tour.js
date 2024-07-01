@@ -131,8 +131,7 @@ const _sfc_main = create({
     });
     const maskStyle = (index) => {
       const { offset, maskWidth, maskHeight } = props;
-      if (!maskRect[index])
-        return {};
+      if (!maskRect[index]) return {};
       const { width, height, left, top } = maskRect[index];
       const center = [left + width / 2, top + height / 2];
       const w = Number(maskWidth ? maskWidth : width);

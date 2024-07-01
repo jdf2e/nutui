@@ -122,8 +122,7 @@ const _sfc_main = create({
       nodes = Array.from(nodes).filter((node) => node.nodeType === 1);
       const start = nodes[0];
       nodes.forEach((node, index2) => {
-        if (!node)
-          return;
+        if (!node) return;
         const rect = useRect(node);
         const { height: height2 } = rect;
         const oldHeight = state.cachePositions[index2 + state.start].height;

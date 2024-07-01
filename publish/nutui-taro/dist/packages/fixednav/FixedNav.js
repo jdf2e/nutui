@@ -2,7 +2,7 @@ import { computed, ref, resolveComponent, openBlock, createElementBlock, normali
 import { Left } from "@nutui/icons-vue-taro";
 import { Overlay as _sfc_main$1 } from "../overlay/Overlay.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("fixed-nav");
 const cN = "NutFixedNav";

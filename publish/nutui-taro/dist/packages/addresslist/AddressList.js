@@ -1,7 +1,7 @@
 import { resolveComponent, openBlock, createElementBlock, createElementVNode, renderSlot, toDisplayString, createTextVNode, createCommentVNode, createVNode, ref, h, createBlock, resolveDynamicComponent, withCtx, reactive, watch, onMounted, Fragment, renderList, createSlots } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { f as floatData } from "../util-7oDGftbO.js";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { f as floatData } from "../util-2G3mRQeF.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 import { Del, Edit } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import { Button as _sfc_main$3 } from "../button/Button.js";
@@ -141,8 +141,7 @@ const _sfc_main$1 = create$1({
       event.stopPropagation();
     };
     const clickItem = (event) => {
-      if (moveRef.value)
-        return;
+      if (moveRef.value) return;
       emit("clickItem", event, props.item);
       event.stopPropagation();
     };

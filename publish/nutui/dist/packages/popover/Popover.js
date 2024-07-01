@@ -1,6 +1,6 @@
 import { ref, computed, onMounted, watch, nextTick, resolveComponent, openBlock, createElementBlock, Fragment, renderSlot, createCommentVNode, createBlock, Teleport, createElementVNode, normalizeClass, normalizeStyle, createVNode, withCtx, renderList, withModifiers, resolveDynamicComponent, toDisplayString } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { r as renderIcon } from "../renderIcon-BfOvhG7i.js";
+import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { u as useRect } from "../index-B1qsj2XR.js";
 import { N as NutPopup } from "../index-wLaOjIn1.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
@@ -86,8 +86,7 @@ const _sfc_main = create({
     };
     const getRootPosition = computed(() => {
       const styles = {};
-      if (!rootPosition.value)
-        return {};
+      if (!rootPosition.value) return {};
       const contentWidth = elRect.value.width;
       const contentHeight = elRect.value.height;
       const { width, height, left, top, right } = rootPosition.value;

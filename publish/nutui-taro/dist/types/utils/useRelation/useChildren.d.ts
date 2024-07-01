@@ -1,4 +1,4 @@
 export declare const useChildren: (key: symbol) => {
-    children: any[];
+    children: import("vue").Reactive<any[]>;
     linkChildren: (value?: any) => void;
 };

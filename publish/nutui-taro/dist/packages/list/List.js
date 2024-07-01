@@ -153,8 +153,7 @@ const _sfc_main = create({
       nodes = Array.from(nodes).filter((node) => node.nodeType === 1);
       const start = nodes[0];
       nodes.forEach((node, index) => __async(this, null, function* () {
-        if (!node)
-          return;
+        if (!node) return;
         useTaroRect(node).then(
           (rect) => {
             if (rect && rect.height) {

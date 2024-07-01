@@ -265,8 +265,7 @@ const _sfc_main = create({
       }
     });
     const updateSlotChild = () => {
-      if (slots.default)
-        state.scrollList = [].concat(slots.default()[0].children);
+      if (slots.default) state.scrollList = [].concat(slots.default()[0].children);
     };
     const watchSlots = () => {
       setTimeout(() => {

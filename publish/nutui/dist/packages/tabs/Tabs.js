@@ -14,10 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -42,7 +39,7 @@ import { ref, onMounted, reactive, provide, computed, watch, onActivated, nextTi
 import NutSticky from "../sticky/Sticky.js";
 import { JoySmile } from "@nutui/icons-vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { T as TypeOfFun } from "../util-DnfK0Qan.js";
+import { T as TypeOfFun } from "../util-D1pvnUYu.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { u as useRect } from "../index-B1qsj2XR.js";
 import { r as requestAniFrame } from "../raf-c01wDYCo.js";
@@ -114,13 +111,11 @@ const useTabContentTouch = (props, tabMethods, taro, useTaroRect) => {
   };
   const touchMethods = {
     onTouchStart(event) {
-      if (!props.swipeable)
-        return;
+      if (!props.swipeable) return;
       touch.start(event);
     },
     onTouchMove(event) {
-      if (!props.swipeable)
-        return;
+      if (!props.swipeable) return;
       touch.move(event);
       touchState.moving = true;
       setoffset(touch.deltaX.value, touch.deltaY.value);
@@ -266,10 +261,8 @@ const _sfc_main = create({
     const currentIndex = ref(props.modelValue || 0);
     const findTabsIndex = (value) => {
       let index = titles.value.findIndex((item) => item.paneKey == value);
-      if (titles.value.length == 0)
-        ;
-      else if (index == -1)
-        ;
+      if (titles.value.length == 0) ;
+      else if (index == -1) ;
       else {
         currentIndex.value = index;
       }
@@ -430,8 +423,7 @@ const _sfc_main = create({
       };
     });
     const titleStyle = computed(() => {
-      if (!props.titleGutter)
-        return {};
+      if (!props.titleGutter) return {};
       const px = pxCheck(props.titleGutter);
       if (props.direction === "vertical") {
         return { paddingTop: px, paddingBottom: px };

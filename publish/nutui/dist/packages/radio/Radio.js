@@ -62,8 +62,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       };
     });
     const handleClick = () => {
-      if (checked.value || disabled.value)
-        return;
+      if (checked.value || disabled.value) return;
       parent.updateValue(props.label);
     };
     const reverseState = computed(() => parent.position.value === "left");

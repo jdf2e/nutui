@@ -10,8 +10,7 @@ const component = (tag) => {
     setup(props, { slots }) {
       const hexToRgb = (color) => {
         const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-        if (!reg.test(color))
-          return "";
+        if (!reg.test(color)) return "";
         color = color.toLowerCase();
         if (color.length === 4) {
           color = "#" + color.slice(1).split("").map((char) => char + char).join("");
@@ -27,8 +26,7 @@ const component = (tag) => {
         return str.replace(/([a-z])([A-Z])/g, (_, p1, p2) => p1 + "-" + p2.toLowerCase());
       };
       const mapThemeVarsToCSSVars = (themeVars) => {
-        if (!themeVars)
-          return;
+        if (!themeVars) return;
         const cssVars = {};
         const primaryColor = themeVars == null ? void 0 : themeVars.primaryColor;
         if (primaryColor) {

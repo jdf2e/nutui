@@ -1,6 +1,6 @@
 import { toRefs, computed, watchEffect, openBlock, createElementBlock, createElementVNode, normalizeClass, renderSlot, createTextVNode, toDisplayString, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("pagination");
 const cN = "NutPagination";
@@ -54,19 +54,15 @@ const _sfc_main = create({
       return Math.max(1, num);
     });
     const select = (curPage, isSelect) => {
-      if (curPage > countRef.value || curPage < 1)
-        return;
-      if (curPage != modelValue.value)
-        emit("update:modelValue", curPage);
-      if (isSelect)
-        emit("change", curPage);
+      if (curPage > countRef.value || curPage < 1) return;
+      if (curPage != modelValue.value) emit("update:modelValue", curPage);
+      if (isSelect) emit("change", curPage);
     };
     const setPage = (number, text, active = false) => {
       return { number, text, active };
     };
     const pages = computed(() => {
-      if (mode.value == "simple")
-        return;
+      if (mode.value == "simple") return;
       let items = [];
       const pageCount = countRef.value;
       const pageSize = +showPageSize.value;

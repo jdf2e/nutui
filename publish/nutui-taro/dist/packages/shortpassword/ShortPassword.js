@@ -2,7 +2,7 @@ import { ref, computed, watch, onMounted, resolveComponent, openBlock, createEle
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
 import { Tips } from "@nutui/icons-vue-taro";
-import { u as useLocale } from "../index-5sMqqUcW.js";
+import { u as useLocale } from "../index-IxPZmHlb.js";
 import { eventCenter, getCurrentInstance } from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("short-password");

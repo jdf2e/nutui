@@ -19,12 +19,12 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, reactive, computed, watch, toRefs, nextTick, resolveComponent, openBlock, createElementBlock, createElementVNode, normalizeStyle, createBlock, createCommentVNode, toDisplayString, renderSlot } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { j as getScrollTopRoot } from "../util-DnfK0Qan.js";
+import { j as getScrollTopRoot } from "../util-D1pvnUYu.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { p as pxCheck } from "../pxCheck-DN6FYV6q.js";
 import { u as useScrollParent } from "../index-BvmDLUYP.js";
 import { Loading } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("pull-refresh");
 const cN = "NutPullRefresh";
@@ -100,8 +100,7 @@ const _sfc_main = create({
     });
     const getHeightStyle = computed(() => {
       const styles = {};
-      if (props.headHeight != 50)
-        styles.height = pxCheck(props.headHeight);
+      if (props.headHeight != 50) styles.height = pxCheck(props.headHeight);
       return styles;
     });
     const timing = (distance) => {
@@ -181,8 +180,7 @@ const _sfc_main = create({
         if (val) {
           setPullStatus(+props.headHeight, true);
         } else {
-          if (props.completeDuration === 0)
-            setPullStatus(0);
+          if (props.completeDuration === 0) setPullStatus(0);
           setPullStatus(+props.headHeight, false, true);
           setTimeout(() => {
             setPullStatus(0);

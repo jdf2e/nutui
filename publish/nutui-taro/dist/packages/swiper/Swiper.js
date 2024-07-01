@@ -20,7 +20,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import { ref, reactive, computed, provide, onDeactivated, onBeforeUnmount, watch, openBlock, createElementBlock, createElementVNode, normalizeClass, normalizeStyle, renderSlot, createTextVNode, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { c as clamp } from "../util-7oDGftbO.js";
+import { c as clamp } from "../util-2G3mRQeF.js";
 import { u as useTouch } from "../index-I8tfW3Kf.js";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
 import { r as requestAniFrame } from "../raf-CzJhCkQo.js";
@@ -198,8 +198,7 @@ const _sfc_main = create({
       return active;
     };
     const move = ({ pace = 0, offset = 0, isEmit = false }) => {
-      if (childCount.value <= 1)
-        return;
+      if (childCount.value <= 1) return;
       const { active } = state;
       const targetActive = getActive(pace);
       const targetOffset = getOffset(targetActive, offset);
@@ -271,8 +270,7 @@ const _sfc_main = create({
       });
     };
     const autoplay = () => {
-      if (Number(props.autoPlay) <= 0 || childCount.value <= 1)
-        return;
+      if (Number(props.autoPlay) <= 0 || childCount.value <= 1) return;
       stopAutoPlay();
       state.autoplayTimer = setTimeout(() => {
         next();
@@ -280,8 +278,7 @@ const _sfc_main = create({
       }, Number(props.autoPlay));
     };
     const init = (..._0) => __async(this, [..._0], function* (active = +props.initPage) {
-      if (!container.value)
-        return;
+      if (!container.value) return;
       stopAutoPlay();
       useTaroRect(container).then(
         (rect) => {
@@ -300,10 +297,8 @@ const _sfc_main = create({
       );
     });
     const onTouchStart = (e) => {
-      if (props.isStopPropagation)
-        e.stopPropagation();
-      if (!props.touchable)
-        return;
+      if (props.isStopPropagation) e.stopPropagation();
+      if (!props.touchable) return;
       touch.start(e);
       state.touchTime = Date.now();
       stopAutoPlay();
@@ -320,8 +315,7 @@ const _sfc_main = create({
       }
     };
     const onTouchEnd = () => {
-      if (!props.touchable || !state.moving)
-        return;
+      if (!props.touchable || !state.moving) return;
       const speed = delTa.value / (Date.now() - state.touchTime);
       const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
       if (isShouldMove && isCorrectDirection.value) {

@@ -1,15 +1,12 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import { toRef, ref, watch, h, reactive, resolveComponent, openBlock, createElementBlock, renderSlot, createBlock, resolveDynamicComponent, createCommentVNode, Fragment, renderList, normalizeClass, createElementVNode, toDisplayString, createVNode, withModifiers } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { f as funInterceptor } from "../Interceptor-DlY2h6Y7.js";
+import { f as funInterceptor } from "../Interceptor-CBzqGJrl.js";
 import { Progress as _sfc_main$1 } from "../progress/Progress.js";
 import { Photograph, Failure, Loading, Del, Link } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { u as useFormDisabled } from "../common-BH7uB7Cn.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 class UploadOptions {
@@ -312,8 +309,7 @@ const _sfc_main = create({
       });
     };
     const onDelete = (file, index2) => {
-      if (disabled.value)
-        return;
+      if (disabled.value) return;
       clearUploadQueue(index2);
       funInterceptor(props.beforeDelete, {
         args: [file, fileList.value],

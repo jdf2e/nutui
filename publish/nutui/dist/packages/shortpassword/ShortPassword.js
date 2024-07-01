@@ -2,7 +2,7 @@ import { ref, computed, watch, resolveComponent, openBlock, createElementBlock, 
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { N as NutPopup } from "../index-wLaOjIn1.js";
 import { Tips } from "@nutui/icons-vue";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("short-password");
 const cN = "NutShortPassword";

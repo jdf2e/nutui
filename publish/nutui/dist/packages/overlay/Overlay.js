@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { defineComponent, computed, watchEffect, openBlock, createBlock, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, normalizeStyle, withModifiers, renderSlot, vShow } from "vue";
-import { b as body } from "../util-DnfK0Qan.js";
+import { b as body } from "../util-D1pvnUYu.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 let count = 0;
 const CLSNAME = "nut-overflow-hidden";

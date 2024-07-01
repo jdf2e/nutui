@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, ref, computed, watch, nextTick, onMounted, toRefs, openBlock, createElementBlock, createElementVNode, createCommentVNode, withDirectives, vShow, normalizeClass, toDisplayString, normalizeStyle, withModifiers } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { u as useLocale } from "../index-CFigyH92.js";
+import { u as useLocale } from "../index-BOB4ytqZ.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 function throttle(fn, delay) {
   let timer = null;
@@ -27,8 +27,7 @@ function throttle(fn, delay) {
   return function(...args) {
     const now = Date.now();
     const remaining = delay - (now - startTime);
-    if (timer)
-      clearTimeout(timer);
+    if (timer) clearTimeout(timer);
     if (remaining <= 0) {
       fn(...args);
       startTime = Date.now();

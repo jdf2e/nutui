@@ -122,13 +122,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     };
     const touch = useTouch();
     const onTouchStart = (event) => {
-      if (props.disabled)
-        return;
+      if (props.disabled) return;
       touch.start(event);
     };
     const onTouchMove = (event) => {
-      if (props.disabled)
-        return;
+      if (props.disabled) return;
       touch.move(event);
       if (touch.isHorizontal()) {
         lockClick.value = true;

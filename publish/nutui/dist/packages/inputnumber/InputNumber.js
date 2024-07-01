@@ -62,8 +62,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const emitChange = (value, event) => {
       let output_value = fixedDecimalPlaces(value);
       emit("update:modelValue", output_value, event);
-      if (Number(props.modelValue) !== Number(output_value))
-        emit("change", output_value, event);
+      if (Number(props.modelValue) !== Number(output_value)) emit("change", output_value, event);
     };
     const addAllow = (value = Number(props.modelValue)) => {
       return value < Number(props.max) && !disabled.value;
@@ -72,8 +71,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       return value > Number(props.min) && !disabled.value;
     };
     const reduce = (event) => {
-      if (disabled.value)
-        return;
+      if (disabled.value) return;
       emit("reduce", event);
       let output_value = Number(props.modelValue) - Number(props.step);
       if (reduceAllow() && output_value >= Number(props.min)) {
@@ -84,8 +82,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       }
     };
     const add = (event) => {
-      if (disabled.value)
-        return;
+      if (disabled.value) return;
       emit("add", event);
       let output_value = Number(props.modelValue) + Number(props.step);
       if (addAllow() && output_value <= Number(props.max)) {
@@ -96,17 +93,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       }
     };
     const focus = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
-        return;
+      if (disabled.value) return;
+      if (props.readonly) return;
       emit("focus", event);
     };
     const blur = (event) => {
-      if (disabled.value)
-        return;
-      if (props.readonly)
-        return;
+      if (disabled.value) return;
+      if (props.readonly) return;
       const input = event.target;
       let value = Number(input.value);
       if (value < Number(props.min)) {
