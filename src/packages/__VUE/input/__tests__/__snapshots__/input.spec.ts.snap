@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render word limit correctly 1`] = `
-"<view class="nut-input-box"><input type="text" class="input-text" style="text-align: left;" maxlength="" placeholder="" format-trigger="onChange" enterkeyhint="done">
+"<view class="nut-input-box"><input type="text" class="input-text" style="text-align: left;" maxlength="" placeholder="" format-trigger="onChange" enterkeyhint="done" value="123">
   <!--v-if-->
 </view>"
 `;
@@ -11,7 +11,7 @@ exports[`should render word limit correctly when modelValue is null 1`] = `
   <view class="nut-input-value">
     <view class="nut-input-inner">
       <!--v-if-->
-      <view class="nut-input-box"><input type="text" class="input-text" style="text-align: left;" maxlength="" placeholder="" format-trigger="onChange" enterkeyhint="done">
+      <view class="nut-input-box"><input type="text" class="input-text" style="text-align: left;" maxlength="" placeholder="" format-trigger="onChange" enterkeyhint="done" value="">
         <!--v-if-->
       </view>
       <!--v-if-->
