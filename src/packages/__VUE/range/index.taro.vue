@@ -272,7 +272,7 @@ export default create({
     const format = (value: number) => {
       const { min, max, step } = props
       value = Math.max(+min, Math.min(value, +max))
-      return Math.round(value / +step) * +step
+      return Math.round((value - +min) / +step) * +step + +min
     }
 
     const isSameValue = (newValue: SliderValue, oldValue: SliderValue) =>
