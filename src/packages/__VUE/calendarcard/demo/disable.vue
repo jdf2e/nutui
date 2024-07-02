@@ -9,7 +9,7 @@ const onChange = (val: Date) => {
   console.log(val)
 }
 const disableDay = (day: CalendarCardDay) => {
-  const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
+  const d = new Date(`${day.year}/${day.month}/${day.date}`).getDay()
   return d === 1 || d === 3
 }
 </script>
