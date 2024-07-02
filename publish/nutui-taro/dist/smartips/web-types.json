@@ -5971,7 +5971,7 @@
               "arguments": [
                 {
                   "name": "modelValue",
-                  "type": "number"
+                  "type": "string | number"
                 }
               ]
             }
@@ -5982,7 +5982,7 @@
               "default": "`0`",
               "description": "选中标签的索引值或者名称",
               "value": {
-                "type": "number",
+                "type": "string | number",
                 "kind": "expression"
               }
             },
@@ -5991,7 +5991,7 @@
               "default": "`0`",
               "description": "选中标签的索引值或者名称",
               "value": {
-                "type": "number",
+                "type": "string | number",
                 "kind": "expression"
               }
             },
@@ -6037,6 +6037,15 @@
               "description": "固定在底部时，是否在标签位置生成一个等高的占位元素",
               "value": {
                 "type": "boolean",
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "before-switch ",
+              "default": "`() => true`",
+              "description": "切换前的回调函数，返回 false 时拦截切换操作",
+              "value": {
+                "type": "`(data, value) => boolean | promise<boolean>`",
                 "kind": "expression"
               }
             }

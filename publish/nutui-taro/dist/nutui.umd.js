@@ -2195,7 +2195,8 @@ var __async = (__this, __arguments, generator) => {
       unactiveColor: { default: "" },
       activeColor: { default: "" },
       safeAreaInsetBottom: { type: Boolean, default: false },
-      placeholder: { type: Boolean, default: false }
+      placeholder: { type: Boolean, default: false },
+      beforeSwitch: { type: Function, default: () => true }
     },
     emits: ["tabSwitch", "update:modelValue"],
     setup(__props, { emit: __emit }) {
@@ -2206,11 +2207,15 @@ var __async = (__this, __arguments, generator) => {
       const nutTabbarRef = vue.ref(null);
       const activeIndex = vue.ref(props.modelValue);
       const { children, linkChildren } = useChildren(TABBAR_KEY);
-      const changeIndex = (index, active) => {
+      const changeIndex = (index, active) => __async(this, null, function* () {
+        const res = yield props.beforeSwitch(children[index], active);
+        if (res === false) {
+          return Promise.reject();
+        }
         activeIndex.value = active;
         emit("update:modelValue", active);
         emit("tabSwitch", children[index], active);
-      };
+      });
       linkChildren({ props, activeIndex, changeIndex });
       vue.watch(
         () => props.modelValue,
@@ -2336,23 +2341,26 @@ var __async = (__this, __arguments, generator) => {
         return ((_a = props.name) != null ? _a : index.value) === parent.activeIndex.value;
       });
       const activeColor = vue.computed(() => active.value ? parent.props.activeColor : parent.props.unactiveColor);
-      const change = () => {
+      const change = () => __async(this, null, function* () {
         var _a, _b, _c;
-        const key = (_a = props.name) != null ? _a : index.value;
-        parent.changeIndex(index.value, key);
-        if ((_b = parent.children[index.value]) == null ? void 0 : _b.href) {
-          window.location.href = parent.children[index.value].href;
-          return;
-        }
-        if ((_c = parent.children[index.value]) == null ? void 0 : _c.to) {
-          const to = parent.children[index.value].to;
-          if (to && router) {
-            router.push(to);
-          } else {
-            location.replace(to);
+        try {
+          const key = (_a = props.name) != null ? _a : index.value;
+          yield parent.changeIndex(index.value, key);
+          if ((_b = parent.children[index.value]) == null ? void 0 : _b.href) {
+            window.location.href = parent.children[index.value].href;
+            return;
           }
+          if ((_c = parent.children[index.value]) == null ? void 0 : _c.to) {
+            const to = parent.children[index.value].to;
+            if (to && router) {
+              router.push(to);
+            } else {
+              location.replace(to);
+            }
+          }
+        } catch (err) {
         }
-      };
+      });
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
           class: vue.normalizeClass(["nut-tabbar-item", { "nut-tabbar-item__icon--unactive": !active.value }]),

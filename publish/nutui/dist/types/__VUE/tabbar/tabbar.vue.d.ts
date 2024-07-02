@@ -6,6 +6,7 @@ export type TabbarProps = Partial<{
     activeColor: string;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
+    beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
 }>;
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string | number;
@@ -14,6 +15,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     activeColor: string;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
+    beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
 }>>, {
     modelValue: number;
     bottom: boolean;
@@ -21,6 +23,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     activeColor: string;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
+    beforeSwitch: () => true;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (...args: any[]) => void;
     tabSwitch: (...args: any[]) => void;
@@ -31,6 +34,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     activeColor: string;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
+    beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
 }>>, {
     modelValue: number;
     bottom: boolean;
@@ -38,6 +42,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     activeColor: string;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
+    beforeSwitch: () => true;
 }>>> & {
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onTabSwitch?: ((...args: any[]) => any) | undefined;
@@ -48,6 +53,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     activeColor: string;
     modelValue: string | number;
     unactiveColor: string;
+    beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
 }, {}>, {
     default?(_: {}): any;
 }>;

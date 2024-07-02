@@ -17,6 +17,26 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
 import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, unref, renderSlot } from "vue";
 import Taro from "@tarojs/taro";
 import { u as useTaroRect } from "../index-m0Wcof-q.js";
@@ -34,7 +54,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     unactiveColor: { default: "" },
     activeColor: { default: "" },
     safeAreaInsetBottom: { type: Boolean, default: false },
-    placeholder: { type: Boolean, default: false }
+    placeholder: { type: Boolean, default: false },
+    beforeSwitch: { type: Function, default: () => true }
   },
   emits: ["tabSwitch", "update:modelValue"],
   setup(__props, { emit: __emit }) {
@@ -45,11 +66,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     const nutTabbarRef = ref(null);
     const activeIndex = ref(props.modelValue);
     const { children, linkChildren } = useChildren(TABBAR_KEY);
-    const changeIndex = (index, active) => {
+    const changeIndex = (index, active) => __async(this, null, function* () {
+      const res = yield props.beforeSwitch(children[index], active);
+      if (res === false) {
+        return Promise.reject();
+      }
       activeIndex.value = active;
       emit("update:modelValue", active);
       emit("tabSwitch", children[index], active);
-    };
+    });
     linkChildren({ props, activeIndex, changeIndex });
     watch(
       () => props.modelValue,
