@@ -10,7 +10,7 @@ vi.mock('@/packages/utils/useRoute')
   push: vi.fn()
 })
 
-test('should render tabbar when default', async () => {
+test('Tabbar: should render tabbar when default', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar>
@@ -26,7 +26,7 @@ test('should render tabbar when default', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('should render custom img when using img prop', async () => {
+test('Tabbar: should render custom img when using img prop', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar>
@@ -63,7 +63,7 @@ test('should render custom img when using img prop', async () => {
   expect(tabbarItemIcon[1].element.src).toContain('c98ad61124172e93')
 })
 
-test('should render custom color and bage when using prop', async () => {
+test('Tabbar: should render custom color and bage when using prop', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar unactive-color="grey" active-color="blue">
@@ -81,7 +81,7 @@ test('should render custom color and bage when using prop', async () => {
   expect(wrapper.find<HTMLElement>('.nut-badge').exists()).toBe(true)
 })
 
-test('should render fixed element when using bottom prop', async () => {
+test('Tabbar: should render fixed element when using bottom prop', async () => {
   const wrapper = mount(Tabbar, {
     props: {
       bottom: true,
@@ -90,7 +90,7 @@ test('should render fixed element when using bottom prop', async () => {
   })
   expect(wrapper.html()).toMatchSnapshot()
 })
-test('should match active tabbar by clcik', async () => {
+test('Tabbar: should match active tabbar by clcik', async () => {
   const wrapper = mount({
     setup() {
       const active = ref(0)
@@ -113,7 +113,7 @@ test('should match active tabbar by clcik', async () => {
   expect(tabbarItem[2].element.style.color).toEqual('blue')
 })
 
-test('should show sure emitted when click', async () => {
+test('Tabbar: should show sure emitted when click', async () => {
   const tabSwitch = vi.fn()
   const wrapper = mount(() => {
     return (
@@ -130,7 +130,7 @@ test('should show sure emitted when click', async () => {
   expect(tabSwitch).toBeCalled()
 })
 
-test('should render placeholder when using placeholder and bottom prop', async () => {
+test('Tabbar: should render placeholder when using placeholder and bottom prop', async () => {
   const wrapper = mount(Tabbar, {
     props: {
       bottom: true,
@@ -142,7 +142,7 @@ test('should render placeholder when using placeholder and bottom prop', async (
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test('should redirect when exist router and using to prop', async () => {
+test('Tabbar: should redirect when exist router and using to prop', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar>
@@ -158,7 +158,7 @@ test('should redirect when exist router and using to prop', async () => {
   expect(useRouter().push).toHaveBeenCalledWith('/category')
 })
 
-test('should call replace when no router exist and using to prop', async () => {
+test('Tabbar: should call replace when no router exist and using to prop', async () => {
   (useRouter as any).mockReturnValue(undefined)
 
   const wrapper = mount(() => {
@@ -176,7 +176,7 @@ test('should call replace when no router exist and using to prop', async () => {
   expect(location.replace).toHaveBeenCalledWith('/category')
 })
 
-test('should set window.location.href when using href prop', async () => {
+test('Tabbar: should set window.location.href when using href prop', async () => {
   const wrapper = mount(() => {
     return (
       <Tabbar>
@@ -189,4 +189,29 @@ test('should set window.location.href when using href prop', async () => {
   const tabbarItem: any = wrapper.findAll('.nut-tabbar-item')
   await tabbarItem[1].trigger('click')
   expect(window.location.href).toMatch('/category')
+})
+
+test('Tabbar: props.beforeSwitch', async () => {
+  const val = ref(0)
+  const beforeSwitch = (_: any, index: string | number) => {
+    return Number(index) % 2 === 0
+  }
+  const wrapper = mount(() => {
+    return (
+      <Tabbar v-model={val.value} beforeSwitch={beforeSwitch}>
+        <TabbarItem tab-title="首页" icon={h(Home)}></TabbarItem>
+        <TabbarItem tab-title="分类" icon={h(Category)}></TabbarItem>
+        <TabbarItem tab-title="发现" icon={h(Find)}></TabbarItem>
+      </Tabbar>
+    )
+  })
+  const items = wrapper.findAll('.nut-tabbar-item')
+  expect(items.length).toBe(3)
+  items[2].trigger('click')
+  await nextTick()
+  expect(val.value).toBe(2)
+
+  items[1].trigger('click')
+  await nextTick()
+  expect(val.value).toBe(2)
 })

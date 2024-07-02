@@ -21,6 +21,9 @@
     <h2>{{ t('quantity') }}</h2>
     <Quantity />
 
+    <h2>{{ t('beforeSwitch') }}</h2>
+    <BeforeSwitch />
+
     <h2>{{ t('fixed') }}</h2>
     <Fixed />
   </Demo>
@@ -36,6 +39,7 @@ import Badge from './badge.vue'
 import Color from './color.vue'
 import Quantity from './quantity.vue'
 import Fixed from './fixed.vue'
+import BeforeSwitch from './before-switch.vue'
 const t = useTranslate({
   'zh-CN': {
     basic: '基础用法',
@@ -45,7 +49,8 @@ const t = useTranslate({
     badge: '徽标提示',
     color: '自定义颜色',
     quantity: '自定义数量',
-    fixed: '固定底部'
+    fixed: '固定底部',
+    beforeSwitch: '切换前的回调'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -55,7 +60,8 @@ const t = useTranslate({
     badge: 'Show Badge',
     color: 'Custom Color',
     quantity: 'Custom Quantity',
-    fixed: 'Fixed Bottom'
+    fixed: 'Fixed Bottom',
+    beforeSwitch: 'Before Switch'
   }
 })
 </script>

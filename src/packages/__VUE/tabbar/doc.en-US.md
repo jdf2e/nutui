@@ -49,6 +49,10 @@ The bardge logo component is used internally and its properties can be applied d
 
 > demo: tabbar quantity
 
+### Before Switch version
+
+> demo: tabbar before-switch
+
 ### Fixed Bottom
 
 > demo: tabbar fixed
@@ -59,12 +63,13 @@ The bardge logo component is used internally and its properties can be applied d
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| v-model:visible | The index value of the selected label | number | `0` |
+| v-model:visible | The index value of the selected label | string \| number | `0` |
 | bottom | Whether to fix the bottom | boolean | `false` |
 | unactive-color | Color of unactive tab item | string | `#7d7e80` |
 | active-color | Color of active tab item | string | `#1989fa` |
 | safe-area-inset-bottom | Whether to enable bottom safe area adaptation | boolean | `false` |
 | placeholder | Whether to generate a placeholder element when fixed | boolean | `false` |
+| before-switch `version` | hook before switch event | `(data, value) => boolean \| Promise<boolean>` | `() => true` |
 
 ### TabbarItem Props
 
@@ -93,7 +98,12 @@ The bardge logo component is used internally and its properties can be applied d
 The component exports the following type definitions:
 
 ```js
-import type { TabbarProps, TabbarInstance, TabbarItemProps, TabbarItemInstance } from '@nutui/nutui';
+import type {
+  TabbarProps,
+  TabbarInstance,
+  TabbarItemProps,
+  TabbarItemInstance
+} from '@nutui/nutui';
 ```
 
 ## Theming

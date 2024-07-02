@@ -1,11 +1,7 @@
 <template>
   <view :class="{ 'nut-tabbar__placeholder': bottom && placeholder }" :style="{ height }">
-    <view
-      :id="`nut-tabbar-${refRandomId}`"
-      ref="nutTabbarRef"
-      class="nut-tabbar"
-      :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }"
-    >
+    <view :id="`nut-tabbar-${refRandomId}`" ref="nutTabbarRef" class="nut-tabbar"
+          :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }">
       <slot></slot>
     </view>
   </view>
@@ -29,6 +25,7 @@ export type TabbarProps = Partial<{
   activeColor: string
   safeAreaInsetBottom: boolean
   placeholder: boolean
+  beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>
 }>
 
 const props = withDefaults(defineProps<TabbarProps>(), {
@@ -37,7 +34,8 @@ const props = withDefaults(defineProps<TabbarProps>(), {
   unactiveColor: '',
   activeColor: '',
   safeAreaInsetBottom: false,
-  placeholder: false
+  placeholder: false,
+  beforeSwitch: () => true
 })
 
 const emit = defineEmits(['tabSwitch', 'update:modelValue'])
@@ -49,7 +47,11 @@ const activeIndex = ref<number | string>(props.modelValue)
 
 const { children, linkChildren } = useChildren(TABBAR_KEY)
 
-const changeIndex = (index: number, active: number | string) => {
+const changeIndex = async (index: number, active: number | string) => {
+  const res = await props.beforeSwitch(children[index], active)
+  if (res === false) {
+    return Promise.reject()
+  }
   activeIndex.value = active
   emit('update:modelValue', active)
   emit('tabSwitch', children[index], active)
@@ -71,7 +73,7 @@ const updateHeight = () => {
         (rect: any) => {
           height.value = `${rect.height}px`
         },
-        () => {}
+        () => { }
       )
     })
   }
