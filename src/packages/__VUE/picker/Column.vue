@@ -24,7 +24,8 @@
           v-if="item && item[fieldNames.text] && !threeDimensional"
           class="nut-picker-roller-item-tile"
           :class="{
-            [item[fieldNames.className]]: item[fieldNames.className]
+            [item[fieldNames.className]]: item[fieldNames.className],
+            'nut-picker-roller-item-selected': isCurrPick(index + 1)
           }"
           :style="{ height: pxCheck(optionHeight), lineHeight: pxCheck(optionHeight) }"
         >
@@ -217,6 +218,10 @@ export default create({
       }
     }
 
+    const isCurrPick = (index: number) => {
+      return index == state.currIndex
+    }
+
     const setTransform = (translateY = 0, type: string | null, time = DEFAULT_DURATION, deg: string | number) => {
       if (type === 'end') {
         touchTime.value = time
@@ -318,6 +323,7 @@ export default create({
       ...toRefs(props),
       setRollerStyle,
       isHidden,
+      isCurrPick,
       roller,
       onTouchStart,
       onTouchMove,
