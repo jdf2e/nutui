@@ -334,6 +334,9 @@ const _sfc_main$1 = create$1({
         return false;
       }
     };
+    const isCurrPick = (index) => {
+      return index == state.currIndex;
+    };
     const setTransform = (translateY = 0, type, time = DEFAULT_DURATION, deg) => {
       if (type === "end") {
         touchTime.value = time;
@@ -413,6 +416,7 @@ const _sfc_main$1 = create$1({
     return __spreadProps(__spreadValues(__spreadValues({}, toRefs(state)), toRefs(props)), {
       setRollerStyle,
       isHidden,
+      isCurrPick,
       roller,
       onTouchStart,
       onTouchMove,
@@ -455,7 +459,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           item && item[_ctx.fieldNames.text] && !_ctx.threeDimensional ? (openBlock(), createElementBlock("view", {
             key: 1,
             class: normalizeClass(["nut-picker-roller-item-tile", {
-              [item[_ctx.fieldNames.className]]: item[_ctx.fieldNames.className]
+              [item[_ctx.fieldNames.className]]: item[_ctx.fieldNames.className],
+              "nut-picker-roller-item-selected": _ctx.isCurrPick(index + 1)
             }]),
             style: normalizeStyle({ height: _ctx.pxCheck(_ctx.optionHeight), lineHeight: _ctx.pxCheck(_ctx.optionHeight) })
           }, toDisplayString(item[_ctx.fieldNames.text]), 7)) : createCommentVNode("", true)

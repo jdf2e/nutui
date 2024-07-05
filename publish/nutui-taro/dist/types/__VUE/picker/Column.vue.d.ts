@@ -38,6 +38,7 @@ declare const _default: Install< import("vue").DefineComponent<{
 }, {
     setRollerStyle: (index: number) => string;
     isHidden: (index: number) => boolean;
+    isCurrPick: (index: number) => boolean;
     roller: import("vue").Ref<null>;
     onTouchStart: (event: TouchEvent) => void;
     onTouchMove: (event: TouchEvent) => void;
