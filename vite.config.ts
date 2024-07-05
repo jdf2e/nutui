@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { type ConfigEnv, defineConfig, type UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
@@ -9,8 +9,8 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import { markdown } from '@nutui/vite-plugins'
 const resolve = path.resolve
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/',
+export default defineConfig((env: ConfigEnv) => ({
+  base: env.command === 'build' ? '/h5/vue/4x/' : '/',
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, './src') },
@@ -73,4 +73,4 @@ export default defineConfig({
     include: ['src/packages/__VUE/**/*.(test|spec).(ts|tsx)'],
     reporters: ['default', 'html']
   }
-})
+}) as UserConfig)
