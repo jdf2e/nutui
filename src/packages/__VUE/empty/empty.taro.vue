@@ -58,15 +58,7 @@ const style = computed(() => {
   return {}
 })
 
-const src = computed(() => {
-  if (props.image.startsWith('https://') || props.image.startsWith('http://') || props.image.startsWith('//')) {
-    return props.image
-  } else {
-    return defaultStatus[props.image]
-  }
-})
+const src = computed(() => /^https?:\/\/|^\/\//.test(props.image) ? props.image : defaultStatus[props.image])
 
-const descriptionText = computed(() => {
-  return props.description || translate('noData')
-})
+const descriptionText = computed(() => props.description || translate('noData'))
 </script>
