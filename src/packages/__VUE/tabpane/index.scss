@@ -13,6 +13,7 @@
   overflow: auto;
   height: 100%;
   word-break: break-all;
+  transform: translate(0);
   &.inactive {
     overflow: visible;
     height: 0;
