@@ -10504,7 +10504,7 @@ const zm = /* @__PURE__ */ le(Dm, [["render", Em]]), Vm = { class: "nut-empty" }
     }, l = S(() => t.imageSize ? {
       width: Be(t.imageSize),
       height: Be(t.imageSize)
-    } : {}), s = S(() => t.image.startsWith("https://") || t.image.startsWith("http://") || t.image.startsWith("//") ? t.image : o[t.image]), a = S(() => t.description || n("noData"));
+    } : {}), s = S(() => /^https?:\/\/|^\/\//.test(t.image) ? t.image : o[t.image]), a = S(() => t.description || n("noData"));
     return (r, i) => (c(), d("view", Vm, [
       g("view", {
         class: "nut-empty__box",

@@ -51,16 +51,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
       }
       return {};
     });
-    const src = computed(() => {
-      if (props.image.startsWith("https://") || props.image.startsWith("http://") || props.image.startsWith("//")) {
-        return props.image;
-      } else {
-        return defaultStatus[props.image];
-      }
-    });
-    const descriptionText = computed(() => {
-      return props.description || translate("noData");
-    });
+    const src = computed(() => /^https?:\/\/|^\/\//.test(props.image) ? props.image : defaultStatus[props.image]);
+    const descriptionText = computed(() => props.description || translate("noData"));
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("view", _hoisted_1, [
         createElementVNode("view", {

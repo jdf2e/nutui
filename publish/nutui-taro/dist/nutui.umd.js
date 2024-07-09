@@ -12498,16 +12498,8 @@ var __async = (__this, __arguments, generator) => {
         }
         return {};
       });
-      const src = vue.computed(() => {
-        if (props.image.startsWith("https://") || props.image.startsWith("http://") || props.image.startsWith("//")) {
-          return props.image;
-        } else {
-          return defaultStatus[props.image];
-        }
-      });
-      const descriptionText = vue.computed(() => {
-        return props.description || translate("noData");
-      });
+      const src = vue.computed(() => /^https?:\/\/|^\/\//.test(props.image) ? props.image : defaultStatus[props.image]);
+      const descriptionText = vue.computed(() => props.description || translate("noData"));
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", _hoisted_1$C, [
           vue.createElementVNode("view", {
