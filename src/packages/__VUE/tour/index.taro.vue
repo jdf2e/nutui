@@ -242,7 +242,7 @@ export default create({
       () => props.modelValue,
       (visible) => {
         if (visible) {
-          state.active = props.type === 'step' ? Math.min(props.current, props.steps.length - 1) : 0
+          state.active = props.type === 'step' ? Math.min(Math.max(0, props.current), props.steps.length - 1) : 0
           getRootPosition()
         }
         state.showTour = visible
