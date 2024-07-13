@@ -238,7 +238,7 @@ export default create({
 
     watch(
       () => props.visible,
-      async (value) => {
+      (value) => {
         showPopup.value = value
         if (value) nextTick(() => getContentWidth())
       }
