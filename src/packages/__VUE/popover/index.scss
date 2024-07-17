@@ -109,7 +109,7 @@
 
     &-enter-from,
     &-leave-to {
-      transform: scale(0.8);
+      transform: scale(var(--transform-scale));
       opacity: 0;
     }
 

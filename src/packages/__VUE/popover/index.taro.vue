@@ -12,7 +12,7 @@
     <nut-popup
       v-model:visible="showPopup"
       :pop-class="`nut-popover-content nut-popover-content--${location}`"
-      :style="{ background: bgColor }"
+      :style="{ background: bgColor, '--transform-scale': DEFAULT_SCALE_TRANSITION }"
       position=""
       transition="nut-popover-content"
       :overlay="overlay"
@@ -77,6 +77,8 @@ export default create({
     const showPopup = ref(props.visible)
 
     const rootPosition = ref<PopoverRootPosition>()
+
+    const DEFAULT_SCALE_TRANSITION = 0.8
 
     const elRect = ref({
       width: 0,
@@ -194,8 +196,8 @@ export default create({
       try {
         const rect = await useTaroRect(popoverContentRef)
         elRect.value = {
-          height: rect.height,
-          width: rect.width
+          height: rect.height / DEFAULT_SCALE_TRANSITION,
+          width: rect.width / DEFAULT_SCALE_TRANSITION
         }
       } catch (error) {
         console.warn('[NutUI] Failed to get rect:', error)
@@ -286,7 +288,8 @@ export default create({
       popoverArrowStyle,
       renderIcon,
       refRandomId,
-      clickAway
+      clickAway,
+      DEFAULT_SCALE_TRANSITION
     }
   }
 })
