@@ -563,6 +563,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     position: "bottom",
     "pop-class": "nut-cascader__popup",
     round: "",
+    "lock-scroll": _ctx.lockScroll,
+    teleport: _ctx.teleport,
+    "teleport-disable": _ctx.teleportDisable,
     closeable: _ctx.closeable,
     "destroy-on-close": false,
     "close-icon-position": _ctx.closeIconPosition,
@@ -589,7 +592,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8, ["model-value", "options", "lazy", "lazy-load", "value-key", "text-key", "children-key", "convert-config", "visible", "onChange", "onPathChange"])
     ]),
     _: 1
-  }, 8, ["visible", "closeable", "close-icon-position", "z-index"])) : (openBlock(), createBlock(_component_nut_cascader_item, {
+  }, 8, ["visible", "lock-scroll", "teleport", "teleport-disable", "closeable", "close-icon-position", "z-index"])) : (openBlock(), createBlock(_component_nut_cascader_item, {
     key: 1,
     "model-value": _ctx.innerValue,
     options: _ctx.options,

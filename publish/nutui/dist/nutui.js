@@ -4582,6 +4582,9 @@ function fd(e, t, n, o, l, s) {
     position: "bottom",
     "pop-class": "nut-cascader__popup",
     round: "",
+    "lock-scroll": e.lockScroll,
+    teleport: e.teleport,
+    "teleport-disable": e.teleportDisable,
     closeable: e.closeable,
     "destroy-on-close": !1,
     "close-icon-position": e.closeIconPosition,
@@ -4608,7 +4611,7 @@ function fd(e, t, n, o, l, s) {
       }, null, 8, ["model-value", "options", "lazy", "lazy-load", "value-key", "text-key", "children-key", "convert-config", "visible", "onChange", "onPathChange"])
     ]),
     _: 1
-  }, 8, ["visible", "closeable", "close-icon-position", "z-index"])) : (c(), J(a, {
+  }, 8, ["visible", "lock-scroll", "teleport", "teleport-disable", "closeable", "close-icon-position", "z-index"])) : (c(), J(a, {
     key: 1,
     "model-value": e.innerValue,
     options: e.options,
