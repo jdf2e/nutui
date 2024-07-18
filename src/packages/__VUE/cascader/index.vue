@@ -5,6 +5,9 @@
       position="bottom"
       pop-class="nut-cascader__popup"
       round
+      :lock-scroll="lockScroll"
+      :teleport="teleport"
+      :teleport-disable="teleportDisable"
       :closeable="closeable"
       :destroy-on-close="false"
       :close-icon-position="closeIconPosition"
