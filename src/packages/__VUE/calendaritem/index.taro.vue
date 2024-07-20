@@ -828,6 +828,15 @@ export default create({
         }
       }
     )
+    // 监听结束日期更改
+    watch(
+      () => props.endDate,
+      (val) => {
+        if (val) {
+          resetRender()
+        }
+      }
+    )
 
     return {
       weeks,
