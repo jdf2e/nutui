@@ -77,7 +77,7 @@
   </view>
 </template>
 <script lang="ts">
-import { watch, ref, reactive, toRefs, PropType, onMounted, CSSProperties } from 'vue'
+import { watch, ref, reactive, toRefs, PropType, onMounted } from 'vue'
 import { PopoverLocation, PopoverTheme } from '../popover/type'
 import { createComponent } from '@/packages/utils/create'
 import { rectTaro, useTaroRectById } from '@/packages/utils/useTaroRect'
@@ -176,7 +176,7 @@ export default create({
 
     let maskRect: rectTaro[] = []
 
-    let maskStyles = ref<CSSProperties[]>([])
+    let maskStyles = ref<any[]>([])
 
     const maskStyle = (index: number) => {
       const { offset, maskWidth, maskHeight } = props
