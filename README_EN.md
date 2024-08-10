@@ -102,6 +102,7 @@ Site: [nutui.jd.com](https://nutui.jd.com)
 | --- | --- |
 | [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | uni-app UI Components based on NutUI 4.x |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | uni-app UI Components based on NutUI 3.x |
+| [common-intellisense](https://github.com/Simon-He95/common-intellisense) | vscode extension for NutUI 4.x Intellisense |
 
 ## Status
 
