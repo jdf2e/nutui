@@ -242,6 +242,9 @@ const _sfc_main = create({
       });
     };
     const dataURLToCanvasImage = (canvas, dataURL) => {
+      if (!canvas) {
+        return Promise.reject(new Error("Invalid canvas element"));
+      }
       return new Promise((resolve) => {
         const img = canvas.createImage();
         img.onload = () => resolve(img);
