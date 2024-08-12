@@ -86,7 +86,7 @@
     "@nutui/eslint-config": "workspace:*",
     "@nutui/prettier-plugin": "workspace:*",
     "@nutui/vite-plugins": "workspace:*",
-    "@tarojs/taro": "3.6.30",
+    "@tarojs/taro": "3.6.34",
     "@types/node": "^20.14.9",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
