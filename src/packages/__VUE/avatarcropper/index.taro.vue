@@ -245,6 +245,9 @@ export default create({
 
     // base64转图片(canvasImage)
     const dataURLToCanvasImage = (canvas: any, dataURL: string): Promise<HTMLImageElement> => {
+      if (!canvas) {
+        return Promise.reject(new Error('Invalid canvas element'))
+      }
       return new Promise((resolve) => {
         const img = canvas.createImage()
         img.onload = () => resolve(img)
