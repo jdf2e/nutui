@@ -45,10 +45,10 @@
       justify-content: center;
       color: $tabs-titles-item-color;
       &__text {
+        text-align: center;
         &.ellipsis {
           @include oneline-ellipsis();
         }
-        text-align: center;
       }
       &__smile {
         .nut-icon {
