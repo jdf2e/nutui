@@ -106,6 +106,7 @@
 | --- | --- |
 | [nutui-uniapp](https://github.com/nutui-uniapp/nutui-uniapp) | 基于 NutUI 4.x 版本开发的 uni-app 组件库 |
 | [jwaterwater/uni-nutui](https://github.com/jwaterwater/uni-nutui) | 基于 NutUI 3.x 版本开发的 uni-app 组件库 |
+| [common-intellisense](https://github.com/Simon-He95/common-intellisense) | 提供 NutUI 4.x 版本智能提示的 vscode 插件 |
 
 ## 项目状态
 
