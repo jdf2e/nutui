@@ -247,74 +247,74 @@ const clearUpload = () => {
 
 ### Props
 
-| [object Object] | [object Object] | [object Object] | [object Object] |
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| [object Object] | [object Object]`false`[object Object] | [object Object] | `true` |
-| [object Object] | [object Object] | [object Object] | `file` |
-| [object Object] | [object Object] | [object Object] | `-` |
-| [object Object] | [object Object] | [object Object] | `[]` |
-| [object Object] | [object Object] | [object Object] | `true` |
-| [object Object] | [object Object] | [object Object] | `true` |
-| [object Object] | [object Object] | [object Object] | `post` |
-| [object Object] | [object Object]`picture`[object Object]`list` | [object Object] | `picture` |
-| [object Object] | [object Object] | [object Object] | `Number.MAX_VALUE` |
-| [object Object] | [object Object] | [object Object] | `1` |
-| [object Object] | [[object Object]](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | [object Object] | `['album','camera']` |
-| [object Object]`仅支持WEAPP` | [object Object]`source-type`[object Object]`camera`[object Object] | [object Object] | `back` |
-| [object Object] | [[object Object]](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | [object Object] | `['original','compressed']` |
-| [object Object]`仅支持WEAPP` | [[object Object]](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | [object Object] | `['image', 'video', 'mix']` |
-| [object Object]`仅支持WEAPP` | [object Object] | [object Object] | [object Object] |
-| [object Object] | [object Object] | [object Object] | `{}` |
-| [object Object] | [object Object] | [object Object] | `{}` |
-| [object Object] | [object Object] | [object Object] | `200` |
-| [object Object] | [object Object] | [object Object] | `false` |
-| [object Object] | [object Object] | [object Object] | `true` |
-| [object Object] | [object Object] | [object Object] | `1000 * 30` |
-| [object Object] | [object Object]`Promise`[object Object] | [object Object] | `null` |
-| [object Object] | [object Object]`Taro.uploadFile`[object Object] | [object Object] | `null` |
-| [object Object]`v4.1.1 仅支持小程序` | [object Object] | [object Object] | `aspectFit` |
+| auto-upload | 是否在选取文件后立即进行上传，`false` 时需要手动执行 ref submit 方法进行上传 | Boolean | `true` |
+| name | 发到后台的文件参数名 | String | `file` |
+| url | 上传服务器的接口地址 | String | `-` |
+| v-model:file-list | 默认已经上传的文件列表 | FileItem[] | `[]` |
+| is-preview | 是否上传成功后展示预览图 | Boolean | `true` |
+| is-deletable | 是否展示删除按钮 | Boolean | `true` |
+| method | 上传请求的 http method | String | `post` |
+| list-type | 上传列表的内建样式，支持两种基础样式 `picture`、`list` | String | `picture` |
+| maximize | 可以设定最大上传文件的大小（字节） | Number \| String | `Number.MAX_VALUE` |
+| maximum | 最多可以选择的文件个数，微信基础库 2.25.0 前，最多可支持 9 个文件，2.25.0 及以后最多可支持 20 个文件 | Number \| String | `1` |
+| source-type | [选择文件的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array | `['album','camera']` |
+| camera`仅支持WEAPP` | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头 | String | `back` |
+| size-type | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array | `['original','compressed']` |
+| media-type`仅支持WEAPP` | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array | `['image', 'video', 'mix']` |
+| max-duration`仅支持WEAPP` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。 | Number | 10 |
+| headers | 设置上传的请求头部 | object | `{}` |
+| data | 附加上传的信息 formData | object | `{}` |
+| xhr-state | 接口响应的成功状态（status）值 | Number | `200` |
+| disabled | 是否禁用文件上传 | Boolean | `false` |
+| multiple | 是否支持文件多选 | Boolean | `true` |
+| timeout | 超时时间，单位为毫秒 | Number \| String | `1000 * 30` |
+| before-upload | 上传前的函数需要返回一个`Promise`对象 | Function | `null` |
+| before-xhr-upload | 执行 `Taro.uploadFile` 上传时，自定义方式 | Function(Taro.uploadFile，option) | `null` |
+| mode`v4.1.1 仅支持小程序` | 预览图片的 mode 属性 | string | `aspectFit` |
 
 ### FileItem
 
-| [object Object] | [object Object] | [object Object] |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| [object Object] | [object Object]`ready`[object Object]`uploading`[object Object]`success`[object Object]`error` | `ready` |
-| [object Object] | [object Object] | `new Date().getTime().toString()` |
-| [object Object] | [object Object] | [object Object] |
-| [object Object] | [object Object] | [object Object] |
-| [object Object] | [object Object] | `{}` |
-| [object Object] | [object Object] | `0` |
+| status | 文件状态值，可选`ready`,`uploading`,`success`,`error` | `ready` |
+| uid | 文件的唯一标识 | `new Date().getTime().toString()` |
+| name | 文件名称 | - |
+| url | 文件路径 | - |
+| formData | 上传所需的 data | `{}` |
+| percentage | 上传百分比 | `0` |
 
 ### Events
 
-| [object Object] | [object Object] | [object Object] |
+| 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
-| [object Object] | [object Object] | `options` |
-| [object Object] | [object Object] | `{event,option,percentage}` |
-| [object Object] | [object Object] | `files` |
-| [object Object] | [object Object] | `{data,option,fileItem}` |
-| [object Object] | [object Object] | `{data,option,fileItem}` |
-| [object Object] | [object Object] | `{fileList,event}` |
-| [object Object] | [object Object] | `{files,fileList,index}` |
-| [object Object] | [object Object] | `{fileItem}` |
+| start | 文件上传开始 | `options` |
+| progress | 文件上传的进度 | `{event,option,percentage}` |
+| oversize | 文件大小超过限制时触发 | `files` |
+| success | 上传成功 | `{data,option,fileItem}` |
+| failure | 上传失败 | `{data,option,fileItem}` |
+| change | 上传文件改变时的状态 | `{fileList,event}` |
+| delete | 文件删除事件 | `{files,fileList,index}` |
+| file-item-click | 文件上传成功后点击触发 | `{fileItem}` |
 
 ### Uploader Slots
 
-| [object Object] | [object Object] |
+| 名称 | 说明 |
 | --- | --- |
-| [object Object] | [object Object] |
-| [object Object] | [object Object]`icon`[object Object] |
-| [object Object] | [object Object] |
+| default | 默认插槽自定义内容 |
+| upload-icon | 自定义上传按钮中间`icon`区域 |
+| delete-icon | 自定义右上角删除按钮区域 |
 
 ### Methods
 
 通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Uploader 实例并调用实例方法
 
-| [object Object] | [object Object] | [object Object] | [object Object] |
+| 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| [object Object] | [object Object] | [object Object] | `-` |
-| [object Object] | [object Object] | [object Object] | [object Object] |
-| [object Object] | [object Object] | [object Object] | `-` |
+| submit | 手动上传模式，执行上传操作 | - | `-` |
+| chooseImage | 调用选择文件的方法，效果等同于点击 nut-uploader 组件 | - | - |
+| clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | `-` |
 
 ## 主题定制
 
@@ -322,8 +322,8 @@ const clearUpload = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| [object Object] | [object Object] |
+| 名称 | 默认值 |
 | --- | --- |
-| [object Object] | _[object Object]_ |
-| [object Object] | _[object Object]_ |
-| [object Object] | _[object Object]_ |
+| --nut-uploader-picture-width | _100px_ |
+| --nut-uploader-picture-height | _100px_ |
+| --nut-uploader-background | _#f7f8fa_ |

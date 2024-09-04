@@ -34,7 +34,15 @@ function printTable(path, options, print) {
   const contents = path.map(
     () =>
       path.map(() => {
-        const text = print().flat(Infinity).join('')
+        const text = print()
+          .flat(Infinity)
+          .map((item) => {
+            if (typeof item === 'string') {
+              return item
+            }
+            return item.parts.flat(Infinity).join('')
+          })
+          .join('')
         return { text }
       }, 'children'),
     'children'
