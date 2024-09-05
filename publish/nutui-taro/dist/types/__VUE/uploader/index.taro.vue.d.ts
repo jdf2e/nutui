@@ -102,6 +102,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    beforeUpload: {
+        type: FunctionConstructor;
+        default: null;
+    };
     beforeXhrUpload: {
         type: FunctionConstructor;
         default: null;
@@ -232,6 +236,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    beforeUpload: {
+        type: FunctionConstructor;
+        default: null;
+    };
     beforeXhrUpload: {
         type: FunctionConstructor;
         default: null;
@@ -283,6 +291,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     xhrState: string | number;
     autoUpload: boolean;
     maxDuration: number;
+    beforeUpload: Function;
     beforeXhrUpload: Function;
     beforeDelete: Interceptor;
 }, {}>>;

@@ -199,6 +199,10 @@ const _sfc_main = create({
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
     maxDuration: { type: Number, default: 10 },
+    beforeUpload: {
+      type: Function,
+      default: null
+    },
     beforeXhrUpload: {
       type: Function,
       default: null
@@ -292,7 +296,17 @@ const _sfc_main = create({
     const onChangeMedia = (res) => {
       const { tempFiles } = res;
       const _files = filterFiles(tempFiles);
-      readFile(_files);
+      if (props.beforeUpload) {
+        props.beforeUpload(new Array().slice.call(_files)).then(
+          (f) => {
+            const _files2 = filterFiles(new Array().slice.call(f));
+            if (!_files2.length) res.tempFiles = [];
+            readFile(_files2);
+          }
+        );
+      } else {
+        readFile(_files);
+      }
       emit("change", {
         fileList: fileList.value
       });
@@ -300,7 +314,17 @@ const _sfc_main = create({
     const onChangeImage = (res) => {
       const { tempFiles } = res;
       const _files = filterFiles(tempFiles);
-      readFile(_files);
+      if (props.beforeUpload) {
+        props.beforeUpload(new Array().slice.call(_files)).then(
+          (f) => {
+            const _files2 = filterFiles(new Array().slice.call(f));
+            if (!_files2.length) res.tempFiles = [];
+            readFile(_files2);
+          }
+        );
+      } else {
+        readFile(_files);
+      }
       emit("change", {
         fileList: fileList.value
       });

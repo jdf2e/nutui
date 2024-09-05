@@ -7145,6 +7145,15 @@
               }
             },
             {
+              "name": "before-upload",
+              "default": "`null`",
+              "description": "上传前的函数需要返回一个`Promise`对象",
+              "value": {
+                "type": "function",
+                "kind": "expression"
+              }
+            },
+            {
               "name": "before-xhr-upload",
               "default": "`null`",
               "description": "执行 `Taro.uploadFile` 上传时，自定义方式",
