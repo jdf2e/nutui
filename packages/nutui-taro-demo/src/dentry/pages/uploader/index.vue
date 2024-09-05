@@ -1,7 +1,7 @@
 <template>
   <Demo class="bg-w">
     <h2>基础用法</h2>
-    <nut-uploader :url="uploadUrl"></nut-uploader>
+    <nut-uploader :url="uploadUrl" :before-upload="beforeUpload"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader v-model:file-list="defaultFileList" :url="uploadUrl" maximum="3" multiple @delete="onDelete">
     </nut-uploader>
@@ -20,7 +20,7 @@
     <nut-progress
       :percentage="progressPercentage"
       stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-      :status="progressPercentage == 100 ? '' : 'active'"
+      :status="progressPercentage == 100 ? undefined : 'active'"
     >
     </nut-progress>
     <!--
@@ -104,6 +104,14 @@ const defaultFileList1 = reactive([
     type: 'image'
   }
 ])
+const beforeUpload = async (files: FileList) => {
+  console.log('beforeUpload 触发')
+  const allowedTypes = ['image/png']
+  const filteredFiles = Array.from(files).filter(file =>
+    allowedTypes.includes(file.type)
+  )
+  return filteredFiles
+}
 const onOversize = (files: File[]) => {
   console.log('oversize 触发 文件大小不能超过 50kb', files)
 }

@@ -136,6 +136,10 @@ export default create({
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
     maxDuration: { type: Number, default: 10 },
+    beforeUpload: {
+      type: Function,
+      default: null
+    },
     beforeXhrUpload: {
       type: Function,
       default: null
@@ -235,7 +239,18 @@ export default create({
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const { tempFiles } = res
       const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles<Taro.chooseMedia.ChooseMedia>(tempFiles)
-      readFile<Taro.chooseMedia.ChooseMedia>(_files)
+
+      if (props.beforeUpload) {
+        props.beforeUpload(new Array<File>().slice.call(_files)).then(
+          (f: Array<File> | boolean) => {
+            const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+            if (!_files.length) res.tempFiles = []
+            readFile(_files)
+          }
+        )
+      } else {
+        readFile(_files)
+      }
       emit('change', {
         fileList: fileList.value
       })
@@ -244,7 +259,17 @@ export default create({
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const { tempFiles } = res
       const _files: Taro.chooseImage.ImageFile[] = filterFiles<Taro.chooseImage.ImageFile>(tempFiles)
-      readFile<Taro.chooseImage.ImageFile>(_files)
+      if (props.beforeUpload) {
+        props.beforeUpload(new Array<File>().slice.call(_files)).then(
+          (f: Array<File> | boolean) => {
+            const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+            if (!_files.length) res.tempFiles = []
+            readFile(_files)
+          }
+        )
+      } else {
+        readFile(_files)
+      }
       emit('change', {
         fileList: fileList.value
       })

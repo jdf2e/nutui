@@ -270,6 +270,7 @@ const clearUpload = () => {
 | disabled | 是否禁用文件上传 | Boolean | `false` |
 | multiple | 是否支持文件多选 | Boolean | `true` |
 | timeout | 超时时间，单位为毫秒 | Number \| String | `1000 * 30` |
+| before-upload | 上传前的函数需要返回一个`Promise`对象 | Function | `null` |
 | before-xhr-upload | 执行 `Taro.uploadFile` 上传时，自定义方式 | Function(Taro.uploadFile，option) | `null` |
 | mode`v4.1.1 仅支持小程序` | 预览图片的 mode 属性 | string | `aspectFit` |
 
