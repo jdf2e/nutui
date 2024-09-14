@@ -1,3 +1,21 @@
+- ## v4.3.13
+
+`2024-09-14`
+
+Bug Fixes
+
+- fix(avatarcrppoer): undefined @Alex-huxiyang
+- fix: sass warning @ice909
+
+Features
+
+- feat(uploader): support beforeUpload in taro @Alex-huxiyang
+
+Other Changes
+
+- chore: bump taro to v3.6.34 @Alex-huxiyang
+- chore: add common-intellisense to Community Ecosystem @Simon-He95
+
 - ## v4.3.12
 
 `2024-08-02`
