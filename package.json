@@ -84,7 +84,7 @@
     "@eslint/config-inspector": "^0.5.1",
     "@eslint/eslintrc": "^3.1.0",
     "@nutui/eslint-config": "workspace:*",
-    "@nutui/prettier-plugin": "workspace:*",
+    "prettier-markdown-table": "^1.0.1",
     "@nutui/vite-plugins": "workspace:*",
     "@tarojs/taro": "3.6.34",
     "@types/node": "^20.14.9",
