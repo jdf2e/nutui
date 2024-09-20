@@ -107,7 +107,7 @@ importers:
         version: 3.3.2
       prettier-markdown-table:
         specifier: ^1.0.1
-        version: 1.0.1
+        version: 1.0.2
       rimraf:
         specifier: ^6.0.0
         version: 6.0.0
@@ -6057,6 +6057,9 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  linguist-languages@7.27.0:
+    resolution: {integrity: sha512-Wzx/22c5Jsv2ag+uKy+ITanGA5hzvBZngrNGDXLTC7ZjGM6FLCYGgomauTkxNJeP9of353OM0pWqngYA180xgw==}
+
   linkify-it@3.0.3:
     resolution: {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
 
@@ -7315,8 +7318,8 @@ packages:
     resolution: {integrity: sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==}
     engines: {node: '>=4'}
 
-  prettier-markdown-table@1.0.1:
-    resolution: {integrity: sha512-4UrRDtD/k0xc5BAjI2Zv/L1cf6gTm7tdb4Uks0xUJ3Dm4brIbFMYkRdF/h6bqC1+SVSonNoD+ZcilmjH4wD0sA==}
+  prettier-markdown-table@1.0.2:
+    resolution: {integrity: sha512-WYaAn3GX8hn1v+dZcHljxgZfG0PeWvP2Ufav0vzvlDiWhb8uj+FIKpUIMiaf6uP1PF8Ni/1m7X6FwucSgCvY2w==}
 
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -15795,6 +15798,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
+  linguist-languages@7.27.0: {}
+
   linkify-it@3.0.3:
     dependencies:
       uc.micro: 1.0.6
@@ -17157,7 +17162,9 @@ snapshots:
 
   prepend-http@2.0.0: {}
 
-  prettier-markdown-table@1.0.1: {}
+  prettier-markdown-table@1.0.2:
+    dependencies:
+      linguist-languages: 7.27.0
 
   prettier@2.8.8:
     optional: true
