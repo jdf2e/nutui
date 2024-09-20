@@ -42,9 +42,6 @@ importers:
       '@nutui/eslint-config':
         specifier: workspace:*
         version: link:packages/nutui-eslint-config
-      '@nutui/prettier-plugin':
-        specifier: workspace:*
-        version: link:packages/nutui-prettier-plugin
       '@nutui/vite-plugins':
         specifier: workspace:*
         version: link:packages/nutui-vite-plugins
@@ -108,6 +105,9 @@ importers:
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
+      prettier-markdown-table:
+        specifier: ^1.0.1
+        version: 1.0.2
       rimraf:
         specifier: ^6.0.0
         version: 6.0.0
@@ -203,15 +203,6 @@ importers:
       vue:
         specifier: ^3.4.31
         version: 3.4.31(typescript@5.4.5)
-
-  packages/nutui-prettier-plugin:
-    devDependencies:
-      linguist-languages:
-        specifier: ^7.27.0
-        version: 7.27.0
-      prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
 
   packages/nutui-taro-demo:
     dependencies:
@@ -2079,7 +2070,6 @@ packages:
     engines: {node: '>= 16'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@tarojs/binding-win32-x64-msvc@3.6.34':
     resolution: {integrity: sha512-vEO0autpmk1k+EHOdEsJcDgozzJn6BsDeJcD3nwKMMBfRoyE+nilUJD6XFmFP/GaBRP4nLgsUvsshVaC+GOJ5A==}
@@ -2163,28 +2153,24 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@tarojs/plugin-doctor-linux-arm64-musl@0.0.11':
     resolution: {integrity: sha512-SXes1wj2MLQod50+9sgSZlN4eli3VXVxMNqdk03ArrWtFURCpuDiHwRERjoqlo91Hf4IxU6zU7ml86gPZ0dkaw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@tarojs/plugin-doctor-linux-x64-gnu@0.0.11':
     resolution: {integrity: sha512-nyW2tjzYA8nw39pKpaYtpGbEOZNRTV97Ir+UEvsuZbAr5F1lV2Q+2IwN8dGY41/lXw9JQay6FDRqUPRXAMB4kw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@tarojs/plugin-doctor-linux-x64-musl@0.0.11':
     resolution: {integrity: sha512-epKcAwJdVYMGmeWdqGZrdOS+nhDz4SiGlZqYMcDjSlGK7OM0wlSor6xpz59adYVe86t/a/gjimu5IT2ofVEfsA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@tarojs/plugin-doctor-win32-ia32-msvc@0.0.11':
     resolution: {integrity: sha512-UBKdbbtDK1QmsRZiKEjo+TtSt+E/ljIzx5wbDna2yEuDtJqBwNg6SqkYg3LxUiJK8O5hwwVJGdJWI9a9bHpI8w==}
@@ -7332,6 +7318,9 @@ packages:
     resolution: {integrity: sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==}
     engines: {node: '>=4'}
 
+  prettier-markdown-table@1.0.2:
+    resolution: {integrity: sha512-WYaAn3GX8hn1v+dZcHljxgZfG0PeWvP2Ufav0vzvlDiWhb8uj+FIKpUIMiaf6uP1PF8Ni/1m7X6FwucSgCvY2w==}
+
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -10989,26 +10978,6 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
 
-  '@tarojs/components-advanced@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(@tarojs/taro@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5)))(vue@3.4.31(typescript@5.4.5))':
-    dependencies:
-      '@tarojs/components': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))
-      '@tarojs/runtime': 3.6.34(@tarojs/shared@3.6.34)
-      '@tarojs/shared': 3.6.34
-      '@tarojs/taro': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))
-      classnames: 2.5.1
-      csstype: 3.1.3
-      memoize-one: 6.0.0
-      postcss: 8.4.39
-      tslib: 2.6.2
-    optionalDependencies:
-      vue: 3.4.31(typescript@5.4.5)
-    transitivePeerDependencies:
-      - '@tarojs/helper'
-      - '@types/react'
-      - '@types/react-native'
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-
   '@tarojs/components-react@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(postcss@8.4.38)(vue@3.4.31(typescript@5.4.5))':
     dependencies:
       '@babel/runtime': 7.24.6
@@ -11054,7 +11023,7 @@ snapshots:
   '@tarojs/components@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))':
     dependencies:
       '@stencil/core': 2.22.3
-      '@tarojs/components-advanced': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(@tarojs/taro@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5)))(vue@3.4.31(typescript@5.4.5))
+      '@tarojs/components-advanced': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(@tarojs/taro@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.38)(vue@3.4.31(typescript@5.4.5)))(vue@3.4.31(typescript@5.4.5))
       '@tarojs/taro': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))
       classnames: 2.5.1
       hammerjs: 2.0.8
@@ -11072,26 +11041,6 @@ snapshots:
       - '@types/webpack-dev-server'
       - postcss
       - react
-
-  '@tarojs/components@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))':
-    dependencies:
-      '@stencil/core': 2.22.3
-      '@tarojs/components-advanced': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(@tarojs/shared@3.6.34)(@tarojs/taro@3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.38)(vue@3.4.31(typescript@5.4.5)))(vue@3.4.31(typescript@5.4.5))
-      '@tarojs/taro': 3.6.34(@tarojs/helper@3.6.34)(@tarojs/runtime@3.6.34(@tarojs/shared@3.6.34))(postcss@8.4.39)(vue@3.4.31(typescript@5.4.5))
-      classnames: 2.5.1
-      hammerjs: 2.0.8
-      hls.js: 1.5.8
-      resolve-pathname: 3.0.0
-      swiper: 6.8.0
-      tslib: 2.6.2
-    optionalDependencies:
-      vue: 3.4.31(typescript@5.4.5)
-    transitivePeerDependencies:
-      - '@tarojs/helper'
-      - '@tarojs/runtime'
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-      - postcss
 
   '@tarojs/helper@3.6.34':
     dependencies:
@@ -17212,6 +17161,10 @@ snapshots:
   prepend-http@1.0.4: {}
 
   prepend-http@2.0.0: {}
+
+  prettier-markdown-table@1.0.2:
+    dependencies:
+      linguist-languages: 7.27.0
 
   prettier@2.8.8:
     optional: true

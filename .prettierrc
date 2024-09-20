@@ -8,5 +8,5 @@
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "strict",
   "trailingComma": "none",
-  "plugins": ["@nutui/prettier-plugin"]
+  "plugins": ["prettier-markdown-table"]
 }
