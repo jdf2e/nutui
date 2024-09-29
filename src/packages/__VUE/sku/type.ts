@@ -1,7 +1,7 @@
-export interface SkuInfo {
+export interface SkuInfoBase {
   name: string
   id: number
   active: boolean
   disable: boolean
-  [props: string]: any
 }
+export type SkuInfo<T = unknown> = SkuInfoBase & Record<string, T>
