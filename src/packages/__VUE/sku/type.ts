@@ -3,6 +3,5 @@ export interface SkuInfo {
   id: number
   active: boolean
   disable: boolean
-  // @ts-expect-error： need any here
   [props: string]: any
 }
