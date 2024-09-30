@@ -51,7 +51,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
             src: _ctx.info.avatar
           }, null, 8, _hoisted_3$3)) : createCommentVNode("", true)
         ]),
-        createTextVNode(),
+        _cache[6] || (_cache[6] = createTextVNode()),
         _ctx.type == "default" ? (openBlock(), createElementBlock("view", {
           key: 0,
           class: normalizeClass([`nut-comment-header__user-${_ctx.type}`])
@@ -60,10 +60,10 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
             class: normalizeClass([`nut-comment-header__user-${_ctx.type}-name`])
           }, [
             createElementVNode("span", null, toDisplayString(_ctx.info.nickName), 1),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             renderSlot(_ctx.$slots, "labels")
           ], 2),
-          createTextVNode(),
+          _cache[4] || (_cache[4] = createTextVNode()),
           createElementVNode("view", _hoisted_4$3, [
             createVNode(_component_nut_rate, {
               modelValue: _ctx.info.score,
@@ -81,14 +81,14 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
           createElementVNode("span", {
             class: normalizeClass([`nut-comment-header__user-${_ctx.type}-name`])
           }, toDisplayString(_ctx.info.nickName), 3),
-          createTextVNode(),
+          _cache[5] || (_cache[5] = createTextVNode()),
           renderSlot(_ctx.$slots, "labels")
         ], 2))
       ]),
-      createTextVNode(),
+      _cache[7] || (_cache[7] = createTextVNode()),
       _ctx.info.time ? (openBlock(), createElementBlock("view", _hoisted_5$1, toDisplayString(_ctx.info.time), 1)) : createCommentVNode("", true)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     _ctx.type == "complex" ? (openBlock(), createElementBlock("view", {
       key: 1,
       class: normalizeClass([`nut-comment-header__${_ctx.type}-score`])
@@ -100,11 +100,11 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
         spacing: "3",
         readonly: ""
       }, null, 8, ["modelValue"]),
-      createTextVNode(),
+      _cache[8] || (_cache[8] = createTextVNode()),
       createElementVNode("i", {
         class: normalizeClass([`nut-comment-header__${_ctx.type}-score-i`])
       }, null, 2),
-      createTextVNode(),
+      _cache[9] || (_cache[9] = createTextVNode()),
       createElementVNode("view", {
         class: normalizeClass([`nut-comment-header__${_ctx.type}-score-size`])
       }, toDisplayString(_ctx.info.size), 3)
@@ -169,10 +169,9 @@ const _sfc_main$2 = create$2({
 });
 const _hoisted_1$2 = ["onClick"];
 const _hoisted_2$2 = ["src"];
-const _hoisted_3$2 = /* @__PURE__ */ createElementVNode("view", { class: "nut-comment-images__play" }, null, -1);
-const _hoisted_4$2 = ["onClick"];
-const _hoisted_5 = ["src"];
-const _hoisted_6 = {
+const _hoisted_3$2 = ["onClick"];
+const _hoisted_4$2 = ["src"];
+const _hoisted_5 = {
   key: 0,
   class: "nut-comment-images__mask"
 };
@@ -190,15 +189,13 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         createElementVNode("img", {
           src: itV.mainUrl
         }, null, 8, _hoisted_2$2),
-        createTextVNode(),
-        _hoisted_3$2
+        _cache[0] || (_cache[0] = createTextVNode()),
+        _cache[1] || (_cache[1] = createElementVNode("view", { class: "nut-comment-images__play" }, null, -1))
       ], 8, _hoisted_1$2);
     }), 128)),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.images, (itI, index) => {
-      return openBlock(), createElementBlock(Fragment, {
-        key: itI.id
-      }, [
+      return openBlock(), createElementBlock(Fragment, { key: index }, [
         _ctx.type == "multi" && _ctx.videos.length + index < 9 || _ctx.type != "multi" ? (openBlock(), createElementBlock("view", {
           key: 0,
           class: "nut-comment-images__item nut-comment-images__item--imgbox",
@@ -206,14 +203,14 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         }, [
           createElementVNode("img", {
             src: itI.smallImgUrl ? itI.smallImgUrl : itI.imgUrl
-          }, null, 8, _hoisted_5),
-          createTextVNode(),
-          _ctx.type == "multi" && _ctx.totalImages.length > 9 && _ctx.videos.length + index > 7 ? (openBlock(), createElementBlock("view", _hoisted_6, [
+          }, null, 8, _hoisted_4$2),
+          _cache[3] || (_cache[3] = createTextVNode()),
+          _ctx.type == "multi" && _ctx.totalImages.length > 9 && _ctx.videos.length + index > 7 ? (openBlock(), createElementBlock("view", _hoisted_5, [
             createElementVNode("span", null, "共 " + toDisplayString(_ctx.totalImages.length) + " 张", 1),
-            createTextVNode(),
+            _cache[2] || (_cache[2] = createTextVNode()),
             createVNode(_component_Right, { size: "12px" })
           ])) : createCommentVNode("", true)
-        ], 8, _hoisted_4$2)) : createCommentVNode("", true)
+        ], 8, _hoisted_3$2)) : createCommentVNode("", true)
       ], 64);
     }), 128))
   ], 2);
@@ -283,7 +280,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       _ctx.type != "complex" ? (openBlock(), createElementBlock("span", _hoisted_2$1, toDisplayString(_ctx.info.size), 1)) : createCommentVNode("", true)
     ]),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     createElementVNode("view", _hoisted_3$1, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.mergeOp, (name, i) => {
         return openBlock(), createElementBlock("view", {
@@ -293,13 +290,13 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         }, [
           name != "more" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
             createElementVNode("span", null, toDisplayString(_ctx.info[name]), 1),
-            createTextVNode(),
+            _cache[2] || (_cache[2] = createTextVNode()),
             name == "like" ? (openBlock(), createBlock(_component_Fabulous, { key: 0 })) : (openBlock(), createBlock(_component_Comment, { key: 1 }))
           ], 64)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[4] || (_cache[4] = createTextVNode()),
           name == "more" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
             createVNode(_component_MoreX),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             _ctx.showPopver ? (openBlock(), createElementBlock("view", {
               key: 0,
               class: "nut-comment-bottom__cpx-item-popover",
@@ -404,32 +401,32 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     }, 8, ["type", "info", "labels", "onHandleClick"]),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     renderSlot(_ctx.$slots, "feature"),
-    createTextVNode(),
+    _cache[6] || (_cache[6] = createTextVNode()),
     createElementVNode("view", {
       class: "nut-comment__main",
       style: normalizeStyle(`-webkit-line-clamp:${_ctx.conEllipsis}`),
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args)),
       innerHTML: _ctx.info.content
     }, null, 12, _hoisted_2),
-    createTextVNode(),
+    _cache[7] || (_cache[7] = createTextVNode()),
     createVNode(_component_comment_images, {
       images: _ctx.images,
       videos: _ctx.videos,
       type: _ctx.imagesRows,
       onClickImages: _ctx.clickImages
     }, null, 8, ["images", "videos", "type", "onClickImages"]),
-    createTextVNode(),
+    _cache[8] || (_cache[8] = createTextVNode()),
     _ctx.follow && _ctx.follow.days > 0 ? (openBlock(), createElementBlock("view", {
       key: 0,
       class: "nut-comment__follow",
       onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
     }, [
       createElementVNode("view", _hoisted_3, toDisplayString(_ctx.translate("additionalReview", _ctx.follow.days)), 1),
-      createTextVNode(),
+      _cache[3] || (_cache[3] = createTextVNode()),
       createElementVNode("view", _hoisted_4, toDisplayString(_ctx.follow.content), 1),
-      createTextVNode(),
+      _cache[4] || (_cache[4] = createTextVNode()),
       _ctx.follow.images && _ctx.follow.images.length > 0 ? (openBlock(), createElementBlock("view", {
         key: 0,
         class: "nut-comment__follow-img",
@@ -439,7 +436,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         createVNode(_component_Right, { size: "12px" })
       ])) : createCommentVNode("", true)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[9] || (_cache[9] = createTextVNode()),
     createVNode(_component_comment_bottom, {
       type: _ctx.headerType,
       info: _ctx.info,
@@ -447,7 +444,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       onClickOperate: _ctx.clickOperate,
       onHandleClick: _ctx.handleClick
     }, null, 8, ["type", "info", "operation", "onClickOperate", "onHandleClick"]),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     renderSlot(_ctx.$slots, "comment-shop-reply")
   ])) : createCommentVNode("", true);
 }

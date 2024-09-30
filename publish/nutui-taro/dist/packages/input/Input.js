@@ -254,7 +254,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             _ctx.$slots.left ? (openBlock(), createElementBlock("view", _hoisted_3, [
               renderSlot(_ctx.$slots, "left")
             ])) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[2] || (_cache[2] = createTextVNode()),
             createElementVNode("view", _hoisted_4, [
               (openBlock(), createBlock(resolveDynamicComponent(renderInput(_ctx.type)), mergeProps(_ctx.$attrs, {
                 ref_key: "inputRef",
@@ -281,19 +281,19 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                 onConfirm,
                 onKeyup
               }), null, 16, ["style", "maxlength", "placeholder", "disabled", "readonly", "value", "format-trigger", "autofocus", "enterkeyhint", "adjust-position", "always-system"])),
-              createTextVNode(),
+              _cache[0] || (_cache[0] = createTextVNode()),
               _ctx.readonly ? (openBlock(), createElementBlock("view", {
                 key: 0,
                 class: "nut-input-disabled-mask",
                 onClick: onClickInput
               })) : createCommentVNode("", true),
-              createTextVNode(),
+              _cache[1] || (_cache[1] = createTextVNode()),
               _ctx.showWordLimit && _ctx.maxLength ? (openBlock(), createElementBlock("view", _hoisted_5, [
                 createElementVNode("span", _hoisted_6, toDisplayString(getModelValue() ? getModelValue().length : 0), 1),
                 createTextVNode("/" + toDisplayString(_ctx.maxLength), 1)
               ])) : createCommentVNode("", true)
             ]),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             _ctx.clearable && !_ctx.readonly ? withDirectives((openBlock(), createElementBlock("view", {
               key: 1,
               class: "nut-input-clear-box",
@@ -310,7 +310,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             ], 512)), [
               [vShow, (active.value || _ctx.showClearIcon) && getModelValue().length > 0]
             ]) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[4] || (_cache[4] = createTextVNode()),
             createElementVNode("view", _hoisted_7, [
               renderSlot(_ctx.$slots, "right")
             ])

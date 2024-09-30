@@ -75,7 +75,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         onClick
       }, [
         renderSlot(_ctx.$slots, "default"),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         _ctx.closeable ? (openBlock(), createBlock(unref(Close), {
           key: 0,
           class: "nut-tag--close",

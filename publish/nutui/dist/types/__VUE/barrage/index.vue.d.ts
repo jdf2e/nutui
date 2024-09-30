@@ -2,7 +2,7 @@
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     danmu: {
         type: ArrayConstructor;
         default: () => never[];
@@ -27,13 +27,13 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}, {
+}>, {
     classTime: number;
     danmuList: any;
-    dmBody: import("vue").Ref<HTMLDivElement>;
-    dmContainer: import("vue").Ref<HTMLDivElement>;
+    dmBody: import("vue").Ref<HTMLDivElement, HTMLDivElement>;
+    dmContainer: import("vue").Ref<HTMLDivElement, HTMLDivElement>;
     add: (word: string) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     danmu: {
         type: ArrayConstructor;
         default: () => never[];
@@ -58,14 +58,14 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}>>, {
+}>> & Readonly<{}>, {
     top: number;
     rows: number;
     loop: boolean;
     danmu: unknown[];
     frequency: number;
     speeds: number;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

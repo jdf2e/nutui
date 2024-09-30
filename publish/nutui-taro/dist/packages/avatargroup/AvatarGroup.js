@@ -129,7 +129,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     style: normalizeStyle(_ctx.styles)
   }, [
     renderSlot(_ctx.$slots, "default"),
-    createTextVNode(),
+    _cache[0] || (_cache[0] = createTextVNode()),
     _ctx.foldCount > 0 ? (openBlock(), createBlock(_component_nut_avatar, {
       key: 0,
       class: "avater-fold",

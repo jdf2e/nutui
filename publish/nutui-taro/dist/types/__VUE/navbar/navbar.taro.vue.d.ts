@@ -11,7 +11,7 @@ export type NavbarProps = Partial<{
     placeholder: boolean;
     zIndex: string | number;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     leftShow: boolean;
     title: string;
     titleIcon: boolean;
@@ -33,7 +33,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     border: boolean;
     placeholder: boolean;
     zIndex: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     clickBack: (...args: any[]) => void;
     clickTitle: (...args: any[]) => void;
     clickIcon: (...args: any[]) => void;
@@ -64,7 +64,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     border: boolean;
     placeholder: boolean;
     zIndex: number;
-}>>> & {
+}>>> & Readonly<{
     onClickBack?: ((...args: any[]) => any) | undefined;
     onClickTitle?: ((...args: any[]) => any) | undefined;
     onClickIcon?: ((...args: any[]) => any) | undefined;
@@ -73,7 +73,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onOnClickTitle?: ((...args: any[]) => any) | undefined;
     onOnClickIcon?: ((...args: any[]) => any) | undefined;
     onOnClickRight?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     fixed: boolean;
     title: string;
     desc: string;
@@ -84,7 +84,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     leftText: string;
     safeAreaInsetTop: boolean;
     placeholder: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     "left-show"?(_: {}): any;
     left?(_: {}): any;
     "title-icon"?(_: {

@@ -238,7 +238,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       class: "nut-tour-masked",
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClickMask && _ctx.handleClickMask(...args))
     })) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[12] || (_cache[12] = createTextVNode()),
     (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.steps, (step, i) => {
       return openBlock(), createElementBlock("view", {
         key: i,
@@ -250,7 +250,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           class: normalizeClass(["nut-tour-mask", [_ctx.mask ? _ctx.showPopup[i] ? "" : "nut-tour-mask-hidden" : "nut-tour-mask-none"]]),
           style: normalizeStyle(_ctx.maskStyles[i])
         }, null, 14, _hoisted_1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[11] || (_cache[11] = createTextVNode()),
         createVNode(_component_nut_popover, {
           visible: _ctx.showPopup[i],
           "onUpdate:visible": ($event) => _ctx.showPopup[i] = $event,
@@ -276,12 +276,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     })
                   ])
                 ])) : createCommentVNode("", true),
-                createTextVNode(),
+                _cache[8] || (_cache[8] = createTextVNode()),
                 createElementVNode("view", _hoisted_4, toDisplayString(step.content), 1),
-                createTextVNode(),
+                _cache[9] || (_cache[9] = createTextVNode()),
                 createElementVNode("view", _hoisted_5, [
                   createElementVNode("view", _hoisted_6, toDisplayString(_ctx.active + 1) + "/" + toDisplayString(_ctx.steps.length), 1),
-                  createTextVNode(),
+                  _cache[7] || (_cache[7] = createTextVNode()),
                   createElementVNode("view", _hoisted_7, [
                     renderSlot(_ctx.$slots, "prev-step", {}, () => [
                       _ctx.active != 0 && _ctx.showPrevStep ? (openBlock(), createElementBlock("view", {
@@ -290,13 +290,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.changeStep("prev"))
                       }, toDisplayString(_ctx.prevStepTxt), 1)) : createCommentVNode("", true)
                     ]),
-                    createTextVNode(),
+                    _cache[5] || (_cache[5] = createTextVNode()),
                     _ctx.steps.length - 1 == _ctx.active ? (openBlock(), createElementBlock("view", {
                       key: 0,
                       class: "nut-tour-content-bottom-operate-btn active",
                       onClick: _cache[3] || (_cache[3] = (...args) => _ctx.close && _ctx.close(...args))
                     }, toDisplayString(_ctx.completeTxt), 1)) : createCommentVNode("", true),
-                    createTextVNode(),
+                    _cache[6] || (_cache[6] = createTextVNode()),
                     renderSlot(_ctx.$slots, "next-step", {}, () => [
                       _ctx.steps.length - 1 != _ctx.active ? (openBlock(), createElementBlock("view", {
                         key: 0,
@@ -307,7 +307,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createTextVNode(),
+              _cache[10] || (_cache[10] = createTextVNode()),
               _ctx.type == "tile" ? (openBlock(), createElementBlock("view", _hoisted_8, [
                 createElementVNode("view", _hoisted_9, toDisplayString(step.content), 1)
               ])) : createCommentVNode("", true)

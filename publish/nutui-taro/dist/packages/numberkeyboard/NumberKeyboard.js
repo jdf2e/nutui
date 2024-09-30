@@ -1,6 +1,6 @@
 import { ref, computed, watch, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, createElementBlock, toDisplayString, createTextVNode, createCommentVNode, Fragment, renderList, normalizeClass } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("number-keyboard");
@@ -195,10 +195,6 @@ const _hoisted_9 = {
   class: "nut-number-keyboard__sidebar"
 };
 const _hoisted_10 = { class: "nut-key__wrapper" };
-const _hoisted_11 = /* @__PURE__ */ createElementVNode("img", { src: "https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" }, null, -1);
-const _hoisted_12 = [
-  _hoisted_11
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_popup = resolveComponent("nut-popup");
   return openBlock(), createBlock(_component_nut_popup, {
@@ -216,14 +212,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       createElementVNode("div", _hoisted_1, [
         _ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2, [
           createElementVNode("h3", _hoisted_3, toDisplayString(_ctx.title), 1),
-          createTextVNode(),
+          _cache[9] || (_cache[9] = createTextVNode()),
           _ctx.type == "default" ? (openBlock(), createElementBlock("span", {
             key: 0,
             class: "nut-number-keyboard__close",
             onClick: _cache[0] || (_cache[0] = ($event) => _ctx.closeBoard())
           }, toDisplayString(_ctx.translate("done")), 1)) : createCommentVNode("", true)
         ])) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[15] || (_cache[15] = createTextVNode()),
         createElementVNode("div", _hoisted_4, [
           createElementVNode("div", _hoisted_5, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.keysList, (item) => {
@@ -250,15 +246,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   item.type == "number" || item.type == "custom" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                     createTextVNode(toDisplayString(item.id), 1)
                   ], 64)) : createCommentVNode("", true),
-                  createTextVNode(),
+                  _cache[10] || (_cache[10] = createTextVNode()),
                   item.type == "lock" ? (openBlock(), createElementBlock("img", _hoisted_7)) : createCommentVNode("", true),
-                  createTextVNode(),
+                  _cache[11] || (_cache[11] = createTextVNode()),
                   item.type == "delete" ? (openBlock(), createElementBlock("img", _hoisted_8)) : createCommentVNode("", true)
                 ], 42, _hoisted_6)
               ], 2);
             }), 128))
           ]),
-          createTextVNode(),
+          _cache[14] || (_cache[14] = createTextVNode()),
           _ctx.type == "rightColumn" ? (openBlock(), createElementBlock("div", _hoisted_9, [
             createElementVNode("div", _hoisted_10, [
               createElementVNode("div", {
@@ -266,9 +262,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 onTouchstart: _cache[3] || (_cache[3] = (event) => _ctx.onTouchstart({ id: "delete", type: "delete" }, event)),
                 onTouchmove: _cache[4] || (_cache[4] = (event) => _ctx.onTouchMove(event)),
                 onTouchend: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
-              }, _hoisted_12, 34)
+              }, _cache[12] || (_cache[12] = [
+                createElementVNode("img", { src: "https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" }, null, -1)
+              ]), 34)
             ]),
-            createTextVNode(),
+            _cache[13] || (_cache[13] = createTextVNode()),
             createElementVNode("div", {
               class: "nut-key__wrapper nut-key__wrapper--finish",
               onClick: _cache[6] || (_cache[6] = (...args) => _ctx.confirm && _ctx.confirm(...args))

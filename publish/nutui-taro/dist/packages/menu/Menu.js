@@ -147,7 +147,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             class: normalizeClass(["nut-menu__title", _ctx.getClasses(item.state.showPopup)])
           }, [
             createElementVNode("view", _hoisted_3, toDisplayString(item.renderTitle()), 1),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             createElementVNode("span", _hoisted_4, [
               renderSlot(_ctx.$slots, "icon", {}, () => [
                 _ctx.direction === "up" ? (openBlock(), createBlock(_component_RectUp, { key: 0 })) : (openBlock(), createBlock(_component_RectDown, { key: 1 }))
@@ -157,7 +157,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 14, _hoisted_2);
       }), 128))
     ], 10, _hoisted_1),
-    createTextVNode(),
+    _cache[1] || (_cache[1] = createTextVNode()),
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }

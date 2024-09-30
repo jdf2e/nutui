@@ -64,7 +64,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.categoryChild, (item, index) => {
         return openBlock(), createElementBlock("div", { key: index }, [
           createElementVNode("div", _hoisted_3, toDisplayString(item == null ? void 0 : item.catName), 1),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           (item == null ? void 0 : item.catType) == 1 ? (openBlock(), createElementBlock("div", _hoisted_4, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(item.childCateList, (sku, key) => {
               return openBlock(), createElementBlock("div", {
@@ -76,7 +76,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   class: "nut-category-pane__childImg",
                   src: sku.backImg
                 }, null, 8, _hoisted_6),
-                createTextVNode(),
+                _cache[0] || (_cache[0] = createTextVNode()),
                 createElementVNode("div", _hoisted_7, toDisplayString(sku == null ? void 0 : sku.catName), 1)
               ], 8, _hoisted_5);
             }), 128))
@@ -84,12 +84,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ]);
       }), 128))
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[3] || (_cache[3] = createTextVNode()),
     _ctx.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_8, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.categoryChild, (item, index) => {
         return openBlock(), createElementBlock("div", { key: index }, [
           createElementVNode("div", _hoisted_9, toDisplayString(item == null ? void 0 : item.catName), 1),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           (item == null ? void 0 : item.catType) == 1 ? (openBlock(), createElementBlock("div", _hoisted_10, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(item.childCateList, (sku, key) => {
               return openBlock(), createElementBlock("div", {
@@ -104,7 +104,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ]);
       }), 128))
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     _ctx.type == "custom" ? (openBlock(), createElementBlock("div", _hoisted_13, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.customCategory, (sku, key) => {
         return openBlock(), createElementBlock("div", {

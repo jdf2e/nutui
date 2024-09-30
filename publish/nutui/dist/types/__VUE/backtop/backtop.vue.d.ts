@@ -8,7 +8,7 @@ export type BacktopProps = Partial<{
     isAnimation: boolean;
     duration: number;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     bottom: number;
     right: number;
     elId: string;
@@ -24,7 +24,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     zIndex: number;
     isAnimation: boolean;
     duration: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     bottom: number;
@@ -42,17 +42,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     zIndex: number;
     isAnimation: boolean;
     duration: number;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
+    duration: number;
     bottom: number;
     right: number;
     zIndex: number;
-    duration: number;
     elId: string;
     distance: number;
     isAnimation: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

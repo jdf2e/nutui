@@ -90,12 +90,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               color: _ctx.activeColor
             }, null, 8, ["color"])
           ]) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.activeText ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
             withDirectives(createElementVNode("view", { class: "nut-switch-label open" }, toDisplayString(_ctx.activeText), 513), [
               [vShow, isActive.value]
             ]),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             withDirectives(createElementVNode("view", { class: "nut-switch-label close" }, toDisplayString(_ctx.inactiveText), 513), [
               [vShow, !isActive.value]
             ])

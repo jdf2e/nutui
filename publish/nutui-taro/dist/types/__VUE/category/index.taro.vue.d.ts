@@ -7,7 +7,7 @@ export type CategoryType = {
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -16,11 +16,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CategoryType>;
         default: () => never[];
     };
-}, {
+}>, {
     getChildList: (index: any) => void;
-    checkIndex: import("vue").Ref<number>;
-    categoryLeft: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    checkIndex: import("vue").Ref<number, number>;
+    categoryLeft: import("vue").Ref<boolean, boolean>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -29,10 +29,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CategoryType>;
         default: () => never[];
     };
-}>>, {
+}>> & Readonly<{}>, {
     type: string;
     category: CategoryType;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

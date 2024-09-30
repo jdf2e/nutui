@@ -67,11 +67,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, null, 8, _hoisted_2)) : createCommentVNode("", true)
           ])
         ], 4),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         renderSlot(_ctx.$slots, "description", {}, () => [
           createElementVNode("view", _hoisted_3, toDisplayString(descriptionText.value), 1)
         ]),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         renderSlot(_ctx.$slots, "default")
       ]);
     };

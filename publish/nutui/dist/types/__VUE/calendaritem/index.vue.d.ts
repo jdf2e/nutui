@@ -1,5 +1,5 @@
 import { MonthInfo, Day } from './type';
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -61,53 +61,53 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     disabledDate: FunctionConstructor;
-}, {
+}>, {
     translate: (keyPath: string, ...args: unknown[]) => any;
-    monthsPanel: import("vue").Ref<HTMLElement | null>;
-    weeksPanel: import("vue").Ref<HTMLElement | null>;
-    viewArea: import("vue").Ref<HTMLElement | null>;
-    type: import("vue").Ref<string>;
-    title: import("vue").Ref<string>;
-    poppable: import("vue").Ref<boolean>;
-    isAutoBackFill: import("vue").Ref<boolean>;
-    toDateAnimation: import("vue").Ref<boolean>;
-    showTitle: import("vue").Ref<boolean>;
-    showSubTitle: import("vue").Ref<boolean>;
-    showToday: import("vue").Ref<boolean>;
-    confirmText: import("vue").Ref<string>;
-    startText: import("vue").Ref<string>;
-    endText: import("vue").Ref<string>;
-    defaultValue: import("vue").Ref<string | unknown[]>;
-    startDate: import("vue").Ref<string>;
-    endDate: import("vue").Ref<string>;
-    firstDayOfWeek: import("vue").Ref<number>;
-    disabledDate: import("vue").Ref<Function | undefined>;
-    onSelect: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onClose: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onChoose: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onUpdate: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    yearMonthTitle: import("vue").Ref<string>;
-    currDate: import("vue").Ref<string | string[]>;
-    propStartDate: import("vue").Ref<string>;
-    propEndDate: import("vue").Ref<string>;
-    currentIndex: import("vue").Ref<number>;
-    unLoadPrev: import("vue").Ref<boolean>;
-    touchParams: import("vue").Ref<import("./type").TouchParam>;
-    transformY: import("vue").Ref<number>;
-    translateY: import("vue").Ref<number>;
-    scrollDistance: import("vue").Ref<number>;
-    defaultData: import("vue").Ref<import("./type").InputDate>;
-    chooseData: import("vue").Ref<(string | string[])[]>;
-    monthsData: import("vue").Ref<MonthInfo[]>;
-    dayPrefix: import("vue").Ref<string>;
-    startData: import("vue").Ref<import("./type").InputDate>;
-    endData: import("vue").Ref<import("./type").InputDate>;
-    isRange: import("vue").Ref<boolean>;
-    timer: import("vue").Ref<number>;
-    avgHeight: import("vue").Ref<number>;
-    monthsNum: import("vue").Ref<number>;
-    defaultRange: import("vue").Ref<number[]>;
-    weeks: import("vue").Ref<any[]>;
+    monthsPanel: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
+    weeksPanel: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
+    viewArea: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
+    type: import("vue").Ref<string, string>;
+    title: import("vue").Ref<string, string>;
+    poppable: import("vue").Ref<boolean, boolean>;
+    isAutoBackFill: import("vue").Ref<boolean, boolean>;
+    toDateAnimation: import("vue").Ref<boolean, boolean>;
+    showTitle: import("vue").Ref<boolean, boolean>;
+    showSubTitle: import("vue").Ref<boolean, boolean>;
+    showToday: import("vue").Ref<boolean, boolean>;
+    confirmText: import("vue").Ref<string, string>;
+    startText: import("vue").Ref<string, string>;
+    endText: import("vue").Ref<string, string>;
+    defaultValue: import("vue").Ref<string | unknown[], string | unknown[]>;
+    startDate: import("vue").Ref<string, string>;
+    endDate: import("vue").Ref<string, string>;
+    firstDayOfWeek: import("vue").Ref<number, number>;
+    disabledDate: import("vue").Ref<Function | undefined, Function | undefined>;
+    onSelect: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onClose: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onChoose: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onUpdate: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    yearMonthTitle: import("vue").Ref<string, string>;
+    currDate: import("vue").Ref<string | string[], string | string[]>;
+    propStartDate: import("vue").Ref<string, string>;
+    propEndDate: import("vue").Ref<string, string>;
+    currentIndex: import("vue").Ref<number, number>;
+    unLoadPrev: import("vue").Ref<boolean, boolean>;
+    touchParams: import("vue").Ref<import("./type").TouchParam, import("./type").TouchParam>;
+    transformY: import("vue").Ref<number, number>;
+    translateY: import("vue").Ref<number, number>;
+    scrollDistance: import("vue").Ref<number, number>;
+    defaultData: import("vue").Ref<import("./type").InputDate, import("./type").InputDate>;
+    chooseData: import("vue").Ref<(string | string[])[], (string | string[])[]>;
+    monthsData: import("vue").Ref<MonthInfo[], MonthInfo[]>;
+    dayPrefix: import("vue").Ref<string, string>;
+    startData: import("vue").Ref<import("./type").InputDate, import("./type").InputDate>;
+    endData: import("vue").Ref<import("./type").InputDate, import("./type").InputDate>;
+    isRange: import("vue").Ref<boolean, boolean>;
+    timer: import("vue").Ref<number, number>;
+    avgHeight: import("vue").Ref<number, number>;
+    monthsNum: import("vue").Ref<number, number>;
+    defaultRange: import("vue").Ref<number[], number[]>;
+    weeks: import("vue").Ref<any[], any[]>;
     compConthsData: import("vue").ComputedRef<MonthInfo[]>;
     showTopBtn: import("vue").ComputedRef<import("vue").Slot<any> | undefined>;
     topInfo: import("vue").ComputedRef<import("vue").Slot<any> | undefined>;
@@ -120,8 +120,8 @@ declare const _default: import("vue").DefineComponent<{
     chooseDay: (day: Day, month: MonthInfo, isFirst?: boolean) => void;
     isCurrDay: (dateInfo: Day) => boolean;
     confirm: () => void;
-    months: import("vue").Ref<HTMLElement | null>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "close" | "choose" | "update")[], "select" | "close" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    months: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "select" | "choose" | "update")[], "close" | "select" | "choose" | "update", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -183,12 +183,12 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     disabledDate: FunctionConstructor;
-}>> & {
+}>> & Readonly<{
     onSelect?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     onChoose?: ((...args: any[]) => any) | undefined;
     onUpdate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     type: string;
     title: string;
     poppable: boolean;
@@ -204,5 +204,5 @@ declare const _default: import("vue").DefineComponent<{
     startDate: string;
     endDate: string;
     firstDayOfWeek: number;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;

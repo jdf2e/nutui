@@ -69,7 +69,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.handleClick && _ctx.handleClick(...args), ["stop"]))
     }, [
       createElementVNode("span", _hoisted_2, toDisplayString(_ctx.title), 1),
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       createElementVNode("span", _hoisted_3, [
         !_ctx.direction ? (openBlock(), createBlock(_component_ArrowDown2, {
           key: 0,
@@ -80,7 +80,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }))
       ])
     ]),
-    createTextVNode(),
+    _cache[2] || (_cache[2] = createTextVNode()),
     withDirectives(createElementVNode("view", {
       class: normalizeClass(["nut-sub-side-navbar__list", !_ctx.direction ? "nutFadeIn" : "nutFadeOut"]),
       style: normalizeStyle(_ctx.style)

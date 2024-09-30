@@ -7,7 +7,7 @@ export type AnimateProps = Partial<{
     loop: boolean;
     duration: string | number;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     type: AnimateType;
     show: boolean;
     action: AnimateAction;
@@ -18,7 +18,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     action: string;
     loop: boolean;
     duration: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
     animate: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -32,15 +32,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     action: string;
     loop: boolean;
     duration: number;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onAnimate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     duration: string | number;
     show: boolean;
     action: AnimateAction;
     loop: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

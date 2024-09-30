@@ -3,7 +3,7 @@ import { Ref } from 'vue';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     source: {
         type: ObjectConstructor;
         default: {};
@@ -28,7 +28,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, {
+}>, {
     handleError: () => void;
     isDisabled: import("vue").ComputedRef<any>;
     play: () => false | undefined;
@@ -39,18 +39,32 @@ declare const _default: Install< import("vue").DefineComponent<{
     retry: () => void;
     fullScreen: () => void;
     translate: (keyPath: string, ...args: unknown[]) => any;
-    videoElm: Ref<null>;
-    initial: Ref<boolean>;
-    showToolbox: Ref<boolean>;
+    videoElm: Ref<null, null>;
+    initial: Ref<boolean, boolean>;
+    showToolbox: Ref<boolean, boolean>;
     player: Ref<{
+        $player: null;
+        pos: null;
+    }, {
         $player: null;
         pos: null;
     }>;
     progressBar: Ref<{
         progressElm: null;
         pos: null;
+    }, {
+        progressElm: null;
+        pos: null;
     }>;
     videoSet: Ref<{
+        loaded: number;
+        displayTime: string;
+        totalTime: string;
+        progress: {
+            width: number;
+            current: number;
+        };
+    }, {
         loaded: number;
         displayTime: string;
         totalTime: string;
@@ -69,18 +83,28 @@ declare const _default: Install< import("vue").DefineComponent<{
         isEnd: boolean;
         isError: boolean;
         isMuted: boolean;
+    }, {
+        controlShow: boolean;
+        vol: number;
+        currentTime: number;
+        fullScreen: boolean;
+        playing: boolean;
+        isLoading: boolean;
+        isEnd: boolean;
+        isError: boolean;
+        isMuted: boolean;
     }>;
-    showTouchMask: Ref<boolean>;
-    source: Ref<Record<string, any>>;
-    options: Ref<Record<string, any>>;
-    model: Ref<string>;
-    onClick: Ref<((...args: any[]) => any) | undefined>;
-    onPause: Ref<((...args: any[]) => any) | undefined>;
-    onPlay: Ref<((...args: any[]) => any) | undefined>;
-    onTime: Ref<((...args: any[]) => any) | undefined>;
-    onPlayend: Ref<((...args: any[]) => any) | undefined>;
-    root: Ref<any>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "time" | "pause" | "play" | "playend")[], "click" | "time" | "pause" | "play" | "playend", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    showTouchMask: Ref<boolean, boolean>;
+    source: Ref<Record<string, any>, Record<string, any>>;
+    options: Ref<Record<string, any>, Record<string, any>>;
+    model: Ref<string, string>;
+    onClick: Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onPause: Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onPlay: Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onTime: Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onPlayend: Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    root: Ref<any, any>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "pause" | "play" | "time" | "playend")[], "click" | "pause" | "play" | "time" | "playend", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     source: {
         type: ObjectConstructor;
         default: {};
@@ -105,17 +129,17 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onPause?: ((...args: any[]) => any) | undefined;
     onPlay?: ((...args: any[]) => any) | undefined;
     onTime?: ((...args: any[]) => any) | undefined;
     onPlayend?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     source: Record<string, any>;
     options: Record<string, any>;
     model: string;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

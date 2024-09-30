@@ -49,7 +49,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           ]);
         }), 128))
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[0] || (_cache[0] = createTextVNode()),
       renderSlot(_ctx.$slots, "default")
     ])
   ]);

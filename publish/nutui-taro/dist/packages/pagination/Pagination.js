@@ -128,7 +128,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         createTextVNode(toDisplayString(_ctx.prevText || _ctx.translate("prev")), 1)
       ])
     ], 2),
-    createTextVNode(),
+    _cache[2] || (_cache[2] = createTextVNode()),
     _ctx.mode == "multi" ? (openBlock(), createElementBlock("view", _hoisted_2, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.pages, (item, index) => {
         return openBlock(), createElementBlock("view", {
@@ -142,11 +142,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 10, _hoisted_3);
       }), 128))
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[3] || (_cache[3] = createTextVNode()),
     _ctx.mode == "simple" ? (openBlock(), createElementBlock("view", _hoisted_4, [
       createElementVNode("view", _hoisted_5, toDisplayString(_ctx.modelValue) + "/" + toDisplayString(_ctx.countRef), 1)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     createElementVNode("view", {
       class: normalizeClass(["nut-pagination-next", _ctx.modelValue >= _ctx.countRef ? "disabled" : ""]),
       onClick: _cache[1] || (_cache[1] = ($event) => _ctx.select(_ctx.modelValue + 1, true))

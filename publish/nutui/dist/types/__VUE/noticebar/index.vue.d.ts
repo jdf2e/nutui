@@ -4,7 +4,7 @@ import { NoticebarDirection } from './types';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     direction: {
         type: PropType<NoticebarDirection>;
         default: string;
@@ -61,7 +61,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}, {
+}>, {
     isEllipsis: import("vue").ComputedRef<boolean>;
     barStyle: import("vue").ComputedRef<{
         [props: string]: any;
@@ -72,8 +72,8 @@ declare const _default: Install< import("vue").DefineComponent<{
         transform: string;
     }>;
     horseLampStyle: import("vue").ComputedRef<{}>;
-    wrap: import("vue").Ref<HTMLElement | null>;
-    content: import("vue").Ref<HTMLElement | null>;
+    wrap: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
+    content: import("vue").Ref<HTMLElement | null, HTMLElement | null>;
     handleClick: (event: Event) => void;
     onClickIcon: (event: Event) => void;
     onAnimationEnd: (event: Event) => void;
@@ -88,22 +88,24 @@ declare const _default: Install< import("vue").DefineComponent<{
         'nut-noticebar__page-wrap-content': boolean;
         'nut-ellipsis': boolean;
     }>;
-    wrapWidth: import("vue").Ref<number>;
-    firstRound: import("vue").Ref<boolean>;
-    duration: import("vue").Ref<number>;
-    offsetWidth: import("vue").Ref<number>;
-    showNoticebar: import("vue").Ref<boolean>;
-    animationClass: import("vue").Ref<string>;
-    animate: import("vue").Ref<boolean>;
+    wrapWidth: import("vue").Ref<number, number>;
+    firstRound: import("vue").Ref<boolean, boolean>;
+    duration: import("vue").Ref<number, number>;
+    offsetWidth: import("vue").Ref<number, number>;
+    showNoticebar: import("vue").Ref<boolean, boolean>;
+    animationClass: import("vue").Ref<string, string>;
+    animate: import("vue").Ref<boolean, boolean>;
     scrollList: import("vue").Ref<Readonly<{
         [name: string]: import("vue").Slot<any> | undefined;
+    }>[], Readonly<{
+        [name: string]: import("vue").Slot<any> | undefined;
     }>[]>;
-    distance: import("vue").Ref<number>;
-    timer: import("vue").Ref<null>;
-    keepAlive: import("vue").Ref<boolean>;
-    isCanScroll: import("vue").Ref<boolean | null>;
-    showNotica: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "acrossEnd")[], "click" | "close" | "acrossEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    distance: import("vue").Ref<number, number>;
+    timer: import("vue").Ref<null, null>;
+    keepAlive: import("vue").Ref<boolean, boolean>;
+    isCanScroll: import("vue").Ref<boolean | null, boolean | null>;
+    showNotica: import("vue").Ref<boolean, boolean>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "close" | "acrossEnd")[], "click" | "close" | "acrossEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     direction: {
         type: PropType<NoticebarDirection>;
         default: string;
@@ -160,11 +162,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     onAcrossEnd?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     color: string;
     height: number;
     text: string;
@@ -179,7 +181,121 @@ declare const _default: Install< import("vue").DefineComponent<{
     delay: string | number;
     scrollable: boolean;
     speed: number;
-}, {}>>;
+}, {}, {
+    ScrollItem: (props: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+        [key: string]: any;
+    }>;
+    Notice: import("vue").DefineComponent<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }, {
+        classes: import("vue").ComputedRef<{
+            [x: string]: string | boolean;
+            "nut-icon": boolean;
+        }>;
+        style: import("vue").ComputedRef<import("vue").CSSProperties>;
+    }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }>>, {
+        name: string;
+        width: string | number;
+        height: string | number;
+        color: string;
+        class: string;
+    }>;
+    CircleClose: import("vue").DefineComponent<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }, {
+        classes: import("vue").ComputedRef<{
+            [x: string]: string | boolean;
+            "nut-icon": boolean;
+        }>;
+        style: import("vue").ComputedRef<import("vue").CSSProperties>;
+    }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }>>, {
+        name: string;
+        width: string | number;
+        height: string | number;
+        color: string;
+        class: string;
+    }>;
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

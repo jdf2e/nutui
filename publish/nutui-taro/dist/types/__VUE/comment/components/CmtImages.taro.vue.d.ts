@@ -1,15 +1,7 @@
 import { PropType } from 'vue';
-interface VideosType {
-    id?: number | string;
-    mainUrl: string;
-    videoUrl: string;
-}
-interface ImagesType {
-    smallImgUrl: string;
-    bigImgUrl: string;
-    imgUrl: string;
-}
-declare const _default: import("vue").DefineComponent<{
+import { Right } from '@nutui/icons-vue-taro';
+import { VideosType, ImagesType } from '../type';
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -22,9 +14,9 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<ImagesType[]>;
         default: () => never[];
     };
-}, {
-    isShowImage: import("vue").Ref<boolean>;
-    initIndex: import("vue").Ref<number>;
+}>, {
+    isShowImage: import("vue").Ref<boolean, boolean>;
+    initIndex: import("vue").Ref<number, number>;
     showImages: (type: string, index: string | number) => void;
     totalImages: import("vue").Ref<({
         id?: string | number | undefined;
@@ -34,8 +26,16 @@ declare const _default: import("vue").DefineComponent<{
         smallImgUrl: string;
         bigImgUrl: string;
         imgUrl: string;
+    })[], (VideosType | ImagesType)[] | ({
+        id?: string | number | undefined;
+        mainUrl: string;
+        videoUrl: string;
+    } | {
+        smallImgUrl: string;
+        bigImgUrl: string;
+        imgUrl: string;
     })[]>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "clickImages")[], "click" | "clickImages", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "clickImages")[], "click" | "clickImages", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -48,12 +48,14 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<ImagesType[]>;
         default: () => never[];
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onClickImages?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     type: string;
     images: ImagesType[];
     videos: VideosType[];
-}, {}>;
+}, {}, {
+    Right: typeof Right;
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;

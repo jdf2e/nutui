@@ -406,7 +406,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, [
               createVNode(unref(DoubleLeft))
             ]),
-            createTextVNode(),
+            _cache[4] || (_cache[4] = createTextVNode()),
             createElementVNode("div", {
               class: "left",
               onClick: _cache[1] || (_cache[1] = ($event) => jump(-1))
@@ -414,9 +414,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               createVNode(unref(Left))
             ])
           ]),
-          createTextVNode(),
+          _cache[6] || (_cache[6] = createTextVNode()),
           createElementVNode("div", _hoisted_4, toDisplayString(unref(translate)("monthTitle", month.value.year, month.value.month)), 1),
-          createTextVNode(),
+          _cache[7] || (_cache[7] = createTextVNode()),
           createElementVNode("div", _hoisted_5, [
             createElementVNode("div", {
               class: "right",
@@ -424,7 +424,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, [
               createVNode(unref(Right))
             ]),
-            createTextVNode(),
+            _cache[5] || (_cache[5] = createTextVNode()),
             createElementVNode("div", {
               class: "double-right",
               onClick: _cache[3] || (_cache[3] = ($event) => jump(12))
@@ -433,7 +433,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             ])
           ])
         ]),
-        createTextVNode(),
+        _cache[11] || (_cache[11] = createTextVNode()),
         createElementVNode("div", _hoisted_6, [
           createElementVNode("div", _hoisted_7, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(weekHeader.value, (d) => {
@@ -443,7 +443,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               }, toDisplayString(d.name), 3);
             }), 128))
           ]),
-          createTextVNode(),
+          _cache[10] || (_cache[10] = createTextVNode()),
           createElementVNode("div", _hoisted_8, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(days.value, (day) => {
               return openBlock(), createElementBlock("div", {
@@ -454,13 +454,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                 createElementVNode("div", _hoisted_10, [
                   renderSlot(_ctx.$slots, "top", { day })
                 ]),
-                createTextVNode(),
+                _cache[8] || (_cache[8] = createTextVNode()),
                 createElementVNode("div", _hoisted_11, [
                   renderSlot(_ctx.$slots, "default", { day }, () => [
                     createTextVNode(toDisplayString(day.date), 1)
                   ])
                 ]),
-                createTextVNode(),
+                _cache[9] || (_cache[9] = createTextVNode()),
                 createElementVNode("div", _hoisted_12, [
                   renderSlot(_ctx.$slots, "bottom", { day })
                 ])

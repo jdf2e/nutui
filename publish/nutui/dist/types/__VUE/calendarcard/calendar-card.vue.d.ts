@@ -8,7 +8,7 @@ export type CalendarCardProps = Partial<{
     endDate: Date | null;
     disableDay: (day: CalendarCardDay) => boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     type: CalendarCardType;
     firstDayOfWeek: number;
     modelValue: CalendarCardValue;
@@ -22,10 +22,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     startDate: null;
     endDate: null;
     disableDay: () => false;
-}>, {
+}>>, {
     jump: (step?: number) => void;
     jumpTo: (y: number, m: number) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     change: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
     dayClick: (...args: any[]) => void;
@@ -44,42 +44,27 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     startDate: null;
     endDate: null;
     disableDay: () => false;
-}>>> & {
+}>>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onDayClick?: ((...args: any[]) => any) | undefined;
     onPageChange?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     type: CalendarCardType;
     modelValue: CalendarCardValue;
     startDate: Date | null;
     endDate: Date | null;
     firstDayOfWeek: number;
     disableDay: (day: CalendarCardDay) => boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     top?(_: {
-        day: {
-            type?: "next" | "current" | "prev" | undefined;
-            year: number;
-            month: number;
-            date: number;
-        };
+        day: CalendarCardDay;
     }): any;
     default?(_: {
-        day: {
-            type?: "next" | "current" | "prev" | undefined;
-            year: number;
-            month: number;
-            date: number;
-        };
+        day: CalendarCardDay;
     }): any;
     bottom?(_: {
-        day: {
-            type?: "next" | "current" | "prev" | undefined;
-            year: number;
-            month: number;
-            date: number;
-        };
+        day: CalendarCardDay;
     }): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

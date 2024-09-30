@@ -10,7 +10,7 @@ export type GridProps = Partial<{
     direction: GridDirection;
     clickable: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     columnNum: string | number;
     border: boolean;
     gutter: string | number;
@@ -27,7 +27,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     square: boolean;
     reverse: boolean;
     clickable: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     columnNum: string | number;
     border: boolean;
     gutter: string | number;
@@ -44,7 +44,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     square: boolean;
     reverse: boolean;
     clickable: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     square: boolean;
     reverse: boolean;
     center: boolean;
@@ -52,7 +52,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     gutter: string | number;
     columnNum: string | number;
     clickable: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

@@ -6,7 +6,7 @@ export type DividerProps = Partial<{
     hairline: boolean;
     direction: DividerDirection;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     contentPosition: DividerPosition;
     dashed: boolean;
     hairline: boolean;
@@ -16,7 +16,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     dashed: boolean;
     hairline: boolean;
     direction: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     contentPosition: DividerPosition;
     dashed: boolean;
     hairline: boolean;
@@ -26,12 +26,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     dashed: boolean;
     hairline: boolean;
     direction: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     dashed: boolean;
     direction: DividerDirection;
     contentPosition: DividerPosition;
     hairline: boolean;
-}, {}>, Readonly<Record<string, any>> & Record<string, any>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, Readonly<Record<string, any>> & Record<string, any>>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

@@ -60,13 +60,13 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
       createElementVNode("div", _hoisted_2$1, [
         renderSlot(_ctx.$slots, "content-top", {}, () => [
           createElementVNode("div", _hoisted_3, toDisplayString(_ctx.item.addressName), 1),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           createElementVNode("div", _hoisted_4, toDisplayString(_ctx.item.phone), 1),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           _ctx.item.defaultAddress ? (openBlock(), createElementBlock("div", _hoisted_5, toDisplayString(_ctx.translate("default")), 1)) : createCommentVNode("", true)
         ])
       ]),
-      createTextVNode(),
+      _cache[4] || (_cache[4] = createTextVNode()),
       createElementVNode("div", _hoisted_6, [
         renderSlot(_ctx.$slots, "content-icon", {}, () => [
           createVNode(_component_Del, {
@@ -74,7 +74,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
             class: "nut-address-list-item__info-handle-del",
             onClick: _ctx.delClick
           }, null, 8, ["onClick"]),
-          createTextVNode(),
+          _cache[3] || (_cache[3] = createTextVNode()),
           createVNode(_component_Edit, {
             name: "edit",
             class: "nut-address-list-item__info-handle-edit",
@@ -83,7 +83,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         ])
       ])
     ]),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     createElementVNode("div", _hoisted_7, [
       renderSlot(_ctx.$slots, "content-addr", {}, () => [
         createTextVNode(toDisplayString(_ctx.item.fullAddress), 1)
@@ -238,7 +238,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     }, 40, ["onTouchstart", "onTouchend", "onTouchmove"])),
-    createTextVNode(),
+    _cache[9] || (_cache[9] = createTextVNode()),
     _ctx.longPress && _ctx.showMaskRef ? (openBlock(), createElementBlock("div", {
       key: 0,
       class: "nut-address-list-general__mask",
@@ -249,19 +249,19 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           class: "nut-address-list-general__mask-copy",
           onClick: _cache[0] || (_cache[0] = (...args) => _ctx.copyCLick && _ctx.copyCLick(...args))
         }, " 复制地址 "),
-        createTextVNode(),
+        _cache[7] || (_cache[7] = createTextVNode()),
         createElementVNode("div", {
           class: "nut-address-list-general__mask-set",
           onClick: _cache[1] || (_cache[1] = (...args) => _ctx.setDefault && _ctx.setDefault(...args))
         }, " 设置默认 "),
-        createTextVNode(),
+        _cache[8] || (_cache[8] = createTextVNode()),
         createElementVNode("div", {
           class: "nut-address-list-general__mask-del",
           onClick: _cache[2] || (_cache[2] = (...args) => _ctx.delLongClick && _ctx.delLongClick(...args))
         }, " 删除地址 ")
       ])
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     _ctx.showMaskRef ? (openBlock(), createElementBlock("div", {
       key: 1,
       class: "nut-address-list__mask-bottom",
@@ -276,9 +276,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           type: "danger",
           onClick: _ctx.swipeDelClick
         }, {
-          default: withCtx(() => [
+          default: withCtx(() => _cache[13] || (_cache[13] = [
             createTextVNode("删除")
-          ]),
+          ])),
           _: 1
         }, 8, ["onClick"])
       ])
@@ -301,7 +301,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           _: 3
         }, 40, ["onTouchmove", "onTouchstart"]))
       ]),
-      createTextVNode()
+      _cache[14] || (_cache[14] = createTextVNode())
     ]),
     _: 3
   }));
@@ -454,7 +454,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         } : void 0
       ]), 1032, ["item", "long-press", "swipe-edition", "onDelIcon", "onEditIcon", "onClickItem", "onSwipeDel", "onLongCopy", "onLongSet", "onLongDel"]);
     }), 128)),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     _ctx.showBottomButton ? (openBlock(), createElementBlock("div", {
       key: 0,
       class: "nut-address-list__bottom",

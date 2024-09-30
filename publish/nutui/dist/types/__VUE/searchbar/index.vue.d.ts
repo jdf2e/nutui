@@ -4,7 +4,7 @@ import { SearchbarInputAlign, SearchbarShape } from './types';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: string;
@@ -123,7 +123,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}, {
+}>, {
     valueChange: (event: Event) => void;
     valueFocus: (event: Event) => void;
     valueBlur: (event: Event) => void;
@@ -135,19 +135,19 @@ declare const _default: Install< import("vue").DefineComponent<{
     inputSearchbarStyle: import("vue").ComputedRef<{
         background: string;
     }>;
-    focusCss: Ref<{}>;
+    focusCss: Ref<{}, {}>;
     translate: (keyPath: string, ...args: unknown[]) => any;
     clickInput: (event: Event) => void;
     leftIconClick: (event: Event) => void;
     rightIconClick: (event: Event) => void;
     styleSearchbar: import("vue").ComputedRef<CSSProperties>;
     disabled: import("vue").ComputedRef<boolean>;
-    active: Ref<boolean>;
+    active: Ref<boolean, boolean>;
     renderIcon: (icon: import("vue").Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-    inputsearch: Ref<HTMLElement | null>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("search" | "clear" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon")[], "search" | "clear" | "blur" | "change" | "focus" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    inputsearch: Ref<HTMLElement | null, HTMLElement | null>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("blur" | "change" | "focus" | "search" | "clear" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon")[], "blur" | "change" | "focus" | "search" | "clear" | "update:modelValue" | "clickInput" | "clickLeftIcon" | "clickRightIcon", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: string;
@@ -266,7 +266,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}>> & {
+}>> & Readonly<{
     onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
@@ -276,7 +276,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickInput?: ((...args: any[]) => any) | undefined;
     onClickLeftIcon?: ((...args: any[]) => any) | undefined;
     onClickRightIcon?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     shape: SearchbarShape;
     disabled: boolean;
     label: string;
@@ -293,7 +293,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     autofocus: boolean;
     readonly: boolean;
     inputAlign: SearchbarInputAlign;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

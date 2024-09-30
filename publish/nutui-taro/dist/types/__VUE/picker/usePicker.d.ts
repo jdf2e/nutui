@@ -11,11 +11,11 @@ export declare const usePicker: (props: any, emit: any) => {
     cancel: () => void;
     changeHandler: (columnIndex: number, option: PickerOption) => void;
     confirm: () => void;
-    defaultValues: import("vue").Ref<(string | number)[]>;
+    defaultValues: import("vue").Ref<(string | number)[], (string | number)[]>;
     defaultIndexes: import("vue").ComputedRef<number[]>;
-    pickerColumn: import("vue").Ref<any[]>;
+    pickerColumn: import("vue").Ref<any[], any[]>;
     swipeRef: (el: any) => void;
     selectedOptions: import("vue").ComputedRef<PickerOption[]>;
     isSameValue: (valA: any, valB: any) => boolean;
-    formattedColumns: import("vue").Ref<any>;
+    formattedColumns: import("vue").Ref<any, any>;
 };

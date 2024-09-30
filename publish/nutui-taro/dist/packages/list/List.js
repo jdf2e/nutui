@@ -294,7 +294,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: "nut-list-phantom",
         style: normalizeStyle({ height: _ctx.phantomHeight + "px" })
       }, null, 12, _hoisted_1),
-      createTextVNode(),
+      _cache[0] || (_cache[0] = createTextVNode()),
       createElementVNode("div", {
         id: "actualContent" + _ctx.refRandomId,
         ref: "actualContent",

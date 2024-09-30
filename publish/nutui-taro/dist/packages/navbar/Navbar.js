@@ -135,19 +135,19 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                 color: "#979797"
               })
             ]) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             _ctx.leftText ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.leftText), 1)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[1] || (_cache[1] = createTextVNode()),
             renderSlot(_ctx.$slots, "left")
           ]),
-          createTextVNode(),
+          _cache[5] || (_cache[5] = createTextVNode()),
           createElementVNode("view", _hoisted_3, [
             _ctx.title ? (openBlock(), createElementBlock("view", {
               key: 0,
               class: "title",
               onClick: handleCenter
             }, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[2] || (_cache[2] = createTextVNode()),
             _ctx.titleIcon ? (openBlock(), createElementBlock("view", {
               key: 1,
               class: "icon",
@@ -155,16 +155,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, [
               renderSlot(_ctx.$slots, "title-icon", { onClick: handleCenterIcon })
             ])) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             renderSlot(_ctx.$slots, "content")
           ]),
-          createTextVNode(),
+          _cache[6] || (_cache[6] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-navbar__right",
             onClick: handleRight
           }, [
             _ctx.desc ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.desc), 1)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[4] || (_cache[4] = createTextVNode()),
             renderSlot(_ctx.$slots, "right")
           ])
         ], 14, _hoisted_1)

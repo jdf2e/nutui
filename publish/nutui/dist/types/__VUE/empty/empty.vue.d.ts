@@ -5,7 +5,7 @@ export type EmptyProps = Partial<{
     imageSize: number | string;
     description: string;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     image: string;
     imageSize: string | number;
     description: string;
@@ -13,7 +13,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     image: string;
     imageSize: string;
     description: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     image: string;
     imageSize: string | number;
     description: string;
@@ -21,11 +21,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     image: string;
     imageSize: string;
     description: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     image: string;
     description: string;
     imageSize: string | number;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     image?(_: {}): any;
     description?(_: {}): any;
     default?(_: {}): any;

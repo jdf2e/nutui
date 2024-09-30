@@ -10,7 +10,7 @@ export type InputNumberProps = Partial<{
     disabled: boolean;
     readonly: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string | number;
     inputWidth: string | number;
     buttonSize: string | number;
@@ -30,12 +30,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     decimalPlaces: number;
     disabled: boolean;
     readonly: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    reduce: (...args: any[]) => void;
-    add: (...args: any[]) => void;
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     blur: (...args: any[]) => void;
     change: (...args: any[]) => void;
     focus: (...args: any[]) => void;
+    reduce: (...args: any[]) => void;
+    add: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
     overlimit: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -58,25 +58,25 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     decimalPlaces: number;
     disabled: boolean;
     readonly: boolean;
-}>>> & {
-    onFocus?: ((...args: any[]) => any) | undefined;
+}>>> & Readonly<{
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
-    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onFocus?: ((...args: any[]) => any) | undefined;
     onReduce?: ((...args: any[]) => any) | undefined;
     onAdd?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onOverlimit?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     disabled: boolean;
-    modelValue: string | number;
     max: string | number;
+    modelValue: string | number;
     min: string | number;
     step: string | number;
     readonly: boolean;
     inputWidth: string | number;
     buttonSize: string | number;
     decimalPlaces: string | number;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     "left-icon"?(_: {}): any;
     "right-icon"?(_: {}): any;
 }>;

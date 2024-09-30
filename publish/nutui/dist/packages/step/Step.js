@@ -22,19 +22,18 @@ import { u as useParent } from "../useParent-D6DiuxZZ.js";
 import { S as STEPS_KEY } from "../types-1HzUV14W.js";
 import { w as withInstall } from "../with-install-Ch3FF0uS.js";
 const _hoisted_1 = { class: "nut-step-head" };
-const _hoisted_2 = /* @__PURE__ */ createElementVNode("view", { class: "nut-step-line" }, null, -1);
-const _hoisted_3 = { class: "nut-step-icon-inner" };
-const _hoisted_4 = {
+const _hoisted_2 = { class: "nut-step-icon-inner" };
+const _hoisted_3 = {
   key: 0,
   class: "nut-step-inner"
 };
-const _hoisted_5 = { class: "nut-step-main" };
-const _hoisted_6 = { class: "nut-step-title" };
-const _hoisted_7 = {
+const _hoisted_4 = { class: "nut-step-main" };
+const _hoisted_5 = { class: "nut-step-title" };
+const _hoisted_6 = {
   key: 0,
   class: "nut-step-content"
 };
-const _hoisted_8 = ["innerHTML"];
+const _hoisted_7 = ["innerHTML"];
 const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, {
   name: "NutStep"
 }), {
@@ -67,26 +66,26 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         onClick: handleClickStep
       }, [
         createElementVNode("view", _hoisted_1, [
-          _hoisted_2,
+          _cache[0] || (_cache[0] = createElementVNode("view", { class: "nut-step-line" }, null, -1)),
           createElementVNode("view", {
             class: normalizeClass(["nut-step-icon", [!dot.value ? "is-icon" : ""]])
           }, [
-            createElementVNode("view", _hoisted_3, [
+            createElementVNode("view", _hoisted_2, [
               renderSlot(_ctx.$slots, "icon", {}, () => [
-                !dot.value ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(unref(index) + 1), 1)) : createCommentVNode("", true)
+                !dot.value ? (openBlock(), createElementBlock("view", _hoisted_3, toDisplayString(unref(index) + 1), 1)) : createCommentVNode("", true)
               ])
             ])
           ], 2)
         ]),
-        createElementVNode("view", _hoisted_5, [
-          createElementVNode("view", _hoisted_6, [
+        createElementVNode("view", _hoisted_4, [
+          createElementVNode("view", _hoisted_5, [
             renderSlot(_ctx.$slots, "title", {}, () => [
               createElementVNode("span", null, toDisplayString(_ctx.title), 1)
             ])
           ]),
-          _ctx.content || _ctx.$slots.content ? (openBlock(), createElementBlock("view", _hoisted_7, [
+          _ctx.content || _ctx.$slots.content ? (openBlock(), createElementBlock("view", _hoisted_6, [
             renderSlot(_ctx.$slots, "content", {}, () => [
-              createElementVNode("span", { innerHTML: _ctx.content }, null, 8, _hoisted_8)
+              createElementVNode("span", { innerHTML: _ctx.content }, null, 8, _hoisted_7)
             ])
           ])) : createCommentVNode("", true)
         ])

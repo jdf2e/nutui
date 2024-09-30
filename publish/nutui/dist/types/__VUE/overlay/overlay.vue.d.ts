@@ -9,7 +9,7 @@ export type OverlayProps = Partial<{
     overlayStyle: CSSProperties;
     closeOnClickOverlay: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     visible: boolean;
     zIndex: string | number;
     duration: string | number;
@@ -24,7 +24,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     lockScroll: boolean;
     overlayClass: string;
     closeOnClickOverlay: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
     "update:visible": (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -42,17 +42,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     lockScroll: boolean;
     overlayClass: string;
     closeOnClickOverlay: boolean;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
+    duration: string | number;
     visible: boolean;
     zIndex: string | number;
-    duration: string | number;
     lockScroll: boolean;
     overlayClass: string;
     closeOnClickOverlay: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

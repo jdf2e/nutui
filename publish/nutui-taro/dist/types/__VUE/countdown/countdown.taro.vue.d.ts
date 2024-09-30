@@ -9,7 +9,7 @@ export type CountdownProps = Partial<{
     autoStart: boolean;
     time: number | string;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: Record<string, string>;
     paused: boolean;
     startTime: string | number;
@@ -26,11 +26,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     format: string;
     autoStart: boolean;
     time: number;
-}>, {
+}>>, {
     start: () => void;
     pause: () => void;
     reset: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     input: (...args: any[]) => void;
     end: (...args: any[]) => void;
     paused: (...args: any[]) => void;
@@ -56,16 +56,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     format: string;
     autoStart: boolean;
     time: number;
-}>>> & {
+}>>> & Readonly<{
     onInput?: ((...args: any[]) => any) | undefined;
-    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onEnd?: ((...args: any[]) => any) | undefined;
-    onRestart?: ((...args: any[]) => any) | undefined;
     onPaused?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onRestart?: ((...args: any[]) => any) | undefined;
     onOnEnd?: ((...args: any[]) => any) | undefined;
     onOnRestart?: ((...args: any[]) => any) | undefined;
     onOnPaused?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     time: string | number;
     paused: boolean;
     startTime: string | number;
@@ -73,7 +73,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     millisecond: boolean;
     format: string;
     autoStart: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

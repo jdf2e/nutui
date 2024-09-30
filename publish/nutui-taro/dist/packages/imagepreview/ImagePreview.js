@@ -22,7 +22,7 @@ import Taro from "@tarojs/taro";
 import { CircleClose } from "@nutui/icons-vue-taro";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { f as funInterceptor } from "../Interceptor-aNUpilAP.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import NutSwiper from "../swiper/Swiper.js";
 import NutSwiperItem from "../swiperitem/SwiperItem.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
@@ -300,9 +300,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           _: 1
         }, 8, ["auto-play", "loop", "init-page", "pagination-visible", "pagination-color", "onChange"])) : createCommentVNode("", true)
       ], 32),
-      createTextVNode(),
+      _cache[4] || (_cache[4] = createTextVNode()),
       _ctx.showIndex ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.active + 1) + " / " + toDisplayString(_ctx.images.length), 1)) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[5] || (_cache[5] = createTextVNode()),
       _ctx.closeable ? (openBlock(), createElementBlock("view", {
         key: 1,
         class: "nut-image-preview-close-icon",

@@ -2,7 +2,7 @@
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     initNum: {
         type: NumberConstructor;
         default: number;
@@ -71,51 +71,51 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}, {
-    runNumberImg: import("vue").Ref<null>;
+}>, {
+    runNumberImg: import("vue").Ref<null, null>;
     setRef: (el: any) => void;
     topNumber: (index: number) => string | number;
     turnNumber: (index: number) => string | number;
-    type: import("vue").Ref<string>;
-    toFixed: import("vue").Ref<number>;
-    speed: import("vue").Ref<number>;
-    initNum: import("vue").Ref<number>;
-    endNum: import("vue").Ref<number>;
-    during: import("vue").Ref<number>;
-    startFlag: import("vue").Ref<boolean>;
-    numWidth: import("vue").Ref<number>;
-    numHeight: import("vue").Ref<number>;
-    scrolling: import("vue").Ref<boolean>;
-    customBgImg: import("vue").Ref<string>;
-    customSpacNum: import("vue").Ref<number>;
-    customChangeNum: import("vue").Ref<number>;
-    machineNum: import("vue").Ref<number>;
-    machinePrizeNum: import("vue").Ref<number>;
-    machinePrizeLevel: import("vue").Ref<number>;
-    machineTurnMore: import("vue").Ref<number>;
-    onClick: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onScrollEnd: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    valFlag: import("vue").Ref<boolean>;
-    current: import("vue").Ref<string | number>;
-    sortFlag: import("vue").Ref<string>;
-    initDigit1: import("vue").Ref<number>;
-    initDigit2: import("vue").Ref<number>;
-    to0_10: import("vue").Ref<number[]>;
-    to10_0: import("vue").Ref<number[]>;
-    timer: import("vue").Ref<any>;
-    totalCount: import("vue").Ref<number>;
-    pointNum: import("vue").Ref<number>;
-    numberVal: import("vue").Ref<number>;
-    num_total_len: import("vue").Ref<number>;
-    relNum: import("vue").Ref<number>;
-    customNumber: import("vue").Ref<number>;
-    prizeLevelTrun: import("vue").Ref<number>;
-    prizeY: import("vue").Ref<any[]>;
-    prizeYPrev: import("vue").Ref<any[]>;
-    finshMachine: import("vue").Ref<number>;
-    notPrize: import("vue").Ref<any[]>;
-    typeMachine: import("vue").Ref<string>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "scrollEnd")[], "click" | "scrollEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    type: import("vue").Ref<string, string>;
+    toFixed: import("vue").Ref<number, number>;
+    speed: import("vue").Ref<number, number>;
+    initNum: import("vue").Ref<number, number>;
+    endNum: import("vue").Ref<number, number>;
+    during: import("vue").Ref<number, number>;
+    startFlag: import("vue").Ref<boolean, boolean>;
+    numWidth: import("vue").Ref<number, number>;
+    numHeight: import("vue").Ref<number, number>;
+    scrolling: import("vue").Ref<boolean, boolean>;
+    customBgImg: import("vue").Ref<string, string>;
+    customSpacNum: import("vue").Ref<number, number>;
+    customChangeNum: import("vue").Ref<number, number>;
+    machineNum: import("vue").Ref<number, number>;
+    machinePrizeNum: import("vue").Ref<number, number>;
+    machinePrizeLevel: import("vue").Ref<number, number>;
+    machineTurnMore: import("vue").Ref<number, number>;
+    onClick: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onScrollEnd: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    valFlag: import("vue").Ref<boolean, boolean>;
+    current: import("vue").Ref<string | number, string | number>;
+    sortFlag: import("vue").Ref<string, string>;
+    initDigit1: import("vue").Ref<number, number>;
+    initDigit2: import("vue").Ref<number, number>;
+    to0_10: import("vue").Ref<number[], number[]>;
+    to10_0: import("vue").Ref<number[], number[]>;
+    timer: import("vue").Ref<any, any>;
+    totalCount: import("vue").Ref<number, number>;
+    pointNum: import("vue").Ref<number, number>;
+    numberVal: import("vue").Ref<number, number>;
+    num_total_len: import("vue").Ref<number, number>;
+    relNum: import("vue").Ref<number, number>;
+    customNumber: import("vue").Ref<number, number>;
+    prizeLevelTrun: import("vue").Ref<number, number>;
+    prizeY: import("vue").Ref<any[], any[]>;
+    prizeYPrev: import("vue").Ref<any[], any[]>;
+    finshMachine: import("vue").Ref<number, number>;
+    notPrize: import("vue").Ref<any[], any[]>;
+    typeMachine: import("vue").Ref<string, string>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "scrollEnd")[], "click" | "scrollEnd", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     initNum: {
         type: NumberConstructor;
         default: number;
@@ -184,10 +184,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onScrollEnd?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     type: string;
     toFixed: number;
     speed: number;
@@ -205,7 +205,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     machinePrizeNum: number;
     machinePrizeLevel: number;
     machineTurnMore: number;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

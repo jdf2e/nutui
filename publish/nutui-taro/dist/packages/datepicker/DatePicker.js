@@ -382,7 +382,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       renderSlot(_ctx.$slots, "top")
     ]),
     default: withCtx(() => [
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       renderSlot(_ctx.$slots, "default")
     ]),
     _: 3

@@ -12,7 +12,7 @@ export type SkeletonProps = Partial<{
     row: string | number;
     title: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     width: string;
     height: string;
     animated: boolean;
@@ -34,7 +34,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     round: boolean;
     row: string;
     title: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     width: string;
     height: string;
     animated: boolean;
@@ -56,7 +56,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     round: boolean;
     row: string;
     title: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     round: boolean;
     loading: boolean;
     title: boolean;
@@ -67,7 +67,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     animated: boolean;
     avatarShape: AvatarShape;
     avatarSize: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

@@ -425,9 +425,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       renderSlot(_ctx.$slots, "default")
     ], 6),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     renderSlot(_ctx.$slots, "page"),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     _ctx.paginationVisible && !_ctx.$slots.page ? (openBlock(), createElementBlock("view", {
       key: 0,
       class: normalizeClass(_ctx.classesPagination)

@@ -6,7 +6,7 @@ export type TabbarItemProps = Partial<{
     href: string;
     to: string | Record<never, any>;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     tabTitle: string;
     name: string;
     icon: any;
@@ -15,7 +15,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>>, {
     tabTitle: string;
     href: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     tabTitle: string;
     name: string;
     icon: any;
@@ -24,10 +24,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>>, {
     tabTitle: string;
     href: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     tabTitle: string;
     href: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     icon?(_: {
         active: boolean;
     }): any;

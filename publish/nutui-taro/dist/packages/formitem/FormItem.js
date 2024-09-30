@@ -99,7 +99,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               createTextVNode(toDisplayString(_ctx.label), 1)
             ])
           ], 6)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           createElementVNode("view", _hoisted_1, [
             createElementVNode("view", {
               class: "nut-form-item__body__slots",
@@ -107,7 +107,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, [
               renderSlot(_ctx.$slots, "default")
             ], 4),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             unref(parent)[_ctx.prop] && _ctx.showErrorMessage ? (openBlock(), createElementBlock("view", {
               key: 0,
               class: "nut-form-item__body__tips",

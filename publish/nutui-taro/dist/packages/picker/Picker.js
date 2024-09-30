@@ -457,7 +457,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             }]),
             style: normalizeStyle(_ctx.setRollerStyle(index + 1))
           }, toDisplayString(item[_ctx.fieldNames.text]), 7)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[4] || (_cache[4] = createTextVNode()),
           item && item[_ctx.fieldNames.text] && !_ctx.threeDimensional ? (openBlock(), createElementBlock("view", {
             key: 1,
             class: normalizeClass(["nut-picker-roller-item-tile", {
@@ -469,7 +469,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         ], 64);
       }), 128))
     ], 36),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     createElementVNode("view", {
       class: "nut-picker-roller-mask",
       style: normalizeStyle(_ctx.maskStyles)
@@ -633,17 +633,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: "nut-picker__cancel nut-picker__left nut-picker__button",
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.cancel && _ctx.cancel(...args))
       }, toDisplayString(_ctx.cancelText || _ctx.translate("cancel")), 1),
-      createTextVNode(),
+      _cache[5] || (_cache[5] = createTextVNode()),
       createElementVNode("view", _hoisted_3, toDisplayString(_ctx.title), 1),
-      createTextVNode(),
+      _cache[6] || (_cache[6] = createTextVNode()),
       createElementVNode("view", {
         class: "nut-picker__confirm nut-picker__right nut-picker__button",
         onClick: _cache[1] || (_cache[1] = (...args) => _ctx.confirmHandler && _ctx.confirmHandler(...args))
       }, toDisplayString(_ctx.okText || _ctx.translate("confirm")), 1)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[7] || (_cache[7] = createTextVNode()),
     renderSlot(_ctx.$slots, "top"),
-    createTextVNode(),
+    _cache[8] || (_cache[8] = createTextVNode()),
     _ctx.ENV != _ctx.ENV_TYPE.WEB ? (openBlock(), createElementBlock("picker-view", mergeProps({
       key: 1,
       "indicator-style": `height:${_ctx.optionHeight}px`,
@@ -703,7 +703,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ]);
       }), 128))
     ], 4)),
-    createTextVNode(),
+    _cache[9] || (_cache[9] = createTextVNode()),
     renderSlot(_ctx.$slots, "default")
   ]);
 }

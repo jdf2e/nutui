@@ -107,9 +107,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             block: "",
             onClick: submitFun
           }, {
-            default: withCtx(() => [
+            default: withCtx(() => _cache[0] || (_cache[0] = [
               createTextVNode("提交审批")
-            ]),
+            ])),
             _: 1
           })
         ])) : createCommentVNode("", true)

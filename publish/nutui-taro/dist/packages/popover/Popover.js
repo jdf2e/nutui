@@ -22,7 +22,7 @@ import { ref, computed, onMounted, watch, resolveComponent, openBlock, createEle
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { r as renderIcon } from "../renderIcon-CfE94nuJ.js";
 import { a as useTaroRectById, u as useTaroRect } from "../index-m0Wcof-q.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import Taro from "@tarojs/taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("popover");
@@ -283,7 +283,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       renderSlot(_ctx.$slots, "reference")
     ], 8, _hoisted_1)) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[8] || (_cache[8] = createTextVNode()),
     createElementVNode("view", {
       class: normalizeClass(["nut-popover", `nut-popover--${_ctx.theme}`, `${_ctx.customClass}`]),
       style: normalizeStyle(_ctx.getRootPosition)
@@ -312,9 +312,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               class: normalizeClass(_ctx.popoverArrow),
               style: normalizeStyle(_ctx.popoverArrowStyle)
             }, null, 6)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[5] || (_cache[5] = createTextVNode()),
             renderSlot(_ctx.$slots, "content"),
-            createTextVNode(),
+            _cache[6] || (_cache[6] = createTextVNode()),
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.list, (item, index) => {
               return openBlock(), createElementBlock("view", {
                 key: index,
@@ -325,7 +325,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   key: 0,
                   class: "nut-popover-item-img"
                 })) : createCommentVNode("", true),
-                createTextVNode(),
+                _cache[4] || (_cache[4] = createTextVNode()),
                 createElementVNode("view", _hoisted_4, toDisplayString(item.name), 1)
               ], 10, _hoisted_3);
             }), 128))
@@ -333,7 +333,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 3
       }, 8, ["visible", "pop-class", "style", "overlay", "duration", "overlay-style", "overlay-class", "close-on-click-overlay"]),
-      createTextVNode(),
+      _cache[7] || (_cache[7] = createTextVNode()),
       _ctx.showPopup ? (openBlock(), createElementBlock("view", {
         key: 0,
         class: "nut-popover-content-bg",

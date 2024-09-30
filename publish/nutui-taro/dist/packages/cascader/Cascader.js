@@ -53,7 +53,7 @@ var __async = (__this, __arguments, generator) => {
 };
 import { computed, ref, watch, resolveComponent, openBlock, createBlock, withCtx, createElementBlock, Fragment, renderList, createElementVNode, createVNode, normalizeClass, toDisplayString, createTextVNode, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup, p as popupProps } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup, p as popupProps } from "../index.taro-CNxLoYer.js";
 import { _ as _sfc_main$2 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
 import { Loading, Checklist } from "@nutui/icons-vue-taro";
 import NutTabs from "../tabs/Tabs.js";
@@ -424,7 +424,6 @@ const _hoisted_1$1 = {
 };
 const _hoisted_2 = ["aria-checked", "aria-disabled", "onClick"];
 const _hoisted_3 = { class: "nut-cascader-item__title" };
-const _hoisted_4 = /* @__PURE__ */ createElementVNode("view", { class: "nut-cascader-pane" }, null, -1);
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Loading = resolveComponent("Loading");
   const _component_Checklist = resolveComponent("Checklist");
@@ -461,7 +460,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                       onClick: ($event) => _ctx.handleNode(node, false)
                     }, [
                       createElementVNode("view", _hoisted_3, toDisplayString(node.text), 1),
-                      createTextVNode(),
+                      _cache[1] || (_cache[1] = createTextVNode()),
                       node.loading ? (openBlock(), createBlock(_component_Loading, {
                         key: 0,
                         class: "nut-cascader-item__icon-loading",
@@ -484,9 +483,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1,
         title: "Loading..."
       }, {
-        default: withCtx(() => [
-          _hoisted_4
-        ]),
+        default: withCtx(() => _cache[2] || (_cache[2] = [
+          createElementVNode("view", { class: "nut-cascader-pane" }, null, -1)
+        ])),
         _: 1
       }))
     ]),
@@ -588,7 +587,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: "nut-cascader__bar",
         innerHTML: _ctx.title
       }, null, 8, _hoisted_1)) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       createVNode(_component_nut_cascader_item, {
         "model-value": _ctx.innerValue,
         options: _ctx.options,

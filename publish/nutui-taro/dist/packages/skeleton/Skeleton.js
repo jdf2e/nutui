@@ -72,7 +72,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         renderSlot(_ctx.$slots, "default")
       ])) : (openBlock(), createElementBlock("view", _hoisted_2, [
         _ctx.animated ? (openBlock(), createElementBlock("view", _hoisted_3)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         createElementVNode("view", _hoisted_4, [
           _ctx.avatar ? (openBlock(), createBlock(NutAvatar, {
             key: 0,
@@ -80,7 +80,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             shape: _ctx.avatarShape,
             style: normalizeStyle(avatarStyle.value)
           }, null, 8, ["class", "shape", "style"])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-skeleton-content__line",
             style: normalizeStyle({ width: _ctx.width })
@@ -90,7 +90,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               class: normalizeClass(getBlockClass("nut-skeleton-blockTitle")),
               style: normalizeStyle({ height: _ctx.height })
             }, null, 6)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             (openBlock(true), createElementBlock(Fragment, null, renderList(Number(_ctx.row), (_) => {
               return openBlock(), createElementBlock("view", {
                 key: _,

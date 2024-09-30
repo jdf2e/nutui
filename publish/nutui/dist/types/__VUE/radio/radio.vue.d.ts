@@ -7,7 +7,7 @@ export type RadioProps = Partial<{
     iconSize: string | number;
     size: RadioButtonSize;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     disabled: boolean;
     shape: RadioShape;
     label: string | number | boolean;
@@ -19,7 +19,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     label: string;
     iconSize: string;
     size: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     disabled: boolean;
     shape: RadioShape;
     label: string | number | boolean;
@@ -31,13 +31,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     label: string;
     iconSize: string;
     size: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     shape: RadioShape;
     disabled: boolean;
     size: RadioButtonSize;
     label: string | number | boolean;
     iconSize: string | number;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
     checkedIcon?(_: {}): any;
     icon?(_: {}): any;

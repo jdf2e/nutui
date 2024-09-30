@@ -25,7 +25,7 @@ import { U as Utils } from "../date-DHXcwF1m.js";
 import { r as requestAniFrame } from "../raf-CzJhCkQo.js";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 const { create: create$1 } = createComponent("calendar-item");
 const cN = "NutCalendarItem";
 const TARO_ENV = Taro.getEnv();
@@ -725,13 +725,13 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   }, [
     createElementVNode("view", _hoisted_1, [
       _ctx.showTitle ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.title || _ctx.translate("title")), 1)) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       _ctx.showTopBtn ? (openBlock(), createElementBlock("view", _hoisted_3, [
         renderSlot(_ctx.$slots, "btn")
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[2] || (_cache[2] = createTextVNode()),
       _ctx.showSubTitle ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.yearMonthTitle), 1)) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[3] || (_cache[3] = createTextVNode()),
       createElementVNode("view", _hoisted_5, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.weeks, (item, index) => {
           return openBlock(), createElementBlock("view", {
@@ -741,7 +741,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         }), 128))
       ])
     ]),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     createVNode(_component_nut_scroll_view, {
       ref: "months",
       "scroll-top": _ctx.scrollTop,
@@ -765,7 +765,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                 class: "nut-calendar__month"
               }, [
                 createElementVNode("view", _hoisted_6, toDisplayString(month.title), 1),
-                createTextVNode(),
+                _cache[9] || (_cache[9] = createTextVNode()),
                 createElementVNode("view", _hoisted_7, [
                   createElementVNode("view", {
                     class: normalizeClass(["nut-calendar__days-item", _ctx.type === "range" ? "nut-calendar__days-item--range" : ""])
@@ -783,26 +783,26 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                             createTextVNode(toDisplayString(day.type == "curr" ? day.day : ""), 1)
                           ])
                         ]),
-                        createTextVNode(),
+                        _cache[4] || (_cache[4] = createTextVNode()),
                         _ctx.topInfo ? (openBlock(), createElementBlock("view", _hoisted_10, [
                           renderSlot(_ctx.$slots, "top-info", {
                             date: day.type == "curr" ? day : ""
                           })
                         ])) : createCommentVNode("", true),
-                        createTextVNode(),
+                        _cache[5] || (_cache[5] = createTextVNode()),
                         _ctx.bottomInfo ? (openBlock(), createElementBlock("view", _hoisted_11, [
                           renderSlot(_ctx.$slots, "bottom-info", {
                             date: day.type == "curr" ? day : ""
                           })
                         ])) : createCommentVNode("", true),
-                        createTextVNode(),
+                        _cache[6] || (_cache[6] = createTextVNode()),
                         !_ctx.bottomInfo && _ctx.showToday && _ctx.isCurrDay(day) ? (openBlock(), createElementBlock("view", _hoisted_12, toDisplayString(_ctx.translate("today")), 1)) : createCommentVNode("", true),
-                        createTextVNode(),
+                        _cache[7] || (_cache[7] = createTextVNode()),
                         _ctx.isStartTip(day, month) ? (openBlock(), createElementBlock("view", {
                           key: 3,
                           class: normalizeClass(["nut-calendar__day-tip", { "nut-calendar__day-tips--top": _ctx.rangeTip() }])
                         }, toDisplayString(_ctx.startText || _ctx.translate("start")), 3)) : createCommentVNode("", true),
-                        createTextVNode(),
+                        _cache[8] || (_cache[8] = createTextVNode()),
                         _ctx.isEndTip(day, month) ? (openBlock(), createElementBlock("view", _hoisted_13, toDisplayString(_ctx.endText || _ctx.translate("end")), 1)) : createCommentVNode("", true)
                       ], 10, _hoisted_8);
                     }), 128))
@@ -815,7 +815,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     }, 8, ["scroll-top", "scroll-with-animation", "onScroll"]),
-    createTextVNode(),
+    _cache[11] || (_cache[11] = createTextVNode()),
     _ctx.poppable && !_ctx.isAutoBackFill ? (openBlock(), createElementBlock("view", _hoisted_14, [
       renderSlot(_ctx.$slots, "footer-info", { date: _ctx.chooseData }, () => [
         createElementVNode("view", {

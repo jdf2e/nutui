@@ -150,11 +150,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                 class: "nut-collapse-item__title-mtitle",
                 innerHTML: _ctx.title
               }, null, 8, _hoisted_3)),
-              createTextVNode(),
+              _cache[0] || (_cache[0] = createTextVNode()),
               _ctx.label ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.label), 1)) : createCommentVNode("", true)
             ])
           ]),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.$slots.value ? (openBlock(), createElementBlock("view", _hoisted_5, [
             renderSlot(_ctx.$slots, "value")
           ])) : (openBlock(), createElementBlock("view", {
@@ -162,7 +162,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             class: "nut-collapse-item__title-sub",
             innerHTML: _ctx.value
           }, null, 8, _hoisted_6)),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           createElementVNode("view", {
             class: normalizeClass(["nut-collapse-item__title-icon", { "nut-collapse-item__title-icon--expanded": expanded.value }]),
             style: normalizeStyle({ transform: "rotate(" + (expanded.value ? _ctx.rotate : 0) + "deg)" })
@@ -170,13 +170,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             _ctx.$slots.icon ? renderSlot(_ctx.$slots, "icon", { key: 0 }) : (openBlock(), createBlock(resolveDynamicComponent(unref(renderIcon)(_ctx.icon)), { key: 1 }))
           ], 6)
         ], 2),
-        createTextVNode(),
+        _cache[3] || (_cache[3] = createTextVNode()),
         _ctx.$slots.extra ? (openBlock(), createElementBlock("view", _hoisted_7, [
           createElementVNode("div", _hoisted_8, [
             renderSlot(_ctx.$slots, "extra")
           ])
         ])) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[4] || (_cache[4] = createTextVNode()),
         createElementVNode("view", {
           ref_key: "wrapperRef",
           ref: wrapperRef,

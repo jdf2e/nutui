@@ -20,7 +20,7 @@ export type InputProps = Partial<{
     error: boolean;
     showClearIcon: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     type: InputType;
     modelValue: string | number;
     placeholder: string;
@@ -57,16 +57,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     confirmType: string;
     error: boolean;
     showClearIcon: boolean;
-}>, {
+}>>, {
     focus: () => void;
     blur: () => void;
     select: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    click: (...args: any[]) => void;
-    clear: (...args: any[]) => void;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     blur: (...args: any[]) => void;
+    click: (...args: any[]) => void;
     focus: (...args: any[]) => void;
     keypress: (...args: any[]) => void;
+    clear: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
     clickInput: (...args: any[]) => void;
     confirm: (...args: any[]) => void;
@@ -107,20 +107,20 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     confirmType: string;
     error: boolean;
     showClearIcon: boolean;
-}>>> & {
+}>>> & Readonly<{
+    onBlur?: ((...args: any[]) => any) | undefined;
     onClick?: ((...args: any[]) => any) | undefined;
     onFocus?: ((...args: any[]) => any) | undefined;
-    onBlur?: ((...args: any[]) => any) | undefined;
     onKeypress?: ((...args: any[]) => any) | undefined;
-    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onClickInput?: ((...args: any[]) => any) | undefined;
     onConfirm?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
+    error: boolean;
     disabled: boolean;
     type: InputType;
     border: boolean;
-    error: boolean;
     placeholder: string;
     modelValue: string | number;
     maxLength: string | number;
@@ -134,7 +134,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showWordLimit: boolean;
     confirmType: InputConfirmType;
     showClearIcon: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     left?(_: {}): any;
     clear?(_: {}): any;
     right?(_: {}): any;

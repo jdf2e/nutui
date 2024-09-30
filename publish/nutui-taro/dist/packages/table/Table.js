@@ -157,7 +157,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             }, [
               createTextVNode(toDisplayString(item.title) + " ", 1),
               renderSlot(_ctx.$slots, "icon"),
-              createTextVNode(),
+              _cache[0] || (_cache[0] = createTextVNode()),
               !_ctx.$slots.icon && item.sorter ? (openBlock(), createBlock(_component_DownArrow, {
                 key: 0,
                 size: "12px"
@@ -166,7 +166,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }), 128))
         ])
       ]),
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       createElementVNode("view", _hoisted_5, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.curData, (item) => {
           return openBlock(), createElementBlock("view", {
@@ -190,17 +190,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }), 128))
       ])
     ], 2),
-    createTextVNode(),
+    _cache[3] || (_cache[3] = createTextVNode()),
     !_ctx.curData.length ? (openBlock(), createElementBlock("view", _hoisted_7, [
       createElementVNode("div", {
         class: normalizeClass(["nut-table__nodata", { "nut-table__nodata--border": _ctx.bordered }])
       }, [
         renderSlot(_ctx.$slots, "nodata"),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         !_ctx.$slots.nodata ? (openBlock(), createElementBlock("div", _hoisted_8, toDisplayString(_ctx.translate("noData")), 1)) : createCommentVNode("", true)
       ], 2)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     _ctx.summary ? (openBlock(), createElementBlock("view", _hoisted_9, [
       createElementVNode("span", {
         class: "nut-table__summary__text",

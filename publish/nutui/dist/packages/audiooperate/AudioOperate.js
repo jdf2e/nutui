@@ -93,9 +93,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "primary",
         size: "small"
       }, {
-        default: withCtx(() => [
+        default: withCtx(() => _cache[4] || (_cache[4] = [
           createTextVNode("快进")
-        ]),
+        ])),
         _: 1
       })) : createCommentVNode("", true),
       renderSlot(_ctx.$slots, "default")

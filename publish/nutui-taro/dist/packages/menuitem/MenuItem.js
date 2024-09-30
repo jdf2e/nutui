@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, computed, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeStyle, createElementVNode, vShow, createTextVNode, createVNode, mergeProps, withCtx, Fragment, renderList, normalizeClass, renderSlot, createCommentVNode, toDisplayString } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import { Check } from "@nutui/icons-vue-taro";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
 import { u as useParent } from "../useParent-D6DiuxZZ.js";
@@ -130,7 +130,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 12, _hoisted_1), [
       [vShow, _ctx.state.showPopup]
     ]),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     createVNode(_component_nut_popup, mergeProps(_ctx.$attrs, {
       visible: _ctx.state.showPopup,
       "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => _ctx.state.showPopup = $event),
@@ -166,14 +166,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       }), null, 16, ["color"])
                     ])
                   ], 2)) : createCommentVNode("", true),
-                  createTextVNode(),
+                  _cache[2] || (_cache[2] = createTextVNode()),
                   createElementVNode("view", {
                     class: normalizeClass([option.value === _ctx.modelValue ? _ctx.activeTitleClass : _ctx.inactiveTitleClass]),
                     style: normalizeStyle({ color: option.value === _ctx.modelValue ? _ctx.parent.props.activeColor : "" })
                   }, toDisplayString(option.text), 7)
                 ], 14, _hoisted_3);
               }), 128)),
-              createTextVNode(),
+              _cache[3] || (_cache[3] = createTextVNode()),
               renderSlot(_ctx.$slots, "default")
             ])
           ]),

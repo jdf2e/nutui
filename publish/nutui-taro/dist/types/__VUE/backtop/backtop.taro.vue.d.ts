@@ -6,7 +6,7 @@ export type BacktopProps = Partial<{
     distance: number;
     zIndex: number;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     height: string;
     bottom: number;
     right: number;
@@ -18,7 +18,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     right: number;
     distance: number;
     zIndex: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     height: string;
@@ -32,15 +32,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     right: number;
     distance: number;
     zIndex: number;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     bottom: number;
     right: number;
     zIndex: number;
     height: string;
     distance: number;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     content?(_: {}): any;
     icon?(_: {}): any;
 }>;

@@ -8,5 +8,5 @@ export declare const useTabContentTouch: (props: any, tabMethods: any, taro?: an
         offset: number;
         moving: boolean;
     };
-    tabsContentRef: import("vue").Ref<HTMLElement | undefined>;
+    tabsContentRef: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
 };

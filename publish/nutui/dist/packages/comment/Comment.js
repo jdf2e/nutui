@@ -166,10 +166,9 @@ const _sfc_main$2 = create$2({
 });
 const _hoisted_1$2 = ["onClick"];
 const _hoisted_2$2 = ["src"];
-const _hoisted_3$2 = /* @__PURE__ */ createElementVNode("view", { class: "nut-comment-images__play" }, null, -1);
-const _hoisted_4$2 = ["onClick"];
-const _hoisted_5 = ["src"];
-const _hoisted_6 = {
+const _hoisted_3$2 = ["onClick"];
+const _hoisted_4$2 = ["src"];
+const _hoisted_5 = {
   key: 0,
   class: "nut-comment-images__mask"
 };
@@ -187,13 +186,11 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         createElementVNode("img", {
           src: itV.mainUrl
         }, null, 8, _hoisted_2$2),
-        _hoisted_3$2
+        _cache[0] || (_cache[0] = createElementVNode("view", { class: "nut-comment-images__play" }, null, -1))
       ], 8, _hoisted_1$2);
     }), 128)),
     (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.images, (itI, index2) => {
-      return openBlock(), createElementBlock(Fragment, {
-        key: itI.id
-      }, [
+      return openBlock(), createElementBlock(Fragment, { key: index2 }, [
         _ctx.type == "multi" && _ctx.videos.length + index2 < 9 || _ctx.type != "multi" ? (openBlock(), createElementBlock("view", {
           key: 0,
           class: "nut-comment-images__item nut-comment-images__item--imgbox",
@@ -201,12 +198,12 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         }, [
           createElementVNode("img", {
             src: itI.smallImgUrl ? itI.smallImgUrl : itI.imgUrl
-          }, null, 8, _hoisted_5),
-          _ctx.type == "multi" && _ctx.totalImages.length > 9 && _ctx.videos.length + index2 > 7 ? (openBlock(), createElementBlock("view", _hoisted_6, [
+          }, null, 8, _hoisted_4$2),
+          _ctx.type == "multi" && _ctx.totalImages.length > 9 && _ctx.videos.length + index2 > 7 ? (openBlock(), createElementBlock("view", _hoisted_5, [
             createElementVNode("span", null, "共 " + toDisplayString(_ctx.totalImages.length) + " 张", 1),
             createVNode(_component_Right, { style: { "width": "12px" } })
           ])) : createCommentVNode("", true)
-        ], 8, _hoisted_4$2)) : createCommentVNode("", true)
+        ], 8, _hoisted_3$2)) : createCommentVNode("", true)
       ], 64);
     }), 128))
   ], 2);

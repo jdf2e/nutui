@@ -3,7 +3,7 @@ import { Component, PropType } from 'vue';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     msg: StringConstructor;
     duration: {
@@ -65,7 +65,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}, {
+}>, {
     clickCover: () => void;
     hasIcon: import("vue").ComputedRef<boolean>;
     iconName: import("vue").ComputedRef<any>;
@@ -94,7 +94,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     renderIcon: (icon: Component, props?: any) => "" | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "closed")[], "update:visible" | "closed", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "closed")[], "update:visible" | "closed", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     id: StringConstructor;
     msg: StringConstructor;
     duration: {
@@ -156,25 +156,25 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}>> & {
+}>> & Readonly<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     type: string;
     size: string | number;
+    duration: number;
     title: string;
     icon: Component;
     bottom: string;
     center: boolean;
     visible: boolean;
-    duration: number;
     closeOnClickOverlay: boolean;
     cover: boolean;
     textAlignCenter: boolean;
     loadingRotate: boolean;
     bgColor: string;
     coverColor: string;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

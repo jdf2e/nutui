@@ -99,7 +99,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
                 onClick: ($event) => onClick(1, n)
               }, null, 8, ["class", "onClick"]))
             ]),
-            createTextVNode(),
+            _cache[0] || (_cache[0] = createTextVNode()),
             _ctx.allowHalf && Number(_ctx.modelValue) + 1 > n ? (openBlock(), createElementBlock("view", _hoisted_4, [
               (openBlock(), createBlock(resolveDynamicComponent(
                 unref(renderIcon)(_ctx.customIcon, {

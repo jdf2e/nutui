@@ -9,7 +9,7 @@ export type CollapseItemProps = Partial<{
     icon: any;
     rotate: string | number;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     title: string;
     value: string;
     label: string;
@@ -81,7 +81,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
         class: string;
     }>;
     rotate: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     title: string;
     value: string;
     label: string;
@@ -153,7 +153,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
         class: string;
     }>;
     rotate: number;
-}>>>, {
+}>>> & Readonly<{}>, {
     name: string | number;
     disabled: boolean;
     label: string;
@@ -162,7 +162,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     border: boolean;
     rotate: string | number;
     value: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     title?(_: {}): any;
     value?(_: {}): any;
     icon?(_: {}): any;

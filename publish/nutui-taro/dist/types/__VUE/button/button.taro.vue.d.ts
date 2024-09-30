@@ -11,7 +11,7 @@ export type ButtonProps = Partial<{
     block: boolean;
     formType: ButtonFormType;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     color: string;
     shape: ButtonShape;
     plain: boolean;
@@ -31,7 +31,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     size: string;
     block: boolean;
     formType: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     color: string;
@@ -53,9 +53,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     size: string;
     block: boolean;
     formType: string;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     color: string;
     shape: ButtonShape;
     plain: boolean;
@@ -65,7 +65,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     size: ButtonSize;
     block: boolean;
     formType: ButtonFormType;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     icon?(_: {}): any;
     default?(_: {}): any;
 }>;

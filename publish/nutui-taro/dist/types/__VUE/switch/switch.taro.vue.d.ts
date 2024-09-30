@@ -11,7 +11,7 @@ export type SwitchProps = Partial<{
     loading: boolean;
     disable: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string | number | boolean;
     disabled: boolean;
     activeColor: string;
@@ -33,7 +33,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     inactiveValue: boolean;
     loading: boolean;
     disable: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     change: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
     "update:loading": (...args: any[]) => void;
@@ -59,11 +59,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     inactiveValue: boolean;
     loading: boolean;
     disable: boolean;
-}>>> & {
+}>>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     "onUpdate:loading"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     loading: boolean;
     disabled: boolean;
     activeColor: string;
@@ -74,7 +74,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     inactiveText: string;
     activeValue: string | number | boolean;
     inactiveValue: string | number | boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     icon?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

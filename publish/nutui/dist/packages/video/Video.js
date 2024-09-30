@@ -353,17 +353,13 @@ const _hoisted_6 = {
   ref: "progressBar",
   class: "nut-video-controller__progress-value"
 };
-const _hoisted_7 = /* @__PURE__ */ createElementVNode("div", { class: "nut-video-controller__ball-move" }, null, -1);
-const _hoisted_8 = [
-  _hoisted_7
-];
-const _hoisted_9 = {
+const _hoisted_7 = {
   ref: "playedBar",
   class: "nut-video-controller__played"
 };
-const _hoisted_10 = { class: "nut-video-controller__total" };
-const _hoisted_11 = { class: "nut-video-error" };
-const _hoisted_12 = { class: "nut-video-error-tip" };
+const _hoisted_8 = { class: "nut-video-controller__total" };
+const _hoisted_9 = { class: "nut-video-error" };
+const _hoisted_10 = { class: "nut-video-error-tip" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1, [
     createElementVNode("video", {
@@ -418,11 +414,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             onTouchmove: _cache[4] || (_cache[4] = withModifiers(($event) => _ctx.touchSlidMove($event), ["stop", "prevent"])),
             onTouchstart: _cache[5] || (_cache[5] = withModifiers(($event) => _ctx.touchSlidSrart(), ["stop"])),
             onTouchend: _cache[6] || (_cache[6] = withModifiers(($event) => _ctx.touchSlidEnd($event), ["stop"]))
-          }, _hoisted_8, 36),
-          createElementVNode("div", _hoisted_9, null, 512)
+          }, _cache[10] || (_cache[10] = [
+            createElementVNode("div", { class: "nut-video-controller__ball-move" }, null, -1)
+          ]), 36),
+          createElementVNode("div", _hoisted_7, null, 512)
         ], 512)
       ]),
-      createElementVNode("div", _hoisted_10, toDisplayString(_ctx.videoSet.totalTime), 1),
+      createElementVNode("div", _hoisted_8, toDisplayString(_ctx.videoSet.totalTime), 1),
       createElementVNode("div", {
         class: normalizeClass(["nut-video-controller__volume", { muted: _ctx.state.isMuted }]),
         onClick: _cache[7] || (_cache[7] = (...args) => _ctx.handleMuted && _ctx.handleMuted(...args))
@@ -434,8 +432,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2), [
       [vShow, _ctx.showToolbox && !_ctx.isDisabled]
     ]),
-    withDirectives(createElementVNode("div", _hoisted_11, [
-      createElementVNode("p", _hoisted_12, toDisplayString(_ctx.translate("errorTip")), 1),
+    withDirectives(createElementVNode("div", _hoisted_9, [
+      createElementVNode("p", _hoisted_10, toDisplayString(_ctx.translate("errorTip")), 1),
       createElementVNode("p", {
         class: "nut-video-error-retry",
         onClick: _cache[9] || (_cache[9] = (...args) => _ctx.retry && _ctx.retry(...args))

@@ -10,7 +10,7 @@ export type TrendArrowProps = Partial<{
     riseColor: string;
     dropColor: string;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     rate: number;
     digits: number;
     showSign: boolean;
@@ -30,7 +30,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     textColor: string;
     riseColor: string;
     dropColor: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     rate: number;
     digits: number;
     showSign: boolean;
@@ -50,7 +50,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     textColor: string;
     riseColor: string;
     dropColor: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     textColor: string;
     rate: number;
     digits: number;
@@ -60,7 +60,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     syncTextColor: boolean;
     riseColor: string;
     dropColor: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     "up-icon"?(_: {}): any;
     "down-icon"?(_: {}): any;
 }>;

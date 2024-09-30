@@ -95,7 +95,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               class: normalizeClass(iconClasses.value)
             }, null, 8, ["size", "class"])
           ]),
-          createTextVNode(),
+          _cache[0] || (_cache[0] = createTextVNode()),
           createElementVNode("view", {
             class: normalizeClass(labelClasses.value)
           }, [

@@ -14,7 +14,7 @@ export type FormItemProps = Partial<{
     labelPosition: FormLabelPosition;
     starPosition: FormStarPosition;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     prop: string;
     label: string;
     rules: FormItemRule[];
@@ -34,7 +34,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     required: boolean;
     showErrorMessage: boolean;
     showErrorLine: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     prop: string;
     label: string;
     rules: FormItemRule[];
@@ -54,14 +54,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     required: boolean;
     showErrorMessage: boolean;
     showErrorLine: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     label: string;
     required: boolean;
     rules: FormItemRule[];
     prop: string;
     showErrorMessage: boolean;
     showErrorLine: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     label?(_: {}): any;
     default?(_: {}): any;
 }>;

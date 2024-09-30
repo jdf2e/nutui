@@ -9,7 +9,7 @@ export type CircleProgressProps = Partial<{
     pathColor: string;
     clockwise: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     progress: string | number;
     strokeWidth: string | number;
     radius: string | number;
@@ -25,7 +25,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     color: string;
     pathColor: string;
     clockwise: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     progress: string | number;
     strokeWidth: string | number;
     radius: string | number;
@@ -41,15 +41,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     color: string;
     pathColor: string;
     clockwise: boolean;
-}>>>, {
-    color: any;
+}>>> & Readonly<{}>, {
     progress: string | number;
+    color: any;
     strokeLinecap: CircleProgressStrokeLinecap;
     strokeWidth: string | number;
     radius: string | number;
     pathColor: string;
     clockwise: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

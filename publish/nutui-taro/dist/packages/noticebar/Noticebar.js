@@ -362,7 +362,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           createVNode(_component_Notice, { size: "16px" })
         ])
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[5] || (_cache[5] = createTextVNode()),
       createElementVNode("view", {
         ref: "wrap",
         class: normalizeClass(`nut-noticebar__page-wrap wrap${_ctx.id}`)
@@ -379,7 +379,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           ])
         ], 38)
       ], 2),
-      createTextVNode(),
+      _cache[6] || (_cache[6] = createTextVNode()),
       _ctx.closeMode || _ctx.$slots["right-icon"] ? (openBlock(), createElementBlock("view", {
         key: 1,
         class: "nut-noticebar__page-righticon",
@@ -392,7 +392,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 6)), [
       [vShow, _ctx.showNoticebar]
     ]) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[9] || (_cache[9] = createTextVNode()),
     _ctx.scrollList.length > 0 && _ctx.direction == "vertical" && _ctx.showNoticebar ? (openBlock(), createElementBlock("view", {
       key: 1,
       class: "nut-noticebar__vertical",
@@ -413,7 +413,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             }), 128))
           ])
         ], 4),
-        createTextVNode(),
+        _cache[7] || (_cache[7] = createTextVNode()),
         createElementVNode("view", _hoisted_4, [
           renderSlot(_ctx.$slots, "default")
         ])
@@ -431,7 +431,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }, toDisplayString(item), 13, _hoisted_5);
         }), 128))
       ], 4)),
-      createTextVNode(),
+      _cache[8] || (_cache[8] = createTextVNode()),
       createElementVNode("view", {
         class: "go",
         onClick: _cache[4] || (_cache[4] = ($event) => _ctx.handleClickIcon())

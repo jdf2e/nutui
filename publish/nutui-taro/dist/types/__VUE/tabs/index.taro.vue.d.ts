@@ -1,4 +1,5 @@
 import { VNode, Ref, CSSProperties, PropType } from 'vue';
+import { JoySmile } from '@nutui/icons-vue-taro';
 import { type TabsDirection, type TabsSize, type TabsType, type TabsAlign } from './types';
 export declare class Title {
     title: string;
@@ -11,7 +12,7 @@ export declare class Title {
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;
@@ -72,7 +73,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<TabsAlign>;
         default: string;
     };
-}, {
+}>, {
     onTouchStart(event: TouchEvent): void;
     onTouchMove(event: TouchEvent): void;
     onTouchEnd(): void;
@@ -83,8 +84,8 @@ declare const _default: Install< import("vue").DefineComponent<{
     updateValue: (item: Title) => void;
     tabChange: (item: Title, index: number) => void;
     setTabItemRef: (el: HTMLElement, index: number) => void;
-    titles: Ref<Title[]>;
-    tabsContentRef: Ref<HTMLElement | undefined>;
+    titles: Ref<Title[], Title[]>;
+    tabsContentRef: Ref<HTMLElement | undefined, HTMLElement | undefined>;
     contentStyle: import("vue").ComputedRef<CSSProperties>;
     tabsNavStyle: import("vue").ComputedRef<{
         background: string;
@@ -109,15 +110,15 @@ declare const _default: Install< import("vue").DefineComponent<{
         color: string;
         background: string;
     }>;
-    container: Ref<null>;
-    scrollLeft: Ref<number>;
-    scrollTop: Ref<number>;
+    container: Ref<null, null>;
+    scrollLeft: Ref<number, number>;
+    scrollTop: Ref<number, number>;
     getScrollX: import("vue").ComputedRef<boolean>;
     getScrollY: import("vue").ComputedRef<boolean>;
-    scrollWithAnimation: Ref<boolean>;
-    canShowLabel: Ref<boolean>;
+    scrollWithAnimation: Ref<boolean, boolean>;
+    canShowLabel: Ref<boolean, boolean>;
     refRandomId: string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "change" | "update:modelValue")[], "click" | "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: (NumberConstructor | StringConstructor)[];
         default: number;
@@ -178,11 +179,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<TabsAlign>;
         default: string;
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     color: string;
     type: TabsType;
     size: TabsSize;
@@ -198,7 +199,26 @@ declare const _default: Install< import("vue").DefineComponent<{
     autoHeight: boolean;
     animatedTime: string | number;
     titleGutter: string | number;
-}, {}>>;
+}, {}, {
+    JoySmile: typeof JoySmile;
+    NutScrollView: {
+        new (...args: any[]): import("vue").CreateComponentPublicInstanceWithMixins<Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Readonly<{}> & Readonly<{}>, {}, true, {}, {}, import("vue").GlobalComponents, import("vue").GlobalDirectives, string, {}, any, import("vue").ComponentProvideOptions, {
+            P: {};
+            B: {};
+            D: {};
+            C: {};
+            M: {};
+            Defaults: {};
+        }, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, {}>;
+        __isFragment?: undefined;
+        __isTeleport?: undefined;
+        __isSuspense?: undefined;
+    } & import("vue").ComponentOptionsBase<Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {}, {}, string, {}, import("vue").GlobalComponents, import("vue").GlobalDirectives, string, import("vue").ComponentProvideOptions> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
+        $slots: {
+            default?(_: {}): any;
+        };
+    });
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

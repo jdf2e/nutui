@@ -108,11 +108,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               _ctx.$slots.icon ? (openBlock(), createElementBlock("div", _hoisted_2, [
                 renderSlot(_ctx.$slots, "icon", { active: active.value })
               ])) : createCommentVNode("", true),
-              createTextVNode(),
+              _cache[0] || (_cache[0] = createTextVNode()),
               _ctx.icon && !_ctx.$slots.icon ? (openBlock(), createElementBlock("view", _hoisted_3, [
                 (openBlock(), createBlock(resolveDynamicComponent(unref(renderIcon)(_ctx.icon)), { class: "nut-popover-item-img" }))
               ])) : createCommentVNode("", true),
-              createTextVNode(),
+              _cache[1] || (_cache[1] = createTextVNode()),
               createElementVNode("view", {
                 class: normalizeClass(["nut-tabbar-item_icon-box_nav-word", { "nut-tabbar-item_icon-box_big-word": !_ctx.icon && !_ctx.$slots.icon }])
               }, [

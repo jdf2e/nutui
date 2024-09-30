@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { useSlots, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, createElementBlock, toDisplayString, createCommentVNode, createTextVNode, renderSlot, Fragment, renderList, normalizeClass, normalizeStyle } from "vue";
-import { N as NutPopup, p as popupProps } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup, p as popupProps } from "../index.taro-CNxLoYer.js";
 import { Loading } from "@nutui/icons-vue-taro";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("action-sheet");
@@ -130,12 +130,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [
       createElementVNode("view", _hoisted_1, [
         _ctx.title ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[4] || (_cache[4] = createTextVNode()),
         renderSlot(_ctx.$slots, "default"),
-        createTextVNode(),
+        _cache[5] || (_cache[5] = createTextVNode()),
         !_ctx.slotDefault ? (openBlock(), createElementBlock("view", _hoisted_3, [
           _ctx.description ? (openBlock(), createElementBlock("view", _hoisted_4, toDisplayString(_ctx.description), 1)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           _ctx.menuItems.length ? (openBlock(), createElementBlock("view", _hoisted_5, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.menuItems, (item, index) => {
               return openBlock(), createElementBlock("view", {
@@ -148,12 +148,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 onClick: ($event) => _ctx.chooseItem(item, index)
               }, [
                 item.loading ? (openBlock(), createBlock(_component_Loading, { key: 0 })) : (openBlock(), createElementBlock("view", _hoisted_7, toDisplayString(item[_ctx.optionTag]), 1)),
-                createTextVNode(),
+                _cache[1] || (_cache[1] = createTextVNode()),
                 createElementVNode("view", _hoisted_8, toDisplayString(item[_ctx.optionSubTag]), 1)
               ], 14, _hoisted_6);
             }), 128))
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[3] || (_cache[3] = createTextVNode()),
           _ctx.cancelTxt ? (openBlock(), createElementBlock("view", {
             key: 2,
             class: "nut-action-sheet__cancel",

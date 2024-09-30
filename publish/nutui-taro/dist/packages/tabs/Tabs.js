@@ -511,7 +511,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   class: "nut-tabs__titles-item__line",
                   style: normalizeStyle(_ctx.tabsActiveStyle)
                 }, null, 4)) : createCommentVNode("", true),
-                createTextVNode(),
+                _cache[4] || (_cache[4] = createTextVNode()),
                 _ctx.type == "smile" ? (openBlock(), createElementBlock("view", {
                   key: 1,
                   class: "nut-tabs__titles-item__smile",
@@ -519,20 +519,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, [
                   createVNode(_component_JoySmile, { color: _ctx.color }, null, 8, ["color"])
                 ], 4)) : createCommentVNode("", true),
-                createTextVNode(),
+                _cache[5] || (_cache[5] = createTextVNode()),
                 createElementVNode("view", {
                   class: normalizeClass(["nut-tabs__titles-item__text", { ellipsis: _ctx.ellipsis }])
                 }, toDisplayString(item.title), 3)
               ], 14, _hoisted_1);
             }), 128)),
-            createTextVNode(),
+            _cache[6] || (_cache[6] = createTextVNode()),
             _ctx.canShowLabel && _ctx.titleScroll ? (openBlock(), createElementBlock("view", _hoisted_2)) : createCommentVNode("", true)
           ], 64))
         ], 2)
       ]),
       _: 3
     }, 8, ["id", "scroll-x", "scroll-y", "scroll-with-animation", "scroll-left", "scroll-top", "class", "style"]),
-    createTextVNode(),
+    _cache[7] || (_cache[7] = createTextVNode()),
     createElementVNode("view", {
       id: "tabsContentRef-" + _ctx.refRandomId,
       ref: "tabsContentRef",

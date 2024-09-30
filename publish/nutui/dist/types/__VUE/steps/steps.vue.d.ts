@@ -5,7 +5,7 @@ export type StepsProps = Partial<{
     current: string | number;
     progressDot: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     direction: StepsDirection;
     current: string | number;
     progressDot: boolean;
@@ -13,7 +13,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     direction: string;
     current: string;
     progressDot: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     clickStep: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     direction: StepsDirection;
@@ -23,13 +23,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     direction: string;
     current: string;
     progressDot: boolean;
-}>>> & {
+}>>> & Readonly<{
     onClickStep?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     direction: StepsDirection;
     current: string | number;
     progressDot: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

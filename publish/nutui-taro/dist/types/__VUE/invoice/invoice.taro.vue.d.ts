@@ -5,7 +5,7 @@ export type InvoiceProps = Partial<{
     formValue: any;
     submit: boolean;
 }>;
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     data: InvoiceDataItem[];
     formValue: any;
     submit: boolean;
@@ -13,7 +13,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     data: () => never[];
     formValue: () => void;
     submit: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     submit: (...args: any[]) => void;
     scrollBottom: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -24,14 +24,14 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     data: () => never[];
     formValue: () => void;
     submit: boolean;
-}>>> & {
+}>>> & Readonly<{
     onSubmit?: ((...args: any[]) => any) | undefined;
     onScrollBottom?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     submit: boolean;
     data: InvoiceDataItem[];
     formValue: any;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

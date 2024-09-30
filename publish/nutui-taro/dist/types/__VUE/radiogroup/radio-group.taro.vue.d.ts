@@ -5,7 +5,7 @@ export type RadioGroupProps = Partial<{
     direction: RadioGroupDirection;
     textPosition: RadioGroupTextPosition;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string | number | boolean;
     direction: RadioGroupDirection;
     textPosition: RadioGroupTextPosition;
@@ -13,7 +13,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     modelValue: string;
     direction: string;
     textPosition: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     change: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -24,14 +24,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     modelValue: string;
     direction: string;
     textPosition: string;
-}>>> & {
+}>>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     direction: RadioGroupDirection;
     modelValue: string | number | boolean;
     textPosition: RadioGroupTextPosition;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

@@ -222,7 +222,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       "overlay-class": _ctx.overlayClass,
       "overlay-style": _ctx.overlayStyle
     }, _ctx.$attrs, { onClick: _ctx.onClickOverlay }), null, 16, ["visible", "close-on-click-overlay", "z-index", "lock-scroll", "duration", "overlay-class", "overlay-style", "onClick"])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[3] || (_cache[3] = createTextVNode()),
     createVNode(Transition, {
       name: _ctx.transitionName,
       onAfterEnter: _ctx.onOpened,
@@ -235,7 +235,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClick && _ctx.onClick(...args))
         }, [
           _ctx.showSlot ? renderSlot(_ctx.$slots, "default", { key: 0 }) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           _ctx.closed ? (openBlock(), createElementBlock("view", {
             key: 1,
             class: normalizeClass(["nut-popup__close-icon", "nut-popup__close-icon--" + _ctx.closeIconPosition]),

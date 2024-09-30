@@ -203,13 +203,12 @@ const _hoisted_2 = {
 };
 const _hoisted_3 = { class: "nut-audio__time" };
 const _hoisted_4 = { class: "nut-audio__bar" };
-const _hoisted_5 = /* @__PURE__ */ createElementVNode("div", { class: "nut-audio__button--custom" }, null, -1);
-const _hoisted_6 = { class: "nut-audio__time" };
-const _hoisted_7 = {
+const _hoisted_5 = { class: "nut-audio__time" };
+const _hoisted_6 = {
   key: 1,
   class: "nut-audio__icon"
 };
-const _hoisted_8 = ["controls", "src", "preload", "autoplay", "loop", "muted"];
+const _hoisted_7 = ["controls", "src", "preload", "autoplay", "loop", "muted"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_range = resolveComponent("nut-range");
   const _component_Service = resolveComponent("Service");
@@ -225,15 +224,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           "active-color": "#fa2c19",
           onChange: _ctx.progressChange
         }, {
-          button: withCtx(() => [
-            _hoisted_5
-          ]),
+          button: withCtx(() => _cache[6] || (_cache[6] = [
+            createElementVNode("div", { class: "nut-audio__button--custom" }, null, -1)
+          ])),
           _: 1
         }, 8, ["modelValue", "onChange"])
       ]),
-      createElementVNode("div", _hoisted_6, toDisplayString(_ctx.duration), 1)
+      createElementVNode("div", _hoisted_5, toDisplayString(_ctx.duration), 1)
     ])) : createCommentVNode("", true),
-    _ctx.type == "icon" ? (openBlock(), createElementBlock("div", _hoisted_7, [
+    _ctx.type == "icon" ? (openBlock(), createElementBlock("div", _hoisted_6, [
       createElementVNode("div", {
         class: normalizeClass(["nut-audio__icon--box", _ctx.playing ? "nut-audio__icon--play" : "nut-audio__icon--stop"]),
         onClick: _cache[1] || (_cache[1] = (...args) => _ctx.changeStatus && _ctx.changeStatus(...args))
@@ -263,7 +262,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       onTimeupdate: _cache[3] || (_cache[3] = (...args) => _ctx.onTimeupdate && _ctx.onTimeupdate(...args)),
       onCanplay: _cache[4] || (_cache[4] = (...args) => _ctx.onCanplay && _ctx.onCanplay(...args)),
       onEnded: _cache[5] || (_cache[5] = (...args) => _ctx.audioEnd && _ctx.audioEnd(...args))
-    }, null, 40, _hoisted_8)
+    }, null, 40, _hoisted_7)
   ]);
 }
 const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

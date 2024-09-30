@@ -69,7 +69,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             class: normalizeClass(["nut-progress-inner", _ctx.status === "active" ? "nut-active" : ""]),
             style: normalizeStyle(bgStyle.value)
           }, null, 6),
-          createTextVNode(),
+          _cache[0] || (_cache[0] = createTextVNode()),
           _ctx.showText && _ctx.textInside && !_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
             key: 0,
             class: "nut-progress-text nut-progress-insidetext",
@@ -84,7 +84,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               style: normalizeStyle(textStyle.value)
             }, toDisplayString(percentage.value) + toDisplayString(_ctx.isShowPercentage ? "%" : ""), 5)
           ], 4)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.showText && _ctx.textInside && _ctx.$slots.default ? (openBlock(), createElementBlock("div", {
             key: 1,
             class: "nut-progress-slot",
@@ -98,7 +98,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             renderSlot(_ctx.$slots, "default")
           ], 4)) : createCommentVNode("", true)
         ], 6),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         _ctx.showText && !_ctx.textInside ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: "nut-progress-text",

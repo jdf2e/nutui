@@ -75,7 +75,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           class: normalizeClass(contentClass.value)
         }, [
           renderSlot(_ctx.$slots, "default"),
-          createTextVNode(),
+          _cache[0] || (_cache[0] = createTextVNode()),
           createElementVNode("view", _hoisted_1, [
             _ctx.text ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
               createTextVNode(toDisplayString(_ctx.text), 1)

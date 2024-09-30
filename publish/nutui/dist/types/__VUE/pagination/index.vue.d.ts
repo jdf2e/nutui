@@ -4,7 +4,7 @@ import { PaginationMode } from './types';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     modelValue: {
         type: NumberConstructor;
         default: number;
@@ -41,19 +41,19 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}, {
-    modelValue: import("vue").Ref<number>;
+}>, {
+    modelValue: import("vue").Ref<number, number>;
     select: (curPage: number, isSelect: boolean) => void;
     countRef: import("vue").ComputedRef<number>;
-    mode: import("vue").Ref<PaginationMode>;
+    mode: import("vue").Ref<PaginationMode, PaginationMode>;
     pages: import("vue").ComputedRef<{
         number: number;
         text: string | number;
         active: boolean;
     }[] | undefined>;
-    forceEllipses: import("vue").Ref<boolean>;
+    forceEllipses: import("vue").Ref<boolean, boolean>;
     translate: (keyPath: string, ...args: unknown[]) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: NumberConstructor;
         default: number;
@@ -90,10 +90,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     mode: PaginationMode;
     modelValue: number;
     prevText: string;
@@ -103,7 +103,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     itemsPerPage: string | number;
     showPageSize: string | number;
     forceEllipses: boolean;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

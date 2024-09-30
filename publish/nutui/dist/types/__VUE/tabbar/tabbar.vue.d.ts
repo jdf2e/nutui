@@ -8,7 +8,7 @@ export type TabbarProps = Partial<{
     placeholder: boolean;
     beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string | number;
     bottom: boolean;
     unactiveColor: string;
@@ -24,7 +24,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
     beforeSwitch: () => true;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (...args: any[]) => void;
     tabSwitch: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -43,10 +43,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
     beforeSwitch: () => true;
-}>>> & {
+}>>> & Readonly<{
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onTabSwitch?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     bottom: boolean;
     safeAreaInsetBottom: boolean;
     placeholder: boolean;
@@ -54,7 +54,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     modelValue: string | number;
     unactiveColor: string;
     beforeSwitch: (data: any, active: string | number) => boolean | Promise<boolean>;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

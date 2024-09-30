@@ -12,7 +12,7 @@ export type CustomType = {
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -25,9 +25,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CustomType>;
         default: () => never[];
     };
-}, {
+}>, {
     onChange: (sku: string) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         default: string;
@@ -40,11 +40,11 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CustomType>;
         default: () => never[];
     };
-}>>, {
+}>> & Readonly<{}>, {
     type: string;
     categoryChild: ChildType;
     customCategory: CustomType;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

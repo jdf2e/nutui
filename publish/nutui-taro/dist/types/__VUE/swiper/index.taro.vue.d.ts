@@ -4,7 +4,7 @@ import { ComponentPublicInstance, VNode } from 'vue';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     width: {
         type: (NumberConstructor | StringConstructor)[];
     };
@@ -55,7 +55,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, {
+}>, {
     state: {
         active: number;
         num: number;
@@ -96,12 +96,12 @@ declare const _default: Install< import("vue").DefineComponent<{
     classesInner: import("vue").ComputedRef<{
         [x: string]: boolean;
     }>;
-    container: import("vue").Ref<HTMLElement | undefined>;
+    container: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
     activePagination: import("vue").ComputedRef<number>;
     onTouchStart: (e: TouchEvent) => void;
     onTouchMove: (e: TouchEvent) => void;
     onTouchEnd: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     width: {
         type: (NumberConstructor | StringConstructor)[];
     };
@@ -152,9 +152,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     duration: string | number;
     direction: string;
     paginationVisible: boolean;
@@ -166,7 +166,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     isPreventDefault: boolean;
     isStopPropagation: boolean;
     paginationUnselectedColor: string;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

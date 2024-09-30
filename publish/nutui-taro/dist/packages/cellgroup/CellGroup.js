@@ -41,9 +41,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("view", _hoisted_1, [
         _ctx.$slots.title ? renderSlot(_ctx.$slots, "title", { key: 0 }) : _ctx.title ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         _ctx.$slots.desc ? renderSlot(_ctx.$slots, "desc", { key: 2 }) : _ctx.desc ? (openBlock(), createElementBlock("view", _hoisted_3, toDisplayString(_ctx.desc), 1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         createElementVNode("view", _hoisted_4, [
           renderSlot(_ctx.$slots, "default")
         ])

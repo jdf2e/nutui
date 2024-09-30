@@ -13,7 +13,7 @@ export type CellProps = Partial<{
     replace: boolean;
     url: string;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     title: string;
     subTitle: string;
     desc: string;
@@ -36,7 +36,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     size: string;
     replace: boolean;
     url: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     title: string;
@@ -61,9 +61,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     size: string;
     replace: boolean;
     url: string;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     size: CellSize;
     replace: boolean;
     title: string;
@@ -74,7 +74,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     isLink: boolean;
     roundRadius: string | number;
     url: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
     icon?(_: {}): any;
     title?(_: {}): any;

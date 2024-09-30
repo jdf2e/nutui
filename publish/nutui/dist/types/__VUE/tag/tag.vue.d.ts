@@ -9,7 +9,7 @@ export type TagProps = Partial<{
     mark: boolean;
     closeable: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     color: string;
     textColor: string;
     type: TagType;
@@ -25,7 +25,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     round: boolean;
     mark: boolean;
     closeable: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
     close: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -44,10 +44,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     round: boolean;
     mark: boolean;
     closeable: boolean;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     round: boolean;
     color: string;
     plain: boolean;
@@ -55,7 +55,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     mark: boolean;
     closeable: boolean;
     textColor: string;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

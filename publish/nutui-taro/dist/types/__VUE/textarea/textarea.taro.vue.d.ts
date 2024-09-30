@@ -14,7 +14,7 @@ export type TextareaProps = Partial<{
     autosize: boolean | Record<string, number>;
     autofocus: boolean;
 }>;
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: string;
     textAlign: "center" | "left" | "right";
     limitShow: boolean;
@@ -35,7 +35,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     disabled: boolean;
     autosize: boolean;
     autofocus: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     blur: (...args: any[]) => void;
     change: (...args: any[]) => void;
     focus: (...args: any[]) => void;
@@ -61,12 +61,12 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     disabled: boolean;
     autosize: boolean;
     autofocus: boolean;
-}>>> & {
-    onFocus?: ((...args: any[]) => any) | undefined;
+}>>> & Readonly<{
     onBlur?: ((...args: any[]) => any) | undefined;
     onChange?: ((...args: any[]) => any) | undefined;
+    onFocus?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     disabled: boolean;
     placeholder: string;
     modelValue: string;
@@ -76,7 +76,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     limitShow: boolean;
     rows: string | number;
     autosize: boolean | Record<string, number>;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

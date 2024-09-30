@@ -99,20 +99,20 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           class: normalizeClass(["nut-price--symbol", `nut-price--symbol-${_ctx.size}`]),
           innerHTML: showSymbol.value
         }, null, 10, _hoisted_1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         createElementVNode("view", {
           class: normalizeClass(`nut-price--${_ctx.size}`)
         }, toDisplayString(formatThousands(_ctx.price)), 3),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         _ctx.decimalDigits != 0 ? (openBlock(), createElementBlock("view", {
           key: 1,
           class: normalizeClass(`nut-price--decimal-${_ctx.size}`)
         }, ".", 2)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         createElementVNode("view", {
           class: normalizeClass(`nut-price--decimal-${_ctx.size}`)
         }, toDisplayString(formatDecimal(_ctx.price)), 3),
-        createTextVNode(),
+        _cache[3] || (_cache[3] = createTextVNode()),
         _ctx.needSymbol && _ctx.position === "after" ? (openBlock(), createElementBlock("view", {
           key: 2,
           class: normalizeClass(["nut-price--symbol", `nut-price--symbol-${_ctx.size}`]),

@@ -507,7 +507,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             })
           }, null, 4);
         }), 128)),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         _ctx.pointNum > 0 ? (openBlock(), createElementBlock("view", {
           key: 0,
           class: "nut-countup-pointstyl",
@@ -555,7 +555,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             }), 128))
           ], 12, _hoisted_2);
         }), 128)),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         _ctx.pointNum > 0 ? (openBlock(), createElementBlock("view", {
           key: 0,
           class: "nut-countup-pointstyl",

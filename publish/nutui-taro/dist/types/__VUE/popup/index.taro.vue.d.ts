@@ -1,8 +1,9 @@
+import { Close } from '@nutui/icons-vue-taro';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -82,7 +83,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: ObjectConstructor;
         default: () => {};
     };
-}, {
+}>, {
     popStyle: import("vue").ComputedRef<{
         zIndex: string | number;
         transitionDuration: string;
@@ -97,10 +98,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     onClickOverlay: (e: Event) => void;
     onOpened: (el: Element) => void;
     onClosed: (el: Element) => void;
-    zIndex: import("vue").Ref<string | number>;
-    showSlot: import("vue").Ref<boolean>;
-    closed: import("vue").Ref<boolean>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:visible" | "open" | "close" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "update:visible" | "open" | "close" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    zIndex: import("vue").Ref<string | number, string | number>;
+    showSlot: import("vue").Ref<boolean, boolean>;
+    closed: import("vue").Ref<boolean, boolean>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay")[], "close" | "update:visible" | "open" | "clickPop" | "clickCloseIcon" | "opened" | "closed" | "clickOverlay", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: {
         type: BooleanConstructor;
         default: boolean;
@@ -180,7 +181,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: ObjectConstructor;
         default: () => {};
     };
-}>> & {
+}>> & Readonly<{
     "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
@@ -189,13 +190,13 @@ declare const _default: Install< import("vue").DefineComponent<{
     onOpened?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
     onClickOverlay?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     round: boolean;
-    style: Record<string, any>;
+    duration: string | number;
     transition: string;
+    style: Record<string, any>;
     visible: boolean;
     zIndex: string | number;
-    duration: string | number;
     lockScroll: boolean;
     overlayClass: string;
     overlayStyle: Record<string, any>;
@@ -209,7 +210,177 @@ declare const _default: Install< import("vue").DefineComponent<{
     teleport: string | Element;
     teleportDisable: boolean;
     safeAreaInsetBottom: boolean;
-}, {}>>;
+}, {}, {
+    NutOverlay: {
+        new (...args: any[]): import("vue").CreateComponentPublicInstanceWithMixins<Readonly<import("vue").ExtractPropTypes<{
+            duration: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            visible: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            zIndex: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            lockScroll: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            overlayClass: {
+                type: import("vue").PropType<string>;
+                default: string;
+            };
+            overlayStyle: {
+                type: import("vue").PropType<import("vue").CSSProperties>;
+            };
+            closeOnClickOverlay: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+        }>> & Readonly<{
+            onClick?: ((...args: any[]) => any) | undefined;
+            "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+        }>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+            click: (...args: any[]) => void;
+            "update:visible": (...args: any[]) => void;
+        }, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Readonly<import("vue").ExtractPropTypes<{
+            duration: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            visible: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            zIndex: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            lockScroll: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            overlayClass: {
+                type: import("vue").PropType<string>;
+                default: string;
+            };
+            overlayStyle: {
+                type: import("vue").PropType<import("vue").CSSProperties>;
+            };
+            closeOnClickOverlay: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+        }>> & Readonly<{
+            onClick?: ((...args: any[]) => any) | undefined;
+            "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+        }>, {
+            duration: string | number;
+            visible: boolean;
+            zIndex: string | number;
+            lockScroll: boolean;
+            overlayClass: string;
+            closeOnClickOverlay: boolean;
+        }, true, {}, {}, import("vue").GlobalComponents, import("vue").GlobalDirectives, string, {}, any, import("vue").ComponentProvideOptions, {
+            P: {};
+            B: {};
+            D: {};
+            C: {};
+            M: {};
+            Defaults: {};
+        }, Readonly<import("vue").ExtractPropTypes<{
+            duration: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            visible: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            zIndex: {
+                type: import("vue").PropType<string | number>;
+                default: number;
+            };
+            lockScroll: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+            overlayClass: {
+                type: import("vue").PropType<string>;
+                default: string;
+            };
+            overlayStyle: {
+                type: import("vue").PropType<import("vue").CSSProperties>;
+            };
+            closeOnClickOverlay: {
+                type: import("vue").PropType<boolean>;
+                default: boolean;
+            };
+        }>> & Readonly<{
+            onClick?: ((...args: any[]) => any) | undefined;
+            "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+        }>, {}, {}, {}, {}, {
+            duration: string | number;
+            visible: boolean;
+            zIndex: string | number;
+            lockScroll: boolean;
+            overlayClass: string;
+            closeOnClickOverlay: boolean;
+        }>;
+        __isFragment?: undefined;
+        __isTeleport?: undefined;
+        __isSuspense?: undefined;
+    } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+        duration: {
+            type: import("vue").PropType<string | number>;
+            default: number;
+        };
+        visible: {
+            type: import("vue").PropType<boolean>;
+            default: boolean;
+        };
+        zIndex: {
+            type: import("vue").PropType<string | number>;
+            default: number;
+        };
+        lockScroll: {
+            type: import("vue").PropType<boolean>;
+            default: boolean;
+        };
+        overlayClass: {
+            type: import("vue").PropType<string>;
+            default: string;
+        };
+        overlayStyle: {
+            type: import("vue").PropType<import("vue").CSSProperties>;
+        };
+        closeOnClickOverlay: {
+            type: import("vue").PropType<boolean>;
+            default: boolean;
+        };
+    }>> & Readonly<{
+        onClick?: ((...args: any[]) => any) | undefined;
+        "onUpdate:visible"?: ((...args: any[]) => any) | undefined;
+    }>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        click: (...args: any[]) => void;
+        "update:visible": (...args: any[]) => void;
+    }, string, {
+        duration: string | number;
+        visible: boolean;
+        zIndex: string | number;
+        lockScroll: boolean;
+        overlayClass: string;
+        closeOnClickOverlay: boolean;
+    }, {}, string, {}, import("vue").GlobalComponents, import("vue").GlobalDirectives, string, import("vue").ComponentProvideOptions> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
+        $slots: {
+            default?(_: {}): any;
+        };
+    });
+    Close: typeof Close;
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

@@ -9,6 +9,6 @@ export declare function useInject<T>(key: InjectionKey<ParentProvide<T>>): {
     index: import("vue").ComputedRef<number>;
 } | {
     parent: null;
-    index: import("vue").Ref<number>;
+    index: import("vue").Ref<number, number>;
 };
 export {};

@@ -88,9 +88,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             key: 0,
             class: "nut-icon-loading"
           })) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[0] || (_cache[0] = createTextVNode()),
           _ctx.$slots.icon && !_ctx.loading ? renderSlot(_ctx.$slots, "icon", { key: 1 }) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.$slots.default ? (openBlock(), createElementBlock("view", {
             key: 2,
             class: normalizeClass({ "nut-button__text": _ctx.$slots.icon || _ctx.loading })

@@ -65,15 +65,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           class: "nut-trend-arrow-icon-before nut-trend-arrow-rate",
           style: normalizeStyle(calcStyle.value)
         }, toDisplayString(calcRate.value), 5)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         Number(_ctx.rate) !== 0 && isPositive.value ? renderSlot(_ctx.$slots, "up-icon", { key: 1 }, () => [
           createVNode(unref(TriangleUp), { color: _ctx.riseColor }, null, 8, ["color"])
         ]) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         Number(_ctx.rate) !== 0 && !isPositive.value ? renderSlot(_ctx.$slots, "down-icon", { key: 2 }, () => [
           createVNode(unref(TriangleDown), { color: _ctx.dropColor }, null, 8, ["color"])
         ]) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         _ctx.arrowLeft ? (openBlock(), createElementBlock("span", {
           key: 3,
           class: "nut-trend-arrow-icon-after nut-trend-arrow-rate",

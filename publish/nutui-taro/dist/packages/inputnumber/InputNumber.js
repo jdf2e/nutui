@@ -149,7 +149,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
             }, null, 8, ["size"])
           ])
         ], 2),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         _ctx.readonly ? (openBlock(), createElementBlock("view", _hoisted_1, toDisplayString(_ctx.modelValue), 1)) : (openBlock(), createElementBlock("input", mergeProps({
           key: 1,
           class: "nut-input-number__text--input",
@@ -165,7 +165,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           onBlur: blur,
           onFocus: focus
         }), null, 16, _hoisted_2)),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         createElementVNode("view", {
           class: normalizeClass(["nut-input-number__icon nut-input-number__right", { "nut-input-number__icon--disabled": !addAllow() }]),
           onClick: add

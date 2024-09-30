@@ -1,10 +1,11 @@
 import { PropType } from 'vue';
+import { RectUp, RectDown } from '@nutui/icons-vue-taro';
 import { MenuDirection } from './types';
 
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     activeColor: {
         type: StringConstructor;
         default: string;
@@ -37,7 +38,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, {
+}>, {
     toggleItem: (active: number) => void;
     children: import("vue").Reactive<any[]>;
     opened: import("vue").ComputedRef<boolean>;
@@ -45,10 +46,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         [x: string]: boolean;
         'scroll-fixed': boolean;
     }>;
-    barRef: import("vue").Ref<HTMLElement | undefined>;
+    barRef: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
     refRandomId: string;
     getClasses: (showPopup: boolean) => string;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     activeColor: {
         type: StringConstructor;
         default: string;
@@ -81,7 +82,7 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}>>, {
+}>> & Readonly<{}>, {
     duration: string | number;
     lockScroll: boolean;
     closeOnClickOverlay: boolean;
@@ -90,7 +91,10 @@ declare const _default: Install< import("vue").DefineComponent<{
     activeColor: string;
     scrollFixed: string | number | boolean;
     titleClass: string;
-}, {}>>;
+}, {}, {
+    RectUp: typeof RectUp;
+    RectDown: typeof RectDown;
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

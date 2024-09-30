@@ -232,9 +232,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           onCompositionend: endComposing,
           onCompositionstart: startComposing
         }), null, 16, _hoisted_1),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         _ctx.limitShow ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.modelValue ? _ctx.modelValue.length : 0) + "/" + toDisplayString(_ctx.maxLength), 1)) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         _ctx.autosize ? (openBlock(), createElementBlock("view", {
           key: 1,
           class: "nut-textarea__cpoyText",

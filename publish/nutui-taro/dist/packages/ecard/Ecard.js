@@ -121,7 +121,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_input_number = resolveComponent("nut-input-number");
   return openBlock(), createElementBlock("view", _hoisted_1, [
     createElementVNode("view", _hoisted_2, toDisplayString(_ctx.chooseText || _ctx.translate("chooseText")), 1),
-    createTextVNode(),
+    _cache[8] || (_cache[8] = createTextVNode()),
     createElementVNode("view", _hoisted_3, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.dataList, (item, index) => {
         return openBlock(), createElementBlock("view", {
@@ -130,13 +130,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: ($event) => _ctx.handleClick(item, index)
         }, toDisplayString(item.price), 11, _hoisted_4);
       }), 128)),
-      createTextVNode(),
+      _cache[6] || (_cache[6] = createTextVNode()),
       createElementVNode("view", {
         class: normalizeClass(["nut-ecard__list__input", _ctx.currentIndex == "input" ? "active" : ""]),
         onClick: _cache[2] || (_cache[2] = (...args) => _ctx.inputClick && _ctx.inputClick(...args))
       }, [
         createElementVNode("view", null, toDisplayString(_ctx.otherValueText || _ctx.translate("otherValueText")), 1),
-        createTextVNode(),
+        _cache[4] || (_cache[4] = createTextVNode()),
         createElementVNode("view", _hoisted_5, [
           withDirectives(createElementVNode("input", {
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.inputValue = $event),
@@ -150,10 +150,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           createTextVNode(" " + toDisplayString(_ctx.suffix), 1)
         ])
       ], 2),
-      createTextVNode(),
+      _cache[7] || (_cache[7] = createTextVNode()),
       createElementVNode("view", _hoisted_7, [
         createElementVNode("view", null, toDisplayString(_ctx.suffix) + toDisplayString(_ctx.money), 1),
-        createTextVNode(),
+        _cache[5] || (_cache[5] = createTextVNode()),
         createVNode(_component_nut_input_number, {
           modelValue: _ctx.stepValue,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.stepValue = $event),

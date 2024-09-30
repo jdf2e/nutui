@@ -582,13 +582,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass(["nut-avatar-cropper taro", { round: _ctx.shape === "round" }])
     }, [
       renderSlot(_ctx.$slots, "default"),
-      createTextVNode(),
+      _cache[9] || (_cache[9] = createTextVNode()),
       createElementVNode("view", {
         class: "nut-avatar-cropper__edit-text",
         onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.chooseImage && _ctx.chooseImage(...args), ["stop"]))
       }, toDisplayString(_ctx.editText), 1)
     ], 2),
-    createTextVNode(),
+    _cache[15] || (_cache[15] = createTextVNode()),
     withDirectives(createElementVNode("view", _hoisted_1, [
       createElementVNode("canvas", {
         id: _ctx.canvasId,
@@ -597,7 +597,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         style: normalizeStyle(_ctx.canvasStyle),
         class: "nut-cropper-popup__canvas"
       }, null, 12, _hoisted_2),
-      createTextVNode(),
+      _cache[13] || (_cache[13] = createTextVNode()),
       createElementVNode("view", {
         class: "nut-cropper-popup__highlight",
         onTouchstart: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
@@ -610,7 +610,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           style: normalizeStyle(_ctx.highlightStyle)
         }, null, 6)
       ], 32),
-      createTextVNode(),
+      _cache[14] || (_cache[14] = createTextVNode()),
       createElementVNode("view", {
         class: normalizeClass(["nut-cropper-popup__toolbar", [_ctx.toolbarPosition]])
       }, [
@@ -626,7 +626,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               _: 1
             })
           ]),
-          createTextVNode(),
+          _cache[10] || (_cache[10] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-cropper-popup__toolbar-item",
             onClick: _cache[6] || (_cache[6] = (...args) => _ctx.reset && _ctx.reset(...args))
@@ -636,7 +636,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               color: "#fff"
             })
           ]),
-          createTextVNode(),
+          _cache[11] || (_cache[11] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-cropper-popup__toolbar-item",
             onClick: _cache[7] || (_cache[7] = (...args) => _ctx.rotate && _ctx.rotate(...args))
@@ -646,7 +646,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               color: "#fff"
             })
           ]),
-          createTextVNode(),
+          _cache[12] || (_cache[12] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-cropper-popup__toolbar-item",
             onClick: _cache[8] || (_cache[8] = (...args) => _ctx.confirm && _ctx.confirm(...args))

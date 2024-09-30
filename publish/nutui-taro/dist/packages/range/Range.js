@@ -406,7 +406,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(_ctx.containerClasses)
   }, [
     !_ctx.hiddenRange ? (openBlock(), createElementBlock("view", _hoisted_1, toDisplayString(+_ctx.min), 1)) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[11] || (_cache[11] = createTextVNode()),
     createElementVNode("view", {
       id: "root-" + _ctx.refRandomId,
       ref: "root",
@@ -429,7 +429,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           ], 6);
         }), 128)) : createCommentVNode("", true)
       ]),
-      createTextVNode(),
+      _cache[10] || (_cache[10] = createTextVNode()),
       createElementVNode("view", {
         class: "nut-range-bar",
         style: normalizeStyle(_ctx.barStyle)
@@ -495,7 +495,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 40, _hoisted_6))
       ], 4)
     ], 14, _hoisted_2),
-    createTextVNode(),
+    _cache[12] || (_cache[12] = createTextVNode()),
     !_ctx.hiddenRange ? (openBlock(), createElementBlock("view", _hoisted_8, toDisplayString(+_ctx.max), 1)) : createCommentVNode("", true)
   ], 2);
 }

@@ -280,7 +280,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
     }, [
       !_ctx.exceeded ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.content), 1)) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[3] || (_cache[3] = createTextVNode()),
       _ctx.exceeded && !_ctx.expanded ? (openBlock(), createElementBlock("view", _hoisted_3, [
         createTextVNode(toDisplayString(_ctx.ellipsis.leading) + toDisplayString(_ctx.ellipsis.leading && _ctx.symbol), 1),
         _ctx.expandText ? (openBlock(), createElementBlock("view", {
@@ -290,7 +290,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }, toDisplayString(_ctx.expandText), 1)) : createCommentVNode("", true),
         createTextVNode(toDisplayString(_ctx.ellipsis.tailing && _ctx.symbol) + toDisplayString(_ctx.ellipsis.tailing), 1)
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[4] || (_cache[4] = createTextVNode()),
       _ctx.exceeded && _ctx.expanded ? (openBlock(), createElementBlock("view", _hoisted_4, [
         createTextVNode(toDisplayString(_ctx.content) + " ", 1),
         _ctx.expandText ? (openBlock(), createElementBlock("span", {
@@ -300,7 +300,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }, toDisplayString(_ctx.collapseText), 1)) : createCommentVNode("", true)
       ])) : createCommentVNode("", true)
     ], 8, _hoisted_1),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     createElementVNode("view", {
       id: "rootContain" + _ctx.refRandomId,
       ref: "rootContain",
@@ -309,7 +309,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       createElementVNode("view", null, toDisplayString(_ctx.contantCopy), 1)
     ], 12, _hoisted_5),
-    createTextVNode(),
+    _cache[6] || (_cache[6] = createTextVNode()),
     createElementVNode("view", {
       id: "symbolContain" + _ctx.refRandomId,
       ref: "symbolContain",

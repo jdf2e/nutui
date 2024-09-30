@@ -221,7 +221,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onTouchleave: _cache[3] || (_cache[3] = (...args) => _ctx.leaveEventHandler && _ctx.leaveEventHandler(...args))
       }, null, 40, _hoisted_2)
     ]),
-    createTextVNode(),
+    _cache[6] || (_cache[6] = createTextVNode()),
     createVNode(_component_nut_button, {
       class: "nut-signature-btn",
       type: "default",
@@ -232,7 +232,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 1
     }),
-    createTextVNode(),
+    _cache[7] || (_cache[7] = createTextVNode()),
     createVNode(_component_nut_button, {
       class: "nut-signature-btn",
       type: "primary",

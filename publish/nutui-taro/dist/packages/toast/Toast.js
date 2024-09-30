@@ -184,9 +184,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           _ctx.hasIcon ? (openBlock(), createElementBlock("view", _hoisted_1, [
             (openBlock(), createBlock(resolveDynamicComponent(_ctx.renderIcon(_ctx.iconName)), { color: "#ffffff" }))
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2, toDisplayString(_ctx.title), 1)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-toast-text",
             innerHTML: _ctx.msg

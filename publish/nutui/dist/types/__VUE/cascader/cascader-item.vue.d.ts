@@ -4,7 +4,7 @@ import { CascaderPane, CascaderOption, CascaderTabs } from './types';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     visible: BooleanConstructor;
     modelValue: ArrayConstructor;
     options: {
@@ -26,15 +26,15 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     convertConfig: ObjectConstructor;
-}, {
+}>, {
     handleNode(node: CascaderOption, silent?: boolean): Promise<void>;
     handleTabClick(tab: CascaderTabs): void;
     formatTabTitle(pane: CascaderPane): any;
     isSelected(pane: CascaderPane, node: CascaderOption): boolean;
-    panes: Ref<CascaderPane[]>;
-    initLoading: Ref<boolean>;
-    tabsCursor: Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "pathChange")[], "change" | "update:modelValue" | "pathChange", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    panes: Ref<CascaderPane[], CascaderPane[]>;
+    initLoading: Ref<boolean, boolean>;
+    tabsCursor: Ref<number, number>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "pathChange")[], "change" | "update:modelValue" | "pathChange", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     visible: BooleanConstructor;
     modelValue: ArrayConstructor;
     options: {
@@ -56,18 +56,461 @@ declare const _default: Install< import("vue").DefineComponent<{
         default: string;
     };
     convertConfig: ObjectConstructor;
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onPathChange?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
+    lazy: boolean;
     visible: boolean;
     options: unknown[];
-    lazy: boolean;
     valueKey: string;
     textKey: string;
     childrenKey: string;
-}, {}>>;
+}, {}, {
+    Loading: import("vue").DefineComponent<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }, {
+        classes: import("vue").ComputedRef<{
+            [x: string]: string | boolean;
+            "nut-icon": boolean;
+        }>;
+        style: import("vue").ComputedRef<import("vue").CSSProperties>;
+    }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }>>, {
+        name: string;
+        width: string | number;
+        height: string | number;
+        color: string;
+        class: string;
+    }>;
+    Checklist: import("vue").DefineComponent<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }, {
+        classes: import("vue").ComputedRef<{
+            [x: string]: string | boolean;
+            "nut-icon": boolean;
+        }>;
+        style: import("vue").ComputedRef<import("vue").CSSProperties>;
+    }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+        class: {
+            type: StringConstructor;
+            default: string;
+        };
+        name: {
+            type: StringConstructor;
+            default: string;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        width: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        height: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+    }>>, {
+        name: string;
+        width: string | number;
+        height: string | number;
+        color: string;
+        class: string;
+    }>;
+    NutTabs: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
+        modelValue: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        direction: {
+            type: import("vue").PropType<import("../tabs/types").TabsDirection>;
+            default: string;
+        };
+        size: {
+            type: import("vue").PropType<import("../tabs/types").TabsSize>;
+            default: string;
+        };
+        type: {
+            type: import("vue").PropType<import("../tabs/types").TabsType>;
+            default: string;
+        };
+        titleScroll: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        ellipsis: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        swipeable: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        autoHeight: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        background: {
+            type: StringConstructor;
+            default: string;
+        };
+        animatedTime: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        titleGutter: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        sticky: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        top: {
+            type: NumberConstructor;
+            default: number;
+        };
+        align: {
+            type: import("vue").PropType<import("../tabs/types").TabsAlign>;
+            default: string;
+        };
+    }>, {
+        onTouchStart(event: TouchEvent): void;
+        onTouchMove(event: TouchEvent): void;
+        onTouchEnd(): void;
+        isBegin: () => boolean;
+        isEnd: () => boolean;
+        next: () => void;
+        prev: () => void;
+        updateValue: (item: import("../tabs/index.vue").Title) => void;
+        tabChange: (item: import("../tabs/index.vue").Title, index: number) => void;
+        setTabItemRef: (el: HTMLElement, index: number) => void;
+        navRef: Ref<HTMLElement | undefined, HTMLElement | undefined>;
+        tabsContentRef: Ref<HTMLElement | undefined, HTMLElement | undefined>;
+        titles: Ref<import("../tabs/index.vue").Title[], import("../tabs/index.vue").Title[]>;
+        contentStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
+        tabsNavStyle: import("vue").ComputedRef<{
+            background: string;
+        }>;
+        titleStyle: import("vue").ComputedRef<{
+            paddingTop?: undefined;
+            paddingBottom?: undefined;
+            paddingLeft?: undefined;
+            paddingRight?: undefined;
+        } | {
+            paddingTop: string | undefined;
+            paddingBottom: string | undefined;
+            paddingLeft?: undefined;
+            paddingRight?: undefined;
+        } | {
+            paddingLeft: string | undefined;
+            paddingRight: string | undefined;
+            paddingTop?: undefined;
+            paddingBottom?: undefined;
+        }>;
+        tabsActiveStyle: import("vue").ComputedRef<{
+            color: string;
+            background: string;
+        }>;
+        container: Ref<any, any>;
+        getScrollY: import("vue").ComputedRef<boolean>;
+        onStickyScroll: (params: {
+            top: number;
+            fixed: boolean;
+        }) => void;
+    }, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "click" | "update:modelValue")[], "change" | "click" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+        modelValue: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        color: {
+            type: StringConstructor;
+            default: string;
+        };
+        direction: {
+            type: import("vue").PropType<import("../tabs/types").TabsDirection>;
+            default: string;
+        };
+        size: {
+            type: import("vue").PropType<import("../tabs/types").TabsSize>;
+            default: string;
+        };
+        type: {
+            type: import("vue").PropType<import("../tabs/types").TabsType>;
+            default: string;
+        };
+        titleScroll: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        ellipsis: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        swipeable: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        autoHeight: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        background: {
+            type: StringConstructor;
+            default: string;
+        };
+        animatedTime: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        titleGutter: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: number;
+        };
+        sticky: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+        top: {
+            type: NumberConstructor;
+            default: number;
+        };
+        align: {
+            type: import("vue").PropType<import("../tabs/types").TabsAlign>;
+            default: string;
+        };
+    }>> & Readonly<{
+        onClick?: ((...args: any[]) => any) | undefined;
+        onChange?: ((...args: any[]) => any) | undefined;
+        "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    }>, {
+        color: string;
+        type: import("../tabs/types").TabsType;
+        size: import("../tabs/types").TabsSize;
+        top: number;
+        background: string;
+        ellipsis: boolean;
+        sticky: boolean;
+        direction: import("../tabs/types").TabsDirection;
+        align: import("../tabs/types").TabsAlign;
+        modelValue: string | number;
+        titleScroll: boolean;
+        swipeable: boolean;
+        autoHeight: boolean;
+        animatedTime: string | number;
+        titleGutter: string | number;
+    }, {}, {
+        NutSticky: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
+            position: {
+                type: import("vue").PropType<"bottom" | "top">;
+                default: string;
+            };
+            top: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+            bottom: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+            container: {
+                type: import("vue").PropType<Element>;
+                default: null;
+            };
+            zIndex: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+        }>, {
+            rootRef: Ref<HTMLElement | undefined, HTMLElement | undefined>;
+            rootStyle: import("vue").ComputedRef<import("vue").CSSProperties | undefined>;
+            stickyRef: Ref<HTMLElement | undefined, HTMLElement | undefined>;
+            stickyStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
+        }, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+            position: {
+                type: import("vue").PropType<"bottom" | "top">;
+                default: string;
+            };
+            top: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+            bottom: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+            container: {
+                type: import("vue").PropType<Element>;
+                default: null;
+            };
+            zIndex: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: number;
+            };
+        }>> & Readonly<{
+            onChange?: ((...args: any[]) => any) | undefined;
+        }>, {
+            bottom: string | number;
+            top: string | number;
+            zIndex: string | number;
+            position: "bottom" | "top";
+            container: Element;
+        }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
+        JoySmile: import("vue").DefineComponent<{
+            class: {
+                type: StringConstructor;
+                default: string;
+            };
+            name: {
+                type: StringConstructor;
+                default: string;
+            };
+            color: {
+                type: StringConstructor;
+                default: string;
+            };
+            width: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: string;
+            };
+            height: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: string;
+            };
+        }, {
+            classes: import("vue").ComputedRef<{
+                [x: string]: string | boolean;
+                "nut-icon": boolean;
+            }>;
+            style: import("vue").ComputedRef<import("vue").CSSProperties>;
+        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+            class: {
+                type: StringConstructor;
+                default: string;
+            };
+            name: {
+                type: StringConstructor;
+                default: string;
+            };
+            color: {
+                type: StringConstructor;
+                default: string;
+            };
+            width: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: string;
+            };
+            height: {
+                type: (NumberConstructor | StringConstructor)[];
+                default: string;
+            };
+        }>>, {
+            name: string;
+            width: string | number;
+            height: string | number;
+            color: string;
+            class: string;
+        }>;
+    }, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
+    NutTabPane: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
+        title: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        paneKey: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        disabled: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+    }>, any, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+        title: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        paneKey: {
+            type: (NumberConstructor | StringConstructor)[];
+            default: string;
+        };
+        disabled: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
+    }>> & Readonly<{
+        onClick?: ((...args: any[]) => any) | undefined;
+    }>, {
+        disabled: boolean;
+        title: string | number;
+        paneKey: string | number;
+    }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
+}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

@@ -4,7 +4,7 @@ type StickyPosition = 'top' | 'bottom';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     position: {
         type: PropType<StickyPosition>;
         default: string;
@@ -25,12 +25,12 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: number;
     };
-}, {
-    rootRef: import("vue").Ref<HTMLElement | undefined>;
+}>, {
+    rootRef: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
     rootStyle: import("vue").ComputedRef<CSSProperties | undefined>;
-    stickyRef: import("vue").Ref<HTMLElement | undefined>;
+    stickyRef: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
     stickyStyle: import("vue").ComputedRef<CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "change"[], "change", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     position: {
         type: PropType<StickyPosition>;
         default: string;
@@ -51,15 +51,15 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: number;
     };
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     bottom: string | number;
     top: string | number;
     zIndex: string | number;
     position: StickyPosition;
     container: Element;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

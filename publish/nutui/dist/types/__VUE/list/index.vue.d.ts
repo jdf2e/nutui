@@ -3,7 +3,7 @@ import { Ref, ComputedRef } from 'vue';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     listData: {
         type: ArrayConstructor;
         default: () => never[];
@@ -23,26 +23,32 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}, {
-    list: Ref<any>;
-    phantom: Ref<any>;
-    actualContent: Ref<any>;
+}>, {
+    list: Ref<any, any>;
+    phantom: Ref<any, any>;
+    actualContent: Ref<any, any>;
     getTransform: () => string | undefined;
     visibleData: ComputedRef<any>;
     getContainerHeight: ComputedRef<number>;
     handleScrollEvent: () => void;
-    start: Ref<number>;
-    originStartIndex: Ref<number>;
-    scrollTop: Ref<number>;
+    start: Ref<number, number>;
+    originStartIndex: Ref<number, number>;
+    scrollTop: Ref<number, number>;
     cachePositions: Ref<{
         index: number;
         top: number;
         bottom: number;
         height: number;
         dValue: number;
+    }[], {
+        index: number;
+        top: number;
+        bottom: number;
+        height: number;
+        dValue: number;
     }[]>;
-    phantomHeight: Ref<number>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollUp" | "scrollDown" | "scrollBottom")[], "scrollUp" | "scrollDown" | "scrollBottom", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+    phantomHeight: Ref<number, number>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("scrollUp" | "scrollDown" | "scrollBottom")[], "scrollUp" | "scrollDown" | "scrollBottom", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     listData: {
         type: ArrayConstructor;
         default: () => never[];
@@ -62,16 +68,16 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
-}>> & {
+}>> & Readonly<{
     onScrollUp?: ((...args: any[]) => any) | undefined;
     onScrollDown?: ((...args: any[]) => any) | undefined;
     onScrollBottom?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     height: number;
     margin: number;
     listData: unknown[];
     bufferSize: number;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

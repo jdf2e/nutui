@@ -66,17 +66,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         alt: ""
       }, null, 8, _hoisted_3)
     ]),
-    createTextVNode(),
+    _cache[7] || (_cache[7] = createTextVNode()),
     createElementVNode("div", _hoisted_4, [
       createElementVNode("div", _hoisted_5, toDisplayString(_ctx.title), 1),
-      createTextVNode(),
+      _cache[3] || (_cache[3] = createTextVNode()),
       renderSlot(_ctx.$slots, "prolist"),
-      createTextVNode(),
+      _cache[4] || (_cache[4] = createTextVNode()),
       _ctx.isNeedPrice ? (openBlock(), createElementBlock("div", _hoisted_6, [
         renderSlot(_ctx.$slots, "price", {}, () => [
           createVNode(_component_nut_price, { price: _ctx.price }, null, 8, ["price"])
         ]),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         renderSlot(_ctx.$slots, "origin", {}, () => [
           createVNode(_component_nut_price, {
             class: "nut-card__right__price__origin",
@@ -84,7 +84,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }, null, 8, ["price"])
         ])
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[5] || (_cache[5] = createTextVNode()),
       createElementVNode("div", _hoisted_7, [
         renderSlot(_ctx.$slots, "shop-tag", {}, () => [
           createVNode(_component_nut_tag, { type: "danger" }, {
@@ -93,7 +93,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             ]),
             _: 1
           }),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           createVNode(_component_nut_tag, { plain: "" }, {
             default: withCtx(() => [
               createTextVNode(toDisplayString(_ctx.delivery), 1)
@@ -102,10 +102,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           })
         ])
       ]),
-      createTextVNode(),
+      _cache[6] || (_cache[6] = createTextVNode()),
       createElementVNode("div", _hoisted_8, [
         createElementVNode("div", _hoisted_9, toDisplayString(_ctx.shopName), 1),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         renderSlot(_ctx.$slots, "footer")
       ])
     ])

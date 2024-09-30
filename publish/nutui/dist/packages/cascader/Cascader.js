@@ -422,7 +422,6 @@ const _hoisted_1$1 = {
 };
 const _hoisted_2 = ["aria-checked", "aria-disabled", "onClick"];
 const _hoisted_3 = { class: "nut-cascader-item__title" };
-const _hoisted_4 = /* @__PURE__ */ createElementVNode("view", { class: "nut-cascader-pane" }, null, -1);
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Loading = resolveComponent("Loading");
   const _component_Checklist = resolveComponent("Checklist");
@@ -472,9 +471,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1,
         title: "Loading..."
       }, {
-        default: withCtx(() => [
-          _hoisted_4
-        ]),
+        default: withCtx(() => _cache[1] || (_cache[1] = [
+          createElementVNode("view", { class: "nut-cascader-pane" }, null, -1)
+        ])),
         _: 1
       }))
     ]),

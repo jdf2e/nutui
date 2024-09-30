@@ -64,9 +64,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         ], 4), [
           [vShow, !_ctx.hidden && !_ctx.dot && _ctx.$slots.icon]
         ]),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         renderSlot(_ctx.$slots, "default"),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         withDirectives(createElementVNode("view", {
           class: normalizeClass(["nut-badge__content nut-badge__content--sup", { "nut-badge__content--dot": _ctx.dot, "nut-badge__content--bubble": !_ctx.dot && _ctx.bubble }]),
           style: normalizeStyle(style.value)

@@ -13,7 +13,7 @@ export type ImageProps = Partial<{
     showLoading: boolean;
     lazyLoad: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     src: string;
     fit: ImageFit;
     position: string;
@@ -35,7 +35,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showError: boolean;
     showLoading: boolean;
     lazyLoad: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
     error: (...args: any[]) => void;
     load: (...args: any[]) => void;
@@ -61,11 +61,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showError: boolean;
     showLoading: boolean;
     lazyLoad: boolean;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
-    onLoad?: ((...args: any[]) => any) | undefined;
     onError?: ((...args: any[]) => any) | undefined;
-}, {
+    onLoad?: ((...args: any[]) => any) | undefined;
+}>, {
     round: boolean;
     width: string;
     height: string;
@@ -75,7 +75,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showError: boolean;
     showLoading: boolean;
     lazyLoad: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     loading?(_: {}): any;
     error?(_: {}): any;
 }>;

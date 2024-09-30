@@ -7,7 +7,7 @@ export type FormProps = Partial<{
     labelPosition: FormLabelPosition;
     starPosition: FormStarPosition;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: any;
     rules: FormRules;
     disabled: boolean;
@@ -19,11 +19,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     disabled: boolean;
     labelPosition: string;
     starPosition: string;
-}>, {
+}>>, {
     submit: () => boolean;
     reset: () => void;
     validate: (customProp?: string) => Promise<unknown>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     validate: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     modelValue: any;
@@ -37,15 +37,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     disabled: boolean;
     labelPosition: string;
     starPosition: string;
-}>>> & {
+}>>> & Readonly<{
     onValidate?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     disabled: boolean;
     modelValue: any;
     rules: FormRules;
     labelPosition: FormLabelPosition;
     starPosition: FormStarPosition;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 declare const _nut_default: WithInstall<typeof _default>;

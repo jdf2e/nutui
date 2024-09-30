@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { ref, onMounted, watch, computed, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, normalizeClass, createElementBlock, renderSlot, Fragment, createTextVNode, toDisplayString, createCommentVNode, resolveDynamicComponent } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import { d as isPromise } from "../util-2G3mRQeF.js";
-import { N as NutPopup, p as popupProps } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup, p as popupProps } from "../index.taro-CNxLoYer.js";
 import { Button as _sfc_main$1 } from "../button/Button.js";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
@@ -203,7 +203,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             createTextVNode(toDisplayString(_ctx.title), 1)
           ], 64))
         ])) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[2] || (_cache[2] = createTextVNode()),
         createElementVNode("view", {
           class: "nut-dialog__content",
           style: normalizeStyle(_ctx.contentStyle)
@@ -213,7 +213,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             innerHTML: _ctx.content
           }, null, 8, _hoisted_2)) : (openBlock(), createBlock(resolveDynamicComponent(_ctx.content), { key: 2 }))
         ], 4),
-        createTextVNode(),
+        _cache[3] || (_cache[3] = createTextVNode()),
         !_ctx.noFooter ? (openBlock(), createElementBlock("view", {
           key: 1,
           class: normalizeClass(["nut-dialog__footer", { [_ctx.footerDirection]: _ctx.footerDirection }])
@@ -232,7 +232,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               ]),
               _: 1
             }, 8, ["onClick"])) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[1] || (_cache[1] = createTextVNode()),
             !_ctx.noOkBtn ? (openBlock(), createBlock(_component_nut_button, {
               key: 1,
               size: "small",

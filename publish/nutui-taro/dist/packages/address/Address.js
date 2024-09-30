@@ -19,7 +19,7 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { reactive, ref, computed, watch, toRefs, resolveComponent, openBlock, createBlock, withCtx, createElementVNode, renderSlot, withDirectives, createVNode, vShow, createTextVNode, toDisplayString, createElementBlock, Fragment, renderList, normalizeClass, createCommentVNode } from "vue";
 import { Location, Location2, Check, Close, Left } from "@nutui/icons-vue-taro";
-import { N as NutPopup, p as popupProps } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup, p as popupProps } from "../index.taro-CNxLoYer.js";
 import { c as createComponent } from "../component-DQf3CENX.js";
 import NutElevator from "../elevator/Elevator.js";
 import { _ as _sfc_main$1 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
@@ -345,33 +345,32 @@ const _hoisted_7 = {
   key: 0,
   class: "active nut-address__region-item"
 };
-const _hoisted_8 = /* @__PURE__ */ createElementVNode("view", { class: "nut-address__region-line--mini active" }, null, -1);
-const _hoisted_9 = {
+const _hoisted_8 = {
   key: 0,
   class: "nut-address__detail"
 };
-const _hoisted_10 = { class: "nut-address__detail-list" };
-const _hoisted_11 = ["onClick"];
-const _hoisted_12 = {
+const _hoisted_9 = { class: "nut-address__detail-list" };
+const _hoisted_10 = ["onClick"];
+const _hoisted_11 = {
   key: 1,
   class: "nut-address__elevator-group"
 };
-const _hoisted_13 = {
+const _hoisted_12 = {
   key: 1,
   class: "nut-address__exist"
 };
-const _hoisted_14 = { class: "nut-address__exist-group" };
-const _hoisted_15 = { class: "nut-address__exist-group-list" };
-const _hoisted_16 = ["onClick"];
-const _hoisted_17 = { class: "nut-address__exist-item-info" };
-const _hoisted_18 = {
+const _hoisted_13 = { class: "nut-address__exist-group" };
+const _hoisted_14 = { class: "nut-address__exist-group-list" };
+const _hoisted_15 = ["onClick"];
+const _hoisted_16 = { class: "nut-address__exist-item-info" };
+const _hoisted_17 = {
   key: 0,
   class: "nut-address__exist-item-info-top"
 };
-const _hoisted_19 = { class: "nut-address__exist-item-info-name" };
-const _hoisted_20 = { class: "nut-address__exist-item-info-phone" };
-const _hoisted_21 = { class: "nut-address__exist-item-info-bottom" };
-const _hoisted_22 = { class: "nut-address__exist-choose-btn" };
+const _hoisted_18 = { class: "nut-address__exist-item-info-name" };
+const _hoisted_19 = { class: "nut-address__exist-item-info-phone" };
+const _hoisted_20 = { class: "nut-address__exist-item-info-bottom" };
+const _hoisted_21 = { class: "nut-address__exist-choose-btn" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Left = resolveComponent("Left");
   const _component_Close = resolveComponent("Close");
@@ -405,9 +404,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               ])
             ])
           ]),
-          createTextVNode(),
+          _cache[5] || (_cache[5] = createTextVNode()),
           createElementVNode("view", _hoisted_3, toDisplayString(_ctx.privateType == "custom" ? _ctx.customAddressTitle || _ctx.translate("selectRegion") : _ctx.existAddressTitle || _ctx.translate("deliveryTo")), 1),
-          createTextVNode(),
+          _cache[6] || (_cache[6] = createTextVNode()),
           createElementVNode("view", {
             class: "nut-address__header-close",
             onClick: _cache[1] || (_cache[1] = ($event) => _ctx.handClose("cross"))
@@ -420,7 +419,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             ])
           ])
         ]),
-        createTextVNode(),
+        _cache[18] || (_cache[18] = createTextVNode()),
         ["custom", "custom2"].includes(_ctx.privateType) ? (openBlock(), createElementBlock("view", _hoisted_4, [
           createElementVNode("view", _hoisted_5, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.selectedRegion, (item, index) => {
@@ -430,22 +429,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 onClick: ($event) => _ctx.changeRegionTab(item, index)
               }, [
                 createElementVNode("view", null, toDisplayString(_ctx.getTabName(item, index)), 1),
-                createTextVNode(),
+                _cache[7] || (_cache[7] = createTextVNode()),
                 createElementVNode("view", {
                   class: normalizeClass({ "nut-address__region-line--mini": true, active: index == _ctx.tabIndex })
                 }, null, 2)
               ], 10, _hoisted_6);
             }), 128)),
-            createTextVNode(),
+            _cache[10] || (_cache[10] = createTextVNode()),
             _ctx.tabIndex == _ctx.selectedRegion.length ? (openBlock(), createElementBlock("view", _hoisted_7, [
               createElementVNode("view", null, toDisplayString(_ctx.getTabName(null, _ctx.selectedRegion.length)), 1),
-              createTextVNode(),
-              _hoisted_8
+              _cache[8] || (_cache[8] = createTextVNode()),
+              _cache[9] || (_cache[9] = createElementVNode("view", { class: "nut-address__region-line--mini active" }, null, -1))
             ])) : createCommentVNode("", true)
           ], 512),
-          createTextVNode(),
-          _ctx.privateType == "custom" ? (openBlock(), createElementBlock("view", _hoisted_9, [
-            createElementVNode("div", _hoisted_10, [
+          _cache[11] || (_cache[11] = createTextVNode()),
+          _ctx.privateType == "custom" ? (openBlock(), createElementBlock("view", _hoisted_8, [
+            createElementVNode("div", _hoisted_9, [
               createVNode(_component_nut_scroll_view, {
                 "scroll-y": true,
                 style: { height: "100%" },
@@ -469,22 +468,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                         ]) : createCommentVNode("", true),
                         createTextVNode(" " + toDisplayString(item.name), 1)
                       ])
-                    ], 10, _hoisted_11);
+                    ], 10, _hoisted_10);
                   }), 128))
                 ]),
                 _: 3
               }, 8, ["scroll-top", "onScroll"])
             ])
-          ])) : (openBlock(), createElementBlock("view", _hoisted_12, [
+          ])) : (openBlock(), createElementBlock("view", _hoisted_11, [
             createVNode(_component_nut_elevator, {
               height: _ctx.height,
               "index-list": _ctx.transformData(_ctx.regionList),
               onClickItem: _ctx.handleElevatorItem
             }, null, 8, ["height", "index-list", "onClickItem"])
           ]))
-        ])) : _ctx.privateType == "exist" ? (openBlock(), createElementBlock("view", _hoisted_13, [
-          createElementVNode("div", _hoisted_14, [
-            createElementVNode("ul", _hoisted_15, [
+        ])) : _ctx.privateType == "exist" ? (openBlock(), createElementBlock("view", _hoisted_12, [
+          createElementVNode("div", _hoisted_13, [
+            createElementVNode("ul", _hoisted_14, [
               (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.existAddress, (item, index) => {
                 return openBlock(), createElementBlock("li", {
                   key: index,
@@ -497,38 +496,38 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       width: "13px"
                     })
                   ]) : createCommentVNode("", true),
-                  createTextVNode(),
+                  _cache[14] || (_cache[14] = createTextVNode()),
                   item.selectedAddress ? renderSlot(_ctx.$slots, "icon", { key: 1 }, () => [
                     createVNode(_component_Check, {
                       class: "nut-address-select-icon",
                       width: "13px"
                     })
                   ]) : createCommentVNode("", true),
-                  createTextVNode(),
-                  createElementVNode("div", _hoisted_17, [
-                    item.name && item.phone ? (openBlock(), createElementBlock("div", _hoisted_18, [
-                      createElementVNode("div", _hoisted_19, toDisplayString(item.name), 1),
-                      createTextVNode(),
-                      createElementVNode("div", _hoisted_20, toDisplayString(item.phone), 1)
+                  _cache[15] || (_cache[15] = createTextVNode()),
+                  createElementVNode("div", _hoisted_16, [
+                    item.name && item.phone ? (openBlock(), createElementBlock("div", _hoisted_17, [
+                      createElementVNode("div", _hoisted_18, toDisplayString(item.name), 1),
+                      _cache[12] || (_cache[12] = createTextVNode()),
+                      createElementVNode("div", _hoisted_19, toDisplayString(item.phone), 1)
                     ])) : createCommentVNode("", true),
-                    createTextVNode(),
-                    createElementVNode("div", _hoisted_21, [
+                    _cache[13] || (_cache[13] = createTextVNode()),
+                    createElementVNode("div", _hoisted_20, [
                       createElementVNode("view", null, toDisplayString(item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail), 1)
                     ])
                   ])
-                ], 10, _hoisted_16);
+                ], 10, _hoisted_15);
               }), 128))
             ])
           ]),
-          createTextVNode(),
+          _cache[16] || (_cache[16] = createTextVNode()),
           _ctx.isShowCustomAddress ? (openBlock(), createElementBlock("div", {
             key: 0,
             class: "nut-address__exist-choose",
             onClick: _cache[2] || (_cache[2] = (...args) => _ctx.switchModule && _ctx.switchModule(...args))
           }, [
-            createElementVNode("div", _hoisted_22, toDisplayString(_ctx.customAndExistTitle || _ctx.translate("chooseAnotherAddress")), 1)
+            createElementVNode("div", _hoisted_21, toDisplayString(_ctx.customAndExistTitle || _ctx.translate("chooseAnotherAddress")), 1)
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[17] || (_cache[17] = createTextVNode()),
           !_ctx.isShowCustomAddress ? renderSlot(_ctx.$slots, "bottom", { key: 1 }) : createCommentVNode("", true)
         ])) : createCommentVNode("", true)
       ])

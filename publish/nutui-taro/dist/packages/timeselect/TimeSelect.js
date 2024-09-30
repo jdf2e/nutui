@@ -1,6 +1,6 @@
 import { computed, provide, resolveComponent, openBlock, createBlock, normalizeStyle, withCtx, createElementVNode, createElementBlock, toDisplayString, renderSlot, createTextVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 const { create } = createComponent("time-select");
@@ -88,12 +88,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             !_ctx.$slots.title ? (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(_ctx.title || _ctx.translate("pickupTime")), 1)) : renderSlot(_ctx.$slots, "title", { key: 1 })
           ])
         ]),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         createElementVNode("view", _hoisted_5, [
           createElementVNode("view", _hoisted_6, [
             renderSlot(_ctx.$slots, "pannel")
           ]),
-          createTextVNode(),
+          _cache[0] || (_cache[0] = createTextVNode()),
           createElementVNode("view", _hoisted_7, [
             renderSlot(_ctx.$slots, "detail")
           ])

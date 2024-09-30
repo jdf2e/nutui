@@ -4,7 +4,7 @@ import { c as createComponent } from "../component-DQf3CENX.js";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { _ as _export_sfc } from "../_plugin-vue_export-helper-1tPrXgE0.js";
 import { InputNumber as _sfc_main$6 } from "../inputnumber/InputNumber.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import { _ as _sfc_main$7 } from "../index.taro.vue_vue_type_script_setup_true_lang-JJ7hr71Y.js";
 const { create: create$4 } = createComponent("sku-header");
 const cN$1 = "NutSkuHeader";
@@ -41,7 +41,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
       class: "nut-sku-header-img",
       src: _ctx.goods.imagePath
     }, null, 8, _hoisted_2$3),
-    createTextVNode(),
+    _cache[2] || (_cache[2] = createTextVNode()),
     createElementVNode("view", _hoisted_3$3, [
       _ctx.getSlots("sku-header-price") ? renderSlot(_ctx.$slots, "sku-header-price", { key: 0 }) : (openBlock(), createBlock(_component_nut_price, {
         key: 1,
@@ -49,9 +49,9 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
         "need-symbol": true,
         thousands: false
       }, null, 8, ["price"])),
-      createTextVNode(),
+      _cache[0] || (_cache[0] = createTextVNode()),
       _ctx.getSlots("sku-header-extra") ? renderSlot(_ctx.$slots, "sku-header-extra", { key: 2 }) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[1] || (_cache[1] = createTextVNode()),
       _ctx.goods.skuId && !_ctx.getSlots("sku-header-extra") ? (openBlock(), createElementBlock("view", _hoisted_4$3, toDisplayString(_ctx.translate("skuId")) + " : " + toDisplayString(_ctx.goods.skuId), 1)) : createCommentVNode("", true)
     ])
   ]);
@@ -109,7 +109,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
         class: "nut-sku-select-item"
       }, [
         createElementVNode("view", _hoisted_2$2, toDisplayString(item.name), 1),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         createElementVNode("view", _hoisted_3$2, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(item.list, (itemAttr, itemAttrIndex) => {
             return openBlock(), createElementBlock("view", {
@@ -199,12 +199,12 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_input_number = resolveComponent("nut-input-number");
   return openBlock(), createElementBlock("view", _hoisted_1$2, [
     createElementVNode("view", _hoisted_2$1, toDisplayString(_ctx.stepperTitle), 1),
-    createTextVNode(),
+    _cache[1] || (_cache[1] = createTextVNode()),
     createElementVNode("view", {
       class: "nut-sku-stepper-limit",
       innerHTML: _ctx.getExtraText()
     }, null, 8, _hoisted_3$1),
-    createTextVNode(),
+    _cache[2] || (_cache[2] = createTextVNode()),
     createElementVNode("view", _hoisted_4$1, [
       createVNode(_component_nut_input_number, {
         modelValue: _ctx.goodsCount,
@@ -284,9 +284,9 @@ const _hoisted_4 = ["onClick"];
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.btnOptions.length > 0 ? (openBlock(), createElementBlock("view", _hoisted_1$1, [
     _ctx.btnExtraText ? (openBlock(), createElementBlock("view", _hoisted_2, toDisplayString(_ctx.btnExtraText), 1)) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[0] || (_cache[0] = createTextVNode()),
     renderSlot(_ctx.$slots, "operate-btn"),
-    createTextVNode(),
+    _cache[1] || (_cache[1] = createTextVNode()),
     !_ctx.getSlots("operate-btn") ? (openBlock(), createElementBlock("view", _hoisted_3, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.btnOptions, (btn, i) => {
         return openBlock(), createElementBlock("view", {
@@ -478,7 +478,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [
       createElementVNode("view", _hoisted_1, [
         renderSlot(_ctx.$slots, "sku-header"),
-        createTextVNode(),
+        _cache[10] || (_cache[10] = createTextVNode()),
         !_ctx.getSlots("sku-header") ? (openBlock(), createBlock(_component_sku_header, {
           key: 0,
           goods: _ctx.goods
@@ -498,24 +498,24 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             key: "1"
           } : void 0
         ]), 1032, ["goods"])) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[11] || (_cache[11] = createTextVNode()),
         createVNode(_component_nut_scroll_view, {
           class: "nut-sku-content",
           "scroll-y": true
         }, {
           default: withCtx(() => [
             renderSlot(_ctx.$slots, "sku-select-top"),
-            createTextVNode(),
+            _cache[5] || (_cache[5] = createTextVNode()),
             renderSlot(_ctx.$slots, "sku-select"),
-            createTextVNode(),
+            _cache[6] || (_cache[6] = createTextVNode()),
             !_ctx.getSlots("sku-select") ? (openBlock(), createBlock(_component_SkuSelect, {
               key: 0,
               sku: _ctx.sku,
               onSelectSku: _ctx.selectSku
             }, null, 8, ["sku", "onSelectSku"])) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[7] || (_cache[7] = createTextVNode()),
             renderSlot(_ctx.$slots, "sku-stepper"),
-            createTextVNode(),
+            _cache[8] || (_cache[8] = createTextVNode()),
             !_ctx.getSlots("sku-stepper") ? (openBlock(), createBlock(_component_sku_stepper, {
               key: 1,
               goods: _ctx.goods,
@@ -528,12 +528,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               onChangeStepper: _ctx.changeStepper,
               onOverLimit: _ctx.stepperOverLimit
             }, null, 8, ["goods", "stepper-title", "stepper-max", "stepper-min", "stepper-extra-text", "onAdd", "onReduce", "onChangeStepper", "onOverLimit"])) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[9] || (_cache[9] = createTextVNode()),
             renderSlot(_ctx.$slots, "sku-stepper-bottom")
           ]),
           _: 3
         }),
-        createTextVNode(),
+        _cache[12] || (_cache[12] = createTextVNode()),
         createVNode(_component_sku_operate, {
           "btn-extra-text": _ctx.btnExtraText,
           "btn-options": _ctx.btnOptions,

@@ -530,14 +530,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("view", _hoisted_1, [
     _ctx.$slots.default ? (openBlock(), createElementBlock("view", _hoisted_2, [
       renderSlot(_ctx.$slots, "default"),
-      createTextVNode(),
+      _cache[0] || (_cache[0] = createTextVNode()),
       Number(_ctx.maximum) - _ctx.fileList.length ? (openBlock(), createBlock(_component_nut_button, {
         key: 0,
         class: "nut-uploader__input",
         onClick: _ctx.chooseImage
       }, null, 8, ["onClick"])) : createCommentVNode("", true)
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[9] || (_cache[9] = createTextVNode()),
     (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.fileList, (item, index) => {
       var _a, _b;
       return openBlock(), createElementBlock("view", {
@@ -556,10 +556,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 color: "#fff"
               }))
             ], 64)) : createCommentVNode("", true),
-            createTextVNode(),
+            _cache[1] || (_cache[1] = createTextVNode()),
             createElementVNode("view", _hoisted_5, toDisplayString(item.message), 1)
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           _ctx.isDeletable ? (openBlock(), createElementBlock("view", {
             key: 1,
             class: "close",
@@ -569,7 +569,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               createVNode(_component_Failure)
             ])
           ], 8, _hoisted_6)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[3] || (_cache[3] = createTextVNode()),
           (((_a = item == null ? void 0 : item.type) == null ? void 0 : _a.includes("image")) || ((_b = item == null ? void 0 : item.type) == null ? void 0 : _b.includes("video"))) && item.url ? (openBlock(), createElementBlock("img", {
             key: 2,
             class: "nut-uploader__preview-img__c",
@@ -584,7 +584,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               createElementVNode("view", _hoisted_10, toDisplayString(item.name), 1)
             ], 8, _hoisted_9)
           ])),
-          createTextVNode(),
+          _cache[4] || (_cache[4] = createTextVNode()),
           createElementVNode("view", _hoisted_11, toDisplayString(item.name), 1)
         ])) : _ctx.listType == "list" ? (openBlock(), createElementBlock("view", _hoisted_12, [
           createElementVNode("view", {
@@ -592,9 +592,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: ($event) => _ctx.fileItemClick(item)
           }, [
             createVNode(_component_Link, { class: "nut-uploader__preview-img__file__link" }),
-            createTextVNode(),
+            _cache[5] || (_cache[5] = createTextVNode()),
             createElementVNode("view", _hoisted_14, toDisplayString(item.name), 1),
-            createTextVNode(),
+            _cache[6] || (_cache[6] = createTextVNode()),
             _ctx.isDeletable ? (openBlock(), createBlock(_component_Del, {
               key: 0,
               color: "#808080",
@@ -602,7 +602,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: withModifiers(($event) => _ctx.onDelete(item, index), ["stop"])
             }, null, 8, ["onClick"])) : createCommentVNode("", true)
           ], 10, _hoisted_13),
-          createTextVNode(),
+          _cache[7] || (_cache[7] = createTextVNode()),
           item.status == "uploading" ? (openBlock(), createBlock(_component_nut_progress, {
             key: 0,
             size: "small",
@@ -613,7 +613,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ])) : createCommentVNode("", true)
       ], 2);
     }), 128)),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     _ctx.listType == "picture" && !_ctx.$slots.default && Number(_ctx.maximum) - _ctx.fileList.length ? (openBlock(), createElementBlock("view", {
       key: 1,
       class: normalizeClass(["nut-uploader__upload", [_ctx.listType]])
@@ -621,7 +621,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       renderSlot(_ctx.$slots, "upload-icon", {}, () => [
         createVNode(_component_Photograph, { color: "#808080" })
       ]),
-      createTextVNode(),
+      _cache[8] || (_cache[8] = createTextVNode()),
       createVNode(_component_nut_button, {
         class: normalizeClass(["nut-uploader__input", { disabled: _ctx.disabled }]),
         onClick: _ctx.chooseImage

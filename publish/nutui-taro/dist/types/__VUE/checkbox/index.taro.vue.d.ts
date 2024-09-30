@@ -4,7 +4,7 @@ import { CheckboxTextPosition, CheckboxShape } from './types';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     modelValue: {
         type: BooleanConstructor;
         default: boolean;
@@ -33,9 +33,9 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CheckboxShape>;
         default: string;
     };
-}, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+}>, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
     [key: string]: any;
-}>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}>, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue")[], "change" | "update:modelValue", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: {
         type: BooleanConstructor;
         default: boolean;
@@ -64,10 +64,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<CheckboxShape>;
         default: string;
     };
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     shape: CheckboxShape;
     disabled: boolean;
     label: string;
@@ -75,7 +75,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     textPosition: CheckboxTextPosition;
     iconSize: string | number;
     indeterminate: boolean;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

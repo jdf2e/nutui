@@ -4,7 +4,7 @@ import { SliderValue } from './type';
 declare type Install<T> = T & {
     install(app: import('vue').App): void;
 };
-declare const _default: Install< import("vue").DefineComponent<{
+declare const _default: Install< import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     range: {
         type: BooleanConstructor;
         default: boolean;
@@ -45,10 +45,10 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<SliderValue>;
         default: number;
     };
-}, {
+}>, {
     barStyle: import("vue").ComputedRef<CSSProperties>;
     curValue: (idx?: number) => number;
-    buttonIndex: import("vue").Ref<number>;
+    buttonIndex: import("vue").Ref<number, number>;
     containerClasses: import("vue").ComputedRef<{
         "nut-range-container": boolean;
         "nut-range-container-vertical": boolean;
@@ -61,23 +61,23 @@ declare const _default: Install< import("vue").DefineComponent<{
     marksList: import("vue").ComputedRef<number[]>;
     tickStyle: (mark: number) => CSSProperties;
     disabled: import("vue").ComputedRef<boolean>;
-    vertical: import("vue").Ref<boolean>;
-    range: import("vue").Ref<boolean>;
-    modelValue: import("vue").Ref<SliderValue>;
-    max: import("vue").Ref<string | number>;
-    marks: import("vue").Ref<Record<string, any>>;
-    hiddenRange: import("vue").Ref<boolean>;
-    hiddenTag: import("vue").Ref<boolean>;
-    min: import("vue").Ref<string | number>;
-    step: import("vue").Ref<string | number>;
-    activeColor: import("vue").Ref<string | undefined>;
-    inactiveColor: import("vue").Ref<string | undefined>;
-    buttonColor: import("vue").Ref<string | undefined>;
-    onChange: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onDragEnd: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    onDragStart: import("vue").Ref<((...args: any[]) => any) | undefined>;
-    root: import("vue").Ref<HTMLElement | undefined>;
+    max: import("vue").Ref<string | number, string | number>;
+    vertical: import("vue").Ref<boolean, boolean>;
+    range: import("vue").Ref<boolean, boolean>;
+    modelValue: import("vue").Ref<SliderValue, SliderValue>;
+    marks: import("vue").Ref<Record<string, any>, Record<string, any>>;
+    hiddenRange: import("vue").Ref<boolean, boolean>;
+    hiddenTag: import("vue").Ref<boolean, boolean>;
+    min: import("vue").Ref<string | number, string | number>;
+    step: import("vue").Ref<string | number, string | number>;
+    activeColor: import("vue").Ref<string | undefined, string | undefined>;
+    inactiveColor: import("vue").Ref<string | undefined, string | undefined>;
+    buttonColor: import("vue").Ref<string | undefined, string | undefined>;
+    onChange: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    "onUpdate:modelValue": import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onDragEnd: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    onDragStart: import("vue").Ref<((...args: any[]) => any) | undefined, ((...args: any[]) => any) | undefined>;
+    root: import("vue").Ref<HTMLElement | undefined, HTMLElement | undefined>;
     classes: import("vue").ComputedRef<{
         [x: string]: boolean;
     }>;
@@ -91,7 +91,7 @@ declare const _default: Install< import("vue").DefineComponent<{
     onTouchStart: (event: TouchEvent) => void;
     onTouchMove: (event: TouchEvent) => void;
     onTouchEnd: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "dragEnd" | "dragStart")[], "change" | "update:modelValue" | "dragEnd" | "dragStart", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("change" | "update:modelValue" | "dragEnd" | "dragStart")[], "change" | "update:modelValue" | "dragEnd" | "dragStart", import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     range: {
         type: BooleanConstructor;
         default: boolean;
@@ -132,23 +132,23 @@ declare const _default: Install< import("vue").DefineComponent<{
         type: PropType<SliderValue>;
         default: number;
     };
-}>> & {
+}>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
     onDragEnd?: ((...args: any[]) => any) | undefined;
     onDragStart?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     disabled: boolean;
+    max: string | number;
     vertical: boolean;
     range: boolean;
     modelValue: SliderValue;
-    max: string | number;
     marks: Record<string, any>;
     hiddenRange: boolean;
     hiddenTag: boolean;
     min: string | number;
     step: string | number;
-}, {}>>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>>;
 export default _default;
 
 declare module 'vue' {

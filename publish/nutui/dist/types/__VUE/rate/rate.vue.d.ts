@@ -12,7 +12,7 @@ export type RateProps = Partial<{
     touchable: boolean;
     spacing: string | number;
 }>;
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     count: string | number;
     modelValue: string | number;
     customIcon: any;
@@ -88,7 +88,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     disabled: boolean;
     allowHalf: boolean;
     touchable: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     change: (...args: any[]) => void;
     "update:modelValue": (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
@@ -167,10 +167,10 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     disabled: boolean;
     allowHalf: boolean;
     touchable: boolean;
-}>>> & {
+}>>> & Readonly<{
     onChange?: ((...args: any[]) => any) | undefined;
     "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     disabled: boolean;
     activeColor: string;
     modelValue: string | number;
@@ -180,7 +180,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     voidColor: string;
     allowHalf: boolean;
     touchable: boolean;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

@@ -101,16 +101,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           ]),
           _: 1
         }, 8, ["model-value"]),
-        createTextVNode(),
+        _cache[1] || (_cache[1] = createTextVNode()),
         _ctx.submit ? (openBlock(), createElementBlock("div", _hoisted_2, [
           createVNode(unref(_sfc_main$6), {
             type: "primary",
             block: "",
             onClick: submitFun
           }, {
-            default: withCtx(() => [
+            default: withCtx(() => _cache[0] || (_cache[0] = [
               createTextVNode("提交审批")
-            ]),
+            ])),
             _: 1
           })
         ])) : createCommentVNode("", true)

@@ -1,6 +1,6 @@
 import { ref, computed, watch, onMounted, resolveComponent, openBlock, createElementBlock, createVNode, withCtx, createElementVNode, toDisplayString, createTextVNode, Fragment, renderList, createCommentVNode } from "vue";
 import { c as createComponent } from "../component-DQf3CENX.js";
-import { N as NutPopup } from "../index.taro-V9Ta96_T.js";
+import { N as NutPopup } from "../index.taro-CNxLoYer.js";
 import { Tips } from "@nutui/icons-vue-taro";
 import { u as useLocale } from "../index-IxPZmHlb.js";
 import { eventCenter, getCurrentInstance } from "@tarojs/taro";
@@ -134,9 +134,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       default: withCtx(() => [
         createElementVNode("view", _hoisted_2, toDisplayString(_ctx.title || _ctx.translate("title")), 1),
-        createTextVNode(),
+        _cache[5] || (_cache[5] = createTextVNode()),
         createElementVNode("view", _hoisted_3, toDisplayString(_ctx.desc || _ctx.translate("desc")), 1),
-        createTextVNode(),
+        _cache[6] || (_cache[6] = createTextVNode()),
         createElementVNode("view", _hoisted_4, [
           createElementVNode("view", {
             class: "nut-short-password__list",
@@ -152,10 +152,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             }), 128))
           ], 32)
         ]),
-        createTextVNode(),
+        _cache[7] || (_cache[7] = createTextVNode()),
         createElementVNode("view", _hoisted_6, [
           createElementVNode("view", _hoisted_7, toDisplayString(_ctx.errorMsg), 1),
-          createTextVNode(),
+          _cache[4] || (_cache[4] = createTextVNode()),
           _ctx.tips || _ctx.translate("tips") ? (openBlock(), createElementBlock("view", {
             key: 0,
             class: "nut-short-password--forget",
@@ -165,7 +165,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               class: "icon",
               size: "11px"
             }),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             createElementVNode("view", null, toDisplayString(_ctx.tips || _ctx.translate("tips")), 1)
           ])) : createCommentVNode("", true)
         ])

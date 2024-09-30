@@ -81,19 +81,19 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           _ctx.$slots.icon ? (openBlock(), createElementBlock("view", _hoisted_1, [
             renderSlot(_ctx.$slots, "icon")
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[1] || (_cache[1] = createTextVNode()),
           _ctx.title || _ctx.subTitle || _ctx.$slots.title ? (openBlock(), createElementBlock("view", _hoisted_2, [
             _ctx.subTitle ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
               renderSlot(_ctx.$slots, "title", {}, () => [
                 createElementVNode("view", _hoisted_3, toDisplayString(_ctx.title), 1)
               ]),
-              createTextVNode(),
+              _cache[0] || (_cache[0] = createTextVNode()),
               createElementVNode("view", _hoisted_4, toDisplayString(_ctx.subTitle), 1)
             ], 64)) : renderSlot(_ctx.$slots, "title", { key: 1 }, () => [
               createTextVNode(toDisplayString(_ctx.title), 1)
             ])
           ])) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[2] || (_cache[2] = createTextVNode()),
           _ctx.desc || _ctx.$slots.desc ? (openBlock(), createElementBlock("view", {
             key: 2,
             class: normalizeClass(["nut-cell__value", { "nut-cell__value--alone": !_ctx.title && !_ctx.subTitle && !_ctx.$slots.title }]),
@@ -103,7 +103,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
               createTextVNode(toDisplayString(_ctx.desc), 1)
             ])
           ], 6)) : createCommentVNode("", true),
-          createTextVNode(),
+          _cache[3] || (_cache[3] = createTextVNode()),
           renderSlot(_ctx.$slots, "link", {}, () => [
             _ctx.isLink ? (openBlock(), createBlock(unref(Right), {
               key: 0,

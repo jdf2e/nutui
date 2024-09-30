@@ -74,7 +74,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
           ]),
           _: 3
         }, 8, ["style", "scroll-top"]),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         createElementVNode("view", {
           class: normalizeClass(classes.value),
           style: normalizeStyle(style.value),

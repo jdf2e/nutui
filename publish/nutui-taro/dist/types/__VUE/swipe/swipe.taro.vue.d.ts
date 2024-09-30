@@ -6,7 +6,7 @@ export type SwipeProps = Partial<{
     touchMovePreventDefault: boolean;
     disabled: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     name: string;
     touchMoveStopPropagation: boolean;
     touchMovePreventDefault: boolean;
@@ -16,13 +16,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     touchMoveStopPropagation: boolean;
     touchMovePreventDefault: boolean;
     disabled: boolean;
-}>, {
+}>>, {
     open: (p?: SwipePosition) => void;
     close: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     click: (...args: any[]) => void;
-    open: (...args: any[]) => void;
     close: (...args: any[]) => void;
+    open: (...args: any[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     name: string;
     touchMoveStopPropagation: boolean;
@@ -33,16 +33,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     touchMoveStopPropagation: boolean;
     touchMovePreventDefault: boolean;
     disabled: boolean;
-}>>> & {
+}>>> & Readonly<{
     onClick?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
     onOpen?: ((...args: any[]) => any) | undefined;
-}, {
+}>, {
     name: string;
     disabled: boolean;
     touchMoveStopPropagation: boolean;
     touchMovePreventDefault: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     left?(_: {}): any;
     default?(_: {}): any;
     right?(_: {}): any;

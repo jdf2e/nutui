@@ -228,7 +228,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     _ctx.$slots.leftout ? (openBlock(), createElementBlock("view", _hoisted_1, [
       renderSlot(_ctx.$slots, "leftout")
     ])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[10] || (_cache[10] = createTextVNode()),
     createElementVNode("view", {
       class: normalizeClass([`nut-searchbar__search-input`, _ctx.shape]),
       style: normalizeStyle(__spreadValues(__spreadValues({}, _ctx.inputSearchbarStyle), _ctx.focusCss))
@@ -236,7 +236,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.$slots.leftin ? (openBlock(), createElementBlock("view", _hoisted_2, [
         renderSlot(_ctx.$slots, "leftin")
       ])) : createCommentVNode("", true),
-      createTextVNode(),
+      _cache[8] || (_cache[8] = createTextVNode()),
       createElementVNode("view", {
         class: normalizeClass(["nut-searchbar__input-inner", _ctx.$slots.rightin && "nut-searchbar__input-inner-absolute"])
       }, [
@@ -266,7 +266,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }, null, 46, _hoisted_3)
         ], 32)
       ], 2),
-      createTextVNode(),
+      _cache[9] || (_cache[9] = createTextVNode()),
       createElementVNode("view", {
         class: normalizeClass(["nut-searchbar__input-inner-icon", _ctx.$slots.rightin && "nut-searchbar__input-inner-icon-absolute"])
       }, [
@@ -279,13 +279,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 512)), [
           [vShow, String(_ctx.modelValue).length > 0]
         ]) : createCommentVNode("", true),
-        createTextVNode(),
+        _cache[7] || (_cache[7] = createTextVNode()),
         _ctx.$slots.rightin ? (openBlock(), createElementBlock("view", _hoisted_4, [
           renderSlot(_ctx.$slots, "rightin")
         ])) : createCommentVNode("", true)
       ], 2)
     ], 6),
-    createTextVNode(),
+    _cache[11] || (_cache[11] = createTextVNode()),
     _ctx.$slots.rightout ? (openBlock(), createElementBlock("view", _hoisted_5, [
       renderSlot(_ctx.$slots, "rightout")
     ])) : createCommentVNode("", true)

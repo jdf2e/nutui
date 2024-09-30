@@ -218,7 +218,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             class: normalizeClass(["nut-elevator__list__item", `elevator__item__${index}`])
           }, [
             createElementVNode("view", _hoisted_2, toDisplayString(item[_ctx.acceptKey]), 1),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             (openBlock(true), createElementBlock(Fragment, null, renderList(item.list, (subitem) => {
               return openBlock(), createElementBlock("view", {
                 key: subitem["id"],
@@ -241,20 +241,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 3
     }, 8, ["scroll-top", "style", "onScroll"]),
-    createTextVNode(),
+    _cache[4] || (_cache[4] = createTextVNode()),
     withDirectives(createElementVNode("view", _hoisted_5, [
       createElementVNode("view", _hoisted_6, toDisplayString(_ctx.indexList[_ctx.currentIndex][_ctx.acceptKey]), 1)
     ], 512), [
       [vShow, _ctx.scrollY > 2 && _ctx.isSticky]
     ]),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     _ctx.indexList.length > 0 ? withDirectives((openBlock(), createElementBlock("view", {
       key: 0,
       class: "nut-elevator__code--current"
     }, toDisplayString(_ctx.indexList[_ctx.codeIndex][_ctx.acceptKey]), 513)), [
       [vShow, _ctx.scrollStart]
     ]) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[6] || (_cache[6] = createTextVNode()),
     createElementVNode("view", {
       class: "nut-elevator__bars",
       onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.touchStart && _ctx.touchStart(...args)),

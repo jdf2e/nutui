@@ -103,7 +103,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         createElementVNode("div", {
           style: normalizeStyle(style.value)
         }, null, 4),
-        createTextVNode(),
+        _cache[0] || (_cache[0] = createTextVNode()),
         createElementVNode("div", _hoisted_1, [
           renderSlot(_ctx.$slots, "default", {}, () => [
             createElementVNode("span", null, toDisplayString(_ctx.progress) + "%", 1)

@@ -7,7 +7,7 @@ export type IndicatorProps = Partial<{
     align: IndicatorAlign;
     fillZero: boolean;
 }>;
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     size: number;
     current: number;
     block: boolean;
@@ -19,7 +19,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     block: boolean;
     align: string;
     fillZero: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     size: number;
     current: number;
     block: boolean;
@@ -31,13 +31,13 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     block: boolean;
     align: string;
     fillZero: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     size: number;
     block: boolean;
     align: IndicatorAlign;
     current: number;
     fillZero: boolean;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

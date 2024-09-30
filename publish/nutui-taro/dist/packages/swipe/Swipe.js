@@ -208,14 +208,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({
         }, [
           renderSlot(_ctx.$slots, "left")
         ], 8, _hoisted_1),
-        createTextVNode(),
+        _cache[3] || (_cache[3] = createTextVNode()),
         createElementVNode("view", {
           class: "nut-swipe__content",
           onClick: _cache[1] || (_cache[1] = ($event) => onClick($event, "content", lockClick.value))
         }, [
           renderSlot(_ctx.$slots, "default")
         ]),
-        createTextVNode(),
+        _cache[4] || (_cache[4] = createTextVNode()),
         createElementVNode("view", {
           id: "rightRef-" + unref(refRandomId),
           ref_key: "rightRef",

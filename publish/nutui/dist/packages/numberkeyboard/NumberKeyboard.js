@@ -207,10 +207,6 @@ const _hoisted_10 = {
   class: "nut-number-keyboard__sidebar"
 };
 const _hoisted_11 = { class: "nut-key__wrapper" };
-const _hoisted_12 = /* @__PURE__ */ createElementVNode("img", { src: "https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" }, null, -1);
-const _hoisted_13 = [
-  _hoisted_12
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_nut_popup = resolveComponent("nut-popup");
   return openBlock(), createElementBlock("div", _hoisted_1, [
@@ -272,7 +268,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   onTouchstart: _cache[3] || (_cache[3] = (event) => _ctx.onTouchstart({ id: "delete", type: "delete" }, event)),
                   onTouchmove: _cache[4] || (_cache[4] = (event) => _ctx.onTouchMove(event)),
                   onTouchend: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args))
-                }, _hoisted_13, 34)
+                }, _cache[8] || (_cache[8] = [
+                  createElementVNode("img", { src: "https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" }, null, -1)
+                ]), 34)
               ]),
               createElementVNode("div", {
                 class: "nut-key__wrapper nut-key__wrapper--finish",

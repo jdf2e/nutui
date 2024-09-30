@@ -10,7 +10,7 @@ export type BadgeProps = Partial<{
     zIndex: number;
     color: string;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     value: string | number;
     max: number;
     dot: boolean;
@@ -29,7 +29,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     right: string;
     zIndex: number;
     color: string;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     value: string | number;
     max: number;
     dot: boolean;
@@ -48,16 +48,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     right: string;
     zIndex: number;
     color: string;
-}>>>, {
+}>>> & Readonly<{}>, {
     color: string;
+    max: number;
     right: string;
     top: string;
     zIndex: number;
     hidden: boolean;
     dot: boolean;
-    max: number;
     bubble: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     icon?(_: {}): any;
     default?(_: {}): any;
 }>;

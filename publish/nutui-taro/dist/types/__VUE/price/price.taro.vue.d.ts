@@ -10,7 +10,7 @@ export type PriceProps = Partial<{
     size: PriceSize;
     strikeThrough: boolean;
 }>;
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     price: string | number;
     needSymbol: boolean;
     symbol: string;
@@ -28,7 +28,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     position: string;
     size: string;
     strikeThrough: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     price: string | number;
     needSymbol: boolean;
     symbol: string;
@@ -46,7 +46,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     position: string;
     size: string;
     strikeThrough: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     symbol: string;
     size: PriceSize;
     position: PricePosition;
@@ -55,7 +55,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     decimalDigits: number;
     thousands: boolean;
     strikeThrough: boolean;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 declare const _nut_default: WithInstall<typeof _default>;
 export default _nut_default;
 

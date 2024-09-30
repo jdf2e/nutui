@@ -12,7 +12,7 @@ export type ProgressProps = Partial<{
     textBackground: string;
     isShowPercentage: boolean;
 }>;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     percentage: string | number;
     size: ProgressSize;
     status: ProgressStatus;
@@ -30,7 +30,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     textInside: boolean;
     showText: boolean;
     isShowPercentage: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Partial<{
     percentage: string | number;
     size: ProgressSize;
     status: ProgressStatus;
@@ -48,14 +48,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     textInside: boolean;
     showText: boolean;
     isShowPercentage: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     size: ProgressSize;
     percentage: string | number;
     status: ProgressStatus;
     textInside: boolean;
     showText: boolean;
     isShowPercentage: boolean;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
     "icon-name"?(_: {}): any;
 }>;

@@ -267,9 +267,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           type: "danger",
           onClick: _ctx.swipeDelClick
         }, {
-          default: withCtx(() => [
+          default: withCtx(() => _cache[5] || (_cache[5] = [
             createTextVNode("删除")
-          ]),
+          ])),
           _: 1
         }, 8, ["onClick"])
       ])

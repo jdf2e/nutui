@@ -97,7 +97,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       "z-index": 200,
       onClick: _cache[0] || (_cache[0] = ($event) => _ctx.updateValue(false))
     }, null, 8, ["visible"])) : createCommentVNode("", true),
-    createTextVNode(),
+    _cache[5] || (_cache[5] = createTextVNode()),
     renderSlot(_ctx.$slots, "list", {}, () => [
       createElementVNode("view", _hoisted_1, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.navList, (item, index) => {
@@ -109,22 +109,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             createElementVNode("img", {
               src: item.icon
             }, null, 8, _hoisted_3),
-            createTextVNode(),
+            _cache[2] || (_cache[2] = createTextVNode()),
             createElementVNode("view", _hoisted_4, toDisplayString(item.text), 1),
-            createTextVNode(),
+            _cache[3] || (_cache[3] = createTextVNode()),
             item.num ? (openBlock(), createElementBlock("view", _hoisted_5, toDisplayString(item.num), 1)) : createCommentVNode("", true)
           ], 10, _hoisted_2);
         }), 128))
       ])
     ]),
-    createTextVNode(),
+    _cache[6] || (_cache[6] = createTextVNode()),
     createElementVNode("div", {
       class: "nut-fixed-nav__btn",
       onClick: _cache[1] || (_cache[1] = ($event) => _ctx.updateValue())
     }, [
       renderSlot(_ctx.$slots, "btn", {}, () => [
         createVNode(_component_Left, { color: "#fff" }),
-        createTextVNode(),
+        _cache[4] || (_cache[4] = createTextVNode()),
         createElementVNode("view", _hoisted_6, toDisplayString(_ctx.visible ? _ctx.activeText || _ctx.translate("activeText") : _ctx.unActiveText || _ctx.translate("unActiveText")), 1)
       ])
     ])
