@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { StepOptions } from '../index.vue'
 import { Tour } from '@nutui/nutui'
+import { nextTick } from 'vue'
 
 const steps1 = [
   {
@@ -151,4 +152,45 @@ test('Tour: type=step', async () => {
 
   const btn2 = wrapper.findAll('.nut-tour-content-bottom-operate-btn')
   expect(btn2.length).toBe(2)
+})
+
+test('Tour: updates the mask position after scrolling', async () => {
+  const target = document.createElement('div')
+  target.id = 'tour-scroll-target'
+  let top = 100
+  target.getBoundingClientRect = () => ({
+    width: 100,
+    height: 20,
+    left: 10,
+    top,
+    right: 110,
+    bottom: top + 20,
+    x: 10,
+    y: top,
+    toJSON: () => ({})
+  }) as DOMRect
+  document.body.appendChild(target)
+
+  const wrapper = mount(
+    () => <Tour modelValue={true} type="tile" steps={[{ target: target.id }]} />,
+    {
+      global: {
+        stubs: {
+          teleport: true
+        }
+      }
+    }
+  )
+
+  await nextTick()
+  const mask = wrapper.find('.nut-tour-mask')
+  expect(mask.attributes('style')).toContain('top: 92px')
+
+  top = 40
+  window.dispatchEvent(new Event('scroll'))
+  await nextTick()
+  expect(mask.attributes('style')).toContain('top: 32px')
+
+  wrapper.unmount()
+  target.remove()
 })

@@ -34,7 +34,7 @@
   </Teleport>
 </template>
 <script lang="ts">
-import { computed, watch, ref, PropType, CSSProperties, onMounted, nextTick } from 'vue'
+import { computed, watch, ref, PropType, CSSProperties, onMounted, onUnmounted, nextTick } from 'vue'
 import { createComponent, renderIcon } from '@/packages/utils/create'
 import { useRect } from '@/packages/utils/useRect'
 import NutPopup from '../popup/index.vue'
@@ -195,10 +195,32 @@ export default create({
       }
     }
 
+    let positionListenersBound = false
+    const updatePosition = () => {
+      if (props.visible) {
+        getContentWidth()
+      }
+    }
+    const bindPositionListeners = () => {
+      if (positionListenersBound) return
+      window.addEventListener('scroll', updatePosition, true)
+      window.addEventListener('resize', updatePosition)
+      positionListenersBound = true
+    }
+    const unbindPositionListeners = () => {
+      if (!positionListenersBound) return
+      window.removeEventListener('scroll', updatePosition, true)
+      window.removeEventListener('resize', updatePosition)
+      positionListenersBound = false
+    }
+
     onMounted(() => {
       setTimeout(() => {
         getContentWidth()
       }, 300)
+      if (props.visible) {
+        bindPositionListeners()
+      }
     })
 
     watch(
@@ -206,15 +228,20 @@ export default create({
       (value) => {
         showPopup.value = value
         if (value) {
+          bindPositionListeners()
           window.addEventListener('touchstart', clickAway, true)
           nextTick(() => {
             getContentWidth()
           })
         } else {
+          unbindPositionListeners()
           window.removeEventListener('touchstart', clickAway, true)
         }
       }
     )
+    onUnmounted(() => {
+      unbindPositionListeners()
+    })
     const update = (val: boolean) => {
       emit('update', val)
       emit('update:visible', val)
