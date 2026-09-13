@@ -152,3 +152,44 @@ test('Popover: target', async () => {
   expect(popoverWrapper.attributes('style')).contain('top: 112px;')
   expect(popoverWrapper.attributes('style')).contain('left: 150px;')
 })
+
+test('Popover: updates target position after scrolling', async () => {
+  const target = document.createElement('div')
+  target.id = 'popover-scroll-target'
+  let top = 100
+  target.getBoundingClientRect = () => ({
+    width: 300,
+    height: 40,
+    left: 0,
+    top,
+    right: 300,
+    bottom: top + 40,
+    x: 0,
+    y: top,
+    toJSON: () => ({})
+  }) as DOMRect
+  document.body.appendChild(target)
+
+  const wrapper = mount(
+    () => <Popover visible={true} targetId={target.id} list={list} duration={0} />,
+    {
+      global: {
+        stubs: {
+          teleport: true
+        }
+      }
+    }
+  )
+
+  await sleep(350)
+  const popover = wrapper.find('.nut-popover')
+  expect(popover.attributes('style')).toContain('top: 152px;')
+
+  top = 40
+  window.dispatchEvent(new Event('scroll'))
+  await nextTick()
+  expect(wrapper.find('.nut-popover').attributes('style')).toContain('top: 92px;')
+
+  wrapper.unmount()
+  target.remove()
+})

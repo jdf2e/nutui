@@ -81,7 +81,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted } from 'vue'
+import { computed, watch, ref, reactive, toRefs, PropType, nextTick, onMounted, onUnmounted } from 'vue'
 import { PopoverLocation, PopoverTheme } from '../popover/type'
 import { createComponent } from '@/packages/utils/create'
 import { useRect } from '@/packages/utils/useRect'
@@ -236,6 +236,25 @@ export default create({
       maskRect.value = rect
     }
 
+    const updatePosition = () => {
+      if (state.showTour) {
+        getRootPosition()
+      }
+    }
+    let positionListenersBound = false
+    const bindPositionListeners = () => {
+      if (positionListenersBound) return
+      window.addEventListener('scroll', updatePosition, true)
+      window.addEventListener('resize', updatePosition)
+      positionListenersBound = true
+    }
+    const unbindPositionListeners = () => {
+      if (!positionListenersBound) return
+      window.removeEventListener('scroll', updatePosition, true)
+      window.removeEventListener('resize', updatePosition)
+      positionListenersBound = false
+    }
+
     const close = () => {
       state.showTour = false
       state.showPopup = false
@@ -250,12 +269,21 @@ export default create({
     onMounted(() => {
       state.active = 0
       getRootPosition()
+      if (state.showTour) {
+        bindPositionListeners()
+      }
+    })
+    onUnmounted(() => {
+      unbindPositionListeners()
     })
     watch(
       () => props.modelValue,
       (val) => {
         if (val) {
+          bindPositionListeners()
           getRootPosition()
+        } else {
+          unbindPositionListeners()
         }
         state.active = 0
         state.showTour = val
